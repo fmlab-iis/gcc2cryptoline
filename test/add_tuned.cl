@@ -1,22 +1,34 @@
-proc main () = 
+proc main ( uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4,
+            uint64 b0, uint64 b1, uint64 b2, uint64 b3, uint64 b4) =
 {
   true
   &&
-  true
+  and[
+    a0 <u (2**51)@64,
+    a1 <u (2**51)@64,
+    a2 <u (2**51)@64,
+    a3 <u (2**51)@64,
+    a4 <u (2**51)@64,
+    b0 <u (2**51)@64,
+    b1 <u (2**51)@64,
+    b2 <u (2**51)@64,
+    b3 <u (2**51)@64,
+    b4 <u (2**51)@64
+  ]
 }
 
 
 /* Start with undefined rhs */
-mov op117_0@uint64 _;
-mov op117_8@uint64 _;
-mov op117_16@uint64 _;
-mov op117_24@uint64 _;
-mov op117_32@uint64 _;
-mov op218_0@uint64 _;
-mov op218_8@uint64 _;
-mov op218_16@uint64 _;
-mov op218_24@uint64 _;
-mov op218_32@uint64 _;
+mov op117_0@uint64 a0;
+mov op117_8@uint64 a1;
+mov op117_16@uint64 a2;
+mov op117_24@uint64 a3;
+mov op117_32@uint64 a4;
+mov op218_0@uint64 b0;
+mov op218_8@uint64 b1;
+mov op218_16@uint64 b2;
+mov op218_24@uint64 b3;
+mov op218_32@uint64 b4;
 /* End with undefined rhs */
 
 
@@ -67,16 +79,29 @@ mov sum19_32 v15;
 
 
 /* Start with unused lhs */
-mov _ sum19_0@uint64;
-mov _ sum19_8@uint64;
-mov _ sum19_16@uint64;
-mov _ sum19_24@uint64;
-mov _ sum19_32@uint64;
+mov c0 sum19_0@uint64;
+mov c1 sum19_8@uint64;
+mov c2 sum19_16@uint64;
+mov c3 sum19_24@uint64;
+mov c4 sum19_32@uint64;
 /* End with unsed lhs */
 
 
 {
-  true
+  (limbs 51 [c0, c1, c2, c3, c4])
+  =
+  (
+    (limbs 51 [a0, a1, a2, a3, a4])
+    +
+    (limbs 51 [b0, b1, b2, b3, b4])
+  )
+  (mod (2**255 - 19)) /* can omit this line here */
   &&
-  true
+  and [
+    c0 <u (2**52)@64,
+    c1 <u (2**52)@64,
+    c2 <u (2**52)@64,
+    c3 <u (2**52)@64,
+    c4 <u (2**52)@64
+  ]
 }
