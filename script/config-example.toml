@@ -1,0 +1,171 @@
+to_test_ssl = [
+        'openssl',
+        'boringssl',
+        'nacl',
+        'wolfssl',
+        'nss',
+        'bitcoin'
+        ]
+algebra_solver = 'singular'
+qfbv_solver = 'mathsat'
+algebra_args =''
+qfbv_args = ''
+isafety_timeout = 300
+# only useful when qfbv_solver is boolector
+btor = true
+jobs = 4
+slicing = true
+isafety = true
+verbose = true
+no_carry_constraint = false
+disable_safety = false
+disable_range = false
+disable_algebra = false
+# for using time command to record time / memory usage
+time = true
+
+[openssl]
+to_test_dir = ['curve25519','ecp_nistp224','ecp_nistp256','ecp_nistp521']
+    [openssl.curve25519]
+    cl_files =  [
+                    'fe51_add_tuned',
+                    'fe51_mul_tuned',
+                    'fe51_mul121666_tuned',
+                    'fe51_sq_tuned',
+                    'fe51_sub_tuned',
+                    'x25519_scalar_mult_tuned'
+                ]
+    [openssl.ecp_nistp224]
+    cl_files= [
+                    'felem_diff_128_64_tuned',
+                    'felem_diff_tuned',
+                    'felem_mul_tuned',
+                    'felem_mul_reduce_tuned',
+                    'felem_neg_tuned',
+                    'felem_reduce_tuned',
+                    'felem_scalar_tuned',
+                    'felem_square_tuned',
+                    'felem_square_reduce_tuned',
+                    'felem_sum_tuned',
+                    'widefelem_diff_tuned',
+                    'widefelem_scalar_tuned'
+                ]
+    [openssl.ecp_nistp256]
+    cl_files = [
+                    'felem_diff_tuned',
+                    'felem_scalar_tuned',
+                    'felem_shrink_tuned',
+                    'felem_small_mul_tuned',
+                    'felem_small_sum_tuned',
+                    'felem_sum_tuned',
+                    'smallfelem_mul_tuned',
+                    'smallfelem_neg_tuned',
+                    'smallfelem_square_tuned'
+                ]
+    [openssl.ecp_nistp521]
+    cl_files = [
+                    'felem_diff64_tuned',
+                    'felem_diff128_tuned',
+                    'felem_neg_tuned',
+                    'felem_reduce_tuned',
+                    'felem_scalar_tuned',
+                    'felem_scalar64_tuned',
+                    'felem_scalar128_tuned',
+                    'felem_sum64_tuned',
+                    'felem_diff_128_64_tuned',
+                    'felem_mul_tuned',
+                    'felem_square_tuned'
+                ]
+[boringssl]
+    to_test_dir = ['fiat_curve25519']
+    [boringssl.fiat_curve25519]
+    cl_files =  [
+                    'fe_add_tuned',
+                    'fe_sub_tuned',
+                    'fe_mul_impl_tuned',
+                    'fe_mul121666_tuned',
+                    'fe_sqr_impl_tuned',
+                    'x25519_scalar_mult_generic_tuned'
+                ]
+    [boringssl.fiat_curve25519.x25519_scalar_mult_generic_tuned]
+    algebra_solver = 'sage'
+
+[nacl]
+    to_test_dir = ['curve25519_donna_c64']
+    [nacl.curve25519_donna_c64]
+    cl_files =  [
+                    'fdifference_backwards_tuned', # fail
+                    'fmul_tuned',
+                    'fscalar_product_tuned',
+                    'fsquare_tuned',
+                    'fsum_tuned'
+                    # fmonty is skipped becasue fdifference fail
+                    # 'fmonty_tuned'
+                ]
+
+[nss]
+    to_test_dir = ['hacl_curve25519']
+    [nss.hacl_curve25519]
+    cl_files =  [
+                    'Hacl_Bignum_fdifference_tuned',
+                    'Hacl_Bignum_Fmul_mul_shift_reduce__tuned',
+                    'Hacl_Bignum_fmul_tuned',
+                    'Hacl_Bignum_Fsquare_fsquare_tuned',
+                    'Hacl_Bignum_fsum_tuned',
+                    'Hacl_EC_AddAndDouble_fmonty_tuned'
+                ]
+
+[wolfssl]
+    to_test_dir = ['fe_operations']
+
+    [wolfssl.fe_operations]
+    cl_files = [
+                    'fe_add_tuned',
+                    'fe_mul_tuned',
+                    'fe_mul121666_tuned',
+                    'fe_neg_tuned',
+                    'fe_sq_tuned',
+                    'fe_sq2_tuned',
+                    'fe_sub_tuned',
+                    'curve25519_tuned_with_cuts'
+                ]
+[bitcoin]
+    to_test_dir = ['field','scalar','group','asm']
+    [bitcoin.field]
+    cl_files= [
+        'secp256k1_fe_add_tuned',
+        'secp256k1_fe_cmov_tuned',
+        'secp256k1_fe_from_storage_tuned',
+        'secp256k1_fe_mul_int_tuned',
+        'secp256k1_fe_negate_tuned',
+        'secp256k1_fe_mul_inner_tuned',
+        'secp256k1_fe_sqr_inner_tuned'
+        # 'secp256k1_fe_normalize_tuned',
+        # 'secp256k1_fe_normalize_var_tuned',
+        # 'secp256k1_fe_normalize_weak_tuned',
+        # 'secp256k1_fe_normalizes_to_zero_tuned',
+    ]
+    [bitcoin.scalar]
+    cl_files = [
+        'secp256k1_scalar_add_tuned',
+        'secp256k1_scalar_eq_tuned',
+        'secp256k1_scalar_mul_512_tuned',
+        'secp256k1_scalar_mul_tuned',
+        'secp256k1_scalar_negate_tuned',
+        'secp256k1_scalar_reduce_512_tuned',
+        'secp256k1_scalar_reduce_tuned',
+        'secp256k1_scalar_sqr_512_tuned',
+        'secp256k1_scalar_sqr_tuned'
+    ]
+    [bitcoin.group]
+    cl_files = [
+        'secp256k1_ge_from_storage_tuned',
+        'secp256k1_ge_neg_tuned',
+        'secp256k1_gej_add_ge_var_tuned',
+        'secp256k1_gej_double_var.part.14_tuned'
+    ]
+    [bitcoin.asm]
+    cl_files = [
+         'secp256k1_fe_mul_inner_tuned',
+         'secp256k1_fe_mul_inner_tuned'
+    ]

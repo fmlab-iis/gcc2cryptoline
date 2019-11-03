@@ -1,0 +1,196 @@
+(* @frege
+===== Verification =====
+Arguments: -jobs 24 -qfbv_solver mathsat -isafety -slicing felem_mul_tuned.cl
+Verification result:                    [OK]            0.578128 seconds
+        Command being timed: "verify -jobs 24 -qfbv_solver mathsat -isafety -slicing felem_mul_tuned.cl"
+        User time (seconds): 2.02
+        System time (seconds): 0.83
+        Percent of CPU this job got: 437%
+        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.65
+        Average shared text size (kbytes): 0
+        Average unshared data size (kbytes): 0
+        Average stack size (kbytes): 0
+        Average total size (kbytes): 0
+        Maximum resident set size (kbytes): 88032
+        Average resident set size (kbytes): 0
+        Major (requiring I/O) page faults: 0
+        Minor (reclaiming a frame) page faults: 345726
+        Voluntary context switches: 825
+        Involuntary context switches: 266
+        Swaps: 0
+        File system inputs: 0
+        File system outputs: 376
+        Socket messages sent: 0
+        Socket messages received: 0
+        Signals delivered: 0
+        Page size (bytes): 4096
+        Exit status: 0
+*)
+(* @mac 
+===== Verification =====
+Arguments: -jobs 4 -qfbv_solver mathsat -isafety -slicing ./felem_mul_tuned.cl
+Verification result:			[OK]		2.453009 seconds
+        2.54 real         6.41 user         1.36 sys
+  83226624  maximum resident set size
+         0  average shared memory size
+         0  average unshared data size
+         0  average unshared stack size
+    386265  page reclaims
+         1  page faults
+         0  swaps
+         0  block input operations
+        21  block output operations
+         0  messages sent
+         0  messages received
+       209  signals received
+       400  voluntary context switches
+      9439  involuntary context switches
+*)
+proc main (uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4,
+           uint64 b0, uint64 b1, uint64 b2, uint64 b3, uint64 b4) = 
+{
+  true
+  &&
+  and [
+    a0 <u (2**60)@64,
+    a1 <u (2**60)@64,
+    a2 <u (2**60)@64,
+    a3 <u (2**60)@64,
+    b0 <u (2**59)@64,
+    b1 <u (2**59)@64,
+    b2 <u (2**59)@64,
+    b3 <u (2**59)@64
+  ]
+}
+
+(* Start with undefined rhs *)
+mov in143_0@uint64 a0;
+mov in143_8@uint64 a1;
+mov in143_16@uint64 a2;
+mov in143_24@uint64 a3;
+mov in244_0@uint64 b0;
+mov in244_8@uint64 b1;
+mov in244_16@uint64 b2;
+mov in244_24@uint64 b3;
+(* End with undefined rhs *)
+
+
+
+(* BB's index is 2 *)
+
+(* _1 = *in1_43(D); *)
+mov v1 in143_0;
+(* _3 = *in2_44(D); *)
+mov v3 in244_0;
+(* _5 = _1 w* _3; *)
+umulj v5 v1 v3;
+(* *out_45(D) = _5; *)
+mov out45_0 v5;
+(* _6 = MEM[(const limb * )in2_44(D) + 8B]; *)
+mov v6 in244_8;
+(* _8 = _1 w* _6; *)
+umulj v8 v1 v6;
+(* _9 = MEM[(const limb * )in1_43(D) + 8B]; *)
+mov v9 in143_8;
+(* _11 = _3 w* _9; *)
+umulj v11 v3 v9;
+(* _12 = _8 + _11; *)
+uadd v12 v8 v11;
+(* MEM[(widelimb * )out_45(D) + 16B] = _12; *)
+mov out45_16 v12;
+(* _13 = MEM[(const limb * )in2_44(D) + 16B]; *)
+mov v13 in244_16;
+(* _15 = _1 w* _13; *)
+umulj v15 v1 v13;
+(* _16 = _6 w* _9; *)
+umulj v16 v6 v9;
+(* _17 = _15 + _16; *)
+uadd v17 v15 v16;
+(* _18 = MEM[(const limb * )in1_43(D) + 16B]; *)
+mov v18 in143_16;
+(* _20 = _3 w* _18; *)
+umulj v20 v3 v18;
+(* _21 = _17 + _20; *)
+uadd v21 v17 v20;
+(* MEM[(widelimb * )out_45(D) + 32B] = _21; *)
+mov out45_32 v21;
+(* _22 = MEM[(const limb * )in2_44(D) + 24B]; *)
+mov v22 in244_24;
+(* _24 = _1 w* _22; *)
+umulj v24 v1 v22;
+(* _25 = _9 w* _13; *)
+umulj v25 v9 v13;
+(* _54 = _24 + _25; *)
+uadd v54 v24 v25;
+(* _27 = MEM[(const limb * )in1_43(D) + 24B]; *)
+mov v27 in143_24;
+(* _29 = _3 w* _27; *)
+umulj v29 v3 v27;
+(* _30 = _6 w* _18; *)
+umulj v30 v6 v18;
+(* _53 = _29 + _54; *)
+uadd v53 v29 v54;
+(* _32 = _30 + _53; *)
+uadd v32 v30 v53;
+(* MEM[(widelimb * )out_45(D) + 48B] = _32; *)
+mov out45_48 v32;
+(* _33 = _9 w* _22; *)
+umulj v33 v9 v22;
+(* _34 = _13 w* _18; *)
+umulj v34 v13 v18;
+(* _35 = _33 + _34; *)
+uadd v35 v33 v34;
+(* _36 = _6 w* _27; *)
+umulj v36 v6 v27;
+(* _37 = _35 + _36; *)
+uadd v37 v35 v36;
+(* MEM[(widelimb * )out_45(D) + 64B] = _37; *)
+mov out45_64 v37;
+(* _38 = _18 w* _22; *)
+umulj v38 v18 v22;
+(* _39 = _13 w* _27; *)
+umulj v39 v13 v27;
+(* _40 = _38 + _39; *)
+uadd v40 v38 v39;
+(* MEM[(widelimb * )out_45(D) + 80B] = _40; *)
+mov out45_80 v40;
+(* _41 = _22 w* _27; *)
+umulj v41 v22 v27;
+(* MEM[(widelimb * )out_45(D) + 96B] = _41; *)
+mov out45_96 v41;
+(* return; *)
+
+
+(* Start with unused lhs *)
+mov c0 out45_0@uint128;
+mov c1 out45_16@uint128;
+mov c2 out45_32@uint128;
+mov c3 out45_48@uint128;
+mov c4 out45_64@uint128;
+mov c5 out45_80@uint128;
+mov c6 out45_96@uint128;
+(* End with unsed lhs *)
+
+
+{
+  (
+      limbs 56 [c0, c1, c2, c3, c4, c5, c6]
+  )
+  =
+  (
+      (limbs 56 [a0, a1, a2, a3])
+      *
+      (limbs 56 [b0, b1, b2, b3])
+  )
+  &&
+  and 
+  [
+      c0 <u (2**121)@128,
+      c1 <u (2**121)@128,
+      c2 <u (2**121)@128,
+      c3 <u (2**121)@128,
+      c4 <u (2**121)@128,
+      c5 <u (2**121)@128,
+      c6 <u (2**121)@128
+  ]
+}

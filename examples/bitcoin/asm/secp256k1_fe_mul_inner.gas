@@ -1,0 +1,310 @@
+#! %rax = %%rax
+#! %rbx = %%rbx
+#! %rcx = %%rcx
+#! %rdx = %%rdx
+#! %rdi = %%rdi
+#! %rsi = %%rsi
+#! %rsp = %%rsp
+#! %r8 = %%r8
+#! %r9 = %%r9
+#! %r10 = %%r10
+#! %r11 = %%r11
+#! %r12 = %%r12
+#! %r13 = %%r13
+#! %r14 = %%r14
+#! %r15 = %%r15
+
+#! %eax = %%rax
+#! %ebx = %%rbx
+#! %ecx = %%rcx
+#! %edx = %%rdx
+#! %edi = %%rdi
+#! %esi = %%rsi
+#! %esp = %%rsp
+
+
+
+
+#! (%rax) = %%EA
+
+#! (%rbx) = %%EA
+#! 0x8(%rbx) = %%EA
+#! 0x10(%rbx) = %%EA
+#! 0x18(%rbx) = %%EA
+#! 0x20(%rbx) = %%EA
+
+#! (%rbx) = %%EA
+#! 0x8(%rbx) = %%EA
+#! 0x10(%rbx) = %%EA
+#! 0x18(%rbx) = %%EA
+#! 0x20(%rbx) = %%EA
+
+#! (%rdi) = %%EA
+#! 0x8(%rdi) = %%EA
+#! 0x10(%rdi) = %%EA
+#! 0x18(%rdi) = %%EA
+#! 0x20(%rdi) = %%EA
+
+
+#! (%rsi) = %%EA
+#! 0x8(%rsi) = %%EA
+#! 0x10(%rsi) = %%EA
+#! 0x18(%rsi) = %%EA
+#! 0x20(%rsi) = %%EA
+
+#! (%rsp) = %%EA
+#! 0x8(%rsp) = %%EA
+#! 0x10(%rsp) = %%EA
+#! 0x18(%rsp) = %%EA
+#! 0x20(%rsp) = %%EA
+
+#! mov $1v, $2v -> mov $2v $1v
+#! movabs $1c, $2v -> mov $2v $1c@uint64
+
+#! add $1v, $2v -> adds carry $2v $2v $1v
+#! add $1c, $2v -> adds carry $2v $2v $1c@uint64
+
+#! adc $1v, $2v -> adc carry $2v $2v $1v carry
+#! adc $1c, $2v -> adc carry $2v $2v $1c@uint64 carry
+
+#! sub $1v, $2v -> subb carry $2v $2v $1v
+#! sub $1c, $2v -> subb carry $2v $2v $1c@uint64
+
+#! mul $1v -> mull rdx rax rax $1v
+
+#! xor $1v, $1v -> mov $1v 0@uint64
+
+#! and $1v, $2v -> and uint64 $2v $2v $1v
+#! or $1v, $2v -> or uint64 $2v $2v $1v
+
+#! shl $1c, $2v -> shl $2v $2v $1c
+#! shr $1c, $2v -> split $2v tmp_to_use $2v $1c
+
+#! shrd $1c, $2v, $3v -> (* TODO *)
+
+
+
+
+secp256k1_fe_mul_inner:
+# %rdi = 0x7fff9a47f410
+# %rsi = 0x7fff9a47f530
+# %rdx = 0x7fff9a47f3e0
+# %rcx = 0x44b37aa
+# %r8  = 0x4351f14fe8ad
+# %r9  = 0x44b
+	push   %r15
+	push   %r14
+	push   %r13
+	push   %r12
+	push   %rbx
+	mov    %rdx,%rbx
+	sub    $0x20,%rsp
+	mov    %fs:0x28,%rax
+	mov    %rax,0x18(%rsp)                          #! EA = L0x7fff9a47f3a8
+	xor    %eax,%eax
+	mov    (%rsi),%r10                              #! EA = L0x7fff9a47f530
+	mov    0x8(%rsi),%r11                           #! EA = L0x7fff9a47f538
+	mov    0x10(%rsi),%r12                          #! EA = L0x7fff9a47f540
+	mov    0x18(%rsi),%r13                          #! EA = L0x7fff9a47f548
+	mov    0x20(%rsi),%r14                          #! EA = L0x7fff9a47f550
+	mov    (%rbx),%rax                              #! EA = L0x7fff9a47f3e0
+	mul    %r13
+	mov    %rax,%rcx
+	mov    %rdx,%r15
+	mov    0x8(%rbx),%rax                           #! EA = L0x7fff9a47f3e8
+	mul    %r12
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x10(%rbx),%rax                          #! EA = L0x7fff9a47f3f0
+	mul    %r11
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x18(%rbx),%rax                          #! EA = L0x7fff9a47f3f8
+	mul    %r10
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x20(%rbx),%rax                          #! EA = L0x7fff9a47f400
+	mul    %r14
+	mov    %rax,%r8
+	mov    %rdx,%r9
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	movabs $0x1000003d10,%rdx
+	mul    %rdx
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	shrd   $0x34,%r9,%r8
+	mov    %rcx,%rsi
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rsi
+	mov    %rsi,(%rsp)                              #! EA = L0x7fff9a47f390
+	shrd   $0x34,%r15,%rcx
+	xor    %r15,%r15
+	mov    (%rbx),%rax                              #! EA = L0x7fff9a47f3e0
+	mul    %r14
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x8(%rbx),%rax                           #! EA = L0x7fff9a47f3e8
+	mul    %r13
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x10(%rbx),%rax                          #! EA = L0x7fff9a47f3f0
+	mul    %r12
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x18(%rbx),%rax                          #! EA = L0x7fff9a47f3f8
+	mul    %r11
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x20(%rbx),%rax                          #! EA = L0x7fff9a47f400
+	mul    %r10
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    %r8,%rax
+	movabs $0x1000003d10,%rdx
+	mul    %rdx
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    %rcx,%rsi
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rsi
+	shrd   $0x34,%r15,%rcx
+	xor    %r15,%r15
+	mov    %rsi,%rax
+	shr    $0x30,%rax
+	mov    %rax,0x10(%rsp)                          #! EA = L0x7fff9a47f3a0
+	movabs $0xffffffffffff,%rax
+	and    %rax,%rsi
+	mov    %rsi,0x8(%rsp)                           #! EA = L0x7fff9a47f398
+	mov    (%rbx),%rax                              #! EA = L0x7fff9a47f3e0
+	mul    %r10
+	mov    %rax,%r8
+	mov    %rdx,%r9
+	mov    0x8(%rbx),%rax                           #! EA = L0x7fff9a47f3e8
+	mul    %r14
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x10(%rbx),%rax                          #! EA = L0x7fff9a47f3f0
+	mul    %r13
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x18(%rbx),%rax                          #! EA = L0x7fff9a47f3f8
+	mul    %r12
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x20(%rbx),%rax                          #! EA = L0x7fff9a47f400
+	mul    %r11
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    %rcx,%rsi
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rsi
+	shrd   $0x34,%r15,%rcx
+	xor    %r15,%r15
+	shl    $0x4,%rsi
+	mov    0x10(%rsp),%rax                          #! EA = L0x7fff9a47f3a0
+	or     %rax,%rsi
+	movabs $0x1000003d1,%rax
+	mul    %rsi
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    %r8,%rax
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	mov    %rax,(%rdi)                              #! EA = L0x7fff9a47f410
+	shrd   $0x34,%r9,%r8
+	xor    %r9,%r9
+	mov    (%rbx),%rax                              #! EA = L0x7fff9a47f3e0
+	mul    %r11
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    0x8(%rbx),%rax                           #! EA = L0x7fff9a47f3e8
+	mul    %r10
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    0x10(%rbx),%rax                          #! EA = L0x7fff9a47f3f0
+	mul    %r14
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x18(%rbx),%rax                          #! EA = L0x7fff9a47f3f8
+	mul    %r13
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x20(%rbx),%rax                          #! EA = L0x7fff9a47f400
+	mul    %r12
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    %rcx,%rax
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	movabs $0x1000003d10,%rdx
+	mul    %rdx
+	add    %rax,%r8
+	adc    %rdx,%r9
+	shrd   $0x34,%r15,%rcx
+	xor    %r15,%r15
+	mov    %r8,%rax
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	mov    %rax,0x8(%rdi)                           #! EA = L0x7fff9a47f418
+	shrd   $0x34,%r9,%r8
+	xor    %r9,%r9
+	mov    (%rbx),%rax                              #! EA = L0x7fff9a47f3e0
+	mul    %r12
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    0x8(%rbx),%rax                           #! EA = L0x7fff9a47f3e8
+	mul    %r11
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    0x10(%rbx),%rax                          #! EA = L0x7fff9a47f3f0
+	mul    %r10
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    0x8(%rsp),%rsi                           #! EA = L0x7fff9a47f398
+	mov    (%rsp),%r10                              #! EA = L0x7fff9a47f390
+	mov    0x18(%rbx),%rax                          #! EA = L0x7fff9a47f3f8
+	mul    %r14
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    0x20(%rbx),%rax                          #! EA = L0x7fff9a47f400
+	mul    %r13
+	add    %rax,%rcx
+	adc    %rdx,%r15
+	mov    %rcx,%rax
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	movabs $0x1000003d10,%rdx
+	mul    %rdx
+	add    %rax,%r8
+	adc    %rdx,%r9
+	shrd   $0x34,%r15,%rcx
+	mov    %r8,%rax
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	mov    %rax,0x10(%rdi)                          #! EA = L0x7fff9a47f420
+	shrd   $0x34,%r9,%r8
+	xor    %r9,%r9
+	add    %r10,%r8
+	mov    %rcx,%rax
+	movabs $0x1000003d10,%rdx
+	mul    %rdx
+	add    %rax,%r8
+	adc    %rdx,%r9
+	mov    %r8,%rax
+	movabs $0xfffffffffffff,%rdx
+	and    %rdx,%rax
+	mov    %rax,0x18(%rdi)                          #! EA = L0x7fff9a47f428
+	shrd   $0x34,%r9,%r8
+	add    %rsi,%r8
+	mov    %r8,0x20(%rdi)                           #! EA = L0x7fff9a47f430
+	mov    0x18(%rsp),%rax                          #! EA = L0x7fff9a47f3a8
+	xor    %fs:0x28,%rax
+	#jne    0x403abd <secp256k1_fe_mul_inner+829>
+	add    $0x20,%rsp
+	pop    %rbx
+	pop    %r12
+	pop    %r13
+	pop    %r14
+	pop    %r15
+	#retq   

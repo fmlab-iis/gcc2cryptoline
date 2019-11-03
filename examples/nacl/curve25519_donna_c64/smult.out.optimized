@@ -1,0 +1,1562 @@
+
+;; Function fdifference_backwards (fdifference_backwards, funcdef_no=25, decl_uid=2452, cgraph_uid=25, symbol_order=25)
+
+fdifference_backwards (felem * ioutput, const felem * iin)
+{
+  int64_t t;
+  long int _1;
+  long int _2;
+  long int _3;
+  long int _4;
+  long int _5;
+  long int _6;
+  long int _7;
+  long int _8;
+  long int _9;
+  long int _10;
+  long int _11;
+  long int _12;
+  long int _13;
+  long int _14;
+  long int _15;
+  long int _16;
+  long int _17;
+  long int _18;
+  long int _19;
+  long int _20;
+  long int _21;
+  long int _22;
+  long int _23;
+  long int _24;
+  long int _25;
+  long int _26;
+  long int _27;
+  long int _28;
+  long int _29;
+  long int _30;
+  long int _31;
+  long int _32;
+  long int _33;
+  long int _34;
+  long int _35;
+  long int _36;
+  long int _37;
+  long int _38;
+  long int _39;
+  long int _40;
+  long int _41;
+  long int _42;
+  long int _43;
+  long int _44;
+  long int _45;
+  long int _46;
+  long int _47;
+  long int _48;
+  long int _49;
+  long int _50;
+  long int _51;
+
+  <bb 2> [local count: 1073741825]:
+  _1 = MEM[(const int64_t *)iin_52(D)];
+  _2 = MEM[(int64_t *)ioutput_53(D)];
+  _3 = _1 - _2;
+  MEM[(int64_t *)ioutput_53(D)] = _3;
+  _4 = MEM[(const int64_t *)iin_52(D) + 8B];
+  _5 = MEM[(int64_t *)ioutput_53(D) + 8B];
+  _6 = _4 - _5;
+  MEM[(int64_t *)ioutput_53(D) + 8B] = _6;
+  _7 = MEM[(const int64_t *)iin_52(D) + 16B];
+  _8 = MEM[(int64_t *)ioutput_53(D) + 16B];
+  _9 = _7 - _8;
+  MEM[(int64_t *)ioutput_53(D) + 16B] = _9;
+  _10 = MEM[(const int64_t *)iin_52(D) + 24B];
+  _11 = MEM[(int64_t *)ioutput_53(D) + 24B];
+  _12 = _10 - _11;
+  MEM[(int64_t *)ioutput_53(D) + 24B] = _12;
+  _13 = MEM[(const int64_t *)iin_52(D) + 32B];
+  _14 = MEM[(int64_t *)ioutput_53(D) + 32B];
+  _15 = _13 - _14;
+  t_59 = _3 >> 63;
+  _16 = t_59 & 2251799813685248;
+  _17 = _3 + _16;
+  _18 = t_59 & 1;
+  _19 = _6 - _18;
+  t_60 = _19 >> 63;
+  _20 = t_60 & 2251799813685248;
+  _21 = _19 + _20;
+  _22 = t_60 & 1;
+  _23 = _9 - _22;
+  t_61 = _23 >> 63;
+  _24 = t_61 & 2251799813685248;
+  _25 = _23 + _24;
+  _26 = t_61 & 1;
+  _27 = _12 - _26;
+  t_62 = _27 >> 63;
+  _28 = t_62 & 2251799813685248;
+  _29 = _27 + _28;
+  _30 = t_62 & 1;
+  _31 = _15 - _30;
+  t_63 = _31 >> 63;
+  _32 = t_63 & 2251799813685248;
+  _33 = _31 + _32;
+  _34 = t_63 & 19;
+  _35 = _17 - _34;
+  t_64 = _35 >> 63;
+  _36 = t_64 & 2251799813685248;
+  _37 = _35 + _36;
+  MEM[(int64_t *)ioutput_53(D)] = _37;
+  _38 = t_64 & 1;
+  _39 = _21 - _38;
+  t_66 = _39 >> 63;
+  _40 = t_66 & 2251799813685248;
+  _41 = _39 + _40;
+  MEM[(int64_t *)ioutput_53(D) + 8B] = _41;
+  _42 = t_66 & 1;
+  _43 = _25 - _42;
+  t_68 = _43 >> 63;
+  _44 = t_68 & 2251799813685248;
+  _45 = _43 + _44;
+  MEM[(int64_t *)ioutput_53(D) + 16B] = _45;
+  _46 = t_68 & 1;
+  _47 = _29 - _46;
+  t_70 = _47 >> 63;
+  _48 = t_70 & 2251799813685248;
+  _49 = _47 + _48;
+  MEM[(int64_t *)ioutput_53(D) + 24B] = _49;
+  _50 = t_70 & 1;
+  _51 = _33 - _50;
+  MEM[(int64_t *)ioutput_53(D) + 32B] = _51;
+  return;
+
+}
+
+
+
+;; Function fsum (fsum, funcdef_no=24, decl_uid=2444, cgraph_uid=24, symbol_order=24)
+
+__attribute__((optimize ("no-tree-vectorize"), used))
+fsum (felem * output, const felem * in)
+{
+  long unsigned int _4;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _36;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _49;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _62;
+  long unsigned int _64;
+  long unsigned int _65;
+
+  <bb 2> [local count: 178992763]:
+  _8 = *output_11(D);
+  _23 = *in_12(D);
+  _24 = _8 + _23;
+  *output_11(D) = _24;
+  _36 = MEM[(felem *)output_11(D) + 8B];
+  _38 = MEM[(const felem *)in_12(D) + 8B];
+  _39 = _36 + _38;
+  MEM[(felem *)output_11(D) + 8B] = _39;
+  _49 = MEM[(felem *)output_11(D) + 16B];
+  _51 = MEM[(const felem *)in_12(D) + 16B];
+  _52 = _49 + _51;
+  MEM[(felem *)output_11(D) + 16B] = _52;
+  _62 = MEM[(felem *)output_11(D) + 24B];
+  _64 = MEM[(const felem *)in_12(D) + 24B];
+  _65 = _62 + _64;
+  MEM[(felem *)output_11(D) + 24B] = _65;
+  _4 = MEM[(felem *)output_11(D) + 32B];
+  _6 = MEM[(const felem *)in_12(D) + 32B];
+  _7 = _4 + _6;
+  MEM[(felem *)output_11(D) + 32B] = _7;
+  return;
+
+}
+
+
+
+;; Function fscalar_product (fscalar_product, funcdef_no=26, decl_uid=2461, cgraph_uid=26, symbol_order=26)
+
+__attribute__((used))
+fscalar_product (felem * output, const felem * in, const felem scalar)
+{
+  uint128_t a;
+  long unsigned int _1;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  __int128 unsigned _8;
+  __int128 unsigned _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  __int128 unsigned _14;
+  __int128 unsigned _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  __int128 unsigned _20;
+  __int128 unsigned _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  __int128 unsigned _26;
+  __int128 unsigned _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  __int128 unsigned _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+
+  <bb 2> [local count: 1073741825]:
+  _1 = *in_35(D);
+  a_37 = _1 w* scalar_36(D);
+  _4 = (long unsigned int) a_37;
+  _5 = _4 & 2251799813685247;
+  *output_38(D) = _5;
+  _6 = MEM[(const felem *)in_35(D) + 8B];
+  _8 = scalar_36(D) w* _6;
+  _9 = a_37 >> 51;
+  a_40 = _8 + _9;
+  _10 = (long unsigned int) a_40;
+  _11 = _10 & 2251799813685247;
+  MEM[(felem *)output_38(D) + 8B] = _11;
+  _12 = MEM[(const felem *)in_35(D) + 16B];
+  _14 = scalar_36(D) w* _12;
+  _15 = a_40 >> 51;
+  a_42 = _14 + _15;
+  _16 = (long unsigned int) a_42;
+  _17 = _16 & 2251799813685247;
+  MEM[(felem *)output_38(D) + 16B] = _17;
+  _18 = MEM[(const felem *)in_35(D) + 24B];
+  _20 = scalar_36(D) w* _18;
+  _21 = a_42 >> 51;
+  a_44 = _20 + _21;
+  _22 = (long unsigned int) a_44;
+  _23 = _22 & 2251799813685247;
+  MEM[(felem *)output_38(D) + 24B] = _23;
+  _24 = MEM[(const felem *)in_35(D) + 32B];
+  _26 = scalar_36(D) w* _24;
+  _27 = a_44 >> 51;
+  a_46 = _26 + _27;
+  _28 = (long unsigned int) a_46;
+  _29 = _28 & 2251799813685247;
+  MEM[(felem *)output_38(D) + 32B] = _29;
+  _30 = a_46 >> 51;
+  _31 = (long unsigned int) _30;
+  _32 = _31 * 19;
+  _33 = _5 + _32;
+  *output_38(D) = _33;
+  return;
+
+}
+
+
+
+;; Function fmul (fmul, funcdef_no=27, decl_uid=2467, cgraph_uid=27, symbol_order=27)
+
+__attribute__((used))
+fmul (felem * output, const felem * in2, const felem * in)
+{
+  long unsigned int _1;
+  long unsigned int _3;
+  __int128 unsigned _5;
+  long unsigned int _6;
+  __int128 unsigned _8;
+  long unsigned int _9;
+  __int128 unsigned _11;
+  __int128 unsigned _12;
+  long unsigned int _13;
+  __int128 unsigned _15;
+  long unsigned int _16;
+  __int128 unsigned _18;
+  __int128 unsigned _19;
+  __int128 unsigned _20;
+  __int128 unsigned _21;
+  long unsigned int _22;
+  __int128 unsigned _24;
+  long unsigned int _25;
+  __int128 unsigned _27;
+  __int128 unsigned _29;
+  __int128 unsigned _30;
+  __int128 unsigned _32;
+  long unsigned int _33;
+  __int128 unsigned _35;
+  long unsigned int _36;
+  __int128 unsigned _38;
+  __int128 unsigned _39;
+  __int128 unsigned _40;
+  __int128 unsigned _41;
+  __int128 unsigned _43;
+  __int128 unsigned _44;
+  __int128 unsigned _45;
+  __int128 unsigned _46;
+  __int128 unsigned _47;
+  __int128 unsigned _49;
+  __int128 unsigned _50;
+  __int128 unsigned _52;
+  __int128 unsigned _53;
+  __int128 unsigned _54;
+  __int128 unsigned _55;
+  __int128 unsigned _56;
+  __int128 unsigned _57;
+  __int128 unsigned _58;
+  __int128 unsigned _59;
+  __int128 unsigned _60;
+  __int128 unsigned _62;
+  __int128 unsigned _63;
+  __int128 unsigned _64;
+  __int128 unsigned _65;
+  __int128 unsigned _66;
+  __int128 unsigned _67;
+  __int128 unsigned _68;
+  __int128 unsigned _69;
+  __int128 unsigned _70;
+  __int128 unsigned _71;
+  __int128 unsigned _72;
+  __int128 unsigned _73;
+  __int128 unsigned _74;
+  __int128 unsigned _75;
+  __int128 unsigned _76;
+  __int128 unsigned _77;
+  __int128 unsigned _78;
+  __int128 unsigned _79;
+  __int128 unsigned _80;
+  __int128 unsigned _81;
+  __int128 unsigned _82;
+  __int128 unsigned _83;
+  __int128 unsigned _84;
+  __int128 unsigned _85;
+  __int128 unsigned _86;
+  __int128 unsigned _87;
+  __int128 unsigned _88;
+  __int128 unsigned _89;
+  __int128 unsigned _90;
+  __int128 unsigned _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  __int128 unsigned _106;
+  __int128 unsigned _107;
+  __int128 unsigned _110;
+  __int128 unsigned _111;
+  __int128 unsigned _114;
+  __int128 unsigned _115;
+
+  <bb 2> [local count: 1073741825]:
+  _1 = *in_98(D);
+  _3 = *in2_99(D);
+  _5 = _1 w* _3;
+  _6 = MEM[(const felem *)in2_99(D) + 8B];
+  _8 = _1 w* _6;
+  _9 = MEM[(const felem *)in_98(D) + 8B];
+  _11 = _3 w* _9;
+  _12 = _8 + _11;
+  _13 = MEM[(const felem *)in2_99(D) + 16B];
+  _15 = _1 w* _13;
+  _16 = MEM[(const felem *)in_98(D) + 16B];
+  _18 = _3 w* _16;
+  _19 = _15 + _18;
+  _20 = _6 w* _9;
+  _21 = _19 + _20;
+  _22 = MEM[(const felem *)in2_99(D) + 24B];
+  _24 = _1 w* _22;
+  _25 = MEM[(const felem *)in_98(D) + 24B];
+  _27 = _3 w* _25;
+  _110 = _24 + _27;
+  _29 = _6 w* _16;
+  _30 = _9 w* _13;
+  _111 = _29 + _110;
+  _32 = _30 + _111;
+  _33 = MEM[(const felem *)in2_99(D) + 32B];
+  _35 = _1 w* _33;
+  _36 = MEM[(const felem *)in_98(D) + 32B];
+  _38 = _3 w* _36;
+  _107 = _35 + _38;
+  _40 = _9 w* _22;
+  _41 = _6 w* _25;
+  _106 = _40 + _107;
+  _43 = _41 + _106;
+  _44 = _13 w* _16;
+  _45 = _43 + _44;
+  _46 = _6 w* _36;
+  _47 = _9 w* _33;
+  _114 = _46 + _47;
+  _49 = _13 w* _25;
+  _50 = _16 w* _22;
+  _115 = _49 + _114;
+  _52 = _50 + _115;
+  _53 = _13 w* _36;
+  _54 = _16 w* _33;
+  _55 = _53 + _54;
+  _56 = _22 w* _25;
+  _57 = _55 + _56;
+  _58 = _25 w* _33;
+  _59 = _22 w* _36;
+  _60 = _58 + _59;
+  _62 = _52 * 19;
+  _63 = _5 + _62;
+  _64 = _57 * 19;
+  _65 = _12 + _64;
+  _66 = _60 * 19;
+  _67 = _21 + _66;
+  _39 = _33 w* _36;
+  _68 = _39 * 19;
+  _69 = _32 + _68;
+  _70 = _63 >> 51;
+  _71 = _65 + _70;
+  _72 = _63 & 2251799813685247;
+  _73 = _71 >> 51;
+  _74 = _67 + _73;
+  _75 = _71 & 2251799813685247;
+  _76 = _74 >> 51;
+  _77 = _69 + _76;
+  _78 = _74 & 2251799813685247;
+  _79 = _77 >> 51;
+  _80 = _45 + _79;
+  _81 = _77 & 2251799813685247;
+  _82 = _80 >> 51;
+  _83 = _82 * 19;
+  _84 = _72 + _83;
+  _85 = _80 & 2251799813685247;
+  _86 = _84 >> 51;
+  _87 = _75 + _86;
+  _88 = _84 & 2251799813685247;
+  _89 = _87 >> 51;
+  _90 = _78 + _89;
+  _91 = _87 & 2251799813685247;
+  _92 = (long unsigned int) _88;
+  *output_100(D) = _92;
+  _93 = (long unsigned int) _91;
+  MEM[(felem *)output_100(D) + 8B] = _93;
+  _94 = (long unsigned int) _90;
+  MEM[(felem *)output_100(D) + 16B] = _94;
+  _95 = (long unsigned int) _81;
+  MEM[(felem *)output_100(D) + 24B] = _95;
+  _96 = (long unsigned int) _85;
+  MEM[(felem *)output_100(D) + 32B] = _96;
+  return;
+
+}
+
+
+
+;; Function fsquare (fsquare, funcdef_no=28, decl_uid=2472, cgraph_uid=28, symbol_order=28)
+
+__attribute__((used))
+fsquare (felem * output, const felem * in)
+{
+  long unsigned int _1;
+  __int128 unsigned _3;
+  long unsigned int _4;
+  __int128 unsigned _6;
+  __int128 unsigned _7;
+  long unsigned int _8;
+  __int128 unsigned _10;
+  __int128 unsigned _11;
+  __int128 unsigned _12;
+  long unsigned int _14;
+  __int128 unsigned _16;
+  __int128 unsigned _17;
+  __int128 unsigned _18;
+  __int128 unsigned _19;
+  long unsigned int _20;
+  __int128 unsigned _22;
+  __int128 unsigned _23;
+  __int128 unsigned _24;
+  __int128 unsigned _25;
+  __int128 unsigned _26;
+  __int128 unsigned _27;
+  __int128 unsigned _28;
+  __int128 unsigned _29;
+  __int128 unsigned _30;
+  __int128 unsigned _31;
+  __int128 unsigned _32;
+  __int128 unsigned _33;
+  __int128 unsigned _34;
+  __int128 unsigned _35;
+  __int128 unsigned _36;
+  __int128 unsigned _37;
+  __int128 unsigned _38;
+  __int128 unsigned _39;
+  __int128 unsigned _40;
+  __int128 unsigned _41;
+  __int128 unsigned _42;
+  __int128 unsigned _43;
+  __int128 unsigned _44;
+  __int128 unsigned _45;
+  __int128 unsigned _46;
+  __int128 unsigned _47;
+  __int128 unsigned _48;
+  __int128 unsigned _49;
+  __int128 unsigned _50;
+  __int128 unsigned _51;
+  __int128 unsigned _52;
+  __int128 unsigned _53;
+  __int128 unsigned _54;
+  __int128 unsigned _55;
+  __int128 unsigned _56;
+  __int128 unsigned _57;
+  __int128 unsigned _58;
+  __int128 unsigned _59;
+  __int128 unsigned _60;
+  __int128 unsigned _61;
+  __int128 unsigned _62;
+  __int128 unsigned _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  __int128 unsigned _78;
+
+  <bb 2> [local count: 1073741825]:
+  _1 = *in_70(D);
+  _3 = _1 w* _1;
+  _4 = MEM[(const felem *)in_70(D) + 8B];
+  _6 = _1 w* _4;
+  _7 = _6 * 2;
+  _8 = MEM[(const felem *)in_70(D) + 16B];
+  _10 = _1 w* _8;
+  _11 = _10 * 2;
+  _12 = _4 w* _4;
+  _14 = MEM[(const felem *)in_70(D) + 24B];
+  _16 = _1 w* _14;
+  _17 = _4 w* _8;
+  _18 = _16 + _17;
+  _19 = _18 * 2;
+  _20 = MEM[(const felem *)in_70(D) + 32B];
+  _22 = _1 w* _20;
+  _23 = _4 w* _14;
+  _24 = _22 + _23;
+  _25 = _24 * 2;
+  _26 = _8 w* _8;
+  _27 = _25 + _26;
+  _28 = _4 w* _20;
+  _29 = _8 w* _14;
+  _30 = _28 + _29;
+  _31 = _8 w* _20;
+  _32 = _31 * 2;
+  _33 = _14 w* _14;
+  _34 = _32 + _33;
+  _35 = _14 w* _20;
+  _36 = _20 w* _20;
+  _37 = _30 * 38;
+  _38 = _3 + _37;
+  _39 = _34 * 19;
+  _40 = _7 + _39;
+  _41 = _35 * 38;
+  _78 = _11 + _41;
+  _42 = _12 + _78;
+  _43 = _36 * 19;
+  _44 = _19 + _43;
+  _45 = _38 >> 51;
+  _46 = _40 + _45;
+  _47 = _38 & 2251799813685247;
+  _48 = _46 >> 51;
+  _49 = _42 + _48;
+  _50 = _46 & 2251799813685247;
+  _51 = _49 >> 51;
+  _52 = _44 + _51;
+  _53 = _49 & 2251799813685247;
+  _54 = _52 >> 51;
+  _55 = _27 + _54;
+  _56 = _52 & 2251799813685247;
+  _57 = _55 >> 51;
+  _58 = _57 * 19;
+  _59 = _47 + _58;
+  _60 = _55 & 2251799813685247;
+  _61 = _59 >> 51;
+  _62 = _50 + _61;
+  _63 = _59 & 2251799813685247;
+  _64 = (long unsigned int) _63;
+  *output_71(D) = _64;
+  _65 = (long unsigned int) _62;
+  MEM[(felem *)output_71(D) + 8B] = _65;
+  _66 = (long unsigned int) _53;
+  MEM[(felem *)output_71(D) + 16B] = _66;
+  _67 = (long unsigned int) _56;
+  MEM[(felem *)output_71(D) + 24B] = _67;
+  _68 = (long unsigned int) _60;
+  MEM[(felem *)output_71(D) + 32B] = _68;
+  return;
+
+}
+
+
+
+;; Function fexpand (fexpand, funcdef_no=29, decl_uid=2477, cgraph_uid=29, symbol_order=29)
+
+__attribute__((used))
+fexpand (felem * output, const u8 * in)
+{
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+
+  <bb 2> [local count: 1073741825]:
+  _1 = MEM[(const uint64_t *)in_16(D)];
+  _2 = _1 & 2251799813685247;
+  *output_17(D) = _2;
+  _3 = MEM[(const uint64_t *)in_16(D) + 6B];
+  _4 = _3 >> 3;
+  _5 = _4 & 2251799813685247;
+  MEM[(felem *)output_17(D) + 8B] = _5;
+  _6 = MEM[(const uint64_t *)in_16(D) + 12B];
+  _7 = _6 >> 6;
+  _8 = _7 & 2251799813685247;
+  MEM[(felem *)output_17(D) + 16B] = _8;
+  _9 = MEM[(const uint64_t *)in_16(D) + 19B];
+  _10 = _9 >> 1;
+  _11 = _10 & 2251799813685247;
+  MEM[(felem *)output_17(D) + 24B] = _11;
+  _12 = MEM[(const uint64_t *)in_16(D) + 25B];
+  _13 = _12 >> 4;
+  _14 = _13 & 2251799813685247;
+  MEM[(felem *)output_17(D) + 32B] = _14;
+  return;
+
+}
+
+
+
+;; Function fcontract (fcontract, funcdef_no=30, decl_uid=2481, cgraph_uid=30, symbol_order=30)
+
+__attribute__((used))
+fcontract (u8 * output, const felem * input)
+{
+  long unsigned int _1;
+  __int128 unsigned _2;
+  long unsigned int _3;
+  __int128 unsigned _4;
+  long unsigned int _5;
+  __int128 unsigned _6;
+  long unsigned int _7;
+  __int128 unsigned _8;
+  long unsigned int _9;
+  __int128 unsigned _10;
+  __int128 unsigned _11;
+  __int128 unsigned _12;
+  __int128 unsigned _13;
+  __int128 unsigned _14;
+  __int128 unsigned _15;
+  __int128 unsigned _16;
+  __int128 unsigned _17;
+  __int128 unsigned _18;
+  __int128 unsigned _19;
+  __int128 unsigned _20;
+  __int128 unsigned _21;
+  __int128 unsigned _22;
+  __int128 unsigned _23;
+  __int128 unsigned _24;
+  __int128 unsigned _25;
+  __int128 unsigned _26;
+  __int128 unsigned _27;
+  __int128 unsigned _28;
+  __int128 unsigned _29;
+  __int128 unsigned _30;
+  __int128 unsigned _31;
+  __int128 unsigned _32;
+  __int128 unsigned _33;
+  __int128 unsigned _34;
+  __int128 unsigned _35;
+  __int128 unsigned _36;
+  __int128 unsigned _37;
+  __int128 unsigned _38;
+  __int128 unsigned _39;
+  __int128 unsigned _40;
+  long unsigned int patt_41;
+  __int128 unsigned _42;
+  __int128 unsigned _43;
+  __int128 unsigned _44;
+  __int128 unsigned _45;
+  __int128 unsigned _46;
+  __int128 unsigned _47;
+  __int128 unsigned _48;
+  __int128 unsigned _49;
+  __int128 unsigned _50;
+  __int128 unsigned _51;
+  __int128 unsigned _52;
+  __int128 unsigned _53;
+  __int128 unsigned _54;
+  __int128 unsigned _55;
+  __int128 unsigned _56;
+  __int128 unsigned _57;
+  __int128 unsigned _59;
+  __int128 unsigned _60;
+  __int128 unsigned _61;
+  __int128 unsigned _62;
+  __int128 unsigned _63;
+  __int128 unsigned _64;
+  __int128 unsigned _65;
+  __int128 unsigned _66;
+  __int128 unsigned _67;
+  __int128 unsigned _68;
+  __int128 unsigned _69;
+  __int128 unsigned _70;
+  __int128 unsigned _71;
+  __int128 unsigned _72;
+  __int128 unsigned _73;
+  __int128 unsigned _74;
+  __int128 unsigned _75;
+  __int128 unsigned _76;
+  __int128 unsigned _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  __int128 unsigned _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  __int128 unsigned _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  __int128 unsigned _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _104;
+  __int128 unsigned _105;
+  __int128 unsigned _106;
+
+  <bb 2> [local count: 1073741825]:
+  _1 = *input_98(D);
+  _2 = (__int128 unsigned) _1;
+  _3 = MEM[(const felem *)input_98(D) + 8B];
+  _4 = (__int128 unsigned) _3;
+  _5 = MEM[(const felem *)input_98(D) + 16B];
+  _6 = (__int128 unsigned) _5;
+  _7 = MEM[(const felem *)input_98(D) + 24B];
+  _8 = (__int128 unsigned) _7;
+  _9 = MEM[(const felem *)input_98(D) + 32B];
+  _10 = (__int128 unsigned) _9;
+  _11 = _2 >> 51;
+  _12 = _4 + _11;
+  _104 = _1 & 2251799813685247;
+  _13 = (__int128 unsigned) _104;
+  _14 = _12 >> 51;
+  _15 = _6 + _14;
+  _16 = _12 & 2251799813685247;
+  _17 = _15 >> 51;
+  _18 = _8 + _17;
+  _19 = _15 & 2251799813685247;
+  _20 = _18 >> 51;
+  _21 = _10 + _20;
+  _22 = _18 & 2251799813685247;
+  _23 = _21 >> 51;
+  _24 = _23 * 19;
+  _25 = _13 + _24;
+  _26 = _21 & 2251799813685247;
+  _27 = _25 >> 51;
+  _28 = _16 + _27;
+  _29 = _25 & 2251799813685247;
+  _30 = _28 >> 51;
+  _31 = _19 + _30;
+  _32 = _28 & 2251799813685247;
+  _33 = _31 >> 51;
+  _34 = _22 + _33;
+  _35 = _31 & 2251799813685247;
+  _36 = _34 >> 51;
+  _37 = _26 + _36;
+  _38 = _34 & 2251799813685247;
+  _39 = _37 >> 51;
+  _40 = _39 * 19;
+  _105 = _29 + 19;
+  _42 = _37 & 2251799813685247;
+  _43 = _40 + _105;
+  _44 = _43 >> 51;
+  _45 = _32 + _44;
+  _46 = _43 & 2251799813685247;
+  _47 = _45 >> 51;
+  _48 = _35 + _47;
+  _49 = _45 & 2251799813685247;
+  _50 = _48 >> 51;
+  _51 = _38 + _50;
+  _52 = _48 & 2251799813685247;
+  _53 = _51 >> 51;
+  _54 = _42 + _53;
+  _55 = _51 & 2251799813685247;
+  _56 = _54 >> 51;
+  _57 = _56 * 19;
+  _106 = _46 + 2251799813685229;
+  _59 = _54 & 2251799813685247;
+  _60 = _57 + _106;
+  _61 = _49 + 2251799813685247;
+  _62 = _52 + 2251799813685247;
+  _63 = _55 + 2251799813685247;
+  _64 = _59 + 2251799813685247;
+  _65 = _60 >> 51;
+  _66 = _61 + _65;
+  _67 = _60 & 2251799813685247;
+  _68 = _66 >> 51;
+  _69 = _62 + _68;
+  _70 = _66 & 2251799813685247;
+  _71 = _69 >> 51;
+  _72 = _63 + _71;
+  _73 = _69 & 2251799813685247;
+  _74 = _72 >> 51;
+  _75 = _64 + _74;
+  _76 = _72 & 2251799813685247;
+  _77 = _75 & 2251799813685247;
+  _78 = (long unsigned int) _67;
+  _79 = (long unsigned int) _70;
+  _80 = _79 << 51;
+  _81 = _78 | _80;
+  MEM[(uint64_t *)output_99(D)] = _81;
+  _82 = _70 >> 13;
+  _83 = (long unsigned int) _82;
+  _84 = (long unsigned int) _73;
+  _85 = _84 << 38;
+  _86 = _83 | _85;
+  MEM[(uint64_t *)output_99(D) + 8B] = _86;
+  _87 = _73 >> 26;
+  _88 = (long unsigned int) _87;
+  _89 = (long unsigned int) _76;
+  _90 = _89 << 25;
+  _91 = _88 | _90;
+  MEM[(uint64_t *)output_99(D) + 16B] = _91;
+  _92 = _76 >> 39;
+  _93 = (long unsigned int) _92;
+  _94 = (long unsigned int) _77;
+  _95 = _94 << 12;
+  _96 = _93 | _95;
+  MEM[(uint64_t *)output_99(D) + 24B] = _96;
+  return;
+
+}
+
+
+
+;; Function fmonty (fmonty, funcdef_no=31, decl_uid=2493, cgraph_uid=31, symbol_order=31)
+
+__attribute__((used))
+fmonty (felem * x2, felem * z2, felem * x3, felem * z3, felem * x, felem * z, felem * xprime, felem * zprime, const felem * qmqp)
+{
+  uint128_t a;
+  felem zzzprime[5];
+  felem zzprime[5];
+  felem xxprime[5];
+  felem zz[5];
+  felem xx[5];
+  felem zzz[5];
+  felem origxprime[5];
+  felem origx[5];
+  long unsigned int _40;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  __int128 unsigned _48;
+  __int128 unsigned _49;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  __int128 unsigned _55;
+  __int128 unsigned _56;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  __int128 unsigned _62;
+  __int128 unsigned _63;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  __int128 unsigned _69;
+  __int128 unsigned _70;
+  long unsigned int _72;
+  long unsigned int _73;
+  __int128 unsigned _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+
+  <bb 2> [local count: 1073741825]:
+  __builtin_memcpy (&origx, x_2(D), 40);
+  fsum (x_2(D), z_3(D));
+  fdifference_backwards (z_3(D), &origx);
+  __builtin_memcpy (&origxprime, xprime_6(D), 40);
+  fsum (xprime_6(D), zprime_7(D));
+  fdifference_backwards (zprime_7(D), &origxprime);
+  fmul (&xxprime, xprime_6(D), z_3(D));
+  fmul (&zzprime, x_2(D), zprime_7(D));
+  MEM[(char * {ref-all})&origxprime] = MEM[(char * {ref-all})&xxprime];
+  fsum (&xxprime, &zzprime);
+  fdifference_backwards (&zzprime, &origxprime);
+  fsquare (x3_14(D), &xxprime);
+  fsquare (&zzzprime, &zzprime);
+  fmul (z3_17(D), &zzzprime, qmqp_18(D));
+  fsquare (&xx, x_2(D));
+  fsquare (&zz, z_3(D));
+  fmul (x2_22(D), &xx, &zz);
+  fdifference_backwards (&zz, &xx);
+  _40 = MEM[(const felem *)&zz];
+  a_43 = _40 w* 121665;
+  _44 = (long unsigned int) a_43;
+  _45 = _44 & 2251799813685247;
+  _46 = MEM[(const felem *)&zz + 8B];
+  _48 = _46 w* 121665;
+  _49 = a_43 >> 51;
+  a_50 = _48 + _49;
+  _51 = (long unsigned int) a_50;
+  _52 = _51 & 2251799813685247;
+  MEM[(felem *)&zzz + 8B] = _52;
+  _53 = MEM[(const felem *)&zz + 16B];
+  _55 = _53 w* 121665;
+  _56 = a_50 >> 51;
+  a_57 = _55 + _56;
+  _58 = (long unsigned int) a_57;
+  _59 = _58 & 2251799813685247;
+  MEM[(felem *)&zzz + 16B] = _59;
+  _60 = MEM[(const felem *)&zz + 24B];
+  _62 = _60 w* 121665;
+  _63 = a_57 >> 51;
+  a_64 = _62 + _63;
+  _65 = (long unsigned int) a_64;
+  _66 = _65 & 2251799813685247;
+  MEM[(felem *)&zzz + 24B] = _66;
+  _67 = MEM[(const felem *)&zz + 32B];
+  _69 = _67 w* 121665;
+  _70 = a_64 >> 51;
+  a_71 = _69 + _70;
+  _72 = (long unsigned int) a_71;
+  _73 = _72 & 2251799813685247;
+  MEM[(felem *)&zzz + 32B] = _73;
+  _74 = a_71 >> 51;
+  _75 = (long unsigned int) _74;
+  _76 = _75 * 19;
+  _77 = _45 + _76;
+  MEM[(felem *)&zzz] = _77;
+  fsum (&zzz, &xx);
+  fmul (z2_27(D), &zz, &zzz);
+  origx ={v} {CLOBBER};
+  origxprime ={v} {CLOBBER};
+  zzz ={v} {CLOBBER};
+  xx ={v} {CLOBBER};
+  zz ={v} {CLOBBER};
+  xxprime ={v} {CLOBBER};
+  zzprime ={v} {CLOBBER};
+  zzzprime ={v} {CLOBBER};
+  return;
+
+}
+
+
+
+;; Function crypto_scalarmult (crypto_scalarmult, funcdef_no=35, decl_uid=2584, cgraph_uid=35, symbol_order=35)
+
+crypto_scalarmult (u8 * mypublic, const u8 * secret, const u8 * basepoint)
+{
+  unsigned long ivtmp.81;
+  vector(2) long unsigned int vect__408.36;
+  vector(2) long unsigned int vect__406.33;
+  const vector(2) long unsigned int vect_x_405.32;
+  vector(2) long unsigned int vect__404.31;
+  vector(2) long unsigned int vect__483.28;
+  vector(2) long unsigned int vect__481.25;
+  const vector(2) long unsigned int vect_x_480.24;
+  vector(2) long unsigned int vect__479.23;
+  felem a[5];
+  felem b[5];
+  felem c[5];
+  felem d[5];
+  felem * nqpqx;
+  felem * nqpqz;
+  felem * nqx;
+  felem * nqz;
+  felem e[5];
+  felem f[5];
+  felem g[5];
+  felem h[5];
+  felem * nqpqx2;
+  felem * nqpqz2;
+  felem * nqx2;
+  felem * nqz2;
+  u8 byte;
+  const felem bit;
+  const felem x;
+  const felem x;
+  const felem x;
+  const felem x;
+  const felem swap;
+  felem z2[5];
+  felem z9[5];
+  felem z11[5];
+  felem z2_5_0[5];
+  felem z2_10_0[5];
+  felem z2_20_0[5];
+  felem z2_50_0[5];
+  felem z2_100_0[5];
+  felem t0[5];
+  felem t1[5];
+  unsigned char e[32];
+  felem zmone[5];
+  felem z[5];
+  felem x[5];
+  felem bp[5];
+  unsigned char _4;
+  unsigned char _5;
+  unsigned char _6;
+  unsigned char _7;
+  unsigned char _8;
+  long unsigned int prephitmp_18;
+  long unsigned int prephitmp_19;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  vector(2) long unsigned int _52;
+  unsigned char _65;
+  vector(2) long unsigned int _69;
+  vector(2) long unsigned int _83;
+  vector(2) long unsigned int _86;
+  long unsigned int prephitmp_100;
+  vector(2) long unsigned int _125;
+  long unsigned int prephitmp_128;
+  long unsigned int prephitmp_130;
+  vector(2) long unsigned int _131;
+  vector(2) long unsigned int _133;
+  vector(2) long unsigned int _135;
+  long unsigned int prephitmp_150;
+  long unsigned int prephitmp_151;
+  unsigned int ivtmp_156;
+  unsigned int ivtmp_157;
+  unsigned int ivtmp_158;
+  unsigned int ivtmp_159;
+  vector(2) long unsigned int _178;
+  unsigned int ivtmp_179;
+  unsigned int ivtmp_180;
+  long unsigned int prephitmp_250;
+  long unsigned int _251;
+  long unsigned int prephitmp_252;
+  long unsigned int _253;
+  long unsigned int _254;
+  long unsigned int _256;
+  long unsigned int _258;
+  long unsigned int prephitmp_262;
+  long unsigned int prephitmp_263;
+  long unsigned int pretmp_264;
+  long unsigned int _266;
+  unsigned int ivtmp_267;
+  long unsigned int _268;
+  long unsigned int _269;
+  long unsigned int _271;
+  long unsigned int _273;
+  long unsigned int prephitmp_275;
+  long unsigned int prephitmp_278;
+  long unsigned int pretmp_279;
+  long unsigned int _281;
+  long unsigned int _283;
+  long unsigned int _284;
+  long unsigned int _286;
+  long unsigned int _288;
+  long unsigned int prephitmp_290;
+  long unsigned int prephitmp_292;
+  long unsigned int prephitmp_293;
+  long unsigned int pretmp_294;
+  long unsigned int _296;
+  long unsigned int prephitmp_297;
+  long unsigned int _298;
+  long unsigned int _299;
+  long unsigned int _301;
+  long unsigned int _303;
+  long unsigned int prephitmp_305;
+  long unsigned int pretmp_307;
+  long unsigned int prephitmp_310;
+  long unsigned int _311;
+  long unsigned int _313;
+  long unsigned int _314;
+  long unsigned int _316;
+  long unsigned int _318;
+  unsigned int ivtmp_322;
+  unsigned int ivtmp_323;
+  unsigned int ivtmp_324;
+  long unsigned int prephitmp_325;
+  long unsigned int _326;
+  long unsigned int _328;
+  long unsigned int _329;
+  long unsigned int _331;
+  long unsigned int _333;
+  unsigned int ivtmp_335;
+  long unsigned int prephitmp_336;
+  unsigned int ivtmp_337;
+  long unsigned int prephitmp_338;
+  long unsigned int prephitmp_339;
+  unsigned int ivtmp_340;
+  long unsigned int _341;
+  unsigned int ivtmp_342;
+  long unsigned int _343;
+  long unsigned int _344;
+  long unsigned int _346;
+  long unsigned int _348;
+  long unsigned int prephitmp_350;
+  long unsigned int prephitmp_351;
+  long unsigned int prephitmp_352;
+  long unsigned int prephitmp_353;
+  long unsigned int prephitmp_354;
+  long unsigned int _356;
+  long unsigned int _358;
+  long unsigned int _359;
+  long unsigned int _361;
+  long unsigned int _363;
+  long unsigned int prephitmp_365;
+  long unsigned int prephitmp_366;
+  long unsigned int prephitmp_367;
+  long unsigned int prephitmp_368;
+  long unsigned int prephitmp_369;
+  long unsigned int _371;
+  long unsigned int _373;
+  long unsigned int _374;
+  long unsigned int _376;
+  long unsigned int _378;
+  long unsigned int prephitmp_380;
+  long unsigned int prephitmp_381;
+  long unsigned int prephitmp_383;
+  long unsigned int prephitmp_384;
+  long unsigned int _386;
+  long unsigned int _388;
+  long unsigned int _389;
+  long unsigned int _391;
+  long unsigned int _393;
+  long unsigned int prephitmp_395;
+  long unsigned int prephitmp_402;
+  unsigned long _437;
+  void * _452;
+  long unsigned int _464;
+  long unsigned int _466;
+  long unsigned int _468;
+  long unsigned int prephitmp_475;
+  long unsigned int pretmp_477;
+  long unsigned int _539;
+  long unsigned int _541;
+  long unsigned int _543;
+
+  <bb 2> [local count: 32534377]:
+  MEM[(char * {ref-all})&e] = MEM[(char * {ref-all})secret_12(D)];
+  _4 = e[0];
+  _5 = _4 & 248;
+  e[0] = _5;
+  _6 = e[31];
+  _7 = _6 & 127;
+  _8 = _7 | 64;
+  e[31] = _8;
+  _28 = MEM[(const uint64_t *)basepoint_17(D)];
+  _29 = _28 & 2251799813685247;
+  MEM[(felem *)&bp] = _29;
+  _30 = MEM[(const uint64_t *)basepoint_17(D) + 6B];
+  _31 = _30 >> 3;
+  _32 = _31 & 2251799813685247;
+  MEM[(felem *)&bp + 8B] = _32;
+  _33 = MEM[(const uint64_t *)basepoint_17(D) + 12B];
+  _34 = _33 >> 6;
+  _35 = _34 & 2251799813685247;
+  MEM[(felem *)&bp + 16B] = _35;
+  _36 = MEM[(const uint64_t *)basepoint_17(D) + 19B];
+  _37 = _36 >> 1;
+  _38 = _37 & 2251799813685247;
+  MEM[(felem *)&bp + 24B] = _38;
+  _39 = MEM[(const uint64_t *)basepoint_17(D) + 25B];
+  _40 = _39 >> 4;
+  _41 = _40 & 2251799813685247;
+  MEM[(felem *)&bp + 32B] = _41;
+  MEM[(felem[5] *)&b + 8B] = {};
+  b[0] = 1;
+  MEM[(felem[5] *)&c + 8B] = {};
+  c[0] = 1;
+  d = {};
+  e = {};
+  MEM[(felem[5] *)&f + 8B] = {};
+  f[0] = 1;
+  g = {};
+  MEM[(felem[5] *)&h + 8B] = {};
+  h[0] = 1;
+  MEM[(char * {ref-all})&a] = MEM[(char * {ref-all})&bp];
+  pretmp_307 = MEM[(felem *)&a];
+  pretmp_477 = MEM[(felem *)&a + 8B];
+  pretmp_294 = MEM[(felem *)&a + 16B];
+  pretmp_279 = MEM[(felem *)&a + 24B];
+  pretmp_264 = MEM[(felem *)&a + 32B];
+  ivtmp.81_424 = (unsigned long) &MEM[(void *)&e + 31B];
+  _437 = (unsigned long) &e;
+
+  <bb 3> [local count: 1041202969]:
+  # nqpqx_70 = PHI <&a(2), nqpqx2_175(5)>
+  # nqpqz_72 = PHI <&b(2), nqpqz2_95(5)>
+  # nqx_73 = PHI <&c(2), nqx2_174(5)>
+  # nqz_75 = PHI <&d(2), nqz2_94(5)>
+  # nqpqx2_76 = PHI <&e(2), nqpqx_91(5)>
+  # nqpqz2_77 = PHI <&f(2), nqpqz_93(5)>
+  # nqx2_78 = PHI <&g(2), nqx_90(5)>
+  # nqz2_79 = PHI <&h(2), nqz_92(5)>
+  # prephitmp_297 = PHI <0(2), _256(5)>
+  # prephitmp_310 = PHI <1(2), _258(5)>
+  # prephitmp_252 = PHI <0(2), _271(5)>
+  # prephitmp_250 = PHI <0(2), _273(5)>
+  # prephitmp_325 = PHI <0(2), _286(5)>
+  # prephitmp_402 = PHI <0(2), _288(5)>
+  # prephitmp_367 = PHI <0(2), _301(5)>
+  # prephitmp_150 = PHI <0(2), _303(5)>
+  # prephitmp_130 = PHI <0(2), _316(5)>
+  # prephitmp_262 = PHI <0(2), _318(5)>
+  # prephitmp_292 = PHI <1(2), _331(5)>
+  # prephitmp_352 = PHI <pretmp_307(2), _333(5)>
+  # prephitmp_151 = PHI <0(2), _346(5)>
+  # prephitmp_475 = PHI <pretmp_477(2), _348(5)>
+  # prephitmp_305 = PHI <0(2), _361(5)>
+  # prephitmp_293 = PHI <pretmp_294(2), _363(5)>
+  # prephitmp_290 = PHI <0(2), _376(5)>
+  # prephitmp_278 = PHI <pretmp_279(2), _378(5)>
+  # prephitmp_275 = PHI <0(2), _391(5)>
+  # prephitmp_263 = PHI <pretmp_264(2), _393(5)>
+  # ivtmp.81_454 = PHI <ivtmp.81_424(2), ivtmp.81_439(5)>
+  _452 = (void *) ivtmp.81_454;
+  byte_63 = MEM[base: _452, offset: 0B];
+
+  <bb 4> [local count: 8330559914]:
+  # byte_89 = PHI <byte_63(3), byte_124(4)>
+  # nqx_90 = PHI <nqx_73(3), nqx2_174(4)>
+  # nqpqx_91 = PHI <nqpqx_70(3), nqpqx2_175(4)>
+  # nqz_92 = PHI <nqz_75(3), nqz2_94(4)>
+  # nqpqz_93 = PHI <nqpqz_72(3), nqpqz2_95(4)>
+  # nqx2_174 = PHI <nqx2_78(3), nqx_90(4)>
+  # nqz2_94 = PHI <nqz2_79(3), nqz_92(4)>
+  # nqpqx2_175 = PHI <nqpqx2_76(3), nqpqx_91(4)>
+  # nqpqz2_95 = PHI <nqpqz2_77(3), nqpqz_93(4)>
+  # prephitmp_19 = PHI <prephitmp_297(3), _256(4)>
+  # prephitmp_18 = PHI <prephitmp_310(3), _258(4)>
+  # prephitmp_128 = PHI <prephitmp_252(3), _271(4)>
+  # prephitmp_100 = PHI <prephitmp_250(3), _273(4)>
+  # prephitmp_395 = PHI <prephitmp_325(3), _286(4)>
+  # prephitmp_384 = PHI <prephitmp_402(3), _288(4)>
+  # prephitmp_383 = PHI <prephitmp_367(3), _301(4)>
+  # prephitmp_381 = PHI <prephitmp_150(3), _303(4)>
+  # prephitmp_380 = PHI <prephitmp_130(3), _316(4)>
+  # prephitmp_369 = PHI <prephitmp_262(3), _318(4)>
+  # prephitmp_368 = PHI <prephitmp_292(3), _331(4)>
+  # prephitmp_366 = PHI <prephitmp_352(3), _333(4)>
+  # prephitmp_365 = PHI <prephitmp_151(3), _346(4)>
+  # prephitmp_354 = PHI <prephitmp_475(3), _348(4)>
+  # prephitmp_353 = PHI <prephitmp_305(3), _361(4)>
+  # prephitmp_351 = PHI <prephitmp_293(3), _363(4)>
+  # prephitmp_350 = PHI <prephitmp_290(3), _376(4)>
+  # prephitmp_339 = PHI <prephitmp_278(3), _378(4)>
+  # prephitmp_338 = PHI <prephitmp_275(3), _391(4)>
+  # prephitmp_336 = PHI <prephitmp_263(3), _393(4)>
+  # ivtmp_157 = PHI <8(3), ivtmp_156(4)>
+  _65 = byte_89 >> 7;
+  bit_66 = (const felem) _65;
+  swap_67 = -bit_66;
+  _86 = {prephitmp_351, prephitmp_339};
+  _83 = {prephitmp_366, prephitmp_354};
+  _178 = {prephitmp_353, prephitmp_350};
+  _69 = {prephitmp_368, prephitmp_365};
+  vect__479.23_48 = _69 ^ _83;
+  vect__479.23_50 = _86 ^ _178;
+  _52 = {swap_67, swap_67};
+  vect_x_480.24_153 = vect__479.23_48 & _52;
+  vect_x_480.24_177 = vect__479.23_50 & _52;
+  vect__481.25_13 = _69 ^ vect_x_480.24_153;
+  vect__481.25_14 = vect_x_480.24_177 ^ _178;
+  MEM[(felem *)nqx_90] = vect__481.25_13;
+  MEM[(felem *)nqx_90 + 16B] = vect__481.25_14;
+  vect__483.28_141 = _83 ^ vect_x_480.24_153;
+  vect__483.28_140 = _86 ^ vect_x_480.24_177;
+  MEM[(felem *)nqpqx_91] = vect__483.28_141;
+  MEM[(felem *)nqpqx_91 + 16B] = vect__483.28_140;
+  _539 = prephitmp_336 ^ prephitmp_338;
+  x_540 = swap_67 & _539;
+  _541 = prephitmp_338 ^ x_540;
+  MEM[(felem *)nqx_90 + 32B] = _541;
+  _543 = prephitmp_336 ^ x_540;
+  MEM[(felem *)nqpqx_91 + 32B] = _543;
+  _135 = {prephitmp_384, prephitmp_381};
+  _133 = {prephitmp_18, prephitmp_100};
+  _131 = {prephitmp_395, prephitmp_383};
+  _125 = {prephitmp_19, prephitmp_128};
+  vect__404.31_122 = _125 ^ _133;
+  vect__404.31_121 = _131 ^ _135;
+  vect_x_405.32_116 = _52 & vect__404.31_122;
+  vect_x_405.32_115 = _52 & vect__404.31_121;
+  vect__406.33_106 = vect_x_405.32_116 ^ _125;
+  vect__406.33_105 = vect_x_405.32_115 ^ _131;
+  MEM[(felem *)nqz_92] = vect__406.33_106;
+  MEM[(felem *)nqz_92 + 16B] = vect__406.33_105;
+  vect__408.36_88 = vect_x_405.32_116 ^ _133;
+  vect__408.36_85 = vect_x_405.32_115 ^ _135;
+  MEM[(felem *)nqpqz_93] = vect__408.36_88;
+  MEM[(felem *)nqpqz_93 + 16B] = vect__408.36_85;
+  _464 = prephitmp_369 ^ prephitmp_380;
+  x_465 = swap_67 & _464;
+  _466 = prephitmp_380 ^ x_465;
+  MEM[(felem *)nqz_92 + 32B] = _466;
+  _468 = prephitmp_369 ^ x_465;
+  MEM[(felem *)nqpqz_93 + 32B] = _468;
+  fmonty (nqx2_174, nqz2_94, nqpqx2_175, nqpqz2_95, nqx_90, nqz_92, nqpqx_91, nqpqz_93, &bp);
+  _326 = *nqx2_174;
+  _328 = *nqpqx2_175;
+  _329 = _326 ^ _328;
+  x_330 = swap_67 & _329;
+  _331 = _326 ^ x_330;
+  *nqx2_174 = _331;
+  _333 = _328 ^ x_330;
+  *nqpqx2_175 = _333;
+  _341 = MEM[(felem *)nqx2_174 + 8B];
+  _343 = MEM[(felem *)nqpqx2_175 + 8B];
+  _344 = _341 ^ _343;
+  x_345 = swap_67 & _344;
+  _346 = _341 ^ x_345;
+  MEM[(felem *)nqx2_174 + 8B] = _346;
+  _348 = _343 ^ x_345;
+  MEM[(felem *)nqpqx2_175 + 8B] = _348;
+  _356 = MEM[(felem *)nqx2_174 + 16B];
+  _358 = MEM[(felem *)nqpqx2_175 + 16B];
+  _359 = _356 ^ _358;
+  x_360 = swap_67 & _359;
+  _361 = _356 ^ x_360;
+  MEM[(felem *)nqx2_174 + 16B] = _361;
+  _363 = _358 ^ x_360;
+  MEM[(felem *)nqpqx2_175 + 16B] = _363;
+  _371 = MEM[(felem *)nqx2_174 + 24B];
+  _373 = MEM[(felem *)nqpqx2_175 + 24B];
+  _374 = _371 ^ _373;
+  x_375 = swap_67 & _374;
+  _376 = _371 ^ x_375;
+  MEM[(felem *)nqx2_174 + 24B] = _376;
+  _378 = _373 ^ x_375;
+  MEM[(felem *)nqpqx2_175 + 24B] = _378;
+  _386 = MEM[(felem *)nqx2_174 + 32B];
+  _388 = MEM[(felem *)nqpqx2_175 + 32B];
+  _389 = _386 ^ _388;
+  x_390 = swap_67 & _389;
+  _391 = _386 ^ x_390;
+  MEM[(felem *)nqx2_174 + 32B] = _391;
+  _393 = _388 ^ x_390;
+  MEM[(felem *)nqpqx2_175 + 32B] = _393;
+  _251 = *nqz2_94;
+  _253 = *nqpqz2_95;
+  _254 = _251 ^ _253;
+  x_255 = swap_67 & _254;
+  _256 = _251 ^ x_255;
+  *nqz2_94 = _256;
+  _258 = _253 ^ x_255;
+  *nqpqz2_95 = _258;
+  _266 = MEM[(felem *)nqz2_94 + 8B];
+  _268 = MEM[(felem *)nqpqz2_95 + 8B];
+  _269 = _266 ^ _268;
+  x_270 = swap_67 & _269;
+  _271 = _266 ^ x_270;
+  MEM[(felem *)nqz2_94 + 8B] = _271;
+  _273 = _268 ^ x_270;
+  MEM[(felem *)nqpqz2_95 + 8B] = _273;
+  _281 = MEM[(felem *)nqz2_94 + 16B];
+  _283 = MEM[(felem *)nqpqz2_95 + 16B];
+  _284 = _281 ^ _283;
+  x_285 = swap_67 & _284;
+  _286 = _281 ^ x_285;
+  MEM[(felem *)nqz2_94 + 16B] = _286;
+  _288 = _283 ^ x_285;
+  MEM[(felem *)nqpqz2_95 + 16B] = _288;
+  _296 = MEM[(felem *)nqz2_94 + 24B];
+  _298 = MEM[(felem *)nqpqz2_95 + 24B];
+  _299 = _296 ^ _298;
+  x_300 = swap_67 & _299;
+  _301 = _296 ^ x_300;
+  MEM[(felem *)nqz2_94 + 24B] = _301;
+  _303 = _298 ^ x_300;
+  MEM[(felem *)nqpqz2_95 + 24B] = _303;
+  _311 = MEM[(felem *)nqz2_94 + 32B];
+  _313 = MEM[(felem *)nqpqz2_95 + 32B];
+  _314 = _311 ^ _313;
+  x_315 = swap_67 & _314;
+  _316 = _311 ^ x_315;
+  MEM[(felem *)nqz2_94 + 32B] = _316;
+  _318 = _313 ^ x_315;
+  MEM[(felem *)nqpqz2_95 + 32B] = _318;
+  byte_124 = byte_89 << 1;
+  ivtmp_156 = ivtmp_157 + 4294967295;
+  if (ivtmp_156 != 0)
+    goto <bb 4>; [87.50%]
+  else
+    goto <bb 5>; [12.50%]
+
+  <bb 5> [local count: 1041202828]:
+  ivtmp.81_439 = ivtmp.81_454 + 18446744073709551615;
+  if (_437 != ivtmp.81_454)
+    goto <bb 3>; [96.88%]
+  else
+    goto <bb 6>; [3.12%]
+
+  <bb 6> [local count: 32534236]:
+  MEM[(char * {ref-all})&x] = MEM[(char * {ref-all})nqx2_174];
+  MEM[(char * {ref-all})&z] = MEM[(char * {ref-all})nqz2_94];
+  a ={v} {CLOBBER};
+  b ={v} {CLOBBER};
+  c ={v} {CLOBBER};
+  d ={v} {CLOBBER};
+  e ={v} {CLOBBER};
+  f ={v} {CLOBBER};
+  g ={v} {CLOBBER};
+  h ={v} {CLOBBER};
+  fsquare (&z2, &z);
+  fsquare (&t1, &z2);
+  fsquare (&t0, &t1);
+  fmul (&z9, &t0, &z);
+  fmul (&z11, &z9, &z2);
+  fsquare (&t0, &z11);
+  fmul (&z2_5_0, &t0, &z9);
+  fsquare (&t0, &z2_5_0);
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+  fmul (&z2_10_0, &t0, &z2_5_0);
+  fsquare (&t0, &z2_10_0);
+  fsquare (&t1, &t0);
+
+  <bb 7> [local count: 130136944]:
+  # ivtmp_159 = PHI <4(6), ivtmp_158(7)>
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  ivtmp_158 = ivtmp_159 + 4294967295;
+  if (ivtmp_158 != 0)
+    goto <bb 7>; [75.00%]
+  else
+    goto <bb 8>; [25.00%]
+
+  <bb 8> [local count: 32534236]:
+  fmul (&z2_20_0, &t1, &z2_10_0);
+  fsquare (&t0, &z2_20_0);
+  fsquare (&t1, &t0);
+
+  <bb 9> [local count: 292808123]:
+  # ivtmp_180 = PHI <9(8), ivtmp_179(9)>
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  ivtmp_179 = ivtmp_180 + 4294967295;
+  if (ivtmp_179 != 0)
+    goto <bb 9>; [88.89%]
+  else
+    goto <bb 10>; [11.11%]
+
+  <bb 10> [local count: 32534236]:
+  fmul (&t0, &t1, &z2_20_0);
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+
+  <bb 11> [local count: 130136944]:
+  # ivtmp_322 = PHI <4(10), ivtmp_267(11)>
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+  ivtmp_267 = ivtmp_322 + 4294967295;
+  if (ivtmp_267 != 0)
+    goto <bb 11>; [75.00%]
+  else
+    goto <bb 12>; [25.00%]
+
+  <bb 12> [local count: 32534236]:
+  fmul (&z2_50_0, &t0, &z2_10_0);
+  fsquare (&t0, &z2_50_0);
+  fsquare (&t1, &t0);
+
+  <bb 13> [local count: 780821662]:
+  # ivtmp_324 = PHI <24(12), ivtmp_323(13)>
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  ivtmp_323 = ivtmp_324 + 4294967295;
+  if (ivtmp_323 != 0)
+    goto <bb 13>; [95.83%]
+  else
+    goto <bb 14>; [4.17%]
+
+  <bb 14> [local count: 32534236]:
+  fmul (&z2_100_0, &t1, &z2_50_0);
+  fsquare (&t1, &z2_100_0);
+  fsquare (&t0, &t1);
+
+  <bb 15> [local count: 1594177631]:
+  # ivtmp_337 = PHI <49(14), ivtmp_335(15)>
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+  ivtmp_335 = ivtmp_337 + 4294967295;
+  if (ivtmp_335 != 0)
+    goto <bb 15>; [97.96%]
+  else
+    goto <bb 16>; [2.04%]
+
+  <bb 16> [local count: 32534236]:
+  fmul (&t1, &t0, &z2_100_0);
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+
+  <bb 17> [local count: 780821733]:
+  # ivtmp_342 = PHI <24(16), ivtmp_340(17)>
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  ivtmp_340 = ivtmp_342 + 4294967295;
+  if (ivtmp_340 != 0)
+    goto <bb 17>; [95.83%]
+  else
+    goto <bb 18>; [4.17%]
+
+  <bb 18> [local count: 32534236]:
+  fmul (&t0, &t1, &z2_50_0);
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  fsquare (&t0, &t1);
+  fsquare (&t1, &t0);
+  fmul (&zmone, &t1, &z11);
+  z2 ={v} {CLOBBER};
+  z9 ={v} {CLOBBER};
+  z11 ={v} {CLOBBER};
+  z2_5_0 ={v} {CLOBBER};
+  z2_10_0 ={v} {CLOBBER};
+  z2_20_0 ={v} {CLOBBER};
+  z2_50_0 ={v} {CLOBBER};
+  z2_100_0 ={v} {CLOBBER};
+  t0 ={v} {CLOBBER};
+  t1 ={v} {CLOBBER};
+  fmul (&z, &x, &zmone);
+  fcontract (mypublic_21(D), &z);
+  bp ={v} {CLOBBER};
+  x ={v} {CLOBBER};
+  z ={v} {CLOBBER};
+  zmone ={v} {CLOBBER};
+  e ={v} {CLOBBER};
+  return 0;
+
+}
+
+
