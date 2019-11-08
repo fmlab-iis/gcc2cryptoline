@@ -1,5 +1,5 @@
 # gcc2cryptoline
-A tool translating GIMPLE to Cryptoline
+A tool translating GIMPLE to CryptoLine
 
 GIMPLE is a IR(intermidiate representation) used in machine-independent optimization of GCC
 
@@ -8,9 +8,9 @@ The CryptoLine verifier is [here](https://github.com/fmlab-iis/cryptoline)
 ## Prerequisite
 - cmake
 - gcc
-- install gcc plugin dev header
+- gcc plugin dev header
   - ubuntu
-    - `sudo apt-get install gcc-${version}-plugin-dev`
+  - `sudo apt-get install gcc-${version}-plugin-dev`
 
 ## Environment when developing
 - cmake 3.5.1
@@ -48,10 +48,10 @@ python3 run_experiments.py
 ```
 
 
-## How to use the plugin to translate GIMPLE to CryptoLine
+## How to use plugin to transform GIMPLE to Cryptoline
 - add options when compile
-  - `-fplugin=./gcc2cryptoline.so` : make sure the plugin path
-  - `-fplugin-arg-gcc2cryptoline-func=${function name}` : target function name
+  - `-fplugin=./gcc2cryptoline.so`: make sure the plugin path
+  - `-fplugin-arg-gcc2cryptoline-func=${function name}`: target function name
   - `-fplugin-arg-gcc2cryptoline-dump`: will dump output to the ${function name}.cl
   - `-fpluin-arg-gcc2cryptoline-debug`: use when debugging
 - take curve25519 as example
@@ -75,10 +75,28 @@ python3 run_experiments.py
   - raw format:		`-fdump-tree-optimized-raw`
 
 ## Citation
-Wait for publisher version
-
-See [CryptoLine](https://github.com/fmlab-iis/cryptoline)'s Reference section
-
+### BibTeX
+```
+@inproceedings{Fu:2019:SCP:3319535.3354199,
+ author = {Fu, Yu-Fu and Liu, Jiaxiang and Shi, Xiaomu and Tsai, Ming-Hsien and Wang, Bow-Yaw and Yang, Bo-Yin},
+ title = {Signed Cryptographic Program Verification with Typed CryptoLine},
+ booktitle = {Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security},
+ series = {CCS '19},
+ year = {2019},
+ isbn = {978-1-4503-6747-9},
+ location = {London, United Kingdom},
+ pages = {1591--1606},
+ numpages = {16},
+ url = {http://doi.acm.org/10.1145/3319535.3354199},
+ doi = {10.1145/3319535.3354199},
+ acmid = {3354199},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {cryptographic programs, formal verification, model checking},
+}
+```
+### ACM Ref Format
+Yu-Fu Fu, Jiaxiang Liu, Xiaomu Shi, Ming-Hsien Tsai, Bow-Yaw Wang, and Bo-Yin Yang. 2019. Signed Cryptographic Program Verification with Typed CryptoLine. In Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security (CCS '19). ACM, New York, NY, USA, 1591-1606. DOI: https://doi.org/10.1145/3319535.3354199
 
 ## Reference
 - [CryptoLine Verifier](https://github.com/fmlab-iis/cryptoline)
@@ -86,7 +104,6 @@ See [CryptoLine](https://github.com/fmlab-iis/cryptoline)'s Reference section
     - good source code to learn how to write a gcc plugin
 - [GIMPLE documentation](https://gcc.gnu.org/onlinedocs/gccint/GIMPLE.html)
 - [GCC plugin documentation](https://gcc.gnu.org/onlinedocs/gccint/Plugins.html#Plugins)
-
 
 ## TODO List
 - [ ] Refactor
