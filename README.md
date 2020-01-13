@@ -23,7 +23,7 @@ The CryptoLine verifier is [here](https://github.com/fmlab-iis/cryptoline)
 docker build -t gcc2cryptoline .
 docker run -it gcc2cryptoline
 ```
-You can see the `gcc2cryptoline.so` (`gcc2cryptoline.dylib` on macOS) under the `build` directory and how to use the plugin by looking at the `test/test.sh`
+You can see the `gcc2cryptoline.so`  under the `build` directory and how to use the plugin by looking at the `test/test.sh`
 
 
 
@@ -33,7 +33,7 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
-the plugin is `gcc2cryptoline.so` (`gcc2cryptoline.dylib` on macOS)
+the plugin is `gcc2cryptoline.so`
 
 ## Run the experiment
 - prerequisite

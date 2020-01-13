@@ -32,5 +32,5 @@ IF(APPLE)
   SET_TARGET_PROPERTIES(
     gcc2cryptoline
     PROPERTIES LINK_FLAGS "-undefined dynamic_lookup"
-    SUFFIX ".dylib")
+    SUFFIX ".so")
 ENDIF()
