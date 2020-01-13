@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 execute_process(
     COMMAND
-    gcc -print-file-name=plugin
+    ${CMAKE_CXX_COMPILER} -print-file-name=plugin
     OUTPUT_STRIP_TRAILING_WHITESPACE
     OUTPUT_VARIABLE GCC_PLUGIN_DIR
     )
@@ -27,3 +27,10 @@ target_compile_options(gcc2cryptoline PRIVATE -fno-rtti)
 set_target_properties(gcc2cryptoline PROPERTIES PREFIX "")
 set_target_properties(fmt PROPERTIES POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(gcc2cryptoline fmt)
+
+IF(APPLE)
+  SET_TARGET_PROPERTIES(
+    gcc2cryptoline
+    PROPERTIES LINK_FLAGS "-undefined dynamic_lookup"
+    SUFFIX ".dylib")
+ENDIF()
