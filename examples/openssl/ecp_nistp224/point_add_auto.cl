@@ -51,54 +51,54 @@ mov v504_0 _;
 mov v504_8 _;
 mov v628_0 _;
 mov v628_8 _;
-mov vect__111.117621_0 _;
-mov vect__111.117621_8 _;
-mov vect__111.117673_0 _;
-mov vect__111.117673_8 _;
-mov vect__113.119622_0 _;
-mov vect__113.119622_8 _;
-mov vect__113.119670_0 _;
-mov vect__113.119670_8 _;
-mov vect__122.128657_0 _;
-mov vect__122.128657_8 _;
-mov vect__122.128681_0 _;
-mov vect__122.128681_8 _;
-mov vect__124.130151_0 _;
-mov vect__124.130151_8 _;
-mov vect__124.130654_0 _;
-mov vect__124.130654_8 _;
-mov vect__133.139141_0 _;
-mov vect__133.139141_8 _;
-mov vect__133.139641_0 _;
-mov vect__133.139641_8 _;
-mov vect__135.141143_0 _;
-mov vect__135.141143_8 _;
-mov vect__135.141638_0 _;
-mov vect__135.141638_8 _;
-mov vect__144.150134_0 _;
-mov vect__144.150134_8 _;
-mov vect__144.150601_0 _;
-mov vect__144.150601_8 _;
-mov vect__146.152136_0 _;
-mov vect__146.152136_8 _;
-mov vect__146.152590_0 _;
-mov vect__146.152590_8 _;
-mov vect__156.161105_0 _;
-mov vect__156.161105_8 _;
-mov vect__156.161505_0 _;
-mov vect__156.161505_8 _;
-mov vect__158.163107_0 _;
-mov vect__158.163107_8 _;
-mov vect__158.163502_0 _;
-mov vect__158.163502_8 _;
-mov vect__168.172478_0 _;
-mov vect__168.172478_8 _;
-mov vect__168.172664_0 _;
-mov vect__168.172664_8 _;
-mov vect__170.174218_0 _;
-mov vect__170.174218_8 _;
-mov vect__170.174375_0 _;
-mov vect__170.174375_8 _;
+mov vect__111117621_0 _;
+mov vect__111117621_8 _;
+mov vect__111117673_0 _;
+mov vect__111117673_8 _;
+mov vect__113119622_0 _;
+mov vect__113119622_8 _;
+mov vect__113119670_0 _;
+mov vect__113119670_8 _;
+mov vect__122128657_0 _;
+mov vect__122128657_8 _;
+mov vect__122128681_0 _;
+mov vect__122128681_8 _;
+mov vect__124130151_0 _;
+mov vect__124130151_8 _;
+mov vect__124130654_0 _;
+mov vect__124130654_8 _;
+mov vect__133139141_0 _;
+mov vect__133139141_8 _;
+mov vect__133139641_0 _;
+mov vect__133139641_8 _;
+mov vect__135141143_0 _;
+mov vect__135141143_8 _;
+mov vect__135141638_0 _;
+mov vect__135141638_8 _;
+mov vect__144150134_0 _;
+mov vect__144150134_8 _;
+mov vect__144150601_0 _;
+mov vect__144150601_8 _;
+mov vect__146152136_0 _;
+mov vect__146152136_8 _;
+mov vect__146152590_0 _;
+mov vect__146152590_8 _;
+mov vect__156161105_0 _;
+mov vect__156161105_8 _;
+mov vect__156161505_0 _;
+mov vect__156161505_8 _;
+mov vect__158163107_0 _;
+mov vect__158163107_8 _;
+mov vect__158163502_0 _;
+mov vect__158163502_8 _;
+mov vect__168172478_0 _;
+mov vect__168172478_8 _;
+mov vect__168172664_0 _;
+mov vect__168172664_8 _;
+mov vect__170174218_0 _;
+mov vect__170174218_8 _;
+mov vect__170174375_0 _;
+mov vect__170174375_8 _;
 mov x118_0@uint64 _;
 mov x118_8@uint64 _;
 mov x118_16@uint64 _;
@@ -220,36 +220,36 @@ mov tmp_96 v274;
 
 /* BB's index is 4 */
 
-/* vect__84.185_32 = MEM[(const limb *)y1_15(D)]; */
-mov vect__84.18532_0 y115_0;
-mov vect__84.18532_8 y115_8;
-/* vect__84.186_650 = MEM[(const limb *)y1_15(D) + 16B]; */
-mov vect__84.186650_0 y115_16;
-mov vect__84.186650_8 y115_24;
-/* MEM[(limb *)&ftmp4] = vect__84.185_32; */
-mov ftmp4_0 vect__84.18532_0;
-mov ftmp4_8 vect__84.18532_8;
-/* MEM[(limb *)&ftmp4 + 16B] = vect__84.186_650; */
-mov ftmp4_16 vect__84.186650_0;
-mov ftmp4_24 vect__84.186650_8;
-/* vect__40.179_669 = MEM[(const limb *)x1_18(D)]; */
-mov vect__40.179669_0 x118_0;
-mov vect__40.179669_8 x118_8;
-/* vect__40.180_679 = MEM[(const limb *)x1_18(D) + 16B]; */
-mov vect__40.180679_0 x118_16;
-mov vect__40.180679_8 x118_24;
-/* MEM[(limb *)&ftmp2] = vect__40.179_669; */
-mov ftmp2_0 vect__40.179669_0;
-mov ftmp2_8 vect__40.179669_8;
-/* MEM[(limb *)&ftmp2 + 16B] = vect__40.180_679; */
-mov ftmp2_16 vect__40.180679_0;
-mov ftmp2_24 vect__40.180679_8;
+/* vect__84185_32 = MEM[(const limb *)y1_15(D)]; */
+mov vect__8418532_0 y115_0;
+mov vect__8418532_8 y115_8;
+/* vect__84186_650 = MEM[(const limb *)y1_15(D) + 16B]; */
+mov vect__84186650_0 y115_16;
+mov vect__84186650_8 y115_24;
+/* MEM[(limb *)&ftmp4] = vect__84185_32; */
+mov ftmp4_0 vect__8418532_0;
+mov ftmp4_8 vect__8418532_8;
+/* MEM[(limb *)&ftmp4 + 16B] = vect__84186_650; */
+mov ftmp4_16 vect__84186650_0;
+mov ftmp4_24 vect__84186650_8;
+/* vect__40179_669 = MEM[(const limb *)x1_18(D)]; */
+mov vect__40179669_0 x118_0;
+mov vect__40179669_8 x118_8;
+/* vect__40180_679 = MEM[(const limb *)x1_18(D) + 16B]; */
+mov vect__40180679_0 x118_16;
+mov vect__40180679_8 x118_24;
+/* MEM[(limb *)&ftmp2] = vect__40179_669; */
+mov ftmp2_0 vect__40179669_0;
+mov ftmp2_8 vect__40179669_8;
+/* MEM[(limb *)&ftmp2 + 16B] = vect__40180_679; */
+mov ftmp2_16 vect__40180679_0;
+mov ftmp2_24 vect__40180679_8;
 /* goto <bb 5> */
 /* TODO: unconditional jump */
 
 /* BB's index is 5 */
 
-/* .MEM_5 = PHI <.MEM_20(3), .MEM_11(4)> */
+/* MEM_5 = PHI <MEM_20(3), MEM_11(4)> */
 /* _451 = *z1_21(D); */
 mov v451 z121_0;
 /* tmp0_452 = _451 * 2; */
@@ -431,9 +431,9 @@ mov v382 ftmp_24;
 /* zero_383 = _381 | _382; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 zero383 v381 v382;
-/* zero.4_384 = (long long int) zero_383; */
+/* zero4_384 = (long long int) zero_383; */
 cast v384@int64 zero383@uint64;
-/* _385 = zero.4_384 + -1; */
+/* _385 = zero4_384 + -1; */
 sadd v385 v384 (-0x1)@int64;
 /* _386 = (unsigned long) _385; */
 cast v386@uint64 v385@int64;
@@ -456,9 +456,9 @@ or uint64 v392 v390 v391;
 /* two224m96p1_394 = _392 | _393; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two224m96p1394 v392 v393;
-/* two224m96p1.5_395 = (long long int) two224m96p1_394; */
+/* two224m96p15_395 = (long long int) two224m96p1_394; */
 cast v395@int64 two224m96p1394@uint64;
-/* _396 = two224m96p1.5_395 + -1; */
+/* _396 = two224m96p15_395 + -1; */
 sadd v396 v395 (-0x1)@int64;
 /* _397 = (unsigned long) _396; */
 cast v397@uint64 v396@int64;
@@ -479,9 +479,9 @@ or uint64 v402 v400 v547;
 /* two225m97p2_404 = _402 | _403; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two225m97p2404 v402 v403;
-/* two225m97p2.6_405 = (long long int) two225m97p2_404; */
+/* two225m97p26_405 = (long long int) two225m97p2_404; */
 cast v405@int64 two225m97p2404@uint64;
-/* _406 = two225m97p2.6_405 + -1; */
+/* _406 = two225m97p26_405 + -1; */
 sadd v406 v405 (-0x1)@int64;
 /* _407 = (unsigned long) _406; */
 cast v407@uint64 v406@int64;
@@ -510,9 +510,9 @@ mov v348 ftmp3_24;
 /* zero_349 = _347 | _348; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 zero349 v347 v348;
-/* zero.4_350 = (long long int) zero_349; */
+/* zero4_350 = (long long int) zero_349; */
 cast v350@int64 zero349@uint64;
-/* _351 = zero.4_350 + -1; */
+/* _351 = zero4_350 + -1; */
 sadd v351 v350 (-0x1)@int64;
 /* _352 = (unsigned long) _351; */
 cast v352@uint64 v351@int64;
@@ -535,9 +535,9 @@ or uint64 v358 v356 v357;
 /* two224m96p1_360 = _358 | _359; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two224m96p1360 v358 v359;
-/* two224m96p1.5_361 = (long long int) two224m96p1_360; */
+/* two224m96p15_361 = (long long int) two224m96p1_360; */
 cast v361@int64 two224m96p1360@uint64;
-/* _362 = two224m96p1.5_361 + -1; */
+/* _362 = two224m96p15_361 + -1; */
 sadd v362 v361 (-0x1)@int64;
 /* _363 = (unsigned long) _362; */
 cast v363@uint64 v362@int64;
@@ -558,9 +558,9 @@ or uint64 v368 v91 v366;
 /* two225m97p2_370 = _368 | _369; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two225m97p2370 v368 v369;
-/* two225m97p2.6_371 = (long long int) two225m97p2_370; */
+/* two225m97p26_371 = (long long int) two225m97p2_370; */
 cast v371@int64 two225m97p2370@uint64;
-/* _372 = two225m97p2.6_371 + -1; */
+/* _372 = two225m97p26_371 + -1; */
 sadd v372 v371 (-0x1)@int64;
 /* _373 = (unsigned long) _372; */
 cast v373@uint64 v372@int64;
@@ -589,9 +589,9 @@ mov v314 z121_24;
 /* zero_315 = _313 | _314; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 zero315 v313 v314;
-/* zero.4_316 = (long long int) zero_315; */
+/* zero4_316 = (long long int) zero_315; */
 cast v316@int64 zero315@uint64;
-/* _317 = zero.4_316 + -1; */
+/* _317 = zero4_316 + -1; */
 sadd v317 v316 (-0x1)@int64;
 /* _318 = (unsigned long) _317; */
 cast v318@uint64 v317@int64;
@@ -614,9 +614,9 @@ or uint64 v324 v322 v323;
 /* two224m96p1_326 = _324 | _325; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two224m96p1326 v324 v325;
-/* two224m96p1.5_327 = (long long int) two224m96p1_326; */
+/* two224m96p15_327 = (long long int) two224m96p1_326; */
 cast v327@int64 two224m96p1326@uint64;
-/* _328 = two224m96p1.5_327 + -1; */
+/* _328 = two224m96p15_327 + -1; */
 sadd v328 v327 (-0x1)@int64;
 /* _329 = (unsigned long) _328; */
 cast v329@uint64 v328@int64;
@@ -637,9 +637,9 @@ or uint64 v334 v88 v332;
 /* two225m97p2_336 = _334 | _335; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two225m97p2336 v334 v335;
-/* two225m97p2.6_337 = (long long int) two225m97p2_336; */
+/* two225m97p26_337 = (long long int) two225m97p2_336; */
 cast v337@int64 two225m97p2336@uint64;
-/* _338 = two225m97p2.6_337 + -1; */
+/* _338 = two225m97p26_337 + -1; */
 sadd v338 v337 (-0x1)@int64;
 /* _339 = (unsigned long) _338; */
 cast v339@uint64 v338@int64;
@@ -668,9 +668,9 @@ mov v280 z210_24;
 /* zero_281 = _279 | _280; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 zero281 v279 v280;
-/* zero.4_282 = (long long int) zero_281; */
+/* zero4_282 = (long long int) zero_281; */
 cast v282@int64 zero281@uint64;
-/* _283 = zero.4_282 + -1; */
+/* _283 = zero4_282 + -1; */
 sadd v283 v282 (-0x1)@int64;
 /* _284 = (unsigned long) _283; */
 cast v284@uint64 v283@int64;
@@ -693,9 +693,9 @@ or uint64 v290 v288 v289;
 /* two224m96p1_292 = _290 | _291; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two224m96p1292 v290 v291;
-/* two224m96p1.5_293 = (long long int) two224m96p1_292; */
+/* two224m96p15_293 = (long long int) two224m96p1_292; */
 cast v293@int64 two224m96p1292@uint64;
-/* _294 = two224m96p1.5_293 + -1; */
+/* _294 = two224m96p15_293 + -1; */
 sadd v294 v293 (-0x1)@int64;
 /* _295 = (unsigned long) _294; */
 cast v295@uint64 v294@int64;
@@ -716,9 +716,9 @@ or uint64 v300 v200 v298;
 /* two225m97p2_302 = _300 | _301; */
 /* TODO: Bitwise And/Or , may need assert and assume */
 or uint64 two225m97p2302 v300 v301;
-/* two225m97p2.6_303 = (long long int) two225m97p2_302; */
+/* two225m97p26_303 = (long long int) two225m97p2_302; */
 cast v303@int64 two225m97p2302@uint64;
-/* _304 = two225m97p2.6_303 + -1; */
+/* _304 = two225m97p26_303 + -1; */
 sadd v304 v303 (-0x1)@int64;
 /* _305 = (unsigned long) _304; */
 cast v305@uint64 v304@int64;
@@ -807,7 +807,7 @@ mov ftmp5_24 v628_8;
 
 /* BB's index is 11 */
 
-/* .MEM_6 = PHI <.MEM_57(9), .MEM_634(10)> */
+/* MEM_6 = PHI <MEM_57(9), MEM_634(10)> */
 /* felem_mul (&tmp, &ftmp, &ftmp5); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
 /* felem_reduce (&z_out, &tmp); */
@@ -1014,36 +1014,36 @@ usub v497 v67 v496;
 mov tmp2_48 v497;
 /* felem_reduce (&x_out, &tmp2); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
-/* vect__172.193_637 = MEM[(limb *)&ftmp2]; */
-mov vect__172.193637_0 ftmp2_0;
-mov vect__172.193637_8 ftmp2_8;
-/* vect__172.194_647 = MEM[(limb *)&ftmp2 + 16B]; */
-mov vect__172.194647_0 ftmp2_16;
-mov vect__172.194647_8 ftmp2_24;
-/* vect__173.195_683 = vect__172.193_637 + { 288230376151711748, 288225978105200636 }; */
-uadd vect__173.195683_0 vect__172.193637_0 0x400000000000004@uint64;
-uadd vect__173.195683_8 vect__172.193637_8 0x3fffbfffffffffc@uint64;
-/* vect__173.195_159 = vect__172.194_647 + { 288230376151711740, 288230376151711740 }; */
-uadd vect__173.195159_0 vect__172.194647_0 0x3fffffffffffffc@uint64;
-uadd vect__173.195159_8 vect__172.194647_8 0x3fffffffffffffc@uint64;
-/* vect__180.198_158 = MEM[(const limb *)&x_out]; */
-mov vect__180.198158_0 x_out_0;
-mov vect__180.198158_8 x_out_8;
-/* vect__180.199_560 = MEM[(const limb *)&x_out + 16B]; */
-mov vect__180.199560_0 x_out_16;
-mov vect__180.199560_8 x_out_24;
-/* vect__181.200_589 = vect__173.195_683 - vect__180.198_158; */
-usub vect__181.200589_0 vect__173.195683_0 vect__180.198158_0;
-usub vect__181.200589_8 vect__173.195683_8 vect__180.198158_8;
-/* vect__181.200_607 = vect__173.195_159 - vect__180.199_560; */
-usub vect__181.200607_0 vect__173.195159_0 vect__180.199560_0;
-usub vect__181.200607_8 vect__173.195159_8 vect__180.199560_8;
-/* MEM[(limb *)&ftmp2] = vect__181.200_589; */
-mov ftmp2_0 vect__181.200589_0;
-mov ftmp2_8 vect__181.200589_8;
-/* MEM[(limb *)&ftmp2 + 16B] = vect__181.200_607; */
-mov ftmp2_16 vect__181.200607_0;
-mov ftmp2_24 vect__181.200607_8;
+/* vect__172193_637 = MEM[(limb *)&ftmp2]; */
+mov vect__172193637_0 ftmp2_0;
+mov vect__172193637_8 ftmp2_8;
+/* vect__172194_647 = MEM[(limb *)&ftmp2 + 16B]; */
+mov vect__172194647_0 ftmp2_16;
+mov vect__172194647_8 ftmp2_24;
+/* vect__173195_683 = vect__172193_637 + { 288230376151711748, 288225978105200636 }; */
+uadd vect__173195683_0 vect__172193637_0 0x400000000000004@uint64;
+uadd vect__173195683_8 vect__172193637_8 0x3fffbfffffffffc@uint64;
+/* vect__173195_159 = vect__172194_647 + { 288230376151711740, 288230376151711740 }; */
+uadd vect__173195159_0 vect__172194647_0 0x3fffffffffffffc@uint64;
+uadd vect__173195159_8 vect__172194647_8 0x3fffffffffffffc@uint64;
+/* vect__180198_158 = MEM[(const limb *)&x_out]; */
+mov vect__180198158_0 x_out_0;
+mov vect__180198158_8 x_out_8;
+/* vect__180199_560 = MEM[(const limb *)&x_out + 16B]; */
+mov vect__180199560_0 x_out_16;
+mov vect__180199560_8 x_out_24;
+/* vect__181200_589 = vect__173195_683 - vect__180198_158; */
+usub vect__181200589_0 vect__173195683_0 vect__180198158_0;
+usub vect__181200589_8 vect__173195683_8 vect__180198158_8;
+/* vect__181200_607 = vect__173195_159 - vect__180199_560; */
+usub vect__181200607_0 vect__173195159_0 vect__180199560_0;
+usub vect__181200607_8 vect__173195159_8 vect__180199560_8;
+/* MEM[(limb *)&ftmp2] = vect__181200_589; */
+mov ftmp2_0 vect__181200589_0;
+mov ftmp2_8 vect__181200589_8;
+/* MEM[(limb *)&ftmp2 + 16B] = vect__181200_607; */
+mov ftmp2_16 vect__181200607_0;
+mov ftmp2_24 vect__181200607_8;
 /* felem_mul (&tmp2, &ftmp3, &ftmp2); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
 /* widefelem_diff (&tmp2, &tmp); */
@@ -1056,213 +1056,213 @@ usubb carry copy160 0@uint64 v342;
 /* vect_cst__409 = {copy_160, copy_160}; */
 mov v409_0 copy160;
 mov v409_1 copy160;
-/* vect__165.168_632 = MEM[(const limb *)x2_30(D)]; */
-mov vect__165.168632_0 x230_0;
-mov vect__165.168632_8 x230_8;
-/* vect__167.171_648 = MEM[(limb *)&x_out]; */
-mov vect__167.171648_0 x_out_0;
-mov vect__167.171648_8 x_out_8;
-/* vect__168.172_664 = vect__165.168_632 ^ vect__167.171_648; */
+/* vect__165168_632 = MEM[(const limb *)x2_30(D)]; */
+mov vect__165168632_0 x230_0;
+mov vect__165168632_8 x230_8;
+/* vect__167171_648 = MEM[(limb *)&x_out]; */
+mov vect__167171648_0 x_out_0;
+mov vect__167171648_8 x_out_8;
+/* vect__168172_664 = vect__165168_632 ^ vect__167171_648; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_169.173_680 = vect_cst__409 & vect__168.172_664; */
+/* vect_tmp_169173_680 = vect_cst__409 & vect__168172_664; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_169.173680_0 v409_0 vect__168.172664_0;
-and uint64 vect_tmp_169.173680_8 v409_8 vect__168.172664_8;
-/* vect__170.174_218 = vect__167.171_648 ^ vect_tmp_169.173_680; */
+and uint64 vect_tmp_169173680_0 v409_0 vect__168172664_0;
+and uint64 vect_tmp_169173680_8 v409_8 vect__168172664_8;
+/* vect__170174_218 = vect__167171_648 ^ vect_tmp_169173_680; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&x_out] = vect__170.174_218; */
-mov x_out_0 vect__170.174218_0;
-mov x_out_8 vect__170.174218_8;
-/* vect__165.168_482 = MEM[(const limb *)x2_30(D) + 16B]; */
-mov vect__165.168482_0 x230_16;
-mov vect__165.168482_8 x230_24;
-/* vect__167.171_479 = MEM[(limb *)&x_out + 16B]; */
-mov vect__167.171479_0 x_out_16;
-mov vect__167.171479_8 x_out_24;
-/* vect__168.172_478 = vect__167.171_479 ^ vect__165.168_482; */
+/* MEM[(limb *)&x_out] = vect__170174_218; */
+mov x_out_0 vect__170174218_0;
+mov x_out_8 vect__170174218_8;
+/* vect__165168_482 = MEM[(const limb *)x2_30(D) + 16B]; */
+mov vect__165168482_0 x230_16;
+mov vect__165168482_8 x230_24;
+/* vect__167171_479 = MEM[(limb *)&x_out + 16B]; */
+mov vect__167171479_0 x_out_16;
+mov vect__167171479_8 x_out_24;
+/* vect__168172_478 = vect__167171_479 ^ vect__165168_482; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_169.173_401 = vect_cst__409 & vect__168.172_478; */
+/* vect_tmp_169173_401 = vect_cst__409 & vect__168172_478; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_169.173401_0 v409_0 vect__168.172478_0;
-and uint64 vect_tmp_169.173401_8 v409_8 vect__168.172478_8;
-/* vect__170.174_375 = vect_tmp_169.173_401 ^ vect__167.171_479; */
+and uint64 vect_tmp_169173401_0 v409_0 vect__168172478_0;
+and uint64 vect_tmp_169173401_8 v409_8 vect__168172478_8;
+/* vect__170174_375 = vect_tmp_169173_401 ^ vect__167171_479; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&x_out + 16B] = vect__170.174_375; */
-mov x_out_16 vect__170.174375_0;
-mov x_out_24 vect__170.174375_8;
+/* MEM[(limb *)&x_out + 16B] = vect__170174_375; */
+mov x_out_16 vect__170174375_0;
+mov x_out_24 vect__170174375_8;
 /* copy_148 = -_308; */
 /* TODO: check negation semantics */
 usubb carry copy148 0@uint64 v308;
 /* vect_cst__504 = {copy_148, copy_148}; */
 mov v504_0 copy148;
 mov v504_1 copy148;
-/* vect__153.157_125 = MEM[(const limb *)x1_18(D)]; */
-mov vect__153.157125_0 x118_0;
-mov vect__153.157125_8 x118_8;
-/* vect__156.161_105 = vect__153.157_125 ^ vect__170.174_218; */
+/* vect__153157_125 = MEM[(const limb *)x1_18(D)]; */
+mov vect__153157125_0 x118_0;
+mov vect__153157125_8 x118_8;
+/* vect__156161_105 = vect__153157_125 ^ vect__170174_218; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_157.162_106 = vect__156.161_105 & vect_cst__504; */
+/* vect_tmp_157162_106 = vect__156161_105 & vect_cst__504; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_157.162106_0 vect__156.161105_0 v504_0;
-and uint64 vect_tmp_157.162106_8 vect__156.161105_8 v504_8;
-/* vect__158.163_107 = vect_tmp_157.162_106 ^ vect__170.174_218; */
+and uint64 vect_tmp_157162106_0 vect__156161105_0 v504_0;
+and uint64 vect_tmp_157162106_8 vect__156161105_8 v504_8;
+/* vect__158163_107 = vect_tmp_157162_106 ^ vect__170174_218; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&x_out] = vect__158.163_107; */
-mov x_out_0 vect__158.163107_0;
-mov x_out_8 vect__158.163107_8;
-/* vect__153.157_517 = MEM[(const limb *)x1_18(D) + 16B]; */
-mov vect__153.157517_0 x118_16;
-mov vect__153.157517_8 x118_24;
-/* vect__156.161_505 = vect__170.174_375 ^ vect__153.157_517; */
+/* MEM[(limb *)&x_out] = vect__158163_107; */
+mov x_out_0 vect__158163107_0;
+mov x_out_8 vect__158163107_8;
+/* vect__153157_517 = MEM[(const limb *)x1_18(D) + 16B]; */
+mov vect__153157517_0 x118_16;
+mov vect__153157517_8 x118_24;
+/* vect__156161_505 = vect__170174_375 ^ vect__153157_517; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_157.162_503 = vect_cst__504 & vect__156.161_505; */
+/* vect_tmp_157162_503 = vect_cst__504 & vect__156161_505; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_157.162503_0 v504_0 vect__156.161505_0;
-and uint64 vect_tmp_157.162503_8 v504_8 vect__156.161505_8;
-/* vect__158.163_502 = vect__170.174_375 ^ vect_tmp_157.162_503; */
+and uint64 vect_tmp_157162503_0 v504_0 vect__156161505_0;
+and uint64 vect_tmp_157162503_8 v504_8 vect__156161505_8;
+/* vect__158163_502 = vect__170174_375 ^ vect_tmp_157162_503; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&x_out + 16B] = vect__158.163_502; */
-mov x_out_16 vect__158.163502_0;
-mov x_out_24 vect__158.163502_8;
-/* vect__141.146_132 = MEM[(const limb *)y2_26(D)]; */
-mov vect__141.146132_0 y226_0;
-mov vect__141.146132_8 y226_8;
-/* vect__143.149_133 = MEM[(limb *)&y_out]; */
-mov vect__143.149133_0 y_out_0;
-mov vect__143.149133_8 y_out_8;
-/* vect__144.150_134 = vect__141.146_132 ^ vect__143.149_133; */
+/* MEM[(limb *)&x_out + 16B] = vect__158163_502; */
+mov x_out_16 vect__158163502_0;
+mov x_out_24 vect__158163502_8;
+/* vect__141146_132 = MEM[(const limb *)y2_26(D)]; */
+mov vect__141146132_0 y226_0;
+mov vect__141146132_8 y226_8;
+/* vect__143149_133 = MEM[(limb *)&y_out]; */
+mov vect__143149133_0 y_out_0;
+mov vect__143149133_8 y_out_8;
+/* vect__144150_134 = vect__141146_132 ^ vect__143149_133; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_145.151_135 = vect__144.150_134 & vect_cst__409; */
+/* vect_tmp_145151_135 = vect__144150_134 & vect_cst__409; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_145.151135_0 vect__144.150134_0 v409_0;
-and uint64 vect_tmp_145.151135_8 vect__144.150134_8 v409_8;
-/* vect__146.152_136 = vect__143.149_133 ^ vect_tmp_145.151_135; */
+and uint64 vect_tmp_145151135_0 vect__144150134_0 v409_0;
+and uint64 vect_tmp_145151135_8 vect__144150134_8 v409_8;
+/* vect__146152_136 = vect__143149_133 ^ vect_tmp_145151_135; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&y_out] = vect__146.152_136; */
-mov y_out_0 vect__146.152136_0;
-mov y_out_8 vect__146.152136_8;
-/* vect__141.146_608 = MEM[(const limb *)y2_26(D) + 16B]; */
-mov vect__141.146608_0 y226_16;
-mov vect__141.146608_8 y226_24;
-/* vect__143.149_605 = MEM[(limb *)&y_out + 16B]; */
-mov vect__143.149605_0 y_out_16;
-mov vect__143.149605_8 y_out_24;
-/* vect__144.150_601 = vect__143.149_605 ^ vect__141.146_608; */
+/* MEM[(limb *)&y_out] = vect__146152_136; */
+mov y_out_0 vect__146152136_0;
+mov y_out_8 vect__146152136_8;
+/* vect__141146_608 = MEM[(const limb *)y2_26(D) + 16B]; */
+mov vect__141146608_0 y226_16;
+mov vect__141146608_8 y226_24;
+/* vect__143149_605 = MEM[(limb *)&y_out + 16B]; */
+mov vect__143149605_0 y_out_16;
+mov vect__143149605_8 y_out_24;
+/* vect__144150_601 = vect__143149_605 ^ vect__141146_608; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_145.151_599 = vect_cst__409 & vect__144.150_601; */
+/* vect_tmp_145151_599 = vect_cst__409 & vect__144150_601; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_145.151599_0 v409_0 vect__144.150601_0;
-and uint64 vect_tmp_145.151599_8 v409_8 vect__144.150601_8;
-/* vect__146.152_590 = vect_tmp_145.151_599 ^ vect__143.149_605; */
+and uint64 vect_tmp_145151599_0 v409_0 vect__144150601_0;
+and uint64 vect_tmp_145151599_8 v409_8 vect__144150601_8;
+/* vect__146152_590 = vect_tmp_145151_599 ^ vect__143149_605; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&y_out + 16B] = vect__146.152_590; */
-mov y_out_16 vect__146.152590_0;
-mov y_out_24 vect__146.152590_8;
-/* vect__130.135_139 = MEM[(const limb *)y1_15(D)]; */
-mov vect__130.135139_0 y115_0;
-mov vect__130.135139_8 y115_8;
-/* vect__133.139_141 = vect__146.152_136 ^ vect__130.135_139; */
+/* MEM[(limb *)&y_out + 16B] = vect__146152_590; */
+mov y_out_16 vect__146152590_0;
+mov y_out_24 vect__146152590_8;
+/* vect__130135_139 = MEM[(const limb *)y1_15(D)]; */
+mov vect__130135139_0 y115_0;
+mov vect__130135139_8 y115_8;
+/* vect__133139_141 = vect__146152_136 ^ vect__130135_139; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_134.140_142 = vect__133.139_141 & vect_cst__504; */
+/* vect_tmp_134140_142 = vect__133139_141 & vect_cst__504; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_134.140142_0 vect__133.139141_0 v504_0;
-and uint64 vect_tmp_134.140142_8 vect__133.139141_8 v504_8;
-/* vect__135.141_143 = vect__146.152_136 ^ vect_tmp_134.140_142; */
+and uint64 vect_tmp_134140142_0 vect__133139141_0 v504_0;
+and uint64 vect_tmp_134140142_8 vect__133139141_8 v504_8;
+/* vect__135141_143 = vect__146152_136 ^ vect_tmp_134140_142; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&y_out] = vect__135.141_143; */
-mov y_out_0 vect__135.141143_0;
-mov y_out_8 vect__135.141143_8;
-/* vect__130.135_645 = MEM[(const limb *)y1_15(D) + 16B]; */
-mov vect__130.135645_0 y115_16;
-mov vect__130.135645_8 y115_24;
-/* vect__133.139_641 = vect__146.152_590 ^ vect__130.135_645; */
+/* MEM[(limb *)&y_out] = vect__135141_143; */
+mov y_out_0 vect__135141143_0;
+mov y_out_8 vect__135141143_8;
+/* vect__130135_645 = MEM[(const limb *)y1_15(D) + 16B]; */
+mov vect__130135645_0 y115_16;
+mov vect__130135645_8 y115_24;
+/* vect__133139_641 = vect__146152_590 ^ vect__130135_645; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_134.140_639 = vect_cst__504 & vect__133.139_641; */
+/* vect_tmp_134140_639 = vect_cst__504 & vect__133139_641; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_134.140639_0 v504_0 vect__133.139641_0;
-and uint64 vect_tmp_134.140639_8 v504_8 vect__133.139641_8;
-/* vect__135.141_638 = vect__146.152_590 ^ vect_tmp_134.140_639; */
+and uint64 vect_tmp_134140639_0 v504_0 vect__133139641_0;
+and uint64 vect_tmp_134140639_8 v504_8 vect__133139641_8;
+/* vect__135141_638 = vect__146152_590 ^ vect_tmp_134140_639; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&y_out + 16B] = vect__135.141_638; */
-mov y_out_16 vect__135.141638_0;
-mov y_out_24 vect__135.141638_8;
-/* vect__119.124_170 = MEM[(const limb *)z2_10(D)]; */
-mov vect__119.124170_0 z210_0;
-mov vect__119.124170_8 z210_8;
-/* vect__121.127_171 = MEM[(limb *)&z_out]; */
-mov vect__121.127171_0 z_out_0;
-mov vect__121.127171_8 z_out_8;
-/* vect__122.128_681 = vect__119.124_170 ^ vect__121.127_171; */
+/* MEM[(limb *)&y_out + 16B] = vect__135141_638; */
+mov y_out_16 vect__135141638_0;
+mov y_out_24 vect__135141638_8;
+/* vect__119124_170 = MEM[(const limb *)z2_10(D)]; */
+mov vect__119124170_0 z210_0;
+mov vect__119124170_8 z210_8;
+/* vect__121127_171 = MEM[(limb *)&z_out]; */
+mov vect__121127171_0 z_out_0;
+mov vect__121127171_8 z_out_8;
+/* vect__122128_681 = vect__119124_170 ^ vect__121127_171; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_123.129_150 = vect_cst__409 & vect__122.128_681; */
+/* vect_tmp_123129_150 = vect_cst__409 & vect__122128_681; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_123.129150_0 v409_0 vect__122.128681_0;
-and uint64 vect_tmp_123.129150_8 v409_8 vect__122.128681_8;
-/* vect__124.130_151 = vect_tmp_123.129_150 ^ vect__121.127_171; */
+and uint64 vect_tmp_123129150_0 v409_0 vect__122128681_0;
+and uint64 vect_tmp_123129150_8 v409_8 vect__122128681_8;
+/* vect__124130_151 = vect_tmp_123129_150 ^ vect__121127_171; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&z_out] = vect__124.130_151; */
-mov z_out_0 vect__124.130151_0;
-mov z_out_8 vect__124.130151_8;
-/* vect__119.124_661 = MEM[(const limb *)z2_10(D) + 16B]; */
-mov vect__119.124661_0 z210_16;
-mov vect__119.124661_8 z210_24;
-/* vect__121.127_658 = MEM[(limb *)&z_out + 16B]; */
-mov vect__121.127658_0 z_out_16;
-mov vect__121.127658_8 z_out_24;
-/* vect__122.128_657 = vect__121.127_658 ^ vect__119.124_661; */
+/* MEM[(limb *)&z_out] = vect__124130_151; */
+mov z_out_0 vect__124130151_0;
+mov z_out_8 vect__124130151_8;
+/* vect__119124_661 = MEM[(const limb *)z2_10(D) + 16B]; */
+mov vect__119124661_0 z210_16;
+mov vect__119124661_8 z210_24;
+/* vect__121127_658 = MEM[(limb *)&z_out + 16B]; */
+mov vect__121127658_0 z_out_16;
+mov vect__121127658_8 z_out_24;
+/* vect__122128_657 = vect__121127_658 ^ vect__119124_661; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_123.129_655 = vect_cst__409 & vect__122.128_657; */
+/* vect_tmp_123129_655 = vect_cst__409 & vect__122128_657; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_123.129655_0 v409_0 vect__122.128657_0;
-and uint64 vect_tmp_123.129655_8 v409_8 vect__122.128657_8;
-/* vect__124.130_654 = vect_tmp_123.129_655 ^ vect__121.127_658; */
+and uint64 vect_tmp_123129655_0 v409_0 vect__122128657_0;
+and uint64 vect_tmp_123129655_8 v409_8 vect__122128657_8;
+/* vect__124130_654 = vect_tmp_123129_655 ^ vect__121127_658; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&z_out + 16B] = vect__124.130_654; */
-mov z_out_16 vect__124.130654_0;
-mov z_out_24 vect__124.130654_8;
-/* vect__108.113_620 = MEM[(const limb *)z1_21(D)]; */
-mov vect__108.113620_0 z121_0;
-mov vect__108.113620_8 z121_8;
-/* vect__111.117_621 = vect__124.130_151 ^ vect__108.113_620; */
+/* MEM[(limb *)&z_out + 16B] = vect__124130_654; */
+mov z_out_16 vect__124130654_0;
+mov z_out_24 vect__124130654_8;
+/* vect__108113_620 = MEM[(const limb *)z1_21(D)]; */
+mov vect__108113620_0 z121_0;
+mov vect__108113620_8 z121_8;
+/* vect__111117_621 = vect__124130_151 ^ vect__108113_620; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_112.118_684 = vect_cst__504 & vect__111.117_621; */
+/* vect_tmp_112118_684 = vect_cst__504 & vect__111117_621; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_112.118684_0 v504_0 vect__111.117621_0;
-and uint64 vect_tmp_112.118684_8 v504_8 vect__111.117621_8;
-/* vect__113.119_622 = vect__124.130_151 ^ vect_tmp_112.118_684; */
+and uint64 vect_tmp_112118684_0 v504_0 vect__111117621_0;
+and uint64 vect_tmp_112118684_8 v504_8 vect__111117621_8;
+/* vect__113119_622 = vect__124130_151 ^ vect_tmp_112118_684; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)&z_out] = vect__113.119_622; */
-mov z_out_0 vect__113.119622_0;
-mov z_out_8 vect__113.119622_8;
-/* vect__108.113_677 = MEM[(const limb *)z1_21(D) + 16B]; */
-mov vect__108.113677_0 z121_16;
-mov vect__108.113677_8 z121_24;
-/* vect__111.117_673 = vect__124.130_654 ^ vect__108.113_677; */
+/* MEM[(limb *)&z_out] = vect__113119_622; */
+mov z_out_0 vect__113119622_0;
+mov z_out_8 vect__113119622_8;
+/* vect__108113_677 = MEM[(const limb *)z1_21(D) + 16B]; */
+mov vect__108113677_0 z121_16;
+mov vect__108113677_8 z121_24;
+/* vect__111117_673 = vect__124130_654 ^ vect__108113_677; */
 /* TODO: Skip translation for bit xor */
-/* vect_tmp_112.118_671 = vect_cst__504 & vect__111.117_673; */
+/* vect_tmp_112118_671 = vect_cst__504 & vect__111117_673; */
 /* TODO: Bitwise And/Or , may need assert and assume */
-and uint64 vect_tmp_112.118671_0 v504_0 vect__111.117673_0;
-and uint64 vect_tmp_112.118671_8 v504_8 vect__111.117673_8;
-/* vect__113.119_670 = vect__124.130_654 ^ vect_tmp_112.118_671; */
+and uint64 vect_tmp_112118671_0 v504_0 vect__111117673_0;
+and uint64 vect_tmp_112118671_8 v504_8 vect__111117673_8;
+/* vect__113119_670 = vect__124130_654 ^ vect_tmp_112118_671; */
 /* TODO: Skip translation for bit xor */
-/* MEM[(limb *)x3_42(D)] = vect__158.163_107; */
-mov x342_0 vect__158.163107_0;
-mov x342_8 vect__158.163107_8;
-/* MEM[(limb *)x3_42(D) + 16B] = vect__158.163_502; */
-mov x342_16 vect__158.163502_0;
-mov x342_24 vect__158.163502_8;
-/* MEM[(limb *)y3_43(D)] = vect__135.141_143; */
-mov y343_0 vect__135.141143_0;
-mov y343_8 vect__135.141143_8;
-/* MEM[(limb *)y3_43(D) + 16B] = vect__135.141_638; */
-mov y343_16 vect__135.141638_0;
-mov y343_24 vect__135.141638_8;
-/* MEM[(limb *)z3_44(D)] = vect__113.119_622; */
-mov z344_0 vect__113.119622_0;
-mov z344_8 vect__113.119622_8;
-/* MEM[(limb *)z3_44(D) + 16B] = vect__113.119_670; */
-mov z344_16 vect__113.119670_0;
-mov z344_24 vect__113.119670_8;
+/* MEM[(limb *)x3_42(D)] = vect__158163_107; */
+mov x342_0 vect__158163107_0;
+mov x342_8 vect__158163107_8;
+/* MEM[(limb *)x3_42(D) + 16B] = vect__158163_502; */
+mov x342_16 vect__158163502_0;
+mov x342_24 vect__158163502_8;
+/* MEM[(limb *)y3_43(D)] = vect__135141_143; */
+mov y343_0 vect__135141143_0;
+mov y343_8 vect__135141143_8;
+/* MEM[(limb *)y3_43(D) + 16B] = vect__135141_638; */
+mov y343_16 vect__135141638_0;
+mov y343_24 vect__135141638_8;
+/* MEM[(limb *)z3_44(D)] = vect__113119_622; */
+mov z344_0 vect__113119622_0;
+mov z344_8 vect__113119622_8;
+/* MEM[(limb *)z3_44(D) + 16B] = vect__113119_670; */
+mov z344_16 vect__113119670_0;
+mov z344_24 vect__113119670_8;
 /* ftmp ={v} {CLOBBER}; */
 /* TODO: Skip translation for constructor */
 /* ftmp2 ={v} {CLOBBER}; */
@@ -1288,7 +1288,7 @@ mov z344_24 vect__113.119670_8;
 
 /* BB's index is 12 */
 
-/* .MEM_7 = PHI <.MEM_83(11), .MEM_55(7)> */
+/* MEM_7 = PHI <MEM_83(11), MEM_55(7)> */
 /* return; */
 
 
@@ -1325,66 +1325,66 @@ mov _ v504_1;
 mov _ v598@uint64;
 mov _ v628_0;
 mov _ v628_1;
-mov _ vect__108.113620_0;
-mov _ vect__108.113620_8;
-mov _ vect__108.113677_0;
-mov _ vect__108.113677_8;
-mov _ vect__119.124170_0;
-mov _ vect__119.124170_8;
-mov _ vect__119.124661_0;
-mov _ vect__119.124661_8;
-mov _ vect__121.127171_0;
-mov _ vect__121.127171_8;
-mov _ vect__121.127658_0;
-mov _ vect__121.127658_8;
-mov _ vect__130.135139_0;
-mov _ vect__130.135139_8;
-mov _ vect__130.135645_0;
-mov _ vect__130.135645_8;
-mov _ vect__141.146132_0;
-mov _ vect__141.146132_8;
-mov _ vect__141.146608_0;
-mov _ vect__141.146608_8;
-mov _ vect__143.149133_0;
-mov _ vect__143.149133_8;
-mov _ vect__143.149605_0;
-mov _ vect__143.149605_8;
-mov _ vect__153.157125_0;
-mov _ vect__153.157125_8;
-mov _ vect__153.157517_0;
-mov _ vect__153.157517_8;
-mov _ vect__165.168482_0;
-mov _ vect__165.168482_8;
-mov _ vect__165.168632_0;
-mov _ vect__165.168632_8;
-mov _ vect__167.171479_0;
-mov _ vect__167.171479_8;
-mov _ vect__167.171648_0;
-mov _ vect__167.171648_8;
-mov _ vect_tmp_112.118671_0;
-mov _ vect_tmp_112.118671_8;
-mov _ vect_tmp_112.118684_0;
-mov _ vect_tmp_112.118684_8;
-mov _ vect_tmp_123.129150_0;
-mov _ vect_tmp_123.129150_8;
-mov _ vect_tmp_123.129655_0;
-mov _ vect_tmp_123.129655_8;
-mov _ vect_tmp_134.140142_0;
-mov _ vect_tmp_134.140142_8;
-mov _ vect_tmp_134.140639_0;
-mov _ vect_tmp_134.140639_8;
-mov _ vect_tmp_145.151135_0;
-mov _ vect_tmp_145.151135_8;
-mov _ vect_tmp_145.151599_0;
-mov _ vect_tmp_145.151599_8;
-mov _ vect_tmp_157.162106_0;
-mov _ vect_tmp_157.162106_8;
-mov _ vect_tmp_157.162503_0;
-mov _ vect_tmp_157.162503_8;
-mov _ vect_tmp_169.173401_0;
-mov _ vect_tmp_169.173401_8;
-mov _ vect_tmp_169.173680_0;
-mov _ vect_tmp_169.173680_8;
+mov _ vect__108113620_0;
+mov _ vect__108113620_8;
+mov _ vect__108113677_0;
+mov _ vect__108113677_8;
+mov _ vect__119124170_0;
+mov _ vect__119124170_8;
+mov _ vect__119124661_0;
+mov _ vect__119124661_8;
+mov _ vect__121127171_0;
+mov _ vect__121127171_8;
+mov _ vect__121127658_0;
+mov _ vect__121127658_8;
+mov _ vect__130135139_0;
+mov _ vect__130135139_8;
+mov _ vect__130135645_0;
+mov _ vect__130135645_8;
+mov _ vect__141146132_0;
+mov _ vect__141146132_8;
+mov _ vect__141146608_0;
+mov _ vect__141146608_8;
+mov _ vect__143149133_0;
+mov _ vect__143149133_8;
+mov _ vect__143149605_0;
+mov _ vect__143149605_8;
+mov _ vect__153157125_0;
+mov _ vect__153157125_8;
+mov _ vect__153157517_0;
+mov _ vect__153157517_8;
+mov _ vect__165168482_0;
+mov _ vect__165168482_8;
+mov _ vect__165168632_0;
+mov _ vect__165168632_8;
+mov _ vect__167171479_0;
+mov _ vect__167171479_8;
+mov _ vect__167171648_0;
+mov _ vect__167171648_8;
+mov _ vect_tmp_112118671_0;
+mov _ vect_tmp_112118671_8;
+mov _ vect_tmp_112118684_0;
+mov _ vect_tmp_112118684_8;
+mov _ vect_tmp_123129150_0;
+mov _ vect_tmp_123129150_8;
+mov _ vect_tmp_123129655_0;
+mov _ vect_tmp_123129655_8;
+mov _ vect_tmp_134140142_0;
+mov _ vect_tmp_134140142_8;
+mov _ vect_tmp_134140639_0;
+mov _ vect_tmp_134140639_8;
+mov _ vect_tmp_145151135_0;
+mov _ vect_tmp_145151135_8;
+mov _ vect_tmp_145151599_0;
+mov _ vect_tmp_145151599_8;
+mov _ vect_tmp_157162106_0;
+mov _ vect_tmp_157162106_8;
+mov _ vect_tmp_157162503_0;
+mov _ vect_tmp_157162503_8;
+mov _ vect_tmp_169173401_0;
+mov _ vect_tmp_169173401_8;
+mov _ vect_tmp_169173680_0;
+mov _ vect_tmp_169173680_8;
 mov _ x342_0@uint64;
 mov _ x342_8@uint64;
 mov _ x342_16@uint64;

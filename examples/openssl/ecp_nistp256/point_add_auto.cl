@@ -313,7 +313,7 @@ mov ftmp6_48 v125;
 
 /* BB's index is 5 */
 
-/* .MEM_5 = PHI <.MEM_32(3), .MEM_332(4)> */
+/* MEM_5 = PHI <MEM_32(3), MEM_332(4)> */
 /* smallfelem_mul (&tmp, x2_33(D), &small1); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
 /* felem_reduce (&ftmp4, &tmp); */
@@ -1150,7 +1150,7 @@ mov z351_48 v167;
 
 /* BB's index is 9 */
 
-/* .MEM_6 = PHI <.MEM_97(8), .MEM_68(7)> */
+/* MEM_6 = PHI <MEM_97(8), MEM_68(7)> */
 /* return; */
 
 

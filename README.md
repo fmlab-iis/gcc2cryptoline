@@ -68,6 +68,13 @@ python3 run_experiments.py
     You can see the corresponding result in `examples/openssl/curve25519/fe51_add.cl`
 
 
+## Escapy some special character
+Becasue of the gramma of cryptoline parser, we need to escape some characters such as `.`
+
+```
+./script/escape.py [cryptoline file]
+```
+
 
 ## Dump GIMPLE
 - add options when compile
