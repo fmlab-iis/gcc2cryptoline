@@ -9,7 +9,7 @@ Rewriting assignments:			[OK]		0.000245 seconds
 Verifying range specification:		[FAILED]	0.424315 seconds
 Verification result:			[FAILED]	0.426418 seconds
 *)
-proc main (uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4, uint64 a5, uint64 a6, uint64 a7, uint64 a8, uint128 b0, uint128 b1, uint128 b2, uint128 b3, uint128 b4, uint128 b5, uint128 b6, uint128 b7, uint128 b8) = 
+proc main (uint128 b0, uint128 b1, uint128 b2, uint128 b3, uint128 b4, uint128 b5, uint128 b6, uint128 b7, uint128 b8, uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4, uint64 a5, uint64 a6, uint64 a7, uint64 a8) =
 {
   true
   &&

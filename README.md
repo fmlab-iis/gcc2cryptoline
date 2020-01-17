@@ -111,6 +111,3 @@ Yu-Fu Fu, Jiaxiang Liu, Xiaomu Shi, Ming-Hsien Tsai, Bow-Yaw Wang, and Bo-Yin Ya
     - good source code to learn how to write a gcc plugin
 - [GIMPLE documentation](https://gcc.gnu.org/onlinedocs/gccint/GIMPLE.html)
 - [GCC plugin documentation](https://gcc.gnu.org/onlinedocs/gccint/Plugins.html#Plugins)
-
-## TODO List
-- [ ] Refactor

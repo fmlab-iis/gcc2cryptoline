@@ -52,7 +52,7 @@ Verification result:			[OK]		0.060614 seconds
 	Page size (bytes): 4096
 	Exit status: 0
 *)
-(* @mac 
+(* @mac
 ===== Verification =====
 Arguments: -jobs 4 -qfbv_solver mathsat -isafety -slicing -disable_algebra ./felem_diff_128_64_tuned.cl
 Verification result:			[OK]		1.205501 seconds
@@ -90,7 +90,7 @@ Verification result:			[OK]		0.100443 seconds
        117  voluntary context switches
       1103  involuntary context switches
 *)
-proc main (uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4, uint64 a5, uint64 a6, uint64 a7, uint64 a8, uint128 b0, uint128 b1, uint128 b2, uint128 b3, uint128 b4, uint128 b5, uint128 b6, uint128 b7, uint128 b8) = 
+proc main (uint128 b0, uint128 b1, uint128 b2, uint128 b3, uint128 b4, uint128 b5, uint128 b6, uint128 b7, uint128 b8, uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4, uint64 a5, uint64 a6, uint64 a7, uint64 a8) =
 {
   true
   &&
