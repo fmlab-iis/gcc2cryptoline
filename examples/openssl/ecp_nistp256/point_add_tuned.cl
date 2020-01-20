@@ -2462,6 +2462,7 @@ mov v379 ftmp3_48;
 usub v380 v372 v379;
 /* MEM[(limb *)&ftmp4 + 48B] = _380; */
 mov ftmp4_48 v380;
+
 /* felem_shrink (&small4, &ftmp4); */
 call felem_shrink (ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48,
                    small4_0, small4_8, small4_16, small4_24);
@@ -2606,38 +2607,47 @@ mov ftmp_32 v252;
 umul v253 v257 0x2@uint128;
 /* MEM[(limb *)&ftmp + 48B] = _253; */
 mov ftmp_48 v253;
+
 /* felem_shrink (&small, &ftmp); */
 call felem_shrink (ftmp_0, ftmp_16, ftmp_32, ftmp_48,
                    small_0, small_8, small_16, small_24);
 /* smallfelem_square (&tmp, &small); */
 call smallfelem_square (small_0, small_8, small_16, small_24,
                         tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112);
+
 /* felem_reduce (&ftmp, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    ftmp_0, ftmp_16, ftmp_32, ftmp_48);
+
 /* felem_shrink (&small1, &ftmp4); */
 call felem_shrink (ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48,
-                   small1_0, small1_8, small1_16, small1_24);
+                   small1_p_0, small1_p_8, small1_p_16, small1_p_24);
 /* felem_shrink (&small2, &ftmp); */
 call felem_shrink (ftmp_0, ftmp_16, ftmp_32, ftmp_48,
-                   small2_0, small2_8, small2_16, small2_24);
+                   small2_p_0, small2_p_8, small2_p_16, small2_p_24);
 /* smallfelem_mul (&tmp, &small1, &small2); */
-call smallfelem_mul (small1_0, small1_8, small1_16, small1_24,
-                     small2_0, small2_8, small2_16, small2_24,
+call smallfelem_mul (small1_p_0, small1_p_8, small1_p_16, small1_p_24,
+                     small2_p_0, small2_p_8, small2_p_16, small2_p_24,
                      tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112);
+/* small1 ={v} {CLOBBER}; */
+/* TODO: Skip translation for constructor */
+/* small2 ={v} {CLOBBER}; */
 /* felem_reduce (&ftmp2, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    ftmp2_0, ftmp2_16, ftmp2_32, ftmp2_48);
 /* felem_shrink (&small1, &ftmp3); */
 call felem_shrink (ftmp3_0, ftmp3_16, ftmp3_32, ftmp3_48,
-                   small1_0, small1_8, small1_16, small1_24);
+                   small1_p_0, small1_p_8, small1_p_16, small1_p_24);
 /* felem_shrink (&small2, &ftmp); */
 call felem_shrink (ftmp_0, ftmp_16, ftmp_32, ftmp_48,
-                   small2_0, small2_8, small2_16, small2_24);
+                   small2_p_0, small2_p_8, small2_p_16, small2_p_24);
 /* smallfelem_mul (&tmp, &small1, &small2); */
-call smallfelem_mul (small1_0, small1_8, small1_16, small1_24,
-                     small2_0, small2_8, small2_16, small2_24,
+call smallfelem_mul (small1_p_0, small1_p_8, small1_p_16, small1_p_24,
+                     small2_p_0, small2_p_8, small2_p_16, small2_p_24,
                      tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112);
+/* small1 ={v} {CLOBBER}; */
+/* TODO: Skip translation for constructor */
+/* small2 ={v} {CLOBBER}; */
 /* felem_reduce (&ftmp4, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48);
@@ -3290,8 +3300,7 @@ mov Z3_3 z_out_48@uint128;
                 (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2)
                * 4 * (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
                               (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2
-                             )-
-                             ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
+                             )- ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
                               (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2
                              )
                             ) ** 2))
@@ -3299,7 +3308,6 @@ mov Z3_3 z_out_48@uint128;
               4294967295,
               0,
               18446744069414584321 ])),
-
      (limbs 64 [Y3_0, Y3_1, Y3_2, Y3_3])
      =
      ( /* r * (V - X3) */

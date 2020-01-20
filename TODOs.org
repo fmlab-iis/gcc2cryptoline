@@ -3,3 +3,14 @@
   need long time, may need to use cut
 * TODO verify p521's point_double and point_add
   modified but not verified yet
+
+* TODO handle clobber
+find some variable scope issue in p256's point_add
+#+BEGIN_SRC c
+felem_shrink (&small1, &ftmp4);
+felem_shrink (&small2, &ftmp);
+smallfelem_mul (&tmp, &small1, &small2);
+small1 ={v} {CLOBBER};
+small2 ={v} {CLOBBER};
+#+END_SRC
+small1 and small2 here are local variable in smallfelem_mul
