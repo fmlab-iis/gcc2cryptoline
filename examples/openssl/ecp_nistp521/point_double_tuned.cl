@@ -1421,6 +1421,8 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    delta_0, delta_8, delta_16, delta_24, delta_32,
                    delta_40, delta_48, delta_56, delta_64);
+
+
 (* felem_square (&tmp, y_in_6(D)); *)
 call felem_square (y_in6_0, y_in6_8, y_in6_16, y_in6_24, y_in6_32,
                   y_in6_40, y_in6_48, y_in6_56, y_in6_64,
@@ -1443,6 +1445,40 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    beta_0, beta_8, beta_16, beta_24, beta_32,
                    beta_40, beta_48, beta_56, beta_64);
+
+rcut and [
+          x_in2_0 <u (2**59 + 2**14)@64,  x_in2_8 <u (2**59 + 2**14)@64,
+          x_in2_16 <u (2**59 + 2**14)@64, x_in2_24 <u (2**59 + 2**14)@64,
+          x_in2_32 <u (2**59 + 2**14)@64, x_in2_40 <u (2**59 + 2**14)@64,
+          x_in2_48 <u (2**59 + 2**14)@64, x_in2_56 <u (2**59 + 2**14)@64,
+          x_in2_64 <u (2**59 + 2**14)@64,
+          y_in6_0 <u (2**59 + 2**14)@64,  y_in6_8 <u (2**59 + 2**14)@64,
+          y_in6_16 <u (2**59 + 2**14)@64, y_in6_24 <u (2**59 + 2**14)@64,
+          y_in6_32 <u (2**59 + 2**14)@64, y_in6_40 <u (2**59 + 2**14)@64,
+          y_in6_48 <u (2**59 + 2**14)@64, y_in6_56 <u (2**59 + 2**14)@64,
+          y_in6_64 <u (2**59 + 2**14)@64,
+          z_in3_0 <u (2**59 + 2**14)@64,  z_in3_8 <u (2**59 + 2**14)@64,
+          z_in3_16 <u (2**59 + 2**14)@64, z_in3_24 <u (2**59 + 2**14)@64,
+          z_in3_32 <u (2**59 + 2**14)@64, z_in3_40 <u (2**59 + 2**14)@64,
+          z_in3_48 <u (2**59 + 2**14)@64, z_in3_56 <u (2**59 + 2**14)@64,
+          z_in3_64 <u (2**59 + 2**14)@64,
+          beta_0 <u (2**59 + 2**14)@64,  beta_8 <u (2**59 + 2**14)@64,
+          beta_16 <u (2**59 + 2**14)@64, beta_24 <u (2**59 + 2**14)@64,
+          beta_32 <u (2**59 + 2**14)@64, beta_40 <u (2**59 + 2**14)@64,
+          beta_48 <u (2**59 + 2**14)@64, beta_56 <u (2**59 + 2**14)@64,
+          beta_64 <u (2**59 + 2**14)@64,
+          gamma_0 <u (2**59 + 2**14)@64,  gamma_8 <u (2**59 + 2**14)@64,
+          gamma_16 <u (2**59 + 2**14)@64, gamma_24 <u (2**59 + 2**14)@64,
+          gamma_32 <u (2**59 + 2**14)@64, gamma_40 <u (2**59 + 2**14)@64,
+          gamma_48 <u (2**59 + 2**14)@64, gamma_56 <u (2**59 + 2**14)@64,
+          gamma_64 <u (2**59 + 2**14)@64,
+          delta_0 <u (2**59 + 2**14)@64,  delta_8 <u (2**59 + 2**14)@64,
+          delta_16 <u (2**59 + 2**14)@64, delta_24 <u (2**59 + 2**14)@64,
+          delta_32 <u (2**59 + 2**14)@64, delta_40 <u (2**59 + 2**14)@64,
+          delta_48 <u (2**59 + 2**14)@64, delta_56 <u (2**59 + 2**14)@64,
+          delta_64 <u (2**59 + 2**14)@64
+         ];
+
 (* _422 = MEM[(limb * )&ftmp]; *)
 mov v422 ftmp_0;
 (* _423 = MEM[(const limb * )&delta]; *)
@@ -1618,6 +1654,7 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
                    alpha_40, alpha_48, alpha_56, alpha_64
                   );
+
 (* felem_square (&tmp, &alpha); *)
 call felem_square (alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
                   alpha_40, alpha_48, alpha_56, alpha_64,
@@ -1773,6 +1810,94 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    x_out19_0, x_out19_8, x_out19_16, x_out19_24, x_out19_32,
                    x_out19_40, x_out19_48, x_out19_56, x_out19_64
                   );
+
+ecut and [
+          (limbs 58 [x_out19_0, x_out19_8, x_out19_16, x_out19_24, x_out19_32,
+                   x_out19_40, x_out19_48, x_out19_56, x_out19_64])
+          =
+          (
+           (
+            3 * (( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) -
+                 ( limbs 58 [z0, z1, z2, z3, z4, z5, z6, z7, z8]) **2
+                )
+                * (( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) +
+                   ( limbs 58 [z0, z1, z2, z3, z4, z5, z6, z7, z8]) **2)
+           ) ** 2
+           -
+           8 * ( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) *
+           ( limbs 58 [y0, y1, y2, y3, y4, y5, y6, y7, y8]) **2
+          )
+          (mod  (2**521 - 1)),
+          (limbs 58 [delta_0, delta_8, delta_16, delta_24, delta_32,
+           delta_40, delta_48, delta_56, delta_64])
+           = ((limbs 58 [z0, z1, z2, z3, z4, z5, z6, z7, z8]) ** 2)
+          (mod  (2**521 - 1)),
+          (limbs 58 [alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
+           alpha_40, alpha_48, alpha_56, alpha_64])
+           = (
+              3 * (( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) -
+                   (limbs 58 [delta_0, delta_8, delta_16, delta_24, delta_32,
+           delta_40, delta_48, delta_56, delta_64]))
+                * (( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) +
+                   (limbs 58 [delta_0, delta_8, delta_16, delta_24, delta_32,
+           delta_40, delta_48, delta_56, delta_64]))
+             )
+          (mod  (2**521 - 1)),
+           (limbs 58 [gamma_0, gamma_8, gamma_16, gamma_24, gamma_32,
+            gamma_40, gamma_48, gamma_56, gamma_64])
+           = (( limbs 58 [y0, y1, y2, y3, y4, y5, y6, y7, y8]) **2)
+          (mod  (2**521 - 1)),
+           (limbs 58 [beta_0, beta_8, beta_16, beta_24, beta_32,
+            beta_40, beta_48, beta_56, beta_64])
+            = (( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) *
+               (limbs 58 [gamma_0, gamma_8, gamma_16, gamma_24, gamma_32,
+                gamma_40, gamma_48, gamma_56, gamma_64]))
+          (mod  (2**521 - 1))
+         ];
+
+rcut and [
+          x_out19_0 <u (2**59 + 2**14)@64,  x_out19_8 <u (2**59 + 2**14)@64,
+          x_out19_16 <u (2**59 + 2**14)@64, x_out19_24 <u (2**59 + 2**14)@64,
+          x_out19_32 <u (2**59 + 2**14)@64, x_out19_40 <u (2**59 + 2**14)@64,
+          x_out19_48 <u (2**59 + 2**14)@64, x_out19_56 <u (2**59 + 2**14)@64,
+          x_out19_64 <u (2**59 + 2**14)@64,
+          x_in2_0 <u (2**59 + 2**14)@64,  x_in2_8 <u (2**59 + 2**14)@64,
+          x_in2_16 <u (2**59 + 2**14)@64, x_in2_24 <u (2**59 + 2**14)@64,
+          x_in2_32 <u (2**59 + 2**14)@64, x_in2_40 <u (2**59 + 2**14)@64,
+          x_in2_48 <u (2**59 + 2**14)@64, x_in2_56 <u (2**59 + 2**14)@64,
+          x_in2_64 <u (2**59 + 2**14)@64,
+          y_in6_0 <u (2**59 + 2**14)@64,  y_in6_8 <u (2**59 + 2**14)@64,
+          y_in6_16 <u (2**59 + 2**14)@64, y_in6_24 <u (2**59 + 2**14)@64,
+          y_in6_32 <u (2**59 + 2**14)@64, y_in6_40 <u (2**59 + 2**14)@64,
+          y_in6_48 <u (2**59 + 2**14)@64, y_in6_56 <u (2**59 + 2**14)@64,
+          y_in6_64 <u (2**59 + 2**14)@64,
+          z_in3_0 <u (2**59 + 2**14)@64,  z_in3_8 <u (2**59 + 2**14)@64,
+          z_in3_16 <u (2**59 + 2**14)@64, z_in3_24 <u (2**59 + 2**14)@64,
+          z_in3_32 <u (2**59 + 2**14)@64, z_in3_40 <u (2**59 + 2**14)@64,
+          z_in3_48 <u (2**59 + 2**14)@64, z_in3_56 <u (2**59 + 2**14)@64,
+          z_in3_64 <u (2**59 + 2**14)@64,
+          alpha_0 <u (2**59 + 2**14)@64,  alpha_8 <u (2**59 + 2**14)@64,
+          alpha_16 <u (2**59 + 2**14)@64, alpha_24 <u (2**59 + 2**14)@64,
+          alpha_32 <u (2**59 + 2**14)@64, alpha_40 <u (2**59 + 2**14)@64,
+          alpha_48 <u (2**59 + 2**14)@64, alpha_56 <u (2**59 + 2**14)@64,
+          alpha_64 <u (2**59 + 2**14)@64,
+          beta_0 <u (2**59 + 2**14)@64,  beta_8 <u (2**59 + 2**14)@64,
+          beta_16 <u (2**59 + 2**14)@64, beta_24 <u (2**59 + 2**14)@64,
+          beta_32 <u (2**59 + 2**14)@64, beta_40 <u (2**59 + 2**14)@64,
+          beta_48 <u (2**59 + 2**14)@64, beta_56 <u (2**59 + 2**14)@64,
+          beta_64 <u (2**59 + 2**14)@64,
+          gamma_0 <u (2**59 + 2**14)@64,  gamma_8 <u (2**59 + 2**14)@64,
+          gamma_16 <u (2**59 + 2**14)@64, gamma_24 <u (2**59 + 2**14)@64,
+          gamma_32 <u (2**59 + 2**14)@64, gamma_40 <u (2**59 + 2**14)@64,
+          gamma_48 <u (2**59 + 2**14)@64, gamma_56 <u (2**59 + 2**14)@64,
+          gamma_64 <u (2**59 + 2**14)@64,
+          delta_0 <u (2**59 + 2**14)@64,  delta_8 <u (2**59 + 2**14)@64,
+          delta_16 <u (2**59 + 2**14)@64, delta_24 <u (2**59 + 2**14)@64,
+          delta_32 <u (2**59 + 2**14)@64, delta_40 <u (2**59 + 2**14)@64,
+          delta_48 <u (2**59 + 2**14)@64, delta_56 <u (2**59 + 2**14)@64,
+          delta_64 <u (2**59 + 2**14)@64
+         ];
+
 (* vect__287.178_102 = MEM[(limb * )&delta]; *)
 mov vect__287178102_0 delta_0;
 mov vect__287178102_8 delta_8;
@@ -2004,6 +2129,7 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    z_out25_0, z_out25_8, z_out25_16, z_out25_24, z_out25_32,
                    z_out25_40, z_out25_48, z_out25_56, z_out25_64
                   );
+
 (* _197 = MEM[(limb * )&beta]; *)
 mov v197 beta_0;
 (* _198 = _197 * 4; *)
@@ -2288,8 +2414,9 @@ mov zp8 z_out25_64;
 (* End with unsed lhs *)
 
 {
+ /* http://hyperelliptic.org/EFD/g1p/auto-shortw-jacobian-3.html#doubling-dbl-2001-b */
  and [
-      (*  X' = (3 * (X - Z^2) * (X + Z^2))^2 - 8 * X * Y^2 *)
+      /* (*  X' = (3 * (X - Z^2) * (X + Z^2))^2 - 8 * X * Y^2 *) */
       (limbs 58 [xp0, xp1, xp2, xp3, xp4, xp5, xp6, xp7, xp8])
       =
       (
@@ -2303,10 +2430,9 @@ mov zp8 z_out25_64;
        -
        8 * ( limbs 58 [x0, x1, x2, x3, x4, x5, x6, x7, x8]) *
        ( limbs 58 [y0, y1, y2, y3, y4, y5, y6, y7, y8]) **2
-
       )
       (mod  (2**521 - 1)),
-      (*  Y' = 3 * (X - Z^2) * (X + Z^2) * (4 * X * Y^2 - X') - 8 * Y^4 *)
+      /* (*  Y' = 3 * (X - Z^2) * (X + Z^2) * (4 * X * Y^2 - X') - 8 * Y^4 *) */
       (limbs 58 [yp0, yp1, yp2, yp3, yp4, yp5, yp6, yp7, yp8])
       =
       (
@@ -2333,7 +2459,7 @@ mov zp8 z_out25_64;
        * ( limbs 58 [z0, z1, z2, z3, z4, z5, z6, z7, z8])
       )
       (mod  (2**521 - 1))
-     ]
+     ] prove with all ghosts, all cuts
      &&
      true
 }
