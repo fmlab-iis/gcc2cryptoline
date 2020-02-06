@@ -1,5 +1,5 @@
 (* safety check not done *)
-proc main (uint128 out0, uint128 out1, uint128 out2, uint128 out3, uint128 in4, uint128 in5, uint128 in6, uint128 in7) =
+proc main (uint128 in4, uint128 in5, uint128 in6, uint128 in7, uint128 out0, uint128 out1, uint128 out2, uint128 out3) =
 {
   true
   &&

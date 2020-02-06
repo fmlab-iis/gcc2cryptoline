@@ -1,6 +1,3 @@
-/* need long time, maybe use cut */
-
-
 proc felem_shrink (uint128 a0, uint128 a1, uint128 a2, uint128 a3;
                    uint64 c0, uint64 c1, uint64 c2, uint64 c3) =
 {
@@ -535,7 +532,7 @@ mov out3 out11_48@uint128;
 }
 
 /* inline only */
-proc felem_reduce_ (uint128 out0, uint128 out1, uint128 out2, uint128 out3, uint128 in4, uint128 in5, uint128 in6, uint128 in7; uint128 c0, uint128 c1, uint128 c2, uint128 c3) =
+proc felem_reduce_ (uint128 in4, uint128 in5, uint128 in6, uint128 in7, uint128 out0, uint128 out1, uint128 out2, uint128 out3; uint128 c0, uint128 c1, uint128 c2, uint128 c3) =
 {
   true
   &&
@@ -653,7 +650,7 @@ shl v29 tmp2 32;
 assert true && tmp1 = 0@128;
 assume tmp1 = 0 && true;
 (* _30 = _27 - _29; *)
-usubb borrow_v30 v30 v27 v29;
+usub v30 v27 v29;
 (* *out_53(D) = _30; *)
 mov out53_0 v30;
 (* _31 = MEM[(const limb * )in_51(D) + 96B]; *)
@@ -2466,6 +2463,37 @@ mov ftmp4_48 v380;
 /* felem_shrink (&small4, &ftmp4); */
 call felem_shrink (ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48,
                    small4_0, small4_8, small4_16, small4_24);
+
+/* h = ftmp4 = small4 = u2 - u1 */
+/* assert (limbs 64 [small4_0, small4_8, small4_16, small4_24]) = */
+/* (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) * */
+/*   (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) - */
+/*   ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) * */
+/*    (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 )) */
+/*    (mod (limbs 64 [18446744073709551615, */
+/*          4294967295, */
+/*          0, */
+/*          18446744069414584321 ])) && true; */
+
+/* assume (limbs 64 [small4_0, small4_8, small4_16, small4_24]) = */
+/* (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) * */
+/*   (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) - */
+/*   ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) * */
+/*    (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 )) */
+/*    (mod (limbs 64 [18446744073709551615, */
+/*          4294967295, */
+/*          0, */
+/*          18446744069414584321 ])) && true; */
+
+
+
+/* ecut and */
+/*          [ */
+/*           H_0 = ftmp4_0, H_1 = ftmp4_16, */
+/*           H_2 = ftmp4_32, H_3 = ftmp4_48, */
+/*           ftmp5_0 = ftmp5_0, ftmp5_16 = ftmp5_16, ftmp5_32 = ftmp5_32, ftmp5_48 = ftmp5_48 */
+/*          ]; */
+
 /* x_equal_39 = smallfelem_is_zero (&small4); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
 /* felem_shrink (&small2, &ftmp5); */
@@ -2546,6 +2574,26 @@ mov ftmp5_48 v145;
 /* felem_shrink (&small1, &ftmp5); */
 call felem_shrink (ftmp5_0, ftmp5_16, ftmp5_32, ftmp5_48,
                    small1_0, small1_8, small1_16, small1_24);
+
+/* r = ftmp5 = small1 = (s2 - s1) * 2 */
+
+/* ecut and [ */
+/*           small1_0 = (small1_0 * small1_0), small1_8 = small1_8, small1_16 = small1_16, */
+/*           small1_24 = small1_24, */
+/*           Y2_0 = Y2_0 */
+/*      ]; */
+
+
+/* assert (limbs 64 [small1_0, small1_8, small1_16, small1_24]) = */
+/* (2 * ((limbs 64 [Y2_0, Y2_1, Y2_2, Y2_3]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) ** 3 */
+/*       - (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) **3) */
+/* ) (mod (limbs 64 [18446744073709551615, */
+/*          4294967295, */
+/*          0, */
+/*          18446744069414584321 ])) */
+/* && true; */
+
+
 /* y_equal_48 = smallfelem_is_zero (&small1); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
 /* _1 = x_equal_39 != 0; */
@@ -2583,6 +2631,123 @@ call felem_shrink (ftmp5_0, ftmp5_16, ftmp5_32, ftmp5_48,
 
 /* BB's index is 8 */
 
+ghost h_0@uint128, h_1@uint128, h_2@uint128, h_3@uint128 :
+  and [
+       h_0 = ftmp4_0, h_1 = ftmp4_16,
+       h_2 = ftmp4_32, h_3 = ftmp4_48
+      ] &&
+      and [
+           h_0 = ftmp4_0, h_1 = ftmp4_16,
+           h_2 = ftmp4_32, h_3 = ftmp4_48
+          ];
+
+
+ecut and [
+          (limbs 64 [z_out_0, z_out_16, z_out_32, z_out_48])
+          = (
+             (2 *  (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) *
+              (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3])
+             ) *
+             (limbs 64 [h_0, h_1, h_2, h_3])
+            )
+            (mod (limbs 64 [18446744073709551615,
+                  4294967295,
+                  0,
+                  18446744069414584321 ])) ,
+           /* r = (s2 - s1) * 2 */
+           (limbs 64 [small1_0, small1_8, small1_16, small1_24]) =
+           (2 * ((limbs 64 [Y2_0, Y2_1, Y2_2, Y2_3]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) ** 3
+                 - (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) **3)
+           ) (mod (limbs 64 [18446744073709551615,
+                   4294967295,
+                   0,
+                   18446744069414584321 ])),
+           /* ftmp3 = u1 = x1 * z2z2 */
+           (limbs 64 [ftmp3_0, ftmp3_16, ftmp3_32, ftmp3_48])
+           = (
+              (limbs 64 [X1_0, X1_1, X1_2, X1_3])
+              * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2
+             )
+             (mod (limbs 64 [18446744073709551615,
+                   4294967295,
+                   0,
+                   18446744069414584321 ])),
+           /* ftmp4 = H */
+           (limbs 64 [ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48])
+           = (
+              (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
+                (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) -
+                ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
+                 (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 ))
+             )
+             (mod (limbs 64 [18446744073709551615,
+                   4294967295,
+                   0,
+                   18446744069414584321 ])),
+           /* ftmp6 = s1 = y1 * z2**3 */
+           (limbs 64 [ftmp6_0, ftmp6_16, ftmp6_32, ftmp6_48])
+           = (
+              (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) *
+              (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 3
+             )
+             (mod (limbs 64 [18446744073709551615,
+                   4294967295,
+                   0,
+                   18446744069414584321 ]))
+         ];
+
+rcut and [
+          z_out_0 <u (2**101)@128, z_out_16 <u (2**101)@128,
+          z_out_32 <u (2**101)@128, z_out_48 <u (2**101)@128,
+          ftmp3_0 <u (2**101)@128, ftmp3_16 <u (2**101)@128,
+          ftmp3_32 <u (2**101)@128, ftmp3_48 <u (2**101)@128,
+          ftmp4_0 <u (2**101)@128, ftmp4_16 <u (2**101)@128,
+          ftmp4_32 <u (2**101)@128, ftmp4_48 <u (2**101)@128,
+          ftmp6_0 <u (2**101)@128, ftmp6_16 <u (2**101)@128,
+          ftmp6_32 <u (2**101)@128, ftmp6_48 <u (2**101)@128
+         ];
+
+
+ghost R_0@uint64, R_1@uint64, R_2@uint64, R_3@uint64 :
+  and [
+       R_0 = small1_0, R_1 = small1_8,
+       R_2 = small1_16, R_3 = small1_24
+      ] &&
+      and  [
+            R_0 = small1_0, R_1 = small1_8,
+            R_2 = small1_16, R_3 = small1_24
+           ];
+
+ghost H_0@uint128, H_1@uint128, H_2@uint128, H_3@uint128 :
+  and [
+       H_0 = ftmp4_0, H_1 = ftmp4_16,
+       H_2 = ftmp4_32, H_3 = ftmp4_48
+      ] &&
+      and [
+           H_0 = ftmp4_0, H_1 = ftmp4_16,
+           H_2 = ftmp4_32, H_3 = ftmp4_48
+          ];
+
+ghost U1_0@uint128, U1_1@uint128, U1_2@uint128, U1_3@uint128 :
+  and [
+       U1_0 = ftmp3_0, U1_1 = ftmp3_16,
+       U1_2 = ftmp3_32, U1_3 = ftmp3_48
+      ] &&
+      and [
+           U1_0 = ftmp3_0, U1_1 = ftmp3_16,
+           U1_2 = ftmp3_32, U1_3 = ftmp3_48
+          ];
+
+ghost S1_0@uint128, S1_1@uint128, S1_2@uint128, S1_3@uint128 :
+  and [
+       S1_0 = ftmp6_0, S1_1 = ftmp6_16,
+       S1_2 = ftmp6_32, S1_3 = ftmp6_48
+      ] &&
+      and [
+           S1_0 = ftmp6_0, S1_1 = ftmp6_16,
+           S1_2 = ftmp6_32, S1_3 = ftmp6_48
+          ];
+
 /* _254 = MEM[(const limb *)&ftmp4]; */
 mov v254 ftmp4_0;
 /* _255 = MEM[(const limb *)&ftmp4 + 16B]; */
@@ -2608,6 +2773,8 @@ umul v253 v257 0x2@uint128;
 /* MEM[(limb *)&ftmp + 48B] = _253; */
 mov ftmp_48 v253;
 
+
+
 /* felem_shrink (&small, &ftmp); */
 call felem_shrink (ftmp_0, ftmp_16, ftmp_32, ftmp_48,
                    small_0, small_8, small_16, small_24);
@@ -2618,6 +2785,24 @@ call smallfelem_square (small_0, small_8, small_16, small_24,
 /* felem_reduce (&ftmp, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    ftmp_0, ftmp_16, ftmp_32, ftmp_48);
+
+ghost I_0@uint128, I_1@uint128, I_2@uint128, I_3@uint128 :
+  and [
+       I_0 = ftmp_0, I_1 = ftmp_16,
+       I_2 = ftmp_32, I_3 = ftmp_48
+      ] &&
+      and [
+           I_0 = ftmp_0, I_1 = ftmp_16,
+           I_2 = ftmp_32, I_3 = ftmp_48
+          ];
+
+
+assert (limbs 64 [I_0, I_1, I_2, I_3])
+= (4 * (limbs 64 [H_0, H_1, H_2, H_3]) ** 2
+) (mod (limbs 64 [18446744073709551615,
+        4294967295,
+        0,
+        18446744069414584321 ]))&& true ;
 
 /* felem_shrink (&small1, &ftmp4); */
 call felem_shrink (ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48,
@@ -2635,6 +2820,17 @@ call smallfelem_mul (small1_p_0, small1_p_8, small1_p_16, small1_p_24,
 /* felem_reduce (&ftmp2, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    ftmp2_0, ftmp2_16, ftmp2_32, ftmp2_48);
+
+ghost J_0@uint128, J_1@uint128, J_2@uint128, J_3@uint128 :
+  and [
+       J_0 = ftmp2_0, J_1 = ftmp2_16,
+       J_2 = ftmp2_32, J_3 = ftmp2_48
+      ] &&
+      and [
+           J_0 = ftmp2_0, J_1 = ftmp2_16,
+           J_2 = ftmp2_32, J_3 = ftmp2_48
+          ];
+
 /* felem_shrink (&small1, &ftmp3); */
 call felem_shrink (ftmp3_0, ftmp3_16, ftmp3_32, ftmp3_48,
                    small1_p_0, small1_p_8, small1_p_16, small1_p_24);
@@ -2651,12 +2847,24 @@ call smallfelem_mul (small1_p_0, small1_p_8, small1_p_16, small1_p_24,
 /* felem_reduce (&ftmp4, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48);
+
+ghost V_0@uint128, V_1@uint128, V_2@uint128, V_3@uint128 :
+  and [
+       V_0 = ftmp4_0, V_1 = ftmp4_16,
+       V_2 = ftmp4_32, V_3 = ftmp4_48
+      ] &&
+      and [
+           V_0 = ftmp4_0, V_1 = ftmp4_16,
+           V_2 = ftmp4_32, V_3 = ftmp4_48
+          ];
+
 /* smallfelem_square (&tmp, &small1); */
 call smallfelem_square (small1_0, small1_8, small1_16, small1_24,
                         tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112);
 /* felem_reduce (&x_out, &tmp); */
 call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
                    x_out_0, x_out_16, x_out_32, x_out_48);
+
 /* _246 = MEM[(const limb *)&ftmp4]; */
 mov v246 ftmp4_0;
 /* _247 = MEM[(const limb *)&ftmp4 + 16B]; */
@@ -2855,7 +3063,7 @@ uadd v388 v387 0x1fffffffffffffffe0000000200@uint128;
 /* MEM[(limb *)&y_out + 48B] = _388; */
 mov y_out_48 v388;
 /* felem_reduce_ (&y_out, &tmp); */
-call felem_reduce_ (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, tmp_112,
+call felem_reduce_ (tmp_64, tmp_80, tmp_96, tmp_112, y_out_0, y_out_16, y_out_32, y_out_48,
                     y_out_0, y_out_16, y_out_32, y_out_48);
 
 /* /\* mask64_219 = (const u64) z1_is_zero_11; *\/ */
@@ -3283,86 +3491,51 @@ mov Z3_3 z_out_48@uint128;
 /* End with unsed lhs */
 
 
-
-
 {
  /* http://hyperelliptic.org/EFD/g1p/auto-shortw-jacobian-3.html#addition-add-2007-bl */
- and [
-      (limbs 64 [X3_0, X3_1, X3_2, X3_3])
-      = ((2 * ((limbs 64 [Y2_0, Y2_1, Y2_2, Y2_3]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) ** 3
-             - (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) **3)
-       ) ** 2
-       - 4 * ((((limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
-                (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) -
-                ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-                 (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 )) ** 3)
-       - 2 * (((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-                (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2)
-               * 4 * (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
-                              (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2
-                             )- ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-                              (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2
-                             )
-                            ) ** 2))
-       (mod  (limbs 64 [18446744073709551615,
-              4294967295,
-              0,
-              18446744069414584321 ])),
-     (limbs 64 [Y3_0, Y3_1, Y3_2, Y3_3])
-     =
-     ( /* r * (V - X3) */
-      /* r */
-      (2 * ((limbs 64 [Y2_0, Y2_1, Y2_2, Y2_3]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) ** 3
-             - (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) **3)
-      )
-      *
-      ( /* V */
-       (((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-         (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2)
-         * 4 * (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
-                 (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2
-                )-
-                ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-                 (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2
-                )
-               ) ** 2)
-        -
+   and [
+        true,
         (limbs 64 [X3_0, X3_1, X3_2, X3_3])
-      )
-      - ( /* 2 * S1 * J */
-          2
-          * (
-             (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) **3)
-             * 4 * ((((limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
-                (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) -
-                ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-                 (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 )) ** 3)
+        = (
+           (limbs 64 [R_0, R_1, R_2, R_3]) ** 2 -
+           (limbs 64 [J_0, J_1, J_2, J_3]) -
+           2 * (limbs 64 [V_0, V_1, V_2, V_3])
           )
-     )
-     (mod  (limbs 64 [18446744073709551615,
-            4294967295,
-            0,
-            18446744069414584321 ])),
-      (limbs 64 [Z3_0, Z3_1, Z3_2, Z3_3])
-      = ((((limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) + (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3])) ** 2
-          - (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) ** 2 - (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2)
-          * (
-             (
-              (limbs 64 [X2_0, X2_1, X2_2, X2_3]) *
-              (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2
+          (mod (limbs 64 [18446744073709551615,
+                4294967295,
+                0,
+                18446744069414584321 ])),
+        (limbs 64 [Z3_0, Z3_1, Z3_2, Z3_3])
+        = (
+           (2 *  (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) *
+            (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3])
+            ) *
+           (limbs 64 [H_0, H_1, H_2, H_3])
+          )
+          (mod (limbs 64 [18446744073709551615,
+                4294967295,
+                0,
+                18446744069414584321 ])),
+         (limbs 64 [Y3_0, Y3_1, Y3_2, Y3_3])
+         =
+         ( /* r * (V - X3) */
+           /* r */
+           (limbs 64 [R_0, R_1, R_2, R_3])
+           *
+           ( /* V */
+             (limbs 64 [V_0, V_1, V_2, V_3])
+             - (limbs 64 [X3_0, X3_1, X3_2, X3_3])
+           )
+           - ( /* 2 * S1 * J */
+               2 * (limbs 64 [S1_0, S1_1, S1_2, S1_3])
+               * (limbs 64 [J_0, J_1, J_2, J_3])
              )
-             -
-             (
-              (limbs 64 [X1_0, X1_1, X1_2, X1_3]) *
-              (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2
-             )
-            )
-        )
-        (mod  (limbs 64 [  18446744073709551615,
-               4294967295,
-               0,
-               18446744069414584321 ]))
-     ]
-     &&
-     true
+         )
+         (mod  (limbs 64 [18446744073709551615,
+                4294967295,
+                0,
+                18446744069414584321 ]))
+       ] prove with all ghosts, all cuts
+       &&
+       true
 }
