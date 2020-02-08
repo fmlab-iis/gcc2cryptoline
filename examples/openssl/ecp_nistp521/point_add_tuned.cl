@@ -2227,59 +2227,59 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
 /* y_equal_47 = felem_is_zero (&ftmp5); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
 /* _365 = MEM[(limb *)&ftmp5]; */
-/* mov v365 ftmp5_0; */
-/* /\* _366 = _365 * 2; *\/ */
-/* umul v366 v365 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5] = _366; *\/ */
-/* mov ftmp5_0 v366; */
-/* /\* _367 = MEM[(limb *)&ftmp5 + 8B]; *\/ */
-/* mov v367 ftmp5_8; */
-/* /\* _368 = _367 * 2; *\/ */
-/* umul v368 v367 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 8B] = _368; *\/ */
-/* mov ftmp5_8 v368; */
-/* /\* _369 = MEM[(limb *)&ftmp5 + 16B]; *\/ */
-/* mov v369 ftmp5_16; */
-/* /\* _370 = _369 * 2; *\/ */
-/* umul v370 v369 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 16B] = _370; *\/ */
-/* mov ftmp5_16 v370; */
-/* /\* _371 = MEM[(limb *)&ftmp5 + 24B]; *\/ */
-/* mov v371 ftmp5_24; */
-/* /\* _372 = _371 * 2; *\/ */
-/* umul v372 v371 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 24B] = _372; *\/ */
-/* mov ftmp5_24 v372; */
-/* /\* _373 = MEM[(limb *)&ftmp5 + 32B]; *\/ */
-/* mov v373 ftmp5_32; */
-/* /\* _374 = _373 * 2; *\/ */
-/* umul v374 v373 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 32B] = _374; *\/ */
-/* mov ftmp5_32 v374; */
-/* /\* _375 = MEM[(limb *)&ftmp5 + 40B]; *\/ */
-/* mov v375 ftmp5_40; */
-/* /\* _376 = _375 * 2; *\/ */
-/* umul v376 v375 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 40B] = _376; *\/ */
-/* mov ftmp5_40 v376; */
-/* /\* _377 = MEM[(limb *)&ftmp5 + 48B]; *\/ */
-/* mov v377 ftmp5_48; */
-/* /\* _378 = _377 * 2; *\/ */
-/* umul v378 v377 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 48B] = _378; *\/ */
-/* mov ftmp5_48 v378; */
-/* /\* _379 = MEM[(limb *)&ftmp5 + 56B]; *\/ */
-/* mov v379 ftmp5_56; */
-/* /\* _380 = _379 * 2; *\/ */
-/* umul v380 v379 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 56B] = _380; *\/ */
-/* mov ftmp5_56 v380; */
-/* /\* _381 = MEM[(limb *)&ftmp5 + 64B]; *\/ */
-/* mov v381 ftmp5_64; */
-/* /\* _382 = _381 * 2; *\/ */
-/* umul v382 v381 0x2@uint64; */
-/* /\* MEM[(limb *)&ftmp5 + 64B] = _382; *\/ */
-/* mov ftmp5_64 v382; */
+mov v365 ftmp5_0;
+/* _366 = _365 * 2; */
+umul v366 v365 0x2@uint64;
+/* MEM[(limb *)&ftmp5] = _366; */
+mov ftmp5_0 v366;
+/* _367 = MEM[(limb *)&ftmp5 + 8B]; */
+mov v367 ftmp5_8;
+/* _368 = _367 * 2; */
+umul v368 v367 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 8B] = _368; */
+mov ftmp5_8 v368;
+/* _369 = MEM[(limb *)&ftmp5 + 16B]; */
+mov v369 ftmp5_16;
+/* _370 = _369 * 2; */
+umul v370 v369 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 16B] = _370; */
+mov ftmp5_16 v370;
+/* _371 = MEM[(limb *)&ftmp5 + 24B]; */
+mov v371 ftmp5_24;
+/* _372 = _371 * 2; */
+umul v372 v371 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 24B] = _372; */
+mov ftmp5_24 v372;
+/* _373 = MEM[(limb *)&ftmp5 + 32B]; */
+mov v373 ftmp5_32;
+/* _374 = _373 * 2; */
+umul v374 v373 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 32B] = _374; */
+mov ftmp5_32 v374;
+/* _375 = MEM[(limb *)&ftmp5 + 40B]; */
+mov v375 ftmp5_40;
+/* _376 = _375 * 2; */
+umul v376 v375 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 40B] = _376; */
+mov ftmp5_40 v376;
+/* _377 = MEM[(limb *)&ftmp5 + 48B]; */
+mov v377 ftmp5_48;
+/* _378 = _377 * 2; */
+umul v378 v377 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 48B] = _378; */
+mov ftmp5_48 v378;
+/* _379 = MEM[(limb *)&ftmp5 + 56B]; */
+mov v379 ftmp5_56;
+/* _380 = _379 * 2; */
+umul v380 v379 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 56B] = _380; */
+mov ftmp5_56 v380;
+/* _381 = MEM[(limb *)&ftmp5 + 64B]; */
+mov v381 ftmp5_64;
+/* _382 = _381 * 2; */
+umul v382 v381 0x2@uint64;
+/* MEM[(limb *)&ftmp5 + 64B] = _382; */
+mov ftmp5_64 v382;
 /* _1 = x_equal_37 != 0; */
 /* subb lt_value dontcare x_equal37 0x0@uint64; */
 /* subb gt_value dontcare value 0x0@uint64 x_equal37; */
@@ -2336,6 +2336,178 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
 /* TODO: unconditional jump */
 
 /* BB's index is 8 */
+
+ghost h_0@uint64, h_1@uint64, h_2@uint64, h_3@uint64, h_4@uint64,
+      h_5@uint64, h_6@uint64, h_7@uint64, h_8@uint64:
+  and [
+       h_0 = ftmp4_0, h_1 = ftmp4_8, h_2 = ftmp4_16, h_3 = ftmp4_24,
+       h_4 = ftmp4_32, h_5 = ftmp4_40, h_6 = ftmp4_48, h_7 = ftmp4_56,
+       h_8 = ftmp4_64
+      ] &&
+      and [
+           h_0 = ftmp4_0, h_1 = ftmp4_8, h_2 = ftmp4_16, h_3 = ftmp4_24,
+           h_4 = ftmp4_32, h_5 = ftmp4_40, h_6 = ftmp4_48, h_7 = ftmp4_56,
+           h_8 = ftmp4_64
+          ];
+
+
+ecut and [
+          (limbs 58 [z_out_0, z_out_8, z_out_16, z_out_24, z_out_32, z_out_40, z_out_48,
+                    z_out_56, z_out_64])
+          = (
+             (2 * ( limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8])  *
+              (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8])
+             ) *
+             (limbs 58 [h_0, h_1, h_2, h_3, h_4, h_5, h_6, h_7, h_8])
+            )
+            (mod  (2**521 - 1)),
+           /* r = ftmp5 = (s2 - s1) * 2 */
+           (limbs 58 [ftmp5_0, ftmp5_8, ftmp5_16, ftmp5_24, ftmp5_32, ftmp5_40,
+            ftmp5_48, ftmp5_56, ftmp5_64]) =
+           (2 * ((limbs 58 [Y2_0, Y2_1, Y2_2, Y2_3, Y2_4, Y2_5, Y2_6, Y2_7, Y2_8]) * (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) ** 3
+                 - (limbs 58 [Y1_0, Y1_1, Y1_2, Y1_3, Y1_4, Y1_5, Y1_6, Y1_7, Y1_8]) * (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) **3)
+           )
+           (mod  (2**521 - 1)),
+           /* ftmp3 = u1 = x1 * z2z2 */
+           (limbs 58 [ftmp3_0, ftmp3_8, ftmp3_16, ftmp3_24, ftmp3_32, ftmp3_40,
+            ftmp3_48, ftmp3_56, ftmp3_64]) =
+            (
+              (limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8])
+              * (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2
+             )
+             (mod  (2**521 - 1)),
+           /* ftmp4 = H */
+           (limbs 58 [ftmp4_0, ftmp4_8, ftmp4_16, ftmp4_24, ftmp4_32, ftmp4_40,
+            ftmp4_48, ftmp4_56, ftmp4_64]) =
+           (
+              (( (limbs 58 [X2_0, X2_1, X2_2, X2_3, X2_4, X2_5, X2_6, X2_7, X2_8])*
+                (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8])  **2) -
+                ((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
+                 (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2 ))
+             )
+             (mod  (2**521 - 1)),
+           /* ftmp6 = s1 = y1 * z2**3 */
+           (limbs 58 [ftmp6_0, ftmp6_8, ftmp6_16, ftmp6_24, ftmp6_32, ftmp6_40,
+            ftmp6_48, ftmp6_56, ftmp6_64]) =
+           (
+              (limbs 58 [Y1_0, Y1_1, Y1_2, Y1_3, Y1_4, Y1_5, Y1_6, Y1_7, Y1_8])
+               *
+               (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 3
+             )
+             (mod  (2**521 - 1))
+         ];
+
+rcut and [
+          x119_0 <u (2**59 + 2**14)@64,  x119_8 <u (2**59 + 2**14)@64,
+          x119_16 <u (2**59 + 2**14)@64, x119_24 <u (2**59 + 2**14)@64,
+          x119_32 <u (2**59 + 2**14)@64, x119_40 <u (2**59 + 2**14)@64,
+          x119_48 <u (2**59 + 2**14)@64, x119_56 <u (2**59 + 2**14)@64,
+          x119_64 <u (2**59 + 2**14)@64,
+          x232_0 <u (2**59 + 2**14)@64,  x232_8 <u (2**59 + 2**14)@64,
+          x232_16 <u (2**59 + 2**14)@64, x232_24 <u (2**59 + 2**14)@64,
+          x232_32 <u (2**59 + 2**14)@64, x232_40 <u (2**59 + 2**14)@64,
+          x232_48 <u (2**59 + 2**14)@64, x232_56 <u (2**59 + 2**14)@64,
+          x232_64 <u (2**59 + 2**14)@64,
+          y129_0 <u (2**59 + 2**14)@64,  y129_8 <u (2**59 + 2**14)@64,
+          y129_16 <u (2**59 + 2**14)@64, y129_24 <u (2**59 + 2**14)@64,
+          y129_32 <u (2**59 + 2**14)@64, y129_40 <u (2**59 + 2**14)@64,
+          y129_48 <u (2**59 + 2**14)@64, y129_56 <u (2**59 + 2**14)@64,
+          y129_64 <u (2**59 + 2**14)@64,
+          y242_0 <u (2**59 + 2**14)@64,  y242_8 <u (2**59 + 2**14)@64,
+          y242_16 <u (2**59 + 2**14)@64, y242_24 <u (2**59 + 2**14)@64,
+          y242_32 <u (2**59 + 2**14)@64, y242_40 <u (2**59 + 2**14)@64,
+          y242_48 <u (2**59 + 2**14)@64, y242_56 <u (2**59 + 2**14)@64,
+          y242_64 <u (2**59 + 2**14)@64,
+          z18_0 <u (2**59 + 2**14)@64,  z18_8 <u (2**59 + 2**14)@64,
+          z18_16 <u (2**59 + 2**14)@64, z18_24 <u (2**59 + 2**14)@64,
+          z18_32 <u (2**59 + 2**14)@64, z18_40 <u (2**59 + 2**14)@64,
+          z18_48 <u (2**59 + 2**14)@64, z18_56 <u (2**59 + 2**14)@64,
+          z18_64 <u (2**59 + 2**14)@64,
+          z211_0 <u (2**59 + 2**14)@64,  z211_8 <u (2**59 + 2**14)@64,
+          z211_16 <u (2**59 + 2**14)@64, z211_24 <u (2**59 + 2**14)@64,
+          z211_32 <u (2**59 + 2**14)@64, z211_40 <u (2**59 + 2**14)@64,
+          z211_48 <u (2**59 + 2**14)@64, z211_56 <u (2**59 + 2**14)@64,
+          z211_64 <u (2**59 + 2**14)@64,
+          z_out_0 <u (2**59 + 2**14)@64,  z_out_8 <u (2**59 + 2**14)@64,
+          z_out_16 <u (2**59 + 2**14)@64, z_out_24 <u (2**59 + 2**14)@64,
+          z_out_32 <u (2**59 + 2**14)@64, z_out_40 <u (2**59 + 2**14)@64,
+          z_out_48 <u (2**59 + 2**14)@64, z_out_56 <u (2**59 + 2**14)@64,
+          z_out_64 <u (2**59 + 2**14)@64,
+          ftmp3_0 <u (2**59 + 2**14)@64,  ftmp3_8 <u (2**59 + 2**14)@64,
+          ftmp3_16 <u (2**59 + 2**14)@64, ftmp3_24 <u (2**59 + 2**14)@64,
+          ftmp3_32 <u (2**59 + 2**14)@64, ftmp3_40 <u (2**59 + 2**14)@64,
+          ftmp3_48 <u (2**59 + 2**14)@64, ftmp3_56 <u (2**59 + 2**14)@64,
+          ftmp3_64 <u (2**59 + 2**14)@64,
+          ftmp4_0 <u (2**59 + 2**14)@64,  ftmp4_8 <u (2**59 + 2**14)@64,
+          ftmp4_16 <u (2**59 + 2**14)@64, ftmp4_24 <u (2**59 + 2**14)@64,
+          ftmp4_32 <u (2**59 + 2**14)@64, ftmp4_40 <u (2**59 + 2**14)@64,
+          ftmp4_48 <u (2**59 + 2**14)@64, ftmp4_56 <u (2**59 + 2**14)@64,
+          ftmp4_64 <u (2**59 + 2**14)@64,
+          ftmp5_0 <u (2**60 + 2**15)@64,  ftmp5_8 <u (2**60 + 2**15)@64,
+          ftmp5_16 <u (2**60 + 2**15)@64, ftmp5_24 <u (2**60 + 2**15)@64,
+          ftmp5_32 <u (2**60 + 2**15)@64, ftmp5_40 <u (2**60 + 2**15)@64,
+          ftmp5_48 <u (2**60 + 2**15)@64, ftmp5_56 <u (2**60 + 2**15)@64,
+          ftmp5_64 <u (2**60 + 2**15)@64,
+          ftmp6_0 <u (2**59 + 2**14)@64,  ftmp6_8 <u (2**59 + 2**14)@64,
+          ftmp6_16 <u (2**59 + 2**14)@64, ftmp6_24 <u (2**59 + 2**14)@64,
+          ftmp6_32 <u (2**59 + 2**14)@64, ftmp6_40 <u (2**59 + 2**14)@64,
+          ftmp6_48 <u (2**59 + 2**14)@64, ftmp6_56 <u (2**59 + 2**14)@64,
+          ftmp6_64 <u (2**59 + 2**14)@64
+          ];
+
+ghost R_0@uint64, R_1@uint64, R_2@uint64, R_3@uint64, R_4@uint64,
+      R_5@uint64, R_6@uint64, R_7@uint64, R_8@uint64:
+  and [
+       R_0 = ftmp5_0, R_1 = ftmp5_8, R_2 = ftmp5_16, R_3 = ftmp5_24,
+       R_4 = ftmp5_32, R_5 = ftmp5_40, R_6 = ftmp5_48, R_7 = ftmp5_56,
+       R_8 = ftmp5_64
+      ] &&
+      and [
+           R_0 = ftmp5_0, R_1 = ftmp5_8, R_2 = ftmp5_16, R_3 = ftmp5_24,
+           R_4 = ftmp5_32, R_5 = ftmp5_40, R_6 = ftmp5_48, R_7 = ftmp5_56,
+           R_8 = ftmp5_64
+          ];
+
+ghost H_0@uint64, H_1@uint64, H_2@uint64, H_3@uint64, H_4@uint64,
+      H_5@uint64, H_6@uint64, H_7@uint64, H_8@uint64:
+  and [
+       H_0 = ftmp4_0, H_1 = ftmp4_8, H_2 = ftmp4_16, H_3 = ftmp4_24,
+       H_4 = ftmp4_32, H_5 = ftmp4_40, H_6 = ftmp4_48, H_7 = ftmp4_56,
+       H_8 = ftmp4_64
+      ] &&
+      and [
+           H_0 = ftmp4_0, H_1 = ftmp4_8, H_2 = ftmp4_16, H_3 = ftmp4_24,
+           H_4 = ftmp4_32, H_5 = ftmp4_40, H_6 = ftmp4_48, H_7 = ftmp4_56,
+           H_8 = ftmp4_64
+          ];
+
+ghost U1_0@uint64, U1_1@uint64, U1_2@uint64, U1_3@uint64, U1_4@uint64,
+      U1_5@uint64, U1_6@uint64, U1_7@uint64, U1_8@uint64:
+  and [
+       U1_0 = ftmp3_0, U1_1 = ftmp3_8, U1_2 = ftmp3_16, U1_3 = ftmp3_24,
+       U1_4 = ftmp3_32, U1_5 = ftmp3_40, U1_6 = ftmp3_48, U1_7 = ftmp3_56,
+       U1_8 = ftmp3_64
+      ] &&
+      and [
+           U1_0 = ftmp3_0, U1_1 = ftmp3_8, U1_2 = ftmp3_16, U1_3 = ftmp3_24,
+           U1_4 = ftmp3_32, U1_5 = ftmp3_40, U1_6 = ftmp3_48, U1_7 = ftmp3_56,
+           U1_8 = ftmp3_64
+          ];
+
+ghost S1_0@uint64, S1_1@uint64, S1_2@uint64, S1_3@uint64, S1_4@uint64,
+      S1_5@uint64, S1_6@uint64, S1_7@uint64, S1_8@uint64:
+  and [
+       S1_0 = ftmp6_0, S1_1 = ftmp6_8, S1_2 = ftmp6_16, S1_3 = ftmp6_24,
+       S1_4 = ftmp6_32, S1_5 = ftmp6_40, S1_6 = ftmp6_48, S1_7 = ftmp6_56,
+       S1_8 = ftmp6_64
+      ] &&
+      and [
+           S1_0 = ftmp6_0, S1_1 = ftmp6_8, S1_2 = ftmp6_16, S1_3 = ftmp6_24,
+           S1_4 = ftmp6_32, S1_5 = ftmp6_40, S1_6 = ftmp6_48, S1_7 = ftmp6_56,
+           S1_8 = ftmp6_64
+          ];
+
+
 
 /* _236 = MEM[(const limb *)&ftmp4]; */
 mov v236 ftmp4_0;
@@ -2401,6 +2573,20 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    ftmp_0, ftmp_8, ftmp_16, ftmp_24, ftmp_32,
                    ftmp_40, ftmp_48, ftmp_56, ftmp_64);
+
+ghost I_0@uint64, I_1@uint64, I_2@uint64, I_3@uint64, I_4@uint64,
+      I_5@uint64, I_6@uint64, I_7@uint64, I_8@uint64:
+  and [
+       I_0 = ftmp_0, I_1 = ftmp_8, I_2 = ftmp_16, I_3 = ftmp_24,
+       I_4 = ftmp_32, I_5 = ftmp_40, I_6 = ftmp_48, I_7 = ftmp_56,
+       I_8 = ftmp_64
+      ] &&
+      and [
+           I_0 = ftmp_0, I_1 = ftmp_8, I_2 = ftmp_16, I_3 = ftmp_24,
+           I_4 = ftmp_32, I_5 = ftmp_40, I_6 = ftmp_48, I_7 = ftmp_56,
+           I_8 = ftmp_64
+          ];
+
 /* felem_mul (&tmp, &ftmp4, &ftmp); */
 call felem_mul (ftmp4_0, ftmp4_8, ftmp4_16, ftmp4_24, ftmp4_32,
                 ftmp4_40, ftmp4_48, ftmp4_56, ftmp4_64,
@@ -2413,6 +2599,21 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    ftmp2_0, ftmp2_8, ftmp2_16, ftmp2_24, ftmp2_32,
                    ftmp2_40, ftmp2_48, ftmp2_56, ftmp2_64);
+
+ghost J_0@uint64, J_1@uint64, J_2@uint64, J_3@uint64, J_4@uint64,
+      J_5@uint64, J_6@uint64, J_7@uint64, J_8@uint64:
+  and [
+       J_0 = ftmp2_0, J_1 = ftmp2_8, J_2 = ftmp2_16, J_3 = ftmp2_24,
+       J_4 = ftmp2_32, J_5 = ftmp2_40, J_6 = ftmp2_48, J_7 = ftmp2_56,
+       J_8 = ftmp2_64
+      ] &&
+      and [
+           J_0 = ftmp2_0, J_1 = ftmp2_8, J_2 = ftmp2_16, J_3 = ftmp2_24,
+           J_4 = ftmp2_32, J_5 = ftmp2_40, J_6 = ftmp2_48, J_7 = ftmp2_56,
+           J_8 = ftmp2_64
+          ];
+
+
 /* felem_mul (&tmp, &ftmp3, &ftmp); */
 call felem_mul (ftmp3_0, ftmp3_8, ftmp3_16, ftmp3_24, ftmp3_32,
                 ftmp3_40, ftmp3_48, ftmp3_56, ftmp3_64,
@@ -2425,6 +2626,20 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    ftmp4_0, ftmp4_8, ftmp4_16, ftmp4_24, ftmp4_32,
                    ftmp4_40, ftmp4_48, ftmp4_56, ftmp4_64);
+
+ghost V_0@uint64, V_1@uint64, V_2@uint64, V_3@uint64, V_4@uint64,
+      V_5@uint64, V_6@uint64, V_7@uint64, V_8@uint64:
+  and [
+       V_0 = ftmp4_0, V_1 = ftmp4_8, V_2 = ftmp4_16, V_3 = ftmp4_24,
+       V_4 = ftmp4_32, V_5 = ftmp4_40, V_6 = ftmp4_48, V_7 = ftmp4_56,
+       V_8 = ftmp4_64
+      ] &&
+      and [
+           V_0 = ftmp4_0, V_1 = ftmp4_8, V_2 = ftmp4_16, V_3 = ftmp4_24,
+           V_4 = ftmp4_32, V_5 = ftmp4_40, V_6 = ftmp4_48, V_7 = ftmp4_56,
+           V_8 = ftmp4_64
+          ];
+
 /* felem_square (&tmp, &ftmp5); */
 call felem_square (ftmp5_0, ftmp5_8, ftmp5_16, ftmp5_24, ftmp5_32,
                   ftmp5_40, ftmp5_48, ftmp5_56, ftmp5_64,
@@ -2521,6 +2736,18 @@ call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    x_out_0, x_out_8, x_out_16, x_out_24, x_out_32,
                    x_out_40, x_out_48, x_out_56, x_out_64);
+
+ecut and [
+          (limbs 58 [x_out_0, x_out_8, x_out_16, x_out_24, x_out_32, x_out_40,
+           x_out_48, x_out_56, x_out_64])
+          = (
+             (limbs 58 [R_0, R_1, R_2, R_3, R_4, R_5, R_6, R_7, R_8])
+             ** 2 - (limbs 58 [J_0, J_1, J_2, J_3, J_4, J_5, J_6, J_7, J_8])
+             - 2 * (limbs 58 [V_0, V_1, V_2, V_3, V_4, V_5, V_6, V_7, V_8])
+            )
+            (mod  (2**521 - 1))
+         ] prove with all ghosts, all cuts;
+
 /* vect__402301_264 = MEM[(limb *)&ftmp3]; */
 mov vect__402301264_0 ftmp3_0;
 mov vect__402301264_8 ftmp3_8;
@@ -3244,71 +3471,37 @@ mov Z3_8 z_out_64@uint64;
 
 {
  /* http://hyperelliptic.org/EFD/g1p/auto-shortw-jacobian-3.html#addition-add-2007-bl */
- and [
-      (limbs 58 [X3_0, X3_1, X3_2, X3_3, X3_4, X3_5, X3_6, X3_7, X3_8])
-      = ((2 * ((limbs 58 [Y2_0, Y2_1, Y2_2, Y2_3, Y2_4, Y2_5, Y2_6, Y2_7, Y2_8]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) ** 3
-             - (limbs 58 [Y1_0, Y1_1, Y1_2, Y1_3, Y1_4, Y1_5, Y1_6, Y1_7, Y1_8]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) **3)
-       ) ** 2
-       - 4 * ((((limbs 58 [X2_0, X2_1, X2_2, X2_3, X2_4, X2_5, X2_6, X2_7, X2_8]) *
-                (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) **2) -
-                ((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-                 (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2 )) ** 3)
-       - 2 * (((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-                (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2)
-               * 4 * (((limbs 58 [X2_0, X2_1, X2_2, X2_3, X2_4, X2_5, X2_6, X2_7, X2_8]) *
-                              (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) **2
-                             )-
-                             ((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-                              (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2
-                             )
-                            ) ** 2))
-       (mod  (2**521 - 1)),
-     (limbs 58 [Y3_0, Y3_1, Y3_2, Y3_3, Y3_4, Y3_5, Y3_6, Y3_7, Y3_8])
-     =
-     ( /* r * (V - X3) */
-      /* r */
-      (2 * ((limbs 58 [Y2_0, Y2_1, Y2_2, Y2_3, Y2_4, Y2_5, Y2_6, Y2_7, Y2_8]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) ** 3
-             - (limbs 58 [Y1_0, Y1_1, Y1_2, Y1_3, Y1_4, Y1_5, Y1_6, Y1_7, Y1_8]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) **3)
-      )
-      *
-      ( /* V */
-       (((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-         (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2)
-         * 4 * (((limbs 58 [X2_0, X2_1, X2_2, X2_3, X2_4, X2_5, X2_6, X2_7, X2_8]) *
-                 (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) **2
-                )-
-                ((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-                 (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2
-                )
-               ) ** 2)
-        -
+   and [
         (limbs 58 [X3_0, X3_1, X3_2, X3_3, X3_4, X3_5, X3_6, X3_7, X3_8])
-      )
-      - ( /* 2 * S1 * J */
-          2
-          * (
-             (limbs 58 [Y1_0, Y1_1, Y1_2, Y1_3, Y1_4, Y1_5, Y1_6, Y1_7, Y1_8]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) **3)
-             * 4 * ((((limbs 58 [X2_0, X2_1, X2_2, X2_3, X2_4, X2_5, X2_6, X2_7, X2_8]) *
-                (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) **2) -
-                ((limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-                 (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2 )) ** 3)
+        = (
+           (limbs 58 [R_0, R_1, R_2, R_3, R_4, R_5, R_6, R_7, R_8])
+            ** 2 - (limbs 58 [J_0, J_1, J_2, J_3, J_4, J_5, J_6, J_7, J_8])
+            - 2 * (limbs 58 [V_0, V_1, V_2, V_3, V_4, V_5, V_6, V_7, V_8])
           )
-     )
-     (mod  (2**521 - 1)),
-      (limbs 58 [Z3_0, Z3_1, Z3_2, Z3_3, Z3_4, Z3_5, Z3_6, Z3_7, Z3_8])
-      = (((( limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) + ( limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8])) ** 2
-          - ( limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) ** 2 - ( limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2)
-          * ((
-              ( limbs 58 [X2_0, X2_1, X2_2, X2_3, X2_4, X2_5, X2_6, X2_7, X2_8]) *
-              ( limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8]) **2
-             )
-             -
-             (( limbs 58 [X1_0, X1_1, X1_2, X1_3, X1_4, X1_5, X1_6, X1_7, X1_8]) *
-              ( limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8]) ** 2
+          (mod  (2**521 - 1)),
+        (limbs 58 [Y3_0, Y3_1, Y3_2, Y3_3, Y3_4, Y3_5, Y3_6, Y3_7, Y3_8])
+         =
+         ( /* r * (V - X3) */
+           /* r */
+           (limbs 58 [R_0, R_1, R_2, R_3, R_4, R_5, R_6, R_7, R_8]) *
+           ( /* V */
+             (limbs 58 [V_0, V_1, V_2, V_3, V_4, V_5, V_6, V_7, V_8])
+             - (limbs 58 [X3_0, X3_1, X3_2, X3_3, X3_4, X3_5, X3_6, X3_7, X3_8])
+           )
+           - ( /* 2 * S1 * J */
+               2 * (limbs 58 [S1_0, S1_1, S1_2, S1_3, S1_4, S1_5, S1_6, S1_7, S1_8])
+               * (limbs 58 [J_0, J_1, J_2, J_3, J_4, J_5, J_6, J_7, J_8])
              ))
-        )
-        (mod  (2**521 - 1))
-     ]
+         (mod  (2**521 - 1)),
+         (limbs 58 [Z3_0, Z3_1, Z3_2, Z3_3, Z3_4, Z3_5, Z3_6, Z3_7, Z3_8])
+         = (
+            (2 *  (limbs 58 [Z1_0, Z1_1, Z1_2, Z1_3, Z1_4, Z1_5, Z1_6, Z1_7, Z1_8])  *
+             (limbs 58 [Z2_0, Z2_1, Z2_2, Z2_3, Z2_4, Z2_5, Z2_6, Z2_7, Z2_8])
+            ) *
+            (limbs 58 [H_0, H_1, H_2, H_3, H_4, H_5, H_6, H_7, H_8])
+           )
+           (mod  (2**521 - 1))
+     ] prove with all ghosts, all cuts
      &&
      true
 }

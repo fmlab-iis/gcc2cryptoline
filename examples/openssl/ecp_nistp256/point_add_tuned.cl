@@ -2465,34 +2465,6 @@ call felem_shrink (ftmp4_0, ftmp4_16, ftmp4_32, ftmp4_48,
                    small4_0, small4_8, small4_16, small4_24);
 
 /* h = ftmp4 = small4 = u2 - u1 */
-/* assert (limbs 64 [small4_0, small4_8, small4_16, small4_24]) = */
-/* (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) * */
-/*   (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) - */
-/*   ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) * */
-/*    (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 )) */
-/*    (mod (limbs 64 [18446744073709551615, */
-/*          4294967295, */
-/*          0, */
-/*          18446744069414584321 ])) && true; */
-
-/* assume (limbs 64 [small4_0, small4_8, small4_16, small4_24]) = */
-/* (((limbs 64 [X2_0, X2_1, X2_2, X2_3]) * */
-/*   (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) **2) - */
-/*   ((limbs 64 [X1_0, X1_1, X1_2, X1_3]) * */
-/*    (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) ** 2 )) */
-/*    (mod (limbs 64 [18446744073709551615, */
-/*          4294967295, */
-/*          0, */
-/*          18446744069414584321 ])) && true; */
-
-
-
-/* ecut and */
-/*          [ */
-/*           H_0 = ftmp4_0, H_1 = ftmp4_16, */
-/*           H_2 = ftmp4_32, H_3 = ftmp4_48, */
-/*           ftmp5_0 = ftmp5_0, ftmp5_16 = ftmp5_16, ftmp5_32 = ftmp5_32, ftmp5_48 = ftmp5_48 */
-/*          ]; */
 
 /* x_equal_39 = smallfelem_is_zero (&small4); */
 /* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte */
@@ -2576,22 +2548,6 @@ call felem_shrink (ftmp5_0, ftmp5_16, ftmp5_32, ftmp5_48,
                    small1_0, small1_8, small1_16, small1_24);
 
 /* r = ftmp5 = small1 = (s2 - s1) * 2 */
-
-/* ecut and [ */
-/*           small1_0 = (small1_0 * small1_0), small1_8 = small1_8, small1_16 = small1_16, */
-/*           small1_24 = small1_24, */
-/*           Y2_0 = Y2_0 */
-/*      ]; */
-
-
-/* assert (limbs 64 [small1_0, small1_8, small1_16, small1_24]) = */
-/* (2 * ((limbs 64 [Y2_0, Y2_1, Y2_2, Y2_3]) * (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) ** 3 */
-/*       - (limbs 64 [Y1_0, Y1_1, Y1_2, Y1_3]) * (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3]) **3) */
-/* ) (mod (limbs 64 [18446744073709551615, */
-/*          4294967295, */
-/*          0, */
-/*          18446744069414584321 ])) */
-/* && true; */
 
 
 /* y_equal_48 = smallfelem_is_zero (&small1); */
@@ -3494,23 +3450,11 @@ mov Z3_3 z_out_48@uint128;
 {
  /* http://hyperelliptic.org/EFD/g1p/auto-shortw-jacobian-3.html#addition-add-2007-bl */
    and [
-        true,
         (limbs 64 [X3_0, X3_1, X3_2, X3_3])
         = (
            (limbs 64 [R_0, R_1, R_2, R_3]) ** 2 -
            (limbs 64 [J_0, J_1, J_2, J_3]) -
            2 * (limbs 64 [V_0, V_1, V_2, V_3])
-          )
-          (mod (limbs 64 [18446744073709551615,
-                4294967295,
-                0,
-                18446744069414584321 ])),
-        (limbs 64 [Z3_0, Z3_1, Z3_2, Z3_3])
-        = (
-           (2 *  (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) *
-            (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3])
-            ) *
-           (limbs 64 [H_0, H_1, H_2, H_3])
           )
           (mod (limbs 64 [18446744073709551615,
                 4294967295,
@@ -3532,6 +3476,17 @@ mov Z3_3 z_out_48@uint128;
              )
          )
          (mod  (limbs 64 [18446744073709551615,
+                4294967295,
+                0,
+                18446744069414584321 ])),
+        (limbs 64 [Z3_0, Z3_1, Z3_2, Z3_3])
+        = (
+           (2 *  (limbs 64 [Z1_0, Z1_1, Z1_2, Z1_3]) *
+            (limbs 64 [Z2_0, Z2_1, Z2_2, Z2_3])
+            ) *
+           (limbs 64 [H_0, H_1, H_2, H_3])
+          )
+          (mod (limbs 64 [18446744073709551615,
                 4294967295,
                 0,
                 18446744069414584321 ]))
