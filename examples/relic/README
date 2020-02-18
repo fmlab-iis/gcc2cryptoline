@@ -1,0 +1,7 @@
+CFLAGS=-c -pipe -std=c99 -m64 -Wall   -O2 -funroll-loops \
+       -fomit-frame-pointer -fPIC -D_GNU_SOURCE -Drelic_EXPORTS \
+       -I$RELICDIR/build/include -I$RELICDIR/relic/include \
+       -I$RELICDIR/include/low \
+       -fplugin=../../build/gcc2cryptoline.so \
+       -fplugin-arg-gcc2cryptoline-dump \
+       -fplugin-arg-gcc2cryptoline-func=<fname>
