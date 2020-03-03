@@ -37,6 +37,7 @@ uint64_t get_vector_length(tree expr);
 bool is_vector_type(tree expr);
 string generate_cryptoline_type(tree type);
 string get_constant_str(tree expr, bool append_type = false, bool signed_to_unsigned = false);
+bool is_integer_zero(tree expr);
 vector<string> parse_vector_cst(tree expr, uint64_t length);
 vector<uint64_t> parse_vector_cst_uint(tree expr, uint64_t length);
 #endif

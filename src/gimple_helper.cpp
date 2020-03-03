@@ -338,6 +338,29 @@ string get_constant_str(tree expr, bool append_type, bool signed_to_unsigned)
         return result;
     return result + '@' + type;
 }
+
+bool is_integer_zero(tree expr)
+{
+    assert(TREE_CODE(get_type(expr)) == INTEGER_TYPE);
+    string type = generate_cryptoline_type(expr);
+    uint64_t value = get_integer_value_low(expr);
+    __uint128_t value_uint128 = 0;
+    __int128_t value_int128 = 0;
+
+    if (get_integer_size(expr) > 128) {
+      NOT_IMPLEMENT;
+    }
+
+    if (get_integer_size(expr) == 128) {
+        value_uint128 = get_integer_value_high(expr);
+        value_uint128 <<= 64;
+        value_uint128 += value;
+        value_int128 = value_uint128;
+        return value_uint128 == 0;
+    }
+    return value == 0;
+}
+
 vector<string> parse_vector_cst(tree expr, uint64_t length)
 {
     assert(TREE_CODE(expr) == VECTOR_CST);

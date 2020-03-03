@@ -1490,22 +1490,27 @@ string pass_cryptoline::parse_eq(tree lhs, tree op0, tree op1, bool inverse) {
     output << fmt::format("subb gt_value dontcare {} {};", pop1.str(),
                           pop0.str())
            << endl;
-    add_lhs(plhs);
-    add_rhs(pop0);
-    add_rhs(pop1);
+    output << fmt::format("or uint1 {} lt_value gt_value;", plhs.str()) << endl;
   } else if (TREE_CODE(op1) == INTEGER_CST) {
     string name = get_constant_str(op1, true);
+    bool skip_lt = is_integer_zero(op1) && is_expr_unsigned(lhs);
+    if(!skip_lt){
     output << fmt::format("subb lt_value dontcare {} {};", pop0.str(), name)
            << endl;
-    output << fmt::format("subb gt_value dontcare value {} {};", name,
+    }
+    output << fmt::format("subb gt_value dontcare {} {};", name,
                           pop0.str())
            << endl;
 
+    if(!skip_lt){
+      output << fmt::format("or uint1 {} lt_value gt_value;", plhs.str()) << endl;
+    }else {
+      output << fmt::format("mov {} gt_value;", plhs.str()) << endl;
+    }
   } else {
     throw "Not implemented";
   }
   /* inverse:true -> not equal */
-  output << fmt::format("or uint1 {} lt_value gt_value;", plhs.str()) << endl;
   if (!inverse) {
     output << fmt::format("not uint1 {} {};", plhs.str(), plhs.str()) << endl;
   }
