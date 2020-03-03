@@ -1,0 +1,2230 @@
+
+;; Function fp_add1_low (fp_add1_low, funcdef_no=30, decl_uid=2627, cgraph_uid=30, symbol_order=30)
+
+fp_add1_low (dig_t * c, const dig_t * a, dig_t digit)
+{
+  dig_t r0;
+  dig_t carry;
+  int i;
+  long long unsigned int _1;
+  _Bool _2;
+  long long unsigned int _6;
+  long long unsigned int _34;
+  long long unsigned int _62;
+  long long unsigned int _66;
+  long long unsigned int _72;
+  long long unsigned int _87;
+  long long unsigned int _102;
+  __complex__ long long unsigned int _104;
+  long long unsigned int _114;
+  long long unsigned int _163;
+  long long unsigned int _172;
+  long long unsigned int _185;
+
+  <bb 2> [local count: 214748365]:
+  if (digit_16(D) != 0)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 10>; [20.00%]
+
+  <bb 3> [local count: 171798688]:
+  _72 = *a_20(D);
+  _104 = ADD_OVERFLOW (digit_16(D), _72);
+  r0_73 = REALPART_EXPR <_104>;
+  _66 = IMAGPART_EXPR <_104>;
+  *c_19(D) = r0_73;
+  a_78 = a_20(D) + 8;
+  c_79 = c_19(D) + 8;
+  if (_66 != 0)
+    goto <bb 4>; [80.00%]
+  else
+    goto <bb 11>; [20.00%]
+
+  <bb 4> [local count: 137438951]:
+  _87 = MEM[(const dig_t *)a_20(D) + 8B];
+  r0_88 = _87 + 1;
+  MEM[(dig_t *)c_19(D) + 8B] = r0_88;
+  a_93 = &MEM[(void *)a_20(D) + 16B];
+  c_94 = &MEM[(void *)c_19(D) + 16B];
+  if (r0_88 == 0)
+    goto <bb 5>; [80.00%]
+  else
+    goto <bb 11>; [20.00%]
+
+  <bb 5> [local count: 109951162]:
+  _102 = MEM[(const dig_t *)a_20(D) + 16B];
+  r0_103 = _102 + 1;
+  MEM[(dig_t *)c_19(D) + 16B] = r0_103;
+  if (r0_103 == 0)
+    goto <bb 6>; [80.00%]
+  else
+    goto <bb 12>; [20.00%]
+
+  <bb 6> [local count: 87960928]:
+  _1 = MEM[(const dig_t *)a_20(D) + 24B];
+  r0_22 = _1 + 1;
+  _2 = r0_22 == 0;
+  carry_23 = (dig_t) _2;
+  MEM[(dig_t *)c_19(D) + 24B] = r0_22;
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 108118643]:
+  # a_194 = PHI <a_166(10), a_35(11)>
+  # i_195 = PHI <2(10), i_37(11)>
+  # c_196 = PHI <c_167(10), c_57(11)>
+  _62 = *a_194;
+  *c_196 = _62;
+  if (i_195 == 2)
+    goto <bb 8>; [80.00%]
+  else
+    goto <bb 9>; [20.00%]
+
+  <bb 8> [local count: 86494912]:
+  _6 = MEM[(const dig_t *)a_194 + 8B];
+  MEM[(dig_t *)c_196 + 8B] = _6;
+
+  <bb 9> [local count: 214748364]:
+  # carry_10 = PHI <carry_23(6), 0(8), r0_88(12), 0(7), 0(11)>
+  return carry_10;
+
+  <bb 10> [local count: 42949674]:
+  _114 = *a_20(D);
+  *c_19(D) = _114;
+  _163 = MEM[(const dig_t *)a_20(D) + 8B];
+  MEM[(dig_t *)c_19(D) + 8B] = _163;
+  a_166 = &MEM[(void *)a_20(D) + 16B];
+  c_167 = &MEM[(void *)c_19(D) + 16B];
+  goto <bb 7>; [100.00%]
+
+  <bb 11> [local count: 92198627]:
+  # i_177 = PHI <1(3), 2(4)>
+  # a_178 = PHI <a_78(3), a_93(4)>
+  # c_179 = PHI <c_79(3), c_94(4)>
+  _172 = *a_178;
+  *c_179 = _172;
+  _34 = MEM[(const dig_t *)a_178 + 8B];
+  MEM[(dig_t *)c_179 + 8B] = _34;
+  i_37 = i_177 + 2;
+  a_35 = &MEM[(void *)a_178 + 16B];
+  c_57 = &MEM[(void *)c_179 + 16B];
+  if (i_37 != 4)
+    goto <bb 7>; [70.68%]
+  else
+    goto <bb 9>; [29.32%]
+
+  <bb 12> [local count: 21990233]:
+  _185 = MEM[(const dig_t *)a_20(D) + 24B];
+  MEM[(dig_t *)c_19(D) + 24B] = _185;
+  goto <bb 9>; [100.00%]
+
+}
+
+
+
+;; Function fp_addn_low (fp_addn_low, funcdef_no=31, decl_uid=2631, cgraph_uid=31, symbol_order=31)
+
+fp_addn_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t r1;
+  dig_t r0;
+  dig_t carry;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  long long unsigned int _7;
+  long long unsigned int _8;
+  _Bool _11;
+  __complex__ long long unsigned int _21;
+  long long unsigned int _22;
+  __complex__ long long unsigned int _23;
+  __complex__ long long unsigned int _27;
+  long long unsigned int _28;
+  long long unsigned int _44;
+  __complex__ long long unsigned int _45;
+  long long unsigned int _55;
+  long long unsigned int _56;
+  _Bool _58;
+  _Bool _60;
+  _Bool _61;
+  __complex__ long long unsigned int _65;
+  long long unsigned int _66;
+  long long unsigned int _73;
+  __complex__ long long unsigned int _74;
+  long long unsigned int _75;
+  long long unsigned int _76;
+  long long unsigned int _77;
+  _Bool _79;
+  _Bool _81;
+  _Bool _82;
+  long long unsigned int _86;
+  __complex__ long long unsigned int _87;
+
+  <bb 2> [local count: 214748365]:
+  _8 = *a_13(D);
+  _7 = *b_14(D);
+  _45 = ADD_OVERFLOW (_7, _8);
+  r0_6 = REALPART_EXPR <_45>;
+  _66 = IMAGPART_EXPR <_45>;
+  _5 = _66 != 0;
+  carry_41 = (dig_t) _5;
+  *c_12(D) = r0_6;
+  _55 = MEM[(const dig_t *)a_13(D) + 8B];
+  _56 = MEM[(const dig_t *)b_14(D) + 8B];
+  _87 = ADD_OVERFLOW (_55, _56);
+  r0_57 = REALPART_EXPR <_87>;
+  _44 = IMAGPART_EXPR <_87>;
+  _58 = _44 != 0;
+  _65 = ADD_OVERFLOW (carry_41, r0_57);
+  r1_59 = REALPART_EXPR <_65>;
+  _86 = IMAGPART_EXPR <_65>;
+  _60 = _86 != 0;
+  _61 = _58 | _60;
+  carry_62 = (dig_t) _61;
+  MEM[(dig_t *)c_12(D) + 8B] = r1_59;
+  _76 = MEM[(const dig_t *)a_13(D) + 16B];
+  _77 = MEM[(const dig_t *)b_14(D) + 16B];
+  _27 = ADD_OVERFLOW (_76, _77);
+  r0_78 = REALPART_EXPR <_27>;
+  _28 = IMAGPART_EXPR <_27>;
+  _79 = _28 != 0;
+  _21 = ADD_OVERFLOW (carry_62, r0_78);
+  r1_80 = REALPART_EXPR <_21>;
+  _22 = IMAGPART_EXPR <_21>;
+  _81 = _22 != 0;
+  _82 = _79 | _81;
+  carry_83 = (dig_t) _82;
+  MEM[(dig_t *)c_12(D) + 16B] = r1_80;
+  _1 = MEM[(const dig_t *)a_13(D) + 24B];
+  _2 = MEM[(const dig_t *)b_14(D) + 24B];
+  _23 = ADD_OVERFLOW (_1, _2);
+  r0_16 = REALPART_EXPR <_23>;
+  _73 = IMAGPART_EXPR <_23>;
+  _3 = _73 != 0;
+  _74 = ADD_OVERFLOW (r0_16, carry_83);
+  r1_17 = REALPART_EXPR <_74>;
+  _75 = IMAGPART_EXPR <_74>;
+  _4 = _75 != 0;
+  _11 = _3 | _4;
+  carry_18 = (dig_t) _11;
+  MEM[(dig_t *)c_12(D) + 24B] = r1_17;
+  return carry_18;
+
+}
+
+
+
+;; Function fp_addm_low (fp_addm_low, funcdef_no=32, decl_uid=2635, cgraph_uid=32, symbol_order=32)
+
+fp_addm_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t r0;
+  dig_t diff;
+  dig_t r1;
+  dig_t r0;
+  dig_t carry;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  __complex__ long long unsigned int _7;
+  const dig_t * _8;
+  int _9;
+  const dig_t * _10;
+  _Bool _11;
+  __complex__ long long unsigned int _15;
+  _Bool _18;
+  long long unsigned int _24;
+  long long unsigned int _34;
+  long long unsigned int _36;
+  long long unsigned int _58;
+  long long unsigned int _59;
+  long long unsigned int _84;
+  long long unsigned int _85;
+  _Bool _88;
+  _Bool _89;
+  _Bool _90;
+  long long unsigned int _92;
+  long long unsigned int prephitmp_93;
+  long long unsigned int _97;
+  long long unsigned int _105;
+  long long unsigned int _106;
+  _Bool _109;
+  _Bool _110;
+  _Bool _111;
+  long long unsigned int _113;
+  long long unsigned int prephitmp_114;
+  long long unsigned int _118;
+  long long unsigned int _126;
+  long long unsigned int _127;
+  _Bool _129;
+  __complex__ long long unsigned int _130;
+  long long unsigned int _132;
+  __complex__ long long unsigned int _136;
+  long long unsigned int _139;
+  __complex__ long long unsigned int _140;
+  long long unsigned int _148;
+  long long unsigned int _149;
+  _Bool _151;
+  _Bool _153;
+  _Bool _154;
+  __complex__ long long unsigned int _161;
+  long long unsigned int _162;
+  long long unsigned int _170;
+  long long unsigned int _171;
+  _Bool _173;
+  _Bool _175;
+  _Bool _176;
+  long long unsigned int _180;
+  long long unsigned int _183;
+  __complex__ long long unsigned int _184;
+
+  <bb 2> [local count: 214748365]:
+  _126 = *a_19(D);
+  _127 = *b_20(D);
+  _15 = ADD_OVERFLOW (_126, _127);
+  r0_128 = REALPART_EXPR <_15>;
+  _118 = IMAGPART_EXPR <_15>;
+  _129 = _118 != 0;
+  carry_133 = (dig_t) _129;
+  *c_25(D) = r0_128;
+  _148 = MEM[(const dig_t *)a_19(D) + 8B];
+  _149 = MEM[(const dig_t *)b_20(D) + 8B];
+  _7 = ADD_OVERFLOW (_148, _149);
+  r0_150 = REALPART_EXPR <_7>;
+  _180 = IMAGPART_EXPR <_7>;
+  _151 = _180 != 0;
+  _140 = ADD_OVERFLOW (carry_133, r0_150);
+  r1_152 = REALPART_EXPR <_140>;
+  _162 = IMAGPART_EXPR <_140>;
+  _153 = _162 != 0;
+  _154 = _151 | _153;
+  carry_155 = (dig_t) _154;
+  MEM[(dig_t *)c_25(D) + 8B] = r1_152;
+  _170 = MEM[(const dig_t *)a_19(D) + 16B];
+  _171 = MEM[(const dig_t *)b_20(D) + 16B];
+  _184 = ADD_OVERFLOW (_170, _171);
+  r0_172 = REALPART_EXPR <_184>;
+  _139 = IMAGPART_EXPR <_184>;
+  _173 = _139 != 0;
+  _161 = ADD_OVERFLOW (carry_155, r0_172);
+  r1_174 = REALPART_EXPR <_161>;
+  _183 = IMAGPART_EXPR <_161>;
+  _175 = _183 != 0;
+  _176 = _173 | _175;
+  carry_177 = (dig_t) _176;
+  MEM[(dig_t *)c_25(D) + 16B] = r1_174;
+  _1 = MEM[(const dig_t *)a_19(D) + 24B];
+  _2 = MEM[(const dig_t *)b_20(D) + 24B];
+  _130 = ADD_OVERFLOW (_1, _2);
+  r0_22 = REALPART_EXPR <_130>;
+  _132 = IMAGPART_EXPR <_130>;
+  _3 = _132 != 0;
+  _136 = ADD_OVERFLOW (r0_22, carry_177);
+  r1_23 = REALPART_EXPR <_136>;
+  _24 = IMAGPART_EXPR <_136>;
+  _4 = _24 != 0;
+  _18 = _3 | _4;
+  MEM[(dig_t *)c_25(D) + 24B] = r1_23;
+  if (_18 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 3> [local count: 178241144]:
+  _10 = fp_prime_get ();
+  _59 = MEM[(const dig_t *)c_25(D)];
+  _58 = *_10;
+  diff_56 = _59 - _58;
+  _11 = _58 > _59;
+  _97 = (long long unsigned int) _11;
+  *c_25(D) = diff_56;
+  _84 = MEM[(const dig_t *)c_25(D) + 8B];
+  _85 = MEM[(const dig_t *)_10 + 8B];
+  diff_86 = _84 - _85;
+  r0_87 = diff_86 - _97;
+  if (_84 < _85)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 89120572]:
+  _88 = (_Bool) _97;
+  _89 = diff_86 == 0;
+  _90 = _88 & _89;
+  _92 = (long long unsigned int) _90;
+
+  <bb 5> [local count: 178241144]:
+  # prephitmp_93 = PHI <_92(4), 1(3)>
+  MEM[(dig_t *)c_25(D) + 8B] = r0_87;
+  _105 = MEM[(const dig_t *)c_25(D) + 16B];
+  _106 = MEM[(const dig_t *)_10 + 16B];
+  diff_107 = _105 - _106;
+  r0_108 = diff_107 - prephitmp_93;
+  if (_105 < _106)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 89120572]:
+  _109 = (_Bool) prephitmp_93;
+  _110 = diff_107 == 0;
+  _111 = _109 & _110;
+  _113 = (long long unsigned int) _111;
+
+  <bb 7> [local count: 178241144]:
+  # prephitmp_114 = PHI <_113(6), 1(5)>
+  MEM[(dig_t *)c_25(D) + 16B] = r0_108;
+  _34 = MEM[(const dig_t *)c_25(D) + 24B];
+  _36 = MEM[(const dig_t *)_10 + 24B];
+  diff_37 = _34 - _36;
+  r0_39 = diff_37 - prephitmp_114;
+  MEM[(dig_t *)c_25(D) + 24B] = r0_39;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 107374182]:
+  _8 = fp_prime_get ();
+  _9 = dv_cmp (c_25(D), _8, 4);
+  if (_9 != -1)
+    goto <bb 3>; [66.00%]
+  else
+    goto <bb 9>; [34.00%]
+
+  <bb 9> [local count: 214748366]:
+  return;
+
+}
+
+
+
+;; Function fp_addd_low (fp_addd_low, funcdef_no=33, decl_uid=2639, cgraph_uid=33, symbol_order=33)
+
+fp_addd_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t r1;
+  dig_t r0;
+  dig_t carry;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  __complex__ long long unsigned int _7;
+  __complex__ long long unsigned int _8;
+  long long unsigned int _10;
+  _Bool _11;
+  _Bool _13;
+  __complex__ long long unsigned int _23;
+  long long unsigned int _24;
+  long long unsigned int _25;
+  long long unsigned int _26;
+  long long unsigned int _43;
+  __complex__ long long unsigned int _47;
+  long long unsigned int _48;
+  long long unsigned int _56;
+  long long unsigned int _57;
+  _Bool _59;
+  _Bool _61;
+  _Bool _62;
+  __complex__ long long unsigned int _66;
+  long long unsigned int _69;
+  __complex__ long long unsigned int _70;
+  long long unsigned int _78;
+  long long unsigned int _79;
+  _Bool _81;
+  _Bool _83;
+  _Bool _84;
+  long long unsigned int _88;
+  __complex__ long long unsigned int _91;
+  long long unsigned int _92;
+  long long unsigned int _100;
+  long long unsigned int _101;
+  _Bool _103;
+  _Bool _105;
+  _Bool _106;
+  __complex__ long long unsigned int _110;
+  long long unsigned int _113;
+  __complex__ long long unsigned int _114;
+  long long unsigned int _122;
+  long long unsigned int _123;
+  _Bool _125;
+  _Bool _127;
+  _Bool _128;
+  long long unsigned int _132;
+  __complex__ long long unsigned int _135;
+  long long unsigned int _136;
+  long long unsigned int _144;
+  long long unsigned int _145;
+  _Bool _147;
+  _Bool _149;
+  _Bool _150;
+  __complex__ long long unsigned int _154;
+  long long unsigned int _157;
+  __complex__ long long unsigned int _158;
+  __complex__ long long unsigned int _161;
+  long long unsigned int _162;
+  __complex__ long long unsigned int _163;
+  long long unsigned int _164;
+  long long unsigned int _166;
+  long long unsigned int _167;
+  _Bool _169;
+  _Bool _171;
+  _Bool _172;
+  long long unsigned int _176;
+  __complex__ long long unsigned int _179;
+  long long unsigned int _180;
+
+  <bb 2> [local count: 119292720]:
+  _26 = *a_14(D);
+  _25 = *b_15(D);
+  _7 = ADD_OVERFLOW (_25, _26);
+  r0_12 = REALPART_EXPR <_7>;
+  _176 = IMAGPART_EXPR <_7>;
+  _11 = _176 != 0;
+  carry_44 = (dig_t) _11;
+  *c_20(D) = r0_12;
+  _56 = MEM[(const dig_t *)a_14(D) + 8B];
+  _57 = MEM[(const dig_t *)b_15(D) + 8B];
+  _154 = ADD_OVERFLOW (_56, _57);
+  r0_58 = REALPART_EXPR <_154>;
+  _132 = IMAGPART_EXPR <_154>;
+  _59 = _132 != 0;
+  _110 = ADD_OVERFLOW (carry_44, r0_58);
+  r1_60 = REALPART_EXPR <_110>;
+  _88 = IMAGPART_EXPR <_110>;
+  _61 = _88 != 0;
+  _62 = _59 | _61;
+  carry_63 = (dig_t) _62;
+  MEM[(dig_t *)c_20(D) + 8B] = r1_60;
+  _78 = MEM[(const dig_t *)a_14(D) + 16B];
+  _79 = MEM[(const dig_t *)b_15(D) + 16B];
+  _66 = ADD_OVERFLOW (_78, _79);
+  r0_80 = REALPART_EXPR <_66>;
+  _48 = IMAGPART_EXPR <_66>;
+  _81 = _48 != 0;
+  _70 = ADD_OVERFLOW (carry_63, r0_80);
+  r1_82 = REALPART_EXPR <_70>;
+  _92 = IMAGPART_EXPR <_70>;
+  _83 = _92 != 0;
+  _84 = _81 | _83;
+  carry_85 = (dig_t) _84;
+  MEM[(dig_t *)c_20(D) + 16B] = r1_82;
+  _100 = MEM[(const dig_t *)a_14(D) + 24B];
+  _101 = MEM[(const dig_t *)b_15(D) + 24B];
+  _114 = ADD_OVERFLOW (_100, _101);
+  r0_102 = REALPART_EXPR <_114>;
+  _136 = IMAGPART_EXPR <_114>;
+  _103 = _136 != 0;
+  _158 = ADD_OVERFLOW (carry_85, r0_102);
+  r1_104 = REALPART_EXPR <_158>;
+  _180 = IMAGPART_EXPR <_158>;
+  _105 = _180 != 0;
+  _106 = _103 | _105;
+  carry_107 = (dig_t) _106;
+  MEM[(dig_t *)c_20(D) + 24B] = r1_104;
+  _122 = MEM[(const dig_t *)a_14(D) + 32B];
+  _123 = MEM[(const dig_t *)b_15(D) + 32B];
+  _47 = ADD_OVERFLOW (_122, _123);
+  r0_124 = REALPART_EXPR <_47>;
+  _69 = IMAGPART_EXPR <_47>;
+  _125 = _69 != 0;
+  _91 = ADD_OVERFLOW (carry_107, r0_124);
+  r1_126 = REALPART_EXPR <_91>;
+  _113 = IMAGPART_EXPR <_91>;
+  _127 = _113 != 0;
+  _128 = _125 | _127;
+  carry_129 = (dig_t) _128;
+  MEM[(dig_t *)c_20(D) + 32B] = r1_126;
+  _144 = MEM[(const dig_t *)a_14(D) + 40B];
+  _145 = MEM[(const dig_t *)b_15(D) + 40B];
+  _135 = ADD_OVERFLOW (_144, _145);
+  r0_146 = REALPART_EXPR <_135>;
+  _157 = IMAGPART_EXPR <_135>;
+  _147 = _157 != 0;
+  _179 = ADD_OVERFLOW (carry_129, r0_146);
+  r1_148 = REALPART_EXPR <_179>;
+  _10 = IMAGPART_EXPR <_179>;
+  _149 = _10 != 0;
+  _150 = _147 | _149;
+  carry_151 = (dig_t) _150;
+  MEM[(dig_t *)c_20(D) + 40B] = r1_148;
+  _166 = MEM[(const dig_t *)a_14(D) + 48B];
+  _167 = MEM[(const dig_t *)b_15(D) + 48B];
+  _8 = ADD_OVERFLOW (_166, _167);
+  r0_168 = REALPART_EXPR <_8>;
+  _43 = IMAGPART_EXPR <_8>;
+  _169 = _43 != 0;
+  _23 = ADD_OVERFLOW (carry_151, r0_168);
+  r1_170 = REALPART_EXPR <_23>;
+  _24 = IMAGPART_EXPR <_23>;
+  _171 = _24 != 0;
+  _172 = _169 | _171;
+  carry_173 = (dig_t) _172;
+  MEM[(dig_t *)c_20(D) + 48B] = r1_170;
+  _1 = MEM[(const dig_t *)a_14(D) + 56B];
+  _2 = MEM[(const dig_t *)b_15(D) + 56B];
+  _161 = ADD_OVERFLOW (_1, _2);
+  r0_17 = REALPART_EXPR <_161>;
+  _162 = IMAGPART_EXPR <_161>;
+  _3 = _162 != 0;
+  _163 = ADD_OVERFLOW (r0_17, carry_173);
+  r1_18 = REALPART_EXPR <_163>;
+  _164 = IMAGPART_EXPR <_163>;
+  _4 = _164 != 0;
+  _13 = _3 | _4;
+  carry_19 = (dig_t) _13;
+  MEM[(dig_t *)c_20(D) + 56B] = r1_18;
+  return carry_19;
+
+}
+
+
+
+;; Function fp_addc_low (fp_addc_low, funcdef_no=34, decl_uid=2643, cgraph_uid=34, symbol_order=34)
+
+fp_addc_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t r0;
+  dig_t diff;
+  dig_t carry;
+  dig_t r0;
+  dig_t r1;
+  const dig_t * _1;
+  int _3;
+  const dig_t * _4;
+  long long unsigned int _16;
+  __complex__ long long unsigned int _17;
+  long long unsigned int _18;
+  _Bool _20;
+  _Bool _23;
+  _Bool _24;
+  long long unsigned int _25;
+  __complex__ long long unsigned int _29;
+  __complex__ long long unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _34;
+  long long unsigned int _36;
+  long long unsigned int _46;
+  __complex__ long long unsigned int _55;
+  _Bool _57;
+  long long unsigned int _60;
+  long long unsigned int _61;
+  long long unsigned int _85;
+  long long unsigned int _86;
+  _Bool _89;
+  _Bool _90;
+  _Bool _91;
+  long long unsigned int _93;
+  long long unsigned int prephitmp_94;
+  long long unsigned int _98;
+  long long unsigned int _106;
+  long long unsigned int _107;
+  _Bool _110;
+  _Bool _111;
+  _Bool _112;
+  long long unsigned int _114;
+  long long unsigned int prephitmp_115;
+  long long unsigned int _119;
+  long long unsigned int _127;
+  long long unsigned int _128;
+  _Bool _130;
+  __complex__ long long unsigned int _131;
+  long long unsigned int _133;
+  __complex__ long long unsigned int _137;
+  long long unsigned int _140;
+  __complex__ long long unsigned int _141;
+  long long unsigned int _149;
+  long long unsigned int _150;
+  _Bool _152;
+  _Bool _154;
+  _Bool _155;
+  long long unsigned int _159;
+  __complex__ long long unsigned int _162;
+  long long unsigned int _163;
+  long long unsigned int _171;
+  long long unsigned int _172;
+  _Bool _174;
+  _Bool _176;
+  _Bool _177;
+  __complex__ long long unsigned int _181;
+  long long unsigned int _184;
+  __complex__ long long unsigned int _185;
+  long long unsigned int _193;
+  long long unsigned int _194;
+  _Bool _196;
+  _Bool _198;
+  _Bool _199;
+  long long unsigned int _203;
+  __complex__ long long unsigned int _206;
+  long long unsigned int _207;
+  long long unsigned int _215;
+  long long unsigned int _216;
+  _Bool _218;
+  _Bool _220;
+  _Bool _221;
+  dig_t * _225;
+  long long unsigned int _228;
+  __complex__ long long unsigned int _229;
+  long long unsigned int _237;
+  long long unsigned int _238;
+  _Bool _240;
+  _Bool _242;
+  _Bool _243;
+  __complex__ long long unsigned int _247;
+  __complex__ long long unsigned int _250;
+  long long unsigned int _251;
+  long long unsigned int _259;
+  long long unsigned int _260;
+  _Bool _262;
+  _Bool _264;
+  _Bool _265;
+  long long unsigned int _269;
+  long long unsigned int _272;
+  __complex__ long long unsigned int _273;
+
+  <bb 2> [local count: 119292720]:
+  _127 = *a_10(D);
+  _128 = *b_11(D);
+  _17 = ADD_OVERFLOW (_127, _128);
+  r0_129 = REALPART_EXPR <_17>;
+  _119 = IMAGPART_EXPR <_17>;
+  _130 = _119 != 0;
+  carry_134 = (dig_t) _130;
+  *c_9(D) = r0_129;
+  _149 = MEM[(const dig_t *)a_10(D) + 8B];
+  _150 = MEM[(const dig_t *)b_11(D) + 8B];
+  _29 = ADD_OVERFLOW (_149, _150);
+  r0_151 = REALPART_EXPR <_29>;
+  _269 = IMAGPART_EXPR <_29>;
+  _152 = _269 != 0;
+  _247 = ADD_OVERFLOW (carry_134, r0_151);
+  r1_153 = REALPART_EXPR <_247>;
+  _203 = IMAGPART_EXPR <_247>;
+  _154 = _203 != 0;
+  _155 = _152 | _154;
+  carry_156 = (dig_t) _155;
+  MEM[(dig_t *)c_9(D) + 8B] = r1_153;
+  _171 = MEM[(const dig_t *)a_10(D) + 16B];
+  _172 = MEM[(const dig_t *)b_11(D) + 16B];
+  _181 = ADD_OVERFLOW (_171, _172);
+  r0_173 = REALPART_EXPR <_181>;
+  _159 = IMAGPART_EXPR <_181>;
+  _174 = _159 != 0;
+  _141 = ADD_OVERFLOW (carry_156, r0_173);
+  r1_175 = REALPART_EXPR <_141>;
+  _163 = IMAGPART_EXPR <_141>;
+  _176 = _163 != 0;
+  _177 = _174 | _176;
+  carry_178 = (dig_t) _177;
+  MEM[(dig_t *)c_9(D) + 16B] = r1_175;
+  _193 = MEM[(const dig_t *)a_10(D) + 24B];
+  _194 = MEM[(const dig_t *)b_11(D) + 24B];
+  _185 = ADD_OVERFLOW (_193, _194);
+  r0_195 = REALPART_EXPR <_185>;
+  _207 = IMAGPART_EXPR <_185>;
+  _196 = _207 != 0;
+  _229 = ADD_OVERFLOW (carry_178, r0_195);
+  r1_197 = REALPART_EXPR <_229>;
+  _251 = IMAGPART_EXPR <_229>;
+  _198 = _251 != 0;
+  _199 = _196 | _198;
+  carry_200 = (dig_t) _199;
+  MEM[(dig_t *)c_9(D) + 24B] = r1_197;
+  _215 = MEM[(const dig_t *)a_10(D) + 32B];
+  _216 = MEM[(const dig_t *)b_11(D) + 32B];
+  _273 = ADD_OVERFLOW (_215, _216);
+  r0_217 = REALPART_EXPR <_273>;
+  _140 = IMAGPART_EXPR <_273>;
+  _218 = _140 != 0;
+  _162 = ADD_OVERFLOW (carry_200, r0_217);
+  r1_219 = REALPART_EXPR <_162>;
+  _184 = IMAGPART_EXPR <_162>;
+  _220 = _184 != 0;
+  _221 = _218 | _220;
+  carry_222 = (dig_t) _221;
+  _225 = c_9(D) + 32;
+  MEM[(dig_t *)c_9(D) + 32B] = r1_219;
+  _237 = MEM[(const dig_t *)a_10(D) + 40B];
+  _238 = MEM[(const dig_t *)b_11(D) + 40B];
+  _206 = ADD_OVERFLOW (_237, _238);
+  r0_239 = REALPART_EXPR <_206>;
+  _228 = IMAGPART_EXPR <_206>;
+  _240 = _228 != 0;
+  _250 = ADD_OVERFLOW (carry_222, r0_239);
+  r1_241 = REALPART_EXPR <_250>;
+  _272 = IMAGPART_EXPR <_250>;
+  _242 = _272 != 0;
+  _243 = _240 | _242;
+  carry_244 = (dig_t) _243;
+  MEM[(dig_t *)c_9(D) + 40B] = r1_241;
+  _259 = MEM[(const dig_t *)a_10(D) + 48B];
+  _260 = MEM[(const dig_t *)b_11(D) + 48B];
+  _131 = ADD_OVERFLOW (_259, _260);
+  r0_261 = REALPART_EXPR <_131>;
+  _133 = IMAGPART_EXPR <_131>;
+  _262 = _133 != 0;
+  _137 = ADD_OVERFLOW (carry_244, r0_261);
+  r1_263 = REALPART_EXPR <_137>;
+  _25 = IMAGPART_EXPR <_137>;
+  _264 = _25 != 0;
+  _265 = _262 | _264;
+  carry_266 = (dig_t) _265;
+  MEM[(dig_t *)c_9(D) + 48B] = r1_263;
+  _16 = MEM[(const dig_t *)a_10(D) + 56B];
+  _18 = MEM[(const dig_t *)b_11(D) + 56B];
+  _31 = ADD_OVERFLOW (_16, _18);
+  r0_19 = REALPART_EXPR <_31>;
+  _32 = IMAGPART_EXPR <_31>;
+  _20 = _32 != 0;
+  _55 = ADD_OVERFLOW (r0_19, carry_266);
+  r1_22 = REALPART_EXPR <_55>;
+  _46 = IMAGPART_EXPR <_55>;
+  _23 = _46 != 0;
+  _24 = _20 | _23;
+  MEM[(dig_t *)c_9(D) + 56B] = r1_22;
+  if (_24 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 3> [local count: 99012955]:
+  _4 = fp_prime_get ();
+  _61 = MEM[(const dig_t *)c_9(D) + 32B];
+  _60 = *_4;
+  diff_51 = _61 - _60;
+  _57 = _60 > _61;
+  _98 = (long long unsigned int) _57;
+  MEM[(dig_t *)c_9(D) + 32B] = diff_51;
+  _85 = MEM[(const dig_t *)c_9(D) + 40B];
+  _86 = MEM[(const dig_t *)_4 + 8B];
+  diff_87 = _85 - _86;
+  r0_88 = diff_87 - _98;
+  if (_85 < _86)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 49506478]:
+  _89 = (_Bool) _98;
+  _90 = diff_87 == 0;
+  _91 = _89 & _90;
+  _93 = (long long unsigned int) _91;
+
+  <bb 5> [local count: 99012955]:
+  # prephitmp_94 = PHI <_93(4), 1(3)>
+  MEM[(dig_t *)c_9(D) + 40B] = r0_88;
+  _106 = MEM[(const dig_t *)c_9(D) + 48B];
+  _107 = MEM[(const dig_t *)_4 + 16B];
+  diff_108 = _106 - _107;
+  r0_109 = diff_108 - prephitmp_94;
+  if (_106 < _107)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 49506478]:
+  _110 = (_Bool) prephitmp_94;
+  _111 = diff_108 == 0;
+  _112 = _110 & _111;
+  _114 = (long long unsigned int) _112;
+
+  <bb 7> [local count: 99012955]:
+  # prephitmp_115 = PHI <_114(6), 1(5)>
+  MEM[(dig_t *)c_9(D) + 48B] = r0_109;
+  _34 = MEM[(const dig_t *)c_9(D) + 56B];
+  _36 = MEM[(const dig_t *)_4 + 24B];
+  diff_37 = _34 - _36;
+  r0_39 = diff_37 - prephitmp_115;
+  MEM[(dig_t *)c_9(D) + 56B] = r0_39;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 59646358]:
+  _1 = fp_prime_get ();
+  _3 = dv_cmp (_225, _1, 4);
+  if (_3 != -1)
+    goto <bb 3>; [66.00%]
+  else
+    goto <bb 9>; [34.00%]
+
+  <bb 9> [local count: 119292720]:
+  return;
+
+}
+
+
+
+;; Function fp_sub1_low (fp_sub1_low, funcdef_no=35, decl_uid=2647, cgraph_uid=35, symbol_order=35)
+
+fp_sub1_low (dig_t * c, const dig_t * a, dig_t digit)
+{
+  dig_t r0;
+  dig_t carry;
+  long long unsigned int _1;
+  _Bool _3;
+  long long unsigned int _17;
+  __complex__ long long unsigned int _18;
+  _Bool _19;
+  long long unsigned int _26;
+  __complex__ long long unsigned int _27;
+  long long unsigned int _28;
+  long long unsigned int _30;
+  __complex__ long long unsigned int _34;
+  long long unsigned int _42;
+  _Bool _44;
+  long long unsigned int _49;
+  long long unsigned int _57;
+  _Bool _59;
+  __complex__ long long unsigned int _64;
+
+  <bb 2> [local count: 214748365]:
+  _26 = *a_11(D);
+  _34 = SUB_OVERFLOW (_26, digit_9(D));
+  r0_8 = REALPART_EXPR <_34>;
+  _49 = IMAGPART_EXPR <_34>;
+  _19 = _49 != 0;
+  carry_20 = (dig_t) _19;
+  *c_10(D) = r0_8;
+  _42 = MEM[(const dig_t *)a_11(D) + 8B];
+  _64 = SUB_OVERFLOW (_42, carry_20);
+  r0_43 = REALPART_EXPR <_64>;
+  _17 = IMAGPART_EXPR <_64>;
+  _44 = _17 != 0;
+  carry_45 = (dig_t) _44;
+  MEM[(dig_t *)c_10(D) + 8B] = r0_43;
+  _57 = MEM[(const dig_t *)a_11(D) + 16B];
+  _18 = SUB_OVERFLOW (_57, carry_45);
+  r0_58 = REALPART_EXPR <_18>;
+  _28 = IMAGPART_EXPR <_18>;
+  _59 = _28 != 0;
+  carry_60 = (dig_t) _59;
+  MEM[(dig_t *)c_10(D) + 16B] = r0_58;
+  _1 = MEM[(const dig_t *)a_11(D) + 24B];
+  _27 = SUB_OVERFLOW (_1, carry_60);
+  r0_13 = REALPART_EXPR <_27>;
+  _30 = IMAGPART_EXPR <_27>;
+  _3 = _30 != 0;
+  carry_14 = (dig_t) _3;
+  MEM[(dig_t *)c_10(D) + 24B] = r0_13;
+  return carry_14;
+
+}
+
+
+
+;; Function fp_subn_low (fp_subn_low, funcdef_no=36, decl_uid=2651, cgraph_uid=36, symbol_order=36)
+
+fp_subn_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t diff;
+  dig_t r0;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  long long unsigned int _12;
+  long long unsigned int prephitmp_31;
+  long long unsigned int _32;
+  long long unsigned int _35;
+  _Bool _49;
+  long long unsigned int _59;
+  long long unsigned int _60;
+  _Bool _63;
+  _Bool _64;
+  _Bool _65;
+  long long unsigned int _67;
+  long long unsigned int prephitmp_68;
+  long long unsigned int _72;
+  long long unsigned int _82;
+  long long unsigned int _83;
+  _Bool _86;
+  _Bool _87;
+  _Bool _88;
+  long long unsigned int _90;
+  long long unsigned int prephitmp_91;
+
+  <bb 2> [local count: 214748365]:
+  _35 = *a_14(D);
+  _12 = *b_15(D);
+  diff_26 = _35 - _12;
+  _49 = _12 > _35;
+  _72 = (long long unsigned int) _49;
+  *c_13(D) = diff_26;
+  _59 = MEM[(const dig_t *)a_14(D) + 8B];
+  _60 = MEM[(const dig_t *)b_15(D) + 8B];
+  diff_61 = _59 - _60;
+  r0_62 = diff_61 - _72;
+  if (_59 < _60)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 107374183]:
+  _63 = (_Bool) _72;
+  _64 = diff_61 == 0;
+  _65 = _63 & _64;
+  _67 = (long long unsigned int) _65;
+
+  <bb 4> [local count: 214748365]:
+  # prephitmp_68 = PHI <_67(3), 1(2)>
+  MEM[(dig_t *)c_13(D) + 8B] = r0_62;
+  _82 = MEM[(const dig_t *)a_14(D) + 16B];
+  _83 = MEM[(const dig_t *)b_15(D) + 16B];
+  diff_84 = _82 - _83;
+  r0_85 = diff_84 - prephitmp_68;
+  if (_82 < _83)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 107374183]:
+  _86 = (_Bool) prephitmp_68;
+  _87 = diff_84 == 0;
+  _88 = _86 & _87;
+  _90 = (long long unsigned int) _88;
+
+  <bb 6> [local count: 214748365]:
+  # prephitmp_91 = PHI <_90(5), 1(4)>
+  MEM[(dig_t *)c_13(D) + 16B] = r0_85;
+  _1 = MEM[(const dig_t *)a_14(D) + 24B];
+  _2 = MEM[(const dig_t *)b_15(D) + 24B];
+  diff_17 = _1 - _2;
+  r0_18 = diff_17 - prephitmp_91;
+  if (_1 < _2)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 107374183]:
+  _3 = (_Bool) prephitmp_91;
+  _4 = diff_17 == 0;
+  _5 = _3 & _4;
+  _32 = (long long unsigned int) _5;
+
+  <bb 8> [local count: 214748365]:
+  # prephitmp_31 = PHI <_32(7), 1(6)>
+  MEM[(dig_t *)c_13(D) + 24B] = r0_18;
+  return prephitmp_31;
+
+}
+
+
+
+;; Function fp_subm_low (fp_subm_low, funcdef_no=37, decl_uid=2655, cgraph_uid=37, symbol_order=37)
+
+fp_subm_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t carry;
+  dig_t r0;
+  dig_t r1;
+  dig_t diff;
+  dig_t r0;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  long long unsigned int _8;
+  const dig_t * _9;
+  _Bool _15;
+  long long unsigned int _30;
+  long long unsigned int _32;
+  _Bool _40;
+  long long unsigned int _45;
+  long long unsigned int _53;
+  __complex__ long long unsigned int _67;
+  long long unsigned int _77;
+  long long unsigned int _78;
+  _Bool _80;
+  _Bool _82;
+  _Bool _83;
+  long long unsigned int _88;
+  long long unsigned int _96;
+  long long unsigned int _97;
+  _Bool _99;
+  _Bool _101;
+  _Bool _102;
+  long long unsigned int _107;
+  long long unsigned int _115;
+  long long unsigned int _116;
+  __complex__ long long unsigned int _124;
+  __complex__ long long unsigned int _130;
+  long long unsigned int _131;
+  long long unsigned int _139;
+  long long unsigned int _140;
+  _Bool _143;
+  _Bool _144;
+  _Bool _145;
+  long long unsigned int _147;
+  long long unsigned int prephitmp_148;
+  long long unsigned int _154;
+  __complex__ long long unsigned int _155;
+  long long unsigned int _163;
+  long long unsigned int _164;
+  _Bool _167;
+  _Bool _168;
+  _Bool _169;
+  long long unsigned int _171;
+  long long unsigned int prephitmp_172;
+  __complex__ long long unsigned int _175;
+  long long unsigned int _179;
+
+  <bb 2> [local count: 214748365]:
+  _115 = *a_17(D);
+  _116 = *b_18(D);
+  diff_117 = _115 - _116;
+  _15 = _115 < _116;
+  _88 = (long long unsigned int) _15;
+  *c_23(D) = diff_117;
+  _139 = MEM[(const dig_t *)a_17(D) + 8B];
+  _140 = MEM[(const dig_t *)b_18(D) + 8B];
+  diff_141 = _139 - _140;
+  r0_142 = diff_141 - _88;
+  if (_139 < _140)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 107374183]:
+  _143 = (_Bool) _88;
+  _144 = diff_141 == 0;
+  _145 = _143 & _144;
+  _147 = (long long unsigned int) _145;
+
+  <bb 4> [local count: 214748365]:
+  # prephitmp_148 = PHI <_147(3), 1(2)>
+  MEM[(dig_t *)c_23(D) + 8B] = r0_142;
+  _163 = MEM[(const dig_t *)a_17(D) + 16B];
+  _164 = MEM[(const dig_t *)b_18(D) + 16B];
+  diff_165 = _163 - _164;
+  r0_166 = diff_165 - prephitmp_148;
+  if (_163 < _164)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 107374183]:
+  _167 = (_Bool) prephitmp_148;
+  _168 = diff_165 == 0;
+  _169 = _167 & _168;
+  _171 = (long long unsigned int) _169;
+
+  <bb 6> [local count: 214748365]:
+  # prephitmp_172 = PHI <_171(5), 1(4)>
+  MEM[(dig_t *)c_23(D) + 16B] = r0_166;
+  _1 = MEM[(const dig_t *)a_17(D) + 24B];
+  _2 = MEM[(const dig_t *)b_18(D) + 24B];
+  diff_20 = _1 - _2;
+  r0_21 = diff_20 - prephitmp_172;
+  if (_1 < _2)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 107374183]:
+  MEM[(dig_t *)c_23(D) + 24B] = r0_21;
+  goto <bb 10>; [100.00%]
+
+  <bb 8> [local count: 107374183]:
+  _3 = (_Bool) prephitmp_172;
+  _4 = diff_20 == 0;
+  _5 = _3 & _4;
+  MEM[(dig_t *)c_23(D) + 24B] = r0_21;
+  if (_5 != 0)
+    goto <bb 10>; [10.96%]
+  else
+    goto <bb 9>; [89.04%]
+
+  <bb 9> [local count: 214748366]:
+  return;
+
+  <bb 10> [local count: 70866961]:
+  _9 = fp_prime_get ();
+  _53 = MEM[(const dig_t *)c_23(D)];
+  _45 = *_9;
+  _124 = ADD_OVERFLOW (_45, _53);
+  r0_41 = REALPART_EXPR <_124>;
+  _107 = IMAGPART_EXPR <_124>;
+  _40 = _107 != 0;
+  carry_12 = (dig_t) _40;
+  *c_23(D) = r0_41;
+  _77 = MEM[(const dig_t *)c_23(D) + 8B];
+  _78 = MEM[(const dig_t *)_9 + 8B];
+  _67 = ADD_OVERFLOW (_77, _78);
+  r0_79 = REALPART_EXPR <_67>;
+  _8 = IMAGPART_EXPR <_67>;
+  _80 = _8 != 0;
+  _175 = ADD_OVERFLOW (carry_12, r0_79);
+  r1_81 = REALPART_EXPR <_175>;
+  _131 = IMAGPART_EXPR <_175>;
+  _82 = _131 != 0;
+  _83 = _80 | _82;
+  carry_84 = (dig_t) _83;
+  MEM[(dig_t *)c_23(D) + 8B] = r1_81;
+  _96 = MEM[(const dig_t *)c_23(D) + 16B];
+  _97 = MEM[(const dig_t *)_9 + 16B];
+  _155 = ADD_OVERFLOW (_96, _97);
+  r0_98 = REALPART_EXPR <_155>;
+  _179 = IMAGPART_EXPR <_155>;
+  _99 = _179 != 0;
+  _130 = ADD_OVERFLOW (carry_84, r0_98);
+  r1_100 = REALPART_EXPR <_130>;
+  _154 = IMAGPART_EXPR <_130>;
+  _101 = _154 != 0;
+  _102 = _99 | _101;
+  carry_103 = (dig_t) _102;
+  MEM[(dig_t *)c_23(D) + 16B] = r1_100;
+  _30 = MEM[(const dig_t *)c_23(D) + 24B];
+  _32 = MEM[(const dig_t *)_9 + 24B];
+  r0_33 = _30 + _32;
+  r1_36 = r0_33 + carry_103;
+  MEM[(dig_t *)c_23(D) + 24B] = r1_36;
+  goto <bb 9>; [100.00%]
+
+}
+
+
+
+;; Function fp_subc_low (fp_subc_low, funcdef_no=38, decl_uid=2663, cgraph_uid=38, symbol_order=38)
+
+fp_subc_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t carry;
+  dig_t r0;
+  dig_t r1;
+  dig_t r0;
+  dig_t diff;
+  const dig_t * _1;
+  long long unsigned int _10;
+  long long unsigned int _12;
+  _Bool _16;
+  _Bool _17;
+  _Bool _18;
+  long long unsigned int _24;
+  long long unsigned int _29;
+  long long unsigned int _31;
+  _Bool _39;
+  _Bool _44;
+  long long unsigned int _45;
+  long long unsigned int _54;
+  long long unsigned int _78;
+  long long unsigned int _79;
+  _Bool _81;
+  _Bool _83;
+  _Bool _84;
+  long long unsigned int _89;
+  long long unsigned int _97;
+  long long unsigned int _98;
+  _Bool _100;
+  _Bool _102;
+  _Bool _103;
+  long long unsigned int _108;
+  long long unsigned int _116;
+  long long unsigned int _117;
+  __complex__ long long unsigned int _125;
+  long long unsigned int _132;
+  long long unsigned int _140;
+  long long unsigned int _141;
+  _Bool _144;
+  _Bool _145;
+  _Bool _146;
+  long long unsigned int _148;
+  long long unsigned int prephitmp_149;
+  __complex__ long long unsigned int _152;
+  long long unsigned int _164;
+  long long unsigned int _165;
+  _Bool _168;
+  _Bool _169;
+  _Bool _170;
+  long long unsigned int _172;
+  long long unsigned int prephitmp_173;
+  long long unsigned int _176;
+  long long unsigned int _188;
+  long long unsigned int _189;
+  _Bool _192;
+  _Bool _193;
+  _Bool _194;
+  long long unsigned int _196;
+  long long unsigned int prephitmp_197;
+  __complex__ long long unsigned int _200;
+  long long unsigned int _212;
+  long long unsigned int _213;
+  _Bool _216;
+  _Bool _217;
+  _Bool _218;
+  long long unsigned int _220;
+  long long unsigned int prephitmp_221;
+  __complex__ long long unsigned int _229;
+  long long unsigned int _236;
+  long long unsigned int _237;
+  _Bool _240;
+  _Bool _241;
+  _Bool _242;
+  long long unsigned int _244;
+  long long unsigned int prephitmp_245;
+  long long unsigned int _248;
+  long long unsigned int _260;
+  long long unsigned int _261;
+  _Bool _264;
+  _Bool _265;
+  _Bool _266;
+  long long unsigned int _268;
+  long long unsigned int prephitmp_269;
+  __complex__ long long unsigned int _272;
+
+  <bb 2> [local count: 119292720]:
+  _116 = *a_6(D);
+  _117 = *b_7(D);
+  diff_118 = _116 - _117;
+  _44 = _116 < _117;
+  _89 = (long long unsigned int) _44;
+  *c_5(D) = diff_118;
+  _140 = MEM[(const dig_t *)a_6(D) + 8B];
+  _141 = MEM[(const dig_t *)b_7(D) + 8B];
+  diff_142 = _140 - _141;
+  r0_143 = diff_142 - _89;
+  if (_140 < _141)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 59646360]:
+  _144 = (_Bool) _89;
+  _145 = diff_142 == 0;
+  _146 = _144 & _145;
+  _148 = (long long unsigned int) _146;
+
+  <bb 4> [local count: 119292720]:
+  # prephitmp_149 = PHI <_148(3), 1(2)>
+  MEM[(dig_t *)c_5(D) + 8B] = r0_143;
+  _164 = MEM[(const dig_t *)a_6(D) + 16B];
+  _165 = MEM[(const dig_t *)b_7(D) + 16B];
+  diff_166 = _164 - _165;
+  r0_167 = diff_166 - prephitmp_149;
+  if (_164 < _165)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 59646360]:
+  _168 = (_Bool) prephitmp_149;
+  _169 = diff_166 == 0;
+  _170 = _168 & _169;
+  _172 = (long long unsigned int) _170;
+
+  <bb 6> [local count: 119292720]:
+  # prephitmp_173 = PHI <_172(5), 1(4)>
+  MEM[(dig_t *)c_5(D) + 16B] = r0_167;
+  _188 = MEM[(const dig_t *)a_6(D) + 24B];
+  _189 = MEM[(const dig_t *)b_7(D) + 24B];
+  diff_190 = _188 - _189;
+  r0_191 = diff_190 - prephitmp_173;
+  if (_188 < _189)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 59646360]:
+  _192 = (_Bool) prephitmp_173;
+  _193 = diff_190 == 0;
+  _194 = _192 & _193;
+  _196 = (long long unsigned int) _194;
+
+  <bb 8> [local count: 119292720]:
+  # prephitmp_197 = PHI <_196(7), 1(6)>
+  MEM[(dig_t *)c_5(D) + 24B] = r0_191;
+  _212 = MEM[(const dig_t *)a_6(D) + 32B];
+  _213 = MEM[(const dig_t *)b_7(D) + 32B];
+  diff_214 = _212 - _213;
+  r0_215 = diff_214 - prephitmp_197;
+  if (_212 < _213)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 9> [local count: 59646360]:
+  _216 = (_Bool) prephitmp_197;
+  _217 = diff_214 == 0;
+  _218 = _216 & _217;
+  _220 = (long long unsigned int) _218;
+
+  <bb 10> [local count: 119292720]:
+  # prephitmp_221 = PHI <_220(9), 1(8)>
+  MEM[(dig_t *)c_5(D) + 32B] = r0_215;
+  _236 = MEM[(const dig_t *)a_6(D) + 40B];
+  _237 = MEM[(const dig_t *)b_7(D) + 40B];
+  diff_238 = _236 - _237;
+  r0_239 = diff_238 - prephitmp_221;
+  if (_236 < _237)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 11> [local count: 59646360]:
+  _240 = (_Bool) prephitmp_221;
+  _241 = diff_238 == 0;
+  _242 = _240 & _241;
+  _244 = (long long unsigned int) _242;
+
+  <bb 12> [local count: 119292720]:
+  # prephitmp_245 = PHI <_244(11), 1(10)>
+  MEM[(dig_t *)c_5(D) + 40B] = r0_239;
+  _260 = MEM[(const dig_t *)a_6(D) + 48B];
+  _261 = MEM[(const dig_t *)b_7(D) + 48B];
+  diff_262 = _260 - _261;
+  r0_263 = diff_262 - prephitmp_245;
+  if (_260 < _261)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 13> [local count: 59646360]:
+  _264 = (_Bool) prephitmp_245;
+  _265 = diff_262 == 0;
+  _266 = _264 & _265;
+  _268 = (long long unsigned int) _266;
+
+  <bb 14> [local count: 119292720]:
+  # prephitmp_269 = PHI <_268(13), 1(12)>
+  MEM[(dig_t *)c_5(D) + 48B] = r0_263;
+  _10 = MEM[(const dig_t *)a_6(D) + 56B];
+  _12 = MEM[(const dig_t *)b_7(D) + 56B];
+  diff_13 = _10 - _12;
+  r0_15 = diff_13 - prephitmp_269;
+  if (_10 < _12)
+    goto <bb 15>; [50.00%]
+  else
+    goto <bb 16>; [50.00%]
+
+  <bb 15> [local count: 59646360]:
+  MEM[(dig_t *)c_5(D) + 56B] = r0_15;
+  goto <bb 18>; [100.00%]
+
+  <bb 16> [local count: 59646360]:
+  _16 = (_Bool) prephitmp_269;
+  _17 = diff_13 == 0;
+  _18 = _16 & _17;
+  MEM[(dig_t *)c_5(D) + 56B] = r0_15;
+  if (_18 != 0)
+    goto <bb 18>; [10.96%]
+  else
+    goto <bb 17>; [89.04%]
+
+  <bb 17> [local count: 119292719]:
+  return;
+
+  <bb 18> [local count: 39366597]:
+  _1 = fp_prime_get ();
+  _54 = MEM[(const dig_t *)c_5(D) + 32B];
+  _45 = *_1;
+  _125 = ADD_OVERFLOW (_45, _54);
+  r0_40 = REALPART_EXPR <_125>;
+  _108 = IMAGPART_EXPR <_125>;
+  _39 = _108 != 0;
+  carry_14 = (dig_t) _39;
+  MEM[(dig_t *)c_5(D) + 32B] = r0_40;
+  _78 = MEM[(const dig_t *)c_5(D) + 40B];
+  _79 = MEM[(const dig_t *)_1 + 8B];
+  _229 = ADD_OVERFLOW (_78, _79);
+  r0_80 = REALPART_EXPR <_229>;
+  _24 = IMAGPART_EXPR <_229>;
+  _81 = _24 != 0;
+  _272 = ADD_OVERFLOW (carry_14, r0_80);
+  r1_82 = REALPART_EXPR <_272>;
+  _248 = IMAGPART_EXPR <_272>;
+  _83 = _248 != 0;
+  _84 = _81 | _83;
+  carry_85 = (dig_t) _84;
+  MEM[(dig_t *)c_5(D) + 40B] = r1_82;
+  _97 = MEM[(const dig_t *)c_5(D) + 48B];
+  _98 = MEM[(const dig_t *)_1 + 16B];
+  _200 = ADD_OVERFLOW (_97, _98);
+  r0_99 = REALPART_EXPR <_200>;
+  _176 = IMAGPART_EXPR <_200>;
+  _100 = _176 != 0;
+  _152 = ADD_OVERFLOW (carry_85, r0_99);
+  r1_101 = REALPART_EXPR <_152>;
+  _132 = IMAGPART_EXPR <_152>;
+  _102 = _132 != 0;
+  _103 = _100 | _102;
+  carry_104 = (dig_t) _103;
+  MEM[(dig_t *)c_5(D) + 48B] = r1_101;
+  _29 = MEM[(const dig_t *)c_5(D) + 56B];
+  _31 = MEM[(const dig_t *)_1 + 24B];
+  r0_32 = _29 + _31;
+  r1_35 = r0_32 + carry_104;
+  MEM[(dig_t *)c_5(D) + 56B] = r1_35;
+  goto <bb 17>; [100.00%]
+
+}
+
+
+
+;; Function fp_subd_low (fp_subd_low, funcdef_no=39, decl_uid=2659, cgraph_uid=39, symbol_order=39)
+
+fp_subd_low (dig_t * c, const dig_t * a, const dig_t * b)
+{
+  dig_t diff;
+  dig_t r0;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  _Bool _8;
+  long long unsigned int _14;
+  long long unsigned int _29;
+  long long unsigned int _34;
+  long long unsigned int prephitmp_40;
+  long long unsigned int _60;
+  long long unsigned int _61;
+  _Bool _64;
+  _Bool _65;
+  _Bool _66;
+  long long unsigned int _68;
+  long long unsigned int prephitmp_69;
+  long long unsigned int _84;
+  long long unsigned int _85;
+  _Bool _88;
+  _Bool _89;
+  _Bool _90;
+  long long unsigned int _92;
+  long long unsigned int prephitmp_93;
+  long long unsigned int _108;
+  long long unsigned int _109;
+  _Bool _112;
+  _Bool _113;
+  _Bool _114;
+  long long unsigned int _116;
+  long long unsigned int prephitmp_117;
+  long long unsigned int _132;
+  long long unsigned int _133;
+  _Bool _136;
+  _Bool _137;
+  _Bool _138;
+  long long unsigned int _140;
+  long long unsigned int prephitmp_141;
+  long long unsigned int _156;
+  long long unsigned int _157;
+  _Bool _160;
+  _Bool _161;
+  _Bool _162;
+  long long unsigned int _164;
+  long long unsigned int prephitmp_165;
+  long long unsigned int _180;
+  long long unsigned int _181;
+  _Bool _184;
+  _Bool _185;
+  _Bool _186;
+  long long unsigned int _188;
+  long long unsigned int prephitmp_189;
+  long long unsigned int _192;
+
+  <bb 2> [local count: 119292720]:
+  _34 = *a_15(D);
+  _14 = *b_16(D);
+  diff_28 = _34 - _14;
+  _8 = _14 > _34;
+  _192 = (long long unsigned int) _8;
+  *c_21(D) = diff_28;
+  _60 = MEM[(const dig_t *)a_15(D) + 8B];
+  _61 = MEM[(const dig_t *)b_16(D) + 8B];
+  diff_62 = _60 - _61;
+  r0_63 = diff_62 - _192;
+  if (_60 < _61)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 59646360]:
+  _64 = (_Bool) _192;
+  _65 = diff_62 == 0;
+  _66 = _64 & _65;
+  _68 = (long long unsigned int) _66;
+
+  <bb 4> [local count: 119292720]:
+  # prephitmp_69 = PHI <_68(3), 1(2)>
+  MEM[(dig_t *)c_21(D) + 8B] = r0_63;
+  _84 = MEM[(const dig_t *)a_15(D) + 16B];
+  _85 = MEM[(const dig_t *)b_16(D) + 16B];
+  diff_86 = _84 - _85;
+  r0_87 = diff_86 - prephitmp_69;
+  if (_84 < _85)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 59646360]:
+  _88 = (_Bool) prephitmp_69;
+  _89 = diff_86 == 0;
+  _90 = _88 & _89;
+  _92 = (long long unsigned int) _90;
+
+  <bb 6> [local count: 119292720]:
+  # prephitmp_93 = PHI <_92(5), 1(4)>
+  MEM[(dig_t *)c_21(D) + 16B] = r0_87;
+  _108 = MEM[(const dig_t *)a_15(D) + 24B];
+  _109 = MEM[(const dig_t *)b_16(D) + 24B];
+  diff_110 = _108 - _109;
+  r0_111 = diff_110 - prephitmp_93;
+  if (_108 < _109)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 59646360]:
+  _112 = (_Bool) prephitmp_93;
+  _113 = diff_110 == 0;
+  _114 = _112 & _113;
+  _116 = (long long unsigned int) _114;
+
+  <bb 8> [local count: 119292720]:
+  # prephitmp_117 = PHI <_116(7), 1(6)>
+  MEM[(dig_t *)c_21(D) + 24B] = r0_111;
+  _132 = MEM[(const dig_t *)a_15(D) + 32B];
+  _133 = MEM[(const dig_t *)b_16(D) + 32B];
+  diff_134 = _132 - _133;
+  r0_135 = diff_134 - prephitmp_117;
+  if (_132 < _133)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 9> [local count: 59646360]:
+  _136 = (_Bool) prephitmp_117;
+  _137 = diff_134 == 0;
+  _138 = _136 & _137;
+  _140 = (long long unsigned int) _138;
+
+  <bb 10> [local count: 119292720]:
+  # prephitmp_141 = PHI <_140(9), 1(8)>
+  MEM[(dig_t *)c_21(D) + 32B] = r0_135;
+  _156 = MEM[(const dig_t *)a_15(D) + 40B];
+  _157 = MEM[(const dig_t *)b_16(D) + 40B];
+  diff_158 = _156 - _157;
+  r0_159 = diff_158 - prephitmp_141;
+  if (_156 < _157)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 11> [local count: 59646360]:
+  _160 = (_Bool) prephitmp_141;
+  _161 = diff_158 == 0;
+  _162 = _160 & _161;
+  _164 = (long long unsigned int) _162;
+
+  <bb 12> [local count: 119292720]:
+  # prephitmp_165 = PHI <_164(11), 1(10)>
+  MEM[(dig_t *)c_21(D) + 40B] = r0_159;
+  _180 = MEM[(const dig_t *)a_15(D) + 48B];
+  _181 = MEM[(const dig_t *)b_16(D) + 48B];
+  diff_182 = _180 - _181;
+  r0_183 = diff_182 - prephitmp_165;
+  if (_180 < _181)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 13> [local count: 59646360]:
+  _184 = (_Bool) prephitmp_165;
+  _185 = diff_182 == 0;
+  _186 = _184 & _185;
+  _188 = (long long unsigned int) _186;
+
+  <bb 14> [local count: 119292720]:
+  # prephitmp_189 = PHI <_188(13), 1(12)>
+  MEM[(dig_t *)c_21(D) + 48B] = r0_183;
+  _1 = MEM[(const dig_t *)a_15(D) + 56B];
+  _2 = MEM[(const dig_t *)b_16(D) + 56B];
+  diff_18 = _1 - _2;
+  r0_19 = diff_18 - prephitmp_189;
+  if (_1 < _2)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 15> [local count: 59646360]:
+  _3 = (_Bool) prephitmp_189;
+  _4 = diff_18 == 0;
+  _5 = _3 & _4;
+  _29 = (long long unsigned int) _5;
+
+  <bb 16> [local count: 119292720]:
+  # prephitmp_40 = PHI <_29(15), 1(14)>
+  MEM[(dig_t *)c_21(D) + 56B] = r0_19;
+  return prephitmp_40;
+
+}
+
+
+
+;; Function fp_negm_low (fp_negm_low, funcdef_no=40, decl_uid=2666, cgraph_uid=40, symbol_order=40)
+
+fp_negm_low (dig_t * c, const dig_t * a)
+{
+  dig_t r0;
+  dig_t diff;
+  const dig_t * _1;
+  long long unsigned int _7;
+  long long unsigned int _9;
+  long long unsigned int _24;
+  long long unsigned int _35;
+  _Bool _49;
+  long long unsigned int _59;
+  long long unsigned int _60;
+  _Bool _63;
+  _Bool _64;
+  _Bool _65;
+  long long unsigned int _67;
+  long long unsigned int prephitmp_68;
+  long long unsigned int _72;
+  long long unsigned int _82;
+  long long unsigned int _83;
+  _Bool _86;
+  _Bool _87;
+  _Bool _88;
+  long long unsigned int _90;
+  long long unsigned int prephitmp_91;
+
+  <bb 2> [local count: 214748365]:
+  _1 = fp_prime_get ();
+  _35 = *_1;
+  _24 = *a_5(D);
+  diff_28 = _35 - _24;
+  _49 = _24 > _35;
+  _72 = (long long unsigned int) _49;
+  *c_4(D) = diff_28;
+  _59 = MEM[(const dig_t *)_1 + 8B];
+  _60 = MEM[(const dig_t *)a_5(D) + 8B];
+  diff_61 = _59 - _60;
+  r0_62 = diff_61 - _72;
+  if (_59 < _60)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 107374183]:
+  _63 = (_Bool) _72;
+  _64 = diff_61 == 0;
+  _65 = _63 & _64;
+  _67 = (long long unsigned int) _65;
+
+  <bb 4> [local count: 214748365]:
+  # prephitmp_68 = PHI <_67(3), 1(2)>
+  MEM[(dig_t *)c_4(D) + 8B] = r0_62;
+  _82 = MEM[(const dig_t *)_1 + 16B];
+  _83 = MEM[(const dig_t *)a_5(D) + 16B];
+  diff_84 = _82 - _83;
+  r0_85 = diff_84 - prephitmp_68;
+  if (_82 < _83)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 107374183]:
+  _86 = (_Bool) prephitmp_68;
+  _87 = diff_84 == 0;
+  _88 = _86 & _87;
+  _90 = (long long unsigned int) _88;
+
+  <bb 6> [local count: 214748365]:
+  # prephitmp_91 = PHI <_90(5), 1(4)>
+  MEM[(dig_t *)c_4(D) + 16B] = r0_85;
+  _7 = MEM[(const dig_t *)_1 + 24B];
+  _9 = MEM[(const dig_t *)a_5(D) + 24B];
+  diff_10 = _7 - _9;
+  r0_12 = diff_10 - prephitmp_91;
+  MEM[(dig_t *)c_4(D) + 24B] = r0_12;
+  return;
+
+}
+
+
+
+;; Function fp_dbln_low (fp_dbln_low, funcdef_no=41, decl_uid=2669, cgraph_uid=41, symbol_order=41)
+
+fp_dbln_low (dig_t * c, const dig_t * a)
+{
+  dig_t r1;
+  dig_t r0;
+  dig_t carry;
+  long long unsigned int _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  long long unsigned int _6;
+  _Bool _9;
+  long long unsigned int _18;
+  long long unsigned int _22;
+  __complex__ long long unsigned int _34;
+  __complex__ long long unsigned int _38;
+  long long unsigned int _47;
+  _Bool _49;
+  _Bool _51;
+  _Bool _52;
+  long long unsigned int _56;
+  long long unsigned int _65;
+  _Bool _67;
+  _Bool _69;
+  _Bool _70;
+  __complex__ long long unsigned int _74;
+
+  <bb 2> [local count: 214748365]:
+  _6 = *a_11(D);
+  r0_5 = _6 * 2;
+  _4 = r0_5 < _6;
+  carry_35 = (dig_t) _4;
+  *c_10(D) = r0_5;
+  _47 = MEM[(const dig_t *)a_11(D) + 8B];
+  r0_48 = _47 * 2;
+  _49 = _47 > r0_48;
+  _38 = ADD_OVERFLOW (carry_35, r0_48);
+  r1_50 = REALPART_EXPR <_38>;
+  _56 = IMAGPART_EXPR <_38>;
+  _51 = _56 != 0;
+  _52 = _49 | _51;
+  carry_53 = (dig_t) _52;
+  MEM[(dig_t *)c_10(D) + 8B] = r1_50;
+  _65 = MEM[(const dig_t *)a_11(D) + 16B];
+  r0_66 = _65 * 2;
+  _67 = _65 > r0_66;
+  _74 = ADD_OVERFLOW (carry_53, r0_66);
+  r1_68 = REALPART_EXPR <_74>;
+  _22 = IMAGPART_EXPR <_74>;
+  _69 = _22 != 0;
+  _70 = _67 | _69;
+  carry_71 = (dig_t) _70;
+  MEM[(dig_t *)c_10(D) + 16B] = r1_68;
+  _1 = MEM[(const dig_t *)a_11(D) + 24B];
+  r0_13 = _1 * 2;
+  _2 = _1 > r0_13;
+  _34 = ADD_OVERFLOW (r0_13, carry_71);
+  r1_14 = REALPART_EXPR <_34>;
+  _18 = IMAGPART_EXPR <_34>;
+  _3 = _18 != 0;
+  _9 = _2 | _3;
+  carry_15 = (dig_t) _9;
+  MEM[(dig_t *)c_10(D) + 24B] = r1_14;
+  return carry_15;
+
+}
+
+
+
+;; Function fp_dblm_low (fp_dblm_low, funcdef_no=42, decl_uid=2672, cgraph_uid=42, symbol_order=42)
+
+fp_dblm_low (dig_t * c, const dig_t * a)
+{
+  dig_t r0;
+  dig_t diff;
+  dig_t r1;
+  dig_t r0;
+  dig_t carry;
+  long long unsigned int _1;
+  _Bool _2;
+  _Bool _3;
+  __complex__ long long unsigned int _6;
+  const dig_t * _7;
+  int _8;
+  const dig_t * _9;
+  __complex__ long long unsigned int _12;
+  _Bool _16;
+  long long unsigned int _30;
+  long long unsigned int _32;
+  long long unsigned int _51;
+  long long unsigned int _53;
+  _Bool _71;
+  long long unsigned int _80;
+  long long unsigned int _81;
+  _Bool _84;
+  _Bool _85;
+  _Bool _86;
+  long long unsigned int _88;
+  long long unsigned int prephitmp_89;
+  long long unsigned int _93;
+  long long unsigned int _101;
+  long long unsigned int _102;
+  _Bool _105;
+  _Bool _106;
+  _Bool _107;
+  long long unsigned int _109;
+  long long unsigned int prephitmp_110;
+  long long unsigned int _114;
+  long long unsigned int _121;
+  _Bool _123;
+  __complex__ long long unsigned int _133;
+  long long unsigned int _140;
+  _Bool _142;
+  _Bool _144;
+  _Bool _145;
+  long long unsigned int _152;
+  long long unsigned int _159;
+  _Bool _161;
+  _Bool _163;
+  _Bool _164;
+  long long unsigned int _168;
+
+  <bb 2> [local count: 214748365]:
+  _121 = *a_17(D);
+  r0_122 = _121 * 2;
+  _123 = _121 > r0_122;
+  carry_127 = (dig_t) _123;
+  *c_22(D) = r0_122;
+  _140 = MEM[(const dig_t *)a_17(D) + 8B];
+  r0_141 = _140 * 2;
+  _142 = _140 > r0_141;
+  _12 = ADD_OVERFLOW (carry_127, r0_141);
+  r1_143 = REALPART_EXPR <_12>;
+  _114 = IMAGPART_EXPR <_12>;
+  _144 = _114 != 0;
+  _145 = _142 | _144;
+  carry_146 = (dig_t) _145;
+  MEM[(dig_t *)c_22(D) + 8B] = r1_143;
+  _159 = MEM[(const dig_t *)a_17(D) + 16B];
+  r0_160 = _159 * 2;
+  _161 = _159 > r0_160;
+  _6 = ADD_OVERFLOW (carry_146, r0_160);
+  r1_162 = REALPART_EXPR <_6>;
+  _168 = IMAGPART_EXPR <_6>;
+  _163 = _168 != 0;
+  _164 = _161 | _163;
+  carry_165 = (dig_t) _164;
+  MEM[(dig_t *)c_22(D) + 16B] = r1_162;
+  _1 = MEM[(const dig_t *)a_17(D) + 24B];
+  r0_19 = _1 * 2;
+  _2 = _1 > r0_19;
+  _133 = ADD_OVERFLOW (r0_19, carry_165);
+  r1_20 = REALPART_EXPR <_133>;
+  _152 = IMAGPART_EXPR <_133>;
+  _3 = _152 != 0;
+  _16 = _2 | _3;
+  MEM[(dig_t *)c_22(D) + 24B] = r1_20;
+  if (_16 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 3> [local count: 178241144]:
+  _9 = fp_prime_get ();
+  _53 = MEM[(const dig_t *)c_22(D)];
+  _51 = *_9;
+  diff_50 = _53 - _51;
+  _71 = _51 > _53;
+  _93 = (long long unsigned int) _71;
+  *c_22(D) = diff_50;
+  _80 = MEM[(const dig_t *)c_22(D) + 8B];
+  _81 = MEM[(const dig_t *)_9 + 8B];
+  diff_82 = _80 - _81;
+  r0_83 = diff_82 - _93;
+  if (_80 < _81)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 89120572]:
+  _84 = (_Bool) _93;
+  _85 = diff_82 == 0;
+  _86 = _84 & _85;
+  _88 = (long long unsigned int) _86;
+
+  <bb 5> [local count: 178241144]:
+  # prephitmp_89 = PHI <_88(4), 1(3)>
+  MEM[(dig_t *)c_22(D) + 8B] = r0_83;
+  _101 = MEM[(const dig_t *)c_22(D) + 16B];
+  _102 = MEM[(const dig_t *)_9 + 16B];
+  diff_103 = _101 - _102;
+  r0_104 = diff_103 - prephitmp_89;
+  if (_101 < _102)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 89120572]:
+  _105 = (_Bool) prephitmp_89;
+  _106 = diff_103 == 0;
+  _107 = _105 & _106;
+  _109 = (long long unsigned int) _107;
+
+  <bb 7> [local count: 178241144]:
+  # prephitmp_110 = PHI <_109(6), 1(5)>
+  MEM[(dig_t *)c_22(D) + 16B] = r0_104;
+  _30 = MEM[(const dig_t *)c_22(D) + 24B];
+  _32 = MEM[(const dig_t *)_9 + 24B];
+  diff_33 = _30 - _32;
+  r0_35 = diff_33 - prephitmp_110;
+  MEM[(dig_t *)c_22(D) + 24B] = r0_35;
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 107374182]:
+  _7 = fp_prime_get ();
+  _8 = dv_cmp (c_22(D), _7, 4);
+  if (_8 != -1)
+    goto <bb 3>; [66.00%]
+  else
+    goto <bb 9>; [34.00%]
+
+  <bb 9> [local count: 214748366]:
+  return;
+
+}
+
+
+
+;; Function fp_hlvm_low (fp_hlvm_low, funcdef_no=43, decl_uid=2675, cgraph_uid=43, symbol_order=43)
+
+fp_hlvm_low (dig_t * c, const dig_t * a)
+{
+  dig_t carry;
+  dig_t r0;
+  dig_t r1;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  const dig_t * _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  long long unsigned int _17;
+  long long unsigned int _19;
+  _Bool _21;
+  _Bool _24;
+  _Bool _25;
+  __complex__ long long unsigned int _26;
+  long long unsigned int _30;
+  __complex__ long long unsigned int _31;
+  long long unsigned int _32;
+  _Bool _33;
+  __complex__ long long unsigned int _35;
+  __complex__ long long unsigned int _36;
+  long long unsigned int _38;
+  long long unsigned int _42;
+  long long unsigned int _49;
+  long long unsigned int _65;
+  long long unsigned int _66;
+  _Bool _68;
+  _Bool _70;
+  _Bool _71;
+  __complex__ long long unsigned int _75;
+  long long unsigned int _76;
+  __complex__ long long unsigned int _83;
+  long long unsigned int _84;
+  long long unsigned int _86;
+  long long unsigned int _87;
+  _Bool _89;
+  _Bool _91;
+  _Bool _92;
+  long long unsigned int _96;
+  __complex__ long long unsigned int _97;
+
+  <bb 2> [local count: 429496730]:
+  _1 = *a_10(D);
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 214748365]:
+  _3 = fp_prime_get ();
+  _6 = *a_10(D);
+  _49 = *_3;
+  _35 = ADD_OVERFLOW (_6, _49);
+  r0_7 = REALPART_EXPR <_35>;
+  _76 = IMAGPART_EXPR <_35>;
+  _33 = _76 != 0;
+  carry_41 = (dig_t) _33;
+  *c_12(D) = r0_7;
+  _65 = MEM[(const dig_t *)a_10(D) + 8B];
+  _66 = MEM[(const dig_t *)_3 + 8B];
+  _97 = ADD_OVERFLOW (_65, _66);
+  r0_67 = REALPART_EXPR <_97>;
+  _38 = IMAGPART_EXPR <_97>;
+  _68 = _38 != 0;
+  _75 = ADD_OVERFLOW (carry_41, r0_67);
+  r1_69 = REALPART_EXPR <_75>;
+  _96 = IMAGPART_EXPR <_75>;
+  _70 = _96 != 0;
+  _71 = _68 | _70;
+  carry_72 = (dig_t) _71;
+  MEM[(dig_t *)c_12(D) + 8B] = r1_69;
+  _86 = MEM[(const dig_t *)a_10(D) + 16B];
+  _87 = MEM[(const dig_t *)_3 + 16B];
+  _36 = ADD_OVERFLOW (_86, _87);
+  r0_88 = REALPART_EXPR <_36>;
+  _42 = IMAGPART_EXPR <_36>;
+  _89 = _42 != 0;
+  _26 = ADD_OVERFLOW (carry_72, r0_88);
+  r1_90 = REALPART_EXPR <_26>;
+  _30 = IMAGPART_EXPR <_26>;
+  _91 = _30 != 0;
+  _92 = _89 | _91;
+  carry_93 = (dig_t) _92;
+  MEM[(dig_t *)c_12(D) + 16B] = r1_90;
+  _17 = MEM[(const dig_t *)a_10(D) + 24B];
+  _19 = MEM[(const dig_t *)_3 + 24B];
+  _31 = ADD_OVERFLOW (_17, _19);
+  r0_20 = REALPART_EXPR <_31>;
+  _32 = IMAGPART_EXPR <_31>;
+  _21 = _32 != 0;
+  _83 = ADD_OVERFLOW (r0_20, carry_93);
+  r1_23 = REALPART_EXPR <_83>;
+  _84 = IMAGPART_EXPR <_83>;
+  _24 = _84 != 0;
+  _25 = _21 | _24;
+  MEM[(dig_t *)c_12(D) + 24B] = r1_23;
+  fp_rsh1_low (c_12(D), c_12(D));
+  if (_25 != 0)
+    goto <bb 5>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 4> [local count: 214748365]:
+  dv_copy (c_12(D), a_10(D), 4);
+  fp_rsh1_low (c_12(D), c_12(D)); [tail call]
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 214748365]:
+  _4 = MEM[(dig_t *)c_12(D) + 24B];
+  _5 = _4 ^ 9223372036854775808;
+  MEM[(dig_t *)c_12(D) + 24B] = _5;
+
+  <bb 6> [local count: 429496730]:
+  return;
+
+}
+
+
+
+;; Function fp_hlvd_low (fp_hlvd_low, funcdef_no=44, decl_uid=2678, cgraph_uid=44, symbol_order=44)
+
+fp_hlvd_low (dig_t * c, const dig_t * a)
+{
+  dig_t carry;
+  dig_t r0;
+  dig_t r1;
+  dig_t carry;
+  long long unsigned int _1;
+  long long unsigned int _2;
+  const dig_t * _3;
+  const dig_t * _4;
+  dig_t * _5;
+  long long unsigned int _6;
+  long long unsigned int _7;
+  long long unsigned int _21;
+  long long unsigned int _22;
+  long long unsigned int _24;
+  _Bool _26;
+  _Bool _29;
+  _Bool _30;
+  __complex__ long long unsigned int _35;
+  long long unsigned int _36;
+  __complex__ long long unsigned int _37;
+  long long unsigned int _38;
+  __complex__ long long unsigned int _43;
+  _Bool _44;
+  long long unsigned int _45;
+  long long unsigned int _57;
+  long long unsigned int _60;
+  __complex__ long long unsigned int _61;
+  long long unsigned int _71;
+  long long unsigned int _72;
+  _Bool _74;
+  _Bool _76;
+  _Bool _77;
+  __complex__ long long unsigned int _81;
+  long long unsigned int _82;
+  __complex__ long long unsigned int _88;
+  long long unsigned int _89;
+  long long unsigned int _92;
+  long long unsigned int _93;
+  _Bool _95;
+  _Bool _97;
+  _Bool _98;
+  long long unsigned int _102;
+  __complex__ long long unsigned int _103;
+
+  <bb 2> [local count: 429496730]:
+  _1 = *a_12(D);
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 214748365]:
+  _3 = fp_prime_get ();
+  _21 = *a_12(D);
+  _38 = *_3;
+  _61 = ADD_OVERFLOW (_21, _38);
+  r0_41 = REALPART_EXPR <_61>;
+  _82 = IMAGPART_EXPR <_61>;
+  _44 = _82 != 0;
+  carry_40 = (dig_t) _44;
+  *c_14(D) = r0_41;
+  _71 = MEM[(const dig_t *)a_12(D) + 8B];
+  _72 = MEM[(const dig_t *)_3 + 8B];
+  _103 = ADD_OVERFLOW (_71, _72);
+  r0_73 = REALPART_EXPR <_103>;
+  _60 = IMAGPART_EXPR <_103>;
+  _74 = _60 != 0;
+  _81 = ADD_OVERFLOW (carry_40, r0_73);
+  r1_75 = REALPART_EXPR <_81>;
+  _102 = IMAGPART_EXPR <_81>;
+  _76 = _102 != 0;
+  _77 = _74 | _76;
+  carry_78 = (dig_t) _77;
+  MEM[(dig_t *)c_14(D) + 8B] = r1_75;
+  _92 = MEM[(const dig_t *)a_12(D) + 16B];
+  _93 = MEM[(const dig_t *)_3 + 16B];
+  _43 = ADD_OVERFLOW (_92, _93);
+  r0_94 = REALPART_EXPR <_43>;
+  _45 = IMAGPART_EXPR <_43>;
+  _95 = _45 != 0;
+  _35 = ADD_OVERFLOW (carry_78, r0_94);
+  r1_96 = REALPART_EXPR <_35>;
+  _36 = IMAGPART_EXPR <_35>;
+  _97 = _36 != 0;
+  _98 = _95 | _97;
+  carry_99 = (dig_t) _98;
+  MEM[(dig_t *)c_14(D) + 16B] = r1_96;
+  _22 = MEM[(const dig_t *)a_12(D) + 24B];
+  _24 = MEM[(const dig_t *)_3 + 24B];
+  _37 = ADD_OVERFLOW (_22, _24);
+  r0_25 = REALPART_EXPR <_37>;
+  _57 = IMAGPART_EXPR <_37>;
+  _26 = _57 != 0;
+  _88 = ADD_OVERFLOW (r0_25, carry_99);
+  r1_28 = REALPART_EXPR <_88>;
+  _89 = IMAGPART_EXPR <_88>;
+  _29 = _89 != 0;
+  _30 = _26 | _29;
+  carry_31 = (dig_t) _30;
+  MEM[(dig_t *)c_14(D) + 24B] = r1_28;
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 214748365]:
+  dv_copy (c_14(D), a_12(D), 4);
+
+  <bb 5> [local count: 429496730]:
+  # carry_8 = PHI <0(4), carry_31(3)>
+  _4 = a_12(D) + 32;
+  _5 = c_14(D) + 32;
+  fp_add1_low (_5, _4, carry_8);
+  carry_18 = fp_rsh1_low (_5, _5);
+  fp_rsh1_low (c_14(D), c_14(D));
+  if (carry_18 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 214748365]:
+  _6 = MEM[(dig_t *)c_14(D) + 24B];
+  _7 = _6 ^ 9223372036854775808;
+  MEM[(dig_t *)c_14(D) + 24B] = _7;
+
+  <bb 7> [local count: 429496730]:
+  return;
+
+}
+
+
