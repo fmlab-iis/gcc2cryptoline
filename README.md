@@ -31,7 +31,7 @@ You can see the `gcc2cryptoline.so`  under the `build` directory and how to use 
 ```
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake ..
 ```
 the plugin is `gcc2cryptoline.so`
 
@@ -80,6 +80,11 @@ Becasue of the gramma of cryptoline parser, we need to escape some characters su
 - add options when compile
   - c like format:	`-fdump-tree-optimized`
   - raw format:		`-fdump-tree-optimized-raw`
+
+## Troubleshooting
+Not all GIMPLE statements are supported (maybe throw some errors in runtime).
+
+Please report such errors!
 
 ## Citation
 ### BibTeX
