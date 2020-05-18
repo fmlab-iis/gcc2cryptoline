@@ -4,9 +4,25 @@ on: [push, pull_request]
 
 jobs:
   linux-gcc:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-18.04, ubuntu-16.04]
+        gcc-version: [8, 9]
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: gcc-${{ matrix.gcc-version }}
+      CXX: g++-${{ matrix.gcc-version }}
     steps:
       - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: newest gcc repo
+        run: |
+          sudo apt install -y software-properties-common && \
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test && \
+          sudo apt update
+      - name: install gcc and gcc-plugin
+        run: sudo apt install -y gcc-${{ matrix.gcc-version }} gcc-${{ matrix.gcc-version }}-plugin-dev
       - name: configure
         run: mkdir build && cd build && cmake ..
       - name: build
