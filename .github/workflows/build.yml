@@ -27,3 +27,8 @@ jobs:
         run: mkdir build && cd build && cmake ..
       - name: build
         run: cmake --build build -j 2
+      - name: test
+        run: |
+          cp build/gcc2cryptoline.so test && \
+          cd test && \
+          ./test.sh
