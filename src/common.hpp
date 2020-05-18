@@ -51,8 +51,6 @@
 #include "tree-ssa-address.h"
 #include "output.h"
 #include "builtins.h"
-#include "tree-chkp.h"
-#include "rtl-chkp.h"
 
 #include "context.h"
 #include "function.h"

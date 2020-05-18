@@ -160,14 +160,14 @@ unsigned int pass_cryptoline::execute(function* fun)
              gsi_next(&gsi)) {
             gimple* stmt = gsi_stmt(gsi);
             if (is_debug) {
-                print_gimple_stmt_custom(stdout, stmt, 0, 0);
+              print_gimple_stmt_custom(stdout, stmt, 0, TDF_NONE);
             }
         }
         // DEBUG << "current function " << get_name(fun->decl) << endl;
         for (gsi = gsi_start_bb(bb); !gsi_end_p(gsi); gsi_next(&gsi)) {
             gimple* stmt = gsi_stmt(gsi);
             if (is_debug) {
-                print_gimple_stmt_custom(stdout, stmt, 0, 0);
+              print_gimple_stmt_custom(stdout, stmt, 0, TDF_NONE);
             }
             parse_stmt(stmt);
             if (is_debug) {
@@ -201,11 +201,11 @@ unsigned int pass_cryptoline::execute(function* fun)
         for (gsi = gsi_start_phis(bb); !gsi_end_p(gsi);
              gsi_next(&gsi)) {
             gimple* stmt = gsi_stmt(gsi);
-            print_gimple_stmt_custom(stdout, stmt, 0, 0);
+            print_gimple_stmt_custom(stdout, stmt, 0, TDF_NONE);
         }
         for (gsi = gsi_start_bb(bb); !gsi_end_p(gsi); gsi_next(&gsi)) {
             gimple* stmt = gsi_stmt(gsi);
-            print_gimple_stmt_custom(stdout, stmt, 0, 0);
+            print_gimple_stmt_custom(stdout, stmt, 0, TDF_NONE);
             cout << *it;
             it++;
         }
