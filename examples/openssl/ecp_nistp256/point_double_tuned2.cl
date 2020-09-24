@@ -8,22 +8,22 @@ Singular: path=/home/mht208/.local/bin/Singular, version=Singular for x86_64-Lin
 Boolector: path=/home/mht208/.local/bin/boolector, version=3.2.0
 Z3: path=/home/mht208/.local/bin/z3, version=Z3 version 4.8.3 - 64 bit
 ===== Verification =====
-Arguments: -v -btor -no_carry_constraint -isafety -jobs 12 point_double_tuned.cl
-Parsing Cryptoline file:                [OK]            0.014133 seconds
-Checking well-formedness:               [OK]            0.003802 seconds
-Transforming to SSA form:               [OK]            0.002435 seconds
-Rewriting assignments:                  [OK]            0.073933 seconds
+Arguments: -v -btor -no_carry_constraint -isafety -jobs 12 point_double_tuned2.cl
+Parsing Cryptoline file:                [OK]            0.013987 seconds
+Checking well-formedness:               [OK]            0.004108 seconds
+Transforming to SSA form:               [OK]            0.002539 seconds
+Rewriting assignments:                  [OK]            0.082283 seconds
 Verifying program safety:
 ......
-         Overall                        [OK]            3112.053565 seconds
-Verifying range assertions:             [OK]            16.172168 seconds
-Verifying range specification:          [OK]            0.066468 seconds
-Rewriting value-preserved casting:      [OK]            0.013980 seconds
-Verifying algebraic assertions:         [OK]            0.336433 seconds
-Verifying algebraic specification:      [OK]            4.055720 seconds
-Verification result:                    [OK]            3132.794412 seconds
+         Overall                        [OK]            3108.145534 seconds
+Verifying range assertions:             [OK]            16.381386 seconds
+Verifying range specification:          [OK]            0.068589 seconds
+Rewriting value-preserved casting:      [OK]            0.016111 seconds
+Verifying algebraic assertions:         [OK]            0.376584 seconds
+Verifying algebraic specification:      [OK]            2.889826 seconds
+Verification result:                    [OK]            3127.982748 seconds
 *)
-proc felem_shrink (uint128 a0, uint128 a1, uint128 a2, uint128 a3; uint64 c0, uint64 c1, uint64 c2, uint64 c3) = 
+proc felem_shrink (uint128 a0, uint128 a1, uint128 a2, uint128 a3; uint64 c0, uint64 c1, uint64 c2, uint64 c3) =
 {
   true
   &&
@@ -169,17 +169,21 @@ vpc high55@uint64 v26@uint128;
 (* ====== modified : carry -> high ======= *)
 usubb high high56 0@uint64 high55;
 (* low_57 = (u64) _21; *)
-cast low57@uint64 v21@uint128;
+cast [ high57 ] low57@uint64 v21@uint128;
 
 vpc tmp_to_use_p@uint64 tmp_to_use;
-assert true && low57 = tmp_to_use_p;
-assume low57 = tmp_to_use && true;
+//assert true && low57 = tmp_to_use_p;
+//assume low57 = tmp_to_use && true;
+assert true && high57 = high55;
+assume high57 = high55 && true;
 
 (* low.0_27 = (signed long) _21; *)
 cast v27@int64 v21@uint128;
 
 assert true && v27 = low57;
 assume v27 = low57 && true;
+//assert true && v27_high = high57;
+//assume v27_high = high57 && true;
 
 (* _28 = low.0_27 >> 63; *)
 (* TODO: signed operation, need check *)
@@ -245,11 +249,13 @@ usplit v40 tmp_to_use v33 64;
 (* _41 = _36 + _40; *)
 uadd v41 v36 v40;
 (* _42 = (long unsigned int) _33; *)
-cast v42@uint64 v33@uint128;
+cast [ v42_high ] v42@uint64 v33@uint128;
 
 vpc tmp_to_use_p@uint64 tmp_to_use;
-assert true && v42 = tmp_to_use_p;
-assume v42 = tmp_to_use_p && true;
+//assert true && v42 = tmp_to_use_p;
+//assume v42 = tmp_to_use_p && true;
+assert true && ulimbs 64 [v42_high, 0@64] = v40;
+assume v42_high = v40 && true;
 
 
 (* _43 = _41 >> 64; *)
@@ -257,11 +263,13 @@ usplit v43 tmp_to_use v41 64;
 (* _44 = _8 + _43; *)
 uadd v44 v8 v43;
 (* _45 = (long unsigned int) _41; *)
-cast v45@uint64 v41@uint128;
+cast [ v45_high ] v45@uint64 v41@uint128;
 
 vpc tmp_to_use_p@uint64 tmp_to_use;
-assert true && v45 = tmp_to_use_p;
-assume v45 = tmp_to_use && true;
+//assert true && v45 = tmp_to_use_p;
+//assume v45 = tmp_to_use && true;
+assert true && ulimbs 64 [v45_high, 0@64] = v43;
+assume v45_high = v43 && true;
 
 
 (* _46 = _44 >> 64; *)
@@ -269,11 +277,13 @@ usplit v46 tmp_to_use v44 64;
 (* _47 = _39 + _46; *)
 uadd v47 v39 v46;
 (* _48 = (long unsigned int) _44; *)
-cast v48@uint64 v44@uint128;
+cast [ v48_high ] v48@uint64 v44@uint128;
 
 vpc tmp_to_use_p@uint64 tmp_to_use;
-assert true && v48 = tmp_to_use_p;
-assume v48 = tmp_to_use && true;
+//assert true && v48 = tmp_to_use_p;
+//assume v48 = tmp_to_use && true;
+assert true && ulimbs 64 [v48_high, 0@64] = v46;
+assume v48_high = v46 && true;
 
 (* *out_64(D) = _42; *)
 mov out64_0 v42;
@@ -1422,6 +1432,7 @@ shl v29 tmp2 32;
 assert true && tmp1 = 0@128;
 assume tmp1 = 0 && true;
 (* _30 = _27 - _29; *)
+//usubb borrow_v30 v30 v27 v29;
 usub v30 v27 v29;
 (* *out_53(D) = _30; *)
 mov out53_0 v30;
@@ -1518,7 +1529,7 @@ mov c3 out53_48@uint128;
 }
 
 
-proc main (uint128 x0, uint128 x1, uint128 x2, uint128 x3, uint128 y0, uint128 y1,uint128 y2,uint128 y3,uint128 z0, uint128 z1,uint128 z2, uint128 z3) = 
+proc main (uint128 x0, uint128 x1, uint128 x2, uint128 x3, uint128 y0, uint128 y1,uint128 y2,uint128 y3,uint128 z0, uint128 z1,uint128 z2, uint128 z3) =
 {
   true
   &&
@@ -1558,6 +1569,8 @@ mov z_in3_48@uint128 z3;
 
 (* BB's index is 2 *)
 
+(* ============================== 1114: felem_assign(ftmp, x_in); => ftmp_0 = x_in ============================== *)
+
 (* _155 = *x_in_2(D); *)
 mov v155 x_in2_0;
 (* MEM[(limb * )&ftmp] = _155; *)
@@ -1574,6 +1587,9 @@ mov ftmp_32 v157;
 mov v158 x_in2_48;
 (* MEM[(limb * )&ftmp + 48B] = _158; *)
 mov ftmp_48 v158;
+
+(* ============================== 1116: felem_assign(ftmp2, x_in); => ftmp2_0 = x_in ============================== *)
+
 (* MEM[(limb * )&ftmp2] = _155; *)
 mov ftmp2_0 v155;
 (* MEM[(limb * )&ftmp2 + 16B] = _156; *)
@@ -1582,12 +1598,18 @@ mov ftmp2_16 v156;
 mov ftmp2_32 v157;
 (* MEM[(limb * )&ftmp2 + 48B] = _158; *)
 mov ftmp2_48 v158;
+
+(* ============================== 1120: felem_square(tmp, z_in); => tmp_0 = z_in^2 ============================== *)
+
 (* felem_shrink (&small, z_in_3(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_shrink (z_in3_0, z_in3_16, z_in3_32, z_in3_48, small_0, small_8, small_16, small_24);
 (* smallfelem_square (&tmp, &small); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1121: felem_reduce(delta, tmp); => delta_0 = tmp_0 = z_in^2 ============================== *)
+
 (* small ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&delta, &tmp); *)
@@ -1599,16 +1621,24 @@ mov delta0_1 delta_16;
 mov delta0_2 delta_32;
 mov delta0_3 delta_48;
 
+(* ============================== 1125: felem_square(tmp, y_in); => tmp_1 = y_in^2 ============================== *)
+
 (* felem_shrink (&small, y_in_5(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_shrink(y_in5_0, y_in5_16, y_in5_32, y_in5_48, small_0, small_8, small_16, small_24);
 (* smallfelem_square (&tmp, &small); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1126: felem_reduce(gamma, tmp); => gamma_0 = tmp_1 = y_in^2 ============================== *)
+
 (* small ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&gamma, &tmp); *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, gamma_0, gamma_16, gamma_32, gamma_48);
+
+(* ============================== 1128: felem_shrink(small1, gamma); => small1_0 = gamma_0 = y_in^2 ============================== *)
+
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 (* felem_shrink (&small1, &gamma); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
@@ -1619,12 +1649,17 @@ mov gamma0_1 gamma_16;
 mov gamma0_2 gamma_32;
 mov gamma0_3 gamma_48;
 
+(* ============================== 1131: felem_small_mul(tmp, small1, x_in); => tmp_2 = small1_0 * x_in = x_in * y_in^2 ============================== *)
+
 (* felem_shrink (&small2, x_in_2(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_shrink(x_in2_0, x_in2_16, x_in2_32, x_in2_48, small2_0, small2_8, small2_16, small2_24);
 (* smallfelem_mul (&tmp, &small1, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_mul(small1_0, small1_8, small1_16, small1_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1132: felem_reduce(beta, tmp); => beta_0 = tmp_2 = x_in * y_in^2 ============================== *)
+
 (* small2 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&beta, &tmp); *)
@@ -1635,6 +1670,8 @@ mov beta0_0 beta_0;
 mov beta0_1 beta_16;
 mov beta0_2 beta_32;
 mov beta0_3 beta_48;
+
+(* ============================== 1136: felem_diff(ftmp, delta); => ftmp_1 = ftmp_0 - delta_0 = x_in - z_in^2 ============================== *)
 
 (* _139 = MEM[(limb * )&ftmp]; *)
 mov v139 ftmp_0;
@@ -1676,6 +1713,10 @@ mov v153 delta_48;
 usub v154 v146 v153;
 (* MEM[(limb * )&ftmp + 48B] = _154; *)
 mov ftmp_48 v154;
+
+(* [v147, v149, v151, v153] = delta_0 *)
+(* ============================== 1138: felem_sum(ftmp2, delta); => ftmp2_1 = ftmp2_0 + delta_0 = x_in + z_in^2 ============================== *)
+
 (* _131 = MEM[(limb * )&ftmp2]; *)
 mov v131 ftmp2_0;
 (* _132 = _131 + _147; *)
@@ -1692,6 +1733,11 @@ uadd v136 v135 v151;
 mov v137 ftmp2_48;
 (* _138 = _137 + _153; *)
 uadd v138 v137 v153;
+
+(* [v131, v133, v135, v137] = ftmp2_0 *)
+(* [v132, v134, v136, v138] = ftmp2_1 *)
+(* ============================== 1140: felem_scalar(ftmp2, 3); => ftmp2_2 = ftmp2_1 * 3 = 3 * (x_in + z_in^2) ============================== *)
+
 (* _127 = _132 * 3; *)
 umul v127 v132 0x3@uint128;
 (* MEM[(limb * )&ftmp2] = _127; *)
@@ -1708,17 +1754,22 @@ mov ftmp2_32 v129;
 umul v130 v138 0x3@uint128;
 (* MEM[(limb * )&ftmp2 + 48B] = _130; *)
 mov ftmp2_48 v130;
+
+(* ============================== 1142: felem_mul(tmp, ftmp, ftmp2); => tmp_3 = ftmp_1 * ftmp2_2 = 3 * (x_in + z_in^2) * (x_in - z_in^2) ============================== *)
+
 (* felem_shrink (&small1, &ftmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-//call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small1_0, small1_8, small1_16, small1_24);
+//call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small1_0, small1_8, small1_16, small1_24);                       (* small1 is overwritten!!! *)
 call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wrong_24);
 (* felem_shrink (&small2, &ftmp2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_shrink(ftmp2_0, ftmp2_16, ftmp2_32, ftmp2_48, small2_0, small2_8, small2_16, small2_24);
 (* smallfelem_mul (&tmp, &small1, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-//call smallfelem_mul(small1_0, small1_8, small1_16, small1_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 call smallfelem_mul(small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wrong_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1143: felem_reduce(alpha, tmp); => alpha_0 = tmp_3 = 3 * (x_in + z_in^2) * (x_in - z_in^2) ============================== *)
+
 (* small1 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* small2 ={v} {CLOBBER}; *)
@@ -1726,6 +1777,9 @@ call smallfelem_mul(small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wron
 (* felem_reduce (&alpha, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, alpha_0, alpha_16, alpha_32, alpha_48);
+
+(* ============================== 1145: felem_shrink(small2, alpha); => small2_0 = alpha_0 = 3 * (x_in + z_in^2) * (x_in - z_in^2) ============================== *)
+
 (* felem_shrink (&small2, &alpha); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_shrink(alpha_0, alpha_16, alpha_32, alpha_48, small2_0, small2_8, small2_16, small2_24);
@@ -1778,12 +1832,20 @@ ecut
     (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
   ];
 
+(* ============================== 1148: smallfelem_square(tmp, small2); => tmp_4 = small2_0^2 = alpha_0^2 ============================== *)
+
 (* smallfelem_square (&tmp, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_square(small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1149: felem_reduce(x_out, tmp); => x_out_0 = tmp_4 = alpha_0^2 ============================== *)
+
 (* felem_reduce (x_out_13(D), &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, x_out13_0, x_out13_16, x_out13_32, x_out13_48);
+
+(* ============================== 1150: felem_assign(ftmp, beta); => ftmp_2 = beta_0 ============================== *)
+
 (* _123 = MEM[(const limb * )&beta]; *)
 mov v123 beta_0;
 (* _124 = MEM[(const limb * )&beta + 16B]; *)
@@ -1792,6 +1854,10 @@ mov v124 beta_16;
 mov v125 beta_32;
 (* _126 = MEM[(const limb * )&beta + 48B]; *)
 mov v126 beta_48;
+
+(* [v123, v124, v125, v126] = ftmp_2 *)
+(* ============================== 1151: felem_scalar(ftmp, 8); => ftmp_3 = ftmp_2 * 8 = 8 * beta_0 ============================== *)
+
 (* _119 = _123 * 8; *)
 umul v119 v123 0x8@uint128;
 (* _120 = _124 * 8; *)
@@ -1800,6 +1866,10 @@ umul v120 v124 0x8@uint128;
 umul v121 v125 0x8@uint128;
 (* _122 = _126 * 8; *)
 umul v122 v126 0x8@uint128;
+
+(* [v119, v120, v121, v122] = ftmp_3 *)
+(* ============================== 1153: felem_diff(x_out, ftmp); => x_out_1 = x_out_0 - ftmp_3 = alpha_0^2 - 8 * beta_0 ============================== *)
+
 (* _107 = *x_out_13(D); *)
 mov v107 x_out13_0;
 (* _109 = MEM[(limb * )x_out_13(D) + 16B]; *)
@@ -1832,6 +1902,9 @@ usub v289 0x1fffffffffffffffe0000000200@uint128 v122;
 uadd v118 v113 v289;
 (* MEM[(limb * )x_out_13(D) + 48B] = _118; *)
 mov x_out13_48 v118;
+
+(* ============================== 1157: felem_sum(delta, gamma); => delta_1 = delta_0 + gamma_0 ============================== *)
+
 (* _95 = MEM[(limb * )&delta]; *)
 mov v95 delta_0;
 (* _96 = MEM[(const limb * )&gamma]; *)
@@ -1864,6 +1937,9 @@ mov v105 gamma_48;
 uadd v106 v104 v105;
 (* MEM[(limb * )&delta + 48B] = _106; *)
 mov delta_48 v106;
+
+(* ============================== 1159: felem_assign(ftmp, y_in); => ftmp_4 = y_in ============================== *)
+
 (* _91 = *y_in_5(D); *)
 mov v91 y_in5_0;
 (* _92 = MEM[(const limb * )y_in_5(D) + 16B]; *)
@@ -1872,6 +1948,10 @@ mov v92 y_in5_16;
 mov v93 y_in5_32;
 (* _94 = MEM[(const limb * )y_in_5(D) + 48B]; *)
 mov v94 y_in5_48;
+
+(* [v91, v92, v93, v94] = ftmp_4 *)
+(* ============================== 1160: felem_sum(ftmp, z_in); => ftmp_5 = ftmp_4 + z_in = y_in + z_in ============================== *)
+
 (* _83 = *z_in_3(D); *)
 mov v83 z_in3_0;
 (* _84 = _83 + _91; *)
@@ -1896,17 +1976,26 @@ mov v89 z_in3_48;
 uadd v90 v89 v94;
 (* MEM[(limb * )&ftmp + 48B] = _90; *)
 mov ftmp_48 v90;
+
+(* ============================== 1162: felem_square(tmp, ftmp); => tmp_5 = ftmp_5^2 = (y_in + z_in)^2 ============================== *)
+
 (* felem_shrink (&small, &ftmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small_0, small_8, small_16, small_24);
 (* smallfelem_square (&tmp, &small); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1163: felem_reduce(z_out, tmp); => z_out_0 = tmp_5 = (y_in + z_in)^2 ============================== *)
+
 (* small ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (z_out_15(D), &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, z_out15_0, z_out15_16, z_out15_32, z_out15_48);
+
+(* ============================== 1164: felem_diff(z_out, delta); => z_out_1 = z_out_0 - delta_1 = (y_in + z_in)^2 - gamma_0 - delta_0 ============================== *)
+
 (* _67 = *z_out_15(D); *)
 mov v67 z_out15_0;
 (* _69 = MEM[(limb * )z_out_15(D) + 16B]; *)
@@ -1947,6 +2036,9 @@ usub v285 0x1fffffffffffffffe0000000200@uint128 v81;
 uadd v82 v73 v285;
 (* MEM[(limb * )z_out_15(D) + 48B] = _82; *)
 mov z_out15_48 v82;
+
+(* ============================== 1168: felem_scalar(beta, 4); => beta_1 = 4 * beta_0 ============================== *)
+
 (* _59 = MEM[(limb * )&beta]; *)
 mov v59 beta_0;
 (* _60 = _59 * 4; *)
@@ -1963,6 +2055,10 @@ umul v64 v63 0x4@uint128;
 mov v65 beta_48;
 (* _66 = _65 * 4; *)
 umul v66 v65 0x4@uint128;
+
+(* [v60, v62, v64, v66] = beta_1 *)
+(* ============================== 1170: felem_diff_zero107(beta, x_out); => beta_2 = beta_1 - x_out = 4 * beta_0 - x_out ============================== *)
+
 (* _47 = _60 + 0x7fffffffffffffff7fffffff800; *)
 uadd v47 v60 0x7fffffffffffffff7fffffff800@uint128;
 (* _48 = _62 + 0x800000000000000000000000000; *)
@@ -1995,17 +2091,26 @@ mov v57 x_out13_48;
 usub v58 v50 v57;
 (* MEM[(limb * )&beta + 48B] = _58; *)
 mov beta_48 v58;
+
+(* ============================== 1172: felem_small_mul(tmp, small2, beta); => tmp_6 = small2_0 * beta_2 = alpha_0 * (4 * beta_0 - x_out) ============================== *)
+
 (* felem_shrink (&small2, &beta); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(beta_0, beta_16, beta_32, beta_48, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24);
+call felem_shrink(beta_0, beta_16, beta_32, beta_48, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24);                (* small2 is overwritten!!! *)
 (* smallfelem_mul (&tmp, &small2, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_mul(small2_0, small2_8, small2_16, small2_24, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+
+(* ============================== 1174: smallfelem_square(tmp2, small1); => tmp2_0 = small1_0^2 = gamma_0^2 ============================== *)
+
 (* small2 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* smallfelem_square (&tmp2, &small1); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call smallfelem_square(small1_0, small1_8, small1_16, small1_24, tmp2_0, tmp2_16, tmp2_32, tmp2_48, tmp2_64, tmp2_80, tmp2_96, tmp2_112);
+
+(* ============================== 1176: longfelem_scalar(tmp2, 8); => tmp2_1 = tmp2_0 * 8 = 8 * gamma_0^2 ============================== *)
+
 (* _31 = MEM[(limb * )&tmp2]; *)
 mov v31 tmp2_0;
 (* _32 = _31 * 8; *)
@@ -2054,6 +2159,9 @@ mov v45 tmp2_112;
 umul v46 v45 0x8@uint128;
 (* MEM[(limb * )&tmp2 + 112B] = _46; *)
 mov tmp2_112 v46;
+
+(* ============================== 1178: longfelem_diff(tmp, tmp2); => tmp_7 = tmp_6 - tmp2_1 = alpha_0 * (4 * beta_0 - x_out) - 8 * gamma_0^2 ============================== *)
+
 (* _226 = MEM[(limb * )&tmp]; *)
 mov v226 tmp_0;
 (* _227 = _226 + 0x3fffffffffffffff40; *)
@@ -2118,6 +2226,10 @@ mov tmp_96 v255;
 usub v257 v241 v46;
 (* MEM[(limb * )&tmp + 112B] = _257; *)
 mov tmp_112 v257;
+
+(* [v243, v245, v247, v249, v251, v253, v255, v257] = tmp_7 *)
+(* ============================== 1180: felem_reduce_zero105(y_out, tmp); => y_out_0 = tmp_7 = alpha_0 * (4 * beta_0 - x_out) - 8 * gamma_0^2 ============================== *)
+
 (* _219 = _243 + 0x1fffffffffffffffdfffffffe00; *)
 uadd v219 v243 0x1fffffffffffffffdfffffffe00@uint128;
 (* *y_out_19(D) = _219; *)
@@ -2159,6 +2271,8 @@ call felem_reduce_(y_out19_0, y_out19_16, y_out19_32, y_out19_48, tmp_64, tmp_80
 (* TODO: Skip translation for constructor *)
 (* return; *)
 
+(* ============================== END OF point_double ============================== *)
+
 
 (* Start with unused lhs *)
 mov xp0 x_out13_0;
@@ -2177,57 +2291,117 @@ mov zp3 z_out15_48@uint128;
 
 
 {
- and [
-     (*  X' = (3 * (X - Z^2) * (X + Z^2))^2 - 8 * X * Y^2 *)
-  (limbs 64 [xp0, xp1, xp2, xp3])
-  =
-  (
-     (
-         3 * ((limbs 64 [x0,x1,x2,x3]) - (limbs 64 [z0,z1,z2,z3]) **2)
-         * ((limbs 64 [x0,x1,x2,x3]) + (limbs 64 [z0,z1,z2,z3]) **2)
-     ) ** 2
-     -
-     8 * (limbs 64 [x0,x1,x2,x3]) * (limbs 64 [y0,y1,y2,y3]) **2
-     
-  )
-  (mod  (limbs 64 [  18446744073709551615,
-                 4294967295,
-                 0,
-                 18446744069414584321 ])),
-  (*  Y' = 3 * (X - Z^2) * (X + Z^2) * (4 * X * Y^2 - X') - 8 * Y^4 *)
-  (limbs 64 [yp0, yp1, yp2, yp3])
-  =
-  (
-     
-    3 
-    * ((limbs 64 [x0,x1,x2,x3]) - (limbs 64 [z0,z1,z2,z3]) **2)
-    * ((limbs 64 [x0,x1,x2,x3]) + (limbs 64 [z0,z1,z2,z3]) **2)
-    * (
-        4 
-        * (limbs 64 [x0,x1,x2,x3]) 
-        * (limbs 64 [y0, y1, y2, y3] ** 2)
-        - (limbs 64 [xp0, xp1, xp2, xp3])
+  and [
+    (* delta = z^2 *)
+    (limbs 64 [delta0_0, delta0_1, delta0_2, delta0_3])
+    =
+    ((limbs 64 [z0, z1, z2, z3]) ** 2)
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* gamma = y^2 *)
+    (limbs 64 [gamma0_0, gamma0_1, gamma0_2, gamma0_3])
+    =
+    ((limbs 64 [y0, y1, y2, y3]) ** 2)
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* beta = x * gamma *)
+    (limbs 64 [beta0_0, beta0_1, beta0_2, beta0_3])
+    =
+    ((limbs 64 [x0, x1, x2, x3]) * (limbs 64 [gamma0_0, gamma0_1, gamma0_2, gamma0_3]))
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* alpha = 3 * (x - delta) * (x + delta) *)
+    (limbs 64 [alpha0_0, alpha0_1, alpha0_2, alpha0_3])
+    =
+    (
+      3 *
+      ((limbs 64 [x0, x1, x2, x3]) - (limbs 64 [delta0_0, delta0_1, delta0_2, delta0_3])) *
+      ((limbs 64 [x0, x1, x2, x3]) + (limbs 64 [delta0_0, delta0_1, delta0_2, delta0_3]))
     )
-    -
-    8 * (limbs 64 [y0, y1, y2, y3]) ** 4
-  )
-  (mod  (limbs 64 [  18446744073709551615,
-                 4294967295,
-                 0,
-                 18446744069414584321 ])),
-  (* Z' = (Y + Z)^2 - Y^2 - Z^2 = 2 * Y * Z *)
-  (limbs 64 [zp0, zp1, zp2, zp3])
-  =
-  (
-    2 
-    * (limbs 64 [y0 ,y1, y2, y3])
-    * (limbs 64 [z0, z1, z2, z3])
-  )
-  (mod  (limbs 64 [  18446744073709551615,
-                 4294967295,
-                 0,
-                 18446744069414584321 ]))
- ]
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* X' = alpha^2 - 8 * beta *)
+    (limbs 64 [xp0, xp1, xp2, xp3])
+    =
+    (
+      ((limbs 64 [alpha0_0, alpha0_1, alpha0_2, alpha0_3]) ** 2)
+      -
+      (8 * (limbs 64 [beta0_0, beta0_1, beta0_2, beta0_3]))
+    )
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* Z' = (Y + Z)^2 - gamma - delta *)
+    (limbs 64 [zp0, zp1, zp2, zp3])
+    =
+    (
+      (((limbs 64 [y0, y1, y2, y3]) + (limbs 64 [z0, z1, z2, z3])) ** 2)
+      -
+      (limbs 64 [gamma0_0, gamma0_1, gamma0_2, gamma0_3])
+      -
+      (limbs 64 [delta0_0, delta0_1, delta0_2, delta0_3])
+    )
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* Y' = alpha * (4 * beta - X') - 8 * gamma^2 *)
+    (limbs 64 [yp0, yp1, yp2, yp3])
+    =
+    (
+      (
+        (limbs 64 [alpha0_0, alpha0_1, alpha0_2, alpha0_3])
+        *
+        (4 * (limbs 64 [beta0_0, beta0_1, beta0_2, beta0_3]) - (limbs 64 [xp0, xp1, xp2, xp3]))
+      )
+      -
+      (8 * ((limbs 64 [gamma0_0, gamma0_1, gamma0_2, gamma0_3]) ** 2))
+    )
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+
+
+    (* ------------------------------------------------------------------------------------ *)
+
+
+    (* X' = (3 * (X - Z^2) * (X + Z^2))^2 - 8 * X * Y^2 *)
+    (limbs 64 [xp0, xp1, xp2, xp3])
+    =
+    (
+       (
+           3 * ((limbs 64 [x0,x1,x2,x3]) - (limbs 64 [z0,z1,z2,z3]) **2)
+           * ((limbs 64 [x0,x1,x2,x3]) + (limbs 64 [z0,z1,z2,z3]) **2)
+       ) ** 2
+       -
+       8 * (limbs 64 [x0,x1,x2,x3]) * (limbs 64 [y0,y1,y2,y3]) **2
+    )
+    (mod (limbs 64 [ 18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (*  Y' = 3 * (X - Z^2) * (X + Z^2) * (4 * X * Y^2 - X') - 8 * Y^4 *)
+    (limbs 64 [yp0, yp1, yp2, yp3])
+    =
+    (
+      3
+      * ((limbs 64 [x0,x1,x2,x3]) - (limbs 64 [z0,z1,z2,z3]) **2)
+      * ((limbs 64 [x0,x1,x2,x3]) + (limbs 64 [z0,z1,z2,z3]) **2)
+      * (
+          4
+          * (limbs 64 [x0,x1,x2,x3])
+          * (limbs 64 [y0, y1, y2, y3] ** 2)
+          - (limbs 64 [xp0, xp1, xp2, xp3])
+      )
+      -
+      8 * (limbs 64 [y0, y1, y2, y3]) ** 4
+    )
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+    ,
+    (* Z' = (Y + Z)^2 - Y^2 - Z^2 = 2 * Y * Z *)
+    (limbs 64 [zp0, zp1, zp2, zp3])
+    =
+    (
+      2
+      * (limbs 64 [y0 ,y1, y2, y3])
+      * (limbs 64 [z0, z1, z2, z3])
+    )
+    (mod (limbs 64 [18446744073709551615, 4294967295, 0, 18446744069414584321]))
+  ]
   &&
   true
 }
