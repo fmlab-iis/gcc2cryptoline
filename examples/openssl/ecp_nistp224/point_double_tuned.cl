@@ -1,3 +1,28 @@
+(*
+===== System Information =====
+Machine: frege
+Operating System: Linux frege 5.4.0-48-generic #52-Ubuntu SMP Thu Sep 10 10:58:49 UTC 2020 x86_64
+CPU Model: Intel(R) Xeon(R) Gold 6134M CPU @
+Memory: 1055491232 kB
+Singular: path=/home/mht208/.local/bin/Singular, version=Singular for x86_64-Linux version 4.1.3 (4132, 64 bit) Jul 20 2020 10:31:25
+Boolector: path=/home/mht208/.local/bin/boolector, version=3.2.0
+Z3: path=/home/mht208/.local/bin/z3, version=Z3 version 4.8.3 - 64 bit
+===== Verification =====
+Arguments: -v -btor -no_carry_constraint -isafety -jobs 12 ecp_nistp224_point_double_tuned.cl
+Parsing Cryptoline file:                [OK]            0.008601 seconds
+Checking well-formedness:               [OK]            0.001452 seconds
+Transforming to SSA form:               [OK]            0.000838 seconds
+Rewriting assignments:                  [OK]            0.010774 seconds
+Verifying program safety:
+......
+         Overall                        [OK]            84.063370 seconds
+Verifying range assertions:             [OK]            6.466601 seconds
+Verifying range specification:          [OK]            0.046297 seconds
+Rewriting value-preserved casting:      [OK]            0.003244 seconds
+Verifying algebraic assertions:         [OK]            0.037729 seconds
+Verifying algebraic specification:      [OK]            0.454784 seconds
+Verification result:                    [OK]            91.094766 seconds
+*)
 proc felem_reduce (uint128 a0, uint128 a1, uint128 a2, uint128 a3, uint128 a4, uint128 a5, uint128 a6;uint64 c0, uint64 c1, uint64 c2, uint64 c3) = 
 {
   true
@@ -404,6 +429,12 @@ mov tmp_96 v498;
 (* felem_reduce (&delta, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, delta_0, delta_8, delta_16, delta_24);
+
+mov delta0_0 delta_0;
+mov delta0_1 delta_8;
+mov delta0_2 delta_16;
+mov delta0_3 delta_24;
+
 (* _445 = *y_in_6(D); *)
 mov v445 y_in6_0;
 (* tmp0_446 = _445 * 2; *)
@@ -461,6 +492,12 @@ mov tmp_96 v471;
 (* felem_reduce (&gamma, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, gamma_0, gamma_8, gamma_16, gamma_24);
+
+mov gamma0_0 gamma_0;
+mov gamma0_1 gamma_8;
+mov gamma0_2 gamma_16;
+mov gamma0_3 gamma_24;
+
 (* _404 = *x_in_2(D); *)
 mov v404 x_in2_0;
 (* _406 = MEM[(const limb * )&gamma]; *)
@@ -544,6 +581,12 @@ mov tmp_96 v444;
 (* felem_reduce (&beta, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, beta_0, beta_8, beta_16, beta_24);
+
+mov beta0_0 beta_0;
+mov beta0_1 beta_8;
+mov beta0_2 beta_16;
+mov beta0_3 beta_24;
+
 (* _154 = MEM[(const limb * )&delta]; *)
 mov v154 delta_0;
 (* _209 = 288230376151711748 - _154; *)
@@ -651,6 +694,43 @@ mov tmp_96 v403;
 (* felem_reduce (&alpha, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48, tmp_64, tmp_80, tmp_96, alpha_0, alpha_8, alpha_16, alpha_24);
+
+mov alpha0_0 alpha_0;
+mov alpha0_1 alpha_8;
+mov alpha0_2 alpha_16;
+mov alpha0_3 alpha_24;
+
+ecut
+  and [
+    (* delta = z^2 *)
+    (limbs 56 [delta0_0, delta0_1, delta0_2, delta0_3])
+    =
+    ((limbs 56 [z0, z1, z2, z3]) ** 2)
+    (mod (2**224 - 2**96 + 1))
+    ,
+    (* gamma = y^2 *)
+    (limbs 56 [gamma0_0, gamma0_1, gamma0_2, gamma0_3])
+    =
+    ((limbs 56 [y0, y1, y2, y3]) ** 2)
+    (mod (2**224 - 2**96 + 1))
+    ,
+    (* beta = x * gamma *)
+    (limbs 56 [beta0_0, beta0_1, beta0_2, beta0_3])
+    =
+    ((limbs 56 [x0, x1, x2, x3]) * (limbs 56 [gamma0_0, gamma0_1, gamma0_2, gamma0_3]))
+    (mod (2**224 - 2**96 + 1))
+    ,
+    (* alpha = 3 * (x - delta) * (x + delta) *)
+    (limbs 56 [alpha0_0, alpha0_1, alpha0_2, alpha0_3])
+    =
+    (
+      3 *
+      ((limbs 56 [x0, x1, x2, x3]) - (limbs 56 [delta0_0, delta0_1, delta0_2, delta0_3])) *
+      ((limbs 56 [x0, x1, x2, x3]) + (limbs 56 [delta0_0, delta0_1, delta0_2, delta0_3]))
+    )
+    (mod (2**224 - 2**96 + 1))
+  ];
+
 (* _336 = MEM[(const limb * )&alpha]; *)
 mov v336 alpha_0;
 (* tmp0_337 = _336 * 2; *)
