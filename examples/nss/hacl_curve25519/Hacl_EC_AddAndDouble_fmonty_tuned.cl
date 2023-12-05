@@ -509,7 +509,7 @@ mov t_48 0x0@uint128;
 mov t_64 0x0@uint128;
 (* Hacl_Bignum_Fmul_mul_shift_reduce_ (&t, &tmp, z_7); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8 ,tmp_16, tmp_24, tmp_32, p6_40, p6_48, p6_56, p6_64, p6_72, t_0, t_16, t_32, t_48, t_64);
+inline Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8 ,tmp_16, tmp_24, tmp_32, p6_40, p6_48, p6_56, p6_64, p6_72, t_0, t_16, t_32, t_48, t_64);
 (* tctr_335 = MEM[(FStar_UInt128_t * )&t]; *)
 mov tctr335 t_0;
 (* tctrp1_336 = MEM[(FStar_UInt128_t * )&t + 16B]; *)
@@ -648,7 +648,7 @@ mov t_48 0x0@uint128;
 mov t_64 0x0@uint128;
 (* Hacl_Bignum_Fmul_mul_shift_reduce_ (&t, &tmp, zprime_9); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, pq8_40, pq8_48, pq8_56, pq8_64, pq8_72, t_0, t_16, t_32, t_48, t_64);
+inline Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, pq8_40, pq8_48, pq8_56, pq8_64, pq8_72, t_0, t_16, t_32, t_48, t_64);
 (* tctr_360 = MEM[(FStar_UInt128_t * )&t]; *)
 mov tctr360 t_0;
 (* tctrp1_361 = MEM[(FStar_UInt128_t * )&t + 16B]; *)
@@ -1188,7 +1188,7 @@ mov t_48 0x0@uint128;
 mov t_64 0x0@uint128;
 (* Hacl_Bignum_Fmul_mul_shift_reduce_ (&t, &tmp, qmqp_1(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, qmqp1_0, qmqp1_8 ,qmqp1_16, qmqp1_24, qmqp1_32, t_0, t_16, t_32, t_48, t_64);
+inline Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, qmqp1_0, qmqp1_8 ,qmqp1_16, qmqp1_24, qmqp1_32, t_0, t_16, t_32, t_48, t_64);
 (* tctr_749 = MEM[(FStar_UInt128_t * )&t]; *)
 mov tctr749 t_0;
 (* tctrp1_750 = MEM[(FStar_UInt128_t * )&t + 16B]; *)
@@ -1692,7 +1692,7 @@ mov t_48 0x0@uint128;
 mov t_64 0x0@uint128;
 (* Hacl_Bignum_Fmul_mul_shift_reduce_ (&t, &tmp, &MEM[(void * )&buf + 160B]); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, buf_160, buf_168, buf_176, buf_184, buf_192, t_0, t_16, t_32, t_48, t_64);
+inline Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, buf_160, buf_168, buf_176, buf_184, buf_192, t_0, t_16, t_32, t_48, t_64);
 (* tctr_1138 = MEM[(FStar_UInt128_t * )&t]; *)
 mov tctr1138 t_0;
 (* tctrp1_1139 = MEM[(FStar_UInt128_t * )&t + 16B]; *)
@@ -2002,7 +2002,7 @@ mov t_48 0x0@uint128;
 mov t_64 0x0@uint128;
 (* Hacl_Bignum_Fmul_mul_shift_reduce_ (&t, &tmp, &MEM[(void * )&buf + 160B]); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, buf_160, buf_168,buf_176, buf_184, buf_192, t_0, t_16, t_32, t_48, t_64);
+inline Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, buf_160, buf_168,buf_176, buf_184, buf_192, t_0, t_16, t_32, t_48, t_64);
 (* tctr_1188 = MEM[(FStar_UInt128_t * )&t]; *)
 mov tctr1188 t_0;
 (* tctrp1_1189 = MEM[(FStar_UInt128_t * )&t + 16B]; *)
@@ -2183,14 +2183,14 @@ mov _ pq8_72@uint64;
     (* condition 2 *)
     eqmod
     (limbs 51 [Z2Final0, Z2Final1, Z2Final2, Z2Final3, Z2Final4])
-    (mul
+    (muls
     [
         4,
         limbs 51 [X0, X1, X2, X3, X4],
         limbs 51 [Z0, Z1,Z2, Z3, Z4],
-        add [
+        adds [
             sq (limbs 51 [X0, X1, X2, X3, X4]),
-            mul 
+            muls 
                 [
                     486662,
                     limbs 51 [X0, X1, X2, X3, X4],

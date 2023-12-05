@@ -848,7 +848,7 @@ mov c8 out105_128@uint128;
   =
   (
       sq
-      limbs 58 [a0, a1, a2, a3, a4, a5, a6, a7, a8]
+      (limbs 58 [a0, a1, a2, a3, a4, a5, a6, a7, a8])
   )
   (mod (2**521 -1))
   &&
@@ -1412,36 +1412,36 @@ mov ftmp2_56 vect__61171474_8;
 (* MEM[(limb * )&ftmp2 + 64B] = _69; *)
 mov ftmp2_64 v69;
 (* felem_square (&tmp, z_in_3(D)); *)
-call felem_square (z_in3_0, z_in3_8, z_in3_16, z_in3_24, z_in3_32,
+inline felem_square (z_in3_0, z_in3_8, z_in3_16, z_in3_24, z_in3_32,
                   z_in3_40, z_in3_48, z_in3_56, z_in3_64,
                   tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                   tmp_80, tmp_96, tmp_112, tmp_128);
 (* felem_reduce (&delta, &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    delta_0, delta_8, delta_16, delta_24, delta_32,
                    delta_40, delta_48, delta_56, delta_64);
 
 
 (* felem_square (&tmp, y_in_6(D)); *)
-call felem_square (y_in6_0, y_in6_8, y_in6_16, y_in6_24, y_in6_32,
+inline felem_square (y_in6_0, y_in6_8, y_in6_16, y_in6_24, y_in6_32,
                   y_in6_40, y_in6_48, y_in6_56, y_in6_64,
                   tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                   tmp_80, tmp_96, tmp_112, tmp_128);
 (* felem_reduce (&gamma, &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    gamma_0, gamma_8, gamma_16, gamma_24, gamma_32,
                    gamma_40, gamma_48, gamma_56, gamma_64);
 (* felem_mul (&tmp, x_in_2(D), &gamma); *)
-call felem_mul (x_in2_0, x_in2_8, x_in2_16, x_in2_24, x_in2_32,
+inline felem_mul (x_in2_0, x_in2_8, x_in2_16, x_in2_24, x_in2_32,
                 x_in2_40, x_in2_48, x_in2_56, x_in2_64,
                 gamma_0, gamma_8, gamma_16, gamma_24, gamma_32,
                 gamma_40, gamma_48, gamma_56, gamma_64,
                 tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                 tmp_80, tmp_96, tmp_112, tmp_128);
 (* felem_reduce (&beta, &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    beta_0, beta_8, beta_16, beta_24, beta_32,
                    beta_40, beta_48, beta_56, beta_64);
@@ -1642,21 +1642,21 @@ umul v394 v421 0x3@uint64;
 (* MEM[(limb * )&ftmp2 + 64B] = _394; *)
 mov ftmp2_64 v394;
 (* felem_mul (&tmp, &ftmp, &ftmp2); *)
-call felem_mul (ftmp_0, ftmp_8, ftmp_16, ftmp_24, ftmp_32,
+inline felem_mul (ftmp_0, ftmp_8, ftmp_16, ftmp_24, ftmp_32,
                 ftmp_40, ftmp_48, ftmp_56, ftmp_64,
                 ftmp2_0, ftmp2_8, ftmp2_16, ftmp2_24, ftmp2_32,
                 ftmp2_40, ftmp2_48, ftmp2_56, ftmp2_64,
                 tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                 tmp_80, tmp_96, tmp_112, tmp_128);
 (* felem_reduce (&alpha, &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
                    alpha_40, alpha_48, alpha_56, alpha_64
                   );
 
 (* felem_square (&tmp, &alpha); *)
-call felem_square (alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
+inline felem_square (alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
                   alpha_40, alpha_48, alpha_56, alpha_64,
                   tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                   tmp_80, tmp_96, tmp_112, tmp_128);
@@ -1805,7 +1805,7 @@ uadd v358 v354 v357;
 (* MEM[(uint128_t * )&tmp + 128B] = _358; *)
 mov tmp_128 v358;
 (* felem_reduce (x_out_19(D), &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    x_out19_0, x_out19_8, x_out19_16, x_out19_24, x_out19_32,
                    x_out19_40, x_out19_48, x_out19_56, x_out19_64
@@ -2011,7 +2011,7 @@ uadd v286 v51 v285;
 (* MEM[(limb * )&ftmp + 64B] = _286; *)
 mov ftmp_64 v286;
 (* felem_square (&tmp, &ftmp); *)
-call felem_square (ftmp_0, ftmp_8, ftmp_16, ftmp_24, ftmp_32,
+inline felem_square (ftmp_0, ftmp_8, ftmp_16, ftmp_24, ftmp_32,
                   ftmp_40, ftmp_48, ftmp_56, ftmp_64,
                   tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                   tmp_80, tmp_96, tmp_112, tmp_128);
@@ -2124,7 +2124,7 @@ uadd v259 v255 v258;
 (* MEM[(uint128_t * )&tmp + 128B] = _259; *)
 mov tmp_128 v259;
 (* felem_reduce (z_out_25(D), &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    z_out25_0, z_out25_8, z_out25_16, z_out25_24, z_out25_32,
                    z_out25_40, z_out25_48, z_out25_56, z_out25_64
@@ -2239,14 +2239,14 @@ usub v196 v405 v194;
 (* MEM[(limb * )&beta + 64B] = _196; *)
 mov beta_64 v196;
 (* felem_mul (&tmp, &alpha, &beta); *)
-call felem_mul (alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
+inline felem_mul (alpha_0, alpha_8, alpha_16, alpha_24, alpha_32,
                 alpha_40, alpha_48, alpha_56, alpha_64,
                 beta_0, beta_8, beta_16, beta_24, beta_32,
                 beta_40, beta_48, beta_56, beta_64,
                 tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                 tmp_80, tmp_96, tmp_112, tmp_128);
 (* felem_square (&tmp2, &gamma); *)
-call felem_square (gamma_0, gamma_8, gamma_16, gamma_24, gamma_32,
+inline felem_square (gamma_0, gamma_8, gamma_16, gamma_24, gamma_32,
                   gamma_40, gamma_48, gamma_56, gamma_64,
                   tmp2_0, tmp2_16, tmp2_32, tmp2_48, tmp2_64,
                   tmp2_80, tmp2_96, tmp2_112, tmp2_128);
@@ -2377,7 +2377,7 @@ usub v141 v530 v160;
 (* MEM[(uint128_t * )&tmp + 128B] = _141; *)
 mov tmp_128 v141;
 (* felem_reduce (y_out_33(D), &tmp); *)
-call felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
+inline felem_reduce (tmp_0, tmp_16, tmp_32, tmp_48, tmp_64,
                    tmp_80, tmp_96, tmp_112, tmp_128,
                    y_out33_0, y_out33_8, y_out33_16, y_out33_24, y_out33_32,
                    y_out33_40, y_out33_48, y_out33_56, y_out33_64
@@ -2459,7 +2459,7 @@ mov zp8 z_out25_64;
        * ( limbs 58 [z0, z1, z2, z3, z4, z5, z6, z7, z8])
       )
       (mod  (2**521 - 1))
-     ] prove with all ghosts, all cuts
+     ] prove with [all ghosts, all cuts]
      &&
      true
 }

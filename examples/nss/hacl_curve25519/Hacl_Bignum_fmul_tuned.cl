@@ -313,7 +313,7 @@ mov t_48 0x0@uint128;
 mov t_64 0x0@uint128;
 (* Hacl_Bignum_Fmul_mul_shift_reduce_ (&t, &tmp, b_4(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, b4_0, b4_8, b4_16, b4_24, b4_32, t_0, t_16, t_32, t_48, t_64);
+inline Hacl_Bignum_Fmul_mul_shift_reduce_(tmp_0, tmp_8, tmp_16, tmp_24, tmp_32, b4_0, b4_8, b4_16, b4_24, b4_32, t_0, t_16, t_32, t_48, t_64);
 (* tctr_26 = MEM[(FStar_UInt128_t * )&t]; *)
 mov tctr26 t_0;
 (* tctrp1_27 = MEM[(FStar_UInt128_t * )&t + 16B]; *)

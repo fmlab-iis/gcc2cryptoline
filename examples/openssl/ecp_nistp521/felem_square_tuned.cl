@@ -280,7 +280,7 @@ mov c8 out105_128@uint128;
   =
   (
       sq
-      limbs 58 [a0, a1, a2, a3, a4, a5, a6, a7, a8]
+      (limbs 58 [a0, a1, a2, a3, a4, a5, a6, a7, a8])
   )
   (mod (2**521 -1))
   &&

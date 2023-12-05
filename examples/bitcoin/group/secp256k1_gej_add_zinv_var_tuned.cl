@@ -774,6 +774,12 @@ mov c4 r83_32@uint64;
 
 (* ============= secp256k1_fe_normalize_weak ======================== *)
 
+const p0 = 0xFFFFEFFFFFC2F
+const p1 = 0xFFFFFFFFFFFFF
+const p2 = 0xFFFFFFFFFFFFF
+const p3 = 0xFFFFFFFFFFFFF
+const p4 = 0xFFFFFFFFFFFF
+
 proc secp256k1_fe_normalize_weak (uint64 a0, uint64 a1, uint64 a2, uint64 a3, uint64 a4; uint64 c0, uint64 c1, uint64 c2, uint64 c3, uint64 c4) =
 {
   true
@@ -783,12 +789,6 @@ proc secp256k1_fe_normalize_weak (uint64 a0, uint64 a1, uint64 a2, uint64 a3, ui
     a4 <=u (2**63)@64
   ]
 }
-
-mov p0 0xFFFFEFFFFFC2F@uint64;
-mov p1 0xFFFFFFFFFFFFF@uint64;
-mov p2 0xFFFFFFFFFFFFF@uint64;
-mov p3 0xFFFFFFFFFFFFF@uint64;
-mov p4 0xFFFFFFFFFFFF@uint64;
 
 (* Start with undefined rhs *)
 mov r7_0@uint64 a0;
@@ -888,12 +888,12 @@ mov c4 r7_32@uint64;
 {
   eqmod (limbs 52 [c0, c1, c2, c3, c4])
           (limbs 52 [a0, a1, a2, a3, a4])
-          (limbs 52 [p0, p1, p2, p3, p4])
+          (limbs 52 [$p0, $p1, $p2, $p3, $p4])
 &&
   and [
     eqmod (limbs 52 [c0, c1, c2, c3, c4])
           (limbs 52 [a0, a1, a2, a3, a4])
-          (limbs 52 [p0, p1, p2, p3, p4]),
+          (limbs 52 [$p0@64, $p1@64, $p2@64, $p3@64, $p4@64]),
     c0 <u (2**52)@64, c1 <u (2**52)@64, c2 <u (2**52)@64, c3 <u (2**52)@64,
     c4 <u (2**52)@64
   ]
@@ -1009,7 +1009,7 @@ mov rzr1_32 a2_72;
 (* secp256k1_fe_normalize_weak (rzr_1(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_normalize_weak(rzr1_0, rzr1_8, rzr1_16, rzr1_24, rzr1_32, rzr1_0, rzr1_8, rzr1_16, rzr1_24, rzr1_32);
+inline secp256k1_fe_normalize_weak(rzr1_0, rzr1_8, rzr1_16, rzr1_24, rzr1_32, rzr1_0, rzr1_8, rzr1_16, rzr1_24, rzr1_32);
 
 (* _3 = rzr_1(D)->n[0]; *)
 mov v3 rzr1_0;
@@ -1076,7 +1076,7 @@ mov rzr1_32 v12;
 
 ====== *)
 
-call secp256k1_fe_mul_inner(a2_80, a2_88 ,a2_96, a2_104, a2_112, a2_40, a2_48, a2_56, a2_64, a2_72, r15_80, r15_88 ,r15_96, r15_104, r15_112);
+inline secp256k1_fe_mul_inner(a2_80, a2_88 ,a2_96, a2_104, a2_112, a2_40, a2_48, a2_56, a2_64, a2_72, r15_80, r15_88 ,r15_96, r15_104, r15_112);
 
 (* _17 = MEM[(struct secp256k1_fe * )r_15(D) + 80B].n[0]; *)
 mov v17 r15_80;
@@ -1126,7 +1126,7 @@ mov r15_112 v26;
     } secp256k1_fe;
 ====== *)
 
-call secp256k1_fe_sqr_inner(a2_0, a2_8, a2_16, a2_24, a2_32 , t1_0, t1_8 ,t1_16, t1_24, t1_32);
+inline secp256k1_fe_sqr_inner(a2_0, a2_8, a2_16, a2_24, a2_32 , t1_0, t1_8 ,t1_16, t1_24, t1_32);
 
 (* _28 = t1.n[0]; *)
 mov v28 t1_0;
@@ -1453,7 +1453,7 @@ vpc v278@uint64 c277@uint128;
 (* secp256k1_fe_sqr_inner (&t3.n, _13); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 (* recall that r13 is a2_40 ~ a2_72 *)
-call secp256k1_fe_sqr_inner(a2_40, a2_48, a2_56, a2_64, a2_72 , t3_0, t3_8, t3_16, t3_24, t3_32);
+inline secp256k1_fe_sqr_inner(a2_40, a2_48, a2_56, a2_64, a2_72 , t3_0, t3_8, t3_16, t3_24, t3_32);
 
 
 (* _38 = t3.n[0]; *)
@@ -1488,7 +1488,7 @@ umul v47 v46 0x2@uint64;
 mov t3_32 v47;
 (* secp256k1_fe_sqr_inner (&t4.n, &t3.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call secp256k1_fe_sqr_inner(t3_0, t3_8, t3_16, t3_24, t3_32, t4_0, t4_8, t4_16, t4_24, t4_32);
+inline secp256k1_fe_sqr_inner(t3_0, t3_8, t3_16, t3_24, t3_32, t4_0, t4_8, t4_16, t4_24, t4_32);
 
 (* _48 = t4.n[0]; *)
 mov v48 t4_0;
@@ -1525,7 +1525,7 @@ mov t4_32 v57;
 
 (* recall that v27 is a2_0 ~ a2_32 *)
 
-call secp256k1_fe_mul_inner(t3_0, t3_8, t3_16 ,t3_24, t3_32, a2_0, a2_8, a2_16, a2_24, a2_32, t3_0, t3_8, t3_16, t3_24, t3_32);
+inline secp256k1_fe_mul_inner(t3_0, t3_8, t3_16 ,t3_24, t3_32, a2_0, a2_8, a2_16, a2_24, a2_32, t3_0, t3_8, t3_16, t3_24, t3_32);
 
 
 (* r_15(D)->x = t3; *)
@@ -1646,7 +1646,7 @@ mov t3_32 v102;
 (* secp256k1_fe_mul_inner (_103, &t1.n, &t3.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(t1_0, t1_8, t1_16, t1_24, t1_32, t3_0, t3_8, t3_16, t3_24, t3_32, r15_40, r15_48, r15_56, r15_64, r15_72);
+inline secp256k1_fe_mul_inner(t1_0, t1_8, t1_16, t1_24, t1_32, t3_0, t3_8, t3_16, t3_24, t3_32, r15_40, r15_48, r15_56, r15_64, r15_72);
 
 (* vect__104.343_279 = MEM[(long unsigned int * )&t4]; *)
 mov vect__104343279_0 t4_0;
@@ -1969,12 +1969,12 @@ mov r10_120 0x0@int32;
 (* TODO: Skipped, ADDR_EXPR, maybe need self translate *)
 (* secp256k1_fe_mul_inner (&az.n, _97, pretmp_256); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call secp256k1_fe_mul_inner(a11_80, a11_88, a11_96, a11_104, a11_112, bzinv14_0, bzinv14_8, bzinv14_16, bzinv14_24, bzinv14_32, az_0, az_8, az_16, az_24, az_32);
+inline secp256k1_fe_mul_inner(a11_80, a11_88, a11_96, a11_104, a11_112, bzinv14_0, bzinv14_8, bzinv14_16, bzinv14_24, bzinv14_32, az_0, az_8, az_16, az_24, az_32);
 
 (* secp256k1_fe_sqr_inner (&z12.n, &az.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_sqr_inner(az_0, az_8, az_16, az_24, az_32, z12_0, z12_8, z12_16, z12_24, z12_32);
+inline secp256k1_fe_sqr_inner(az_0, az_8, az_16, az_24, az_32, z12_0, z12_8, z12_16, z12_24, z12_32);
 
 
 (* u1 = a_11(D)->x; *)
@@ -2076,7 +2076,7 @@ mov u1_32 t4238;
 (* secp256k1_fe_mul_inner (&u2.n, pretmp_254, &z12.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(b9_0, b9_8, b9_16, b9_24, b9_32, z12_0, z12_8, z12_16, z12_24, z12_32, u2_0, u2_8, u2_16, u2_24, u2_32);
+inline secp256k1_fe_mul_inner(b9_0, b9_8, b9_16, b9_24, b9_32, z12_0, z12_8, z12_16, z12_24, z12_32, u2_0, u2_8, u2_16, u2_24, u2_32);
 
 (* s1 = a_11(D)->y; *)
 (* rhs field y's offset is 40 *)
@@ -2090,17 +2090,17 @@ mov s1_32 a11_72;
 (* secp256k1_fe_normalize_weak (&s1); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_normalize_weak(s1_0, s1_8, s1_16, s1_24, s1_32, s1_0, s1_8, s1_16, s1_24, s1_32);
+inline secp256k1_fe_normalize_weak(s1_0, s1_8, s1_16, s1_24, s1_32, s1_0, s1_8, s1_16, s1_24, s1_32);
 
 (* secp256k1_fe_mul_inner (&s2.n, pretmp_253, &z12.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(b9_40, b9_48, b9_56, b9_64, b9_72, z12_0, z12_8, z12_16, z12_24, z12_32, s2_0, s2_8, s2_16, s2_24, s2_32);
+inline secp256k1_fe_mul_inner(b9_40, b9_48, b9_56, b9_64, b9_72, z12_0, z12_8, z12_16, z12_24, z12_32, s2_0, s2_8, s2_16, s2_24, s2_32);
 
 (* secp256k1_fe_mul_inner (&s2.n, &s2.n, &az.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(s2_0, s2_8, s2_16, s2_24, s2_32, az_0, az_8, az_16, az_24, az_32, s2_0, s2_8, s2_16, s2_24, s2_32);
+inline secp256k1_fe_mul_inner(s2_0, s2_8, s2_16, s2_24, s2_32, az_0, az_8, az_16, az_24, az_32, s2_0, s2_8, s2_16, s2_24, s2_32);
 
 (* vect__84.653_269 = MEM[(long unsigned int * )&u1]; *)
 mov vect__84653269_0 u1_0;
@@ -2231,17 +2231,17 @@ mov r10_120 0x1@int32;
 (* secp256k1_fe_sqr_inner (&i2.n, &i.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_sqr_inner(i_0, i_8, i_16, i_24, i_32, i2_0, i2_8, i2_16, i2_24, i2_32);
+inline secp256k1_fe_sqr_inner(i_0, i_8, i_16, i_24, i_32, i2_0, i2_8, i2_16, i2_24, i2_32);
 
 (* secp256k1_fe_sqr_inner (&h2.n, &h.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_sqr_inner(h_0, h_8, h_16, h_24, h_32, h2_0, h2_8, h2_16, h2_24, h2_32);
+inline secp256k1_fe_sqr_inner(h_0, h_8, h_16, h_24, h_32, h2_0, h2_8, h2_16, h2_24, h2_32);
 
 (* secp256k1_fe_mul_inner (&h3.n, &h.n, &h2.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(h_0, h_8, h_16, h_24, h_32, h2_0, h2_8, h2_16, h2_24, h2_32, h3_0, h3_8, h3_16, h3_24, h3_32);
+inline secp256k1_fe_mul_inner(h_0, h_8, h_16, h_24, h_32, h2_0, h2_8, h2_16, h2_24, h2_32, h3_0, h3_8, h3_16, h3_24, h3_32);
 
 (* r_10(D)->z = a_11(D)->z; *)
 (* lhs field z's offset is 80 *)
@@ -2259,13 +2259,13 @@ mov r10_112 a11_112;
 (* secp256k1_fe_mul_inner (_170, _170, &h.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(r10_80, r10_88 ,r10_96, r10_104, r10_112, h_0, h_8, h_16, h_24, h_32, r10_80, r10_88, r10_96, r10_104, r10_112);
+inline secp256k1_fe_mul_inner(r10_80, r10_88 ,r10_96, r10_104, r10_112, h_0, h_8, h_16, h_24, h_32, r10_80, r10_88, r10_96, r10_104, r10_112);
 
 (* secp256k1_fe_mul_inner (&t.n, &u1.n, &h2.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline 
 function or self translte *)
 
-call secp256k1_fe_mul_inner(u1_0, u1_8, u1_16, u1_24, u1_32, h2_0, h2_8, h2_16, h2_24, h2_32, t_0, t_8, t_16, t_24, t_32);
+inline secp256k1_fe_mul_inner(u1_0, u1_8, u1_16, u1_24, u1_32, h2_0, h2_8, h2_16, h2_24, h2_32, t_0, t_8, t_16, t_24, t_32);
 
 (* r_10(D)->x = t; *)
 (* TODO: Skip VAR_DECL, need self translate, maybe need read output gimple *)
@@ -2421,12 +2421,12 @@ mov r10_72 v129;
 (* secp256k1_fe_mul_inner (_119, _119, &i.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(r10_40, r10_48, r10_56, r10_64, r10_72, i_0, i_8, i_16, i_24, i_32, r10_40, r10_48, r10_56, r10_64, r10_72);
+inline secp256k1_fe_mul_inner(r10_40, r10_48, r10_56, r10_64, r10_72, i_0, i_8, i_16, i_24, i_32, r10_40, r10_48, r10_56, r10_64, r10_72);
 
 (* secp256k1_fe_mul_inner (&h3.n, &h3.n, &s1.n); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call secp256k1_fe_mul_inner(h3_0, h3_8, h3_16, h3_24, h3_32, s1_0, s1_8, s1_16, s1_24, s1_32, h3_0, h3_8, h3_16, h3_24, h3_32);
+inline secp256k1_fe_mul_inner(h3_0, h3_8, h3_16, h3_24, h3_32, s1_0, s1_8, s1_16, s1_24, s1_32, h3_0, h3_8, h3_16, h3_24, h3_32);
 
 (* vect__109.676_147 = MEM[(long unsigned int * )&h3]; *)
 mov vect__109676147_0 h3_0;

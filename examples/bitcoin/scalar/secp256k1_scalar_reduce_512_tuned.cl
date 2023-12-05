@@ -1585,7 +1585,7 @@ mov c3 r215_24@uint64;
 (* End with unsed lhs *)
 
 mov is_overflow 0@int32;
-call secp256k1_scalar_check_overflow(c0, c1, c2, c3, is_overflow);
+inline secp256k1_scalar_check_overflow(c0, c1, c2, c3, is_overflow);
 
 {
     (

@@ -872,16 +872,16 @@ uadd v85 v127 v128;
 mov z2_32 v85;
 (* fe51_mul (&z3, &tmp0, &x2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_mul(tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32,x2_0,x2_8,x2_16,x2_24,x2_32,z3_0,z3_8,z3_16,z3_24,z3_32);
+inline fe51_mul(tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32,x2_0,x2_8,x2_16,x2_24,x2_32,z3_0,z3_8,z3_16,z3_24,z3_32);
 (* fe51_mul (&z2, &z2, &tmp1); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_mul(z2_0,z2_8,z2_16,z2_24,z2_32,tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,z2_0,z2_8,z2_16,z2_24,z2_32);
+inline fe51_mul(z2_0,z2_8,z2_16,z2_24,z2_32,tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,z2_0,z2_8,z2_16,z2_24,z2_32);
 (* fe51_sq (&tmp0, &tmp1); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_sq(tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32);
+inline fe51_sq(tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32);
 (* fe51_sq (&tmp1, &x2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_sq(x2_0,x2_8,x2_16,x2_24,x2_32,tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32);
+inline fe51_sq(x2_0,x2_8,x2_16,x2_24,x2_32,tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32);
 (* vect__66.486_263 = MEM[(const uint64_t * )&z3]; *)
 mov vect__66486263_0 z3_0;
 mov vect__66486263_1 z3_8;
@@ -941,7 +941,7 @@ mov z2_32 v65;
 (* fe51_mul (&x2, &tmp1, &tmp0); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 
-call fe51_mul(tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32,x2_0,x2_8,x2_16,x2_24,x2_32);
+inline fe51_mul(tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32,x2_0,x2_8,x2_16,x2_24,x2_32);
 
 mov X2p_0 x2_0;
 mov X2p_1 x2_8;
@@ -991,7 +991,7 @@ usub v55 v239 v53;
 mov tmp1_32 v55;
 (* fe51_sq (&z2, &z2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_sq(z2_0,z2_8,z2_16,z2_24,z2_32,z2_0,z2_8,z2_16,z2_24,z2_32);
+inline fe51_sq(z2_0,z2_8,z2_16,z2_24,z2_32,z2_0,z2_8,z2_16,z2_24,z2_32);
 (* _171 = MEM[(uint64_t * )&tmp1]; *)
 mov v171 tmp1_0;
 (* h0_173 = _171 w* 121666; *)
@@ -1131,7 +1131,7 @@ mov z3_24 g3213;
 mov z3_32 g4211;
 (* fe51_sq (&x3, &x3); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_sq(x3_0,x3_8,x3_16,x3_24,x3_32,x3_0,x3_8,x3_16,x3_24,x3_32);
+inline fe51_sq(x3_0,x3_8,x3_16,x3_24,x3_32,x3_0,x3_8,x3_16,x3_24,x3_32);
 (* vect__21.513_302 = MEM[(const uint64_t * )&tmp0]; *)
 mov vect__21513302_0 tmp0_0;
 mov vect__21513302_1 tmp0_8;
@@ -1166,10 +1166,10 @@ uadd v35 v33 v34;
 mov tmp0_32 v35;
 (* fe51_mul (&z3, &x1, &z2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_mul(x1_0,x1_8,x1_16,x1_24,x1_32,z2_0,z2_8,z2_16,z2_24,z2_32,z3_0,z3_8,z3_16,z3_24,z3_32);
+inline fe51_mul(x1_0,x1_8,x1_16,x1_24,x1_32,z2_0,z2_8,z2_16,z2_24,z2_32,z3_0,z3_8,z3_16,z3_24,z3_32);
 (* fe51_mul (&z2, &tmp1, &tmp0); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call fe51_mul(tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32,z2_0,z2_8,z2_16,z2_24,z2_32);
+inline fe51_mul(tmp1_0,tmp1_8,tmp1_16,tmp1_24,tmp1_32,tmp0_0,tmp0_8,tmp0_16,tmp0_24,tmp0_32,z2_0,z2_8,z2_16,z2_24,z2_32);
 (* fe51_tobytes (out_12(D), &z2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 (* x1 ={v} {CLOBBER}; *)
@@ -1232,14 +1232,14 @@ mov Z3Final_4 z3_32@uint64;
     (* condition 2 *)
     eqmod
     (limbs 51 [Z2Final_0, Z2Final_1, Z2Final_2, Z2Final_3, Z2Final_4])
-    (mul
+    (muls
     [
         4,
         limbs 51 [X2_0, X2_1, X2_2, X2_3, X2_4],
         limbs 51 [Z2_0, Z2_1, Z2_2 ,Z2_3, Z2_4],
-        add [
+        adds [
             sq (limbs 51 [X2_0, X2_1, X2_2, X2_3, X2_4]),
-            mul 
+            muls 
                 [
                     486662,
                     limbs 51 [X2_0, X2_1, X2_2, X2_3, X2_4],

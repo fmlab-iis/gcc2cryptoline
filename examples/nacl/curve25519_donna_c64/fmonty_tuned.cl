@@ -1431,14 +1431,14 @@ mov Z3Final4 z317_32;
     (* condition 2 *)
     eqmod
     (limbs 51 [Z2Final0, Z2Final1, Z2Final2, Z2Final3, Z2Final4])
-    (mul
+    (muls
     [
         4,
         limbs 51 [X0, X1, X2, X3, X4],
         limbs 51 [Z0, Z1,Z2, Z3, Z4],
-        add [
+        adds [
             sq (limbs 51 [X0, X1, X2, X3, X4]),
-            mul 
+            muls 
                 [
                     486662,
                     limbs 51 [X0, X1, X2, X3, X4],

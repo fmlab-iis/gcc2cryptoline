@@ -1584,15 +1584,15 @@ mov ftmp2_32 v157;
 mov ftmp2_48 v158;
 (* felem_shrink (&small, z_in_3(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink (z_in3_0, z_in3_16, z_in3_32, z_in3_48, small_0, small_8, small_16, small_24);
+inline felem_shrink (z_in3_0, z_in3_16, z_in3_32, z_in3_48, small_0, small_8, small_16, small_24);
 (* smallfelem_square (&tmp, &small); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* small ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&delta, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, delta_0, delta_16, delta_32, delta_48);
+inline felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, delta_0, delta_16, delta_32, delta_48);
 
 mov delta0_0 delta_0;
 mov delta0_1 delta_16;
@@ -1601,18 +1601,18 @@ mov delta0_3 delta_48;
 
 (* felem_shrink (&small, y_in_5(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(y_in5_0, y_in5_16, y_in5_32, y_in5_48, small_0, small_8, small_16, small_24);
+inline felem_shrink(y_in5_0, y_in5_16, y_in5_32, y_in5_48, small_0, small_8, small_16, small_24);
 (* smallfelem_square (&tmp, &small); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* small ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&gamma, &tmp); *)
-call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, gamma_0, gamma_16, gamma_32, gamma_48);
+inline felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, gamma_0, gamma_16, gamma_32, gamma_48);
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 (* felem_shrink (&small1, &gamma); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(gamma_0, gamma_16, gamma_32, gamma_48, small1_0, small1_8, small1_16, small1_24);
+inline felem_shrink(gamma_0, gamma_16, gamma_32, gamma_48, small1_0, small1_8, small1_16, small1_24);
 
 mov gamma0_0 gamma_0;
 mov gamma0_1 gamma_16;
@@ -1621,15 +1621,15 @@ mov gamma0_3 gamma_48;
 
 (* felem_shrink (&small2, x_in_2(D)); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(x_in2_0, x_in2_16, x_in2_32, x_in2_48, small2_0, small2_8, small2_16, small2_24);
+inline felem_shrink(x_in2_0, x_in2_16, x_in2_32, x_in2_48, small2_0, small2_8, small2_16, small2_24);
 (* smallfelem_mul (&tmp, &small1, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_mul(small1_0, small1_8, small1_16, small1_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_mul(small1_0, small1_8, small1_16, small1_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* small2 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&beta, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, beta_0, beta_16, beta_32, beta_48);
+inline felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, beta_0, beta_16, beta_32, beta_48);
 
 mov beta0_0 beta_0;
 mov beta0_1 beta_16;
@@ -1711,24 +1711,24 @@ mov ftmp2_48 v130;
 (* felem_shrink (&small1, &ftmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 //call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small1_0, small1_8, small1_16, small1_24);
-call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wrong_24);
+inline felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wrong_24);
 (* felem_shrink (&small2, &ftmp2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(ftmp2_0, ftmp2_16, ftmp2_32, ftmp2_48, small2_0, small2_8, small2_16, small2_24);
+inline felem_shrink(ftmp2_0, ftmp2_16, ftmp2_32, ftmp2_48, small2_0, small2_8, small2_16, small2_24);
 (* smallfelem_mul (&tmp, &small1, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
 //call smallfelem_mul(small1_0, small1_8, small1_16, small1_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
-call smallfelem_mul(small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wrong_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_mul(small1_wrong_0, small1_wrong_8, small1_wrong_16, small1_wrong_24, small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* small1 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* small2 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (&alpha, &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, alpha_0, alpha_16, alpha_32, alpha_48);
+inline felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, alpha_0, alpha_16, alpha_32, alpha_48);
 (* felem_shrink (&small2, &alpha); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(alpha_0, alpha_16, alpha_32, alpha_48, small2_0, small2_8, small2_16, small2_24);
+inline felem_shrink(alpha_0, alpha_16, alpha_32, alpha_48, small2_0, small2_8, small2_16, small2_24);
 
 mov alpha0_0 alpha_0;
 mov alpha0_1 alpha_16;
@@ -1780,10 +1780,10 @@ ecut
 
 (* smallfelem_square (&tmp, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_square(small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_square(small2_0, small2_8, small2_16, small2_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* felem_reduce (x_out_13(D), &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, x_out13_0, x_out13_16, x_out13_32, x_out13_48);
+inline felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, x_out13_0, x_out13_16, x_out13_32, x_out13_48);
 (* _123 = MEM[(const limb * )&beta]; *)
 mov v123 beta_0;
 (* _124 = MEM[(const limb * )&beta + 16B]; *)
@@ -1898,15 +1898,15 @@ uadd v90 v89 v94;
 mov ftmp_48 v90;
 (* felem_shrink (&small, &ftmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small_0, small_8, small_16, small_24);
+inline felem_shrink(ftmp_0, ftmp_16, ftmp_32, ftmp_48, small_0, small_8, small_16, small_24);
 (* smallfelem_square (&tmp, &small); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_square(small_0, small_8, small_16, small_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* small ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* felem_reduce (z_out_15(D), &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, z_out15_0, z_out15_16, z_out15_32, z_out15_48);
+inline felem_reduce(tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112, z_out15_0, z_out15_16, z_out15_32, z_out15_48);
 (* _67 = *z_out_15(D); *)
 mov v67 z_out15_0;
 (* _69 = MEM[(limb * )z_out_15(D) + 16B]; *)
@@ -1997,15 +1997,15 @@ usub v58 v50 v57;
 mov beta_48 v58;
 (* felem_shrink (&small2, &beta); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_shrink(beta_0, beta_16, beta_32, beta_48, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24);
+inline felem_shrink(beta_0, beta_16, beta_32, beta_48, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24);
 (* smallfelem_mul (&tmp, &small2, &small2); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_mul(small2_0, small2_8, small2_16, small2_24, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
+inline smallfelem_mul(small2_0, small2_8, small2_16, small2_24, small2_wrong_0, small2_wrong_8, small2_wrong_16, small2_wrong_24, tmp_0, tmp_16, tmp_32, tmp_48 ,tmp_64, tmp_80 ,tmp_96, tmp_112);
 (* small2 ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* smallfelem_square (&tmp2, &small1); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call smallfelem_square(small1_0, small1_8, small1_16, small1_24, tmp2_0, tmp2_16, tmp2_32, tmp2_48, tmp2_64, tmp2_80, tmp2_96, tmp2_112);
+inline smallfelem_square(small1_0, small1_8, small1_16, small1_24, tmp2_0, tmp2_16, tmp2_32, tmp2_48, tmp2_64, tmp2_80, tmp2_96, tmp2_112);
 (* _31 = MEM[(limb * )&tmp2]; *)
 mov v31 tmp2_0;
 (* _32 = _31 * 8; *)
@@ -2136,7 +2136,7 @@ uadd v225 v249 0x1fffffffffffffffe0000000200@uint128;
 mov y_out19_48 v225;
 (* felem_reduce_ (y_out_19(D), &tmp); *)
 (* TODO: skipped, GIMPLE_CALL doesn't use internal or builtin function, inline function or self translte *)
-call felem_reduce_(y_out19_0, y_out19_16, y_out19_32, y_out19_48, tmp_64, tmp_80, tmp_96, tmp_112, y_out19_0, y_out19_16, y_out19_32, y_out19_48);
+inline felem_reduce_(y_out19_0, y_out19_16, y_out19_32, y_out19_48, tmp_64, tmp_80, tmp_96, tmp_112, y_out19_0, y_out19_16, y_out19_32, y_out19_48);
 (* tmp ={v} {CLOBBER}; *)
 (* TODO: Skip translation for constructor *)
 (* tmp2 ={v} {CLOBBER}; *)

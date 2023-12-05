@@ -189,7 +189,7 @@ mov r22_24@uint64 a3;
 
 mov tmp 0@int32;
 
-call secp256k1_scalar_check_overflow(r22_0, r22_8, r22_16, r22_24, tmp);
+inline secp256k1_scalar_check_overflow(r22_0, r22_8, r22_16, r22_24, tmp);
 
 vpc overflow23@uint32 tmp;
 
@@ -296,7 +296,7 @@ mov _ v35@int32;
 (* End with unsed lhs *)
 
 mov is_overflow 0@int32;
-call secp256k1_scalar_check_overflow(c0, c1, c2, c3, is_overflow);
+inline secp256k1_scalar_check_overflow(c0, c1, c2, c3, is_overflow);
 
 
 {
