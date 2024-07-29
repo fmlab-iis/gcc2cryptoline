@@ -1,0 +1,6 @@
+(executables
+ (names gcc2cryptoline)
+ (libraries parser main)
+ (public_names gcc2cryptoline)
+ (package gcc2cryptoline)
+)

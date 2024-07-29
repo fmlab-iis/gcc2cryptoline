@@ -1,0 +1,8 @@
+(library
+  (name        parser)
+  (public_name gcc2cryptoline.parser)
+  (libraries zarith)
+)
+
+(ocamllex    gimpleLexer)
+(ocamlyacc   gimpleParser)
