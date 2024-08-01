@@ -3,8 +3,8 @@ type access_t = string
 
 type attribute_t = access_t list
 
-type type_t = Void | Char | Uchar | Int | Long | Ulong | Llong | Ullong
-              | Sint of int | Uint of int 
+type type_t = Void | Char | Uchar | Int | Uint | Long | Ulong | Llong | Ullong
+              | Sword of int | Uword of int 
               | Const of type_t | Pointer of type_t
               | Vector of Z.t * type_t
 
@@ -29,9 +29,8 @@ type instr_t = Label of Z.t
              | Or of id_t * id_t * operand_t
              | Rshift of id_t * id_t * operand_t
              | Lshift of id_t * id_t * operand_t
-             | Load of id_t * loc_t
-             | Store of loc_t * id_t
-             | Vstore of type_t * loc_t * id_t
+             | Load of id_t * type_t * loc_t
+             | Store of loc_t * type_t * id_t
              | Return
              | Wmadd of id_t * id_t * id_t * id_t
 

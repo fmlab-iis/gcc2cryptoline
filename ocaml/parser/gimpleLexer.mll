@@ -12,6 +12,7 @@
               "char"                       , CHAR;
               "int"                        , INT;
               "const"                      , CONST;
+              "signed"                     , SIGNED;
               "unsigned"                   , UNSIGNED;
               "long"                       , LONG;
               "vector"                     , VECTOR;

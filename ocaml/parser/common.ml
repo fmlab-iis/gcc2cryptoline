@@ -24,12 +24,13 @@ let rec string_of_type typ =
   | Char -> "char"
   | Uchar -> "unsigned char"
   | Int -> "int"
+  | Uint -> "unsigned int"
   | Long -> "long"
   | Ulong -> "unsigned long"
   | Llong -> "long long"
   | Ullong -> "unsigned long long"
-  | Sint w -> "int" ^ string_of_int w
-  | Uint w -> "uint" ^ string_of_int w
+  | Sword w -> "int" ^ string_of_int w
+  | Uword w -> "uint" ^ string_of_int w
   | Const t -> "const " ^ string_of_type t
   | Pointer t -> (string_of_type t) ^ " * "
   | Vector (d, t) -> "vector[" ^ Z.to_string d ^ "] " ^ string_of_type t
@@ -63,10 +64,10 @@ let string_of_instr instr =
   | Or (l, r0, r1) -> l ^ " = " ^ r0 ^ " | " ^ string_of_operand r1
   | Rshift (l, r0, r1) -> l ^ " = " ^ r0 ^ " >> " ^ string_of_operand r1
   | Lshift (l, r0, r1) -> l ^ " = " ^ r0 ^ " << " ^ string_of_operand r1
-  | Load (l, loc) -> l ^ " = MEM[" ^ (string_of_loc loc) ^ "]"
-  | Store (loc, r) -> "MEM[" ^ (string_of_loc loc) ^ "] = " ^ r
-  | Vstore (t, loc, r) -> "MEM <" ^ string_of_type t ^ "> [" ^ string_of_loc loc ^
-                            "] = " ^ r
+  | Load (l, t, loc) -> l ^ " = MEM <" ^ string_of_type t ^ "> [" ^
+                          string_of_loc loc ^ "]"
+  | Store (loc, t, r) -> "MEM <" ^ string_of_type t ^ "> [" ^
+                           string_of_loc loc ^ "] = " ^ r
   | Return -> "return"
   | Wmadd (l, r0, r1, r2) -> l ^ " = WIDEN_MULT_PLUS_EXPR <" ^ r0 ^ ", " ^ r1 ^ ", " ^ r2
   

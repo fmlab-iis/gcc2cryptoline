@@ -20,7 +20,7 @@
 %token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP
 %token WMADDOP
 /* Types */
-%token CONST VOID CHAR INT UNSIGNED LONG VECTOR
+%token CONST VOID CHAR INT SIGNED UNSIGNED LONG VECTOR
 /* Others */
 %token ATTRIBUTE ACCESS MEM EOF RETURN LOCAL COUNT BB
 
@@ -41,6 +41,8 @@ funcs:
 func:
   attribute typ ID LPAREN parameters RPAREN LBRACK vars instrs RBRACK
     { { attr = $1; fty = $2; fname = $3; params = $5; vars = $8; instrs = $9 } }
+| typ ID LPAREN parameters RPAREN LBRACK vars instrs RBRACK
+    { { attr = []; fty = $1; fname = $2; params = $4; vars = $7; instrs = $8 } }
 ;
 
 attribute:
@@ -50,9 +52,9 @@ attribute:
 
 direct_typ:
   VOID                                            { Void }
-| SINT                                            { Sint $1 }
-| UINT                                            { Uint $1 }
-| UNSIGNED SINT                                   { Uint $2 }
+| SINT                                            { Sword $1 }
+| UINT                                            { Uword $1 }
+| UNSIGNED SINT                                   { Uword $2 }
 | CONST direct_typ                                { Const $2 }
 ;
 
@@ -87,13 +89,16 @@ var:
 
 vtyp:
 | UNSIGNED CHAR                                   { Uchar }
+| SIGNED CHAR                                     { Char }
 | INT                                             { Int }
+| UNSIGNED INT                                    { Uint }
+| SIGNED INT                                      { Int }
 | LONG LONG UNSIGNED INT                          { Ullong }
 | LONG LONG INT                                   { Llong }
 | UNSIGNED LONG                                   { Ulong }
-| UINT                                            { Uint $1 }
-| SINT                                            { Sint $1 }
-| SINT UNSIGNED                                   { Uint $1 }
+| UINT                                            { Uword $1 }
+| SINT                                            { Sword $1 }
+| SINT UNSIGNED                                   { Uword $1 }
 | VECTOR LPAREN NUM RPAREN vtyp                   { Vector ($3, $5) }
 ;
 
@@ -122,12 +127,14 @@ instr:
 | ID EQOP ID LSHIFT ID SEMICOLON                  { Lshift ($1, $3, Var $5) }
 | ID EQOP ID LSHIFT NUM SEMICOLON                 { Lshift ($1, $3, Const $5) }
 | LANGLE BB NUM RANGLE LSQUARE LOCAL COUNT COLON NUM RSQUARE COLON  { Label $3 }
-| ID EQOP MULOP loc SEMICOLON                     { Load ($1, $4) }
-| ID EQOP MEM LSQUARE loc RSQUARE SEMICOLON       { Load ($1, $5) }
-| MULOP loc EQOP ID SEMICOLON                     { Store ($2, $4) }
-| MEM LSQUARE loc RSQUARE EQOP ID SEMICOLON       { Store ($3, $6) }
+| ID EQOP MULOP loc SEMICOLON                     { Load ($1, Void, $4) }
+| ID EQOP MEM LSQUARE loc RSQUARE SEMICOLON       { Load ($1, Void, $5) }
+| ID EQOP MEM LANGLE vtyp RANGLE LSQUARE loc RSQUARE SEMICOLON
+                                                  { Load ($1, $5, $8) }
+| MULOP loc EQOP ID SEMICOLON                     { Store ($2, Void, $4) }
+| MEM LSQUARE loc RSQUARE EQOP ID SEMICOLON       { Store ($3, Void, $6) }
 | MEM LANGLE vtyp RANGLE LSQUARE loc RSQUARE EQOP ID SEMICOLON
-                                                  { Vstore ($3, $6, $9) }
+                                                  { Store ($6, $3, $9) }
 | ID EQOP WMADDOP LANGLE ID COMMA ID COMMA ID RANGLE SEMICOLON
                                                   { Wmadd ($1, $5, $7, $9) }
 | RETURN SEMICOLON                                { Return }
