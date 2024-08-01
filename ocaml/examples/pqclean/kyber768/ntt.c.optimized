@@ -1,0 +1,392 @@
+
+;; Function PQCLEAN_KYBER768_CLEAN_ntt (PQCLEAN_KYBER768_CLEAN_ntt, funcdef_no=1, decl_uid=4568, cgraph_uid=2, symbol_order=2)
+
+Removing basic block 11
+__attribute__((access ("^0[256]", )))
+void PQCLEAN_KYBER768_CLEAN_ntt (int16_t * r)
+{
+  unsigned long ivtmp.20;
+  unsigned int k;
+  unsigned int j;
+  unsigned int start;
+  unsigned int len;
+  short int _5;
+  short int _9;
+  unsigned short _10;
+  unsigned short t.1_11;
+  unsigned short _12;
+  short int _13;
+  short int _14;
+  unsigned short _15;
+  unsigned short _16;
+  short int _17;
+  int _37;
+  int _38;
+  short int _39;
+  unsigned int _49;
+  sizetype _71;
+  long unsigned int _75;
+  long unsigned int _76;
+  unsigned int ivtmp_77;
+  unsigned int ivtmp_78;
+  unsigned int _81;
+  unsigned int _83;
+  short int pretmp_84;
+  short int prephitmp_85;
+  short int pretmp_86;
+  short int prephitmp_87;
+  int16_t * _88;
+  int _89;
+  unsigned int _90;
+  void * _91;
+  _Bool _93;
+  sizetype _94;
+  unsigned int _95;
+  unsigned int _97;
+  unsigned int _99;
+
+  <bb 2> [local count: 2085438]:
+  goto <bb 9>; [100.00%]
+
+  <bb 3> [local count: 103513537]:
+  pretmp_86 = PQCLEAN_KYBER768_CLEAN_zetas[k_29];
+
+  <bb 4> [local count: 118111600]:
+  # start_51 = PHI <start_31(3), 0(9)>
+  # k_54 = PHI <k_29(3), k_56(9)>
+  # prephitmp_87 = PHI <pretmp_86(3), prephitmp_85(9)>
+  k_29 = k_54 + 1;
+  _49 = len_50 + start_51;
+  _89 = (int) prephitmp_87;
+  _75 = (long unsigned int) start_51;
+  _95 = (unsigned int) _75;
+  _76 = _95 w* 2;
+  _88 = r_32(D) + _76;
+  ivtmp.20_74 = (unsigned long) _88;
+
+  <bb 5> [local count: 955630224]:
+  # j_52 = PHI <j_35(5), start_51(4)>
+  # ivtmp.20_72 = PHI <ivtmp.20_73(5), ivtmp.20_74(4)>
+  _91 = (void *) ivtmp.20_72;
+  _94 = (sizetype) _49;
+  _71 = _94 - _75;
+  _5 = MEM[(int16_t *)_91 + _71 * 2];
+  _37 = (int) _5;
+  _38 = _37 * _89;
+  _39 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_38);
+  _9 = MEM[(int16_t *)_91];
+  _10 = (unsigned short) _9;
+  t.1_11 = (unsigned short) _39;
+  _12 = _10 - t.1_11;
+  _13 = (short int) _12;
+  MEM[(int16_t *)_91 + _71 * 2] = _13;
+  _14 = MEM[(int16_t *)_91];
+  _15 = (unsigned short) _14;
+  _16 = t.1_11 + _15;
+  _17 = (short int) _16;
+  MEM[(int16_t *)_91] = _17;
+  j_35 = j_52 + 1;
+  ivtmp.20_73 = ivtmp.20_72 + 2;
+  if (j_35 < _49)
+    goto <bb 5>; [87.64%]
+  else
+    goto <bb 6>; [12.36%]
+
+  <bb 6> [local count: 118111600]:
+  _83 = start_51 + 1;
+  _93 = _49 >= _83;
+  _81 = len_50 + 4294967295;
+  _90 = _93 ? _81 : 0;
+  _99 = start_51 + _90;
+  start_31 = _97 + _99;
+  if (start_31 <= 255)
+    goto <bb 3>; [87.64%]
+  else
+    goto <bb 7>; [12.36%]
+
+  <bb 7> [local count: 14598063]:
+  len_28 = len_50 >> 1;
+  ivtmp_77 = ivtmp_78 + 4294967295;
+  if (ivtmp_77 != 0)
+    goto <bb 8>; [85.71%]
+  else
+    goto <bb 10>; [14.29%]
+
+  <bb 8> [local count: 12512625]:
+  pretmp_84 = PQCLEAN_KYBER768_CLEAN_zetas[k_29];
+
+  <bb 9> [local count: 14598063]:
+  # len_50 = PHI <len_28(8), 128(2)>
+  # k_56 = PHI <k_29(8), 1(2)>
+  # prephitmp_85 = PHI <pretmp_84(8), -758(2)>
+  # ivtmp_78 = PHI <ivtmp_77(8), 7(2)>
+  _97 = len_50 + 1;
+  goto <bb 4>; [100.00%]
+
+  <bb 10> [local count: 2085438]:
+  return;
+
+}
+
+
+
+;; Function PQCLEAN_KYBER768_CLEAN_invntt (PQCLEAN_KYBER768_CLEAN_invntt, funcdef_no=2, decl_uid=4570, cgraph_uid=3, symbol_order=3)
+
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+__attribute__((access ("^0[256]", )))
+void PQCLEAN_KYBER768_CLEAN_invntt (int16_t * r)
+{
+  unsigned long ivtmp.62;
+  unsigned long ivtmp.56;
+  int16_t t;
+  unsigned int k;
+  unsigned int len;
+  unsigned int start;
+  short int _8;
+  unsigned short _9;
+  unsigned short t.4_10;
+  unsigned short _11;
+  short int _12;
+  short int _13;
+  short int _14;
+  unsigned short _15;
+  unsigned short _16;
+  short int _17;
+  short int _22;
+  int _48;
+  int _49;
+  short int _50;
+  int _51;
+  int _52;
+  short int _53;
+  unsigned long _57;
+  unsigned long _59;
+  unsigned long _60;
+  unsigned long _61;
+  unsigned long _62;
+  unsigned int _63;
+  unsigned int prephitmp_65;
+  unsigned int _66;
+  sizetype _89;
+  unsigned int _91;
+  sizetype _92;
+  void * _93;
+  short int pretmp_95;
+  short int prephitmp_96;
+  short int pretmp_97;
+  short int prephitmp_98;
+  void * _101;
+  unsigned long _104;
+  long unsigned int _109;
+  long unsigned int _110;
+  int16_t * _111;
+  unsigned int ivtmp_112;
+  int _113;
+  unsigned int ivtmp_114;
+  unsigned int _120;
+  unsigned long _124;
+
+  <bb 2> [local count: 2085438]:
+  goto <bb 10>; [100.00%]
+
+  <bb 3> [local count: 103513537]:
+  # prephitmp_65 = PHI <_120(7), _66(4)>
+  pretmp_97 = PQCLEAN_KYBER768_CLEAN_zetas[k_38];
+
+  <bb 4> [local count: 118111600]:
+  # start_67 = PHI <prephitmp_65(3), 0(10)>
+  # k_72 = PHI <k_38(3), k_74(10)>
+  # prephitmp_98 = PHI <pretmp_97(3), prephitmp_96(10)>
+  k_38 = k_72 + 4294967295;
+  _66 = start_67 + len_68;
+  if (_66 > start_67)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 3>; [11.00%]
+
+  <bb 5> [local count: 105119324]:
+  _113 = (int) prephitmp_98;
+  _109 = (long unsigned int) _66;
+  _91 = (unsigned int) _109;
+  _110 = _91 w* 2;
+  _111 = r_34(D) + _110;
+  ivtmp.62_107 = (unsigned long) _111;
+  _63 = len_68 + 4294967295;
+  _62 = (unsigned long) _63;
+  _61 = _62 + _109;
+  _60 = _61 * 2;
+  _59 = (unsigned long) r_34(D);
+  _124 = _59 + 2;
+  _57 = _60 + _124;
+
+  <bb 6> [local count: 955630224]:
+  # ivtmp.62_105 = PHI <ivtmp.62_106(6), ivtmp.62_107(5)>
+  _93 = (void *) ivtmp.62_105;
+  _92 = (sizetype) start_67;
+  _89 = _92 - _109;
+  t_41 = MEM[(int16_t *)_93 + _89 * 2];
+  _8 = MEM[(int16_t *)_93];
+  _9 = (unsigned short) _8;
+  t.4_10 = (unsigned short) t_41;
+  _11 = _9 + t.4_10;
+  _12 = (short int) _11;
+  _13 = PQCLEAN_KYBER768_CLEAN_barrett_reduce (_12);
+  MEM[(int16_t *)_93 + _89 * 2] = _13;
+  _14 = MEM[(int16_t *)_93];
+  _15 = (unsigned short) _14;
+  _16 = _15 - t.4_10;
+  _17 = (short int) _16;
+  MEM[(int16_t *)_93] = _17;
+  _48 = (int) _17;
+  _49 = _48 * _113;
+  _50 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_49);
+  MEM[(int16_t *)_93] = _50;
+  ivtmp.62_106 = ivtmp.62_105 + 2;
+  if (_57 != ivtmp.62_106)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 105119324]:
+  _120 = _66 + len_68;
+  if (_120 <= 255)
+    goto <bb 3>; [86.11%]
+  else
+    goto <bb 8>; [13.89%]
+
+  <bb 8> [local count: 14598063]:
+  len_37 = len_68 << 1;
+  ivtmp_112 = ivtmp_114 + 4294967295;
+  if (ivtmp_112 != 0)
+    goto <bb 9>; [85.71%]
+  else
+    goto <bb 11>; [14.29%]
+
+  <bb 9> [local count: 12512625]:
+  pretmp_95 = PQCLEAN_KYBER768_CLEAN_zetas[k_38];
+
+  <bb 10> [local count: 14598063]:
+  # len_68 = PHI <len_37(9), 2(2)>
+  # k_74 = PHI <k_38(9), 127(2)>
+  # prephitmp_96 = PHI <pretmp_95(9), 1628(2)>
+  # ivtmp_114 = PHI <ivtmp_112(9), 7(2)>
+  goto <bb 4>; [100.00%]
+
+  <bb 11> [local count: 2085438]:
+  _104 = _59 + 512;
+
+  <bb 12> [local count: 206458361]:
+  # ivtmp.56_94 = PHI <ivtmp.56_99(12), _59(11)>
+  _101 = (void *) ivtmp.56_94;
+  _22 = MEM[(int16_t *)_101];
+  _51 = (int) _22;
+  _52 = _51 * 1441;
+  _53 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_52);
+  MEM[(int16_t *)_101] = _53;
+  ivtmp.56_99 = ivtmp.56_94 + 2;
+  if (ivtmp.56_99 != _104)
+    goto <bb 12>; [98.99%]
+  else
+    goto <bb 13>; [1.01%]
+
+  <bb 13> [local count: 2085438]:
+  return;
+
+}
+
+
+
+;; Function PQCLEAN_KYBER768_CLEAN_basemul (PQCLEAN_KYBER768_CLEAN_basemul, funcdef_no=3, decl_uid=4575, cgraph_uid=4, symbol_order=4)
+
+__attribute__((access ("^0[2]^1[2]^2[2]", )))
+void PQCLEAN_KYBER768_CLEAN_basemul (int16_t * r, const int16_t * a, const int16_t * b, int16_t zeta)
+{
+  short int _1;
+  short int _2;
+  short int _3;
+  short int _4;
+  short int _5;
+  unsigned short _6;
+  unsigned short _7;
+  unsigned short _8;
+  short int _9;
+  short int _10;
+  short int _11;
+  short int _12;
+  short int _13;
+  short int _14;
+  unsigned short _15;
+  unsigned short _16;
+  unsigned short _17;
+  short int _18;
+  int _29;
+  int _30;
+  int _31;
+  short int _32;
+  int _33;
+  int _34;
+  int _35;
+  short int _36;
+  int _37;
+  int _38;
+  int _39;
+  short int _40;
+  int _41;
+  int _42;
+  int _43;
+  short int _44;
+  int _45;
+  int _46;
+  int _47;
+  short int _48;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = MEM[(const int16_t *)a_19(D) + 2B];
+  _2 = MEM[(const int16_t *)b_21(D) + 2B];
+  _45 = (int) _1;
+  _46 = (int) _2;
+  _47 = _45 * _46;
+  _48 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_47);
+  *r_22(D) = _48;
+  _41 = (int) _48;
+  _42 = (int) zeta_24(D);
+  _43 = _41 * _42;
+  _44 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_43);
+  *r_22(D) = _44;
+  _3 = *a_19(D);
+  _4 = *b_21(D);
+  _37 = (int) _3;
+  _38 = (int) _4;
+  _39 = _37 * _38;
+  _40 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_39);
+  _5 = *r_22(D);
+  _6 = (unsigned short) _5;
+  _7 = (unsigned short) _40;
+  _8 = _6 + _7;
+  _9 = (short int) _8;
+  *r_22(D) = _9;
+  _10 = *a_19(D);
+  _11 = MEM[(const int16_t *)b_21(D) + 2B];
+  _33 = (int) _10;
+  _34 = (int) _11;
+  _35 = _33 * _34;
+  _36 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_35);
+  MEM[(int16_t *)r_22(D) + 2B] = _36;
+  _12 = MEM[(const int16_t *)a_19(D) + 2B];
+  _13 = *b_21(D);
+  _29 = (int) _12;
+  _30 = (int) _13;
+  _31 = _29 * _30;
+  _32 = PQCLEAN_KYBER768_CLEAN_montgomery_reduce (_31);
+  _14 = MEM[(int16_t *)r_22(D) + 2B];
+  _15 = (unsigned short) _14;
+  _16 = (unsigned short) _32;
+  _17 = _15 + _16;
+  _18 = (short int) _17;
+  MEM[(int16_t *)r_22(D) + 2B] = _18;
+  return;
+
+}
