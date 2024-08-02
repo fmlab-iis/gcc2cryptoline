@@ -18,9 +18,11 @@
               "long"                       , LONG;
               "vector"                     , VECTOR;
               "MEM"                        , MEM;
+              "bb"                         , BB;
+              "if"                         , IF;
+              "else"                       , ELSE;
+              "goto"                       , GOTO;
 	      "return"                     , RETURN;
-	      "local"                      , LOCAL;
-	      "count"                      , COUNT;
             ]
 }
 
@@ -56,6 +58,7 @@ token = parse
   | ':'                            { COLON }
   | ';'                            { SEMICOLON }
   | '"'                            { DQUOTE }
+  | '%'                            { PERCENT }
   (* Operators *)
   | '+'                            { ADDOP }
   | '-'                            { SUBOP }
@@ -65,10 +68,10 @@ token = parse
   | '|'                            { OROP }
   | '^'                            { XOROP }
   | '='                            { EQOP }
+  | "!="                           { NEQOP }
   | '?'                            { QUESTION }
   | "<<"                           { LSHIFT }
   | ">>"                           { RSHIFT }
-  | "bb"                           { BB }
   (* intrinsics *)
   | "WIDEN_MULT_PLUS_EXPR"         { WMADDOP }
   | "WIDEN_MULT_MINUS_EXPR"        { WMSUBOP }
@@ -78,13 +81,14 @@ token = parse
   | "int" ((number+) as w) "_t"    { SINT (int_of_string w) }
   | "__int" ((number+) as w)       { SINT (int_of_string w) }
   (* Numbers *)
-  | (number+) as num               { NUM (Z.of_string num) }
-  | ("-" (number+)) as num         { NUM (Z.of_string num) }
+  | ('-'? number+) as num          { NUM (Z.of_string num) }
+  | (number+ '.' number+) as num   { FLOAT (float_of_string num) }
   (* Offsets *)
   | ((number+) as byte) "B"        { BYTE (int_of_string byte) }
   (* Strings *)
   | '"' (([^'\r''\n'' ']+) as s) '"'            { STRING s }
   (* Misc *)
+  | "local count"                  { LOCAL_COUNT }
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }
   | "char * {ref-all}"             { CHAR_REF_ALL }
   | identity as id                 { try

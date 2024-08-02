@@ -45,16 +45,22 @@ let string_of_params params =
     (List.rev (List.rev_map
                  (fun p -> string_of_type p.pty ^ " " ^ p.pname) params))
 
-let string_of_operand op =
+let rec string_of_operand op =
   match op with
   | Var s -> s
   | Const z -> Z.to_string z
-  | Access (s, z) -> s ^ "[" ^ Z.to_string z ^ "]"
+  | Consts zs -> let z_strs = List.map Z.to_string zs in
+                 "{ " ^ (String.concat ", " z_strs) ^ " }"
+  | Access (s, op) -> s ^ "[" ^ string_of_operand op ^ "]"
   | Ref s -> "*" ^ s
 
 let string_of_loc loc =
   "(" ^ string_of_type loc.lty ^ ")" ^ string_of_operand loc.lop ^
     " + " ^ string_of_int loc.loffset
+
+let string_of_cond cond =
+  match cond with
+  | Neq (op0, op1) -> string_of_operand op0 ^ " != " ^ string_of_operand op1
 
 let string_of_instr instr =
   match instr with
@@ -96,6 +102,11 @@ let string_of_instr instr =
                                string_of_operand b1
   | Call (f, ops) -> let op_strs = List.map string_of_operand ops in
                      f ^ " (" ^ (String.concat "," op_strs) ^ ")"
+  | CondBranch (c, b0, b1) -> "if (" ^ string_of_cond c ^ ")\n" ^
+                                "  goto <bb " ^ Z.to_string b0 ^ ">\n" ^
+                                "else\n" ^
+                                "  goto <bb " ^ Z.to_string b1 ^ ">"
+  | Goto b -> "goto <bb" ^ Z.to_string b ^ ">"
   | Return -> "return"
   | Wmadd (l, r0, r1, r2) -> string_of_operand l ^
                                " = WIDEN_MULT_PLUS_EXPR <" ^

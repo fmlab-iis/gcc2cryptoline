@@ -13,12 +13,16 @@ type param_t = { pty : type_t; pname : string }
 
 type var_t = { vty : type_t; vname : string }
 
-type operand_t = Var of string | Const of Z.t
-                 | Access of string * Z.t | Ref of string
+type operand_t = Var of string | Const of Z.t | Consts of Z.t list
+                 | Access of string * operand_t | Ref of string
 
 type loc_t = { lty : type_t; lop : operand_t; loffset : int }
 
-type instr_t = Label of Z.t
+type cond_t = Neq of operand_t * operand_t
+
+type label_t = Z.t
+
+type instr_t = Label of label_t
              | Assign of operand_t * type_t * operand_t
              | Vassign of operand_t * operand_t list
              | Add of operand_t * operand_t * operand_t
@@ -35,6 +39,8 @@ type instr_t = Label of Z.t
              | Copy of type_t * operand_t * type_t * operand_t
              | Ite of operand_t * operand_t * operand_t * operand_t
              | Call of string * operand_t list
+             | CondBranch of cond_t * label_t * label_t
+             | Goto of label_t
              | Return
              | Wmadd of operand_t * operand_t * operand_t * operand_t
              | Wmsub of operand_t * operand_t * operand_t * operand_t
