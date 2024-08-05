@@ -22,7 +22,8 @@ type cond_t = Neq of operand_t * operand_t
 
 type label_t = Z.t
 
-type instr_t = Label of label_t
+type instr_t = Nop
+             | Label of label_t
              | Assign of operand_t * type_t * operand_t
              | Vassign of operand_t * operand_t list
              | Add of operand_t * operand_t * operand_t

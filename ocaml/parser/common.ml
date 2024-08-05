@@ -64,6 +64,7 @@ let string_of_cond cond =
 
 let string_of_instr instr =
   match instr with
+  | Nop -> "nop"
   | Label z -> "L" ^ (Z.to_string z)
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
                            string_of_type t ^ ") " ^ string_of_operand op

@@ -91,6 +91,7 @@ token = parse
   | "local count"                  { LOCAL_COUNT }
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }
   | "char * {ref-all}"             { CHAR_REF_ALL }
+  | "CLOBBER(eos)"                 { CLOBBER_EOS }
   | identity as id                 { try
                                        Hashtbl.find keywords id
                                      with Not_found ->

@@ -25,6 +25,7 @@
 /* Others */
 %token ATTRIBUTE ACCESS MEM EOF RETURN BB IF ELSE GOTO
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL_COUNT
+%token CLOBBER_EOS
 
 %start gimple
 %type <Syntax.function_t list> gimple
@@ -105,13 +106,15 @@ typ:
 ;
 
 instrs:
-  instr instrs                            { $1::$2 }
+| instr instrs                            { $1::$2 }
 |                                         { [] }
 ;
 
 instr:
+| ID EQOP LBRACK args RBRACK LBRACK CLOBBER_EOS RBRACK SEMICOLON
+                                          { Nop }
 | ID EQOP LPAREN typ RPAREN ID SEMICOLON  { Assign (Var $1, $4, Var $6) }
-| ID EQOP LBRACK args RBRACK SEMICOLON     { Vassign (Var $1, $4) }
+| ID EQOP LBRACK args RBRACK SEMICOLON    { Vassign (Var $1, $4) }
 | ID EQOP ID LSQUARE ID RSQUARE SEMICOLON { Assign (Var $1, Void,
                                                     Access ($3, Var $5)) }
 | ID EQOP ID LSQUARE NUM RSQUARE SEMICOLON{ Assign (Var $1, Void,
@@ -194,6 +197,8 @@ nums:
 args:
   ID                                      { [ Var $1 ] }
 | ID COMMA args                           { Var $1::$3 }
+| NUM                                     { [ Const $1 ] }
+| NUM COMMA args                          { Const $1::$3 }
 | ANDOP ID                                { [ Ref $2 ] }
 | ANDOP ID COMMA args                     { Ref $2::$4 }
 ;
