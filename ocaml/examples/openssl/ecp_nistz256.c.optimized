@@ -1,0 +1,1245 @@
+;; Function ecp_nistz256_points_mul (ecp_nistz256_points_mul, funcdef_no=485, decl_uid=18847, cgraph_uid=486, symbol_order=488)
+
+Removing basic block 85
+Removing basic block 86
+Removing basic block 87
+Removing basic block 88
+Removing basic block 89
+Removing basic block 90
+Removing basic block 91
+Removing basic block 92
+Removing basic block 93
+Removing basic block 94
+Removing basic block 95
+Removing basic block 96
+Removing basic block 97
+Removing basic block 98
+Removing basic block 99
+Removing basic block 100
+Removing basic block 101
+Removing basic block 102
+Removing basic block 103
+Removing basic block 104
+Removing basic block 105
+Removing basic block 106
+Removing basic block 107
+Removing basic block 108
+Removing basic block 109
+Removing basic block 110
+Removing basic block 111
+Removing basic block 112
+Removing basic block 113
+Removing basic block 114
+Removing basic block 115
+Removing basic block 116
+Removing basic block 117
+Removing basic block 118
+Removing basic block 119
+Removing basic block 120
+Removing basic block 121
+Removing basic block 122
+Removing basic block 123
+__attribute__((access ("^4[ ]^5[ ]", )))
+int ecp_nistz256_points_mul (const struct EC_GROUP * group, struct EC_POINT * r, const struct BIGNUM * scalar, size_t num, const struct EC_POINT * * points, const struct BIGNUM * * scalars, struct BN_CTX * ctx)
+{
+  unsigned long ivtmp.271;
+  unsigned long ivtmp.252;
+  unsigned int ivtmp.250;
+  unsigned long ivtmp.228;
+  unsigned long ivtmp.227;
+  unsigned long ivtmp.225;
+  sizetype ivtmp.214;
+  unsigned long ivtmp.198;
+  unsigned long ivtmp.197;
+  unsigned long ivtmp.191;
+  unsigned long ivtmp.190;
+  vector(2) long unsigned int vect__508.180;
+  vector(2) long unsigned int vect__507.179;
+  vector(2) long unsigned int vect__506.178;
+  vector(2) long unsigned int vect__506.177;
+  vector(2) long unsigned int vect__505.174;
+  const vector(2) long unsigned int vect__504.173;
+  const vector(2) long unsigned int vect__504.172;
+  vector(2) long unsigned int vect__486.167;
+  vector(2) long unsigned int vect__485.166;
+  vector(2) long unsigned int vect__484.165;
+  vector(2) long unsigned int vect__484.164;
+  vector(2) long unsigned int vect__483.161;
+  const vector(2) long unsigned int vect__482.160;
+  const vector(2) long unsigned int vect__482.159;
+  vector(2) long unsigned int vect__291.154;
+  vector(2) long unsigned int vect__290.153;
+  vector(2) long unsigned int vect__289.152;
+  vector(2) long unsigned int vect__289.151;
+  vector(2) long unsigned int vect__288.148;
+  const vector(2) long unsigned int vect__287.147;
+  const vector(2) long unsigned int vect__287.146;
+  vector(2) long unsigned int vect__269.141;
+  vector(2) long unsigned int vect__268.140;
+  vector(2) long unsigned int vect__267.139;
+  vector(2) long unsigned int vect__267.138;
+  vector(2) long unsigned int vect__266.135;
+  const vector(2) long unsigned int vect__265.134;
+  const vector(2) long unsigned int vect__265.133;
+  long unsigned int res;
+  long unsigned int * a;
+  long unsigned int in;
+  long unsigned int mask1;
+  long unsigned int mask1;
+  size_t i;
+  int j;
+  unsigned int idx;
+  unsigned char[33] * p_str;
+  unsigned int wvalue;
+  struct P256_POINT * temp;
+  const struct BIGNUM * * scalars;
+  struct P256_POINT[16] * table;
+  void * table_storage;
+  struct P256_POINT * row;
+  struct BIGNUM * mod;
+  unsigned int off;
+  unsigned int d;
+  unsigned int d;
+  unsigned int s;
+  unsigned int d;
+  unsigned int s;
+  static const char __func__[26] = "ecp_nistz256_windowed_mul";
+  long unsigned int mask1;
+  long unsigned int mask1;
+  int ret;
+  unsigned int s;
+  unsigned int d;
+  unsigned int s;
+  unsigned int d;
+  long unsigned int in;
+  struct P256_POINT * out;
+  unsigned int off;
+  long unsigned int infty;
+  struct EC_POINT * pre_comp_generator;
+  static const char __func__[24] = "ecp_nistz256_points_mul";
+  struct BIGNUM * tmp_scalar;
+  union 
+  {
+    struct P256_POINT p;
+    struct P256_POINT_AFFINE a;
+  } p;
+  union 
+  {
+    struct P256_POINT p;
+    struct P256_POINT_AFFINE a;
+  } t;
+  unsigned int wvalue;
+  const struct EC_POINT * * new_points;
+  const struct BIGNUM * * new_scalars;
+  const struct EC_POINT * generator;
+  const struct NISTZ256_PRE_COMP * pre_comp;
+  const struct P256_POINT_AFFINE[64] * preComputedTable;
+  unsigned char p_str[33];
+  int p_is_infinity;
+  int ret;
+  int i;
+  struct P256_POINT_AFFINE[64] * _1;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  struct BIGNUM * _7;
+  int _8;
+  long unsigned int * _9;
+  int _10;
+  long unsigned int _12;
+  long unsigned int * _13;
+  int _34;
+  int _35;
+  unsigned char _36;
+  unsigned int _37;
+  unsigned int _38;
+  unsigned int _39;
+  int _40;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _46;
+  long unsigned int _48;
+  int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  sizetype table_storage.5_74;
+  int _81;
+  unsigned int _82;
+  unsigned char _83;
+  int _84;
+  int _85;
+  int _86;
+  unsigned int _87;
+  unsigned int _88;
+  const struct P256_POINT_AFFINE[64] * _91;
+  unsigned int _92;
+  int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  const struct BIGNUM * * _98;
+  const struct EC_POINT * * _99;
+  struct BIGNUM * _101;
+  int _102;
+  struct BIGNUM * _103;
+  int _104;
+  struct BIGNUM * _105;
+  int _106;
+  struct BIGNUM * _107;
+  unsigned int _122;
+  signed long _123;
+  signed long _126;
+  unsigned long _127;
+  signed long _128;
+  signed long _129;
+  unsigned int _130;
+  vector(2) long unsigned int _161;
+  long unsigned int _222;
+  unsigned int _225;
+  unsigned int _228;
+  unsigned int _229;
+  unsigned int _230;
+  unsigned int _232;
+  unsigned int _233;
+  unsigned int _235;
+  unsigned int _236;
+  unsigned int _237;
+  unsigned int _240;
+  unsigned int _241;
+  unsigned int _242;
+  unsigned int _244;
+  unsigned int _245;
+  unsigned int _247;
+  unsigned int _249;
+  struct BIGNUM * _254;
+  long unsigned int _255;
+  struct BIGNUM * _257;
+  struct BIGNUM * _260;
+  long unsigned int _264;
+  long unsigned int _286;
+  long unsigned int _307;
+  long unsigned int _308;
+  long unsigned int _309;
+  long unsigned int _310;
+  long unsigned int _312;
+  long unsigned int _314;
+  sizetype _321;
+  const struct BIGNUM * _326;
+  int _327;
+  const struct BIGNUM * _328;
+  int _329;
+  const struct BIGNUM * _331;
+  struct BIGNUM * _332;
+  int _333;
+  const struct BIGNUM * * _334;
+  const struct BIGNUM * * _335;
+  const struct BIGNUM * _336;
+  const struct BIGNUM * _338;
+  long unsigned int * _339;
+  int _341;
+  long unsigned int _343;
+  long unsigned int * _344;
+  unsigned char[33] * _347;
+  const struct BIGNUM * _371;
+  int _372;
+  int _373;
+  long unsigned int[4] * _378;
+  const struct EC_POINT * _380;
+  struct BIGNUM * _381;
+  int _382;
+  long unsigned int[4] * _383;
+  const struct EC_POINT * _384;
+  struct BIGNUM * _385;
+  int _386;
+  long unsigned int[4] * _387;
+  const struct EC_POINT * _388;
+  struct BIGNUM * _389;
+  int _390;
+  struct P256_POINT * _391;
+  struct P256_POINT * _392;
+  struct P256_POINT * _393;
+  struct P256_POINT * _394;
+  unsigned char _396;
+  unsigned int _398;
+  unsigned int _399;
+  unsigned int _400;
+  int _402;
+  _Bool _405;
+  unsigned int _407;
+  unsigned char _412;
+  int _413;
+  unsigned int _414;
+  unsigned char _415;
+  int _416;
+  int _417;
+  int _418;
+  unsigned int _421;
+  unsigned int _423;
+  unsigned int _426;
+  unsigned int _427;
+  unsigned int _428;
+  unsigned int _430;
+  unsigned int _431;
+  unsigned int _433;
+  unsigned int _434;
+  struct P256_POINT[16] * _436;
+  unsigned int _437;
+  int _438;
+  long unsigned int[4] * _439;
+  unsigned int _441;
+  long unsigned int _442;
+  unsigned char _448;
+  unsigned int _450;
+  unsigned int _452;
+  unsigned int _455;
+  unsigned int _456;
+  unsigned int _457;
+  unsigned int _459;
+  unsigned int _460;
+  unsigned int _462;
+  unsigned int _463;
+  struct P256_POINT[16] * _465;
+  unsigned int _466;
+  int _467;
+  long unsigned int[4] * _468;
+  vector(8) unsigned char _469;
+  unsigned int _470;
+  long unsigned int _471;
+  vector(8) unsigned char _475;
+  long unsigned int _481;
+  long unsigned int _503;
+  int _525;
+  long unsigned int _526;
+  long unsigned int _528;
+  long unsigned int _529;
+  long unsigned int _531;
+  long unsigned int _532;
+  long unsigned int _534;
+  long unsigned int _535;
+  long unsigned int _537;
+  long unsigned int _541;
+  sizetype _552;
+  long unsigned int load_dst_660;
+  vector(2) long unsigned int _666;
+  vector(2) long unsigned int _677;
+  unsigned int _680;
+  unsigned int _682;
+  long unsigned int load_dst_689;
+  vector(2) long unsigned int _692;
+  vector(2) long unsigned int _701;
+  vector(2) long unsigned int _711;
+  vector(2) long unsigned int _717;
+  vector(2) long unsigned int _731;
+  vector(2) long unsigned int _737;
+  void * _745;
+  sizetype _753;
+  sizetype _754;
+  sizetype _755;
+  unsigned char[33] * _756;
+  long unsigned int _761;
+  struct P256_POINT[16] * _762;
+  sizetype _764;
+  void * _765;
+  sizetype _766;
+  void * _767;
+  unsigned long _770;
+  unsigned int _773;
+  const struct P256_POINT_AFFINE[64] * _791;
+  void * _795;
+  unsigned int _812;
+  unsigned char pretmp_813;
+  unsigned char prephitmp_814;
+  const struct BIGNUM * * prephitmp_822;
+  unsigned char * _837;
+  sizetype _838;
+  sizetype _839;
+  unsigned char * _843;
+  sizetype _844;
+  sizetype _845;
+  unsigned int _848;
+  long unsigned int _857;
+  long unsigned int _858;
+  unsigned int _861;
+  long unsigned int _863;
+  long unsigned int _864;
+  long unsigned int _865;
+  long unsigned int _866;
+  int _868;
+  int prephitmp_869;
+
+  <bb 2> [local count: 326177347]:
+  p_str = "\x00";
+  if (num_131(D) > 268435454)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 110900297]:
+  ERR_new ();
+  ERR_set_debug ("../openssl/crypto/ec/ecp_nistz256.c", 964, &__func__);
+  ERR_set_error (16, 524550, 0B);
+  goto <bb 79>; [100.00%]
+
+  <bb 4> [local count: 215277045]:
+  __builtin_memset (&p, 0, 96);
+  BN_CTX_start (ctx_132(D));
+  if (scalar_134(D) != 0B)
+    goto <bb 5>; [53.47%]
+  else
+    goto <bb 35>; [46.53%]
+
+  <bb 5> [local count: 115108639]:
+  generator_137 = EC_GROUP_get0_generator (group_135(D));
+  if (generator_137 == 0B)
+    goto <bb 6>; [9.81%]
+  else
+    goto <bb 7>; [90.19%]
+
+  <bb 6> [local count: 11292156]:
+  ERR_new ();
+  ERR_set_debug ("../openssl/crypto/ec/ecp_nistz256.c", 974, &__func__);
+  ERR_set_error (16, 113, 0B);
+  goto <bb 26>; [100.00%]
+
+  <bb 7> [local count: 103816479]:
+  pre_comp_138 = group_135(D)->pre_comp.nistz256;
+  if (pre_comp_138 != 0B)
+    goto <bb 9>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 8> [local count: 32747456]:
+  goto <bb 18>; [100.00%]
+
+  <bb 9> [local count: 72671537]:
+  pre_comp_generator_140 = EC_POINT_new (group_135(D));
+  if (pre_comp_generator_140 == 0B)
+    goto <bb 10>; [30.95%]
+  else
+    goto <bb 11>; [69.05%]
+
+  <bb 10> [local count: 32660868]:
+  goto <bb 78>; [100.00%]
+
+  <bb 11> [local count: 50179697]:
+  _1 = pre_comp_138->precomp;
+  ecp_nistz256_gather_w7 (&p.a, _1, 1);
+  _254 = pre_comp_generator_140->X;
+  ret_256 = bn_set_words (_254, &MEM[(const struct P256_POINT_AFFINE *)&p].X, 4);
+  if (ret_256 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 15>; [67.00%]
+
+  <bb 12> [local count: 16559299]:
+  _257 = pre_comp_generator_140->Y;
+  ret_259 = bn_set_words (_257, &MEM[(const struct P256_POINT_AFFINE *)&p].Y, 4);
+  if (ret_259 != 0)
+    goto <bb 13>; [33.00%]
+  else
+    goto <bb 15>; [67.00%]
+
+  <bb 13> [local count: 5464570]:
+  _260 = pre_comp_generator_140->Z;
+  ret_261 = bn_set_words (_260, &ONE, 4);
+  if (ret_261 != 0)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 33118599]:
+  pre_comp_generator_140->Z_is_one = 1;
+  _3 = EC_POINT_cmp (group_135(D), generator_137, pre_comp_generator_140, ctx_132(D));
+  if (_3 == 0)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 16>; [50.00%]
+
+  <bb 15> [local count: 47447412]:
+  EC_POINT_free (pre_comp_generator_140);
+  goto <bb 25>; [100.00%]
+
+  <bb 16> [local count: 16559300]:
+  EC_POINT_free (pre_comp_generator_140);
+  goto <bb 18>; [100.00%]
+
+  <bb 17> [local count: 16559299]:
+  preComputedTable_144 = pre_comp_138->precomp;
+  EC_POINT_free (pre_comp_generator_140);
+  if (preComputedTable_144 == 0B)
+    goto <bb 8>; [9.68%]
+  else
+    goto <bb 20>; [90.32%]
+
+  <bb 18> [local count: 41080522]:
+  _4 = ecp_nistz256_is_affine_G (generator_137);
+  if (_4 != 0)
+    goto <bb 20>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 19> [local count: 49400902]:
+  _95 = num_131(D) + 1;
+  _96 = _95 * 8;
+  new_scalars_199 = CRYPTO_malloc (_96, "../openssl/crypto/ec/ecp_nistz256.c", 1112);
+  if (new_scalars_199 == 0B)
+    goto <bb 10>; [0.04%]
+  else
+    goto <bb 33>; [99.96%]
+
+  <bb 20> [local count: 43723283]:
+  # preComputedTable_248 = PHI <preComputedTable_144(17), &ecp_nistz256_precomputed(18)>
+  _5 = BN_num_bits (scalar_134(D));
+  if (_5 > 256)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 21> [local count: 32792463]:
+  tmp_scalar_151 = BN_CTX_get (ctx_132(D));
+  if (tmp_scalar_151 == 0B)
+    goto <bb 10>; [30.95%]
+  else
+    goto <bb 23>; [69.05%]
+
+  <bb 22> [local count: 21861641]:
+  _6 = BN_is_negative (scalar_134(D));
+  if (_6 != 0)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 27>; [50.00%]
+
+  <bb 23> [local count: 22643194]:
+  _7 = group_135(D)->order;
+  _8 = BN_nnmod (tmp_scalar_151, scalar_134(D), _7, ctx_132(D));
+  if (_8 == 0)
+    goto <bb 24>; [20.24%]
+  else
+    goto <bb 27>; [79.76%]
+
+  <bb 24> [local count: 4582982]:
+  ERR_new ();
+  ERR_set_debug ("../openssl/crypto/ec/ecp_nistz256.c", 1022, &__func__);
+  ERR_set_error (16, 524291, 0B);
+
+  <bb 25> [local count: 4582982]:
+
+  <bb 26> [local count: 4582982]:
+  goto <bb 78>; [100.00%]
+
+  <bb 27> [local count: 28991033]:
+  # scalar_71 = PHI <scalar_134(D)(22), tmp_scalar_151(23)>
+  ivtmp.271_792 = (unsigned long) &p_str;
+  goto <bb 29>; [100.00%]
+
+  <bb 28> [local count: 115964124]:
+  _9 = bn_get_words (scalar_71);
+  _10 = i_76 >> 3;
+  _12 = _10 w* 8;
+  _13 = _9 + _12;
+  load_dst_689 = *_13;
+  _469 = VIEW_CONVERT_EXPR<vector(8) unsigned char>(load_dst_689);
+  _795 = (void *) ivtmp.271_794;
+  MEM <vector(8) unsigned char> [(unsigned char *)_795] = _469;
+  i_192 = i_76 + 8;
+  ivtmp.271_793 = ivtmp.271_794 + 8;
+
+  <bb 29> [local count: 144955157]:
+  # i_76 = PHI <0(27), i_192(28)>
+  # ivtmp.271_794 = PHI <ivtmp.271_792(27), ivtmp.271_793(28)>
+  _34 = bn_get_top (scalar_71);
+  _35 = _34 * 8;
+  if (_35 > i_76)
+    goto <bb 28>; [80.00%]
+  else
+    goto <bb 30>; [20.00%]
+
+  <bb 30> [local count: 28991033]:
+  _848 = (unsigned int) i_76;
+  _682 = 33 - _848;
+  _845 = (sizetype) _682;
+  _844 = (sizetype) i_76;
+  _843 = &p_str + _844;
+  __builtin_memset (_843, 0, _845);
+  _36 = p_str[0];
+  _37 = (unsigned int) _36;
+  _38 = _37 << 1;
+  wvalue_157 = _38 & 255;
+  _225 = wvalue_157 >> 7;
+  s_226 = -_225;
+  d_227 = 255 - wvalue_157;
+  _228 = s_226 & d_227;
+  _229 = _225 + 4294967295;
+  _230 = wvalue_157 & _229;
+  d_231 = _228 | _230;
+  _232 = d_231 >> 1;
+  _233 = d_231 & 1;
+  d_234 = _232 + _233;
+  _235 = d_234 << 1;
+  _236 = _225 + _235;
+  _39 = _236 >> 1;
+  _40 = (int) _39;
+  ecp_nistz256_gather_w7 (&p.a, preComputedTable_248, _40);
+  ecp_nistz256_neg (&p.p.Z, &p.p.Y);
+  _122 = _236 & 1;
+  _42 = (long unsigned int) _122;
+  mask1_263 = -_42;
+  _737 = {mask1_263, mask1_263};
+  _264 = _42 + 18446744073709551615;
+  _731 = {_264, _264};
+  vect__265.133_736 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)&p + 64B];
+  vect__265.134_735 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)&p + 80B];
+  vect__266.135_734 = vect__265.133_736 & _737;
+  vect__266.135_733 = vect__265.134_735 & _737;
+  vect__267.138_730 = MEM <vector(2) long unsigned int> [(long unsigned int *)&p + 32B];
+  vect__267.139_729 = MEM <vector(2) long unsigned int> [(long unsigned int *)&p + 48B];
+  vect__268.140_728 = vect__267.138_730 & _731;
+  vect__268.140_727 = vect__267.139_729 & _731;
+  vect__269.141_726 = vect__268.140_728 ^ vect__266.135_734;
+  vect__269.141_725 = vect__268.140_727 ^ vect__266.135_733;
+  _161 = vect__269.141_725 | vect__269.141_726;
+  _858 = BIT_FIELD_REF <_161, 64, 64>;
+  _857 = BIT_FIELD_REF <_161, 64, 0>;
+  _863 = _857 | _858;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&p + 32B] = vect__269.141_726;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&p + 48B] = vect__269.141_725;
+  _43 = p.p.X[0];
+  _44 = p.p.X[1];
+  _865 = _43 | _44;
+  _46 = p.p.X[2];
+  _48 = p.p.X[3];
+  _866 = _46 | _48;
+  _864 = _865 | _866;
+  infty_162 = _863 | _864;
+  _222 = -infty_162;
+  in_223 = infty_162 | _222;
+  _123 = (signed long) in_223;
+  _126 = _123 >> 63;
+  infty_163 = (long unsigned int) _126;
+  _127 = in_223 >> 63;
+  p.p.Z[0] = _127;
+  _128 = _126 & -4294967296;
+  _69 = (long unsigned int) _128;
+  p.p.Z[1] = _69;
+  p.p.Z[2] = infty_163;
+  _129 = _126 & 4294967294;
+  _70 = (long unsigned int) _129;
+  p.p.Z[3] = _70;
+  _791 = preComputedTable_248 + 4096;
+  ivtmp.252_790 = (unsigned long) _791;
+
+  <bb 31> [local count: 1044750789]:
+  # prephitmp_814 = PHI <pretmp_813(32), _36(30)>
+  # ivtmp.250_786 = PHI <ivtmp.250_787(32), 6(30)>
+  # ivtmp.252_788 = PHI <ivtmp.252_789(32), ivtmp.252_790(30)>
+  off_168 = ivtmp.250_786 >> 3;
+  _81 = (int) prephitmp_814;
+  _82 = off_168 + 1;
+  _83 = p_str[_82];
+  _84 = (int) _83;
+  _85 = _84 << 8;
+  _86 = _81 | _85;
+  wvalue_169 = (unsigned int) _86;
+  _87 = ivtmp.250_786 & 7;
+  _88 = wvalue_169 >> _87;
+  wvalue_170 = _88 & 255;
+  _237 = wvalue_170 >> 7;
+  s_238 = -_237;
+  d_239 = 255 - wvalue_170;
+  _240 = s_238 & d_239;
+  _241 = _237 + 4294967295;
+  _242 = wvalue_170 & _241;
+  d_243 = _240 | _242;
+  _244 = d_243 >> 1;
+  _245 = d_243 & 1;
+  d_246 = _244 + _245;
+  _247 = d_246 << 1;
+  _249 = _237 + _247;
+  _91 = (const struct P256_POINT_AFFINE[64] *) ivtmp.252_788;
+  _92 = _249 >> 1;
+  _93 = (int) _92;
+  ecp_nistz256_gather_w7 (&t.a, _91, _93);
+  ecp_nistz256_neg (&t.p.Z, &t.a.Y);
+  _130 = _249 & 1;
+  _94 = (long unsigned int) _130;
+  mask1_285 = -_94;
+  _717 = {mask1_285, mask1_285};
+  _286 = _94 + 18446744073709551615;
+  _711 = {_286, _286};
+  vect__287.146_716 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)&t + 64B];
+  vect__287.147_715 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)&t + 80B];
+  vect__288.148_714 = vect__287.146_716 & _717;
+  vect__288.148_713 = vect__287.147_715 & _717;
+  vect__289.151_710 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t + 32B];
+  vect__289.152_709 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t + 48B];
+  vect__290.153_708 = vect__289.151_710 & _711;
+  vect__290.153_707 = vect__289.152_709 & _711;
+  vect__291.154_706 = vect__290.153_708 ^ vect__288.148_714;
+  vect__291.154_705 = vect__290.153_707 ^ vect__288.148_713;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t + 32B] = vect__291.154_706;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t + 48B] = vect__291.154_705;
+  ecp_nistz256_point_add_affine (&p.p, &p.p, &t.a);
+  ivtmp.250_787 = ivtmp.250_786 + 7;
+  ivtmp.252_789 = ivtmp.252_788 + 4096;
+  if (ivtmp.250_787 != 258)
+    goto <bb 32>; [97.30%]
+  else
+    goto <bb 37>; [2.70%]
+
+  <bb 32> [local count: 1016542515]:
+  _812 = ivtmp.250_787 >> 3;
+  pretmp_813 = p_str[_812];
+  goto <bb 31>; [100.00%]
+
+  <bb 33> [local count: 49381142]:
+  new_points_201 = CRYPTO_malloc (_96, "../openssl/crypto/ec/ecp_nistz256.c", 1116);
+  if (new_points_201 == 0B)
+    goto <bb 78>; [0.04%]
+  else
+    goto <bb 34>; [99.96%]
+
+  <bb 34> [local count: 49361390]:
+  _97 = _96 + 18446744073709551608;
+  __builtin_memcpy (new_scalars_199, scalars_197(D), _97);
+  _98 = new_scalars_199 + _97;
+  *_98 = scalar_134(D);
+  __builtin_memcpy (new_points_201, points_196(D), _97);
+  _99 = new_points_201 + _97;
+  *_99 = generator_137;
+  goto <bb 38>; [100.00%]
+
+  <bb 35> [local count: 100168409]:
+  if (num_131(D) != 0)
+    goto <bb 38>; [35.02%]
+  else
+    goto <bb 36>; [64.98%]
+
+  <bb 36> [local count: 65173127]:
+  goto <bb 71>; [100.00%]
+
+  <bb 37> [local count: 130394]:
+  if (num_131(D) != 0)
+    goto <bb 39>; [35.02%]
+  else
+    goto <bb 36>; [64.98%]
+
+  <bb 38> [local count: 50136165]:
+  # new_scalars_108 = PHI <new_scalars_199(34), scalar_134(D)(35)>
+  # new_points_54 = PHI <new_points_201(34), scalar_134(D)(35)>
+  # num_50 = PHI <_95(34), num_131(D)(35)>
+  # points_58 = PHI <new_points_201(34), points_196(D)(35)>
+  # scalars_62 = PHI <new_scalars_199(34), scalars_197(D)(35)>
+
+  <bb 39> [local count: 100272329]:
+  # out_67 = PHI <&t.p(37), &p.p(38)>
+  # p_is_infinity_2 = PHI <0(37), 1(38)>
+  # new_scalars_73 = PHI <0B(37), new_scalars_108(38)>
+  # new_points_110 = PHI <0B(37), new_points_54(38)>
+  # num_52 = PHI <num_131(D)(37), num_50(38)>
+  # points_59 = PHI <points_196(D)(37), points_58(38)>
+  # scalars_64 = PHI <scalars_197(D)(37), scalars_62(38)>
+  _307 = num_52 * 16;
+  _308 = _307 + 6;
+  if (_308 > 22369621)
+    goto <bb 80>; [51.12%]
+  else
+    goto <bb 40>; [48.88%]
+
+  <bb 40> [local count: 49013114]:
+  _309 = num_52 * 1536;
+  _310 = _309 + 544;
+  table_storage_311 = CRYPTO_malloc (_310, "../openssl/crypto/ec/ecp_nistz256.c", 627);
+  if (table_storage_311 == 0B)
+    goto <bb 80>; [0.04%]
+  else
+    goto <bb 41>; [99.96%]
+
+  <bb 41> [local count: 48993507]:
+  _312 = num_52 * 33;
+  p_str_313 = CRYPTO_malloc (_312, "../openssl/crypto/ec/ecp_nistz256.c", 629);
+  if (p_str_313 == 0B)
+    goto <bb 81>; [0.04%]
+  else
+    goto <bb 42>; [99.96%]
+
+  <bb 42> [local count: 48973912]:
+  _314 = num_52 * 8;
+  scalars_315 = CRYPTO_malloc (_314, "../openssl/crypto/ec/ecp_nistz256.c", 630);
+  if (scalars_315 == 0B)
+    goto <bb 81>; [0.04%]
+  else
+    goto <bb 43>; [99.96%]
+
+  <bb 43> [local count: 48954321]:
+  table_storage.5_74 = (sizetype) table_storage_311;
+  _552 = table_storage.5_74 & 63;
+  _321 = 64 - _552;
+  table_550 = table_storage_311 + _321;
+  temp_376 = table_550 + _309;
+  ivtmp.225_777 = (unsigned long) table_550;
+  ivtmp.227_778 = (unsigned long) p_str_313;
+  ivtmp.228_783 = (unsigned long) scalars_315;
+
+  <bb 44> [local count: 456793067]:
+  # i_158 = PHI <i_395(61), 0(43)>
+  # ivtmp.225_775 = PHI <ivtmp.225_776(61), ivtmp.225_777(43)>
+  # ivtmp.227_780 = PHI <ivtmp.227_779(61), ivtmp.227_778(43)>
+  # ivtmp.228_781 = PHI <ivtmp.228_782(61), ivtmp.228_783(43)>
+  row_323 = (struct P256_POINT *) ivtmp.225_775;
+  _326 = MEM[(const struct BIGNUM * *)scalars_64 + i_158 * 8];
+  _327 = BN_num_bits (_326);
+  if (_327 > 256)
+    goto <bb 45>; [50.00%]
+  else
+    goto <bb 46>; [50.00%]
+
+  <bb 45> [local count: 342594801]:
+  mod_330 = BN_CTX_get (ctx_132(D));
+  if (mod_330 == 0B)
+    goto <bb 82>; [2.00%]
+  else
+    goto <bb 47>; [98.00%]
+
+  <bb 46> [local count: 228396533]:
+  _328 = MEM[(const struct BIGNUM * *)scalars_64 + i_158 * 8];
+  _329 = BN_is_negative (_328);
+  if (_329 != 0)
+    goto <bb 45>; [50.00%]
+  else
+    goto <bb 50>; [50.00%]
+
+  <bb 47> [local count: 335742900]:
+  _331 = MEM[(const struct BIGNUM * *)scalars_64 + i_158 * 8];
+  _332 = group_135(D)->order;
+  _333 = BN_nnmod (mod_330, _331, _332, ctx_132(D));
+  if (_333 == 0)
+    goto <bb 48>; [2.00%]
+  else
+    goto <bb 49>; [98.00%]
+
+  <bb 48> [local count: 6714859]:
+  ERR_new ();
+  ERR_set_debug ("../openssl/crypto/ec/ecp_nistz256.c", 646, &__func__);
+  ERR_set_error (16, 524291, 0B);
+  goto <bb 58>; [100.00%]
+
+  <bb 49> [local count: 329028045]:
+  _334 = (const struct BIGNUM * *) ivtmp.228_781;
+  MEM[(const struct BIGNUM * *)_334] = mod_330;
+  goto <bb 51>; [100.00%]
+
+  <bb 50> [local count: 114198267]:
+  _335 = (const struct BIGNUM * *) ivtmp.228_781;
+  _336 = MEM[(const struct BIGNUM * *)scalars_64 + i_158 * 8];
+  MEM[(const struct BIGNUM * *)_335] = _336;
+
+  <bb 51> [local count: 443226312]:
+  # prephitmp_822 = PHI <_334(49), _335(50)>
+  _347 = (unsigned char[33] *) ivtmp.227_780;
+  goto <bb 53>; [100.00%]
+
+  <bb 52> [local count: 1772905202]:
+  _338 = *prephitmp_822;
+  _339 = bn_get_words (_338);
+  _341 = j_340 >> 3;
+  _343 = _341 w* 8;
+  _344 = _339 + _343;
+  load_dst_660 = *_344;
+  _475 = VIEW_CONVERT_EXPR<vector(8) unsigned char>(load_dst_660);
+  MEM <vector(8) unsigned char> [(unsigned char *)_347 + ivtmp.214_771 * 1] = _475;
+  ivtmp.214_772 = ivtmp.214_771 + 8;
+
+  <bb 53> [local count: 2216131517]:
+  # ivtmp.214_771 = PHI <0(51), ivtmp.214_772(52)>
+  j_340 = (int) ivtmp.214_771;
+  _371 = *prephitmp_822;
+  _372 = bn_get_top (_371);
+  _373 = _372 * 8;
+  j_774 = (int) ivtmp.214_771;
+  if (_373 > j_774)
+    goto <bb 52>; [80.00%]
+  else
+    goto <bb 54>; [20.00%]
+
+  <bb 54> [local count: 443226310]:
+  if (j_340 <= 32)
+    goto <bb 56>; [89.00%]
+  else
+    goto <bb 55>; [11.00%]
+
+  <bb 55> [local count: 443226310]:
+  _378 = &temp_376->X;
+  _380 = MEM[(const struct EC_POINT * *)points_59 + i_158 * 8];
+  _381 = _380->X;
+  _382 = bn_copy_words (_378, _381, 4);
+  if (_382 == 0)
+    goto <bb 57>; [2.00%]
+  else
+    goto <bb 59>; [98.00%]
+
+  <bb 56> [local count: 394471416]:
+  _773 = (unsigned int) ivtmp.214_771;
+  _680 = 33 - _773;
+  _839 = (sizetype) _680;
+  _838 = (sizetype) j_340;
+  _837 = _347 + _838;
+  __builtin_memset (_837, 0, _839);
+  goto <bb 55>; [100.00%]
+
+  <bb 57> [local count: 26065257]:
+  ERR_new ();
+  ERR_set_debug ("../openssl/crypto/ec/ecp_nistz256.c", 674, &__func__);
+  ERR_set_error (16, 146, 0B);
+
+  <bb 58> [local count: 26065257]:
+  goto <bb 81>; [100.00%]
+
+  <bb 59> [local count: 434361782]:
+  _383 = &temp_376->Y;
+  _384 = MEM[(const struct EC_POINT * *)points_59 + i_158 * 8];
+  _385 = _384->Y;
+  _386 = bn_copy_words (_383, _385, 4);
+  if (_386 == 0)
+    goto <bb 57>; [2.00%]
+  else
+    goto <bb 60>; [98.00%]
+
+  <bb 60> [local count: 425674543]:
+  _387 = &temp_376->Z;
+  _388 = MEM[(const struct EC_POINT * *)points_59 + i_158 * 8];
+  _389 = _388->Z;
+  _390 = bn_copy_words (_387, _389, 4);
+  if (_390 == 0)
+    goto <bb 57>; [2.00%]
+  else
+    goto <bb 61>; [98.00%]
+
+  <bb 61> [local count: 417161054]:
+  ecp_nistz256_scatter_w5 (row_323, temp_376, 1);
+  _391 = temp_376 + 96;
+  ecp_nistz256_point_double (_391, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _391, 2);
+  _392 = temp_376 + 192;
+  ecp_nistz256_point_add (_392, _391, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _392, 3);
+  ecp_nistz256_point_double (_391, _391);
+  ecp_nistz256_scatter_w5 (row_323, _391, 4);
+  ecp_nistz256_point_double (_392, _392);
+  ecp_nistz256_scatter_w5 (row_323, _392, 6);
+  _393 = temp_376 + 288;
+  ecp_nistz256_point_add (_393, _391, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _393, 5);
+  _394 = temp_376 + 384;
+  ecp_nistz256_point_add (_394, _392, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _394, 7);
+  ecp_nistz256_point_double (_391, _391);
+  ecp_nistz256_scatter_w5 (row_323, _391, 8);
+  ecp_nistz256_point_double (_392, _392);
+  ecp_nistz256_scatter_w5 (row_323, _392, 12);
+  ecp_nistz256_point_double (_393, _393);
+  ecp_nistz256_scatter_w5 (row_323, _393, 10);
+  ecp_nistz256_point_double (_394, _394);
+  ecp_nistz256_scatter_w5 (row_323, _394, 14);
+  ecp_nistz256_point_add (_392, _392, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _392, 13);
+  ecp_nistz256_point_add (_393, _393, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _393, 11);
+  ecp_nistz256_point_add (_394, _394, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _394, 15);
+  ecp_nistz256_point_add (_392, _391, temp_376);
+  ecp_nistz256_scatter_w5 (row_323, _392, 9);
+  ecp_nistz256_point_double (_391, _391);
+  ecp_nistz256_scatter_w5 (row_323, _391, 16);
+  i_395 = i_158 + 1;
+  ivtmp.225_776 = ivtmp.225_775 + 1536;
+  ivtmp.227_779 = ivtmp.227_780 + 33;
+  ivtmp.228_782 = ivtmp.228_781 + 8;
+  if (num_52 != i_395)
+    goto <bb 44>; [98.00%]
+  else
+    goto <bb 62>; [2.00%]
+
+  <bb 62> [local count: 9322308]:
+  _396 = (*p_str_313)[31];
+  wvalue_397 = (unsigned int) _396;
+  _398 = wvalue_397 >> 6;
+  _399 = wvalue_397 >> 7;
+  _400 = _398 & 1;
+  d_401 = _399 + _400;
+  _402 = (int) d_401;
+  ecp_nistz256_gather_w5 (temp_376, table_550, _402);
+  __builtin_memcpy (out_67, temp_376, 96);
+  _770 = _309 + ivtmp.225_777;
+
+  <bb 63> [local count: 476214736]:
+  # idx_72 = PHI <idx_752(65), 255(62)>
+  _405 = idx_72 == 255;
+  i_406 = (size_t) _405;
+  if (i_395 > i_406)
+    goto <bb 66>; [89.00%]
+  else
+    goto <bb 84>; [11.00%]
+
+  <bb 64> [local count: 423831116]:
+  idx_444 = idx_72 + 4294967291;
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  if (idx_444 != 0)
+    goto <bb 65>; [97.84%]
+  else
+    goto <bb 68>; [2.16%]
+
+  <bb 65> [local count: 467071415]:
+  # idx_752 = PHI <idx_444(64), 250(84)>
+  goto <bb 63>; [100.00%]
+
+  <bb 66> [local count: 423831115]:
+  _407 = idx_72 + 4294967295;
+  off_408 = _407 >> 3;
+  _414 = off_408 + 1;
+  _861 = _407 & 7;
+  _753 = _405 ? 33 : 0;
+  _754 = (sizetype) _414;
+  _755 = _753 + _754;
+  _756 = p_str_313 + _755;
+  ivtmp.197_751 = (unsigned long) _756;
+  _761 = _405 ? 1536 : 0;
+  _762 = table_550 + _761;
+  ivtmp.198_759 = (unsigned long) _762;
+
+  <bb 67> [local count: 3853010167]:
+  # ivtmp.197_749 = PHI <ivtmp.197_750(67), ivtmp.197_751(66)>
+  # ivtmp.198_757 = PHI <ivtmp.198_758(67), ivtmp.198_759(66)>
+  _764 = ivtmp.197_749 - _754;
+  _765 = (void *) _764;
+  _766 = (sizetype) off_408;
+  _412 = MEM[(unsigned char *)_765 + _766 * 1];
+  _413 = (int) _412;
+  _767 = (void *) ivtmp.197_749;
+  _415 = MEM[(unsigned char *)_767];
+  _416 = (int) _415;
+  _417 = _416 << 8;
+  _418 = _413 | _417;
+  wvalue_419 = (unsigned int) _418;
+  _421 = wvalue_419 >> _861;
+  wvalue_422 = _421 & 63;
+  _423 = wvalue_422 >> 5;
+  s_424 = -_423;
+  d_425 = 63 - wvalue_422;
+  _426 = s_424 & d_425;
+  _427 = _423 + 4294967295;
+  _428 = wvalue_422 & _427;
+  d_429 = _426 | _428;
+  _430 = d_429 >> 1;
+  _431 = d_429 & 1;
+  d_432 = _430 + _431;
+  _433 = d_432 << 1;
+  _434 = _423 + _433;
+  _436 = (struct P256_POINT[16] *) ivtmp.198_757;
+  _437 = _434 >> 1;
+  _438 = (int) _437;
+  ecp_nistz256_gather_w5 (temp_376, _436, _438);
+  _439 = &MEM[(struct P256_POINT *)temp_376 + 96B].Y;
+  ecp_nistz256_neg (_439, _383);
+  _441 = _434 & 1;
+  _442 = (long unsigned int) _441;
+  mask1_480 = -_442;
+  _701 = {mask1_480, mask1_480};
+  _481 = _442 + 18446744073709551615;
+  _692 = {_481, _481};
+  vect__482.159_699 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)temp_376 + 128B];
+  vect__482.160_697 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)temp_376 + 144B];
+  vect__483.161_695 = vect__482.159_699 & _701;
+  vect__483.161_694 = vect__482.160_697 & _701;
+  vect__484.164_690 = MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 32B];
+  vect__484.165_688 = MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 48B];
+  vect__485.166_686 = vect__484.164_690 & _692;
+  vect__485.166_685 = vect__484.165_688 & _692;
+  vect__486.167_684 = vect__485.166_686 ^ vect__483.161_695;
+  vect__486.167_683 = vect__485.166_685 ^ vect__483.161_694;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 32B] = vect__486.167_684;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 48B] = vect__486.167_683;
+  ecp_nistz256_point_add (out_67, out_67, temp_376);
+  ivtmp.197_750 = ivtmp.197_749 + 33;
+  ivtmp.198_758 = ivtmp.198_757 + 1536;
+  if (ivtmp.198_758 != _770)
+    goto <bb 67>; [89.00%]
+  else
+    goto <bb 64>; [11.00%]
+
+  <bb 68> [local count: 75425964]:
+  # ivtmp.190_739 = PHI <ivtmp.190_740(68), ivtmp.227_778(64)>
+  # ivtmp.191_742 = PHI <ivtmp.191_743(68), ivtmp.225_777(64)>
+  _745 = (void *) ivtmp.190_739;
+  _448 = MEM[(unsigned char *)_745];
+  wvalue_449 = (unsigned int) _448;
+  _450 = wvalue_449 << 1;
+  wvalue_451 = _450 & 63;
+  _452 = wvalue_451 >> 5;
+  s_453 = -_452;
+  d_454 = 63 - wvalue_451;
+  _455 = s_453 & d_454;
+  _456 = _452 + 4294967295;
+  _457 = wvalue_451 & _456;
+  d_458 = _455 | _457;
+  _459 = d_458 >> 1;
+  _460 = d_458 & 1;
+  d_461 = _459 + _460;
+  _462 = d_461 << 1;
+  _463 = _452 + _462;
+  _465 = (struct P256_POINT[16] *) ivtmp.191_742;
+  _466 = _463 >> 1;
+  _467 = (int) _466;
+  ecp_nistz256_gather_w5 (temp_376, _465, _467);
+  _468 = &MEM[(struct P256_POINT *)temp_376 + 96B].Y;
+  ecp_nistz256_neg (_468, _383);
+  _470 = _463 & 1;
+  _471 = (long unsigned int) _470;
+  mask1_502 = -_471;
+  _677 = {mask1_502, mask1_502};
+  _503 = _471 + 18446744073709551615;
+  _666 = {_503, _503};
+  vect__504.172_675 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)temp_376 + 128B];
+  vect__504.173_673 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)temp_376 + 144B];
+  vect__505.174_671 = vect__504.172_675 & _677;
+  vect__505.174_669 = vect__504.173_673 & _677;
+  vect__506.177_662 = MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 32B];
+  vect__506.178_658 = MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 48B];
+  vect__507.179_555 = vect__506.177_662 & _666;
+  vect__507.179_554 = vect__506.178_658 & _666;
+  vect__508.180_553 = vect__507.179_555 ^ vect__505.174_671;
+  vect__508.180_548 = vect__507.179_554 ^ vect__505.174_669;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 32B] = vect__508.180_553;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)temp_376 + 48B] = vect__508.180_548;
+  ecp_nistz256_point_add (out_67, out_67, temp_376);
+  ivtmp.190_740 = ivtmp.190_739 + 33;
+  ivtmp.191_743 = ivtmp.191_742 + 1536;
+  if (ivtmp.191_743 != _770)
+    goto <bb 68>; [89.00%]
+  else
+    goto <bb 83>; [11.00%]
+
+  <bb 69> [local count: 44340425]:
+  goto <bb 71>; [100.00%]
+
+  <bb 70> [local count: 21839313]:
+  ecp_nistz256_point_add (&p.p, &p.p, out_67);
+  goto <bb 69>; [100.00%]
+
+  <bb 71> [local count: 115567598]:
+  # new_scalars_661 = PHI <0B(36), new_scalars_73(69)>
+  # new_points_663 = PHI <0B(36), new_points_110(69)>
+  _101 = r_206(D)->X;
+  _102 = bn_set_words (_101, &p.p.X, 4);
+  if (_102 == 0)
+    goto <bb 74>; [51.12%]
+  else
+    goto <bb 72>; [48.88%]
+
+  <bb 72> [local count: 56489443]:
+  _103 = r_206(D)->Y;
+  _104 = bn_set_words (_103, &p.p.Y, 4);
+  if (_104 == 0)
+    goto <bb 78>; [51.12%]
+  else
+    goto <bb 73>; [48.88%]
+
+  <bb 73> [local count: 27612041]:
+  _105 = r_206(D)->Z;
+  _106 = bn_set_words (_105, &p.p.Z, 4);
+  if (_106 == 0)
+    goto <bb 74>; [51.12%]
+  else
+    goto <bb 75>; [48.88%]
+
+  <bb 74> [local count: 14115275]:
+  goto <bb 78>; [100.00%]
+
+  <bb 75> [local count: 13496765]:
+  _107 = r_206(D)->Z;
+  a_524 = bn_get_words (_107);
+  _525 = bn_get_top (_107);
+  if (_525 == 4)
+    goto <bb 76>; [34.00%]
+  else
+    goto <bb 77>; [66.00%]
+
+  <bb 76> [local count: 4588900]:
+  _526 = *a_524;
+  res_527 = _526 ^ 1;
+  _528 = MEM[(long unsigned int *)a_524 + 8B];
+  _529 = _528 ^ 18446744069414584320;
+  _255 = res_527 | _529;
+  _531 = MEM[(long unsigned int *)a_524 + 16B];
+  _532 = ~_531;
+  _534 = MEM[(long unsigned int *)a_524 + 24B];
+  _535 = _534 ^ 4294967294;
+  _541 = _532 | _535;
+  res_536 = _255 | _541;
+  _537 = -res_536;
+  in_538 = res_536 | _537;
+  in_539 = ~in_538;
+  in_540 = in_539 >> 63;
+  _868 = (int) in_540;
+
+  <bb 77> [local count: 13496765]:
+  # prephitmp_869 = PHI <0(75), _868(76)>
+  r_206(D)->Z_is_one = prephitmp_869;
+
+  <bb 78> [local count: 215277050]:
+  # ret_57 = PHI <0(10), 1(77), _4(33), _104(72), 0(82), 0(74), 0(26), 0(81)>
+  # new_scalars_63 = PHI <0B(10), new_scalars_661(77), new_scalars_199(33), new_scalars_661(72), new_scalars_73(82), new_scalars_661(74), 0B(26), new_scalars_73(81)>
+  # new_points_65 = PHI <0B(10), new_points_663(77), new_points_201(33), new_points_663(72), new_points_110(82), new_points_663(74), 0B(26), new_points_110(81)>
+err:
+  BN_CTX_end (ctx_132(D));
+  CRYPTO_free (new_points_65, "../openssl/crypto/ec/ecp_nistz256.c", 1154);
+  CRYPTO_free (new_scalars_63, "../openssl/crypto/ec/ecp_nistz256.c", 1155);
+
+  <bb 79> [local count: 326177347]:
+  # _68 = PHI <0(3), ret_57(78)>
+  p_str ={v} {CLOBBER(eol)};
+  t ={v} {CLOBBER(eol)};
+  p ={v} {CLOBBER(eol)};
+  return _68;
+
+  <bb 80> [local count: 51278820]:
+
+  <bb 81> [local count: 34092592]:
+  # p_str_114 = PHI <0B(80), p_str_313(42), p_str_313(41), p_str_313(58)>
+  # scalars_478 = PHI <0B(80), scalars_315(42), p_str_313(41), scalars_315(58)>
+  # table_storage_78 = PHI <0B(80), table_storage_311(42), table_storage_311(41), table_storage_311(58)>
+  CRYPTO_free (table_storage_78, "../openssl/crypto/ec/ecp_nistz256.c", 772);
+  CRYPTO_free (p_str_114, "../openssl/crypto/ec/ecp_nistz256.c", 773);
+  CRYPTO_free (scalars_478, "../openssl/crypto/ec/ecp_nistz256.c", 774);
+  goto <bb 78>; [100.00%]
+
+  <bb 82> [local count: 0]:
+  CRYPTO_free (table_storage_311, "../openssl/crypto/ec/ecp_nistz256.c", 772);
+  CRYPTO_free (p_str_313, "../openssl/crypto/ec/ecp_nistz256.c", 773);
+  CRYPTO_free (scalars_315, "../openssl/crypto/ec/ecp_nistz256.c", 774);
+  goto <bb 78>; [100.00%]
+
+  <bb 83> [local count: 66179739]:
+  CRYPTO_free (table_storage_311, "../openssl/crypto/ec/ecp_nistz256.c", 772);
+  CRYPTO_free (p_str_313, "../openssl/crypto/ec/ecp_nistz256.c", 773);
+  CRYPTO_free (scalars_315, "../openssl/crypto/ec/ecp_nistz256.c", 774);
+  if (p_is_infinity_2 == 0)
+    goto <bb 70>; [33.00%]
+  else
+    goto <bb 69>; [67.00%]
+
+  <bb 84> [local count: 52383621]:
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  ecp_nistz256_point_double (out_67, out_67);
+  goto <bb 65>; [100.00%]
+
+}
