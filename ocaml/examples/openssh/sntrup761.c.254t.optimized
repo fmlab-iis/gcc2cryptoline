@@ -1,0 +1,803 @@
+
+
+;; Function int32_divmod_uint14 (int32_divmod_uint14, funcdef_no=86, decl_uid=10405, cgraph_uid=87, symbol_order=86)
+
+void int32_divmod_uint14 (crypto_int32 * q, crypto_uint16 * r, crypto_int32 x, crypto_uint16 m)
+{
+  crypto_uint32 v;
+  crypto_uint32 qpart;
+  crypto_uint32 mask;
+  crypto_uint32 x;
+  crypto_uint32 qpart;
+  crypto_uint32 mask;
+  crypto_uint32 x;
+  crypto_uint32 mask;
+  unsigned int x.1_1;
+  unsigned int _2;
+  short unsigned int _5;
+  short unsigned int _9;
+  unsigned int _10;
+  short unsigned int _11;
+  short unsigned int _12;
+  short unsigned int _13;
+  int uq.11_14;
+  unsigned int _25;
+  unsigned int _29;
+  long unsigned int _34;
+  long unsigned int _35;
+  unsigned int _37;
+  long unsigned int _40;
+  long unsigned int _41;
+  unsigned int _43;
+  signed int x.12_48;
+  signed int _49;
+  unsigned int _51;
+  short unsigned int _54;
+  unsigned int _55;
+  long unsigned int _59;
+  long unsigned int _60;
+  unsigned int _62;
+  long unsigned int _65;
+  long unsigned int _66;
+  unsigned int _68;
+  signed int x.12_73;
+  signed int _74;
+  unsigned int _76;
+  short unsigned int _79;
+  unsigned int _83;
+  unsigned int _102;
+  unsigned int _103;
+  unsigned int _104;
+  unsigned int _105;
+  unsigned int _106;
+
+  <bb 2> [local count: 1073741824]:
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  x.1_1 = (unsigned int) x_16(D);
+  _2 = x.1_1 + 2147483648;
+  # DEBUG q => &uq
+  # DEBUG r => &ur
+  # DEBUG x => _2
+  # DEBUG m => m_17(D)
+  # DEBUG INLINE_ENTRY uint32_divmod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG v => 2147483648
+  # DEBUG BEGIN_STMT
+  # DEBUG qpart => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  _55 = (unsigned int) m_17(D);
+  v_56 = 2147483648 / _55;
+  # DEBUG v => v_56
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _59 = _2 w* v_56;
+  _60 = _59 >> 31;
+  qpart_61 = (crypto_uint32) _60;
+  # DEBUG qpart => qpart_61
+  # DEBUG BEGIN_STMT
+  _62 = _55 * qpart_61;
+  x_63 = _2 - _62;
+  # DEBUG x => x_63
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _65 = v_56 w* x_63;
+  _66 = _65 >> 31;
+  qpart_67 = (crypto_uint32) _66;
+  # DEBUG qpart => qpart_67
+  # DEBUG BEGIN_STMT
+  _68 = _55 * qpart_67;
+  # DEBUG D#38 => -_68
+  # DEBUG x => x_63 + D#38
+  # DEBUG BEGIN_STMT
+  # DEBUG D#36 => qpart_61 + qpart_67
+  # DEBUG BEGIN_STMT
+  _83 = x_63 - _55;
+  x_71 = _83 - _68;
+  # DEBUG x => x_71
+  # DEBUG BEGIN_STMT
+  # DEBUG D#35 => D#36 + 1
+  # DEBUG BEGIN_STMT
+  x.12_73 = (signed int) x_71;
+  _74 = x.12_73 >> 31;
+  mask_75 = (crypto_uint32) _74;
+  # DEBUG mask => mask_75
+  # DEBUG BEGIN_STMT
+  _76 = _55 & mask_75;
+  x_77 = x_71 + _76;
+  # DEBUG x => x_77
+  # DEBUG BEGIN_STMT
+  # DEBUG uq => D#35 + mask_75
+  # DEBUG BEGIN_STMT
+  _79 = (short unsigned int) x_77;
+  # DEBUG ur => _79
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG mask => NULL
+  # DEBUG qpart => NULL
+  # DEBUG v => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG q => &uq2
+  # DEBUG r => &ur2
+  # DEBUG x => 2147483648
+  # DEBUG m => m_17(D)
+  # DEBUG INLINE_ENTRY uint32_divmod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG v => 2147483648
+  # DEBUG BEGIN_STMT
+  # DEBUG qpart => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG v => v_56
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _34 = v_56 w* 2147483648;
+  _35 = _34 >> 31;
+  qpart_36 = (crypto_uint32) _35;
+  # DEBUG qpart => qpart_36
+  # DEBUG BEGIN_STMT
+  _37 = qpart_36 * _55;
+  x_38 = 2147483648 - _37;
+  # DEBUG x => x_38
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _40 = x_38 w* v_56;
+  _41 = _40 >> 31;
+  qpart_42 = (crypto_uint32) _41;
+  # DEBUG qpart => qpart_42
+  # DEBUG BEGIN_STMT
+  _43 = qpart_42 * _55;
+  # DEBUG D#37 => -_43
+  # DEBUG x => x_38 + D#37
+  # DEBUG BEGIN_STMT
+  _106 = qpart_61 - qpart_36;
+  # DEBUG D#34 => qpart_36 + qpart_42
+  # DEBUG BEGIN_STMT
+  _25 = x_38 - _55;
+  x_46 = _25 - _43;
+  # DEBUG x => x_46
+  # DEBUG BEGIN_STMT
+  # DEBUG D#33 => D#34 + 1
+  # DEBUG BEGIN_STMT
+  x.12_48 = (signed int) x_46;
+  _49 = x.12_48 >> 31;
+  mask_50 = (crypto_uint32) _49;
+  # DEBUG mask => mask_50
+  # DEBUG BEGIN_STMT
+  _51 = mask_50 & _55;
+  x_52 = x_46 + _51;
+  # DEBUG x => x_52
+  # DEBUG BEGIN_STMT
+  # DEBUG uq2 => D#33 + mask_50
+  # DEBUG BEGIN_STMT
+  _54 = (short unsigned int) x_52;
+  # DEBUG ur2 => _54
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG mask => NULL
+  # DEBUG qpart => NULL
+  # DEBUG v => NULL
+  # DEBUG BEGIN_STMT
+  _5 = _79 - _54;
+  # DEBUG BEGIN_STMT
+  _105 = qpart_67 - qpart_42;
+  _104 = _105 + _106;
+  _103 = mask_75 - mask_50;
+  _102 = _103 + _104;
+  # DEBUG BEGIN_STMT
+  _9 = _5 >> 15;
+  _10 = (unsigned int) _9;
+  mask_20 = -_10;
+  # DEBUG mask => mask_20
+  # DEBUG BEGIN_STMT
+  _11 = (short unsigned int) mask_20;
+  _12 = _11 & m_17(D);
+  _13 = _5 + _12;
+  # DEBUG BEGIN_STMT
+  _29 = _102 - _10;
+  # DEBUG BEGIN_STMT
+  *r_21(D) = _13;
+  # DEBUG BEGIN_STMT
+  uq.11_14 = (int) _29;
+  *q_23(D) = uq.11_14;
+  # DEBUG uq => NULL
+  # DEBUG uq2 => NULL
+  # DEBUG ur => NULL
+  # DEBUG ur2 => NULL
+  return;
+
+}
+
+
+
+;; Function Rq_mult_small (Rq_mult_small, funcdef_no=99, decl_uid=10602, cgraph_uid=100, symbol_order=99)
+
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+void Rq_mult_small (Fq * h, const Fq * f, const small * g)
+{
+  unsigned long ivtmp.368;
+  sizetype ivtmp.362;
+  unsigned long ivtmp.358;
+  unsigned long ivtmp.357;
+  unsigned long ivtmp.351;
+  sizetype ivtmp.350;
+  sizetype ivtmp.334;
+  unsigned long ivtmp.328;
+  crypto_uint16 r;
+  crypto_int32 q;
+  crypto_uint16 r;
+  crypto_int32 q;
+  crypto_uint32 qpart;
+  crypto_uint32 x;
+  crypto_uint32 mask;
+  crypto_uint32 qpart;
+  crypto_uint32 x;
+  crypto_uint32 mask;
+  int j;
+  Fq result;
+  Fq fg[1521];
+  int _1;
+  short int _5;
+  int _6;
+  signed char _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  short int _18;
+  int _19;
+  signed char _23;
+  int _24;
+  int _25;
+  int _26;
+  short int _28;
+  int _29;
+  short int _30;
+  int _31;
+  int _32;
+  signed int _33;
+  short int _35;
+  int _36;
+  int _39;
+  signed int _40;
+  unsigned int _81;
+  unsigned short _83;
+  short int _84;
+  unsigned int _86;
+  short unsigned int _89;
+  short unsigned int _92;
+  short unsigned int _93;
+  unsigned int _94;
+  short unsigned int _96;
+  short unsigned int _97;
+  long unsigned int _130;
+  long unsigned int _131;
+  unsigned int _133;
+  long unsigned int _136;
+  long unsigned int _137;
+  unsigned int _139;
+  short unsigned int _141;
+  signed int x.12_144;
+  signed int _145;
+  unsigned int _146;
+  unsigned int _147;
+  short unsigned int _150;
+  unsigned short _153;
+  short int _154;
+  unsigned int _156;
+  short unsigned int _159;
+  short unsigned int _163;
+  unsigned int _164;
+  short unsigned int _166;
+  short unsigned int _167;
+  long unsigned int _200;
+  long unsigned int _201;
+  unsigned int _203;
+  long unsigned int _206;
+  long unsigned int _207;
+  unsigned int _209;
+  signed int x.12_214;
+  signed int _215;
+  unsigned int _217;
+  short unsigned int _220;
+  int _221;
+  short unsigned int _222;
+  unsigned short _223;
+  short int _224;
+  int _225;
+  short unsigned int _226;
+  unsigned short _227;
+  short int _228;
+  unsigned int _258;
+  unsigned int _262;
+  void * _313;
+  unsigned long _318;
+  const small * _326;
+  sizetype _328;
+  const small * _335;
+  void * _348;
+  void * _349;
+  unsigned long _361;
+  unsigned long _363;
+  unsigned long _365;
+  unsigned long _446;
+
+  <bb 2> [local count: 1193046]:
+  # DEBUG BEGIN_STMT
+  fg = .DEFERRED_INIT (3042, 2, &"fg"[0]);
+  # DEBUG BEGIN_STMT
+  # DEBUG result => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG j => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  _361 = (unsigned long) f_73(D);
+  ivtmp.368_360 = _361 + 2;
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 955630045]:
+  # result_37 = PHI <_84(3), 0(5)>
+  # ivtmp.357_340 = PHI <ivtmp.357_341(3), _361(5)>
+  # ivtmp.358_343 = PHI <ivtmp.358_345(3), _365(5)>
+  # DEBUG j => (int) ((ivtmp.357_340 - (unsigned long) f_73(D)) /[ex] 2)
+  # DEBUG result => result_37
+  # DEBUG BEGIN_STMT
+  _1 = (int) result_37;
+  _348 = (void *) ivtmp.357_340;
+  _5 = MEM[(const Fq *)_348];
+  _6 = (int) _5;
+  _349 = (void *) ivtmp.358_343;
+  _10 = MEM[(const small *)_349];
+  _11 = (int) _10;
+  _12 = _6 * _11;
+  _13 = _1 + _12;
+  # DEBUG x => _13
+  # DEBUG INLINE_ENTRY Fq_freeze
+  # DEBUG BEGIN_STMT
+  # DEBUG D#51 => _13 + 2295
+  # DEBUG x => D#51
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY int32_mod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG q => &q
+  # DEBUG r => &r
+  # DEBUG x => D#51
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY int32_divmod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  _262 = (unsigned int) _13;
+  _86 = _262 + 2147485943;
+  # DEBUG q => &uq
+  # DEBUG r => &ur
+  # DEBUG x => _86
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY uint32_divmod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG v => 2147483648
+  # DEBUG BEGIN_STMT
+  # DEBUG qpart => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG v => 467759
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _130 = _86 w* 467759;
+  _131 = _130 >> 31;
+  qpart_132 = (crypto_uint32) _131;
+  # DEBUG qpart => qpart_132
+  # DEBUG BEGIN_STMT
+  _133 = qpart_132 * 4591;
+  x_134 = _86 - _133;
+  # DEBUG x => x_134
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _136 = x_134 w* 467759;
+  _137 = _136 >> 31;
+  qpart_138 = (crypto_uint32) _137;
+  # DEBUG qpart => qpart_138
+  # DEBUG BEGIN_STMT
+  _139 = qpart_138 * 4591;
+  # DEBUG D#60 => -_139
+  _81 = x_134 + 4294962705;
+  # DEBUG x => x_134 + D#60
+  # DEBUG BEGIN_STMT
+  # DEBUG D#50 => qpart_132 + qpart_138
+  # DEBUG BEGIN_STMT
+  x_142 = _81 - _139;
+  # DEBUG x => x_142
+  # DEBUG BEGIN_STMT
+  # DEBUG D#49 => D#50 + 1
+  # DEBUG BEGIN_STMT
+  x.12_144 = (signed int) x_142;
+  _145 = x.12_144 >> 31;
+  # DEBUG D#48 => (crypto_uint32) _145
+  # DEBUG mask => D#48
+  # DEBUG BEGIN_STMT
+  _40 = _145 & 4591;
+  _147 = (unsigned int) _40;
+  x_148 = x_142 + _147;
+  # DEBUG x => x_148
+  # DEBUG BEGIN_STMT
+  # DEBUG D#47 => D#49 + D#48
+  # DEBUG uq => D#47
+  # DEBUG BEGIN_STMT
+  _150 = (short unsigned int) x_148;
+  # DEBUG ur => _150
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG mask => NULL
+  # DEBUG qpart => NULL
+  # DEBUG v => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG uq2 => 467759
+  # DEBUG ur2 => 2079
+  # DEBUG BEGIN_STMT
+  _89 = _150 + 63457;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#46 => D#47 + 4294499537
+  # DEBUG BEGIN_STMT
+  _93 = _89 >> 15;
+  _94 = (unsigned int) _93;
+  mask_95 = -_94;
+  # DEBUG mask => mask_95
+  # DEBUG BEGIN_STMT
+  _96 = (short unsigned int) mask_95;
+  _97 = _96 & 4591;
+  _141 = _150 + 61162;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#45 => D#46 - _94
+  # DEBUG BEGIN_STMT
+  # DEBUG r => _89 + _97
+  # DEBUG BEGIN_STMT
+  # DEBUG q => (int) D#45
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG uq => NULL
+  # DEBUG uq2 => NULL
+  # DEBUG ur => NULL
+  # DEBUG ur2 => NULL
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG r => NULL
+  # DEBUG q => NULL
+  _83 = _97 + _141;
+  _84 = (short int) _83;
+  # DEBUG x => NULL
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG result => _84
+  # DEBUG BEGIN_STMT
+  # DEBUG j => (int) ((ivtmp.357_340 - (unsigned long) f_73(D)) /[ex] 2) + 1
+  # DEBUG result => _84
+  # DEBUG BEGIN_STMT
+  ivtmp.357_341 = ivtmp.357_340 + 2;
+  ivtmp.358_345 = ivtmp.358_343 + 18446744073709551615;
+  if (ivtmp.357_341 != ivtmp.368_358)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 4>; [11.00%]
+
+  <bb 4> [local count: 118111578]:
+  # DEBUG BEGIN_STMT
+  MEM[(short int *)&fg + -2B + ivtmp.362_356 * 2] = _84;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ivtmp.362_356
+  # DEBUG BEGIN_STMT
+  ivtmp.362_357 = ivtmp.362_356 + 1;
+  ivtmp.368_359 = ivtmp.368_358 + 2;
+  if (ivtmp.362_357 != 762)
+    goto <bb 5>; [99.00%]
+  else
+    goto <bb 6>; [1.00%]
+
+  <bb 5> [local count: 118111578]:
+  # ivtmp.362_356 = PHI <ivtmp.362_357(4), 1(2)>
+  # ivtmp.368_358 = PHI <ivtmp.368_359(4), ivtmp.368_360(2)>
+  # DEBUG D#64 => (unsigned int) ivtmp.362_356
+  # DEBUG D#63 => D#64 + 4294967295
+  # DEBUG i => (int) D#63
+  # DEBUG j => 0
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  _363 = (unsigned long) g_74(D);
+  _446 = _363 + 18446744073709551615;
+  _365 = ivtmp.362_356 + _446;
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 1181116]:
+  _335 = g_74(D) + 761;
+  ivtmp.351_334 = (unsigned long) _335;
+
+  <bb 7> [local count: 118111600]:
+  # ivtmp.350_330 = PHI <ivtmp.350_331(9), 1(6)>
+  # ivtmp.351_332 = PHI <ivtmp.351_333(9), ivtmp.351_334(6)>
+  # DEBUG D#62 => (unsigned int) ivtmp.350_330
+  # DEBUG D#61 => D#62 + 760
+  # DEBUG i => (int) D#61
+  # DEBUG BEGIN_STMT
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG j => (int) ivtmp.350_330
+  # DEBUG result => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 955630224]:
+  # result_38 = PHI <_154(8), 0(7)>
+  # ivtmp.334_320 = PHI <ivtmp.334_321(8), ivtmp.350_330(7)>
+  # DEBUG j => (int) ivtmp.334_320
+  # DEBUG result => result_38
+  # DEBUG BEGIN_STMT
+  _14 = (int) result_38;
+  _18 = MEM[(const Fq *)f_73(D) + ivtmp.334_320 * 2];
+  _19 = (int) _18;
+  _326 = (const small *) ivtmp.351_332;
+  _328 = -ivtmp.334_320;
+  _23 = MEM[(const small *)_326 + _328 * 1];
+  _24 = (int) _23;
+  _25 = _19 * _24;
+  _26 = _14 + _25;
+  # DEBUG x => _26
+  # DEBUG INLINE_ENTRY Fq_freeze
+  # DEBUG BEGIN_STMT
+  # DEBUG D#58 => _26 + 2295
+  # DEBUG x => D#58
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY int32_mod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG q => &q
+  # DEBUG r => &r
+  # DEBUG x => D#58
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY int32_divmod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  _258 = (unsigned int) _26;
+  _156 = _258 + 2147485943;
+  # DEBUG q => &uq
+  # DEBUG r => &ur
+  # DEBUG x => _156
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY uint32_divmod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG v => 2147483648
+  # DEBUG BEGIN_STMT
+  # DEBUG qpart => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG v => 467759
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _200 = _156 w* 467759;
+  _201 = _200 >> 31;
+  qpart_202 = (crypto_uint32) _201;
+  # DEBUG qpart => qpart_202
+  # DEBUG BEGIN_STMT
+  _203 = qpart_202 * 4591;
+  x_204 = _156 - _203;
+  # DEBUG x => x_204
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  _206 = x_204 w* 467759;
+  _207 = _206 >> 31;
+  qpart_208 = (crypto_uint32) _207;
+  # DEBUG qpart => qpart_208
+  # DEBUG BEGIN_STMT
+  _209 = qpart_208 * 4591;
+  # DEBUG D#59 => -_209
+  _146 = x_204 + 4294962705;
+  # DEBUG x => x_204 + D#59
+  # DEBUG BEGIN_STMT
+  # DEBUG D#57 => qpart_202 + qpart_208
+  # DEBUG BEGIN_STMT
+  x_212 = _146 - _209;
+  # DEBUG x => x_212
+  # DEBUG BEGIN_STMT
+  # DEBUG D#56 => D#57 + 1
+  # DEBUG BEGIN_STMT
+  x.12_214 = (signed int) x_212;
+  _215 = x.12_214 >> 31;
+  # DEBUG D#55 => (crypto_uint32) _215
+  # DEBUG mask => D#55
+  # DEBUG BEGIN_STMT
+  _33 = _215 & 4591;
+  _217 = (unsigned int) _33;
+  x_218 = x_212 + _217;
+  # DEBUG x => x_218
+  # DEBUG BEGIN_STMT
+  # DEBUG D#54 => D#56 + D#55
+  # DEBUG uq => D#54
+  # DEBUG BEGIN_STMT
+  _220 = (short unsigned int) x_218;
+  # DEBUG ur => _220
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG mask => NULL
+  # DEBUG qpart => NULL
+  # DEBUG v => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG uq2 => 467759
+  # DEBUG ur2 => 2079
+  # DEBUG BEGIN_STMT
+  _159 = _220 + 63457;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#53 => D#54 + 4294499537
+  # DEBUG BEGIN_STMT
+  _163 = _159 >> 15;
+  _164 = (unsigned int) _163;
+  mask_165 = -_164;
+  # DEBUG mask => mask_165
+  # DEBUG BEGIN_STMT
+  _166 = (short unsigned int) mask_165;
+  _167 = _166 & 4591;
+  _92 = _220 + 61162;
+  # DEBUG BEGIN_STMT
+  # DEBUG D#52 => D#53 - _164
+  # DEBUG BEGIN_STMT
+  # DEBUG r => _159 + _167
+  # DEBUG BEGIN_STMT
+  # DEBUG q => (int) D#52
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG uq => NULL
+  # DEBUG uq2 => NULL
+  # DEBUG ur => NULL
+  # DEBUG ur2 => NULL
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG r => NULL
+  # DEBUG q => NULL
+  _153 = _92 + _167;
+  _154 = (short int) _153;
+  # DEBUG x => NULL
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  # DEBUG result => _154
+  # DEBUG BEGIN_STMT
+  # DEBUG j => (int) ((unsigned int) ivtmp.334_320 + 1)
+  # DEBUG result => _154
+  # DEBUG BEGIN_STMT
+  ivtmp.334_321 = ivtmp.334_320 + 1;
+  j_329 = (int) ivtmp.334_321;
+  if (j_329 != 761)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 118111600]:
+  # DEBUG BEGIN_STMT
+  MEM[(short int *)&fg + 1520B + ivtmp.350_330 * 2] = _154;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ((unsigned int) ivtmp.350_330 + 761)
+  # DEBUG BEGIN_STMT
+  ivtmp.350_331 = ivtmp.350_330 + 1;
+  ivtmp.351_333 = ivtmp.351_332 + 1;
+  if (ivtmp.350_331 != 761)
+    goto <bb 7>; [99.00%]
+  else
+    goto <bb 10>; [1.00%]
+
+  <bb 10> [local count: 1181116]:
+  ivtmp.328_311 = (unsigned long) &MEM <Fq[1521]> [(void *)&fg + 1518B];
+  _318 = (unsigned long) &fg;
+
+  <bb 11> [local count: 118111600]:
+  # ivtmp.328_309 = PHI <ivtmp.328_310(11), ivtmp.328_311(10)>
+  # DEBUG i => (int) (((ivtmp.328_309 - (unsigned long) &fg) - 1518) /[ex] 2) + 1520
+  # DEBUG BEGIN_STMT
+  _313 = (void *) ivtmp.328_309;
+  _28 = MEM[(short int *)_313];
+  _29 = (int) _28;
+  _30 = MEM[(short int *)_313 + 1522B];
+  _31 = (int) _30;
+  _32 = _29 + _31;
+  # DEBUG x => _32
+  # DEBUG INLINE_ENTRY Fq_freeze
+  # DEBUG BEGIN_STMT
+  _225 = _32 + 2295;
+  # DEBUG x => _225
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY int32_mod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  int32_divmod_uint14 (&q, &r, _225, 4591);
+  # DEBUG BEGIN_STMT
+  _226 = r;
+  q ={v} {CLOBBER(eol)};
+  r ={v} {CLOBBER(eol)};
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG r => NULL
+  # DEBUG q => NULL
+  _227 = _226 + 63241;
+  _228 = (short int) _227;
+  # DEBUG x => NULL
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  MEM[(short int *)_313] = _228;
+  # DEBUG BEGIN_STMT
+  _35 = MEM[(short int *)_313 + 2B];
+  _36 = (int) _35;
+  _39 = _31 + _36;
+  # DEBUG x => _39
+  # DEBUG INLINE_ENTRY Fq_freeze
+  # DEBUG BEGIN_STMT
+  _221 = _39 + 2295;
+  # DEBUG x => _221
+  # DEBUG m => 4591
+  # DEBUG INLINE_ENTRY int32_mod_uint14
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  int32_divmod_uint14 (&q, &r, _221, 4591);
+  # DEBUG BEGIN_STMT
+  _222 = r;
+  q ={v} {CLOBBER(eol)};
+  r ={v} {CLOBBER(eol)};
+  # DEBUG x => NULL
+  # DEBUG m => NULL
+  # DEBUG r => NULL
+  # DEBUG q => NULL
+  _223 = _222 + 63241;
+  _224 = (short int) _223;
+  # DEBUG x => NULL
+  # DEBUG q => NULL
+  # DEBUG r => NULL
+  MEM[(short int *)_313 + 2B] = _224;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (((ivtmp.328_309 - (unsigned long) &fg) - 1518) /[ex] 2) + 1519
+  # DEBUG BEGIN_STMT
+  ivtmp.328_310 = ivtmp.328_309 + 18446744073709551614;
+  if (ivtmp.328_309 != _318)
+    goto <bb 11>; [99.00%]
+  else
+    goto <bb 12>; [1.00%]
+
+  <bb 12> [local count: 1193046]:
+  __builtin_memcpy (h_63(D), &fg, 1522);
+  # DEBUG i => NULL
+  fg ={v} {CLOBBER(eol)};
+  return;
+
+}

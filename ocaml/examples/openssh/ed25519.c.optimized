@@ -1,0 +1,1570 @@
+;; Function fe25519_reduce_add_sub (fe25519_reduce_add_sub, funcdef_no=87, decl_uid=10362, cgraph_uid=88, symbol_order=87)
+
+Removing basic block 7
+Removing basic block 8
+void fe25519_reduce_add_sub (struct crypto_sign_ed25519_ref_fe25519 * r)
+{
+  unsigned long ivtmp.69;
+  crypto_uint32 r__v_I_lsm0.60;
+  crypto_uint32 t;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _10;
+  unsigned int _19;
+  void * _26;
+  unsigned long _27;
+  unsigned long _28;
+  struct crypto_sign_ed25519_ref_fe25519 * _34;
+  unsigned int ivtmp_39;
+  unsigned int ivtmp_40;
+
+  <bb 2> [local count: 8402030]:
+  # DEBUG BEGIN_STMT
+  # DEBUG t => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG rep => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG rep => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 33608120]:
+  # ivtmp_40 = PHI <ivtmp_39(5), 4(2)>
+  # DEBUG rep => NULL
+  # DEBUG BEGIN_STMT
+  _1 = r_16(D)->v[31];
+  t_17 = _1 >> 7;
+  # DEBUG t => t_17
+  # DEBUG BEGIN_STMT
+  _2 = _1 & 127;
+  r_16(D)->v[31] = _2;
+  # DEBUG BEGIN_STMT
+  # DEBUG a => t_17
+  # DEBUG INLINE_ENTRY times19
+  # DEBUG BEGIN_STMT
+  _19 = t_17 * 19;
+  # DEBUG a => NULL
+  # DEBUG t => _19
+  # DEBUG BEGIN_STMT
+  _3 = r_16(D)->v[0];
+  _4 = _3 + _19;
+  r_16(D)->v[0] = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  _34 = r_16(D) + 4;
+  ivtmp.69_35 = (unsigned long) _34;
+  _28 = (unsigned long) r_16(D);
+  _27 = _28 + 128;
+
+  <bb 4> [local count: 1040133706]:
+  # r__v_I_lsm0.60_30 = PHI <_8(4), _4(3)>
+  # ivtmp.69_37 = PHI <ivtmp.69_36(4), ivtmp.69_35(3)>
+  # DEBUG t => NULL
+  # DEBUG i => (int) (((ivtmp.69_37 - (unsigned long) r_16(D)) - 4) /[ex] 4)
+  # DEBUG BEGIN_STMT
+  t_22 = r__v_I_lsm0.60_30 >> 8;
+  # DEBUG t => t_22
+  # DEBUG BEGIN_STMT
+  _26 = (void *) ivtmp.69_37;
+  _7 = MEM[(unsigned int *)_26];
+  _8 = _7 + t_22;
+  MEM[(unsigned int *)_26] = _8;
+  # DEBUG BEGIN_STMT
+  _10 = r__v_I_lsm0.60_30 & 255;
+  MEM[(unsigned int *)_26 + -4B] = _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (((ivtmp.69_37 - (unsigned long) r_16(D)) - 4) /[ex] 4) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.69_36 = ivtmp.69_37 + 4;
+  if (_27 != ivtmp.69_36)
+    goto <bb 4>; [96.87%]
+  else
+    goto <bb 5>; [3.13%]
+
+  <bb 5> [local count: 33608120]:
+  # DEBUG BEGIN_STMT
+  # DEBUG rep => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp_39 = ivtmp_40 + 4294967295;
+  if (ivtmp_39 != 0)
+    goto <bb 3>; [80.00%]
+  else
+    goto <bb 6>; [20.00%]
+
+  <bb 6> [local count: 8402030]:
+  return;
+
+}
+
+;; Function crypto_sign_ed25519_ref_fe25519_sub (crypto_sign_ed25519_ref_fe25519_sub, funcdef_no=100, decl_uid=10331, cgraph_uid=101, symbol_order=100)
+
+Removing basic block 6
+Removing basic block 7
+Removing basic block 8
+void crypto_sign_ed25519_ref_fe25519_sub (struct crypto_sign_ed25519_ref_fe25519 * r, const struct crypto_sign_ed25519_ref_fe25519 * x, const struct crypto_sign_ed25519_ref_fe25519 * y)
+{
+  sizetype ivtmp.146;
+  sizetype ivtmp.137;
+  vector(2) unsigned int vect__6.129;
+  const vector(2) unsigned int vect__5.128;
+  const crypto_uint32 * vectp_x.127;
+  crypto_uint32 t[32];
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  const struct crypto_sign_ed25519_ref_fe25519 * _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  struct crypto_sign_ed25519_ref_fe25519 * _26;
+
+  <bb 2> [local count: 32534376]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  t = .DEFERRED_INIT (128, 2, &"t"[0]);
+  # DEBUG BEGIN_STMT
+  _1 = x_16(D)->v[0];
+  _2 = _1 + 474;
+  t[0] = _2;
+  # DEBUG BEGIN_STMT
+  _3 = x_16(D)->v[31];
+  _4 = _3 + 254;
+  t[31] = _4;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 1
+  # DEBUG BEGIN_STMT
+  vectp_x.127_10 = x_16(D) + 4;
+
+  <bb 3> [local count: 488015643]:
+  # ivtmp.146_12 = PHI <ivtmp.146_37(3), 0(2)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  vect__5.128_27 = MEM <const vector(2) unsigned int> [(unsigned int *)vectp_x.127_10 + ivtmp.146_12 * 1];
+  vect__6.129_38 = vect__5.128_27 + { 510, 510 };
+  MEM <vector(2) unsigned int> [(unsigned int *)&t + 4B + ivtmp.146_12 * 1] = vect__6.129_38;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.146_37 = ivtmp.146_12 + 8;
+  if (ivtmp.146_37 != 120)
+    goto <bb 3>; [93.33%]
+  else
+    goto <bb 4>; [6.67%]
+
+  <bb 4> [local count: 1041207449]:
+  # ivtmp.137_11 = PHI <ivtmp.137_31(4), 1(3)>
+  # DEBUG i => (int) ((unsigned int) ivtmp.137_11 + 4294967295)
+  # DEBUG BEGIN_STMT
+  _7 = MEM[(unsigned int *)&t + -4B + ivtmp.137_11 * 4];
+  _6 = y_22(D) + 18446744073709551612;
+  _8 = MEM[(unsigned int *)_6 + ivtmp.137_11 * 4];
+  _9 = _7 - _8;
+  _26 = r_19(D) + 18446744073709551612;
+  MEM[(unsigned int *)_26 + ivtmp.137_11 * 4] = _9;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ivtmp.137_11
+  # DEBUG BEGIN_STMT
+  ivtmp.137_31 = ivtmp.137_11 + 1;
+  if (ivtmp.137_31 != 33)
+    goto <bb 4>; [96.97%]
+  else
+    goto <bb 5>; [3.03%]
+
+  <bb 5> [local count: 32534376]:
+  # DEBUG BEGIN_STMT
+  fe25519_reduce_add_sub (r_19(D)); [tail call]
+  t ={v} {CLOBBER(eol)};
+  return;
+
+}
+
+
+
+;; Function crypto_sign_ed25519_ref_fe25519_mul (crypto_sign_ed25519_ref_fe25519_mul, funcdef_no=101, decl_uid=10335, cgraph_uid=102, symbol_order=101)
+
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+void crypto_sign_ed25519_ref_fe25519_mul (struct crypto_sign_ed25519_ref_fe25519 * r, const struct crypto_sign_ed25519_ref_fe25519 * x, const struct crypto_sign_ed25519_ref_fe25519 * y)
+{
+  unsigned long ivtmp.221;
+  unsigned long ivtmp.220;
+  sizetype ivtmp.209;
+  sizetype ivtmp.197;
+  unsigned long ivtmp.183;
+  crypto_uint32 r__v_I_lsm0.174;
+  vector(4) unsigned int vect__6.170;
+  vector(4) unsigned int vect__5.169;
+  const vector(4) unsigned int vect__4.168;
+  vector(4) unsigned int vect__2.165;
+  crypto_uint32 * vectp_t.164;
+  crypto_uint32 t;
+  crypto_uint32 t[63];
+  unsigned int _3;
+  struct crypto_sign_ed25519_ref_fe25519 * _6;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned long _14;
+  void * _16;
+  unsigned int _26;
+  unsigned int _36;
+  unsigned int _40;
+  unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  unsigned int _48;
+  unsigned int _49;
+  unsigned int _51;
+  void * _53;
+  struct crypto_sign_ed25519_ref_fe25519 * _60;
+  vector(4) unsigned int vect_cst__76;
+  unsigned long _84;
+  unsigned long _92;
+  unsigned int ivtmp_97;
+  unsigned int _103;
+  unsigned int pretmp_105;
+  unsigned int prephitmp_106;
+
+  <bb 2> [local count: 1016594]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG j => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  __builtin_memset (&t, 0, 252);
+  # DEBUG i => NULL
+  ivtmp.220_24 = (unsigned long) x_30(D);
+  ivtmp.221_17 = (unsigned long) &t;
+  _14 = ivtmp.221_17 + 128;
+  goto <bb 5>; [100.00%]
+
+  <bb 3> [local count: 260275005]:
+  # ivtmp.209_54 = PHI <ivtmp.209_52(3), 0(5)>
+  # DEBUG j => NULL
+  # DEBUG BEGIN_STMT
+  vect__2.165_35 = MEM <vector(4) unsigned int> [(unsigned int *)vectp_t.164_23 + ivtmp.209_54 * 1];
+  vect__4.168_78 = MEM <const vector(4) unsigned int> [(unsigned int *)y_31(D) + ivtmp.209_54 * 1];
+  vect__5.169_70 = vect_cst__76 * vect__4.168_78;
+  vect__6.170_69 = vect__2.165_35 + vect__5.169_70;
+  MEM <vector(4) unsigned int> [(unsigned int *)vectp_t.164_23 + ivtmp.209_54 * 1] = vect__6.170_69;
+  # DEBUG BEGIN_STMT
+  # DEBUG j => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.209_52 = ivtmp.209_54 + 16;
+  if (ivtmp.209_52 != 128)
+    goto <bb 3>; [87.50%]
+  else
+    goto <bb 4>; [12.50%]
+
+  <bb 4> [local count: 32534376]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ((ivtmp.220_44 - (unsigned long) x_30(D)) /[ex] 4) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.220_37 = ivtmp.220_44 + 4;
+  ivtmp.221_18 = ivtmp.221_19 + 4;
+  if (_14 != ivtmp.221_18)
+    goto <bb 5>; [96.97%]
+  else
+    goto <bb 6>; [3.03%]
+
+  <bb 5> [local count: 32534376]:
+  # ivtmp.220_44 = PHI <ivtmp.220_37(4), ivtmp.220_24(2)>
+  # ivtmp.221_19 = PHI <ivtmp.221_18(4), ivtmp.221_17(2)>
+  # DEBUG i => (int) ((ivtmp.220_44 - (unsigned long) x_30(D)) /[ex] 4)
+  # DEBUG j => 0
+  # DEBUG BEGIN_STMT
+  _16 = (void *) ivtmp.220_44;
+  _3 = MEM[(unsigned int *)_16];
+  vectp_t.164_23 = (crypto_uint32 *) ivtmp.221_19;
+  vect_cst__76 = {_3, _3, _3, _3};
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 31462458]:
+  # ivtmp.197_66 = PHI <ivtmp.197_68(6), 33(4)>
+  # DEBUG a => NULL
+  # DEBUG i => (int) ((unsigned int) ivtmp.197_66 + 4294967295)
+  # DEBUG BEGIN_STMT
+  _8 = MEM[(unsigned int *)&t + -132B + ivtmp.197_66 * 4];
+  _9 = MEM[(unsigned int *)&t + -4B + ivtmp.197_66 * 4];
+  # DEBUG a => _9
+  # DEBUG INLINE_ENTRY times38
+  # DEBUG BEGIN_STMT
+  _26 = _9 * 36;
+  _36 = _9 << 1;
+  _103 = _26 + _36;
+  # DEBUG a => NULL
+  _10 = _8 + _103;
+  _60 = r_22(D) + 18446744073709551484;
+  MEM[(unsigned int *)_60 + ivtmp.197_66 * 4] = _10;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ivtmp.197_66
+  # DEBUG BEGIN_STMT
+  ivtmp.197_68 = ivtmp.197_66 + 1;
+  if (ivtmp.197_68 != 64)
+    goto <bb 6>; [96.87%]
+  else
+    goto <bb 7>; [3.13%]
+
+  <bb 7> [local count: 1016594]:
+  # DEBUG BEGIN_STMT
+  _11 = t[31];
+  # DEBUG BEGIN_STMT
+  # DEBUG r => r_22(D)
+  # DEBUG INLINE_ENTRY reduce_mul
+  # DEBUG BEGIN_STMT
+  # DEBUG t => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG rep => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG rep => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 8> [local count: 2033494]:
+  # prephitmp_106 = PHI <pretmp_105(11), _11(7)>
+  # ivtmp_97 = PHI <1(11), 2(7)>
+  # DEBUG rep => NULL
+  # DEBUG BEGIN_STMT
+  t_39 = prephitmp_106 >> 7;
+  # DEBUG t => t_39
+  # DEBUG BEGIN_STMT
+  _40 = prephitmp_106 & 127;
+  r_22(D)->v[31] = _40;
+  # DEBUG BEGIN_STMT
+  # DEBUG a => t_39
+  # DEBUG INLINE_ENTRY times19
+  # DEBUG BEGIN_STMT
+  _41 = t_39 * 19;
+  # DEBUG a => NULL
+  # DEBUG t => _41
+  # DEBUG BEGIN_STMT
+  _42 = r_22(D)->v[0];
+  _43 = _41 + _42;
+  r_22(D)->v[0] = _43;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  _6 = r_22(D) + 4;
+  ivtmp.183_2 = (unsigned long) _6;
+  _92 = (unsigned long) r_22(D);
+  _84 = _92 + 128;
+
+  <bb 9> [local count: 62934355]:
+  # r__v_I_lsm0.174_93 = PHI <_49(9), _43(8)>
+  # ivtmp.183_5 = PHI <ivtmp.183_4(9), ivtmp.183_2(8)>
+  # DEBUG t => NULL
+  # DEBUG i => (int) (((ivtmp.183_5 - (unsigned long) r_22(D)) - 4) /[ex] 4)
+  # DEBUG BEGIN_STMT
+  t_46 = r__v_I_lsm0.174_93 >> 8;
+  # DEBUG t => t_46
+  # DEBUG BEGIN_STMT
+  _53 = (void *) ivtmp.183_5;
+  _48 = MEM[(unsigned int *)_53];
+  _49 = t_46 + _48;
+  MEM[(unsigned int *)_53] = _49;
+  # DEBUG BEGIN_STMT
+  _51 = r__v_I_lsm0.174_93 & 255;
+  MEM[(unsigned int *)_53 + -4B] = _51;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (((ivtmp.183_5 - (unsigned long) r_22(D)) - 4) /[ex] 4) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.183_4 = ivtmp.183_5 + 4;
+  if (ivtmp.183_4 != _84)
+    goto <bb 9>; [96.87%]
+  else
+    goto <bb 10>; [3.13%]
+
+  <bb 10> [local count: 2033494]:
+  # DEBUG BEGIN_STMT
+  # DEBUG rep => NULL
+  # DEBUG BEGIN_STMT
+  if (ivtmp_97 != 1)
+    goto <bb 11>; [66.67%]
+  else
+    goto <bb 12>; [33.33%]
+
+  <bb 11> [local count: 1355730]:
+  pretmp_105 = r_22(D)->v[31];
+  goto <bb 8>; [100.00%]
+
+  <bb 12> [local count: 1016594]:
+  # DEBUG r => NULL
+  # DEBUG rep => NULL
+  # DEBUG i => NULL
+  # DEBUG t => NULL
+  t ={v} {CLOBBER(eol)};
+  return;
+
+}
+
+;; Function sc25519_reduce_add_sub (sc25519_reduce_add_sub, funcdef_no=106, decl_uid=10655, cgraph_uid=107, symbol_order=108)
+
+Removing basic block 7
+Removing basic block 8
+void sc25519_reduce_add_sub (struct crypto_sign_ed25519_ref_sc25519 * r)
+{
+  sizetype ivtmp.256;
+  unsigned long ivtmp.252;
+  unsigned long ivtmp.249;
+  vector(4) unsigned int vect__12.241;
+  vector(4) unsigned int vect__11.240;
+  vector(4) unsigned int vect__10.239;
+  vector(8) short unsigned int vect__9.238;
+  vector(4) unsigned int vect__9.237;
+  vector(16) unsigned char vect__8.236;
+  vector(4) unsigned int vect__6.233;
+  vector(4) unsigned int vect__6.232;
+  vector(4) unsigned int vect__6.231;
+  vector(4) unsigned int vect__6.230;
+  unsigned int x;
+  unsigned char t[32];
+  crypto_uint32 mask;
+  crypto_uint32 pb;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned char _3;
+  unsigned char _4;
+  unsigned char _5;
+  void * _11;
+  vector(4) unsigned int vect_cst__58;
+  void * _81;
+  unsigned long _83;
+  struct crypto_sign_ed25519_ref_sc25519 * _87;
+
+  <bb 2> [local count: 32534376]:
+  # DEBUG BEGIN_STMT
+  # DEBUG pb => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG b => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG mask => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  t = .DEFERRED_INIT (32, 2, &"t"[0]);
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG b => NULL
+  # DEBUG pb => 0
+  # DEBUG BEGIN_STMT
+
+  <bb 3> [local count: 1041207449]:
+  # pb_37 = PHI <x_31(3), 0(2)>
+  # ivtmp.256_84 = PHI <ivtmp.256_85(3), 1(2)>
+  # DEBUG a => NULL
+  # DEBUG b => NULL
+  # DEBUG x => NULL
+  # DEBUG i => (int) ((unsigned int) ivtmp.256_84 + 4294967295)
+  # DEBUG b => NULL
+  # DEBUG pb => pb_37
+  # DEBUG BEGIN_STMT
+  _1 = MEM[(unsigned int *)&sc25519_m + -4B + ivtmp.256_84 * 4];
+  pb_27 = _1 + pb_37;
+  # DEBUG pb => pb_27
+  # DEBUG BEGIN_STMT
+  _87 = r_24(D) + 18446744073709551612;
+  _2 = MEM[(unsigned int *)_87 + ivtmp.256_84 * 4];
+  # DEBUG a => _2
+  # DEBUG b => pb_27
+  # DEBUG INLINE_ENTRY lt
+  # DEBUG BEGIN_STMT
+  # DEBUG x => _2
+  # DEBUG BEGIN_STMT
+  x_28 = _2 - pb_27;
+  # DEBUG x => x_28
+  # DEBUG BEGIN_STMT
+  x_31 = x_28 >> 31;
+  # DEBUG x => x_31
+  # DEBUG BEGIN_STMT
+  # DEBUG a => NULL
+  # DEBUG b => NULL
+  # DEBUG x => NULL
+  # DEBUG b => x_31
+  # DEBUG BEGIN_STMT
+  _3 = (unsigned char) _2;
+  _4 = (unsigned char) pb_27;
+  _5 = _3 - _4;
+  MEM[(unsigned char *)&t + -1B + ivtmp.256_84 * 1] = _5;
+  # DEBUG BEGIN_STMT
+  # DEBUG pb => x_31
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ivtmp.256_84
+  # DEBUG b => x_31
+  # DEBUG pb => x_31
+  # DEBUG BEGIN_STMT
+  ivtmp.256_85 = ivtmp.256_84 + 1;
+  if (ivtmp.256_85 != 33)
+    goto <bb 3>; [96.97%]
+  else
+    goto <bb 4>; [3.03%]
+
+  <bb 4> [local count: 32534376]:
+  # DEBUG BEGIN_STMT
+  mask_22 = x_31 + 4294967295;
+  # DEBUG mask => mask_22
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  vect_cst__58 = {mask_22, mask_22, mask_22, mask_22};
+  ivtmp.249_6 = (unsigned long) &t;
+  ivtmp.252_10 = (unsigned long) r_24(D);
+  _83 = ivtmp.252_10 + 128;
+
+  <bb 5> [local count: 65068755]:
+  # ivtmp.249_48 = PHI <ivtmp.249_40(5), ivtmp.249_6(4)>
+  # ivtmp.252_8 = PHI <ivtmp.252_9(5), ivtmp.252_10(4)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _11 = (void *) ivtmp.252_8;
+  vect__6.230_38 = MEM <vector(4) unsigned int> [(unsigned int *)_11];
+  vect__6.231_35 = MEM <vector(4) unsigned int> [(unsigned int *)_11 + 16B];
+  vect__6.232_33 = MEM <vector(4) unsigned int> [(unsigned int *)_11 + 32B];
+  vect__6.233_19 = MEM <vector(4) unsigned int> [(unsigned int *)_11 + 48B];
+  _81 = (void *) ivtmp.249_48;
+  vect__8.236_16 = MEM <vector(16) unsigned char> [(unsigned char *)_81];
+  vect__9.238_15 = [vec_unpack_lo_expr] vect__8.236_16;
+  vect__9.238_14 = [vec_unpack_hi_expr] vect__8.236_16;
+  vect__9.237_13 = [vec_unpack_lo_expr] vect__9.238_15;
+  vect__9.237_7 = [vec_unpack_hi_expr] vect__9.238_15;
+  vect__9.237_52 = [vec_unpack_lo_expr] vect__9.238_14;
+  vect__9.237_53 = [vec_unpack_hi_expr] vect__9.238_14;
+  vect__10.239_54 = vect__9.237_13 ^ vect__6.230_38;
+  vect__10.239_55 = vect__9.237_7 ^ vect__6.231_35;
+  vect__10.239_56 = vect__6.232_33 ^ vect__9.237_52;
+  vect__10.239_57 = vect__6.233_19 ^ vect__9.237_53;
+  vect__11.240_59 = vect__10.239_54 & vect_cst__58;
+  vect__11.240_60 = vect__10.239_55 & vect_cst__58;
+  vect__11.240_61 = vect__10.239_56 & vect_cst__58;
+  vect__11.240_62 = vect__10.239_57 & vect_cst__58;
+  vect__12.241_63 = vect__6.230_38 ^ vect__11.240_59;
+  vect__12.241_64 = vect__6.231_35 ^ vect__11.240_60;
+  vect__12.241_65 = vect__6.232_33 ^ vect__11.240_61;
+  vect__12.241_66 = vect__6.233_19 ^ vect__11.240_62;
+  MEM <vector(4) unsigned int> [(unsigned int *)_11] = vect__12.241_63;
+  MEM <vector(4) unsigned int> [(unsigned int *)_11 + 16B] = vect__12.241_64;
+  MEM <vector(4) unsigned int> [(unsigned int *)_11 + 32B] = vect__12.241_65;
+  MEM <vector(4) unsigned int> [(unsigned int *)_11 + 48B] = vect__12.241_66;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.249_40 = ivtmp.249_48 + 16;
+  ivtmp.252_9 = ivtmp.252_8 + 64;
+  if (ivtmp.252_9 != _83)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 32534376]:
+  t ={v} {CLOBBER(eol)};
+  return;
+
+}
+
+
+
+;; Function barrett_reduce (barrett_reduce, funcdef_no=107, decl_uid=10672, cgraph_uid=108, symbol_order=109)
+
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+__attribute__((access ("^1[64]", )))
+void barrett_reduce (struct crypto_sign_ed25519_ref_sc25519 * r, const crypto_uint32 * x)
+{
+  unsigned int ivtmp.338;
+  unsigned long ivtmp.333;
+  unsigned long ivtmp.329;
+  unsigned int ivtmp.328;
+  unsigned int ivtmp.320;
+  unsigned long ivtmp.315;
+  unsigned long ivtmp.311;
+  unsigned int ivtmp.310;
+  unsigned long ivtmp.302;
+  sizetype ivtmp.287;
+  vector(2) unsigned int vect__13.282;
+  vector(2) unsigned int vect_carry_64.281;
+  vector(2) unsigned int vect__12.280;
+  crypto_uint32 r2_I_lsm0.276;
+  unsigned int x;
+  crypto_uint32 pb;
+  crypto_uint32 carry;
+  crypto_uint32 r2[33];
+  crypto_uint32 r1[33];
+  crypto_uint32 q2[66];
+  int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  vector(2) unsigned int _19;
+  int _20;
+  unsigned int _21;
+  unsigned int _22;
+  unsigned int _26;
+  unsigned int _27;
+  unsigned int _28;
+  unsigned int _31;
+  unsigned int _32;
+  unsigned int _34;
+  unsigned int _35;
+  unsigned int _36;
+  unsigned int _37;
+  unsigned int _38;
+  void * _43;
+  void * _56;
+  unsigned long _90;
+  unsigned long _91;
+  struct crypto_sign_ed25519_ref_sc25519 * _101;
+  unsigned int _106;
+  unsigned int _129;
+  unsigned int _141;
+  const crypto_uint32 * _142;
+  void * _146;
+  unsigned int _151;
+
+  <bb 2> [local count: 956212]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG j => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG q3 => &MEM <crypto_uint32[66]> [(void *)&q2 + 132B]
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG BEGIN_STMT
+  # DEBUG carry => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG pb => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG b => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  __builtin_memset (&q2, 0, 264);
+  # DEBUG i => NULL
+  __builtin_memset (&r2, 0, 132);
+  # DEBUG i => NULL
+  goto <bb 7>; [100.00%]
+
+  <bb 3> [local count: 1042173817]:
+  # ivtmp.328_104 = PHI <ivtmp.328_100(5), _151(7)>
+  # ivtmp.329_103 = PHI <ivtmp.329_95(5), ivtmp.329_96(7)>
+  # DEBUG j => (int) (ivtmp.328_104 - (unsigned int) D#18)
+  # DEBUG BEGIN_STMT
+  if (ivtmp.328_104 > 30)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 521086908]:
+  _1 = (int) ivtmp.328_104;
+  # DEBUG BEGIN_STMT
+  _2 = q2[_1];
+  _3 = MEM[(unsigned int *)&sc25519_mu + ivtmp.333_147 * 4];
+  _146 = (void *) ivtmp.329_103;
+  _8 = MEM[(const crypto_uint32 *)_146];
+  _9 = _3 * _8;
+  _10 = _2 + _9;
+  q2[_1] = _10;
+
+  <bb 5> [local count: 1042173817]:
+  # DEBUG BEGIN_STMT
+  # DEBUG j => (int) ((ivtmp.328_104 - (unsigned int) D#18) + 1)
+  # DEBUG BEGIN_STMT
+  ivtmp.328_100 = ivtmp.328_104 + 1;
+  ivtmp.329_95 = ivtmp.329_103 + 4;
+  if (ivtmp.328_100 != ivtmp.338_149)
+    goto <bb 3>; [97.06%]
+  else
+    goto <bb 6>; [2.94%]
+
+  <bb 6> [local count: 31568008]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (ivtmp.338_149 + 4294967264)
+  # DEBUG BEGIN_STMT
+  ivtmp.333_148 = ivtmp.333_147 + 1;
+  ivtmp.338_150 = ivtmp.338_149 + 1;
+  if (ivtmp.338_150 != 66)
+    goto <bb 7>; [97.06%]
+  else
+    goto <bb 8>; [2.94%]
+
+  <bb 7> [local count: 31568008]:
+  # ivtmp.333_147 = PHI <ivtmp.333_148(6), 0(2)>
+  # ivtmp.338_149 = PHI <ivtmp.338_150(6), 33(2)>
+  # DEBUG D#18 => (int) (ivtmp.338_149 + 4294967263)
+  # DEBUG i => D#18
+  # DEBUG j => 0
+  # DEBUG BEGIN_STMT
+  _151 = (unsigned int) ivtmp.333_147;
+  _142 = x_84(D) + 124;
+  ivtmp.329_96 = (unsigned long) _142;
+  goto <bb 3>; [100.00%]
+
+  <bb 8> [local count: 956212]:
+  # DEBUG BEGIN_STMT
+  _11 = q2[31];
+  carry_64 = _11 >> 8;
+  # DEBUG carry => carry_64
+  # DEBUG BEGIN_STMT
+  vect__12.280_18 = MEM <vector(2) unsigned int> [(unsigned int *)&q2 + 128B];
+  _12 = q2[32];
+  _13 = _12 + carry_64;
+  _19 = {_11, _13};
+  vect_carry_64.281_85 = _19 >> 8;
+  vect__13.282_86 = vect__12.280_18 + vect_carry_64.281_85;
+  # DEBUG BEGIN_STMT
+  # DEBUG carry => _13 >> 8
+  # DEBUG BEGIN_STMT
+  MEM <vector(2) unsigned int> [(unsigned int *)&q2 + 128B] = vect__13.282_86;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  MEM <unsigned char[132]> [(char * {ref-all})&r1] = MEM <unsigned char[132]> [(char * {ref-all})x_84(D)];
+  # DEBUG i => NULL
+  goto <bb 13>; [100.00%]
+
+  <bb 9> [local count: 1010280482]:
+  # ivtmp.310_124 = PHI <ivtmp.310_114(11), _106(13)>
+  # ivtmp.311_93 = PHI <ivtmp.311_53(11), ivtmp.311_48(13)>
+  # DEBUG D#16 => (int) (ivtmp.310_124 - (unsigned int) D#17)
+  # DEBUG j => D#16
+  # DEBUG BEGIN_STMT
+  if (ivtmp.310_124 <= 32)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 10> [local count: 505140241]:
+  _20 = (int) ivtmp.310_124;
+  # DEBUG j => D#16
+  # DEBUG BEGIN_STMT
+  _21 = r2[_20];
+  _22 = MEM[(unsigned int *)&sc25519_m + ivtmp.315_42 * 4];
+  _43 = (void *) ivtmp.311_93;
+  _26 = MEM[(crypto_uint32 *)_43];
+  _27 = _22 * _26;
+  _28 = _21 + _27;
+  r2[_20] = _28;
+
+  <bb 11> [local count: 1010280482]:
+  # DEBUG BEGIN_STMT
+  # DEBUG j => (int) ((ivtmp.310_124 - (unsigned int) D#17) + 1)
+  # DEBUG BEGIN_STMT
+  ivtmp.310_114 = ivtmp.310_124 + 1;
+  ivtmp.311_53 = ivtmp.311_93 + 4;
+  if (ivtmp.320_40 != ivtmp.310_114)
+    goto <bb 9>; [97.06%]
+  else
+    goto <bb 12>; [2.94%]
+
+  <bb 12> [local count: 30601942]:
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (ivtmp.320_40 + 4294967264)
+  # DEBUG BEGIN_STMT
+  ivtmp.315_41 = ivtmp.315_42 + 1;
+  ivtmp.320_39 = ivtmp.320_40 + 1;
+  if (ivtmp.320_39 != 65)
+    goto <bb 13>; [96.97%]
+  else
+    goto <bb 14>; [3.03%]
+
+  <bb 13> [local count: 30601942]:
+  # ivtmp.315_42 = PHI <ivtmp.315_41(12), 0(8)>
+  # ivtmp.320_40 = PHI <ivtmp.320_39(12), 33(8)>
+  # DEBUG D#17 => (int) (ivtmp.320_40 + 4294967263)
+  # DEBUG i => D#17
+  # DEBUG j => 0
+  # DEBUG BEGIN_STMT
+  _106 = (unsigned int) ivtmp.315_42;
+  ivtmp.311_48 = (unsigned long) &MEM <crypto_uint32[66]> [(void *)&q2 + 132B];
+  goto <bb 9>; [100.00%]
+
+  <bb 14> [local count: 927239]:
+  _141 = MEM[(unsigned int *)&r2];
+  ivtmp.302_57 = (unsigned long) &MEM <crypto_uint32[33]> [(void *)&r2 + 4B];
+  _90 = (unsigned long) &r2;
+  _91 = _90 + 132;
+
+  <bb 15> [local count: 30601942]:
+  # r2_I_lsm0.276_136 = PHI <_32(15), _141(14)>
+  # ivtmp.302_67 = PHI <ivtmp.302_65(15), ivtmp.302_57(14)>
+  # DEBUG carry => NULL
+  # DEBUG i => (int) (((ivtmp.302_67 - (unsigned long) &r2) - 4) /[ex] 4)
+  # DEBUG BEGIN_STMT
+  carry_78 = r2_I_lsm0.276_136 >> 8;
+  # DEBUG carry => carry_78
+  # DEBUG BEGIN_STMT
+  _56 = (void *) ivtmp.302_67;
+  _31 = MEM[(unsigned int *)_56];
+  _32 = _31 + carry_78;
+  MEM[(unsigned int *)_56] = _32;
+  # DEBUG BEGIN_STMT
+  _34 = r2_I_lsm0.276_136 & 255;
+  MEM[(unsigned int *)_56 + -4B] = _34;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (((ivtmp.302_67 - (unsigned long) &r2) - 4) /[ex] 4) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.302_65 = ivtmp.302_67 + 4;
+  if (ivtmp.302_65 != _91)
+    goto <bb 15>; [96.97%]
+  else
+    goto <bb 16>; [3.03%]
+
+  <bb 16> [local count: 30601942]:
+  # pb_123 = PHI <x_94(16), 0(15)>
+  # ivtmp.287_17 = PHI <ivtmp.287_16(16), 1(15)>
+  # DEBUG a => NULL
+  # DEBUG b => NULL
+  # DEBUG x => NULL
+  # DEBUG b => NULL
+  # DEBUG pb => pb_123
+  # DEBUG i => (int) ((unsigned int) ivtmp.287_17 + 4294967295)
+  # DEBUG BEGIN_STMT
+  _35 = MEM[(unsigned int *)&r2 + -4B + ivtmp.287_17 * 4];
+  # DEBUG D#15 => _35 + pb_123
+  # DEBUG pb => D#15
+  # DEBUG BEGIN_STMT
+  _36 = MEM[(unsigned int *)&r1 + -4B + ivtmp.287_17 * 4];
+  # DEBUG a => _36
+  # DEBUG b => D#15
+  # DEBUG INLINE_ENTRY lt
+  # DEBUG BEGIN_STMT
+  # DEBUG x => _36
+  # DEBUG BEGIN_STMT
+  _129 = _36 - _35;
+  x_75 = _129 - pb_123;
+  # DEBUG x => x_75
+  # DEBUG BEGIN_STMT
+  x_94 = x_75 >> 31;
+  # DEBUG x => x_94
+  # DEBUG BEGIN_STMT
+  # DEBUG a => NULL
+  # DEBUG b => NULL
+  # DEBUG x => NULL
+  # DEBUG b => x_94
+  # DEBUG BEGIN_STMT
+  _37 = x_94 << 8;
+  _38 = _37 + x_75;
+  _101 = r_68(D) + 18446744073709551612;
+  MEM[(unsigned int *)_101 + ivtmp.287_17 * 4] = _38;
+  # DEBUG BEGIN_STMT
+  # DEBUG pb => x_94
+  # DEBUG BEGIN_STMT
+  # DEBUG pb => x_94
+  # DEBUG i => (int) ivtmp.287_17
+  # DEBUG BEGIN_STMT
+  ivtmp.287_16 = ivtmp.287_17 + 1;
+  if (ivtmp.287_16 != 33)
+    goto <bb 16>; [96.97%]
+  else
+    goto <bb 17>; [3.03%]
+
+  <bb 17> [local count: 956212]:
+  # DEBUG BEGIN_STMT
+  sc25519_reduce_add_sub (r_68(D));
+  # DEBUG BEGIN_STMT
+  sc25519_reduce_add_sub (r_68(D)); [tail call]
+  q2 ={v} {CLOBBER(eol)};
+  r1 ={v} {CLOBBER(eol)};
+  r2 ={v} {CLOBBER(eol)};
+  return;
+
+}
+
+;; Function crypto_sign_ed25519_ref_scalarmult_base (crypto_sign_ed25519_ref_scalarmult_base, funcdef_no=129, decl_uid=10839, cgraph_uid=130, symbol_order=136)
+
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+void crypto_sign_ed25519_ref_scalarmult_base (struct crypto_sign_ed25519_ref_ge25519 * r, const struct crypto_sign_ed25519_ref_sc25519 * s)
+{
+  unsigned long ivtmp.528;
+  unsigned long ivtmp.527;
+  unsigned long ivtmp.519;
+  unsigned long ivtmp.512;
+  unsigned long ivtmp.501;
+  unsigned long ivtmp.499;
+  unsigned long ivtmp.491;
+  unsigned long ivtmp.489;
+  unsigned long ivtmp.483;
+  unsigned long ivtmp.481;
+  unsigned long ivtmp.479;
+  unsigned long ivtmp.472;
+  unsigned long ivtmp.470;
+  unsigned long ivtmp.464;
+  unsigned long ivtmp.462;
+  unsigned long ivtmp.459;
+  signed char D__lsm0.451;
+  vector(4) unsigned int vect__188.443;
+  const vector(4) unsigned int vect__187.442;
+  const vector(4) unsigned int vect__186.439;
+  vector(4) unsigned int vect__183.434;
+  const vector(4) unsigned int vect__182.433;
+  const vector(4) unsigned int vect__181.430;
+  vector(4) unsigned int vect__178.425;
+  const vector(4) unsigned int vect__177.424;
+  const vector(4) unsigned int vect__176.421;
+  vector(4) unsigned int vect__173.416;
+  const vector(4) unsigned int vect__171.415;
+  vector(4) unsigned int vect__168.410;
+  const vector(4) unsigned int vect__167.409;
+  const vector(4) unsigned int vect__166.406;
+  struct crypto_sign_ed25519_ref_fe25519 a;
+  struct crypto_sign_ed25519_ref_fe25519 b;
+  struct crypto_sign_ed25519_ref_fe25519 t1;
+  struct crypto_sign_ed25519_ref_fe25519 t2;
+  struct crypto_sign_ed25519_ref_fe25519 c;
+  struct crypto_sign_ed25519_ref_fe25519 d;
+  struct crypto_sign_ed25519_ref_fe25519 e;
+  struct crypto_sign_ed25519_ref_fe25519 f;
+  struct crypto_sign_ed25519_ref_fe25519 g;
+  struct crypto_sign_ed25519_ref_fe25519 h;
+  struct crypto_sign_ed25519_ref_fe25519 qt;
+  char carry;
+  struct ge25519_aff t;
+  signed char b[85];
+  signed char _1;
+  struct crypto_sign_ed25519_ref_fe25519 * _2;
+  struct crypto_sign_ed25519_ref_fe25519 * _3;
+  struct crypto_sign_ed25519_ref_fe25519 * _4;
+  signed char _6;
+  unsigned int _29;
+  signed char _30;
+  signed char _34;
+  unsigned int _36;
+  signed char _37;
+  signed char _41;
+  unsigned int _43;
+  signed char _44;
+  signed char _48;
+  unsigned int _50;
+  unsigned char _51;
+  unsigned char _52;
+  unsigned char _53;
+  signed char _54;
+  signed char _55;
+  unsigned int _57;
+  signed char _58;
+  signed char _62;
+  unsigned int _64;
+  signed char _65;
+  signed char _69;
+  unsigned int _71;
+  signed char _72;
+  signed char _76;
+  unsigned int _78;
+  unsigned char _79;
+  unsigned char _80;
+  unsigned char _81;
+  signed char _82;
+  signed char _83;
+  unsigned int _85;
+  signed char _86;
+  signed char _90;
+  unsigned int _92;
+  signed char _93;
+  signed char _97;
+  unsigned int _99;
+  signed char _100;
+  signed char _102;
+  unsigned int _104;
+  signed char _105;
+  signed char _107;
+  unsigned int _109;
+  signed char _110;
+  signed char _112;
+  unsigned int _113;
+  unsigned char _114;
+  unsigned char _115;
+  unsigned char _116;
+  signed char _117;
+  signed char _118;
+  unsigned int _120;
+  signed char _121;
+  signed char _123;
+  unsigned int _125;
+  signed char _126;
+  signed char _128;
+  unsigned char _133;
+  unsigned char _135;
+  signed char _136;
+  signed char _140;
+  unsigned char _141;
+  signed char _142;
+  unsigned char _143;
+  unsigned char _144;
+  signed char _145;
+  signed char _147;
+  signed char _148;
+  unsigned char _151;
+  unsigned char _152;
+  signed char _153;
+  signed char _154;
+  unsigned char _155;
+  unsigned char _157;
+  signed char _158;
+  struct crypto_sign_ed25519_ref_fe25519 * _164;
+  unsigned long _171;
+  void * _174;
+  unsigned long _181;
+  void * _183;
+  void * _184;
+  signed char _186;
+  void * _208;
+  unsigned long _299;
+  crypto_uint32 * _329;
+  void * _340;
+  void * _344;
+  unsigned char _348;
+  long long unsigned int _353;
+  unsigned long _365;
+  void * _374;
+  void * _377;
+  unsigned long _386;
+  void * _389;
+  long long unsigned int _395;
+  void * _399;
+  void * _403;
+  unsigned long _404;
+  void * _406;
+  void * _414;
+  unsigned long _415;
+  vector(4) signed char _417;
+  void * _427;
+  void * _428;
+  void * _429;
+
+  <bb 2> [local count: 12670152]:
+  # DEBUG BEGIN_STMT
+  b = .DEFERRED_INIT (85, 2, &"b"[0]);
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  t = .DEFERRED_INIT (256, 2, &"t"[0]);
+  # DEBUG BEGIN_STMT
+  # DEBUG r => &b
+  # DEBUG s => s_12(D)
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_sc25519_window3
+  # DEBUG BEGIN_STMT
+  # DEBUG carry => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  ivtmp.527_381 = (unsigned long) s_12(D);
+  ivtmp.528_378 = (unsigned long) &b;
+  _365 = ivtmp.527_381 + 120;
+
+  <bb 3> [local count: 126715381]:
+  # ivtmp.527_383 = PHI <ivtmp.527_382(3), ivtmp.527_381(2)>
+  # ivtmp.528_380 = PHI <ivtmp.528_379(3), ivtmp.528_378(2)>
+  # DEBUG i => (int) ((ivtmp.527_383 - (unsigned long) s_12(D)) /[ex] 12)
+  # DEBUG BEGIN_STMT
+  _377 = (void *) ivtmp.527_383;
+  _29 = MEM[(unsigned int *)_377];
+  _30 = (signed char) _29;
+  _34 = _30 & 7;
+  _374 = (void *) ivtmp.528_380;
+  MEM[(signed char *)_374] = _34;
+  # DEBUG BEGIN_STMT
+  _36 = _29 >> 3;
+  _37 = (signed char) _36;
+  _41 = _37 & 7;
+  MEM[(signed char *)_374 + 1B] = _41;
+  # DEBUG BEGIN_STMT
+  _43 = _29 >> 6;
+  _44 = (signed char) _43;
+  _48 = _44 & 7;
+  # DEBUG BEGIN_STMT
+  _50 = MEM[(unsigned int *)_377 + 4B];
+  _51 = (unsigned char) _50;
+  _52 = _51 << 2;
+  _53 = _52 & 7;
+  _54 = (signed char) _53;
+  _55 = _48 ^ _54;
+  MEM[(signed char *)_374 + 2B] = _55;
+  # DEBUG BEGIN_STMT
+  _57 = _50 >> 1;
+  _58 = (signed char) _57;
+  _62 = _58 & 7;
+  MEM[(signed char *)_374 + 3B] = _62;
+  # DEBUG BEGIN_STMT
+  _64 = _50 >> 4;
+  _65 = (signed char) _64;
+  _69 = _65 & 7;
+  MEM[(signed char *)_374 + 4B] = _69;
+  # DEBUG BEGIN_STMT
+  _71 = _50 >> 7;
+  _72 = (signed char) _71;
+  _76 = _72 & 7;
+  # DEBUG BEGIN_STMT
+  _78 = MEM[(unsigned int *)_377 + 8B];
+  _79 = (unsigned char) _78;
+  _80 = _79 << 1;
+  _81 = _80 & 7;
+  _82 = (signed char) _81;
+  _83 = _76 ^ _82;
+  MEM[(signed char *)_374 + 5B] = _83;
+  # DEBUG BEGIN_STMT
+  _85 = _78 >> 2;
+  _86 = (signed char) _85;
+  _90 = _86 & 7;
+  MEM[(signed char *)_374 + 6B] = _90;
+  # DEBUG BEGIN_STMT
+  _92 = _78 >> 5;
+  _93 = (signed char) _92;
+  _97 = _93 & 7;
+  MEM[(signed char *)_374 + 7B] = _97;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) ((ivtmp.527_383 - (unsigned long) s_12(D)) /[ex] 12) + 1
+  # DEBUG BEGIN_STMT
+  ivtmp.527_382 = ivtmp.527_383 + 12;
+  ivtmp.528_379 = ivtmp.528_380 + 8;
+  if (_365 != ivtmp.527_382)
+    goto <bb 3>; [90.91%]
+  else
+    goto <bb 4>; [9.09%]
+
+  <bb 4> [local count: 12670152]:
+  # DEBUG BEGIN_STMT
+  _99 = s_12(D)->v[30];
+  _100 = (signed char) _99;
+  _102 = _100 & 7;
+  # DEBUG BEGIN_STMT
+  _104 = _99 >> 3;
+  _105 = (signed char) _104;
+  _107 = _105 & 7;
+  # DEBUG BEGIN_STMT
+  _109 = _99 >> 6;
+  _110 = (signed char) _109;
+  _112 = _110 & 7;
+  # DEBUG BEGIN_STMT
+  _113 = s_12(D)->v[31];
+  _114 = (unsigned char) _113;
+  _115 = _114 << 2;
+  _116 = _115 & 7;
+  _117 = (signed char) _116;
+  _118 = _112 ^ _117;
+  # DEBUG BEGIN_STMT
+  _120 = _113 >> 1;
+  _121 = (signed char) _120;
+  _123 = _121 & 7;
+  _417 = {_102, _107, _118, _123};
+  MEM <vector(4) signed char> [(signed char *)&b + 80B] = _417;
+  # DEBUG BEGIN_STMT
+  _125 = _113 >> 4;
+  _126 = (signed char) _125;
+  _128 = _126 & 7;
+  MEM[(signed char *)&b + 84B] = _128;
+  # DEBUG BEGIN_STMT
+  # DEBUG carry => 0
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG carry => 0
+  # DEBUG BEGIN_STMT
+  _186 = MEM[(signed char *)&b];
+  _386 = ivtmp.528_378 + 84;
+
+  <bb 5> [local count: 1061071042]:
+  # carry_13 = PHI <carry_149(5), 0(4)>
+  # D__lsm0.451_339 = PHI <_145(5), _186(4)>
+  # ivtmp.519_392 = PHI <ivtmp.519_391(5), ivtmp.528_378(4)>
+  # DEBUG i => (int) ((unsigned int) ivtmp.519_392 - (unsigned int) (unsigned long) &b)
+  # DEBUG carry => carry_13
+  # DEBUG BEGIN_STMT
+  _133 = (unsigned char) D__lsm0.451_339;
+  _135 = carry_13 + _133;
+  _136 = (signed char) _135;
+  _389 = (void *) ivtmp.519_392;
+  # DEBUG BEGIN_STMT
+  _140 = MEM[(signed char *)_389 + 1B];
+  _141 = (unsigned char) _140;
+  _142 = _136 >> 3;
+  _143 = (unsigned char) _142;
+  _144 = _141 + _143;
+  _145 = (signed char) _144;
+  MEM[(signed char *)_389 + 1B] = _145;
+  # DEBUG BEGIN_STMT
+  _348 = _135 & 7;
+  _147 = (signed char) _348;
+  # DEBUG BEGIN_STMT
+  _148 = _147 >> 2;
+  carry_149 = (char) _148;
+  # DEBUG carry => carry_149
+  # DEBUG BEGIN_STMT
+  _151 = carry_149 << 3;
+  _152 = _348 - _151;
+  _153 = (signed char) _152;
+  MEM[(signed char *)_389] = _153;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (((unsigned int) ivtmp.519_392 - (unsigned int) (unsigned long) &b) + 1)
+  # DEBUG carry => carry_149
+  # DEBUG BEGIN_STMT
+  ivtmp.519_391 = ivtmp.519_392 + 1;
+  if (_386 != ivtmp.519_391)
+    goto <bb 5>; [98.82%]
+  else
+    goto <bb 6>; [1.18%]
+
+  <bb 6> [local count: 12670152]:
+  # DEBUG BEGIN_STMT
+  _154 = MEM[(signed char *)&b + 84B];
+  _155 = (unsigned char) _154;
+  _157 = carry_149 + _155;
+  _158 = (signed char) _157;
+  MEM[(signed char *)&b + 84B] = _158;
+  # DEBUG r => NULL
+  # DEBUG s => NULL
+  # DEBUG i => NULL
+  # DEBUG carry => NULL
+  # DEBUG BEGIN_STMT
+  _1 = b[0];
+  choose_t (r_14(D), 0, _1);
+  # DEBUG BEGIN_STMT
+  # DEBUG D#5 => &r_14(D)->z
+  # DEBUG r => D#5
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_fe25519_setone
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  MEM[(struct crypto_sign_ed25519_ref_fe25519 *)r_14(D) + 256B].v[0] = 1;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 1
+  # DEBUG BEGIN_STMT
+  _329 = r_14(D) + 260;
+  __builtin_memset (_329, 0, 124);
+  # DEBUG r => NULL
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _2 = &r_14(D)->t;
+  _3 = &r_14(D)->x;
+  _4 = &r_14(D)->y;
+  crypto_sign_ed25519_ref_fe25519_mul (_2, _3, _4);
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 1
+  # DEBUG BEGIN_STMT
+
+  <bb 7> [local count: 1061071042]:
+  # ivtmp.512_402 = PHI <ivtmp.512_401(17), ivtmp.528_378(6)>
+  # DEBUG i => (int) (((unsigned int) ivtmp.512_402 - (unsigned int) (unsigned long) &b) + 1)
+  # DEBUG BEGIN_STMT
+  _353 = 1 - ivtmp.528_378;
+  _395 = _353 + ivtmp.512_402;
+  _399 = (void *) ivtmp.512_402;
+  _6 = MEM[(signed char *)_399 + 1B];
+  choose_t (&t, _395, _6);
+  # DEBUG BEGIN_STMT
+  # DEBUG r => r_14(D)
+  # DEBUG q => &t
+  # DEBUG INLINE_ENTRY ge25519_mixadd2
+  # DEBUG BEGIN_STMT
+  a = .DEFERRED_INIT (128, 2, &"a"[0]);
+  b = .DEFERRED_INIT (128, 2, &"b"[0]);
+  t1 = .DEFERRED_INIT (128, 2, &"t1"[0]);
+  t2 = .DEFERRED_INIT (128, 2, &"t2"[0]);
+  c = .DEFERRED_INIT (128, 2, &"c"[0]);
+  d = .DEFERRED_INIT (128, 2, &"d"[0]);
+  e = .DEFERRED_INIT (128, 2, &"e"[0]);
+  f = .DEFERRED_INIT (128, 2, &"f"[0]);
+  g = .DEFERRED_INIT (128, 2, &"g"[0]);
+  h = .DEFERRED_INIT (128, 2, &"h"[0]);
+  qt = .DEFERRED_INIT (128, 2, &"qt"[0]);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (&qt, &t.x, &t.y);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_sub (&a, _4, _3);
+  # DEBUG BEGIN_STMT
+  # DEBUG r => &b
+  # DEBUG x => _4
+  # DEBUG y => _3
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_fe25519_add
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  ivtmp.499_411 = (unsigned long) &b;
+  ivtmp.501_408 = (unsigned long) r_14(D);
+  _404 = ivtmp.501_408 + 128;
+
+  <bb 8> [local count: 8488568253]:
+  # ivtmp.499_413 = PHI <ivtmp.499_412(8), ivtmp.499_411(7)>
+  # ivtmp.501_410 = PHI <ivtmp.501_409(8), ivtmp.501_408(7)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _403 = (void *) ivtmp.501_410;
+  vect__186.439_283 = MEM <const vector(4) unsigned int> [(unsigned int *)_403 + 128B];
+  vect__187.442_279 = MEM <const vector(4) unsigned int> [(unsigned int *)_403];
+  vect__188.443_277 = vect__187.442_279 + vect__186.439_283;
+  _406 = (void *) ivtmp.499_413;
+  MEM <vector(4) unsigned int> [(unsigned int *)_406] = vect__188.443_277;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.499_412 = ivtmp.499_413 + 16;
+  ivtmp.501_409 = ivtmp.501_410 + 16;
+  if (_404 != ivtmp.501_409)
+    goto <bb 8>; [87.50%]
+  else
+    goto <bb 9>; [12.50%]
+
+  <bb 9> [local count: 1061071042]:
+  # DEBUG BEGIN_STMT
+  fe25519_reduce_add_sub (&b);
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG y => NULL
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_sub (&t1, &t.y, &t.x);
+  # DEBUG BEGIN_STMT
+  # DEBUG r => &t2
+  # DEBUG x => &t.y
+  # DEBUG y => &t.x
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_fe25519_add
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  ivtmp.489_338 = (unsigned long) &t2;
+  ivtmp.491_211 = (unsigned long) &t;
+  _415 = ivtmp.489_338 + 128;
+
+  <bb 10> [local count: 8488568253]:
+  # ivtmp.489_266 = PHI <ivtmp.489_341(10), ivtmp.489_338(9)>
+  # ivtmp.491_189 = PHI <ivtmp.491_188(10), ivtmp.491_211(9)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _414 = (void *) ivtmp.491_189;
+  vect__181.430_296 = MEM <const vector(4) unsigned int> [(unsigned int *)_414 + 128B];
+  vect__182.433_293 = MEM <const vector(4) unsigned int> [(unsigned int *)_414];
+  vect__183.434_292 = vect__182.433_293 + vect__181.430_296;
+  _208 = (void *) ivtmp.489_266;
+  MEM <vector(4) unsigned int> [(unsigned int *)_208] = vect__183.434_292;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.489_341 = ivtmp.489_266 + 16;
+  ivtmp.491_188 = ivtmp.491_189 + 16;
+  if (ivtmp.489_341 != _415)
+    goto <bb 10>; [87.50%]
+  else
+    goto <bb 11>; [12.50%]
+
+  <bb 11> [local count: 1061071042]:
+  # DEBUG BEGIN_STMT
+  fe25519_reduce_add_sub (&t2);
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG y => NULL
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (&a, &a, &t1);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (&b, &b, &t2);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_sub (&e, &b, &a);
+  # DEBUG BEGIN_STMT
+  # DEBUG r => &h
+  # DEBUG x => &b
+  # DEBUG y => &a
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_fe25519_add
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  ivtmp.479_342 = (unsigned long) &h;
+  ivtmp.481_177 = (unsigned long) &a;
+  _181 = ivtmp.479_342 + 128;
+
+  <bb 12> [local count: 8488568253]:
+  # ivtmp.479_264 = PHI <ivtmp.479_345(12), ivtmp.479_342(11)>
+  # ivtmp.481_179 = PHI <ivtmp.481_178(12), ivtmp.481_177(11)>
+  # ivtmp.483_176 = PHI <ivtmp.483_265(12), ivtmp.499_411(11)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _340 = (void *) ivtmp.483_176;
+  vect__176.421_309 = MEM <const vector(4) unsigned int> [(unsigned int *)_340];
+  _184 = (void *) ivtmp.481_179;
+  vect__177.424_306 = MEM <const vector(4) unsigned int> [(unsigned int *)_184];
+  vect__178.425_305 = vect__177.424_306 + vect__176.421_309;
+  _183 = (void *) ivtmp.479_264;
+  MEM <vector(4) unsigned int> [(unsigned int *)_183] = vect__178.425_305;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.479_345 = ivtmp.479_264 + 16;
+  ivtmp.481_178 = ivtmp.481_179 + 16;
+  ivtmp.483_265 = ivtmp.483_176 + 16;
+  if (_181 != ivtmp.479_345)
+    goto <bb 12>; [87.50%]
+  else
+    goto <bb 13>; [12.50%]
+
+  <bb 13> [local count: 1061071042]:
+  # DEBUG BEGIN_STMT
+  fe25519_reduce_add_sub (&h);
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG y => NULL
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (&c, _2, &qt);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (&c, &c, &ge25519_ec2d);
+  # DEBUG BEGIN_STMT
+  _164 = &r_14(D)->z;
+  # DEBUG r => &d
+  # DEBUG x => _164
+  # DEBUG y => _164
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_fe25519_add
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  ivtmp.470_168 = (unsigned long) &d;
+  ivtmp.472_263 = (unsigned long) _164;
+  _171 = ivtmp.501_408 + 384;
+
+  <bb 14> [local count: 8488568253]:
+  # ivtmp.470_346 = PHI <ivtmp.470_169(14), ivtmp.470_168(13)>
+  # ivtmp.472_167 = PHI <ivtmp.472_166(14), ivtmp.472_263(13)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _344 = (void *) ivtmp.472_167;
+  vect__171.415_319 = MEM <const vector(4) unsigned int> [(unsigned int *)_344];
+  vect__173.416_317 = vect__171.415_319 * { 2, 2, 2, 2 };
+  _174 = (void *) ivtmp.470_346;
+  MEM <vector(4) unsigned int> [(unsigned int *)_174] = vect__173.416_317;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.470_169 = ivtmp.470_346 + 16;
+  ivtmp.472_166 = ivtmp.472_167 + 16;
+  if (ivtmp.472_166 != _171)
+    goto <bb 14>; [87.50%]
+  else
+    goto <bb 15>; [12.50%]
+
+  <bb 15> [local count: 1061071042]:
+  # DEBUG BEGIN_STMT
+  fe25519_reduce_add_sub (&d);
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG y => NULL
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_sub (&f, &d, &c);
+  # DEBUG BEGIN_STMT
+  # DEBUG r => &g
+  # DEBUG x => &d
+  # DEBUG y => &c
+  # DEBUG INLINE_ENTRY crypto_sign_ed25519_ref_fe25519_add
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => 0
+  # DEBUG BEGIN_STMT
+  ivtmp.459_420 = (unsigned long) &c;
+  ivtmp.462_423 = (unsigned long) &g;
+  _299 = ivtmp.459_420 + 128;
+
+  <bb 16> [local count: 8488568253]:
+  # ivtmp.459_418 = PHI <ivtmp.459_419(16), ivtmp.459_420(15)>
+  # ivtmp.462_421 = PHI <ivtmp.462_422(16), ivtmp.462_423(15)>
+  # ivtmp.464_424 = PHI <ivtmp.464_425(16), ivtmp.470_168(15)>
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  _427 = (void *) ivtmp.464_424;
+  vect__166.406_127 = MEM <const vector(4) unsigned int> [(unsigned int *)_427];
+  _428 = (void *) ivtmp.459_418;
+  vect__167.409_23 = MEM <const vector(4) unsigned int> [(unsigned int *)_428];
+  vect__168.410_334 = vect__167.409_23 + vect__166.406_127;
+  _429 = (void *) ivtmp.462_421;
+  MEM <vector(4) unsigned int> [(unsigned int *)_429] = vect__168.410_334;
+  # DEBUG BEGIN_STMT
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  ivtmp.459_419 = ivtmp.459_418 + 16;
+  ivtmp.462_422 = ivtmp.462_421 + 16;
+  ivtmp.464_425 = ivtmp.464_424 + 16;
+  if (_299 != ivtmp.459_419)
+    goto <bb 16>; [87.50%]
+  else
+    goto <bb 17>; [12.50%]
+
+  <bb 17> [local count: 1061071042]:
+  # DEBUG BEGIN_STMT
+  fe25519_reduce_add_sub (&g);
+  # DEBUG r => NULL
+  # DEBUG x => NULL
+  # DEBUG y => NULL
+  # DEBUG i => NULL
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (_3, &e, &f);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (_4, &h, &g);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (_164, &g, &f);
+  # DEBUG BEGIN_STMT
+  crypto_sign_ed25519_ref_fe25519_mul (_2, &e, &h);
+  a ={v} {CLOBBER(eol)};
+  b ={v} {CLOBBER(eol)};
+  t1 ={v} {CLOBBER(eol)};
+  t2 ={v} {CLOBBER(eol)};
+  c ={v} {CLOBBER(eol)};
+  d ={v} {CLOBBER(eol)};
+  e ={v} {CLOBBER(eol)};
+  f ={v} {CLOBBER(eol)};
+  g ={v} {CLOBBER(eol)};
+  h ={v} {CLOBBER(eol)};
+  qt ={v} {CLOBBER(eol)};
+  # DEBUG r => NULL
+  # DEBUG q => NULL
+  # DEBUG BEGIN_STMT
+  # DEBUG i => (int) (((unsigned int) ivtmp.512_402 - (unsigned int) (unsigned long) &b) + 2)
+  # DEBUG BEGIN_STMT
+  ivtmp.512_401 = ivtmp.512_402 + 1;
+  if (_386 != ivtmp.512_401)
+    goto <bb 7>; [98.82%]
+  else
+    goto <bb 18>; [1.18%]
+
+  <bb 18> [local count: 12670152]:
+  b ={v} {CLOBBER(eol)};
+  t ={v} {CLOBBER(eol)};
+  return;
+
+}
