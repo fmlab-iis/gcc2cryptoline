@@ -24,6 +24,8 @@ let rec string_of_type typ =
   | Bool -> "_Bool"
   | Char -> "char"
   | Uchar -> "unsigned char"
+  | Short -> "short"
+  | Ushort -> "unsigned short"
   | Int -> "int"
   | Uint -> "unsigned int"
   | Long -> "long"
@@ -34,8 +36,10 @@ let rec string_of_type typ =
   | Uword w -> "uint" ^ string_of_int w
   | Const t -> "const " ^ string_of_type t
   | Pointer t -> (string_of_type t) ^ " * "
+  | Struct s -> "struct " ^ s
   | Vector (d, t) -> "vector[" ^ Z.to_string d ^ "] " ^ string_of_type t
   | Array (d, t) -> string_of_type t ^ "[" ^ Z.to_string d ^ "]"
+  | Typedef s -> s
 
 let string_of_var v =
   "(" ^ string_of_type v.vty ^ ") " ^ v.vname
@@ -45,22 +49,32 @@ let string_of_params params =
     (List.rev (List.rev_map
                  (fun p -> string_of_type p.pty ^ " " ^ p.pname) params))
 
-let rec string_of_operand op =
+let rec string_of_operand (op : operand_t) =
   match op with
   | Var s -> s
   | Const z -> Z.to_string z
   | Consts zs -> let z_strs = List.map Z.to_string zs in
                  "{ " ^ (String.concat ", " z_strs) ^ " }"
-  | Access (s, op) -> s ^ "[" ^ string_of_operand op ^ "]"
+  | Element (p, op) -> string_of_operand p ^ "[" ^ string_of_operand op ^ "]"
+  | Member (p, op) -> string_of_operand p ^ "->" ^ string_of_operand op ^ "]"
   | Ref s -> "*" ^ s
+
+let rec string_of_offset off =
+  match off with
+  | Const c -> string_of_int c
+  | Var s -> s
+  | Add (off0, off1) -> string_of_offset off0 ^ " + " ^ string_of_offset off1
+  | Mul (off0, off1) -> string_of_offset off0 ^ " * " ^ string_of_offset off1
 
 let string_of_loc loc =
   "(" ^ string_of_type loc.lty ^ ")" ^ string_of_operand loc.lop ^
-    " + " ^ string_of_int loc.loffset
+    " + " ^ string_of_offset loc.loffset
 
 let string_of_cond cond =
   match cond with
   | Neq (op0, op1) -> string_of_operand op0 ^ " != " ^ string_of_operand op1
+  | Gt (op0, op1) -> string_of_operand op0 ^ " > " ^ string_of_operand op1
+  | Le (op0, op1) -> string_of_operand op0 ^ " <= " ^ string_of_operand op1
 
 let string_of_instr instr =
   match instr with
@@ -118,7 +132,12 @@ let string_of_instr instr =
                                " = WIDEN_MULT_MINUS_EXPR <" ^
                                string_of_operand r0 ^ ", " ^
                                string_of_operand r1 ^ ", " ^
-                               string_of_operand r2
+                                 string_of_operand r2
+  | VecUnpackLo (l, r) -> string_of_operand l ^
+                            " = [vec_unpack_lo_expr] " ^ string_of_operand r
+  | VecUnpackHi (l, r) -> string_of_operand l ^
+                            " = [vec_unpack_hi_expr] " ^ string_of_operand r
+  | DeferredInit v -> string_of_operand v ^ " = DEFERRED_INIT"
 
 let string_of_func f =
   let strings_of_instrs =

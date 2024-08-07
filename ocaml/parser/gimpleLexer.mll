@@ -12,6 +12,8 @@
               "_Bool"                      , BOOL;
               "char"                       , CHAR;
               "int"                        , INT;
+              "short"                      , SHORT;
+              "struct"                     , STRUCT;
               "const"                      , CONST;
               "signed"                     , SIGNED;
               "unsigned"                   , UNSIGNED;
@@ -69,12 +71,17 @@ token = parse
   | '^'                            { XOROP }
   | '='                            { EQOP }
   | "!="                           { NEQOP }
+  | "<="                           { LEOP }
   | '?'                            { QUESTION }
   | "<<"                           { LSHIFT }
   | ">>"                           { RSHIFT }
+  | "->"                           { RARROW }
   (* intrinsics *)
   | "WIDEN_MULT_PLUS_EXPR"         { WMADDOP }
   | "WIDEN_MULT_MINUS_EXPR"        { WMSUBOP }
+  | ".DEFERRED_INIT"               { DEFERRED_INIT }
+  | "vec_unpack_lo_expr"           { VEC_UNPACK_LO_EXPR }
+  | "vec_unpack_hi_expr"           { VEC_UNPACK_HI_EXPR }
   (* Types *)
   | "uint" ((number+) as w) "_t"   { UINT (int_of_string w) }
   | "u" ((number+) as w)           { UINT (int_of_string w) }
@@ -84,7 +91,7 @@ token = parse
   | ('-'? number+) as num          { NUM (Z.of_string num) }
   | (number+ '.' number+) as num   { FLOAT (float_of_string num) }
   (* Offsets *)
-  | ((number+) as byte) "B"        { BYTE (int_of_string byte) }
+  | ('-'? (number+) as byte) "B"        { BYTE (int_of_string byte) }
   (* Strings *)
   | '"' (([^'\r''\n'' ']+) as s) '"'            { STRING s }
   (* Misc *)
@@ -92,6 +99,8 @@ token = parse
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }
   | "char * {ref-all}"             { CHAR_REF_ALL }
   | "CLOBBER(eos)"                 { CLOBBER_EOS }
+  | "CLOBBER(eol)"                 { CLOBBER_EOL }
+  | "tail call"                    { TAIL_CALL }
   | identity as id                 { try
                                        Hashtbl.find keywords id
                                      with Not_found ->

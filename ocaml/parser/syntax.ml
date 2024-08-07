@@ -3,22 +3,28 @@ type access_t = string
 
 type attribute_t = access_t list
 
-type type_t = Void | Bool | Char | Uchar | Int | Uint
+type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
               | Long | Ulong | Llong | Ullong
               | Sword of int | Uword of int
-              | Const of type_t | Pointer of type_t
+              | Const of type_t | Pointer of type_t | Struct of string
               | Vector of Z.t * type_t | Array of Z.t * type_t
+              | Typedef of string
 
 type param_t = { pty : type_t; pname : string }
 
 type var_t = { vty : type_t; vname : string }
 
 type operand_t = Var of string | Const of Z.t | Consts of Z.t list
-                 | Access of string * operand_t | Ref of string
+                 | Element of operand_t * operand_t | Ref of string
+                 | Member of operand_t * operand_t
 
-type loc_t = { lty : type_t; lop : operand_t; loffset : int }
+type offset_t = Const of int | Var of string
+                | Add of offset_t * offset_t | Mul of offset_t * offset_t
 
-type cond_t = Neq of operand_t * operand_t
+type loc_t = { lty : type_t; lop : operand_t; loffset : offset_t }
+
+type cond_t = | Neq of operand_t * operand_t | Gt of operand_t * operand_t
+              | Le of operand_t * operand_t
 
 type label_t = Z.t
 
@@ -45,6 +51,9 @@ type instr_t = Nop
              | Return
              | Wmadd of operand_t * operand_t * operand_t * operand_t
              | Wmsub of operand_t * operand_t * operand_t * operand_t
+             | VecUnpackLo of operand_t * operand_t
+             | VecUnpackHi of operand_t * operand_t
+             | DeferredInit of operand_t
 
 type function_t = { attr : attribute_t; fty : type_t; fname : string;
                     params : param_t list; vars : var_t list; instrs : instr_t list }
