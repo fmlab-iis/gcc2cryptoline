@@ -32,6 +32,8 @@ let rec string_of_type typ =
   | Ulong -> "unsigned long"
   | Llong -> "long long"
   | Ullong -> "unsigned long long"
+  | Bools w -> "<signed-boolean:" ^ string_of_int w ^ ">"
+  | Ubools w -> "<unsigned-boolean:" ^ string_of_int w ^ ">"
   | Sword w -> "int" ^ string_of_int w
   | Uword w -> "uint" ^ string_of_int w
   | Const t -> "const " ^ string_of_type t
@@ -57,7 +59,7 @@ let rec string_of_operand (op : operand_t) =
                  "{ " ^ (String.concat ", " z_strs) ^ " }"
   | Element (p, op) -> string_of_operand p ^ "[" ^ string_of_operand op ^ "]"
   | Member (p, op) -> string_of_operand p ^ "->" ^ string_of_operand op ^ "]"
-  | Ref s -> "*" ^ s
+  | Ref p -> "&" ^ string_of_operand p
 
 let rec string_of_offset off =
   match off with

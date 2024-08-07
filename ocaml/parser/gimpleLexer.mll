@@ -87,6 +87,10 @@ token = parse
   | "u" ((number+) as w)           { UINT (int_of_string w) }
   | "int" ((number+) as w) "_t"    { SINT (int_of_string w) }
   | "__int" ((number+) as w)       { SINT (int_of_string w) }
+  | "<signed-boolean:" ((number+) as w) ">"
+                                   { BOOLS (int_of_string w) }
+  | "<unsigned-boolean:" ((number+) as w) ">"
+                                   { UBOOLS (int_of_string w) }
   (* Numbers *)
   | ('-'? number+) as num          { NUM (Z.of_string num) }
   | (number+ '.' number+) as num   { FLOAT (float_of_string num) }

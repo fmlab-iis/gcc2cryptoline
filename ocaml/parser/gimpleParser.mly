@@ -13,7 +13,7 @@
 %token <Z.t> NUM
 %token <float> FLOAT
 %token <string> ID STRING
-%token <int> UINT SINT BYTE
+%token <int> UINT SINT BYTE BOOLS UBOOLS
 
 %token LPAREN RPAREN LSQUARE RSQUARE LBRACK RBRACK LANGLE RANGLE
 %token COMMA SEMICOLON COLON DQUOTE
@@ -24,6 +24,7 @@
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
+%token BOOLS UBOOLS
 /* Others */
 %token ATTRIBUTE ACCESS MEM EOF RETURN BB IF ELSE GOTO
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL_COUNT
@@ -95,6 +96,8 @@ ground_typ:
 | LONG LONG UNSIGNED INT                  { Ullong }
 | LONG LONG INT                           { Llong }
 | UNSIGNED LONG                           { Ulong }
+| BOOLS                                   { Bools $1 }
+| UBOOLS                                  { Ubools $1 }
 | UINT                                    { Uword $1 }
 | SINT                                    { Sword $1 }
 | SINT UNSIGNED                           { Uword $1 }
@@ -136,7 +139,7 @@ instr:
 | instr_lhs EQOP LPAREN typ RPAREN ID SEMICOLON
                                           { Assign ($1, $4, Var $6) }
 | instr_lhs EQOP LPAREN typ RPAREN ANDOP ID SEMICOLON
-                                          { Assign ($1, $4, Ref $7) }
+                                          { Assign ($1, $4, Ref (Var $7)) }
 | instr_lhs EQOP LBRACK args RBRACK SEMICOLON
                                           { Vassign ($1, $4) }
 | instr_lhs EQOP ID LSQUARE ID RSQUARE SEMICOLON
@@ -153,6 +156,10 @@ instr:
                                                     Element (Member (Var $3,
                                                                      Var $5),
                                                              Const $7)) }
+| instr_lhs EQOP ANDOP ID RARROW ID SEMICOLON
+                                          { Assign ($1, Void,
+                                                    Ref (Member (Var $4,
+                                                                 Var $6)))}
 | instr_lhs EQOP ID ADDOP ID SEMICOLON    { Add ($1, Var $3, Var $5) }
 | instr_lhs EQOP ID ADDOP NUM SEMICOLON   { Add ($1, Var $3, Const $5) }
 | instr_lhs EQOP ID ADDOP LBRACK nums RBRACK SEMICOLON
@@ -204,7 +211,8 @@ instr:
                                           { Store ($6, $3, Var $9) }
 | MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ANDOP ID RSQUARE
   EQOP MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ID RSQUARE
-  SEMICOLON                               { Copy ($3, Ref $10, $15, Var $21) }
+  SEMICOLON                               { Copy ($3, Ref (Var $10),
+                                                  $15, Var $21) }
 | instr_lhs EQOP WMADDOP LANGLE ID COMMA ID COMMA ID RANGLE SEMICOLON
                                           { Wmadd ($1, Var $5, Var $7, Var $9) }
 | instr_lhs EQOP WMADDOP LANGLE ID COMMA NUM COMMA ID RANGLE SEMICOLON
@@ -240,8 +248,8 @@ args:
 | ID COMMA args                           { Var $1::$3 }
 | NUM                                     { [ Const $1 ] }
 | NUM COMMA args                          { Const $1::$3 }
-| ANDOP ID                                { [ Ref $2 ] }
-| ANDOP ID COMMA args                     { Ref $2::$4 }
+| ANDOP ID                                { [ Ref (Var $2) ] }
+| ANDOP ID COMMA args                     { Ref (Var $2)::$4 }
 ;
 
 loc:
@@ -251,15 +259,15 @@ loc:
                                               loffset = Const $6 } }
 | LPAREN typ RPAREN ID                    { { lty = $2; lop = Var $4;
                                               loffset = Const 0 } }
-| LPAREN typ RPAREN ANDOP ID              { { lty = $2; lop = Ref $5;
+| LPAREN typ RPAREN ANDOP ID              { { lty = $2; lop = Ref (Var $5);
                                               loffset = Const 0 } }
-| LPAREN typ RPAREN ANDOP ID ADDOP BYTE   { { lty = $2; lop = Ref $5;
+| LPAREN typ RPAREN ANDOP ID ADDOP BYTE   { { lty = $2; lop = Ref (Var $5);
                                               loffset = Const $7 } }
 | LPAREN typ RPAREN ANDOP ID ADDOP ID MULOP NUM
-      { { lty = $2; lop = Ref $5;
+      { { lty = $2; lop = Ref (Var $5);
           loffset = Mul (Var $7, Const (Z.to_int $9)) } }
 | LPAREN typ RPAREN ANDOP ID ADDOP BYTE ADDOP ID MULOP NUM
-      { { lty = $2; lop = Ref $5;
+      { { lty = $2; lop = Ref (Var $5);
           loffset = Add (Const $7, Mul (Var $9, Const (Z.to_int $11))) } }
 | LPAREN typ RPAREN ID ADDOP ID MULOP NUM
       { { lty = $2; lop = Var $4;

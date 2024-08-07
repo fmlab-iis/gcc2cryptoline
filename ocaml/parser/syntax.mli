@@ -5,7 +5,7 @@ type attribute_t = access_t list
 
 type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
               | Long | Ulong | Llong | Ullong
-              | Sword of int | Uword of int
+              | Sword of int | Uword of int | Bools of int | Ubools of int
               | Const of type_t | Pointer of type_t | Struct of string
               | Vector of Z.t * type_t | Array of Z.t * type_t
               | Typedef of string
@@ -15,7 +15,7 @@ type param_t = { pty : type_t; pname : string }
 type var_t = { vty : type_t; vname : string }
 
 type operand_t = Var of string | Const of Z.t | Consts of Z.t list
-                 | Element of operand_t * operand_t | Ref of string
+                 | Element of operand_t * operand_t | Ref of operand_t
                  | Member of operand_t * operand_t
 
 type offset_t = Const of int | Var of string
