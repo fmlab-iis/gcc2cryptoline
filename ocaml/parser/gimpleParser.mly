@@ -123,88 +123,53 @@ instrs:
 |                                         { [] }
 ;
 
-instr_lhs:
-| ID LSQUARE ID RSQUARE                   { Element (Var $1, Var $3) }
-| ID                                      { Var $1 }
+op:
+| ID                                      { Var $1 : operand_t }
+| NUM                                     { Const $1 }
+| SUBOP op                                { Neg $2 }
 | ID LSQUARE NUM RSQUARE                  { Element (Var $1, Const $3) }
 | ID RARROW ID LSQUARE NUM RSQUARE        { Element (Member (Var $1, Var $3),
                                                      Const $5) }
+| ID RARROW ID                            { Member (Var $1, Var $3) }
+| ANDOP op                                { Ref $2 }
+| LBRACK ops RBRACK                       { Ops $2 }
+;
+
+ops:
+| op                                      { [ $1 ] }
+| op COMMA ops                            { $1::$3 }
 ;
 
 instr:
-| instr_lhs EQOP LBRACK args RBRACK LBRACK CLOBBER_EOS RBRACK SEMICOLON
+| op EQOP LBRACK ops RBRACK LBRACK CLOBBER_EOS RBRACK SEMICOLON
                                           { Nop }
-| instr_lhs EQOP LBRACK args RBRACK LBRACK CLOBBER_EOL RBRACK SEMICOLON
+| op EQOP LBRACK ops RBRACK LBRACK CLOBBER_EOL RBRACK SEMICOLON
                                           { Nop }
-| instr_lhs EQOP LPAREN typ RPAREN ID SEMICOLON
-                                          { Assign ($1, $4, Var $6) }
-| instr_lhs EQOP LPAREN typ RPAREN ANDOP ID SEMICOLON
-                                          { Assign ($1, $4, Ref (Var $7)) }
-| instr_lhs EQOP LBRACK args RBRACK SEMICOLON
-                                          { Vassign ($1, $4) }
-| instr_lhs EQOP ID LSQUARE ID RSQUARE SEMICOLON
-                                          { Assign ($1, Void,
-                                                    Element (Var $3, Var $5)) }
-| instr_lhs EQOP ID LSQUARE NUM RSQUARE SEMICOLON
-                                          { Assign ($1, Void,
-                                                    Element (Var $3, Const $5)) }
-| instr_lhs EQOP ID SEMICOLON             { Assign ($1, Void, Var $3) }
-| instr_lhs EQOP ID RARROW ID SEMICOLON   { Assign ($1, Void,
-                                                    Member (Var $3, Var $5))}
-| instr_lhs EQOP ID RARROW ID LSQUARE NUM RSQUARE SEMICOLON
-                                          { Assign ($1, Void,
-                                                    Element (Member (Var $3,
-                                                                     Var $5),
-                                                             Const $7)) }
-| instr_lhs EQOP ANDOP ID RARROW ID SEMICOLON
-                                          { Assign ($1, Void,
-                                                    Ref (Member (Var $4,
-                                                                 Var $6)))}
-| instr_lhs EQOP ID ADDOP ID SEMICOLON    { Add ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID ADDOP NUM SEMICOLON   { Add ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID ADDOP LBRACK nums RBRACK SEMICOLON
-                                          { Add ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID SUBOP ID SEMICOLON    { Sub ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID SUBOP NUM SEMICOLON   { Sub ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID SUBOP LBRACK nums RBRACK SEMICOLON
-                                          { Sub ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID WMULOP ID SEMICOLON   { Wmul ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID WMULOP NUM SEMICOLON  { Wmul ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID WMULOP LBRACK nums RBRACK SEMICOLON
-                                          { Wmul ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID MULOP ID SEMICOLON    { Mul ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID MULOP NUM SEMICOLON   { Mul ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID MULOP LBRACK nums RBRACK SEMICOLON
-                                          { Mul ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID ANDOP ID SEMICOLON    { And ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID ANDOP NUM SEMICOLON   { And ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID ANDOP LBRACK nums RBRACK SEMICOLON
-                                          { And ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID OROP ID SEMICOLON     { Or ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID OROP NUM SEMICOLON    { Or ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID OROP LBRACK nums RBRACK SEMICOLON
-                                          { Or ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID XOROP ID SEMICOLON    { Xor ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID XOROP NUM SEMICOLON   { Xor ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID XOROP LBRACK nums RBRACK SEMICOLON
-                                          { Xor ($1, Var $3, Consts $6) }
-| instr_lhs EQOP ID RSHIFT ID SEMICOLON   { Rshift ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID RSHIFT NUM SEMICOLON  { Rshift ($1, Var $3, Const $5) }
-| instr_lhs EQOP ID LSHIFT ID SEMICOLON   { Lshift ($1, Var $3, Var $5) }
-| instr_lhs EQOP ID LSHIFT NUM SEMICOLON  { Lshift ($1, Var $3, Const $5) }
+| op EQOP LPAREN typ RPAREN op SEMICOLON
+                                          { Assign ($1, $4, $6) }
+| op EQOP op SEMICOLON                    { Assign ($1, Void, $3) }
+| op EQOP op ADDOP op SEMICOLON           { Add ($1, $3, $5) }
+| op EQOP op SUBOP op SEMICOLON           { Sub ($1, $3, $5) }
+| op EQOP op WMULOP op SEMICOLON          { Wmul ($1, $3, $5) }
+| op EQOP op MULOP op SEMICOLON           { Mul ($1, $3, $5) }
+| op EQOP op ANDOP op SEMICOLON           { And ($1, $3, $5) }
+| op EQOP op OROP op SEMICOLON            { Or ($1, $3, $5) }
+| op EQOP op XOROP op SEMICOLON           { Xor ($1, $3, $5) }
+| op EQOP op RSHIFT op SEMICOLON          { Rshift ($1, $3, $5) }
+| op EQOP op LSHIFT op SEMICOLON          { Lshift ($1, $3, $5) }
 | LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON
                                           { Label $3 }
-| instr_lhs EQOP ID QUESTION ID COLON ID SEMICOLON
-                                          { Ite ($1,Var $3,Var $5,Var $7) }
-| instr_lhs EQOP MULOP loc SEMICOLON      { Load ($1, Void, $4) }
-| instr_lhs EQOP MEM LSQUARE loc RSQUARE SEMICOLON
+| op EQOP op QUESTION op COLON op SEMICOLON
+                                          { Ite ($1, $3, $5, $7) }
+| op EQOP MULOP loc SEMICOLON             { Load ($1, Void, $4) }
+| op EQOP MEM LSQUARE loc RSQUARE SEMICOLON
                                           { Load ($1, Void, $5) }
-| instr_lhs EQOP MEM LANGLE typ RANGLE LSQUARE loc RSQUARE SEMICOLON
+| op EQOP MEM LANGLE typ RANGLE LSQUARE loc RSQUARE SEMICOLON
                                           { Load ($1, $5, $8) }
-| ID LPAREN args RPAREN SEMICOLON         { Call ($1, $3) }
-| ID LPAREN args RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
+| ID LPAREN ops RPAREN SEMICOLON          { Call ($1, $3) }
+| ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call ($1, $3) }
-| MULOP loc EQOP ID SEMICOLON             { Store ($2, Void, Var $4) }
+| MULOP loc EQOP op SEMICOLON             { Store ($2, Void, $4) }
 | MEM LSQUARE loc RSQUARE EQOP ID SEMICOLON
                                           { Store ($3, Void, Var $6) }
 | MEM LANGLE typ RANGLE LSQUARE loc RSQUARE EQOP ID SEMICOLON
@@ -213,19 +178,15 @@ instr:
   EQOP MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ID RSQUARE
   SEMICOLON                               { Copy ($3, Ref (Var $10),
                                                   $15, Var $21) }
-| instr_lhs EQOP WMADDOP LANGLE ID COMMA ID COMMA ID RANGLE SEMICOLON
-                                          { Wmadd ($1, Var $5, Var $7, Var $9) }
-| instr_lhs EQOP WMADDOP LANGLE ID COMMA NUM COMMA ID RANGLE SEMICOLON
-                                          { Wmadd ($1, Var $5, Const $7, Var $9) }
-| instr_lhs EQOP WMSUBOP LANGLE ID COMMA ID COMMA ID RANGLE SEMICOLON
-                                          { Wmsub ($1, Var $5, Var $7, Var $9) }
-| instr_lhs EQOP WMSUBOP LANGLE ID COMMA NUM COMMA ID RANGLE SEMICOLON
-                                          { Wmsub ($1, Var $5, Const $7, Var $9) }
-| instr_lhs EQOP LSQUARE VEC_UNPACK_LO_EXPR RSQUARE ID SEMICOLON
-                                          { VecUnpackLo ($1, Var $6) }
-| instr_lhs EQOP LSQUARE VEC_UNPACK_HI_EXPR RSQUARE ID SEMICOLON
-                                          { VecUnpackHi ($1, Var $6) }
-| instr_lhs EQOP DEFERRED_INIT LPAREN NUM COMMA NUM COMMA
+| op EQOP WMADDOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON
+                                          { Wmadd ($1, $5, $7, $9) }
+| op EQOP WMSUBOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON
+                                          { Wmsub ($1, $5, $7, $9) }
+| op EQOP LSQUARE VEC_UNPACK_LO_EXPR RSQUARE op SEMICOLON
+                                          { VecUnpackLo ($1, $6) }
+| op EQOP LSQUARE VEC_UNPACK_HI_EXPR RSQUARE op SEMICOLON
+                                          { VecUnpackHi ($1, $6) }
+| op EQOP DEFERRED_INIT LPAREN NUM COMMA NUM COMMA
   ANDOP STRING LSQUARE NUM RSQUARE RPAREN SEMICOLON
                                           { DeferredInit ($1) }
 | IF LPAREN condition RPAREN
@@ -236,20 +197,6 @@ instr:
 | GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
                                           { Goto $4 }
 | RETURN SEMICOLON                        { Return }
-;
-
-nums:
-  NUM                                     { [ $1 ] }
-| NUM COMMA nums                          { $1::$3 }
-;
-
-args:
-  ID                                      { [ Var $1 ] }
-| ID COMMA args                           { Var $1::$3 }
-| NUM                                     { [ Const $1 ] }
-| NUM COMMA args                          { Const $1::$3 }
-| ANDOP ID                                { [ Ref (Var $2) ] }
-| ANDOP ID COMMA args                     { Ref (Var $2)::$4 }
 ;
 
 loc:

@@ -14,9 +14,9 @@ type param_t = { pty : type_t; pname : string }
 
 type var_t = { vty : type_t; vname : string }
 
-type operand_t = Var of string | Const of Z.t | Consts of Z.t list
+type operand_t = Var of string | Const of Z.t | Neg of operand_t
                  | Element of operand_t * operand_t | Ref of operand_t
-                 | Member of operand_t * operand_t
+                 | Member of operand_t * operand_t | Ops of operand_t list
 
 type offset_t = Const of int | Var of string
                 | Add of offset_t * offset_t | Mul of offset_t * offset_t
@@ -31,7 +31,6 @@ type label_t = Z.t
 type instr_t = Nop
              | Label of label_t
              | Assign of operand_t * type_t * operand_t
-             | Vassign of operand_t * operand_t list
              | Add of operand_t * operand_t * operand_t
              | Sub of operand_t * operand_t * operand_t
              | Mul of operand_t * operand_t * operand_t

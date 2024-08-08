@@ -55,11 +55,12 @@ let rec string_of_operand (op : operand_t) =
   match op with
   | Var s -> s
   | Const z -> Z.to_string z
-  | Consts zs -> let z_strs = List.map Z.to_string zs in
-                 "{ " ^ (String.concat ", " z_strs) ^ " }"
+  | Neg p -> "-" ^ string_of_operand p
   | Element (p, op) -> string_of_operand p ^ "[" ^ string_of_operand op ^ "]"
   | Member (p, op) -> string_of_operand p ^ "->" ^ string_of_operand op ^ "]"
   | Ref p -> "&" ^ string_of_operand p
+  | Ops ps -> let pstrs = List.map string_of_operand ps in
+              "{ " ^ (String.concat ", " pstrs) ^ " }"
 
 let rec string_of_offset off =
   match off with
@@ -83,10 +84,7 @@ let string_of_instr instr =
   | Nop -> "nop"
   | Label z -> "L" ^ (Z.to_string z)
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
-                           string_of_type t ^ ") " ^ string_of_operand op
-  | Vassign (l, rs) -> let rs_strs = List.map string_of_operand rs in
-                       string_of_operand l ^ " = {" ^
-                         (String.concat ", " rs_strs) ^ "}"
+                            string_of_type t ^ ") " ^ string_of_operand op
   | Add (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                          " + " ^ string_of_operand r1
   | Sub (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
