@@ -15,6 +15,7 @@
               "short"                      , SHORT;
               "struct"                     , STRUCT;
               "const"                      , CONST;
+              "static"                     , STATIC;
               "signed"                     , SIGNED;
               "unsigned"                   , UNSIGNED;
               "long"                       , LONG;
@@ -56,6 +57,7 @@ token = parse
   | '}'                            { RBRACK }
   | '<'                            { LANGLE }
   | '>'                            { RANGLE }
+  | '.'                            { DOT }
   | ','                            { COMMA }
   | ':'                            { COLON }
   | ';'                            { SEMICOLON }
@@ -65,6 +67,7 @@ token = parse
   | '+'                            { ADDOP }
   | '-'                            { SUBOP }
   | '*'                            { MULOP }
+  | '/'                            { DIVOP }
   | "w*"                           { WMULOP }
   | '&'                            { ANDOP }
   | '|'                            { OROP }
@@ -82,7 +85,11 @@ token = parse
   | "WIDEN_MULT_PLUS_EXPR"         { WMADDOP }
   | "WIDEN_MULT_MINUS_EXPR"        { WMSUBOP }
   | ".DEFERRED_INIT"               { DEFERRED_INIT }
+  | "BIT_FIELD_REF"                { BIT_FIELD_REF }
   | ".VCOND_MASK"                  { VCOND_MASK }
+  | ".STORE_LANES"                 { STORE_LANES }
+  | "VIEW_CONVERT_EXPR"            { VIEW_CONVERT_EXPR }
+  | "VEC_PERM_EXPR"                { VEC_PERM_EXPR }
   | "vec_unpack_lo_expr"           { VEC_UNPACK_LO_EXPR }
   | "vec_unpack_hi_expr"           { VEC_UNPACK_HI_EXPR }
   (* Types *)
@@ -107,7 +114,9 @@ token = parse
   | "char * {ref-all}"             { CHAR_REF_ALL }
   | "CLOBBER(eos)"                 { CLOBBER_EOS }
   | "CLOBBER(eol)"                 { CLOBBER_EOL }
+  | "CLOBBER"                      { CLOBBER }
   | "tail call"                    { TAIL_CALL }
+  | "err:"                         { ERR_LABEL }
   | identity as id                 { try
                                        Hashtbl.find keywords id
                                      with Not_found ->

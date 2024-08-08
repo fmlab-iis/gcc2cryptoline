@@ -16,19 +16,21 @@
 %token <int> UINT SINT BYTE BOOLS UBOOLS
 
 %token LPAREN RPAREN LSQUARE RSQUARE LBRACK RBRACK LANGLE RANGLE
-%token COMMA SEMICOLON COLON DQUOTE
+%token COMMA SEMICOLON COLON DQUOTE DOT
 /* Operators */
 %token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP NEQOP
-%token LEOP GEOP EEQOP
+%token LEOP GEOP EEQOP DIVOP
 %token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
-%token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR
+%token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR
+%token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF
+
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
-%token BOOLS UBOOLS
+%token BOOLS UBOOLS STATIC
 /* Others */
 %token ATTRIBUTE ACCESS MEM EOF RETURN BB IF ELSE GOTO
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL_COUNT
-%token CLOBBER_EOS CLOBBER_EOL TAIL_CALL
+%token CLOBBER_EOS CLOBBER_EOL CLOBBER TAIL_CALL ERR_LABEL
 
 %start gimple
 %type <Syntax.function_t list> gimple
@@ -81,6 +83,9 @@ var_decl:
   typ ID SEMICOLON                        { { vty = $1; vname = $2 } }
 | typ ID LSQUARE NUM RSQUARE SEMICOLON    { { vty = Array ($4, $1);
                                               vname = $2 } }
+| STATIC typ ID LSQUARE NUM RSQUARE EQOP STRING SEMICOLON
+                                          { { vty = Array ($5, $2);
+                                              vname = $3 } }
 ;
 
 ground_typ:
@@ -111,6 +116,7 @@ ground_typ:
 
 typ:
   ground_typ                              { $1 }
+| STRUCT MULOP                            { Pointer (Struct "") }
 | typ MULOP                               { Pointer $1 }
 | typ LSQUARE NUM RSQUARE                 { Array ($3, $1) }
 ;
@@ -140,8 +146,13 @@ op:
 ;
 
 ops:
-| op                                      { [ $1 ] }
 | op COMMA ops                            { $1::$3 }
+| mem COMMA ops                           { $1::$3 }
+| mem ID COMMA ops                        { $1::$4 }
+| op                                      { [$1] }
+| mem                                     { [$1] }
+| mem ID                                  { [$1] }
+|                                         { [] }
 ;
 
 instr:
@@ -149,6 +160,11 @@ instr:
                                           { Nop }
 | op EQOP LBRACK ops RBRACK LBRACK CLOBBER_EOL RBRACK SEMICOLON
                                           { Nop }
+| op EQOP LBRACK ops RBRACK LBRACK CLOBBER RBRACK SEMICOLON
+                                          { Nop }
+| ERR_LABEL                               { Err }
+| LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON
+                                          { Label $3 }
 | op EQOP LPAREN typ RPAREN op SEMICOLON
                                           { Assign ($1, $4, $6) }
 | op EQOP op SEMICOLON                    { Assign ($1, Void, $3) }
@@ -156,14 +172,14 @@ instr:
 | op EQOP op SUBOP op SEMICOLON           { Sub ($1, $3, $5) }
 | op EQOP op WMULOP op SEMICOLON          { Wmul ($1, $3, $5) }
 | op EQOP op MULOP op SEMICOLON           { Mul ($1, $3, $5) }
+| op EQOP op DIVOP op SEMICOLON           { Div ($1, $3, $5) }
 | op EQOP op ANDOP op SEMICOLON           { And ($1, $3, $5) }
 | op EQOP op OROP op SEMICOLON            { Or ($1, $3, $5) }
 | op EQOP op XOROP op SEMICOLON           { Xor ($1, $3, $5) }
+| op EQOP op EEQOP op SEMICOLON           { Eq ($1, $3, $5) }
 | op EQOP op NEQOP op SEMICOLON           { Neq ($1, $3, $5) }
 | op EQOP op RSHIFT op SEMICOLON          { Rshift ($1, $3, $5) }
 | op EQOP op LSHIFT op SEMICOLON          { Lshift ($1, $3, $5) }
-| LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON
-                                          { Label $3 }
 | op EQOP op QUESTION op COLON op SEMICOLON
                                           { Ite ($1, $3, $5, $7) }
 | op EQOP mem SEMICOLON                   { Load ($1, $3) }
@@ -186,8 +202,16 @@ instr:
 | op EQOP DEFERRED_INIT LPAREN NUM COMMA NUM COMMA
   ANDOP STRING LSQUARE NUM RSQUARE RPAREN SEMICOLON
                                           { DeferredInit ($1) }
+| op EQOP BIT_FIELD_REF LANGLE op COMMA op COMMA op RANGLE SEMICOLON
+                                          { BitFieldRef ($1, $5, $7, $9) }
 | op EQOP VCOND_MASK LPAREN op COMMA op COMMA op RPAREN SEMICOLON
                                           { VCondMask ($1, $5, $7, $9) }
+| op EQOP VIEW_CONVERT_EXPR LANGLE typ RANGLE LPAREN op RPAREN SEMICOLON
+                                          { ViewConvertExpr ($1, $5, $8) }
+| op EQOP VEC_PERM_EXPR LANGLE op COMMA op COMMA op RANGLE SEMICOLON
+                                          { VecPermExpr ($1, $5, $7, $9) }
+| mem EQOP STORE_LANES LPAREN op RPAREN SEMICOLON
+                                          { StoreLanes ($1, $5) }
 | IF LPAREN condition RPAREN
   GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
   ELSE
@@ -204,6 +228,7 @@ mem:
 | MULOP loc                               { Deref (Mem (Void, $2)) }
 | MEM LANGLE typ RANGLE LSQUARE loc RSQUARE
                                           { Mem ($3, $6) }
+| ANDOP mem                               { Ref $2 }
 ;
 
 loc:

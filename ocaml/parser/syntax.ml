@@ -31,16 +31,18 @@ type cond_t = | Eq of operand_t * operand_t | Neq of operand_t * operand_t
 
 type label_t = Z.t
 
-type instr_t = Nop
+type instr_t = Nop | Err
              | Label of label_t
              | Assign of operand_t * type_t * operand_t
              | Add of operand_t * operand_t * operand_t
              | Sub of operand_t * operand_t * operand_t
              | Mul of operand_t * operand_t * operand_t
+             | Div of operand_t * operand_t * operand_t
              | Wmul of operand_t * operand_t * operand_t
              | And of operand_t * operand_t * operand_t
              | Or of operand_t * operand_t * operand_t
              | Xor of operand_t * operand_t * operand_t
+             | Eq of operand_t * operand_t * operand_t
              | Neq of operand_t * operand_t * operand_t
              | Rshift of operand_t * operand_t * operand_t
              | Lshift of operand_t * operand_t * operand_t
@@ -57,7 +59,11 @@ type instr_t = Nop
              | VecUnpackLo of operand_t * operand_t
              | VecUnpackHi of operand_t * operand_t
              | DeferredInit of operand_t
+             | BitFieldRef of operand_t * operand_t * operand_t * operand_t
              | VCondMask of operand_t * operand_t *operand_t * operand_t
+             | ViewConvertExpr of operand_t * type_t * operand_t
+             | VecPermExpr of operand_t * operand_t * operand_t * operand_t
+             | StoreLanes of operand_t * operand_t
 
 type function_t = { attr : attribute_t; fty : type_t; fname : string;
                     params : param_t list; vars : var_t list; instrs : instr_t list }

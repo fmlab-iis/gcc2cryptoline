@@ -76,7 +76,7 @@ and string_of_operand (op : operand_t) =
   | Ops ps -> let pstrs = List.map string_of_operand ps in
               "{ " ^ (String.concat ", " pstrs) ^ " }"
 
-let string_of_cond cond =
+let string_of_cond (cond : cond_t) =
   match cond with
   | Eq (op0, op1) -> string_of_operand op0 ^ " == " ^ string_of_operand op1
   | Neq (op0, op1) -> string_of_operand op0 ^ " != " ^ string_of_operand op1
@@ -88,6 +88,7 @@ let string_of_cond cond =
 let string_of_instr instr =
   match instr with
   | Nop -> "nop"
+  | Err -> "err:"
   | Label z -> "L" ^ (Z.to_string z)
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
                             string_of_type t ^ ") " ^ string_of_operand op
@@ -97,6 +98,8 @@ let string_of_instr instr =
                          " - " ^ string_of_operand r1
   | Mul (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                          " * " ^ string_of_operand r1
+  | Div (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                         " / " ^ string_of_operand r1
   | Wmul (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                           " w* " ^ string_of_operand r1
   | And (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
@@ -105,6 +108,8 @@ let string_of_instr instr =
                         " | " ^ string_of_operand r1
   | Xor (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " ^ " ^ string_of_operand r1
+  | Eq (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                        " == " ^ string_of_operand r1
   | Neq (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " != " ^ string_of_operand r1
   | Rshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
@@ -146,10 +151,23 @@ let string_of_instr instr =
   | VecUnpackHi (l, r) -> string_of_operand l ^
                             " = [vec_unpack_hi_expr] " ^ string_of_operand r
   | DeferredInit v -> string_of_operand v ^ " = DEFERRED_INIT"
+  | BitFieldRef (l, p0, p1, p2) -> string_of_operand l ^ " = BIT_FIELD_REF <" ^
+                                   string_of_operand p0 ^ ", " ^
+                                   string_of_operand p1 ^ ", " ^
+                                   string_of_operand p2 ^ ">"
   | VCondMask (l, p0, p1, p2) -> string_of_operand l ^ " = VCOND_MASK (" ^
                                    string_of_operand p0 ^ ", " ^
                                    string_of_operand p1 ^ ", " ^
                                    string_of_operand p2 ^ ")"
+  | ViewConvertExpr (l, t, r) -> string_of_operand l ^ " = VIEW_CONVERT_EXPR <" ^
+                                   string_of_type t ^ ">(" ^
+                                   string_of_operand r ^ ")"
+  | VecPermExpr (l, op0, op1, op2) -> string_of_operand l ^ " = VEC_PERM_EXPR <" ^
+                                        string_of_operand op0 ^ ", " ^
+                                        string_of_operand op1 ^ ", " ^
+                                        string_of_operand op2 ^ ">"
+  | StoreLanes (m, r) -> string_of_operand m ^ " = STORE_LANES (" ^
+                           string_of_operand r ^ ")"
 
 let string_of_func f =
   let strings_of_instrs =
