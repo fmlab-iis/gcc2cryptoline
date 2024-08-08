@@ -84,6 +84,7 @@ var_decl:
 ;
 
 ground_typ:
+| CHAR_REF_ALL                            { CharRefAll }
 | VOID                                    { Void }
 | BOOL                                    { Bool }
 | CHAR                                    { Char }
@@ -203,10 +204,6 @@ mem:
 | MULOP loc                               { Deref (Mem (Void, $2)) }
 | MEM LANGLE typ RANGLE LSQUARE loc RSQUARE
                                           { Mem ($3, $6) }
-| MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ANDOP loc RSQUARE
-                                          { Ref (Mem ($3, $10)) }
-| MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN loc RSQUARE
-                                          { Mem ($3, $9) }
 ;
 
 loc:

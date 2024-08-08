@@ -20,6 +20,7 @@ let string_of_access_pat pats : string =
 
 let rec string_of_type typ =
   match typ with
+  | CharRefAll -> "char * {ref-all}"
   | Void -> "void"
   | Bool -> "_Bool"
   | Char -> "char"
