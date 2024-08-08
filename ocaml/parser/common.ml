@@ -51,32 +51,37 @@ let string_of_params params =
     (List.rev (List.rev_map
                  (fun p -> string_of_type p.pty ^ " " ^ p.pname) params))
 
-let rec string_of_operand (op : operand_t) =
-  match op with
-  | Var s -> s
-  | Const z -> Z.to_string z
-  | Neg p -> "-" ^ string_of_operand p
-  | Element (p, op) -> string_of_operand p ^ "[" ^ string_of_operand op ^ "]"
-  | Member (p, op) -> string_of_operand p ^ "->" ^ string_of_operand op ^ "]"
-  | Ref p -> "&" ^ string_of_operand p
-  | Ops ps -> let pstrs = List.map string_of_operand ps in
-              "{ " ^ (String.concat ", " pstrs) ^ " }"
-
-let rec string_of_offset off =
+let rec string_of_offset (off : offset_t) =
   match off with
   | Const c -> string_of_int c
   | Var s -> s
   | Add (off0, off1) -> string_of_offset off0 ^ " + " ^ string_of_offset off1
   | Mul (off0, off1) -> string_of_offset off0 ^ " * " ^ string_of_offset off1
 
-let string_of_loc loc =
+let rec string_of_loc loc =
   "(" ^ string_of_type loc.lty ^ ")" ^ string_of_operand loc.lop ^
     " + " ^ string_of_offset loc.loffset
+and string_of_operand (op : operand_t) =
+  match op with
+  | Var s -> s
+  | Const z -> Z.to_string z
+  | String s -> "\"" ^ s ^ "\""
+  | Neg p -> "-" ^ string_of_operand p
+  | Element (p, op) -> string_of_operand p ^ "[" ^ string_of_operand op ^ "]"
+  | Member (p, op) -> string_of_operand p ^ "->" ^ string_of_operand op ^ "]"
+  | Mem (t, l) -> "MEM <" ^ string_of_type t ^ "> [" ^ string_of_loc l ^ "]"
+  | Ref p -> "&" ^ string_of_operand p
+  | Deref p -> "*" ^ string_of_operand p
+  | Ops ps -> let pstrs = List.map string_of_operand ps in
+              "{ " ^ (String.concat ", " pstrs) ^ " }"
 
 let string_of_cond cond =
   match cond with
+  | Eq (op0, op1) -> string_of_operand op0 ^ " == " ^ string_of_operand op1
   | Neq (op0, op1) -> string_of_operand op0 ^ " != " ^ string_of_operand op1
   | Gt (op0, op1) -> string_of_operand op0 ^ " > " ^ string_of_operand op1
+  | Ge (op0, op1) -> string_of_operand op0 ^ " >= " ^ string_of_operand op1
+  | Lt (op0, op1) -> string_of_operand op0 ^ " < " ^ string_of_operand op1
   | Le (op0, op1) -> string_of_operand op0 ^ " <= " ^ string_of_operand op1
 
 let string_of_instr instr =
@@ -99,30 +104,32 @@ let string_of_instr instr =
                         " | " ^ string_of_operand r1
   | Xor (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " ^ " ^ string_of_operand r1
+  | Neq (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                        " != " ^ string_of_operand r1
   | Rshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
                           ^ " >> " ^ string_of_operand r1
   | Lshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
                           ^ " << " ^ string_of_operand r1
-  | Load (l, t, loc) -> string_of_operand l ^ " = MEM <" ^ string_of_type t ^ "> [" ^
-                          string_of_loc loc ^ "]"
-  | Store (loc, t, r) -> "MEM <" ^ string_of_type t ^ "> [" ^
-                           string_of_loc loc ^ "] = " ^ string_of_operand r
-  | Copy (t0, l, t1, r) -> "MEM <" ^ string_of_type t0 ^ "> [& " ^
-                             string_of_operand l ^ "] = MEM <" ^
-                             string_of_type t1 ^ "> [" ^
-                             string_of_operand r ^ "]"
+  | Load (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
+  | Store (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
+  | Copy (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
   | Ite (l, cond, b0, b1) -> string_of_operand l ^ " = " ^
                                string_of_operand cond ^ " ? " ^
                                string_of_operand b0 ^ " : " ^
                                string_of_operand b1
-  | Call (f, ops) -> let op_strs = List.map string_of_operand ops in
-                     f ^ " (" ^ (String.concat "," op_strs) ^ ")"
+  | Call (op, f, ops) -> let op_strs = List.map string_of_operand ops in
+                         (match op with
+                            None -> ""
+                          | Some p -> string_of_operand p ^ " = ") ^
+                           f ^ " (" ^ (String.concat "," op_strs) ^ ")"
   | CondBranch (c, b0, b1) -> "if (" ^ string_of_cond c ^ ")\n" ^
                                 "  goto <bb " ^ Z.to_string b0 ^ ">\n" ^
                                 "else\n" ^
                                 "  goto <bb " ^ Z.to_string b1 ^ ">"
   | Goto b -> "goto <bb" ^ Z.to_string b ^ ">"
-  | Return -> "return"
+  | Return op -> "return" ^ (match op with
+                             | None -> ""
+                             | Some p -> string_of_operand p)
   | Wmadd (l, r0, r1, r2) -> string_of_operand l ^
                                " = WIDEN_MULT_PLUS_EXPR <" ^
                                string_of_operand r0 ^ ", " ^
@@ -138,6 +145,10 @@ let string_of_instr instr =
   | VecUnpackHi (l, r) -> string_of_operand l ^
                             " = [vec_unpack_hi_expr] " ^ string_of_operand r
   | DeferredInit v -> string_of_operand v ^ " = DEFERRED_INIT"
+  | VCondMask (l, p0, p1, p2) -> string_of_operand l ^ " = VCOND_MASK (" ^
+                                   string_of_operand p0 ^ ", " ^
+                                   string_of_operand p1 ^ ", " ^
+                                   string_of_operand p2 ^ ")"
 
 let string_of_func f =
   let strings_of_instrs =

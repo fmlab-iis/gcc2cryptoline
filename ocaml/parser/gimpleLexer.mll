@@ -70,8 +70,10 @@ token = parse
   | '|'                            { OROP }
   | '^'                            { XOROP }
   | '='                            { EQOP }
+  | "=="                           { EEQOP }
   | "!="                           { NEQOP }
   | "<="                           { LEOP }
+  | ">="                           { GEOP }
   | '?'                            { QUESTION }
   | "<<"                           { LSHIFT }
   | ">>"                           { RSHIFT }
@@ -80,6 +82,7 @@ token = parse
   | "WIDEN_MULT_PLUS_EXPR"         { WMADDOP }
   | "WIDEN_MULT_MINUS_EXPR"        { WMSUBOP }
   | ".DEFERRED_INIT"               { DEFERRED_INIT }
+  | ".VCOND_MASK"                  { VCOND_MASK }
   | "vec_unpack_lo_expr"           { VEC_UNPACK_LO_EXPR }
   | "vec_unpack_hi_expr"           { VEC_UNPACK_HI_EXPR }
   (* Types *)
@@ -97,7 +100,7 @@ token = parse
   (* Offsets *)
   | ('-'? (number+) as byte) "B"        { BYTE (int_of_string byte) }
   (* Strings *)
-  | '"' (([^'\r''\n'' ']+) as s) '"'            { STRING s }
+  | '"' (([^'\r''\n']+) as s) '"'            { STRING s }
   (* Misc *)
   | "local count"                  { LOCAL_COUNT }
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }

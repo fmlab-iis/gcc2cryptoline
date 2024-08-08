@@ -19,8 +19,8 @@
 %token COMMA SEMICOLON COLON DQUOTE
 /* Operators */
 %token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP NEQOP
-%token LEOP
-%token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT
+%token LEOP GEOP EEQOP
+%token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
@@ -86,6 +86,7 @@ var_decl:
 ground_typ:
 | VOID                                    { Void }
 | BOOL                                    { Bool }
+| CHAR                                    { Char }
 | UNSIGNED CHAR                           { Uchar }
 | SIGNED CHAR                             { Char }
 | SHORT INT                               { Short }
@@ -126,13 +127,15 @@ instrs:
 op:
 | ID                                      { Var $1 : operand_t }
 | NUM                                     { Const $1 }
+| BYTE                                    { Const (Z.of_int $1) }
 | SUBOP op                                { Neg $2 }
-| ID LSQUARE NUM RSQUARE                  { Element (Var $1, Const $3) }
+| ID LSQUARE op RSQUARE                  { Element (Var $1, $3) }
 | ID RARROW ID LSQUARE NUM RSQUARE        { Element (Member (Var $1, Var $3),
                                                      Const $5) }
 | ID RARROW ID                            { Member (Var $1, Var $3) }
 | ANDOP op                                { Ref $2 }
 | LBRACK ops RBRACK                       { Ops $2 }
+| STRING                                  { String $1 }
 ;
 
 ops:
@@ -155,29 +158,22 @@ instr:
 | op EQOP op ANDOP op SEMICOLON           { And ($1, $3, $5) }
 | op EQOP op OROP op SEMICOLON            { Or ($1, $3, $5) }
 | op EQOP op XOROP op SEMICOLON           { Xor ($1, $3, $5) }
+| op EQOP op NEQOP op SEMICOLON           { Neq ($1, $3, $5) }
 | op EQOP op RSHIFT op SEMICOLON          { Rshift ($1, $3, $5) }
 | op EQOP op LSHIFT op SEMICOLON          { Lshift ($1, $3, $5) }
 | LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON
                                           { Label $3 }
 | op EQOP op QUESTION op COLON op SEMICOLON
                                           { Ite ($1, $3, $5, $7) }
-| op EQOP MULOP loc SEMICOLON             { Load ($1, Void, $4) }
-| op EQOP MEM LSQUARE loc RSQUARE SEMICOLON
-                                          { Load ($1, Void, $5) }
-| op EQOP MEM LANGLE typ RANGLE LSQUARE loc RSQUARE SEMICOLON
-                                          { Load ($1, $5, $8) }
-| ID LPAREN ops RPAREN SEMICOLON          { Call ($1, $3) }
+| op EQOP mem SEMICOLON                   { Load ($1, $3) }
+| ID LPAREN ops RPAREN SEMICOLON          { Call (None, $1, $3) }
 | ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
-                                          { Call ($1, $3) }
-| MULOP loc EQOP op SEMICOLON             { Store ($2, Void, $4) }
-| MEM LSQUARE loc RSQUARE EQOP ID SEMICOLON
-                                          { Store ($3, Void, Var $6) }
-| MEM LANGLE typ RANGLE LSQUARE loc RSQUARE EQOP ID SEMICOLON
-                                          { Store ($6, $3, Var $9) }
-| MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ANDOP ID RSQUARE
-  EQOP MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ID RSQUARE
-  SEMICOLON                               { Copy ($3, Ref (Var $10),
-                                                  $15, Var $21) }
+                                          { Call (None, $1, $3) }
+| op EQOP ID LPAREN ops RPAREN SEMICOLON  { Call (Some $1, $3, $5) }
+| op EQOP ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
+                                          { Call (Some $1, $3, $5) }
+| mem EQOP op SEMICOLON                   { Store ($1, $3) }
+| mem EQOP mem SEMICOLON                  { Copy ($1, $3) }
 | op EQOP WMADDOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON
                                           { Wmadd ($1, $5, $7, $9) }
 | op EQOP WMSUBOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON
@@ -189,6 +185,8 @@ instr:
 | op EQOP DEFERRED_INIT LPAREN NUM COMMA NUM COMMA
   ANDOP STRING LSQUARE NUM RSQUARE RPAREN SEMICOLON
                                           { DeferredInit ($1) }
+| op EQOP VCOND_MASK LPAREN op COMMA op COMMA op RPAREN SEMICOLON
+                                          { VCondMask ($1, $5, $7, $9) }
 | IF LPAREN condition RPAREN
   GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
   ELSE
@@ -196,7 +194,19 @@ instr:
                                           { CondBranch ($3, $8, $19) }
 | GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
                                           { Goto $4 }
-| RETURN SEMICOLON                        { Return }
+| RETURN op SEMICOLON                     { Return (Some $2) }
+| RETURN SEMICOLON                        { Return None }
+;
+
+mem:
+| MEM LSQUARE loc RSQUARE                 { Mem (Void, $3) }
+| MULOP loc                               { Deref (Mem (Void, $2)) }
+| MEM LANGLE typ RANGLE LSQUARE loc RSQUARE
+                                          { Mem ($3, $6) }
+| MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN ANDOP loc RSQUARE
+                                          { Ref (Mem ($3, $10)) }
+| MEM LANGLE typ RANGLE LSQUARE LPAREN CHAR_REF_ALL RPAREN loc RSQUARE
+                                          { Mem ($3, $9) }
 ;
 
 loc:
@@ -222,10 +232,10 @@ loc:
 ;
 
 condition:
-  ID NEQOP NUM                            { Neq (Var $1, Const $3) }
-| ID NEQOP ID                             { Neq (Var $1, Var $3) }
-| ID RANGLE NUM                           { Gt (Var $1, Const $3) }
-| ID RANGLE ID                            { Gt (Var $1, Var $3) }
-| ID LEOP ID                              { Le (Var $1, Var $3) }
-| ID LEOP NUM                             { Le (Var $1, Const $3) }
+| op EEQOP op                             { Eq ($1, $3) }
+| op NEQOP op                             { Neq ($1, $3) }
+| op RANGLE op                            { Gt ($1, $3) }
+| op GEOP op                              { Ge ($1, $3) }
+| op LANGLE op                            { Lt ($1, $3) }
+| op LEOP op                              { Le ($1, $3) }
 ;
