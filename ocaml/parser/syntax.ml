@@ -39,15 +39,20 @@ type instr_t = Nop | Err
              | Mul of operand_t * operand_t * operand_t
              | Div of operand_t * operand_t * operand_t
              | Wmul of operand_t * operand_t * operand_t
+             | Gt of operand_t * operand_t * operand_t
+             | Ge of operand_t * operand_t * operand_t
+             | Lt of operand_t * operand_t * operand_t
+             | Le of operand_t * operand_t * operand_t
              | And of operand_t * operand_t * operand_t
              | Or of operand_t * operand_t * operand_t
              | Xor of operand_t * operand_t * operand_t
+             | Not of operand_t * operand_t
              | Eq of operand_t * operand_t * operand_t
              | Neq of operand_t * operand_t * operand_t
              | Rshift of operand_t * operand_t * operand_t
              | Lshift of operand_t * operand_t * operand_t
-             | Load of operand_t * operand_t
-             | Store of operand_t * operand_t
+             | Load of type_t * operand_t * operand_t
+             | Store of type_t * operand_t * operand_t
              | Copy of operand_t * operand_t
              | Ite of operand_t * operand_t * operand_t * operand_t
              | Call of operand_t option * string * operand_t list
@@ -63,6 +68,7 @@ type instr_t = Nop | Err
              | VCondMask of operand_t * operand_t *operand_t * operand_t
              | ViewConvertExpr of operand_t * type_t * operand_t
              | VecPermExpr of operand_t * operand_t * operand_t * operand_t
+             | VecPackTruncExpr of operand_t * operand_t * operand_t
              | StoreLanes of operand_t * operand_t
 
 type function_t = { attr : attribute_t; fty : type_t; fname : string;

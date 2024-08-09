@@ -19,10 +19,10 @@
 %token COMMA SEMICOLON COLON DQUOTE DOT
 /* Operators */
 %token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP NEQOP
-%token LEOP GEOP EEQOP DIVOP
+%token LEOP GEOP EEQOP DIVOP NOTOP
 %token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR
-%token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF
+%token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF VEC_PACK_TRUNC_EXPR
 
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
@@ -95,6 +95,7 @@ ground_typ:
 | CHAR                                    { Char }
 | UNSIGNED CHAR                           { Uchar }
 | SIGNED CHAR                             { Char }
+| UNSIGNED SHORT                          { Ushort }
 | SHORT INT                               { Short }
 | SHORT UNSIGNED INT                      { Ushort }
 | INT                                     { Int }
@@ -131,27 +132,29 @@ instrs:
 |                                         { [] }
 ;
 
-op:
+ground_op:
 | ID                                      { Var $1 : operand_t }
 | NUM                                     { Const $1 }
 | BYTE                                    { Const (Z.of_int $1) }
-| SUBOP op                                { Neg $2 }
-| ID LSQUARE op RSQUARE                  { Element (Var $1, $3) }
+| ID LSQUARE ground_op RSQUARE            { Element (Var $1, $3) }
 | ID RARROW ID LSQUARE NUM RSQUARE        { Element (Member (Var $1, Var $3),
                                                      Const $5) }
 | ID RARROW ID                            { Member (Var $1, Var $3) }
-| ANDOP op                                { Ref $2 }
-| LBRACK ops RBRACK                       { Ops $2 }
 | STRING                                  { String $1 }
+;
+
+op:
+| ground_op                               { $1 }
+| SUBOP ground_op                         { Neg $2 }
+| ANDOP ground_op                         { Ref $2 }
+| LBRACK ops RBRACK                       { Ops $2 }
 ;
 
 ops:
 | op COMMA ops                            { $1::$3 }
 | mem COMMA ops                           { $1::$3 }
-| mem ID COMMA ops                        { $1::$4 }
 | op                                      { [$1] }
 | mem                                     { [$1] }
-| mem ID                                  { [$1] }
 |                                         { [] }
 ;
 
@@ -165,6 +168,8 @@ instr:
 | ERR_LABEL                               { Err }
 | LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON
                                           { Label $3 }
+| LANGLE BB NUM RANGLE LSQUARE ID COLON NUM RSQUARE COLON
+                                          { Label $3 }
 | op EQOP LPAREN typ RPAREN op SEMICOLON
                                           { Assign ($1, $4, $6) }
 | op EQOP op SEMICOLON                    { Assign ($1, Void, $3) }
@@ -173,23 +178,29 @@ instr:
 | op EQOP op WMULOP op SEMICOLON          { Wmul ($1, $3, $5) }
 | op EQOP op MULOP op SEMICOLON           { Mul ($1, $3, $5) }
 | op EQOP op DIVOP op SEMICOLON           { Div ($1, $3, $5) }
+| op EQOP op RANGLE op SEMICOLON          { Gt ($1, $3, $5) }
+| op EQOP op GEOP op SEMICOLON            { Ge ($1, $3, $5) }
+| op EQOP op LANGLE op SEMICOLON          { Lt ($1, $3, $5) }
+| op EQOP op LEOP op SEMICOLON            { Le ($1, $3, $5) }
 | op EQOP op ANDOP op SEMICOLON           { And ($1, $3, $5) }
 | op EQOP op OROP op SEMICOLON            { Or ($1, $3, $5) }
 | op EQOP op XOROP op SEMICOLON           { Xor ($1, $3, $5) }
+| op EQOP NOTOP op SEMICOLON              { Not ($1, $4) }
 | op EQOP op EEQOP op SEMICOLON           { Eq ($1, $3, $5) }
 | op EQOP op NEQOP op SEMICOLON           { Neq ($1, $3, $5) }
 | op EQOP op RSHIFT op SEMICOLON          { Rshift ($1, $3, $5) }
 | op EQOP op LSHIFT op SEMICOLON          { Lshift ($1, $3, $5) }
 | op EQOP op QUESTION op COLON op SEMICOLON
                                           { Ite ($1, $3, $5, $7) }
-| op EQOP mem SEMICOLON                   { Load ($1, $3) }
+| op EQOP LPAREN typ RPAREN mem SEMICOLON { Load ($4, $1, $6) }
+| op EQOP mem SEMICOLON                   { Load (Void, $1, $3) }
 | ID LPAREN ops RPAREN SEMICOLON          { Call (None, $1, $3) }
 | ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call (None, $1, $3) }
 | op EQOP ID LPAREN ops RPAREN SEMICOLON  { Call (Some $1, $3, $5) }
 | op EQOP ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call (Some $1, $3, $5) }
-| mem EQOP op SEMICOLON                   { Store ($1, $3) }
+| mem EQOP op SEMICOLON                   { Store (Void, $1, $3) }
 | mem EQOP mem SEMICOLON                  { Copy ($1, $3) }
 | op EQOP WMADDOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON
                                           { Wmadd ($1, $5, $7, $9) }
@@ -210,6 +221,8 @@ instr:
                                           { ViewConvertExpr ($1, $5, $8) }
 | op EQOP VEC_PERM_EXPR LANGLE op COMMA op COMMA op RANGLE SEMICOLON
                                           { VecPermExpr ($1, $5, $7, $9) }
+| op EQOP VEC_PACK_TRUNC_EXPR LANGLE op COMMA op RANGLE SEMICOLON
+                                          { VecPackTruncExpr ($1, $5, $7) }
 | mem EQOP STORE_LANES LPAREN op RPAREN SEMICOLON
                                           { StoreLanes ($1, $5) }
 | IF LPAREN condition RPAREN
@@ -223,12 +236,23 @@ instr:
 | RETURN SEMICOLON                        { Return None }
 ;
 
-mem:
+ground_mem:
 | MEM LSQUARE loc RSQUARE                 { Mem (Void, $3) }
 | MULOP loc                               { Deref (Mem (Void, $2)) }
 | MEM LANGLE typ RANGLE LSQUARE loc RSQUARE
                                           { Mem ($3, $6) }
-| ANDOP mem                               { Ref $2 }
+| ground_mem ID                           { let field = String.sub $2 1
+                                                          (pred (String.length $2))
+                                            in Member ($1, Var field) }
+| ground_mem ID LSQUARE NUM RSQUARE       { let field = String.sub $2 1
+                                                          (pred (String.length $2))
+                                            in Member ($1, Element (Var field,
+                                                                    Const $4)) }
+;
+
+mem:
+| ground_mem                              { $1 }
+| ANDOP ground_mem                        { Ref $2 }
 ;
 
 loc:

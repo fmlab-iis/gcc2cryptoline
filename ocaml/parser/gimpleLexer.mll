@@ -72,6 +72,7 @@ token = parse
   | '&'                            { ANDOP }
   | '|'                            { OROP }
   | '^'                            { XOROP }
+  | '~'                            { NOTOP }
   | '='                            { EQOP }
   | "=="                           { EEQOP }
   | "!="                           { NEQOP }
@@ -90,6 +91,7 @@ token = parse
   | ".STORE_LANES"                 { STORE_LANES }
   | "VIEW_CONVERT_EXPR"            { VIEW_CONVERT_EXPR }
   | "VEC_PERM_EXPR"                { VEC_PERM_EXPR }
+  | "VEC_PACK_TRUNC_EXPR"          { VEC_PACK_TRUNC_EXPR }
   | "vec_unpack_lo_expr"           { VEC_UNPACK_LO_EXPR }
   | "vec_unpack_hi_expr"           { VEC_UNPACK_HI_EXPR }
   (* Types *)

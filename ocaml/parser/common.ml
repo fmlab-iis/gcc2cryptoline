@@ -102,12 +102,21 @@ let string_of_instr instr =
                          " / " ^ string_of_operand r1
   | Wmul (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                           " w* " ^ string_of_operand r1
+  | Gt (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                          " > " ^ string_of_operand r1
+  | Ge (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                          " >= " ^ string_of_operand r1
+  | Lt (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                          " < " ^ string_of_operand r1
+  | Le (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                          " <= " ^ string_of_operand r1
   | And (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                          " & " ^ string_of_operand r1
   | Or (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " | " ^ string_of_operand r1
   | Xor (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " ^ " ^ string_of_operand r1
+  | Not (l, r) -> string_of_operand l ^ " = ~" ^ string_of_operand r
   | Eq (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " == " ^ string_of_operand r1
   | Neq (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
@@ -116,8 +125,10 @@ let string_of_instr instr =
                           ^ " >> " ^ string_of_operand r1
   | Lshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
                           ^ " << " ^ string_of_operand r1
-  | Load (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
-  | Store (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
+  | Load (t, d, s) -> string_of_operand d ^ " = (" ^ string_of_type t ^ ") " ^
+                        string_of_operand s
+  | Store (t, d, s) -> string_of_operand d ^ " = (" ^ string_of_type t ^ ") " ^
+                         string_of_operand s
   | Copy (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
   | Ite (l, cond, b0, b1) -> string_of_operand l ^ " = " ^
                                string_of_operand cond ^ " ? " ^
@@ -166,6 +177,9 @@ let string_of_instr instr =
                                         string_of_operand op0 ^ ", " ^
                                         string_of_operand op1 ^ ", " ^
                                         string_of_operand op2 ^ ">"
+  | VecPackTruncExpr (l, op0, op1) -> string_of_operand l ^ " = VEC_PACK_TRUNC_EXPR <" ^
+                                        string_of_operand op0 ^ ", " ^
+                                        string_of_operand op1 ^ ">"
   | StoreLanes (m, r) -> string_of_operand m ^ " = STORE_LANES (" ^
                            string_of_operand r ^ ")"
 
