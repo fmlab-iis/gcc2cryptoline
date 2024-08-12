@@ -49,8 +49,10 @@ type instr_t = Nop | Err
              | Not of operand_t * operand_t
              | Eq of operand_t * operand_t * operand_t
              | Neq of operand_t * operand_t * operand_t
-             | Rshift of operand_t * operand_t * operand_t
              | Lshift of operand_t * operand_t * operand_t
+             | Rshift of operand_t * operand_t * operand_t
+             | Lrotate of operand_t * operand_t * operand_t
+             | Rrotate of operand_t * operand_t * operand_t
              | Load of type_t * operand_t * operand_t
              | Store of type_t * operand_t * operand_t
              | Copy of operand_t * operand_t

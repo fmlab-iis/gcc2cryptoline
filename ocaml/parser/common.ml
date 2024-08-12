@@ -121,10 +121,14 @@ let string_of_instr instr =
                         " == " ^ string_of_operand r1
   | Neq (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                         " != " ^ string_of_operand r1
-  | Rshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
-                          ^ " >> " ^ string_of_operand r1
   | Lshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
                           ^ " << " ^ string_of_operand r1
+  | Rshift (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
+                          ^ " >> " ^ string_of_operand r1
+  | Lrotate (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
+                          ^ " r<< " ^ string_of_operand r1
+  | Rrotate (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
+                          ^ " r>> " ^ string_of_operand r1
   | Load (t, d, s) -> string_of_operand d ^ " = (" ^ string_of_type t ^ ") " ^
                         string_of_operand s
   | Store (t, d, s) -> string_of_operand d ^ " = (" ^ string_of_type t ^ ") " ^

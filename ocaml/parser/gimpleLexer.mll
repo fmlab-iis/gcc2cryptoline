@@ -81,6 +81,8 @@ token = parse
   | '?'                            { QUESTION }
   | "<<"                           { LSHIFT }
   | ">>"                           { RSHIFT }
+  | "r<<"                          { LROTATE }
+  | "r>>"                          { RROTATE }
   | "->"                           { RARROW }
   (* intrinsics *)
   | "WIDEN_MULT_PLUS_EXPR"         { WMADDOP }

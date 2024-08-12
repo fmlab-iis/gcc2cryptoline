@@ -19,7 +19,7 @@
 %token COMMA SEMICOLON COLON DQUOTE DOT
 /* Operators */
 %token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP NEQOP
-%token LEOP GEOP EEQOP DIVOP NOTOP
+%token LEOP GEOP EEQOP DIVOP NOTOP LROTATE RROTATE
 %token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR
 %token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF VEC_PACK_TRUNC_EXPR
@@ -96,14 +96,17 @@ ground_typ:
 | UNSIGNED CHAR                           { Uchar }
 | SIGNED CHAR                             { Char }
 | UNSIGNED SHORT                          { Ushort }
-| SHORT INT                               { Short }
 | SHORT UNSIGNED INT                      { Ushort }
-| INT                                     { Int }
+| SIGNED SHORT                            { Short }
+| SHORT INT                               { Short }
 | UNSIGNED INT                            { Uint }
+| INT                                     { Int }
 | SIGNED INT                              { Int }
-| LONG LONG UNSIGNED INT                  { Ullong }
-| LONG LONG INT                           { Llong }
 | UNSIGNED LONG                           { Ulong }
+| LONG INT                                { Long }
+| LONG LONG UNSIGNED INT                  { Ullong }
+| LONG UNSIGNED INT                       { Ulong }
+| LONG LONG INT                           { Llong }
 | BOOLS                                   { Bools $1 }
 | UBOOLS                                  { Ubools $1 }
 | UINT                                    { Uword $1 }
@@ -141,12 +144,19 @@ ground_op:
                                                      Const $5) }
 | ID RARROW ID                            { Member (Var $1, Var $3) }
 | STRING                                  { String $1 }
+| SUBOP ground_op                         { Neg $2 }
+| ANDOP ground_op                         { Ref $2 }
+;
+
+composite_op:
+| LPAREN MULOP ground_op RPAREN           { Deref $3 }
+| LPAREN MULOP ground_op RPAREN LSQUARE NUM RSQUARE
+                                          { Element (Deref $3, Const $6) }
 ;
 
 op:
 | ground_op                               { $1 }
-| SUBOP ground_op                         { Neg $2 }
-| ANDOP ground_op                         { Ref $2 }
+| composite_op                            { $1 }
 | LBRACK ops RBRACK                       { Ops $2 }
 ;
 
@@ -188,8 +198,10 @@ instr:
 | op EQOP NOTOP op SEMICOLON              { Not ($1, $4) }
 | op EQOP op EEQOP op SEMICOLON           { Eq ($1, $3, $5) }
 | op EQOP op NEQOP op SEMICOLON           { Neq ($1, $3, $5) }
-| op EQOP op RSHIFT op SEMICOLON          { Rshift ($1, $3, $5) }
 | op EQOP op LSHIFT op SEMICOLON          { Lshift ($1, $3, $5) }
+| op EQOP op RSHIFT op SEMICOLON          { Rshift ($1, $3, $5) }
+| op EQOP op LROTATE op SEMICOLON          { Lrotate ($1, $3, $5) }
+| op EQOP op RROTATE op SEMICOLON          { Rrotate ($1, $3, $5) }
 | op EQOP op QUESTION op COLON op SEMICOLON
                                           { Ite ($1, $3, $5, $7) }
 | op EQOP LPAREN typ RPAREN mem SEMICOLON { Load ($4, $1, $6) }
@@ -256,6 +268,25 @@ mem:
 ;
 
 loc:
+  op                                      { { lty = Void; lop = $1;
+                                              loffset = Const 0 } }
+| LPAREN typ RPAREN op                    { { lty = $2; lop = $4;
+                                              loffset = Const 0 } }
+| LPAREN typ RPAREN op ADDOP BYTE         { { lty = $2; lop = $4;
+                                              loffset = Const $6 } }
+| LPAREN typ RPAREN op ADDOP ID MULOP NUM { { lty = $2; lop = $4;
+                                              loffset =
+                                                Mul (Var $6, Const (Z.to_int $8)) } }
+| LPAREN typ RPAREN op ADDOP BYTE ADDOP ID MULOP NUM
+                                          { { lty = $2; lop = $4;
+                                              loffset =
+                                                Add (Const $6,
+                                                     Mul (Var $8,
+                                                          Const (Z.to_int $10))) } }
+;
+
+(*
+loc:
   ID                                      { { lty = Void; lop = Var $1;
                                               loffset = Const 0 } }
 | LPAREN typ RPAREN ID ADDOP BYTE         { { lty = $2; lop = Var $4;
@@ -276,6 +307,7 @@ loc:
       { { lty = $2; lop = Var $4;
           loffset = Mul (Var $6, Const (Z.to_int $8)) } }
 ;
+*)
 
 condition:
 | op EEQOP op                             { Eq ($1, $3) }
