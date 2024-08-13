@@ -46,13 +46,13 @@ type cond_t = | Eq of operand_t * operand_t | Neq of operand_t * operand_t
               | Gt of operand_t * operand_t | Ge of operand_t * operand_t
               | Lt of operand_t * operand_t | Le of operand_t * operand_t
 
-(* labels in <bb NUM> [local count: ...] *)
-type label_t = Z.t
+(* labels in <bb NUM> [local count: ...] or name: *)
+type label_t = BB of Z.t | Name of string
 
 (* instructions *)
 (* Wmul is the wide multiplication *)
 (* the semantics of intrinsics is unclear *)
-type instr_t = Nop | Err
+type instr_t = Nop
              | Label of label_t
              | Assign of operand_t * type_t * operand_t
              | Add of operand_t * operand_t * operand_t
@@ -74,9 +74,6 @@ type instr_t = Nop | Err
              | Rshift of operand_t * operand_t * operand_t
              | Lrotate of operand_t * operand_t * operand_t
              | Rrotate of operand_t * operand_t * operand_t
-             | Load of type_t * operand_t * operand_t
-             | Store of type_t * operand_t * operand_t
-             | Copy of operand_t * operand_t
              | Ite of operand_t * operand_t * operand_t * operand_t
              | Call of operand_t option * string * operand_t list
              | CondBranch of cond_t * label_t * label_t

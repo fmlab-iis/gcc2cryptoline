@@ -120,7 +120,6 @@ token = parse
   | "CLOBBER(eol)"                 { CLOBBER_EOL }
   | "CLOBBER"                      { CLOBBER }
   | "tail call"                    { TAIL_CALL }
-  | "err:"                         { ERR_LABEL }
   | identity as id                 { try
                                        Hashtbl.find keywords id
                                      with Not_found ->

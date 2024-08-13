@@ -85,11 +85,15 @@ let string_of_cond (cond : cond_t) =
   | Lt (op0, op1) -> string_of_operand op0 ^ " < " ^ string_of_operand op1
   | Le (op0, op1) -> string_of_operand op0 ^ " <= " ^ string_of_operand op1
 
+let string_of_label l =
+  match l with
+  | BB z -> "<bb " ^ Z.to_string z ^ ">"
+  | Name s -> "<ll " ^ s ^ ">"
+
 let string_of_instr instr =
   match instr with
   | Nop -> "nop"
-  | Err -> "err:"
-  | Label z -> "L" ^ (Z.to_string z)
+  | Label l -> string_of_label l
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
                             string_of_type t ^ ") " ^ string_of_operand op
   | Add (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
@@ -129,11 +133,6 @@ let string_of_instr instr =
                           ^ " r<< " ^ string_of_operand r1
   | Rrotate (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0
                           ^ " r>> " ^ string_of_operand r1
-  | Load (t, d, s) -> string_of_operand d ^ " = (" ^ string_of_type t ^ ") " ^
-                        string_of_operand s
-  | Store (t, d, s) -> string_of_operand d ^ " = (" ^ string_of_type t ^ ") " ^
-                         string_of_operand s
-  | Copy (d, s) -> string_of_operand d ^ " = " ^ string_of_operand s
   | Ite (l, cond, b0, b1) -> string_of_operand l ^ " = " ^
                                string_of_operand cond ^ " ? " ^
                                string_of_operand b0 ^ " : " ^
@@ -143,11 +142,11 @@ let string_of_instr instr =
                             None -> ""
                           | Some p -> string_of_operand p ^ " = ") ^
                            f ^ " (" ^ (String.concat "," op_strs) ^ ")"
-  | CondBranch (c, b0, b1) -> "if (" ^ string_of_cond c ^ ")\n" ^
-                                "  goto <bb " ^ Z.to_string b0 ^ ">\n" ^
+  | CondBranch (c, l0, l1) -> "if (" ^ string_of_cond c ^ ")\n" ^
+                                "  goto " ^ (string_of_label l0) ^ "\n" ^
                                 "else\n" ^
-                                "  goto <bb " ^ Z.to_string b1 ^ ">"
-  | Goto b -> "goto <bb" ^ Z.to_string b ^ ">"
+                                "  goto " ^ (string_of_label l1)
+  | Goto l -> "goto " ^ string_of_label l
   | Return op -> "return" ^ (match op with
                              | None -> ""
                              | Some p -> string_of_operand p)

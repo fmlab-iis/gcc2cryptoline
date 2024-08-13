@@ -1,0 +1,1018 @@
+
+;; Function ROL64 (ROL64, funcdef_no=20, decl_uid=5057, cgraph_uid=21, symbol_order=20)
+
+uint64_t ROL64 (uint64_t val, int offset)
+{
+  uint64_t _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = val_4(D) r<< offset_3(D);
+  return _1;
+
+}
+
+
+
+;; Function BitInterleave (BitInterleave, funcdef_no=23, decl_uid=5082, cgraph_uid=24, symbol_order=25)
+
+uint64_t BitInterleave (uint64_t Ai)
+{
+  <bb 2> [local count: 1073741824]:
+  return Ai_1(D);
+
+}
+
+
+
+;; Function Round (Round, funcdef_no=21, decl_uid=5067, cgraph_uid=22, symbol_order=23)
+
+__attribute__((access ("^0[5]^1[5]", )))
+void Round (uint64_t[5] * R, uint64_t[5] * A, size_t i)
+{
+  static const char __PRETTY_FUNCTION__[6] = "Round";
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  long unsigned int _107;
+  long unsigned int _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  long unsigned int _114;
+  long unsigned int _115;
+  long unsigned int _116;
+  long unsigned int _117;
+  long unsigned int _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  long unsigned int _122;
+  long unsigned int _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  long unsigned int _128;
+  long unsigned int _129;
+  long unsigned int _130;
+  long unsigned int _131;
+  long unsigned int _132;
+  long unsigned int _133;
+  long unsigned int _134;
+  long unsigned int _135;
+  long unsigned int _136;
+  long unsigned int _137;
+  long unsigned int _138;
+  long unsigned int _139;
+  long unsigned int _140;
+  long unsigned int _141;
+  long unsigned int _142;
+  long unsigned int _143;
+  long unsigned int _144;
+  long unsigned int _145;
+  long unsigned int _146;
+  long unsigned int _147;
+  long unsigned int _148;
+  long unsigned int _149;
+  long unsigned int _150;
+  long unsigned int _151;
+  long unsigned int _152;
+  long unsigned int _153;
+  long unsigned int _154;
+  long unsigned int _155;
+  long unsigned int _156;
+  long unsigned int _157;
+  long unsigned int _158;
+  long unsigned int _159;
+  long unsigned int _160;
+  long unsigned int _161;
+  long unsigned int _162;
+  long unsigned int _163;
+  long unsigned int _164;
+  long unsigned int _165;
+  long unsigned int _166;
+  long unsigned int _167;
+  long unsigned int _168;
+  long unsigned int _169;
+  long unsigned int _170;
+  long unsigned int _171;
+  long unsigned int _172;
+  long unsigned int _173;
+  long unsigned int _174;
+  long unsigned int _175;
+  long unsigned int _176;
+  long unsigned int _177;
+  long unsigned int _178;
+  long unsigned int _179;
+  long unsigned int _180;
+  long unsigned int _181;
+  long unsigned int _182;
+  long unsigned int _183;
+  long unsigned int _184;
+  long unsigned int _185;
+  long unsigned int _186;
+  long unsigned int _187;
+  long unsigned int _188;
+  long unsigned int _189;
+  long unsigned int _190;
+  long unsigned int _191;
+  long unsigned int _192;
+  long unsigned int _193;
+  long unsigned int _194;
+  long unsigned int _195;
+  long unsigned int _196;
+  long unsigned int _197;
+  long unsigned int _198;
+  long unsigned int _199;
+  long unsigned int _200;
+  long unsigned int _201;
+  long unsigned int _202;
+  long unsigned int _203;
+  long unsigned int _204;
+  long unsigned int _205;
+  long unsigned int _206;
+  long unsigned int _207;
+  long unsigned int _208;
+  long unsigned int _209;
+  long unsigned int _210;
+  long unsigned int _211;
+  long unsigned int _212;
+  long unsigned int _213;
+  long unsigned int _214;
+  long unsigned int _215;
+  long unsigned int _216;
+  long unsigned int _217;
+  long unsigned int _218;
+  long unsigned int _219;
+  long unsigned int _220;
+  long unsigned int _221;
+  long unsigned int _222;
+  long unsigned int _223;
+  long unsigned int _224;
+  long unsigned int _225;
+  long unsigned int _226;
+  long unsigned int _227;
+  long unsigned int _228;
+  long unsigned int _229;
+  long unsigned int _230;
+  long unsigned int _231;
+  long unsigned int _232;
+  long unsigned int _233;
+  long unsigned int _234;
+  long unsigned int _235;
+  long unsigned int _236;
+  long unsigned int _237;
+  long unsigned int _238;
+  long unsigned int _239;
+  long unsigned int _240;
+  long unsigned int _241;
+  long unsigned int _242;
+  long unsigned int _243;
+  long unsigned int _244;
+  long unsigned int _245;
+  long unsigned int _246;
+  long unsigned int _247;
+  long unsigned int _248;
+  long unsigned int _249;
+  long unsigned int _250;
+  long unsigned int _251;
+  long unsigned int _256;
+  long unsigned int _257;
+  long unsigned int _258;
+  long unsigned int _259;
+  long unsigned int _260;
+  long unsigned int _267;
+  long unsigned int _268;
+  long unsigned int _269;
+  long unsigned int _270;
+  long unsigned int _271;
+  long unsigned int _277;
+  long unsigned int _278;
+  long unsigned int _279;
+  long unsigned int _280;
+  long unsigned int _281;
+  long unsigned int _287;
+  long unsigned int _288;
+  long unsigned int _289;
+  long unsigned int _290;
+  long unsigned int _291;
+  long unsigned int _297;
+  long unsigned int _298;
+  long unsigned int _299;
+  long unsigned int _300;
+  long unsigned int _301;
+  long unsigned int _307;
+  long unsigned int _308;
+  long unsigned int _309;
+  long unsigned int _310;
+  long unsigned int _311;
+  long unsigned int _312;
+  long unsigned int _313;
+  long unsigned int _314;
+  long unsigned int _315;
+  long unsigned int _316;
+  long unsigned int _317;
+  long unsigned int _318;
+  long unsigned int _319;
+  long unsigned int _320;
+  long unsigned int _321;
+  long unsigned int _322;
+  long unsigned int _323;
+  long unsigned int _324;
+  long unsigned int _325;
+  long unsigned int _326;
+  long unsigned int _327;
+  long unsigned int _328;
+  long unsigned int _329;
+  long unsigned int _330;
+  long unsigned int _331;
+  long unsigned int _332;
+  long unsigned int _333;
+  long unsigned int _334;
+  long unsigned int _335;
+  long unsigned int _336;
+  long unsigned int _337;
+  long unsigned int _338;
+  long unsigned int _339;
+  long unsigned int _340;
+  long unsigned int _341;
+  long unsigned int _342;
+  long unsigned int _343;
+  long unsigned int _344;
+  long unsigned int _345;
+  long unsigned int _346;
+  long unsigned int _347;
+  long unsigned int _348;
+  long unsigned int _349;
+  long unsigned int _350;
+  long unsigned int _351;
+  long unsigned int _352;
+  long unsigned int _353;
+  long unsigned int _354;
+  long unsigned int _355;
+  long unsigned int _356;
+  long unsigned int _357;
+  long unsigned int _358;
+  long unsigned int _359;
+  long unsigned int _360;
+  long unsigned int _361;
+  long unsigned int _362;
+  long unsigned int _363;
+  long unsigned int _364;
+  long unsigned int _365;
+  long unsigned int _366;
+  long unsigned int _367;
+  long unsigned int _368;
+  long unsigned int _369;
+  long unsigned int _370;
+  long unsigned int _371;
+  long unsigned int _372;
+  long unsigned int _373;
+  long unsigned int _374;
+  long unsigned int _375;
+  long unsigned int _376;
+  long unsigned int _377;
+  long unsigned int _378;
+  long unsigned int _379;
+  long unsigned int _380;
+  long unsigned int _381;
+  long unsigned int _382;
+  long unsigned int _383;
+  long unsigned int _384;
+  long unsigned int _385;
+  long unsigned int _386;
+  long unsigned int _387;
+  long unsigned int _388;
+  long unsigned int _389;
+  long unsigned int _390;
+  long unsigned int _391;
+  long unsigned int _392;
+  long unsigned int _393;
+  long unsigned int _394;
+  long unsigned int _395;
+  long unsigned int _396;
+  long unsigned int _397;
+  long unsigned int _398;
+  long unsigned int _399;
+  long unsigned int _400;
+  long unsigned int _401;
+  long unsigned int _402;
+  long unsigned int _403;
+  long unsigned int _404;
+  long unsigned int _405;
+  long unsigned int _406;
+  long unsigned int _407;
+  long unsigned int _408;
+  long unsigned int _409;
+  long unsigned int _410;
+  long unsigned int _411;
+  long unsigned int _412;
+  long unsigned int _413;
+  long unsigned int _414;
+  long unsigned int _415;
+  long unsigned int _416;
+  long unsigned int _417;
+  long unsigned int _418;
+  long unsigned int _419;
+  long unsigned int _420;
+  long unsigned int _421;
+  long unsigned int _422;
+  long unsigned int _423;
+  long unsigned int _424;
+  long unsigned int _425;
+  long unsigned int _426;
+  long unsigned int _427;
+  long unsigned int _428;
+  long unsigned int _429;
+  long unsigned int _430;
+  long unsigned int _431;
+  long unsigned int _432;
+  long unsigned int _433;
+  long unsigned int _434;
+  long unsigned int _435;
+  long unsigned int _436;
+  long unsigned int _437;
+  long unsigned int _438;
+  long unsigned int _439;
+  long unsigned int _440;
+  long unsigned int _441;
+  long unsigned int _442;
+  long unsigned int _443;
+  long unsigned int _444;
+  long unsigned int _445;
+  long unsigned int _446;
+  long unsigned int _447;
+  long unsigned int _448;
+  long unsigned int _449;
+  long unsigned int _450;
+  long unsigned int _451;
+  long unsigned int _452;
+  long unsigned int _453;
+  long unsigned int _454;
+  long unsigned int _455;
+
+  <bb 2> [local count: 1073741824]:
+  if (i_252(D) != 24)
+    goto <bb 4>; [99.96%]
+  else
+    goto <bb 3>; [0.04%]
+
+  <bb 3> [local count: 429496]:
+  __assert_fail ("i < OSSL_NELEM(iotas)", "../openssl/crypto/sha/keccak1600.c", 541, &__PRETTY_FUNCTION__);
+
+  <bb 4> [local count: 1073312328]:
+  _1 = (*A_255(D))[0];
+  _2 = MEM[(uint64_t[5] *)A_255(D) + 40B][0];
+  _418 = _1 ^ _2;
+  _4 = MEM[(uint64_t[5] *)A_255(D) + 80B][0];
+  _6 = MEM[(uint64_t[5] *)A_255(D) + 120B][0];
+  _419 = _4 ^ _6;
+  _8 = MEM[(uint64_t[5] *)A_255(D) + 160B][0];
+  _420 = _8 ^ _418;
+  _9 = _419 ^ _420;
+  _10 = (*A_255(D))[1];
+  _11 = MEM[(uint64_t[5] *)A_255(D) + 40B][1];
+  _415 = _10 ^ _11;
+  _13 = MEM[(uint64_t[5] *)A_255(D) + 80B][1];
+  _15 = MEM[(uint64_t[5] *)A_255(D) + 120B][1];
+  _416 = _13 ^ _15;
+  _17 = MEM[(uint64_t[5] *)A_255(D) + 160B][1];
+  _417 = _17 ^ _415;
+  _18 = _416 ^ _417;
+  _19 = (*A_255(D))[2];
+  _20 = MEM[(uint64_t[5] *)A_255(D) + 40B][2];
+  _412 = _19 ^ _20;
+  _22 = MEM[(uint64_t[5] *)A_255(D) + 80B][2];
+  _24 = MEM[(uint64_t[5] *)A_255(D) + 120B][2];
+  _413 = _22 ^ _24;
+  _26 = MEM[(uint64_t[5] *)A_255(D) + 160B][2];
+  _414 = _26 ^ _412;
+  _27 = _413 ^ _414;
+  _28 = (*A_255(D))[3];
+  _29 = MEM[(uint64_t[5] *)A_255(D) + 40B][3];
+  _409 = _28 ^ _29;
+  _31 = MEM[(uint64_t[5] *)A_255(D) + 80B][3];
+  _33 = MEM[(uint64_t[5] *)A_255(D) + 120B][3];
+  _410 = _31 ^ _33;
+  _35 = MEM[(uint64_t[5] *)A_255(D) + 160B][3];
+  _411 = _35 ^ _409;
+  _36 = _410 ^ _411;
+  _37 = (*A_255(D))[4];
+  _38 = MEM[(uint64_t[5] *)A_255(D) + 40B][4];
+  _406 = _37 ^ _38;
+  _40 = MEM[(uint64_t[5] *)A_255(D) + 80B][4];
+  _42 = MEM[(uint64_t[5] *)A_255(D) + 120B][4];
+  _407 = _40 ^ _42;
+  _44 = MEM[(uint64_t[5] *)A_255(D) + 160B][4];
+  _408 = _44 ^ _406;
+  _45 = _407 ^ _408;
+  _47 = ROL64 (_18, 1);
+  _49 = _45 ^ _47;
+  _51 = ROL64 (_27, 1);
+  _53 = _9 ^ _51;
+  _55 = ROL64 (_36, 1);
+  _57 = _18 ^ _55;
+  _59 = ROL64 (_45, 1);
+  _61 = _27 ^ _59;
+  _63 = ROL64 (_9, 1);
+  _65 = _36 ^ _63;
+  _68 = _1 ^ _49;
+  _71 = _11 ^ _53;
+  _72 = ROL64 (_71, 44);
+  _73 = _22 ^ _57;
+  _74 = ROL64 (_73, 43);
+  _75 = _33 ^ _61;
+  _76 = ROL64 (_75, 21);
+  _77 = _44 ^ _65;
+  _78 = ROL64 (_77, 14);
+  _79 = ~_72;
+  _80 = _74 & _79;
+  _81 = _68 ^ _80;
+  _82 = iotas[i_252(D)];
+  _83 = _81 ^ _82;
+  (*R_261(D))[0] = _83;
+  _84 = ~_74;
+  _85 = _76 & _84;
+  _86 = _72 ^ _85;
+  (*R_261(D))[1] = _86;
+  _87 = ~_76;
+  _88 = _78 & _87;
+  _89 = _74 ^ _88;
+  (*R_261(D))[2] = _89;
+  _90 = ~_78;
+  _91 = _68 & _90;
+  _92 = _76 ^ _91;
+  (*R_261(D))[3] = _92;
+  _93 = ~_68;
+  _94 = _72 & _93;
+  _95 = _78 ^ _94;
+  (*R_261(D))[4] = _95;
+  _96 = (*A_255(D))[3];
+  _97 = _61 ^ _96;
+  _98 = ROL64 (_97, 28);
+  _99 = MEM[(uint64_t[5] *)A_255(D) + 40B][4];
+  _100 = _65 ^ _99;
+  _101 = ROL64 (_100, 20);
+  _102 = MEM[(uint64_t[5] *)A_255(D) + 80B][0];
+  _103 = _49 ^ _102;
+  _104 = ROL64 (_103, 3);
+  _105 = MEM[(uint64_t[5] *)A_255(D) + 120B][1];
+  _106 = _53 ^ _105;
+  _107 = ROL64 (_106, 45);
+  _108 = MEM[(uint64_t[5] *)A_255(D) + 160B][2];
+  _109 = _57 ^ _108;
+  _110 = ROL64 (_109, 61);
+  _111 = ~_101;
+  _112 = _104 & _111;
+  _113 = _98 ^ _112;
+  MEM[(uint64_t[5] *)R_261(D) + 40B][0] = _113;
+  _114 = ~_104;
+  _115 = _107 & _114;
+  _116 = _101 ^ _115;
+  MEM[(uint64_t[5] *)R_261(D) + 40B][1] = _116;
+  _117 = ~_107;
+  _118 = _110 & _117;
+  _119 = _104 ^ _118;
+  MEM[(uint64_t[5] *)R_261(D) + 40B][2] = _119;
+  _120 = ~_110;
+  _121 = _98 & _120;
+  _122 = _107 ^ _121;
+  MEM[(uint64_t[5] *)R_261(D) + 40B][3] = _122;
+  _123 = ~_98;
+  _124 = _101 & _123;
+  _125 = _110 ^ _124;
+  MEM[(uint64_t[5] *)R_261(D) + 40B][4] = _125;
+  _126 = (*A_255(D))[1];
+  _127 = _53 ^ _126;
+  _128 = ROL64 (_127, 1);
+  _129 = MEM[(uint64_t[5] *)A_255(D) + 40B][2];
+  _130 = _57 ^ _129;
+  _131 = ROL64 (_130, 6);
+  _132 = MEM[(uint64_t[5] *)A_255(D) + 80B][3];
+  _133 = _61 ^ _132;
+  _135 = ROL64 (_133, 25);
+  _136 = MEM[(uint64_t[5] *)A_255(D) + 120B][4];
+  _137 = _65 ^ _136;
+  _140 = ROL64 (_137, 8);
+  _141 = MEM[(uint64_t[5] *)A_255(D) + 160B][0];
+  _142 = _49 ^ _141;
+  _145 = ROL64 (_142, 18);
+  _146 = ~_131;
+  _147 = _135 & _146;
+  _148 = _128 ^ _147;
+  MEM[(uint64_t[5] *)R_261(D) + 80B][0] = _148;
+  _149 = ~_135;
+  _150 = _140 & _149;
+  _151 = _131 ^ _150;
+  MEM[(uint64_t[5] *)R_261(D) + 80B][1] = _151;
+  _152 = ~_140;
+  _153 = _145 & _152;
+  _154 = _135 ^ _153;
+  MEM[(uint64_t[5] *)R_261(D) + 80B][2] = _154;
+  _155 = ~_145;
+  _156 = _128 & _155;
+  _157 = _140 ^ _156;
+  MEM[(uint64_t[5] *)R_261(D) + 80B][3] = _157;
+  _158 = ~_128;
+  _159 = _131 & _158;
+  _160 = _145 ^ _159;
+  MEM[(uint64_t[5] *)R_261(D) + 80B][4] = _160;
+  _161 = (*A_255(D))[4];
+  _162 = _65 ^ _161;
+  _165 = ROL64 (_162, 27);
+  _166 = MEM[(uint64_t[5] *)A_255(D) + 40B][0];
+  _167 = _49 ^ _166;
+  _170 = ROL64 (_167, 36);
+  _171 = MEM[(uint64_t[5] *)A_255(D) + 80B][1];
+  _172 = _53 ^ _171;
+  _175 = ROL64 (_172, 10);
+  _176 = MEM[(uint64_t[5] *)A_255(D) + 120B][2];
+  _177 = _57 ^ _176;
+  _180 = ROL64 (_177, 15);
+  _181 = MEM[(uint64_t[5] *)A_255(D) + 160B][3];
+  _182 = _61 ^ _181;
+  _185 = ROL64 (_182, 56);
+  _186 = ~_170;
+  _187 = _175 & _186;
+  _188 = _165 ^ _187;
+  MEM[(uint64_t[5] *)R_261(D) + 120B][0] = _188;
+  _189 = ~_175;
+  _190 = _180 & _189;
+  _191 = _170 ^ _190;
+  MEM[(uint64_t[5] *)R_261(D) + 120B][1] = _191;
+  _192 = ~_180;
+  _193 = _185 & _192;
+  _194 = _175 ^ _193;
+  MEM[(uint64_t[5] *)R_261(D) + 120B][2] = _194;
+  _195 = ~_185;
+  _196 = _165 & _195;
+  _198 = _180 ^ _196;
+  MEM[(uint64_t[5] *)R_261(D) + 120B][3] = _198;
+  _199 = ~_165;
+  _200 = _170 & _199;
+  _202 = _185 ^ _200;
+  MEM[(uint64_t[5] *)R_261(D) + 120B][4] = _202;
+  _203 = (*A_255(D))[2];
+  _204 = _57 ^ _203;
+  _207 = ROL64 (_204, 62);
+  _209 = MEM[(uint64_t[5] *)A_255(D) + 40B][3];
+  _210 = _61 ^ _209;
+  _213 = ROL64 (_210, 55);
+  _215 = MEM[(uint64_t[5] *)A_255(D) + 80B][4];
+  _216 = _65 ^ _215;
+  _219 = ROL64 (_216, 39);
+  _221 = MEM[(uint64_t[5] *)A_255(D) + 120B][0];
+  _222 = _49 ^ _221;
+  _225 = ROL64 (_222, 41);
+  _227 = MEM[(uint64_t[5] *)A_255(D) + 160B][1];
+  _228 = _53 ^ _227;
+  _231 = ROL64 (_228, 2);
+  _232 = ~_213;
+  _233 = _219 & _232;
+  _235 = _207 ^ _233;
+  MEM[(uint64_t[5] *)R_261(D) + 160B][0] = _235;
+  _236 = ~_219;
+  _237 = _225 & _236;
+  _239 = _213 ^ _237;
+  MEM[(uint64_t[5] *)R_261(D) + 160B][1] = _239;
+  _240 = ~_225;
+  _241 = _231 & _240;
+  _243 = _219 ^ _241;
+  MEM[(uint64_t[5] *)R_261(D) + 160B][2] = _243;
+  _244 = ~_231;
+  _245 = _207 & _244;
+  _247 = _225 ^ _245;
+  MEM[(uint64_t[5] *)R_261(D) + 160B][3] = _247;
+  _248 = ~_207;
+  _249 = _213 & _248;
+  _251 = _231 ^ _249;
+  MEM[(uint64_t[5] *)R_261(D) + 160B][4] = _251;
+  return;
+
+}
+
+
+
+;; Function KeccakF1600 (KeccakF1600, funcdef_no=22, decl_uid=5073, cgraph_uid=23, symbol_order=24)
+
+Removing basic block 5
+__attribute__((access ("^0[5]", )))
+void KeccakF1600 (uint64_t[5] * A)
+{
+  size_t i;
+  uint64_t T[5][5];
+  long unsigned int _1;
+
+  <bb 2> [local count: 82570744]:
+
+  <bb 3> [local count: 991171080]:
+  # i_12 = PHI <i_9(3), 0(2)>
+  Round (&T, A_6(D), i_12);
+  _1 = i_12 + 1;
+  Round (A_6(D), &T, _1);
+  i_9 = i_12 + 2;
+  if (i_9 != 24)
+    goto <bb 3>; [91.67%]
+  else
+    goto <bb 4>; [8.33%]
+
+  <bb 4> [local count: 82570744]:
+  T ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function SHA3_absorb (SHA3_absorb, funcdef_no=25, decl_uid=5048, cgraph_uid=26, symbol_order=27)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+__attribute__((access ("^0[5]", )))
+size_t SHA3_absorb (uint64_t[5] * A, const unsigned char * inp, size_t len, size_t r)
+{
+  uint64_t Ai;
+  static const char __PRETTY_FUNCTION__[12] = "SHA3_absorb";
+  size_t w;
+  size_t i;
+  long unsigned int _1;
+  sizetype _7;
+  sizetype _8;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _51;
+  long unsigned int _68;
+
+  <bb 2> [local count: 14609748]:
+  w_43 = r_42(D) >> 3;
+  if (r_42(D) <= 199)
+    goto <bb 3>; [99.96%]
+  else
+    goto <bb 6>; [0.04%]
+
+  <bb 3> [local count: 14603904]:
+  _1 = r_42(D) & 7;
+  if (_1 == 0)
+    goto <bb 4>; [99.96%]
+  else
+    goto <bb 6>; [0.04%]
+
+  <bb 4> [local count: 14598062]:
+  if (r_42(D) <= len_45(D))
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 5> [local count: 12992275]:
+  if (w_43 != 0)
+    goto <bb 7>; [78.07%]
+  else
+    goto <bb 10>; [21.93%]
+
+  <bb 6> [local count: 11685]:
+  __assert_fail ("r < (25 * sizeof(A[0][0])) && (r % 8) == 0", "../openssl/crypto/sha/keccak1600.c", 1075, &__PRETTY_FUNCTION__);
+
+  <bb 7> [local count: 105119324]:
+  # inp_13 = PHI <inp_44(D)(5), inp_55(9)>
+  # len_14 = PHI <len_45(D)(5), len_60(9)>
+
+  <bb 8> [local count: 955630224]:
+  # i_66 = PHI <i_53(8), _1(7)>
+  Ai_49 = MEM <long unsigned int> [(const unsigned char *)inp_13 + i_66 * 8];
+  _51 = BitInterleave (Ai_49);
+  _33 = MEM[(uint64_t *)A_41(D) + i_66 * 8];
+  _34 = _33 ^ _51;
+  MEM[(uint64_t *)A_41(D) + i_66 * 8] = _34;
+  i_53 = i_66 + 1;
+  if (w_43 != i_53)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 105119324]:
+  _8 = (sizetype) inp_13;
+  _68 = w_43 * 8;
+  _7 = _8 + _68;
+  inp_55 = (const unsigned char *) _7;
+  KeccakF1600 (A_41(D));
+  len_60 = len_14 - r_42(D);
+  if (r_42(D) <= len_60)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 10> [local count: 12992277]:
+  KeccakF1600 (A_41(D));
+  goto <bb 10>; [100.00%]
+
+  <bb 11> [local count: 14598063]:
+  # len_64 = PHI <len_60(9), len_45(D)(4)>
+  return len_64;
+
+}
+
+
+
+;; Function SHA3_squeeze (SHA3_squeeze, funcdef_no=26, decl_uid=5054, cgraph_uid=27, symbol_order=28)
+
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+__attribute__((access ("^0[5]", )))
+void SHA3_squeeze (uint64_t[5] * A, unsigned char * out, size_t len, size_t r, int next)
+{
+  uint64_t Ai;
+  static const char __PRETTY_FUNCTION__[13] = "SHA3_squeeze";
+  size_t w;
+  size_t i;
+  long unsigned int _1;
+  long unsigned int _4;
+  unsigned char _5;
+  _Bool _22;
+  _Bool _23;
+  _Bool _24;
+  unsigned char _29;
+  long unsigned int _63;
+  unsigned char _65;
+  unsigned char _66;
+  unsigned char * _70;
+  sizetype _81;
+  long unsigned int _89;
+  vector(8) unsigned char _91;
+  unsigned char _98;
+  unsigned char _107;
+  unsigned char _116;
+
+  <bb 2> [local count: 62542933]:
+  w_40 = r_39(D) >> 3;
+  if (r_39(D) <= 199)
+    goto <bb 3>; [99.96%]
+  else
+    goto <bb 6>; [0.04%]
+
+  <bb 3> [local count: 62517916]:
+  _1 = r_39(D) & 7;
+  if (_1 == 0)
+    goto <bb 4>; [99.96%]
+  else
+    goto <bb 6>; [0.04%]
+
+  <bb 4> [local count: 62492909]:
+  if (len_42(D) != 0)
+    goto <bb 7>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 5> [local count: 62492910]:
+  return;
+
+  <bb 6> [local count: 50024]:
+  __assert_fail ("r < (25 * sizeof(A[0][0])) && (r % 8) == 0", "../openssl/crypto/sha/keccak1600.c", 1109, &__PRETTY_FUNCTION__);
+
+  <bb 7> [local count: 59055799]:
+  if (next_43(D) != 0)
+    goto <bb 8>; [10.96%]
+  else
+    goto <bb 9>; [89.04%]
+
+  <bb 8> [local count: 0]:
+  KeccakF1600 (A_38(D));
+
+  <bb 9> [local count: 76958565]:
+  if (w_40 != 0)
+    goto <bb 10>; [91.79%]
+  else
+    goto <bb 23>; [8.21%]
+
+  <bb 10> [local count: 108546036]:
+  # out_58 = PHI <out_41(D)(9), out_55(22)>
+  # len_54 = PHI <len_42(D)(9), len_56(22)>
+  _89 = len_54 >> 3;
+  _81 = _89 * 8;
+  _70 = out_58 + _81;
+
+  <bb 11> [local count: 1014686023]:
+  # out_82 = PHI <out_55(20), out_58(10)>
+  # len_85 = PHI <len_56(20), len_54(10)>
+  # i_90 = PHI <i_57(20), _1(10)>
+  _4 = MEM[(uint64_t *)A_38(D) + i_90 * 8];
+  Ai_46 = BitDeinterleave (_4);
+  _66 = (unsigned char) Ai_46;
+  _63 = Ai_46 >> 8;
+  if (_70 == out_82)
+    goto <bb 12>; [5.50%]
+  else
+    goto <bb 20>; [94.50%]
+
+  <bb 12> [local count: 55807731]:
+  *out_82 = _66;
+  if (len_85 != 1)
+    goto <bb 13>; [85.71%]
+  else
+    goto <bb 19>; [14.29%]
+
+  <bb 13> [local count: 47835198]:
+  _116 = (unsigned char) _63;
+  MEM[(unsigned char *)out_82 + 1B] = _116;
+  Ai_114 = Ai_46 >> 16;
+  if (len_85 != 2)
+    goto <bb 14>; [85.71%]
+  else
+    goto <bb 19>; [14.29%]
+
+  <bb 14> [local count: 41001599]:
+  _107 = (unsigned char) Ai_114;
+  MEM[(unsigned char *)out_82 + 2B] = _107;
+  Ai_105 = Ai_46 >> 24;
+  if (len_85 != 3)
+    goto <bb 15>; [85.71%]
+  else
+    goto <bb 19>; [14.29%]
+
+  <bb 15> [local count: 35144229]:
+  _98 = (unsigned char) Ai_105;
+  MEM[(unsigned char *)out_82 + 3B] = _98;
+  Ai_7 = Ai_46 >> 32;
+  if (len_85 != 4)
+    goto <bb 16>; [85.71%]
+  else
+    goto <bb 19>; [14.29%]
+
+  <bb 16> [local count: 30123624]:
+  _29 = (unsigned char) Ai_7;
+  MEM[(unsigned char *)out_82 + 4B] = _29;
+  Ai_31 = Ai_46 >> 40;
+  if (len_85 != 5)
+    goto <bb 17>; [85.71%]
+  else
+    goto <bb 19>; [14.29%]
+
+  <bb 17> [local count: 25820250]:
+  _65 = (unsigned char) Ai_31;
+  MEM[(unsigned char *)out_82 + 5B] = _65;
+  Ai_69 = Ai_46 >> 48;
+  if (len_85 != 6)
+    goto <bb 18>; [85.71%]
+  else
+    goto <bb 19>; [14.29%]
+
+  <bb 18> [local count: 22131641]:
+  _5 = (unsigned char) Ai_69;
+  MEM[(unsigned char *)out_82 + 6B] = _5;
+
+  <bb 19> [local count: 55807731]:
+  goto <bb 5>; [100.00%]
+
+  <bb 20> [local count: 958878294]:
+  _91 = VIEW_CONVERT_EXPR<vector(8) unsigned char>(Ai_46);
+  MEM <vector(8) unsigned char> [(unsigned char *)out_82] = _91;
+  out_55 = out_82 + 8;
+  len_56 = len_85 + 18446744073709551608;
+  i_57 = i_90 + 1;
+  _22 = w_40 > i_57;
+  _23 = len_56 != 0;
+  _24 = _22 & _23;
+  if (_24 != 0)
+    goto <bb 11>; [94.50%]
+  else
+    goto <bb 21>; [5.50%]
+
+  <bb 21> [local count: 52738306]:
+  if (len_56 != 0)
+    goto <bb 22>; [93.84%]
+  else
+    goto <bb 5>; [6.16%]
+
+  <bb 22> [local count: 49490237]:
+  KeccakF1600 (A_38(D));
+  goto <bb 10>; [100.00%]
+
+  <bb 23> [local count: 6317494]:
+  KeccakF1600 (A_38(D));
+  goto <bb 23>; [100.00%]
+
+}
+
+
