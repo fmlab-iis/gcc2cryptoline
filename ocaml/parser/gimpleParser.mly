@@ -271,30 +271,6 @@ loc:
                                                           Const (Z.to_int $10))) } }
 ;
 
-(*
-loc:
-  ID                                      { { lty = Void; lop = Var $1;
-                                              loffset = Const 0 } }
-| LPAREN typ RPAREN ID ADDOP BYTE         { { lty = $2; lop = Var $4;
-                                              loffset = Const $6 } }
-| LPAREN typ RPAREN ID                    { { lty = $2; lop = Var $4;
-                                              loffset = Const 0 } }
-| LPAREN typ RPAREN ANDOP ID              { { lty = $2; lop = Ref (Var $5);
-                                              loffset = Const 0 } }
-| LPAREN typ RPAREN ANDOP ID ADDOP BYTE   { { lty = $2; lop = Ref (Var $5);
-                                              loffset = Const $7 } }
-| LPAREN typ RPAREN ANDOP ID ADDOP ID MULOP NUM
-      { { lty = $2; lop = Ref (Var $5);
-          loffset = Mul (Var $7, Const (Z.to_int $9)) } }
-| LPAREN typ RPAREN ANDOP ID ADDOP BYTE ADDOP ID MULOP NUM
-      { { lty = $2; lop = Ref (Var $5);
-          loffset = Add (Const $7, Mul (Var $9, Const (Z.to_int $11))) } }
-| LPAREN typ RPAREN ID ADDOP ID MULOP NUM
-      { { lty = $2; lop = Var $4;
-          loffset = Mul (Var $6, Const (Z.to_int $8)) } }
-;
-*)
-
 condition:
 | op EEQOP op                             { Eq ($1, $3) }
 | op NEQOP op                             { Neq ($1, $3) }
