@@ -28,7 +28,7 @@
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
 %token BOOLS UBOOLS STATIC
 /* Others */
-%token ATTRIBUTE ACCESS MEM EOF RETURN BB IF ELSE GOTO
+%token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL_COUNT
 %token CLOBBER_EOS CLOBBER_EOL CLOBBER TAIL_CALL
 
@@ -41,6 +41,14 @@ gimple:
   funcs EOF                               { $1 }
 ;
 
+label:
+| LANGLE ID RANGLE COLON                  { Label (Name $2) }
+| LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON 
+                                          { Label (BB $3) }
+| LANGLE BB NUM RANGLE COLON
+                                          { Label (BB $3) }
+;
+
 funcs:
 | REMOVING_BASIC_BLOCK NUM funcs          { $3 }
 | func funcs                              { $1::$2 }
@@ -48,10 +56,10 @@ funcs:
 ;
 
 func:
-  attribute typ ID LPAREN parameters RPAREN LBRACK var_decls body RBRACK
-    { { attr = $1; fty = $2; fname = $3; params = $5; vars = $8; instrs = $9 } }
-| typ ID LPAREN parameters RPAREN LBRACK var_decls body RBRACK
-    { { attr = []; fty = $1; fname = $2; params = $4; vars = $7; instrs = $8 } }
+  attribute typ ID LPAREN parameters RPAREN LBRACK var_decls label instrs RBRACK
+    { { attr = $1; fty = $2; fname = $3; params = $5; vars = $8; instrs = $9::$10 } }
+| typ ID LPAREN parameters RPAREN LBRACK var_decls label instrs RBRACK
+    { { attr = []; fty = $1; fname = $2; params = $4; vars = $7; instrs = $8::$9 } }
 ;
 
 attribute:
@@ -129,11 +137,6 @@ typ:
 | typ LSQUARE NUM COLON ID RSQUARE        { Array (Z.zero, $1) }
 ;
 
-body:
-| LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON instrs
-                                          { Label (BB $3)::$11 }
-;
-
 instrs:
 | instr instrs                            { $1::$2 }
 |                                         { [] }
@@ -177,6 +180,13 @@ ops:
 |                                         { [] }
 ;
 
+instr_goto:
+| GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
+                                          { Goto (BB $4) }
+| GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE INV RSQUARE
+                                          { Goto (BB $4) }
+;
+
 instr:
 | op EQOP LBRACK ops RBRACK LBRACK CLOBBER_EOS RBRACK SEMICOLON
                                           { Nop }
@@ -184,11 +194,8 @@ instr:
                                           { Nop }
 | op EQOP LBRACK ops RBRACK LBRACK CLOBBER RBRACK SEMICOLON
                                           { Nop }
+| label                                   { $1 }
 | ID COLON                                { Label (Name $1) }
-| LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON
-                                          { Label (BB $3) }
-| LANGLE BB NUM RANGLE LSQUARE ID COLON NUM RSQUARE COLON
-                                          { Label (BB $3) }
 | op EQOP LPAREN typ RPAREN op SEMICOLON
                                           { Assign ($1, $4, $6) }
 | op EQOP op SEMICOLON                    { Assign ($1, Void, $3) }
@@ -242,13 +249,12 @@ instr:
                                           { VecPackTruncExpr ($1, $5, $7) }
 | op EQOP STORE_LANES LPAREN op RPAREN SEMICOLON
                                           { StoreLanes ($1, $5) }
-| IF LPAREN condition RPAREN
-  GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
-  ELSE
-  GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
-                                          { CondBranch ($3, BB $8, BB $19) }
-| GOTO LANGLE BB NUM RANGLE SEMICOLON LSQUARE FLOAT PERCENT RSQUARE
-                                          { Goto (BB $4) }
+| IF LPAREN condition RPAREN instr_goto ELSE instr_goto
+                                          { match $5, $7 with
+                                            | Goto b0, Goto b1 ->
+                                               CondBranch ($3, b0, b1)
+                                            | _ -> assert false }
+| instr_goto                              { $1 }
 | RETURN op SEMICOLON                     { Return (Some $2) }
 | RETURN SEMICOLON                        { Return None }
 ;
