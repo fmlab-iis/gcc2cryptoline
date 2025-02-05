@@ -29,7 +29,7 @@
 %token BOOLS UBOOLS STATIC
 /* Others */
 %token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO
-%token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL_COUNT
+%token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL COUNT
 %token CLOBBER_EOS CLOBBER_EOL CLOBBER TAIL_CALL
 
 %start gimple
@@ -43,7 +43,9 @@ gimple:
 
 label:
 | LANGLE ID RANGLE COLON                  { Label (Name $2) }
-| LANGLE BB NUM RANGLE LSQUARE LOCAL_COUNT COLON NUM RSQUARE COLON 
+| LANGLE BB NUM RANGLE LSQUARE LOCAL COUNT COLON NUM RSQUARE COLON 
+                                          { Label (BB $3) }
+| LANGLE BB NUM RANGLE LSQUARE COUNT COLON NUM RSQUARE COLON 
                                           { Label (BB $3) }
 | LANGLE BB NUM RANGLE COLON
                                           { Label (BB $3) }

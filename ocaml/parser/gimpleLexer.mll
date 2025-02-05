@@ -115,7 +115,8 @@ token = parse
   (* Strings *)
   | '"' (([^'\r''\n']+) as s) '"'            { STRING s }
   (* Misc *)
-  | "local count"                  { LOCAL_COUNT }
+  | "local"                        { LOCAL }
+  | "count"                        { COUNT }
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }
   | "char * {ref-all}"             { CHAR_REF_ALL }
   | "CLOBBER(eos)"                 { CLOBBER_EOS }
