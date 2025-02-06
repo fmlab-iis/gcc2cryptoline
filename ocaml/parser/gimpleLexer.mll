@@ -7,6 +7,7 @@
             [
               (********** keywords **********)
               "__attribute__"              , ATTRIBUTE;
+              "__asm__"                    , ASM;
 	      "access"                     , ACCESS;
               "void"                       , VOID;
               "_Bool"                      , BOOL;
@@ -111,9 +112,9 @@ token = parse
   | ('-'? number+) as num          { NUM (Z.of_string num) }
   | (number+ '.' number+) as num   { FLOAT (float_of_string num) }
   (* Offsets *)
-  | ('-'? (number+) as byte) "B"        { BYTE (int_of_string byte) }
+  | ('-'? (number+) as byte) "B"   { BYTE (int_of_string byte) }
   (* Strings *)
-  | '"' (([^'\r''\n']+) as s) '"'            { STRING s }
+  | '"' (([^'\r''\n''"']+) as s) '"'  { STRING s }
   (* Misc *)
   | "local"                        { LOCAL }
   | "count"                        { COUNT }

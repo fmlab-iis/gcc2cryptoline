@@ -94,8 +94,15 @@ let string_of_instr instr =
   match instr with
   | Nop -> "nop"
   | Label l -> string_of_label l
+  | Asm (asm, params) ->
+     let asm_header = "__asm__(\"" ^ asm ^ "\"" in
+     let asm_params =
+       let param_str (param_attr, param_id) =
+         "\"" ^ param_attr ^ "\"" ^ param_id in
+       List.rev (List.rev_map param_str params) in
+     (String.concat " : " (asm_header::asm_params)) ^ ")"
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
-                            string_of_type t ^ ") " ^ string_of_operand op
+                           string_of_type t ^ ") " ^ string_of_operand op
   | Add (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                          " + " ^ string_of_operand r1
   | Sub (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^

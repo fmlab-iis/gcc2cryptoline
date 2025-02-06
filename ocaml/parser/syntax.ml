@@ -54,6 +54,7 @@ type label_t = BB of Z.t | Name of string
 (* the semantics of intrinsics is unclear *)
 type instr_t = Nop
              | Label of label_t
+             | Asm of string * ((string * string) list)
              | Assign of operand_t * type_t * operand_t
              | Add of operand_t * operand_t * operand_t
              | Sub of operand_t * operand_t * operand_t
