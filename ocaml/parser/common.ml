@@ -143,7 +143,9 @@ let string_of_instr instr =
   | Ite (l, cond, b0, b1) -> string_of_operand l ^ " = " ^
                                string_of_operand cond ^ " ? " ^
                                string_of_operand b0 ^ " : " ^
-                               string_of_operand b1
+                                 string_of_operand b1
+  | Min (l, r0, r1) -> string_of_operand l ^ " = MIN_EXPR <" ^ string_of_operand r0
+                       ^ ", " ^ string_of_operand r1 ^ ">"
   | Call (op, f, ops) -> let op_strs = List.map string_of_operand ops in
                          (match op with
                             None -> ""

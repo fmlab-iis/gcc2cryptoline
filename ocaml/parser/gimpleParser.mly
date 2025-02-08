@@ -23,13 +23,14 @@
 %token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR
 %token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF VEC_PACK_TRUNC_EXPR
+%token MIN_EXPR
 
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
 %token BOOLS UBOOLS STATIC
 /* Others */
 %token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO ASM
-%token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT LOCAL COUNT
+%token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT
 %token CLOBBER_EOS CLOBBER_EOL CLOBBER TAIL_CALL
 
 %start gimple
@@ -43,10 +44,14 @@ gimple:
 
 label:
 | LANGLE ID RANGLE COLON                  { Label (Name $2) }
-| LANGLE BB NUM RANGLE LSQUARE LOCAL COUNT COLON NUM RSQUARE COLON 
-                                          { Label (BB $3) }
-| LANGLE BB NUM RANGLE LSQUARE COUNT COLON NUM RSQUARE COLON 
-                                          { Label (BB $3) }
+| LANGLE BB NUM RANGLE LSQUARE ID ID COLON NUM RSQUARE COLON 
+                                          { if $6 == "local" && $7 == "count"
+                                            then Label (BB $3)
+                                            else failwith ("Parse error at line: " ^ string_of_int (Common.get_line_start ())) }
+| LANGLE BB NUM RANGLE LSQUARE ID COLON NUM RSQUARE COLON 
+                                          { if $6 == "local"
+                                            then Label (BB $3)
+                                            else failwith ("Parse error at line: " ^ string_of_int (Common.get_line_start ())) }
 | LANGLE BB NUM RANGLE COLON
                                           { Label (BB $3) }
 ;
@@ -227,6 +232,8 @@ instr:
 | op EQOP op RROTATE op SEMICOLON          { Rrotate ($1, $3, $5) }
 | op EQOP op QUESTION op COLON op SEMICOLON
                                           { Ite ($1, $3, $5, $7) }
+| op EQOP MIN_EXPR LANGLE op COMMA op RANGLE SEMICOLON
+                                          { Min ($1, $5, $7) }
 | ID LPAREN ops RPAREN SEMICOLON          { Call (None, $1, $3) }
 | ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call (None, $1, $3) }

@@ -22,6 +22,7 @@
               "long"                       , LONG;
               "vector"                     , VECTOR;
               "MEM"                        , MEM;
+              "MIN_EXPR"                   , MIN_EXPR;
               "INV"                        , INV;
               "bb"                         , BB;
               "if"                         , IF;
@@ -116,8 +117,6 @@ token = parse
   (* Strings *)
   | '"' (([^'\r''\n''"']+) as s) '"'  { STRING s }
   (* Misc *)
-  | "local"                        { LOCAL }
-  | "count"                        { COUNT }
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }
   | "char * {ref-all}"             { CHAR_REF_ALL }
   | "CLOBBER(eos)"                 { CLOBBER_EOS }
