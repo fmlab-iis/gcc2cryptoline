@@ -18,10 +18,10 @@
 %token LPAREN RPAREN LSQUARE RSQUARE LBRACK RBRACK LANGLE RANGLE
 %token COMMA SEMICOLON COLON DQUOTE DOT
 /* Operators */
-%token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP NEQOP
+%token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP VEQOP NEQOP
 %token LEOP GEOP EEQOP DIVOP NOTOP LROTATE RROTATE
 %token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
-%token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR
+%token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR VZERO VONE
 %token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF VEC_PACK_TRUNC_EXPR
 %token MIN_EXPR
 
@@ -200,22 +200,25 @@ instr:
                                           { Asm ($3, [($5, $6)]) }
 | ASM LPAREN STRING COLON STRING ID COLON STRING ID RPAREN SEMICOLON
                                           { Asm ($3, [($5, $6); ($8, $9)]) }
-| op EQOP LBRACK ops RBRACK LBRACK CLOBBER_EOS RBRACK SEMICOLON
+| op VEQOP LBRACK CLOBBER_EOS RBRACK SEMICOLON
                                           { Nop }
-| op EQOP LBRACK ops RBRACK LBRACK CLOBBER_EOL RBRACK SEMICOLON
+| op VEQOP LBRACK CLOBBER_EOL RBRACK SEMICOLON
                                           { Nop }
-| op EQOP LBRACK ops RBRACK LBRACK CLOBBER RBRACK SEMICOLON
+| op VEQOP LBRACK CLOBBER RBRACK SEMICOLON
                                           { Nop }
 | label                                   { $1 }
 | ID COLON                                { Label (Name $1) }
 | op EQOP LPAREN typ RPAREN op SEMICOLON
                                           { Assign ($1, $4, $6) }
 | op EQOP op SEMICOLON                    { Assign ($1, Void, $3) }
+| op VEQOP VZERO SEMICOLON                { VAssign ($1, Void, Const Z.zero) }
+| op VEQOP VONE SEMICOLON                 { VAssign ($1, Void, Const Z.one) }
 | op EQOP op ADDOP op SEMICOLON           { Add ($1, $3, $5) }
 | op EQOP op SUBOP op SEMICOLON           { Sub ($1, $3, $5) }
 | op EQOP op WMULOP op SEMICOLON          { Wmul ($1, $3, $5) }
 | op EQOP op MULOP op SEMICOLON           { Mul ($1, $3, $5) }
 | op EQOP op DIVOP op SEMICOLON           { Div ($1, $3, $5) }
+| op EQOP op PERCENT op SEMICOLON         { Mod ($1, $3, $5) }
 | op EQOP op RANGLE op SEMICOLON          { Gt ($1, $3, $5) }
 | op EQOP op GEOP op SEMICOLON            { Ge ($1, $3, $5) }
 | op EQOP op LANGLE op SEMICOLON          { Lt ($1, $3, $5) }

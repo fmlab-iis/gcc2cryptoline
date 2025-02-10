@@ -78,6 +78,7 @@ token = parse
   | '^'                            { XOROP }
   | '~'                            { NOTOP }
   | '='                            { EQOP }
+  | "={v}"                         { VEQOP }
   | "=="                           { EEQOP }
   | "!="                           { NEQOP }
   | "<="                           { LEOP }
@@ -100,6 +101,8 @@ token = parse
   | "VEC_PACK_TRUNC_EXPR"          { VEC_PACK_TRUNC_EXPR }
   | "vec_unpack_lo_expr"           { VEC_UNPACK_LO_EXPR }
   | "vec_unpack_hi_expr"           { VEC_UNPACK_HI_EXPR }
+  | "vzero"                        { VZERO }
+  | "vone"                         { VONE }
   (* Types *)
   | "uint" ((number+) as w) "_t"   { UINT (int_of_string w) }
   | "u128"                         { UINT 128 }

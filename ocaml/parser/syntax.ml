@@ -56,10 +56,12 @@ type instr_t = Nop
              | Label of label_t
              | Asm of string * ((string * string) list)
              | Assign of operand_t * type_t * operand_t
+             | VAssign of operand_t * type_t * operand_t
              | Add of operand_t * operand_t * operand_t
              | Sub of operand_t * operand_t * operand_t
              | Mul of operand_t * operand_t * operand_t
              | Div of operand_t * operand_t * operand_t
+             | Mod of operand_t * operand_t * operand_t
              | Wmul of operand_t * operand_t * operand_t
              | Gt of operand_t * operand_t * operand_t
              | Ge of operand_t * operand_t * operand_t

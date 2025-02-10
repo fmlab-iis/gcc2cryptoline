@@ -103,6 +103,8 @@ let string_of_instr instr =
      (String.concat " : " (asm_header::asm_params)) ^ ")"
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
                            string_of_type t ^ ") " ^ string_of_operand op
+  | VAssign (l, t, op) -> string_of_operand l ^ " ={v} (" ^
+                            string_of_type t ^ ") " ^ string_of_operand op
   | Add (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                          " + " ^ string_of_operand r1
   | Sub (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
@@ -111,6 +113,8 @@ let string_of_instr instr =
                          " * " ^ string_of_operand r1
   | Div (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                          " / " ^ string_of_operand r1
+  | Mod (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
+                         " % " ^ string_of_operand r1
   | Wmul (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
                           " w* " ^ string_of_operand r1
   | Gt (l, r0, r1) -> string_of_operand l ^ " = " ^ string_of_operand r0 ^
