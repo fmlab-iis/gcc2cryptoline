@@ -33,7 +33,8 @@ type label_t = BB of Z.t | Name of string
 
 type instr_t = Nop
              | Label of label_t
-             | Asm of string * ((string * string) list)
+             | Asm of string * ((string * operand_t) list) *
+                        ((string * operand_t) list) * string option
              | Assign of operand_t * type_t * operand_t
              | VAssign of operand_t * type_t * operand_t
              | Add of operand_t * operand_t * operand_t

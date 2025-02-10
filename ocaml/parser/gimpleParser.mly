@@ -194,12 +194,25 @@ instr_goto:
                                           { Goto (BB $4) }
 ;
 
+instr_asm_arg:
+| STRING ID                               { ($1, Var $2) }
+| STRING NUM                              { ($1, Const $2) }
+;
+
+instr_asm_args:
+| instr_asm_arg                               { [$1] }
+| instr_asm_arg COMMA instr_asm_args          { $1::$3 }
+;
+
 instr:
-| ASM LPAREN STRING RPAREN SEMICOLON      { Asm ($3, []) }
-| ASM LPAREN STRING COLON STRING ID RPAREN SEMICOLON
-                                          { Asm ($3, [($5, $6)]) }
-| ASM LPAREN STRING COLON STRING ID COLON STRING ID RPAREN SEMICOLON
-                                          { Asm ($3, [($5, $6); ($8, $9)]) }
+| ASM LPAREN STRING RPAREN SEMICOLON
+                                          { Asm ($3, [], [], None) }
+| ASM LPAREN STRING COLON instr_asm_args RPAREN SEMICOLON
+                                          { Asm ($3, $5, [], None) }
+| ASM LPAREN STRING COLON instr_asm_args COLON instr_asm_args RPAREN SEMICOLON
+                                          { Asm ($3, $5, $7, None) }
+| ASM LPAREN STRING COLON instr_asm_args COLON instr_asm_args COLON STRING RPAREN SEMICOLON
+                                          { Asm ($3, $5, $7, Some $9) }
 | op VEQOP LBRACK CLOBBER_EOS RBRACK SEMICOLON
                                           { Nop }
 | op VEQOP LBRACK CLOBBER_EOL RBRACK SEMICOLON

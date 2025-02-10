@@ -94,13 +94,16 @@ let string_of_instr instr =
   match instr with
   | Nop -> "nop"
   | Label l -> string_of_label l
-  | Asm (asm, params) ->
+  | Asm (asm, out_params, in_params, anno) ->
      let asm_header = "__asm__(\"" ^ asm ^ "\"" in
-     let asm_params =
-       let param_str (param_attr, param_id) =
-         "\"" ^ param_attr ^ "\"" ^ param_id in
+     let asm_params params =
+       let param_str (param_attr, op) =
+         "\"" ^ param_attr ^ "\"" ^ (string_of_operand op) in
        List.rev (List.rev_map param_str params) in
-     (String.concat " : " (asm_header::asm_params)) ^ ")"
+     let asm_out_params = String.concat ", " (asm_params out_params) in
+     let asm_in_params = String.concat ", " (asm_params in_params) in
+     let asm_anno = match anno with | None -> "none" | Some str -> str in
+     (String.concat " : " [asm_header; asm_out_params; asm_in_params; asm_anno]) ^ ")"
   | Assign (l, t, op) -> string_of_operand l ^ " = (" ^
                            string_of_type t ^ ") " ^ string_of_operand op
   | VAssign (l, t, op) -> string_of_operand l ^ " ={v} (" ^
