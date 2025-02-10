@@ -45,11 +45,11 @@ gimple:
 label:
 | LANGLE ID RANGLE COLON                  { Label (Name $2) }
 | LANGLE BB NUM RANGLE LSQUARE ID ID COLON NUM RSQUARE COLON 
-                                          { if $6 == "local" && $7 == "count"
+                                          { if $6 = "local" && $7 = "count"
                                             then Label (BB $3)
                                             else failwith ("Parse error at line: " ^ string_of_int (Common.get_line_start ())) }
 | LANGLE BB NUM RANGLE LSQUARE ID COLON NUM RSQUARE COLON 
-                                          { if $6 == "local"
+                                          { if $6 = "count"
                                             then Label (BB $3)
                                             else failwith ("Parse error at line: " ^ string_of_int (Common.get_line_start ())) }
 | LANGLE BB NUM RANGLE COLON

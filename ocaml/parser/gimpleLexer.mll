@@ -102,7 +102,7 @@ token = parse
   | "vec_unpack_hi_expr"           { VEC_UNPACK_HI_EXPR }
   (* Types *)
   | "uint" ((number+) as w) "_t"   { UINT (int_of_string w) }
-  | "u" ((number+) as w)           { UINT (int_of_string w) }
+  | "u128"                         { UINT 128 }
   | "int" ((number+) as w) "_t"    { SINT (int_of_string w) }
   | "__int" ((number+) as w)       { SINT (int_of_string w) }
   | "<signed-boolean:" ((number+) as w) ">"
