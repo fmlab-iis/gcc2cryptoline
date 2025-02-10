@@ -1,3 +1,3 @@
 generate gimple file with:
 
-gcc -c -fdump-tree-optimized 
+gcc -c -funroll-all-loops -fdump-tree-optimized=<file name>
