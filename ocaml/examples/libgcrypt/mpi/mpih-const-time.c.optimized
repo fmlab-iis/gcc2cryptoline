@@ -1,0 +1,553 @@
+
+;; Function _gcry_mpih_set_cond (_gcry_mpih_set_cond, funcdef_no=30, decl_uid=9947, cgraph_uid=31, symbol_order=32)
+
+void _gcry_mpih_set_cond (mpi_limb_t * wp, mpi_limb_t * up, mpi_size_t usize, long unsigned int op_enable)
+{
+  mpi_limb_t mask2;
+  mpi_limb_t mask1;
+  mpi_size_t i;
+  long unsigned int vzero.0_1;
+  long unsigned int vone.1_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  mpi_limb_t * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  mpi_limb_t * _15;
+  long unsigned int _16;
+
+  <bb 2> :
+  vzero.0_1 ={v} vzero;
+  mask1_21 = vzero.0_1 - op_enable_20(D);
+  vone.1_2 ={v} vone;
+  mask2_22 = op_enable_20(D) - vone.1_2;
+  i_23 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _3 = (long unsigned int) i_17;
+  _4 = _3 * 8;
+  _5 = wp_25(D) + _4;
+  _6 = *_5;
+  _7 = mask2_22 & _6;
+  _8 = (long unsigned int) i_17;
+  _9 = _8 * 8;
+  _10 = up_26(D) + _9;
+  _11 = *_10;
+  _12 = mask1_21 & _11;
+  _13 = (long unsigned int) i_17;
+  _14 = _13 * 8;
+  _15 = wp_25(D) + _14;
+  _16 = _7 | _12;
+  *_15 = _16;
+  i_28 = i_17 + 1;
+
+  <bb 4> :
+  # i_17 = PHI <i_23(2), i_28(3)>
+  if (i_17 < usize_24(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function _gcry_mpih_add_n_cond (_gcry_mpih_add_n_cond, funcdef_no=31, decl_uid=9953, cgraph_uid=32, symbol_order=33)
+
+mpi_limb_t _gcry_mpih_add_n_cond (mpi_limb_t * wp, mpi_limb_t * up, mpi_limb_t * vp, mpi_size_t usize, long unsigned int op_enable)
+{
+  mpi_limb_t cy2;
+  mpi_limb_t cy1;
+  mpi_limb_t x;
+  mpi_limb_t u;
+  mpi_limb_t mask2;
+  mpi_limb_t mask1;
+  mpi_limb_t cy;
+  mpi_size_t i;
+  mpi_limb_t D.10170;
+  long unsigned int vzero.2_1;
+  long unsigned int vone.3_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  _Bool _10;
+  _Bool _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  mpi_limb_t * _16;
+  long unsigned int _17;
+  mpi_limb_t _28;
+
+  <bb 2> :
+  vzero.2_1 ={v} vzero;
+  mask1_23 = vzero.2_1 - op_enable_22(D);
+  vone.3_2 ={v} vone;
+  mask2_24 = op_enable_22(D) - vone.3_2;
+  cy_25 = 0;
+  i_26 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _3 = (long unsigned int) i_18;
+  _4 = _3 * 8;
+  _5 = up_29(D) + _4;
+  u_30 = *_5;
+  _6 = (long unsigned int) i_18;
+  _7 = _6 * 8;
+  _8 = vp_31(D) + _7;
+  _9 = *_8;
+  x_32 = u_30 + _9;
+  _10 = x_32 < u_30;
+  cy1_33 = (mpi_limb_t) _10;
+  x_34 = x_32 + cy_19;
+  _11 = x_34 < cy_19;
+  cy2_35 = (mpi_limb_t) _11;
+  cy_36 = cy1_33 | cy2_35;
+  _12 = u_30 & mask2_24;
+  _13 = x_34 & mask1_23;
+  _14 = (long unsigned int) i_18;
+  _15 = _14 * 8;
+  _16 = wp_37(D) + _15;
+  _17 = _12 | _13;
+  *_16 = _17;
+  i_39 = i_18 + 1;
+
+  <bb 4> :
+  # i_18 = PHI <i_26(2), i_39(3)>
+  # cy_19 = PHI <cy_25(2), cy_36(3)>
+  if (i_18 < usize_27(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _28 = cy_19 & mask1_23;
+
+  <bb 6> :
+<L3>:
+  return _28;
+
+}
+
+
+
+;; Function _gcry_mpih_sub_n_cond (_gcry_mpih_sub_n_cond, funcdef_no=32, decl_uid=9959, cgraph_uid=33, symbol_order=34)
+
+mpi_limb_t _gcry_mpih_sub_n_cond (mpi_limb_t * wp, mpi_limb_t * up, mpi_limb_t * vp, mpi_size_t usize, long unsigned int op_enable)
+{
+  mpi_limb_t cy2;
+  mpi_limb_t cy1;
+  mpi_limb_t x;
+  mpi_limb_t u;
+  mpi_limb_t mask2;
+  mpi_limb_t mask1;
+  mpi_limb_t cy;
+  mpi_size_t i;
+  mpi_limb_t D.10172;
+  long unsigned int vzero.4_1;
+  long unsigned int vone.5_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  _Bool _10;
+  _Bool _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  mpi_limb_t * _16;
+  long unsigned int _17;
+  mpi_limb_t _28;
+
+  <bb 2> :
+  vzero.4_1 ={v} vzero;
+  mask1_23 = vzero.4_1 - op_enable_22(D);
+  vone.5_2 ={v} vone;
+  mask2_24 = op_enable_22(D) - vone.5_2;
+  cy_25 = 0;
+  i_26 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _3 = (long unsigned int) i_18;
+  _4 = _3 * 8;
+  _5 = up_29(D) + _4;
+  u_30 = *_5;
+  _6 = (long unsigned int) i_18;
+  _7 = _6 * 8;
+  _8 = vp_31(D) + _7;
+  _9 = *_8;
+  x_32 = u_30 - _9;
+  _10 = x_32 > u_30;
+  cy1_33 = (mpi_limb_t) _10;
+  _11 = x_32 < cy_19;
+  cy2_34 = (mpi_limb_t) _11;
+  x_35 = x_32 - cy_19;
+  cy_36 = cy1_33 | cy2_34;
+  _12 = u_30 & mask2_24;
+  _13 = x_35 & mask1_23;
+  _14 = (long unsigned int) i_18;
+  _15 = _14 * 8;
+  _16 = wp_37(D) + _15;
+  _17 = _12 | _13;
+  *_16 = _17;
+  i_39 = i_18 + 1;
+
+  <bb 4> :
+  # i_18 = PHI <i_26(2), i_39(3)>
+  # cy_19 = PHI <cy_25(2), cy_36(3)>
+  if (i_18 < usize_27(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _28 = cy_19 & mask1_23;
+
+  <bb 6> :
+<L3>:
+  return _28;
+
+}
+
+
+
+;; Function _gcry_mpih_swap_cond (_gcry_mpih_swap_cond, funcdef_no=33, decl_uid=9964, cgraph_uid=34, symbol_order=35)
+
+void _gcry_mpih_swap_cond (mpi_limb_t * up, mpi_limb_t * vp, mpi_size_t usize, long unsigned int op_enable)
+{
+  mpi_limb_t v;
+  mpi_limb_t u;
+  mpi_limb_t mask2;
+  mpi_limb_t mask1;
+  mpi_size_t i;
+  long unsigned int vzero.6_1;
+  long unsigned int vone.7_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  mpi_limb_t * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  mpi_limb_t * _19;
+  long unsigned int _20;
+
+  <bb 2> :
+  vzero.6_1 ={v} vzero;
+  mask1_25 = vzero.6_1 - op_enable_24(D);
+  vone.7_2 ={v} vone;
+  mask2_26 = op_enable_24(D) - vone.7_2;
+  i_27 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _3 = (long unsigned int) i_21;
+  _4 = _3 * 8;
+  _5 = up_29(D) + _4;
+  u_30 = *_5;
+  _6 = (long unsigned int) i_21;
+  _7 = _6 * 8;
+  _8 = vp_31(D) + _7;
+  v_32 = *_8;
+  _9 = u_30 & mask2_26;
+  _10 = v_32 & mask1_25;
+  _11 = (long unsigned int) i_21;
+  _12 = _11 * 8;
+  _13 = up_29(D) + _12;
+  _14 = _9 | _10;
+  *_13 = _14;
+  _15 = u_30 & mask1_25;
+  _16 = v_32 & mask2_26;
+  _17 = (long unsigned int) i_21;
+  _18 = _17 * 8;
+  _19 = vp_31(D) + _18;
+  _20 = _15 | _16;
+  *_19 = _20;
+  i_35 = i_21 + 1;
+
+  <bb 4> :
+  # i_21 = PHI <i_27(2), i_35(3)>
+  if (i_21 < usize_28(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function _gcry_mpih_abs_cond (_gcry_mpih_abs_cond, funcdef_no=34, decl_uid=9969, cgraph_uid=35, symbol_order=36)
+
+void _gcry_mpih_abs_cond (mpi_limb_t * wp, mpi_limb_t * up, mpi_size_t usize, long unsigned int op_enable)
+{
+  mpi_limb_t x;
+  mpi_limb_t u;
+  mpi_limb_t cy;
+  mpi_limb_t mask2;
+  mpi_limb_t mask1;
+  mpi_size_t i;
+  long unsigned int vzero.8_1;
+  long unsigned int vone.9_2;
+  long unsigned int _3;
+  long unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  _Bool _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  mpi_limb_t * _13;
+  long unsigned int _14;
+
+  <bb 2> :
+  vzero.8_1 ={v} vzero;
+  mask1_20 = vzero.8_1 - op_enable_19(D);
+  vone.9_2 ={v} vone;
+  mask2_21 = op_enable_19(D) - vone.9_2;
+  cy_22 = op_enable_19(D);
+  i_23 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _3 = (long unsigned int) i_15;
+  _4 = _3 * 8;
+  _5 = up_25(D) + _4;
+  u_26 = *_5;
+  _6 = cy_16 - u_26;
+  x_27 = _6 + 18446744073709551615;
+  _7 = ~u_26;
+  _8 = x_27 < _7;
+  cy_28 = (mpi_limb_t) _8;
+  _9 = u_26 & mask2_21;
+  _10 = x_27 & mask1_20;
+  _11 = (long unsigned int) i_15;
+  _12 = _11 * 8;
+  _13 = wp_29(D) + _12;
+  _14 = _9 | _10;
+  *_13 = _14;
+  i_31 = i_15 + 1;
+
+  <bb 4> :
+  # i_15 = PHI <i_23(2), i_31(3)>
+  # cy_16 = PHI <cy_22(2), cy_28(3)>
+  if (i_15 < usize_24(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function _gcry_mpih_mod (_gcry_mpih_mod, funcdef_no=35, decl_uid=9974, cgraph_uid=36, symbol_order=37)
+
+mpi_limb_t * _gcry_mpih_mod (mpi_limb_t * vp, mpi_size_t vsize, mpi_limb_t * up, mpi_size_t usize)
+{
+  mpi_limb_t overflow;
+  mpi_limb_t underflow;
+  unsigned int the_bit;
+  mpi_limb_t limb;
+  unsigned int bitno;
+  unsigned int limbno;
+  unsigned int j;
+  int _i;
+  mpi_size_t i;
+  mpi_limb_t * rp;
+  int secure;
+  mpi_limb_t * D.10174;
+  unsigned int usize.10_1;
+  long unsigned int _2;
+  long unsigned int _3;
+  mpi_limb_t * _4;
+  int _5;
+  int _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  mpi_limb_t * _10;
+  long unsigned int _11;
+  unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  int _17;
+  mpi_limb_t * _31;
+
+  <bb 2> :
+  secure_24 = _gcry_is_secure (vp_23(D));
+  usize.10_1 = (unsigned int) usize_25(D);
+  rp_27 = _gcry_mpi_alloc_limb_space (usize.10_1, secure_24);
+  _i_28 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = (long unsigned int) _i_19;
+  _3 = _2 * 8;
+  _4 = rp_27 + _3;
+  *_4 = 0;
+  _i_46 = _i_19 + 1;
+
+  <bb 4> :
+  # _i_19 = PHI <_i_28(2), _i_46(3)>
+  if (_i_19 < usize_25(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_29 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _5 = vsize_30(D) * 64;
+  _6 = _5 + -1;
+  _7 = _6 - i_18;
+  j_32 = (unsigned int) _7;
+  limbno_33 = j_32 / 64;
+  bitno_34 = j_32 & 63;
+  _8 = (long unsigned int) limbno_33;
+  _9 = _8 * 8;
+  _10 = vp_23(D) + _9;
+  limb_35 = *_10;
+  _11 = limb_35 >> bitno_34;
+  _12 = (unsigned int) _11;
+  the_bit_36 = _12 & 1;
+  overflow_38 = _gcry_mpih_lshift (rp_27, rp_27, usize_25(D), 1);
+  _13 = *rp_27;
+  _14 = (long unsigned int) the_bit_36;
+  _15 = _13 | _14;
+  *rp_27 = _15;
+  underflow_42 = _gcry_mpih_sub_n (rp_27, rp_27, up_40(D), usize_25(D));
+  _16 = overflow_38 ^ underflow_42;
+  _gcry_mpih_add_n_cond (rp_27, rp_27, up_40(D), usize_25(D), _16);
+  i_44 = i_18 + 1;
+
+  <bb 7> :
+  # i_18 = PHI <i_29(5), i_44(6)>
+  _17 = vsize_30(D) * 64;
+  if (i_18 < _17)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _31 = rp_27;
+
+  <bb 9> :
+<L6>:
+  return _31;
+
+}
+
+
+
+;; Function _gcry_mpih_cmp_ui (_gcry_mpih_cmp_ui, funcdef_no=36, decl_uid=9978, cgraph_uid=37, symbol_order=38)
+
+int _gcry_mpih_cmp_ui (mpi_limb_t * up, mpi_size_t usize, long unsigned int v)
+{
+  mpi_size_t i;
+  int is_all_zero;
+  int D.10178;
+  long unsigned int _1;
+  long unsigned int _2;
+  mpi_limb_t * _3;
+  long unsigned int _4;
+  _Bool _5;
+  int _6;
+  long unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  int _13;
+  int _17;
+  int _21;
+
+  <bb 2> :
+  is_all_zero_14 = 1;
+  i_15 = 1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_12;
+  _2 = _1 * 8;
+  _3 = up_19(D) + _2;
+  _4 = *_3;
+  _5 = _4 == 0;
+  _6 = (int) _5;
+  is_all_zero_22 = is_all_zero_11 & _6;
+  i_23 = i_12 + 1;
+
+  <bb 4> :
+  # is_all_zero_11 = PHI <is_all_zero_14(2), is_all_zero_22(3)>
+  # i_12 = PHI <i_15(2), i_23(3)>
+  if (i_12 < usize_16(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (is_all_zero_11 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _7 = *up_19(D);
+  _8 = (unsigned int) _7;
+  _9 = (unsigned int) v_20(D);
+  _10 = _8 - _9;
+  _21 = (int) _10;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _17 = 1;
+
+  <bb 8> :
+  # _13 = PHI <_21(6), _17(7)>
+<L5>:
+  return _13;
+
+}
+
+

@@ -1,0 +1,592 @@
+
+;; Function _gcry_mpi_add_ui (_gcry_mpi_add_ui, funcdef_no=30, decl_uid=9111, cgraph_uid=31, symbol_order=30)
+
+void _gcry_mpi_add_ui (struct gcry_mpi * w, struct gcry_mpi * u, long unsigned int v)
+{
+  mpi_limb_t cy;
+  int wsign;
+  int usign;
+  mpi_size_t wsize;
+  mpi_size_t usize;
+  mpi_limb_t * up;
+  mpi_limb_t * wp;
+  int _1;
+  unsigned int wsize.0_2;
+  _Bool _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  unsigned int _7;
+  unsigned int usize.1_8;
+  unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  sizetype _15;
+  mpi_limb_t * _16;
+  long unsigned int _17;
+  _Bool _18;
+  int _19;
+
+  <bb 2> :
+  usize_26 = u_25(D)->nlimbs;
+  usign_27 = u_25(D)->sign;
+  wsign_28 = 0;
+  wsize_29 = usize_26 + 1;
+  _1 = w_30(D)->alloced;
+  if (wsize_29 > _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  wsize.0_2 = (unsigned int) wsize_29;
+  _gcry_mpi_resize (w_30(D), wsize.0_2);
+
+  <bb 4> :
+  up_32 = u_25(D)->d;
+  wp_33 = w_30(D)->d;
+  if (usize_26 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  *wp_33 = v_34(D);
+  _3 = v_34(D) != 0;
+  wsize_45 = (mpi_size_t) _3;
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  if (usign_27 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  cy_41 = _gcry_mpih_add_1 (wp_33, up_32, usize_26, v_34(D));
+  _4 = (long unsigned int) usize_26;
+  _5 = _4 * 8;
+  _6 = wp_33 + _5;
+  *_6 = cy_41;
+  _7 = (unsigned int) cy_41;
+  usize.1_8 = (unsigned int) usize_26;
+  _9 = _7 + usize.1_8;
+  wsize_43 = (mpi_size_t) _9;
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  if (usize_26 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  _10 = *up_32;
+  if (v_34(D) > _10)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _11 = *up_32;
+  _12 = v_34(D) - _11;
+  *wp_33 = _12;
+  wsize_36 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _gcry_mpih_sub_1 (wp_33, up_32, usize_26, v_34(D));
+  _13 = (long unsigned int) usize_26;
+  _14 = _13 * 8;
+  _15 = _14 + 18446744073709551608;
+  _16 = wp_33 + _15;
+  _17 = *_16;
+  _18 = _17 == 0;
+  _19 = (int) _18;
+  wsize_38 = usize_26 - _19;
+  wsign_39 = 1;
+
+  <bb 12> :
+  # wsize_20 = PHI <wsize_45(5), wsize_43(7), wsize_36(10), wsize_38(11)>
+  # wsign_21 = PHI <wsign_28(5), wsign_28(7), wsign_28(10), wsign_39(11)>
+  w_30(D)->nlimbs = wsize_20;
+  w_30(D)->sign = wsign_21;
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_add (_gcry_mpi_add, funcdef_no=31, decl_uid=9107, cgraph_uid=32, symbol_order=31)
+
+void _gcry_mpi_add (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v)
+{
+  mpi_limb_t cy;
+  mpi_size_t _i;
+  int wsign;
+  int vsign;
+  int usign;
+  mpi_size_t wsize;
+  mpi_size_t vsize;
+  mpi_size_t usize;
+  mpi_limb_t * vp;
+  mpi_limb_t * up;
+  mpi_limb_t * wp;
+  int _1;
+  int _2;
+  int _3;
+  unsigned int wsize.2_4;
+  int _5;
+  unsigned int wsize.3_6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  mpi_limb_t * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  sizetype _16;
+  mpi_limb_t * _17;
+  long unsigned int _18;
+  int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  sizetype _22;
+  mpi_limb_t * _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  sizetype _27;
+  mpi_limb_t * _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  mpi_limb_t * _32;
+  unsigned int _33;
+  unsigned int usize.4_34;
+  unsigned int _35;
+
+  <bb 2> :
+  _1 = u_54(D)->nlimbs;
+  _2 = v_55(D)->nlimbs;
+  if (_1 < _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  usize_65 = v_55(D)->nlimbs;
+  usign_66 = v_55(D)->sign;
+  vsize_67 = u_54(D)->nlimbs;
+  vsign_68 = u_54(D)->sign;
+  wsize_69 = usize_65 + 1;
+  _3 = w_61(D)->alloced;
+  if (wsize_69 > _3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  wsize.2_4 = (unsigned int) wsize_69;
+  _gcry_mpi_resize (w_61(D), wsize.2_4);
+
+  <bb 5> :
+  up_71 = v_55(D)->d;
+  vp_72 = u_54(D)->d;
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  usize_56 = u_54(D)->nlimbs;
+  usign_57 = u_54(D)->sign;
+  vsize_58 = v_55(D)->nlimbs;
+  vsign_59 = v_55(D)->sign;
+  wsize_60 = usize_56 + 1;
+  _5 = w_61(D)->alloced;
+  if (wsize_60 > _5)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  wsize.3_6 = (unsigned int) wsize_60;
+  _gcry_mpi_resize (w_61(D), wsize.3_6);
+
+  <bb 8> :
+  up_63 = u_54(D)->d;
+  vp_64 = v_55(D)->d;
+
+  <bb 9> :
+  # up_36 = PHI <up_71(5), up_63(8)>
+  # vp_37 = PHI <vp_72(5), vp_64(8)>
+  # usize_38 = PHI <usize_65(5), usize_56(8)>
+  # vsize_39 = PHI <vsize_67(5), vsize_58(8)>
+  # usign_44 = PHI <usign_66(5), usign_57(8)>
+  # vsign_45 = PHI <vsign_68(5), vsign_59(8)>
+  wp_73 = w_61(D)->d;
+  wsign_74 = 0;
+  if (vsize_39 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 10> :
+  _i_93 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _7 = (long unsigned int) _i_47;
+  _8 = _7 * 8;
+  _9 = up_36 + _8;
+  _10 = (long unsigned int) _i_47;
+  _11 = _10 * 8;
+  _12 = wp_73 + _11;
+  _13 = *_9;
+  *_12 = _13;
+  _i_97 = _i_47 + 1;
+
+  <bb 12> :
+  # _i_47 = PHI <_i_93(10), _i_97(11)>
+  if (_i_47 < usize_38)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  wsize_94 = usize_38;
+  wsign_95 = usign_44;
+  goto <bb 39>; [INV]
+
+  <bb 14> :
+  if (usign_44 != vsign_45)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 15> :
+  if (usize_38 != vsize_39)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 16> :
+  _gcry_mpih_sub (wp_73, up_36, usize_38, vp_37, vsize_39);
+  wsize_90 = usize_38;
+  goto <bb 20>; [INV]
+
+  <bb 17> :
+  _14 = (long unsigned int) wsize_40;
+  _15 = _14 * 8;
+  _16 = _15 + 18446744073709551608;
+  _17 = wp_73 + _16;
+  _18 = *_17;
+  if (_18 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  goto <bb 21>; [INV]
+
+  <bb 19> :
+  wsize_91 = wsize_40 + -1;
+
+  <bb 20> :
+  # wsize_40 = PHI <wsize_90(16), wsize_91(19)>
+  if (wsize_40 > 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  wsign_92 = usign_44;
+  goto <bb 39>; [INV]
+
+  <bb 22> :
+  _19 = _gcry_mpih_cmp (up_36, vp_37, usize_38);
+  if (_19 < 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 23> :
+  _gcry_mpih_sub_n (wp_73, vp_37, up_36, usize_38);
+  wsize_86 = usize_38;
+  goto <bb 27>; [INV]
+
+  <bb 24> :
+  _20 = (long unsigned int) wsize_41;
+  _21 = _20 * 8;
+  _22 = _21 + 18446744073709551608;
+  _23 = wp_73 + _22;
+  _24 = *_23;
+  if (_24 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  goto <bb 28>; [INV]
+
+  <bb 26> :
+  wsize_87 = wsize_41 + -1;
+
+  <bb 27> :
+  # wsize_41 = PHI <wsize_86(23), wsize_87(26)>
+  if (wsize_41 > 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 28> :
+  if (usign_44 == 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 29> :
+  wsign_88 = 1;
+  goto <bb 39>; [INV]
+
+  <bb 30> :
+  _gcry_mpih_sub_n (wp_73, up_36, vp_37, usize_38);
+  wsize_82 = usize_38;
+  goto <bb 34>; [INV]
+
+  <bb 31> :
+  _25 = (long unsigned int) wsize_42;
+  _26 = _25 * 8;
+  _27 = _26 + 18446744073709551608;
+  _28 = wp_73 + _27;
+  _29 = *_28;
+  if (_29 != 0)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  goto <bb 35>; [INV]
+
+  <bb 33> :
+  wsize_83 = wsize_42 + -1;
+
+  <bb 34> :
+  # wsize_42 = PHI <wsize_82(30), wsize_83(33)>
+  if (wsize_42 > 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 35> :
+  if (usign_44 != 0)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 36> :
+  wsign_84 = 1;
+  goto <bb 39>; [INV]
+
+  <bb 37> :
+  cy_76 = _gcry_mpih_add (wp_73, up_36, usize_38, vp_37, vsize_39);
+  _30 = (long unsigned int) usize_38;
+  _31 = _30 * 8;
+  _32 = wp_73 + _31;
+  *_32 = cy_76;
+  _33 = (unsigned int) cy_76;
+  usize.4_34 = (unsigned int) usize_38;
+  _35 = _33 + usize.4_34;
+  wsize_78 = (mpi_size_t) _35;
+  if (usign_44 != 0)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 38> :
+  wsign_79 = 1;
+
+  <bb 39> :
+  # wsize_43 = PHI <wsize_94(13), wsize_41(29), wsize_78(37), wsize_78(38), wsize_40(21), wsize_41(28), wsize_42(36), wsize_42(35)>
+  # wsign_46 = PHI <wsign_95(13), wsign_88(29), wsign_74(37), wsign_79(38), wsign_92(21), wsign_74(28), wsign_84(36), wsign_74(35)>
+  w_61(D)->nlimbs = wsize_43;
+  w_61(D)->sign = wsign_46;
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_sub_ui (_gcry_mpi_sub_ui, funcdef_no=32, decl_uid=9124, cgraph_uid=33, symbol_order=32)
+
+void _gcry_mpi_sub_ui (struct gcry_mpi * w, struct gcry_mpi * u, long unsigned int v)
+{
+  mpi_limb_t cy;
+  int wsign;
+  int usign;
+  mpi_size_t wsize;
+  mpi_size_t usize;
+  mpi_limb_t * up;
+  mpi_limb_t * wp;
+  int _1;
+  unsigned int wsize.5_2;
+  _Bool _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  unsigned int _7;
+  unsigned int usize.6_8;
+  unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  sizetype _15;
+  mpi_limb_t * _16;
+  long unsigned int _17;
+  _Bool _18;
+  int _19;
+
+  <bb 2> :
+  usize_26 = u_25(D)->nlimbs;
+  usign_27 = u_25(D)->sign;
+  wsign_28 = 0;
+  wsize_29 = usize_26 + 1;
+  _1 = w_30(D)->alloced;
+  if (wsize_29 > _1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  wsize.5_2 = (unsigned int) wsize_29;
+  _gcry_mpi_resize (w_30(D), wsize.5_2);
+
+  <bb 4> :
+  up_32 = u_25(D)->d;
+  wp_33 = w_30(D)->d;
+  if (usize_26 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  *wp_33 = v_34(D);
+  _3 = v_34(D) != 0;
+  wsize_45 = (mpi_size_t) _3;
+  wsign_46 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  if (usign_27 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  cy_41 = _gcry_mpih_add_1 (wp_33, up_32, usize_26, v_34(D));
+  _4 = (long unsigned int) usize_26;
+  _5 = _4 * 8;
+  _6 = wp_33 + _5;
+  *_6 = cy_41;
+  _7 = (unsigned int) cy_41;
+  usize.6_8 = (unsigned int) usize_26;
+  _9 = _7 + usize.6_8;
+  wsize_43 = (mpi_size_t) _9;
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  if (usize_26 == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  _10 = *up_32;
+  if (v_34(D) > _10)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _11 = *up_32;
+  _12 = v_34(D) - _11;
+  *wp_33 = _12;
+  wsize_36 = 1;
+  wsign_37 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _gcry_mpih_sub_1 (wp_33, up_32, usize_26, v_34(D));
+  _13 = (long unsigned int) usize_26;
+  _14 = _13 * 8;
+  _15 = _14 + 18446744073709551608;
+  _16 = wp_33 + _15;
+  _17 = *_16;
+  _18 = _17 == 0;
+  _19 = (int) _18;
+  wsize_39 = usize_26 - _19;
+
+  <bb 12> :
+  # wsize_20 = PHI <wsize_45(5), wsize_43(7), wsize_36(10), wsize_39(11)>
+  # wsign_21 = PHI <wsign_46(5), wsign_28(7), wsign_37(10), wsign_28(11)>
+  w_30(D)->nlimbs = wsize_20;
+  w_30(D)->sign = wsign_21;
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_sub (_gcry_mpi_sub, funcdef_no=33, decl_uid=9120, cgraph_uid=34, symbol_order=33)
+
+void _gcry_mpi_sub (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v)
+{
+  struct gcry_mpi * vv;
+  int _1;
+  _Bool _2;
+  int _3;
+
+  <bb 2> :
+  vv_7 = _gcry_mpi_copy (v_5(D));
+  _1 = vv_7->sign;
+  _2 = _1 == 0;
+  _3 = (int) _2;
+  vv_7->sign = _3;
+  _gcry_mpi_add (w_9(D), u_10(D), vv_7);
+  _gcry_mpi_free (vv_7);
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_addm (_gcry_mpi_addm, funcdef_no=34, decl_uid=9116, cgraph_uid=35, symbol_order=34)
+
+void _gcry_mpi_addm (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v, struct gcry_mpi * m)
+{
+  <bb 2> :
+  _gcry_mpi_add (w_2(D), u_3(D), v_4(D));
+  _gcry_mpi_mod (w_2(D), w_2(D), m_6(D));
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_subm (_gcry_mpi_subm, funcdef_no=35, decl_uid=9129, cgraph_uid=36, symbol_order=35)
+
+void _gcry_mpi_subm (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v, struct gcry_mpi * m)
+{
+  <bb 2> :
+  _gcry_mpi_sub (w_2(D), u_3(D), v_4(D));
+  _gcry_mpi_mod (w_2(D), w_2(D), m_6(D));
+  return;
+
+}
+
+

@@ -1,0 +1,75 @@
+
+;; Function _gcry_mpih_rshift (_gcry_mpih_rshift, funcdef_no=30, decl_uid=9942, cgraph_uid=31, symbol_order=30)
+
+mpi_limb_t _gcry_mpih_rshift (mpi_limb_t * wp, mpi_limb_t * up, mpi_size_t usize, unsigned int cnt)
+{
+  mpi_limb_t retval;
+  mpi_size_t i;
+  unsigned int sh_2;
+  unsigned int sh_1;
+  mpi_limb_t low_limb;
+  mpi_limb_t high_limb;
+  mpi_limb_t D.10064;
+  long unsigned int _1;
+  long unsigned int _2;
+  mpi_limb_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  mpi_limb_t * _12;
+  long unsigned int _13;
+  mpi_limb_t _30;
+
+  <bb 2> :
+  sh_1_18 = cnt_17(D);
+  wp_20 = wp_19(D) + 18446744073709551608;
+  sh_2_21 = 64 - sh_1_18;
+  high_limb_24 = *up_23(D);
+  retval_25 = high_limb_24 << sh_2_21;
+  low_limb_26 = high_limb_24;
+  i_27 = 1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_15;
+  _2 = _1 * 8;
+  _3 = up_23(D) + _2;
+  high_limb_31 = *_3;
+  _4 = low_limb_14 >> sh_1_18;
+  _5 = high_limb_31 << sh_2_21;
+  _6 = (long unsigned int) i_15;
+  _7 = _6 * 8;
+  _8 = wp_20 + _7;
+  _9 = _4 | _5;
+  *_8 = _9;
+  low_limb_33 = high_limb_31;
+  i_34 = i_15 + 1;
+
+  <bb 4> :
+  # low_limb_14 = PHI <low_limb_26(2), low_limb_33(3)>
+  # i_15 = PHI <i_27(2), i_34(3)>
+  if (i_15 < usize_28(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _10 = (long unsigned int) i_15;
+  _11 = _10 * 8;
+  _12 = wp_20 + _11;
+  _13 = low_limb_14 >> sh_1_18;
+  *_12 = _13;
+  _30 = retval_25;
+
+  <bb 6> :
+<L3>:
+  return _30;
+
+}
+
+

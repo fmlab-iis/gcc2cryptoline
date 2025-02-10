@@ -1,0 +1,47 @@
+
+;; Function _gcry_mpi_gcd (_gcry_mpi_gcd, funcdef_no=30, decl_uid=9165, cgraph_uid=31, symbol_order=30)
+
+int _gcry_mpi_gcd (struct gcry_mpi * g, struct gcry_mpi * xa, struct gcry_mpi * xb)
+{
+  struct gcry_mpi * b;
+  struct gcry_mpi * a;
+  int D.10058;
+  int _1;
+  int _2;
+  _Bool _3;
+  int _20;
+
+  <bb 2> :
+  a_8 = _gcry_mpi_copy (xa_6(D));
+  b_11 = _gcry_mpi_copy (xb_9(D));
+  a_8->sign = 0;
+  b_11->sign = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_fdiv_r (g_15(D), a_8, b_11);
+  _gcry_mpi_set (a_8, b_11);
+  _gcry_mpi_set (b_11, g_15(D));
+
+  <bb 4> :
+  _1 = _gcry_mpi_cmp_ui (b_11, 0);
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _gcry_mpi_set (g_15(D), a_8);
+  _gcry_mpi_free (a_8);
+  _gcry_mpi_free (b_11);
+  _2 = _gcry_mpi_cmp_ui (g_15(D), 1);
+  _3 = _2 == 0;
+  _20 = (int) _3;
+
+  <bb 6> :
+<L3>:
+  return _20;
+
+}
+
+

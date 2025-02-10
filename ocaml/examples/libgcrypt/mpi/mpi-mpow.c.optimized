@@ -1,0 +1,433 @@
+
+;; Function build_index (build_index, funcdef_no=30, decl_uid=10051, cgraph_uid=31, symbol_order=30)
+
+int build_index (struct gcry_mpi * * exparray, int k, int i, int t)
+{
+  int idx;
+  int bitno;
+  int j;
+  int D.10097;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct gcry_mpi * * _3;
+  struct gcry_mpi * _4;
+  unsigned int bitno.0_5;
+  int _6;
+  int _18;
+
+  <bb 2> :
+  idx_11 = 0;
+  bitno_14 = t_12(D) - i_13(D);
+  j_16 = k_15(D) + -1;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  idx_19 = idx_9 << 1;
+  _1 = (long unsigned int) j_7;
+  _2 = _1 * 8;
+  _3 = exparray_20(D) + _2;
+  _4 = *_3;
+  bitno.0_5 = (unsigned int) bitno_14;
+  _6 = _gcry_mpi_test_bit (_4, bitno.0_5);
+  if (_6 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  idx_22 = idx_19 | 1;
+
+  <bb 5> :
+  # idx_8 = PHI <idx_19(3), idx_22(4)>
+  j_23 = j_7 + -1;
+
+  <bb 6> :
+  # j_7 = PHI <j_16(2), j_23(5)>
+  # idx_9 = PHI <idx_11(2), idx_8(5)>
+  if (j_7 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _18 = idx_9;
+
+  <bb 8> :
+<L5>:
+  return _18;
+
+}
+
+
+
+;; Function _gcry_mpi_mulpowm (_gcry_mpi_mulpowm, funcdef_no=31, decl_uid=9685, cgraph_uid=32, symbol_order=31)
+
+void _gcry_mpi_mulpowm (struct gcry_mpi * res, struct gcry_mpi * * basearray, struct gcry_mpi * * exparray, struct gcry_mpi * m)
+{
+  static const char __FUNCTION__[18] = "_gcry_mpi_mulpowm";
+  struct gcry_mpi * tmp;
+  struct gcry_mpi * * G;
+  int idx;
+  int j;
+  int i;
+  int t;
+  int k;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct gcry_mpi * * _3;
+  struct gcry_mpi * _4;
+  _Bool _5;
+  long int _6;
+  long int _7;
+  unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  struct gcry_mpi * * _11;
+  _Bool _12;
+  long int _13;
+  long int _14;
+  _Bool _15;
+  long int _16;
+  long int _17;
+  _Bool _18;
+  long int _19;
+  long int _20;
+  int _21;
+  long unsigned int _22;
+  int _23;
+  int _24;
+  unsigned int _25;
+  _Bool _26;
+  int _27;
+  long int _28;
+  long int _29;
+  int _30;
+  _Bool _31;
+  int _32;
+  long int _33;
+  long int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  struct gcry_mpi * * _37;
+  struct gcry_mpi * _38;
+  struct gcry_mpi * _39;
+  int _40;
+  int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  struct gcry_mpi * * _44;
+  struct gcry_mpi * _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  struct gcry_mpi * * _48;
+  struct gcry_mpi * _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  struct gcry_mpi * * _52;
+  struct gcry_mpi * _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  struct gcry_mpi * * _56;
+  struct gcry_mpi * _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  struct gcry_mpi * * _60;
+  struct gcry_mpi * _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  struct gcry_mpi * * _64;
+  struct gcry_mpi * _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  struct gcry_mpi * * _68;
+  struct gcry_mpi * _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  struct gcry_mpi * * _72;
+  struct gcry_mpi * _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  struct gcry_mpi * * _76;
+  struct gcry_mpi * _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  struct gcry_mpi * * _80;
+  struct gcry_mpi * _81;
+  int _82;
+
+  <bb 2> :
+  k_96 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  k_139 = k_83 + 1;
+
+  <bb 4> :
+  # k_83 = PHI <k_96(2), k_139(3)>
+  _1 = (long unsigned int) k_83;
+  _2 = _1 * 8;
+  _3 = basearray_97(D) + _2;
+  _4 = *_3;
+  if (_4 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _5 = k_83 != 0;
+  _6 = (long int) _5;
+  _7 = __builtin_expect (_6, 1);
+  if (_7 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _gcry_assert_failed ("k", "mpi-mpow.c", 80, &__FUNCTION__);
+
+  <bb 7> :
+  t_99 = 0;
+  i_100 = 0;
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  _8 = _gcry_mpi_get_nbits (tmp_102);
+  j_135 = (int) _8;
+  if (j_135 > t_85)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  t_136 = j_135;
+
+  <bb 10> :
+  # t_84 = PHI <t_85(8), t_136(9)>
+  i_137 = i_86 + 1;
+
+  <bb 11> :
+  # t_85 = PHI <t_99(7), t_84(10)>
+  # i_86 = PHI <i_100(7), i_137(10)>
+  _9 = (long unsigned int) i_86;
+  _10 = _9 * 8;
+  _11 = exparray_101(D) + _10;
+  tmp_102 = *_11;
+  if (tmp_102 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _12 = i_86 == k_83;
+  _13 = (long int) _12;
+  _14 = __builtin_expect (_13, 1);
+  if (_14 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  _gcry_assert_failed ("i==k", "mpi-mpow.c", 88, &__FUNCTION__);
+
+  <bb 14> :
+  _15 = t_85 != 0;
+  _16 = (long int) _15;
+  _17 = __builtin_expect (_16, 1);
+  if (_17 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _gcry_assert_failed ("t", "mpi-mpow.c", 89, &__FUNCTION__);
+
+  <bb 16> :
+  _18 = k_83 <= 9;
+  _19 = (long int) _18;
+  _20 = __builtin_expect (_19, 1);
+  if (_20 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  _gcry_assert_failed ("k < 10", "mpi-mpow.c", 90, &__FUNCTION__);
+
+  <bb 18> :
+  _21 = 1 << k_83;
+  _22 = (long unsigned int) _21;
+  G_104 = _gcry_xcalloc (_22, 8);
+  _23 = m_105(D)->nlimbs;
+  _24 = _23 + 1;
+  _25 = (unsigned int) _24;
+  tmp_107 = _gcry_mpi_alloc (_25);
+  _gcry_mpi_set_ui (res_108(D), 1);
+  i_110 = 1;
+  goto <bb 35>; [INV]
+
+  <bb 19> :
+  _gcry_mpi_mulm (tmp_107, res_108(D), res_108(D), m_105(D));
+  idx_118 = build_index (exparray_101(D), k_83, i_87, t_85);
+  _26 = idx_118 >= 0;
+  _27 = (int) _26;
+  _28 = (long int) _27;
+  _29 = __builtin_expect (_28, 1);
+  if (_29 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  _30 = 1 << k_83;
+  _31 = idx_118 < _30;
+  _32 = (int) _31;
+  _33 = (long int) _32;
+  _34 = __builtin_expect (_33, 1);
+  if (_34 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  _gcry_assert_failed ("idx >= 0 && idx < (1<<k)", "mpi-mpow.c", 103, &__FUNCTION__);
+
+  <bb 22> :
+  _35 = (long unsigned int) idx_118;
+  _36 = _35 * 8;
+  _37 = G_104 + _36;
+  _38 = *_37;
+  if (_38 == 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 23> :
+  if (idx_118 == 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  _39 = _gcry_mpi_alloc_set_ui (1);
+  *G_104 = _39;
+  goto <bb 34>; [INV]
+
+  <bb 25> :
+  j_119 = 0;
+  goto <bb 31>; [INV]
+
+  <bb 26> :
+  _40 = idx_118 >> j_89;
+  _41 = _40 & 1;
+  if (_41 != 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 27> :
+  _42 = (long unsigned int) idx_118;
+  _43 = _42 * 8;
+  _44 = G_104 + _43;
+  _45 = *_44;
+  if (_45 == 0B)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  _46 = (long unsigned int) j_89;
+  _47 = _46 * 8;
+  _48 = basearray_97(D) + _47;
+  _49 = *_48;
+  _50 = (long unsigned int) idx_118;
+  _51 = _50 * 8;
+  _52 = G_104 + _51;
+  _53 = _gcry_mpi_copy (_49);
+  *_52 = _53;
+  goto <bb 30>; [INV]
+
+  <bb 29> :
+  _54 = (long unsigned int) idx_118;
+  _55 = _54 * 8;
+  _56 = G_104 + _55;
+  _57 = *_56;
+  _58 = (long unsigned int) idx_118;
+  _59 = _58 * 8;
+  _60 = G_104 + _59;
+  _61 = *_60;
+  _62 = (long unsigned int) j_89;
+  _63 = _62 * 8;
+  _64 = basearray_97(D) + _63;
+  _65 = *_64;
+  _gcry_mpi_mulm (_57, _61, _65, m_105(D));
+
+  <bb 30> :
+  j_125 = j_89 + 1;
+
+  <bb 31> :
+  # j_89 = PHI <j_119(25), j_125(30)>
+  if (j_89 < k_83)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 32> :
+  _66 = (long unsigned int) idx_118;
+  _67 = _66 * 8;
+  _68 = G_104 + _67;
+  _69 = *_68;
+  if (_69 == 0B)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 33> :
+  _70 = (long unsigned int) idx_118;
+  _71 = _70 * 8;
+  _72 = G_104 + _71;
+  _73 = _gcry_mpi_alloc (0);
+  *_72 = _73;
+
+  <bb 34> :
+  _74 = (long unsigned int) idx_118;
+  _75 = _74 * 8;
+  _76 = G_104 + _75;
+  _77 = *_76;
+  _gcry_mpi_mulm (res_108(D), tmp_107, _77, m_105(D));
+  i_129 = i_87 + 1;
+
+  <bb 35> :
+  # i_87 = PHI <i_110(18), i_129(34)>
+  if (i_87 <= t_85)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+  _gcry_mpi_free (tmp_107);
+  i_112 = 0;
+  goto <bb 38>; [INV]
+
+  <bb 37> :
+  _78 = (long unsigned int) i_88;
+  _79 = _78 * 8;
+  _80 = G_104 + _79;
+  _81 = *_80;
+  _gcry_mpi_free (_81);
+  i_115 = i_88 + 1;
+
+  <bb 38> :
+  # i_88 = PHI <i_112(36), i_115(37)>
+  _82 = 1 << k_83;
+  if (i_88 < _82)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 39> :
+  _gcry_free (G_104);
+  return;
+
+}
+
+

@@ -1,0 +1,305 @@
+
+;; Function _gcry_mpi_mod (_gcry_mpi_mod, funcdef_no=30, decl_uid=9156, cgraph_uid=31, symbol_order=30)
+
+void _gcry_mpi_mod (struct gcry_mpi * rem, struct gcry_mpi * dividend, struct gcry_mpi * divisor)
+{
+  <bb 2> :
+  _gcry_mpi_fdiv_r (rem_2(D), dividend_3(D), divisor_4(D));
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_barrett_init (_gcry_mpi_barrett_init, funcdef_no=31, decl_uid=9669, cgraph_uid=32, symbol_order=31)
+
+struct barrett_ctx_s * _gcry_mpi_barrett_init (struct gcry_mpi * m, int copy)
+{
+  struct gcry_mpi * tmp;
+  struct barrett_ctx_s * ctx;
+  struct barrett_ctx_s * D.10092;
+  struct gcry_mpi * _1;
+  int _2;
+  int _3;
+  int _4;
+  unsigned int _5;
+  int _6;
+  int _7;
+  unsigned int _8;
+  int _9;
+  int _10;
+  int _11;
+  unsigned int _12;
+  struct gcry_mpi * _13;
+  int _14;
+  int _15;
+  int _16;
+  unsigned int _17;
+  struct gcry_mpi * _18;
+  struct barrett_ctx_s * _41;
+
+  <bb 2> :
+  _gcry_mpi_normalize (m_21(D));
+  ctx_24 = _gcry_xcalloc (1, 48);
+  if (copy_25(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = _gcry_mpi_copy (m_21(D));
+  ctx_24->m = _1;
+  ctx_24->m_copied = 1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  ctx_24->m = m_21(D);
+
+  <bb 5> :
+  _2 = m_21(D)->nlimbs;
+  ctx_24->k = _2;
+  _3 = ctx_24->k;
+  _4 = _3 + 1;
+  _5 = (unsigned int) _4;
+  tmp_32 = _gcry_mpi_alloc (_5);
+  _gcry_mpi_set_ui (tmp_32, 1);
+  _6 = ctx_24->k;
+  _7 = _6 * 2;
+  _8 = (unsigned int) _7;
+  _gcry_mpi_lshift_limbs (tmp_32, _8);
+  _gcry_mpi_fdiv_q (tmp_32, tmp_32, m_21(D));
+  ctx_24->y = tmp_32;
+  _9 = ctx_24->k;
+  _10 = _9 * 2;
+  _11 = _10 + 1;
+  _12 = (unsigned int) _11;
+  _13 = _gcry_mpi_alloc (_12);
+  ctx_24->r1 = _13;
+  _14 = ctx_24->k;
+  _15 = _14 * 2;
+  _16 = _15 + 1;
+  _17 = (unsigned int) _16;
+  _18 = _gcry_mpi_alloc (_17);
+  ctx_24->r2 = _18;
+  _41 = ctx_24;
+
+  <bb 6> :
+<L3>:
+  return _41;
+
+}
+
+
+
+;; Function _gcry_mpi_barrett_free (_gcry_mpi_barrett_free, funcdef_no=32, decl_uid=9671, cgraph_uid=33, symbol_order=32)
+
+void _gcry_mpi_barrett_free (struct barrett_ctx_s * ctx)
+{
+  struct gcry_mpi * _1;
+  struct gcry_mpi * _2;
+  struct gcry_mpi * _3;
+  struct gcry_mpi * _4;
+  struct gcry_mpi * _5;
+  int _6;
+  struct gcry_mpi * _7;
+
+  <bb 2> :
+  if (ctx_11(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  _1 = ctx_11(D)->y;
+  _gcry_mpi_free (_1);
+  _2 = ctx_11(D)->r1;
+  _gcry_mpi_free (_2);
+  _3 = ctx_11(D)->r2;
+  _gcry_mpi_free (_3);
+  _4 = ctx_11(D)->r3;
+  if (_4 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _5 = ctx_11(D)->r3;
+  _gcry_mpi_free (_5);
+
+  <bb 5> :
+  _6 = ctx_11(D)->m_copied;
+  if (_6 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _7 = ctx_11(D)->m;
+  _gcry_mpi_free (_7);
+
+  <bb 7> :
+  _gcry_free (ctx_11(D));
+
+  <bb 8> :
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_mod_barrett (_gcry_mpi_mod_barrett, funcdef_no=33, decl_uid=9675, cgraph_uid=34, symbol_order=33)
+
+void _gcry_mpi_mod_barrett (struct gcry_mpi * r, struct gcry_mpi * x, struct barrett_ctx_s * ctx)
+{
+  int sign;
+  struct gcry_mpi * r2;
+  struct gcry_mpi * r1;
+  struct gcry_mpi * y;
+  int k;
+  struct gcry_mpi * m;
+  int _1;
+  int _2;
+  int _3;
+  unsigned int _4;
+  int _5;
+  unsigned int _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  struct gcry_mpi * _14;
+  int _15;
+  unsigned int _16;
+  struct gcry_mpi * _17;
+  struct gcry_mpi * _18;
+  struct gcry_mpi * _19;
+  int _20;
+  unsigned int _21;
+  struct gcry_mpi * _22;
+  int _23;
+
+  <bb 2> :
+  m_32 = ctx_31(D)->m;
+  k_33 = ctx_31(D)->k;
+  y_34 = ctx_31(D)->y;
+  r1_35 = ctx_31(D)->r1;
+  r2_36 = ctx_31(D)->r2;
+  _gcry_mpi_normalize (x_37(D));
+  _1 = x_37(D)->nlimbs;
+  _2 = k_33 * 2;
+  if (_1 > _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_mod (r_49(D), x_37(D), m_32);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 16>; [INV]
+
+  <bb 4> :
+  sign_39 = x_37(D)->sign;
+  x_37(D)->sign = 0;
+  _gcry_mpi_set (r2_36, x_37(D));
+  _3 = k_33 + -1;
+  _4 = (unsigned int) _3;
+  _gcry_mpi_rshift_limbs (r2_36, _4);
+  _gcry_mpi_mul (r2_36, r2_36, y_34);
+  _5 = k_33 + 1;
+  _6 = (unsigned int) _5;
+  _gcry_mpi_rshift_limbs (r2_36, _6);
+  _gcry_mpi_set (r1_35, x_37(D));
+  _7 = r1_35->nlimbs;
+  _8 = k_33 + 1;
+  if (_7 > _8)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _9 = k_33 + 1;
+  r1_35->nlimbs = _9;
+
+  <bb 6> :
+  _gcry_mpi_mul (r2_36, r2_36, m_32);
+  _10 = r2_36->nlimbs;
+  _11 = k_33 + 1;
+  if (_10 > _11)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _12 = k_33 + 1;
+  r2_36->nlimbs = _12;
+
+  <bb 8> :
+  _gcry_mpi_sub (r_49(D), r1_35, r2_36);
+  _13 = r_49(D)->sign;
+  if (_13 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  _14 = ctx_31(D)->r3;
+  if (_14 == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _15 = k_33 + 2;
+  _16 = (unsigned int) _15;
+  _17 = _gcry_mpi_alloc (_16);
+  ctx_31(D)->r3 = _17;
+  _18 = ctx_31(D)->r3;
+  _gcry_mpi_set_ui (_18, 1);
+  _19 = ctx_31(D)->r3;
+  _20 = k_33 + 1;
+  _21 = (unsigned int) _20;
+  _gcry_mpi_lshift_limbs (_19, _21);
+
+  <bb 11> :
+  _22 = ctx_31(D)->r3;
+  _gcry_mpi_add (r_49(D), r_49(D), _22);
+
+  <bb 12> :
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  _gcry_mpi_sub (r_49(D), r_49(D), m_32);
+
+  <bb 14> :
+  _23 = _gcry_mpi_cmp (r_49(D), m_32);
+  if (_23 >= 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  x_37(D)->sign = sign_39;
+
+  <bb 16> :
+<L13>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_mul_barrett (_gcry_mpi_mul_barrett, funcdef_no=34, decl_uid=9680, cgraph_uid=35, symbol_order=34)
+
+void _gcry_mpi_mul_barrett (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v, struct barrett_ctx_s * ctx)
+{
+  <bb 2> :
+  _gcry_mpi_mul (w_2(D), u_3(D), v_4(D));
+  _gcry_mpi_mod_barrett (w_2(D), w_2(D), ctx_6(D));
+  return;
+
+}
+
+

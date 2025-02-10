@@ -1,0 +1,427 @@
+
+;; Function _gcry_mpih_add_1 (_gcry_mpih_add_1, funcdef_no=25, decl_uid=9833, cgraph_uid=26, symbol_order=25)
+
+mpi_limb_t _gcry_mpih_add_1 (mpi_limb_t * res_ptr, mpi_limb_t * s1_ptr, mpi_size_t s1_size, mpi_limb_t s2_limb)
+{
+  mpi_size_t i;
+  mpi_limb_t x;
+  mpi_limb_t D.10052;
+  mpi_limb_t * s1_ptr.0_1;
+  mpi_limb_t * res_ptr.1_2;
+  mpi_limb_t * s1_ptr.2_3;
+  long unsigned int _4;
+  mpi_limb_t * res_ptr.3_5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  mpi_limb_t * _11;
+  long unsigned int _12;
+  int _13;
+  mpi_limb_t _21;
+  mpi_limb_t _38;
+  mpi_limb_t _46;
+
+  <bb 2> :
+  s1_ptr.0_1 = s1_ptr_27(D);
+  s1_ptr_28 = s1_ptr.0_1 + 8;
+  x_30 = *s1_ptr.0_1;
+  s2_limb_32 = s2_limb_31(D) + x_30;
+  res_ptr.1_2 = res_ptr_33(D);
+  res_ptr_34 = res_ptr.1_2 + 8;
+  *res_ptr.1_2 = s2_limb_32;
+  if (s2_limb_32 < x_30)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  s1_ptr.2_3 = s1_ptr_16;
+  s1_ptr_39 = s1_ptr.2_3 + 8;
+  _4 = *s1_ptr.2_3;
+  x_40 = _4 + 1;
+  res_ptr.3_5 = res_ptr_14;
+  res_ptr_41 = res_ptr.3_5 + 8;
+  *res_ptr.3_5 = x_40;
+  if (x_40 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # res_ptr_14 = PHI <res_ptr_34(3), res_ptr_41(4)>
+  # s1_ptr_16 = PHI <s1_ptr_28(3), s1_ptr_39(4)>
+  # s1_size_18 = PHI <s1_size_36(D)(3), s1_size_37(4)>
+  s1_size_37 = s1_size_18 + -1;
+  if (s1_size_37 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _38 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # res_ptr_15 = PHI <res_ptr_34(2), res_ptr_41(5)>
+  # s1_ptr_17 = PHI <s1_ptr_28(2), s1_ptr_39(5)>
+  # s1_size_19 = PHI <s1_size_36(D)(2), s1_size_37(5)>
+leave:
+  if (res_ptr_15 != s1_ptr_17)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  i_43 = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _6 = (long unsigned int) i_20;
+  _7 = _6 * 8;
+  _8 = s1_ptr_17 + _7;
+  _9 = (long unsigned int) i_20;
+  _10 = _9 * 8;
+  _11 = res_ptr_15 + _10;
+  _12 = *_8;
+  *_11 = _12;
+  i_45 = i_20 + 1;
+
+  <bb 11> :
+  # i_20 = PHI <i_43(9), i_45(10)>
+  _13 = s1_size_19 + -1;
+  if (i_20 < _13)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _46 = 0;
+
+  <bb 13> :
+  # _21 = PHI <_38(7), _46(12)>
+<L13>:
+  return _21;
+
+}
+
+
+
+;; Function _gcry_mpih_add (_gcry_mpih_add, funcdef_no=26, decl_uid=9844, cgraph_uid=27, symbol_order=26)
+
+mpi_limb_t _gcry_mpih_add (mpi_limb_t * res_ptr, mpi_limb_t * s1_ptr, mpi_size_t s1_size, mpi_limb_t * s2_ptr, mpi_size_t s2_size)
+{
+  mpi_limb_t cy;
+  mpi_limb_t D.10060;
+  long unsigned int _1;
+  long unsigned int _2;
+  mpi_limb_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  int _7;
+  mpi_limb_t _23;
+
+  <bb 2> :
+  cy_12 = 0;
+  if (s2_size_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  cy_19 = _gcry_mpih_add_n (res_ptr_15(D), s1_ptr_16(D), s2_ptr_17(D), s2_size_13(D));
+
+  <bb 4> :
+  # cy_8 = PHI <cy_12(2), cy_19(3)>
+  if (s1_size_20(D) != s2_size_13(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _1 = (long unsigned int) s2_size_13(D);
+  _2 = _1 * 8;
+  _3 = res_ptr_15(D) + _2;
+  _4 = (long unsigned int) s2_size_13(D);
+  _5 = _4 * 8;
+  _6 = s1_ptr_16(D) + _5;
+  _7 = s1_size_20(D) - s2_size_13(D);
+  cy_22 = _gcry_mpih_add_1 (_3, _6, _7, cy_8);
+
+  <bb 6> :
+  # cy_9 = PHI <cy_8(4), cy_22(5)>
+  _23 = cy_9;
+
+  <bb 7> :
+<L4>:
+  return _23;
+
+}
+
+
+
+;; Function _gcry_mpih_sub_1 (_gcry_mpih_sub_1, funcdef_no=27, decl_uid=9849, cgraph_uid=28, symbol_order=27)
+
+mpi_limb_t _gcry_mpih_sub_1 (mpi_limb_t * res_ptr, mpi_limb_t * s1_ptr, mpi_size_t s1_size, mpi_limb_t s2_limb)
+{
+  mpi_size_t i;
+  mpi_limb_t x;
+  mpi_limb_t D.10066;
+  mpi_limb_t * s1_ptr.4_1;
+  mpi_limb_t * res_ptr.5_2;
+  mpi_limb_t * s1_ptr.6_3;
+  mpi_limb_t * res_ptr.7_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  mpi_limb_t * _11;
+  long unsigned int _12;
+  int _13;
+  mpi_limb_t _21;
+  mpi_limb_t _38;
+  mpi_limb_t _46;
+
+  <bb 2> :
+  s1_ptr.4_1 = s1_ptr_27(D);
+  s1_ptr_28 = s1_ptr.4_1 + 8;
+  x_30 = *s1_ptr.4_1;
+  s2_limb_32 = x_30 - s2_limb_31(D);
+  res_ptr.5_2 = res_ptr_33(D);
+  res_ptr_34 = res_ptr.5_2 + 8;
+  *res_ptr.5_2 = s2_limb_32;
+  if (s2_limb_32 > x_30)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  s1_ptr.6_3 = s1_ptr_16;
+  s1_ptr_39 = s1_ptr.6_3 + 8;
+  x_40 = *s1_ptr.6_3;
+  res_ptr.7_4 = res_ptr_14;
+  res_ptr_41 = res_ptr.7_4 + 8;
+  _5 = x_40 + 18446744073709551615;
+  *res_ptr.7_4 = _5;
+  if (x_40 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 6> :
+  # res_ptr_14 = PHI <res_ptr_34(3), res_ptr_41(4)>
+  # s1_ptr_16 = PHI <s1_ptr_28(3), s1_ptr_39(4)>
+  # s1_size_18 = PHI <s1_size_36(D)(3), s1_size_37(4)>
+  s1_size_37 = s1_size_18 + -1;
+  if (s1_size_37 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _38 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  # res_ptr_15 = PHI <res_ptr_34(2), res_ptr_41(5)>
+  # s1_ptr_17 = PHI <s1_ptr_28(2), s1_ptr_39(5)>
+  # s1_size_19 = PHI <s1_size_36(D)(2), s1_size_37(5)>
+leave:
+  if (res_ptr_15 != s1_ptr_17)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  i_43 = 0;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _6 = (long unsigned int) i_20;
+  _7 = _6 * 8;
+  _8 = s1_ptr_17 + _7;
+  _9 = (long unsigned int) i_20;
+  _10 = _9 * 8;
+  _11 = res_ptr_15 + _10;
+  _12 = *_8;
+  *_11 = _12;
+  i_45 = i_20 + 1;
+
+  <bb 11> :
+  # i_20 = PHI <i_43(9), i_45(10)>
+  _13 = s1_size_19 + -1;
+  if (i_20 < _13)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _46 = 0;
+
+  <bb 13> :
+  # _21 = PHI <_38(7), _46(12)>
+<L13>:
+  return _21;
+
+}
+
+
+
+;; Function _gcry_mpih_sub (_gcry_mpih_sub, funcdef_no=28, decl_uid=9860, cgraph_uid=29, symbol_order=28)
+
+mpi_limb_t _gcry_mpih_sub (mpi_limb_t * res_ptr, mpi_limb_t * s1_ptr, mpi_size_t s1_size, mpi_limb_t * s2_ptr, mpi_size_t s2_size)
+{
+  mpi_limb_t cy;
+  mpi_limb_t D.10074;
+  long unsigned int _1;
+  long unsigned int _2;
+  mpi_limb_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  int _7;
+  mpi_limb_t _23;
+
+  <bb 2> :
+  cy_12 = 0;
+  if (s2_size_13(D) != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  cy_19 = _gcry_mpih_sub_n (res_ptr_15(D), s1_ptr_16(D), s2_ptr_17(D), s2_size_13(D));
+
+  <bb 4> :
+  # cy_8 = PHI <cy_12(2), cy_19(3)>
+  if (s1_size_20(D) != s2_size_13(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _1 = (long unsigned int) s2_size_13(D);
+  _2 = _1 * 8;
+  _3 = res_ptr_15(D) + _2;
+  _4 = (long unsigned int) s2_size_13(D);
+  _5 = _4 * 8;
+  _6 = s1_ptr_16(D) + _5;
+  _7 = s1_size_20(D) - s2_size_13(D);
+  cy_22 = _gcry_mpih_sub_1 (_3, _6, _7, cy_8);
+
+  <bb 6> :
+  # cy_9 = PHI <cy_8(4), cy_22(5)>
+  _23 = cy_9;
+
+  <bb 7> :
+<L4>:
+  return _23;
+
+}
+
+
+
+;; Function _gcry_mpih_cmp (_gcry_mpih_cmp, funcdef_no=29, decl_uid=9864, cgraph_uid=30, symbol_order=29)
+
+int _gcry_mpih_cmp (mpi_limb_t * op1_ptr, mpi_limb_t * op2_ptr, mpi_size_t size)
+{
+  mpi_limb_t op2_word;
+  mpi_limb_t op1_word;
+  mpi_size_t i;
+  int iftmp.8;
+  int D.10078;
+  long unsigned int _1;
+  long unsigned int _2;
+  mpi_limb_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  int _8;
+  int iftmp.8_9;
+  int _12;
+  int iftmp.8_19;
+  int iftmp.8_20;
+  int _21;
+
+  <bb 2> :
+  i_11 = size_10(D) + -1;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_7;
+  _2 = _1 * 8;
+  _3 = op1_ptr_13(D) + _2;
+  op1_word_15 = *_3;
+  _4 = (long unsigned int) i_7;
+  _5 = _4 * 8;
+  _6 = op2_ptr_16(D) + _5;
+  op2_word_17 = *_6;
+  if (op1_word_15 != op2_word_17)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  i_18 = i_7 + -1;
+
+  <bb 6> :
+  # i_7 = PHI <i_11(2), i_18(5)>
+  if (i_7 >= 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _12 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+diff:
+  if (op1_word_15 > op2_word_17)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.8_20 = 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.8_19 = -1;
+
+  <bb 11> :
+  # iftmp.8_9 = PHI <iftmp.8_20(9), iftmp.8_19(10)>
+  _21 = iftmp.8_9;
+
+  <bb 12> :
+  # _8 = PHI <_12(7), _21(11)>
+<L9>:
+  return _8;
+
+}
+
+

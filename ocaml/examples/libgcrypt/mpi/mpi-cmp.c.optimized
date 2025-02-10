@@ -1,0 +1,538 @@
+
+;; Function _gcry_mpi_cmp_ui (_gcry_mpi_cmp_ui, funcdef_no=30, decl_uid=9084, cgraph_uid=31, symbol_order=30)
+
+int _gcry_mpi_cmp_ui (struct gcry_mpi * u, long unsigned int v)
+{
+  mpi_limb_t limb;
+  int D.10073;
+  int _1;
+  _Bool _2;
+  int _3;
+  int _4;
+  int _5;
+  mpi_limb_t * _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  int _10;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+
+  <bb 2> :
+  limb_12 = v_11(D);
+  _gcry_mpi_normalize (u_14(D));
+  _1 = u_14(D)->nlimbs;
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = limb_12 != 0;
+  _3 = (int) _2;
+  _21 = -_3;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  _4 = u_14(D)->sign;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _20 = -1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  _5 = u_14(D)->nlimbs;
+  if (_5 == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 7> :
+  _6 = u_14(D)->d;
+  _7 = *_6;
+  if (limb_12 < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _19 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  _8 = u_14(D)->d;
+  _9 = *_8;
+  if (limb_12 > _9)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _18 = -1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  _17 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _16 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 13> :
+  # _10 = PHI <_21(3), _20(5), _19(8), _18(10), _17(11), _16(12)>
+<L10>:
+  return _10;
+
+}
+
+
+
+;; Function do_mpi_cmp (do_mpi_cmp, funcdef_no=31, decl_uid=10055, cgraph_uid=32, symbol_order=31)
+
+int do_mpi_cmp (struct gcry_mpi * u, struct gcry_mpi * v, int absmode)
+{
+  int cmp;
+  int vsign;
+  int usign;
+  mpi_size_t vsize;
+  mpi_size_t usize;
+  int iftmp.1;
+  int iftmp.0;
+  int D.10095;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  int _13;
+  int _14;
+  int _15;
+  int _16;
+  int _17;
+  int _18;
+  mpi_limb_t * _19;
+  mpi_limb_t * _20;
+  int _21;
+  int _22;
+  int _23;
+  long unsigned int _24;
+  mpi_limb_t * _25;
+  mpi_limb_t * _26;
+  unsigned int cmp.2_27;
+  unsigned int _28;
+  int _29;
+  _Bool _30;
+  int _31;
+  int _32;
+  int iftmp.0_33;
+  int iftmp.1_34;
+  int iftmp.0_44;
+  int iftmp.0_45;
+  int iftmp.1_47;
+  int iftmp.1_48;
+  int _50;
+  int _51;
+  int _52;
+  int _53;
+  int _54;
+  int _57;
+  int _58;
+  int _59;
+  int _60;
+  int _61;
+  int _62;
+  int _63;
+  int _64;
+  int _65;
+  int _66;
+
+  <bb 2> :
+  if (u_36(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = u_36(D)->flags;
+  _2 = _1 & 4;
+  if (_2 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (v_38(D) != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 5> :
+  _3 = v_38(D)->flags;
+  _4 = _3 & 4;
+  if (_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 6> :
+  if (u_36(D) != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  _5 = u_36(D)->flags;
+  _6 = _5 & 4;
+  if (_6 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  if (v_38(D) == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _7 = v_38(D)->flags;
+  _8 = _7 & 4;
+  if (_8 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _61 = -1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 11> :
+  if (u_36(D) == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _9 = u_36(D)->flags;
+  _10 = _9 & 4;
+  if (_10 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  if (v_38(D) != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 14> :
+  _11 = v_38(D)->flags;
+  _12 = _11 & 4;
+  if (_12 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _62 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 16> :
+  _13 = u_36(D)->sign;
+  if (_13 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  _14 = v_38(D)->sign;
+  if (_14 == 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  _63 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 19> :
+  _15 = u_36(D)->sign;
+  _16 = v_38(D)->sign;
+  if (_15 < _16)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  _66 = -1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 21> :
+  _17 = u_36(D)->sign;
+  _18 = v_38(D)->sign;
+  if (_17 > _18)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  _65 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 23> :
+  _19 = u_36(D)->d;
+  _20 = v_38(D)->d;
+  _21 = u_36(D)->sign;
+  _22 = _21 + 7;
+  _23 = _22 / 8;
+  _24 = (long unsigned int) _23;
+  _64 = memcmp (_19, _20, _24);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 24> :
+  _gcry_mpi_normalize (u_36(D));
+  _gcry_mpi_normalize (v_38(D));
+  usize_41 = u_36(D)->nlimbs;
+  vsize_42 = v_38(D)->nlimbs;
+  if (absmode_43(D) == 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  iftmp.0_45 = u_36(D)->sign;
+  goto <bb 27>; [INV]
+
+  <bb 26> :
+  iftmp.0_44 = 0;
+
+  <bb 27> :
+  # iftmp.0_33 = PHI <iftmp.0_45(25), iftmp.0_44(26)>
+  usign_46 = iftmp.0_33;
+  if (absmode_43(D) == 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  iftmp.1_48 = v_38(D)->sign;
+  goto <bb 30>; [INV]
+
+  <bb 29> :
+  iftmp.1_47 = 0;
+
+  <bb 30> :
+  # iftmp.1_34 = PHI <iftmp.1_48(28), iftmp.1_47(29)>
+  vsign_49 = iftmp.1_34;
+  if (usize_41 == 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 31> :
+  if (vsize_42 == 0)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  _50 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 33> :
+  if (usign_46 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 34> :
+  if (vsign_49 != 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  _51 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 36> :
+  if (usign_46 != 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 37> :
+  if (vsign_49 == 0)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 38> :
+  _52 = -1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 39> :
+  if (usize_41 != vsize_42)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 40> :
+  if (usign_46 == 0)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 41> :
+  if (vsign_49 == 0)
+    goto <bb 42>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 42> :
+  _53 = usize_41 - vsize_42;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 43> :
+  if (usize_41 != vsize_42)
+    goto <bb 44>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 44> :
+  if (usign_46 != 0)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 45> :
+  if (vsign_49 != 0)
+    goto <bb 46>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 46> :
+  _54 = vsize_42 + usize_41;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 47> :
+  if (usize_41 == 0)
+    goto <bb 48>; [INV]
+  else
+    goto <bb 49>; [INV]
+
+  <bb 48> :
+  _60 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 49> :
+  _25 = u_36(D)->d;
+  _26 = v_38(D)->d;
+  cmp_56 = _gcry_mpih_cmp (_25, _26, usize_41);
+  if (cmp_56 == 0)
+    goto <bb 50>; [INV]
+  else
+    goto <bb 51>; [INV]
+
+  <bb 50> :
+  _59 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 51> :
+  cmp.2_27 = (unsigned int) cmp_56;
+  _28 = cmp.2_27 >> 31;
+  _29 = (int) _28;
+  _30 = usign_46 != 0;
+  _31 = (int) _30;
+  if (_29 == _31)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 53>; [INV]
+
+  <bb 52> :
+  _58 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 54>; [INV]
+
+  <bb 53> :
+  _57 = -1;
+
+  <bb 54> :
+  # _32 = PHI <_61(10), _62(15), _63(18), _66(20), _65(22), _64(23), _50(32), _51(35), _52(38), _53(42), _54(46), _60(48), _59(50), _58(52), _57(53)>
+<L63>:
+  return _32;
+
+}
+
+
+
+;; Function _gcry_mpi_cmp (_gcry_mpi_cmp, funcdef_no=32, decl_uid=9078, cgraph_uid=33, symbol_order=32)
+
+int _gcry_mpi_cmp (struct gcry_mpi * u, struct gcry_mpi * v)
+{
+  int D.10150;
+  int _5;
+
+  <bb 2> :
+  _5 = do_mpi_cmp (u_2(D), v_3(D), 0);
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+
+
+;; Function _gcry_mpi_cmpabs (_gcry_mpi_cmpabs, funcdef_no=33, decl_uid=9081, cgraph_uid=34, symbol_order=33)
+
+int _gcry_mpi_cmpabs (struct gcry_mpi * u, struct gcry_mpi * v)
+{
+  int D.10152;
+  int _5;
+
+  <bb 2> :
+  _5 = do_mpi_cmp (u_2(D), v_3(D), 1);
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+

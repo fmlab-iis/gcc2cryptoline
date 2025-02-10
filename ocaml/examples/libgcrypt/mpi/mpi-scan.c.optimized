@@ -1,0 +1,76 @@
+
+;; Function _gcry_mpi_trailing_zeros (_gcry_mpi_trailing_zeros, funcdef_no=30, decl_uid=9694, cgraph_uid=31, symbol_order=30)
+
+unsigned int _gcry_mpi_trailing_zeros (struct gcry_mpi * a)
+{
+  mpi_limb_t alimb;
+  unsigned int nn;
+  unsigned int count;
+  unsigned int n;
+  unsigned int D.10061;
+  mpi_limb_t * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  mpi_limb_t * _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  int _10;
+  int _11;
+  unsigned int _12;
+  unsigned int _25;
+
+  <bb 2> :
+  count_16 = 0;
+  n_17 = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = a_19(D)->d;
+  _2 = (long unsigned int) n_13;
+  _3 = _2 * 8;
+  _4 = _1 + _3;
+  _5 = *_4;
+  if (_5 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _6 = a_19(D)->d;
+  _7 = (long unsigned int) n_13;
+  _8 = _7 * 8;
+  _9 = _6 + _8;
+  alimb_22 = *_9;
+  _10 = __builtin_ctzl (alimb_22);
+  nn_23 = (unsigned int) _10;
+  count_24 = count_14 + nn_23;
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  count_20 = count_14 + 64;
+  n_21 = n_13 + 1;
+
+  <bb 6> :
+  # n_13 = PHI <n_17(2), n_21(5)>
+  # count_14 = PHI <count_16(2), count_20(5)>
+  _11 = a_19(D)->nlimbs;
+  _12 = (unsigned int) _11;
+  if (n_13 < _12)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # count_15 = PHI <count_24(4), count_14(6)>
+  _25 = count_15;
+
+  <bb 8> :
+<L5>:
+  return _25;
+
+}
+
+

@@ -1,0 +1,3651 @@
+
+;; Function mpi_read_from_buffer (mpi_read_from_buffer, funcdef_no=30, decl_uid=10050, cgraph_uid=31, symbol_order=30)
+
+struct gcry_mpi * mpi_read_from_buffer (const unsigned char * buffer, unsigned int * ret_nread, int secure)
+{
+  struct gcry_mpi * val;
+  mpi_limb_t a;
+  unsigned int nread;
+  unsigned int nlimbs;
+  unsigned int nbytes;
+  unsigned int nbits;
+  int j;
+  int i;
+  struct gcry_mpi * D.10266;
+  unsigned char D.10265;
+  struct gcry_mpi * iftmp.0;
+  unsigned int _1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  const unsigned char * _5;
+  unsigned char _6;
+  int _7;
+  int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  int nlimbs.1_13;
+  unsigned int _14;
+  const unsigned char * buffer.2_15;
+  long unsigned int _16;
+  mpi_limb_t * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  sizetype _20;
+  mpi_limb_t * _21;
+  struct gcry_mpi * iftmp.0_32;
+  struct gcry_mpi * iftmp.0_48;
+  struct gcry_mpi * iftmp.0_50;
+  unsigned char _64;
+  struct gcry_mpi * _70;
+
+  <bb 2> :
+  nread_36 = 0;
+  val_37 = 0B;
+  _1 = *ret_nread_39(D);
+  if (_1 <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 17>; [INV]
+
+  <bb 4> :
+  _2 = *buffer_40(D);
+  _3 = (int) _2;
+  _4 = _3 << 8;
+  _5 = buffer_40(D) + 1;
+  _6 = *_5;
+  _7 = (int) _6;
+  _8 = _4 | _7;
+  nbits_41 = (unsigned int) _8;
+  if (nbits_41 > 16384)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 17>; [INV]
+
+  <bb 6> :
+  buffer_42 = buffer_40(D) + 2;
+  nread_43 = 2;
+  _9 = nbits_41 + 7;
+  nbytes_44 = _9 / 8;
+  _10 = nbytes_44 + 7;
+  nlimbs_45 = _10 / 8;
+  if (secure_46(D) != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.0_50 = _gcry_mpi_alloc_secure (nlimbs_45);
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.0_48 = _gcry_mpi_alloc (nlimbs_45);
+
+  <bb 9> :
+  # iftmp.0_32 = PHI <iftmp.0_50(7), iftmp.0_48(8)>
+  val_51 = iftmp.0_32;
+  _11 = nbytes_44 & 7;
+  _12 = 8 - _11;
+  i_52 = (int) _12;
+  i_53 = i_52 % 8;
+  nlimbs.1_13 = (int) nlimbs_45;
+  val_51->nlimbs = nlimbs.1_13;
+  j_55 = val_51->nlimbs;
+  val_51->sign = 0;
+  goto <bb 16>; [INV]
+
+  <bb 10> :
+  a_57 = 0;
+  goto <bb 14>; [INV]
+
+  <bb 11> :
+  nread_61 = nread_27 + 1;
+  _14 = *ret_nread_39(D);
+  if (nread_61 > _14)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _gcry_mpi_free (val_51);
+  val_68 = 0B;
+  // predicted unlikely by goto predictor.
+  goto <bb 17>; [INV]
+
+  <bb 13> :
+  a_62 = a_30 << 8;
+  buffer.2_15 = buffer_22;
+  buffer_63 = buffer.2_15 + 1;
+  _64 = *buffer.2_15;
+  _16 = (long unsigned int) _64;
+  a_65 = a_62 | _16;
+  i_66 = i_24 + 1;
+
+  <bb 14> :
+  # buffer_22 = PHI <buffer_23(10), buffer_63(13)>
+  # i_24 = PHI <i_25(10), i_66(13)>
+  # nread_27 = PHI <nread_28(10), nread_61(13)>
+  # a_30 = PHI <a_57(10), a_65(13)>
+  if (i_24 <= 7)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  i_58 = 0;
+  _17 = val_51->d;
+  _18 = (long unsigned int) j_26;
+  _19 = _18 * 8;
+  _20 = _19 + 18446744073709551608;
+  _21 = _17 + _20;
+  *_21 = a_30;
+  j_60 = j_26 + -1;
+
+  <bb 16> :
+  # buffer_23 = PHI <buffer_42(9), buffer_22(15)>
+  # i_25 = PHI <i_53(9), i_58(15)>
+  # j_26 = PHI <j_55(9), j_60(15)>
+  # nread_28 = PHI <nread_43(9), nread_27(15)>
+  if (j_26 > 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  # nread_29 = PHI <nread_36(3), nread_36(5), nread_61(12), nread_28(16)>
+  # val_31 = PHI <val_37(3), val_37(5), val_68(12), val_51(16)>
+leave:
+  *ret_nread_39(D) = nread_29;
+  _70 = val_31;
+
+  <bb 18> :
+<L16>:
+  return _70;
+
+}
+
+
+
+;; Function mpi_fromstr (mpi_fromstr, funcdef_no=31, decl_uid=10071, cgraph_uid=32, symbol_order=31)
+
+int mpi_fromstr (struct gcry_mpi * val, const char * str)
+{
+  mpi_limb_t a;
+  unsigned int nlimbs;
+  unsigned int nbytes;
+  unsigned int nbits;
+  int c2;
+  int c1;
+  int c;
+  int j;
+  int i;
+  int prepend_zero;
+  int sign;
+  int D.10276;
+  char _1;
+  char _2;
+  const char * _3;
+  char _4;
+  long unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  int nlimbs.3_13;
+  const char * str.4_14;
+  char _15;
+  const char * str.5_16;
+  char _17;
+  int _18;
+  int _19;
+  int _20;
+  long unsigned int _21;
+  mpi_limb_t * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  sizetype _25;
+  mpi_limb_t * _26;
+  int _44;
+  int _67;
+  int _82;
+  int _88;
+  int _93;
+  int _95;
+  int _97;
+
+  <bb 2> :
+  sign_48 = 0;
+  prepend_zero_49 = 0;
+  _1 = *str_51(D);
+  if (_1 == 45)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  sign_52 = 1;
+  str_53 = str_51(D) + 1;
+
+  <bb 4> :
+  # str_27 = PHI <str_51(D)(2), str_53(3)>
+  # sign_32 = PHI <sign_48(2), sign_52(3)>
+  _2 = *str_27;
+  if (_2 == 48)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _3 = str_27 + 1;
+  _4 = *_3;
+  if (_4 == 120)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  str_54 = str_27 + 2;
+
+  <bb 7> :
+  # str_28 = PHI <str_27(4), str_27(5), str_54(6)>
+  _5 = strlen (str_28);
+  nbits_55 = (unsigned int) _5;
+  if (nbits_55 > 16777216)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _gcry_mpi_clear (val_60(D));
+  _97 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 47>; [INV]
+
+  <bb 9> :
+  nbits_56 = nbits_55 * 4;
+  _6 = nbits_56 & 7;
+  if (_6 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  prepend_zero_57 = 1;
+
+  <bb 11> :
+  # prepend_zero_33 = PHI <prepend_zero_49(9), prepend_zero_57(10)>
+  _7 = nbits_56 + 7;
+  nbytes_58 = _7 / 8;
+  _8 = nbytes_58 + 7;
+  nlimbs_59 = _8 / 8;
+  _9 = val_60(D)->alloced;
+  _10 = (unsigned int) _9;
+  if (nlimbs_59 > _10)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _gcry_mpi_resize (val_60(D), nlimbs_59);
+
+  <bb 13> :
+  _11 = nbytes_58 & 7;
+  _12 = 8 - _11;
+  i_62 = (int) _12;
+  i_63 = i_62 % 8;
+  nlimbs.3_13 = (int) nlimbs_59;
+  val_60(D)->nlimbs = nlimbs.3_13;
+  j_65 = val_60(D)->nlimbs;
+  val_60(D)->sign = sign_32;
+  goto <bb 45>; [INV]
+
+  <bb 14> :
+  a_68 = 0;
+  goto <bb 43>; [INV]
+
+  <bb 15> :
+  if (prepend_zero_35 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  c1_74 = 48;
+  prepend_zero_75 = 0;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  str.4_14 = str_30;
+  str_72 = str.4_14 + 1;
+  _15 = *str.4_14;
+  c1_73 = (int) _15;
+
+  <bb 18> :
+  # str_29 = PHI <str_30(16), str_72(17)>
+  # prepend_zero_34 = PHI <prepend_zero_75(16), prepend_zero_35(17)>
+  # c1_42 = PHI <c1_74(16), c1_73(17)>
+  if (c1_42 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _gcry_mpi_clear (val_60(D));
+  _95 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 47>; [INV]
+
+  <bb 20> :
+  str.5_16 = str_29;
+  str_76 = str.5_16 + 1;
+  _17 = *str.5_16;
+  c2_77 = (int) _17;
+  if (c2_77 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  _gcry_mpi_clear (val_60(D));
+  _93 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 47>; [INV]
+
+  <bb 22> :
+  if (c1_42 > 47)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 23> :
+  if (c1_42 <= 57)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  c_78 = c1_42 + -48;
+  goto <bb 32>; [INV]
+
+  <bb 25> :
+  if (c1_42 > 96)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 26> :
+  if (c1_42 <= 102)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  c_79 = c1_42 + -87;
+  goto <bb 32>; [INV]
+
+  <bb 28> :
+  if (c1_42 > 64)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 29> :
+  if (c1_42 <= 70)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 30> :
+  c_80 = c1_42 + -55;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  _gcry_mpi_clear (val_60(D));
+  _82 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 47>; [INV]
+
+  <bb 32> :
+  # c_40 = PHI <c_78(24), c_79(27), c_80(30)>
+  c_83 = c_40 << 4;
+  if (c2_77 > 47)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 33> :
+  if (c2_77 <= 57)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 34> :
+  _18 = c2_77 + -48;
+  c_84 = c_83 | _18;
+  goto <bb 42>; [INV]
+
+  <bb 35> :
+  if (c2_77 > 96)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 36> :
+  if (c2_77 <= 102)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 37> :
+  _19 = c2_77 + -87;
+  c_85 = c_83 | _19;
+  goto <bb 42>; [INV]
+
+  <bb 38> :
+  if (c2_77 > 64)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 39> :
+  if (c2_77 <= 70)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 40> :
+  _20 = c2_77 + -55;
+  c_86 = c_83 | _20;
+  goto <bb 42>; [INV]
+
+  <bb 41> :
+  _gcry_mpi_clear (val_60(D));
+  _88 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 47>; [INV]
+
+  <bb 42> :
+  # c_41 = PHI <c_84(34), c_85(37), c_86(40)>
+  a_89 = a_43 << 8;
+  _21 = (long unsigned int) c_41;
+  a_90 = a_89 | _21;
+  i_91 = i_37 + 1;
+
+  <bb 43> :
+  # str_30 = PHI <str_31(14), str_76(42)>
+  # prepend_zero_35 = PHI <prepend_zero_36(14), prepend_zero_34(42)>
+  # i_37 = PHI <i_38(14), i_91(42)>
+  # a_43 = PHI <a_68(14), a_90(42)>
+  if (i_37 <= 7)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 44> :
+  i_69 = 0;
+  _22 = val_60(D)->d;
+  _23 = (long unsigned int) j_39;
+  _24 = _23 * 8;
+  _25 = _24 + 18446744073709551608;
+  _26 = _22 + _25;
+  *_26 = a_43;
+  j_71 = j_39 + -1;
+
+  <bb 45> :
+  # str_31 = PHI <str_28(13), str_30(44)>
+  # prepend_zero_36 = PHI <prepend_zero_33(13), prepend_zero_35(44)>
+  # i_38 = PHI <i_63(13), i_69(44)>
+  # j_39 = PHI <j_65(13), j_71(44)>
+  if (j_39 > 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 46>; [INV]
+
+  <bb 46> :
+  _67 = 0;
+
+  <bb 47> :
+  # _44 = PHI <_97(8), _95(19), _93(21), _82(31), _88(41), _67(46)>
+<L49>:
+  return _44;
+
+}
+
+
+
+;; Function do_get_buffer (do_get_buffer, funcdef_no=32, decl_uid=10098, cgraph_uid=33, symbol_order=32)
+
+unsigned char * do_get_buffer (struct gcry_mpi * a, unsigned int fill_le, int extraalloc, unsigned int * nbytes, int * sign, int force_secure)
+{
+  size_t n2;
+  size_t n;
+  int i;
+  mpi_limb_t alimb;
+  unsigned int tmp;
+  unsigned int length;
+  unsigned char * retbuffer;
+  unsigned char * buffer;
+  unsigned char * p;
+  unsigned char * D.10332;
+  void * iftmp.7;
+  size_t iftmp.6;
+  int _1;
+  int _2;
+  int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  long unsigned int _7;
+  int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  int _13;
+  sizetype _14;
+  int _15;
+  mpi_limb_t * _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  mpi_limb_t * _19;
+  long unsigned int _20;
+  unsigned char * p.8_21;
+  unsigned char _22;
+  long unsigned int _23;
+  unsigned char * p.9_24;
+  unsigned char _25;
+  long unsigned int _26;
+  unsigned char * p.10_27;
+  unsigned char _28;
+  long unsigned int _29;
+  unsigned char * p.11_30;
+  unsigned char _31;
+  long unsigned int _32;
+  unsigned char * p.12_33;
+  unsigned char _34;
+  long unsigned int _35;
+  unsigned char * p.13_36;
+  unsigned char _37;
+  long unsigned int _38;
+  unsigned char * p.14_39;
+  unsigned char _40;
+  unsigned char * p.15_41;
+  unsigned char _42;
+  sizetype _43;
+  unsigned char * _44;
+  unsigned char _45;
+  unsigned int i.16_46;
+  unsigned int _47;
+  unsigned int _48;
+  sizetype _49;
+  unsigned char * _50;
+  sizetype _51;
+  unsigned char * _52;
+  unsigned char _53;
+  unsigned int i.17_54;
+  unsigned int _55;
+  unsigned int _56;
+  sizetype _57;
+  unsigned char * _58;
+  unsigned char _59;
+  unsigned int _60;
+  unsigned int i.18_61;
+  sizetype _62;
+  unsigned char * p.19_63;
+  unsigned int _64;
+  unsigned int _65;
+  unsigned int _66;
+  unsigned char _67;
+  unsigned int _68;
+  long unsigned int _69;
+  size_t iftmp.6_79;
+  void * iftmp.7_80;
+  unsigned char * _81;
+  size_t iftmp.6_96;
+  size_t iftmp.6_97;
+  void * iftmp.7_106;
+  void * iftmp.7_108;
+  unsigned char * _118;
+  unsigned char * _123;
+  unsigned char * _149;
+
+  <bb 2> :
+  if (sign_90(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = a_92(D)->sign;
+  *sign_90(D) = _1;
+
+  <bb 4> :
+  _2 = a_92(D)->nlimbs;
+  _3 = _2 * 8;
+  _4 = (unsigned int) _3;
+  *nbytes_94(D) = _4;
+  _5 = *nbytes_94(D);
+  if (_5 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _6 = *nbytes_94(D);
+  iftmp.6_97 = (size_t) _6;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.6_96 = 1;
+
+  <bb 7> :
+  # iftmp.6_79 = PHI <iftmp.6_97(5), iftmp.6_96(6)>
+  n_98 = iftmp.6_79;
+  _7 = (long unsigned int) fill_le_99(D);
+  if (n_98 < _7)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  n_100 = (size_t) fill_le_99(D);
+
+  <bb 9> :
+  # n_77 = PHI <n_98(7), n_100(8)>
+  if (extraalloc_101(D) < 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _8 = -extraalloc_101(D);
+  _9 = (long unsigned int) _8;
+  n2_103 = n_77 + _9;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _10 = (long unsigned int) extraalloc_101(D);
+  n2_102 = n_77 + _10;
+
+  <bb 12> :
+  # n2_78 = PHI <n2_103(10), n2_102(11)>
+  if (force_secure_104(D) != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  if (a_92(D) != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 14> :
+  _11 = a_92(D)->flags;
+  _12 = _11 & 1;
+  if (_12 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.7_108 = _gcry_malloc_secure (n2_78);
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  iftmp.7_106 = _gcry_malloc (n2_78);
+
+  <bb 17> :
+  # iftmp.7_80 = PHI <iftmp.7_108(15), iftmp.7_106(16)>
+  retbuffer_109 = iftmp.7_80;
+  if (retbuffer_109 == 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  _149 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 19> :
+  if (extraalloc_101(D) < 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  _13 = -extraalloc_101(D);
+  _14 = (sizetype) _13;
+  buffer_111 = retbuffer_109 + _14;
+  goto <bb 22>; [INV]
+
+  <bb 21> :
+  buffer_110 = retbuffer_109;
+
+  <bb 22> :
+  # buffer_73 = PHI <buffer_111(20), buffer_110(21)>
+  p_112 = buffer_73;
+  _15 = a_92(D)->nlimbs;
+  i_113 = _15 + -1;
+  goto <bb 24>; [INV]
+
+  <bb 23> :
+  _16 = a_92(D)->d;
+  _17 = (long unsigned int) i_75;
+  _18 = _17 * 8;
+  _19 = _16 + _18;
+  alimb_131 = *_19;
+  _20 = alimb_131 >> 56;
+  p.8_21 = p_70;
+  p_132 = p.8_21 + 1;
+  _22 = (unsigned char) _20;
+  *p.8_21 = _22;
+  _23 = alimb_131 >> 48;
+  p.9_24 = p_132;
+  p_134 = p.9_24 + 1;
+  _25 = (unsigned char) _23;
+  *p.9_24 = _25;
+  _26 = alimb_131 >> 40;
+  p.10_27 = p_134;
+  p_136 = p.10_27 + 1;
+  _28 = (unsigned char) _26;
+  *p.10_27 = _28;
+  _29 = alimb_131 >> 32;
+  p.11_30 = p_136;
+  p_138 = p.11_30 + 1;
+  _31 = (unsigned char) _29;
+  *p.11_30 = _31;
+  _32 = alimb_131 >> 24;
+  p.12_33 = p_138;
+  p_140 = p.12_33 + 1;
+  _34 = (unsigned char) _32;
+  *p.12_33 = _34;
+  _35 = alimb_131 >> 16;
+  p.13_36 = p_140;
+  p_142 = p.13_36 + 1;
+  _37 = (unsigned char) _35;
+  *p.13_36 = _37;
+  _38 = alimb_131 >> 8;
+  p.14_39 = p_142;
+  p_144 = p.14_39 + 1;
+  _40 = (unsigned char) _38;
+  *p.14_39 = _40;
+  p.15_41 = p_144;
+  p_146 = p.15_41 + 1;
+  _42 = (unsigned char) alimb_131;
+  *p.15_41 = _42;
+  i_148 = i_75 + -1;
+
+  <bb 24> :
+  # p_70 = PHI <p_112(22), p_146(23)>
+  # i_75 = PHI <i_113(22), i_148(23)>
+  if (i_75 >= 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 25> :
+  if (fill_le_99(D) != 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 26> :
+  length_119 = *nbytes_94(D);
+  i_120 = 0;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  _43 = (sizetype) i_76;
+  _44 = buffer_73 + _43;
+  _45 = *_44;
+  tmp_127 = (unsigned int) _45;
+  i.16_46 = (unsigned int) i_76;
+  _47 = length_119 - i.16_46;
+  _48 = _47 + 4294967295;
+  _49 = (sizetype) _48;
+  _50 = buffer_73 + _49;
+  _51 = (sizetype) i_76;
+  _52 = buffer_73 + _51;
+  _53 = *_50;
+  *_52 = _53;
+  i.17_54 = (unsigned int) i_76;
+  _55 = length_119 - i.17_54;
+  _56 = _55 + 4294967295;
+  _57 = (sizetype) _56;
+  _58 = buffer_73 + _57;
+  _59 = (unsigned char) tmp_127;
+  *_58 = _59;
+  i_130 = i_76 + 1;
+
+  <bb 28> :
+  # i_76 = PHI <i_120(26), i_130(27)>
+  _60 = length_119 / 2;
+  i.18_61 = (unsigned int) i_76;
+  if (_60 > i.18_61)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 29> :
+  _62 = (sizetype) length_119;
+  p_121 = buffer_73 + _62;
+  goto <bb 31>; [INV]
+
+  <bb 30> :
+  p.19_63 = p_71;
+  p_124 = p.19_63 + 1;
+  *p.19_63 = 0;
+  length_126 = length_74 + 1;
+
+  <bb 31> :
+  # p_71 = PHI <p_121(29), p_124(30)>
+  # length_74 = PHI <length_119(29), length_126(30)>
+  if (length_74 < fill_le_99(D))
+    goto <bb 30>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 32> :
+  *nbytes_94(D) = length_74;
+  _123 = retbuffer_109;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 33> :
+  p_114 = buffer_73;
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  p_115 = p_72 + 1;
+  _64 = *nbytes_94(D);
+  _65 = _64 + 4294967295;
+  *nbytes_94(D) = _65;
+
+  <bb 35> :
+  # p_72 = PHI <p_114(33), p_115(34)>
+  _66 = *nbytes_94(D);
+  if (_66 != 0)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  _67 = *p_72;
+  if (_67 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 37> :
+  if (p_72 != buffer_73)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 38> :
+  _68 = *nbytes_94(D);
+  _69 = (long unsigned int) _68;
+  memmove (buffer_73, p_72, _69);
+
+  <bb 39> :
+  _118 = retbuffer_109;
+
+  <bb 40> :
+  # _81 = PHI <_149(18), _123(32), _118(39)>
+<L37>:
+  return _81;
+
+}
+
+
+
+;; Function _gcry_mpi_get_buffer (_gcry_mpi_get_buffer, funcdef_no=33, decl_uid=9610, cgraph_uid=34, symbol_order=33)
+
+byte * _gcry_mpi_get_buffer (struct gcry_mpi * a, unsigned int fill_le, unsigned int * r_nbytes, int * sign)
+{
+  byte * p;
+  unsigned int nbits;
+  byte * D.10346;
+  int _1;
+  unsigned int nbits.20_2;
+  unsigned int _3;
+  unsigned int _4;
+  byte * _5;
+  byte * _15;
+  byte * _19;
+
+  <bb 2> :
+  _1 = _gcry_mpi_get_flag (a_9(D), 2);
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  p_17 = _gcry_mpi_get_opaque_copy (a_9(D), &nbits);
+  if (r_nbytes_12(D) != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  nbits.20_2 = nbits;
+  _3 = nbits.20_2 + 7;
+  _4 = _3 / 8;
+  *r_nbytes_12(D) = _4;
+
+  <bb 5> :
+  _19 = p_17;
+  // predicted unlikely by early return (on trees) predictor.
+  nbits ={v} {CLOBBER(eos)};
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _15 = do_get_buffer (a_9(D), fill_le_11(D), 0, r_nbytes_12(D), sign_13(D), 0);
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 7> :
+  # _5 = PHI <_19(5), _15(6)>
+<L5>:
+  return _5;
+
+}
+
+
+
+;; Function _gcry_mpi_get_buffer_extra (_gcry_mpi_get_buffer_extra, funcdef_no=34, decl_uid=9616, cgraph_uid=35, symbol_order=34)
+
+byte * _gcry_mpi_get_buffer_extra (struct gcry_mpi * a, unsigned int fill_le, int extraalloc, unsigned int * r_nbytes, int * sign)
+{
+  byte * D.10349;
+  byte * _8;
+
+  <bb 2> :
+  _8 = do_get_buffer (a_2(D), fill_le_3(D), extraalloc_4(D), r_nbytes_5(D), sign_6(D), 0);
+
+  <bb 3> :
+<L0>:
+  return _8;
+
+}
+
+
+
+;; Function _gcry_mpi_get_secure_buffer (_gcry_mpi_get_secure_buffer, funcdef_no=35, decl_uid=9621, cgraph_uid=36, symbol_order=35)
+
+byte * _gcry_mpi_get_secure_buffer (struct gcry_mpi * a, unsigned int fill_le, unsigned int * r_nbytes, int * sign)
+{
+  byte * D.10351;
+  byte * _7;
+
+  <bb 2> :
+  _7 = do_get_buffer (a_2(D), fill_le_3(D), 0, r_nbytes_4(D), sign_5(D), 1);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function _gcry_mpi_set_buffer (_gcry_mpi_set_buffer, funcdef_no=36, decl_uid=9626, cgraph_uid=37, symbol_order=36)
+
+void _gcry_mpi_set_buffer (struct gcry_mpi * a, const void * buffer_arg, unsigned int nbytes, int sign)
+{
+  static const char __FUNCTION__[21] = "_gcry_mpi_set_buffer";
+  int i;
+  int nlimbs;
+  mpi_limb_t alimb;
+  const unsigned char * p;
+  const unsigned char * buffer;
+  long unsigned int D.10386;
+  long unsigned int D.10383;
+  long unsigned int D.10380;
+  long unsigned int D.10377;
+  long unsigned int D.10374;
+  long unsigned int D.10371;
+  long unsigned int D.10368;
+  long unsigned int D.10363;
+  long unsigned int D.10362;
+  long unsigned int D.10361;
+  long unsigned int D.10360;
+  long unsigned int D.10359;
+  long unsigned int D.10358;
+  long unsigned int D.10357;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  int _5;
+  unsigned int nlimbs.21_6;
+  sizetype _7;
+  sizetype _8;
+  const unsigned char * p.22_9;
+  unsigned char _10;
+  const unsigned char * p.23_11;
+  unsigned char _12;
+  long unsigned int _13;
+  const unsigned char * p.24_14;
+  unsigned char _15;
+  long unsigned int _16;
+  const unsigned char * p.25_17;
+  unsigned char _18;
+  long unsigned int _19;
+  const unsigned char * p.26_20;
+  unsigned char _21;
+  long unsigned int _22;
+  const unsigned char * p.27_23;
+  unsigned char _24;
+  long unsigned int _25;
+  const unsigned char * p.28_26;
+  unsigned char _27;
+  long unsigned int _28;
+  const unsigned char * p.29_29;
+  unsigned char _30;
+  long unsigned int _31;
+  mpi_limb_t * _32;
+  int i.30_33;
+  long unsigned int _34;
+  long unsigned int _35;
+  mpi_limb_t * _36;
+  const unsigned char * _37;
+  const unsigned char * p.31_38;
+  unsigned char _39;
+  const unsigned char * p.32_40;
+  unsigned char _41;
+  long unsigned int _42;
+  const unsigned char * p.33_43;
+  unsigned char _44;
+  long unsigned int _45;
+  const unsigned char * p.34_46;
+  unsigned char _47;
+  long unsigned int _48;
+  const unsigned char * p.35_49;
+  unsigned char _50;
+  long unsigned int _51;
+  const unsigned char * p.36_52;
+  unsigned char _53;
+  long unsigned int _54;
+  const unsigned char * p.37_55;
+  unsigned char _56;
+  long unsigned int _57;
+  const unsigned char * p.38_58;
+  unsigned char _59;
+  long unsigned int _60;
+  mpi_limb_t * _61;
+  int i.39_62;
+  long unsigned int _63;
+  long unsigned int _64;
+  mpi_limb_t * _65;
+  _Bool _66;
+  long int _67;
+  long int _68;
+  long unsigned int _103;
+  long unsigned int _106;
+  long unsigned int _109;
+  long unsigned int _112;
+  long unsigned int _115;
+  long unsigned int _118;
+  long unsigned int _121;
+  long unsigned int _130;
+  long unsigned int _133;
+  long unsigned int _136;
+  long unsigned int _139;
+  long unsigned int _142;
+  long unsigned int _145;
+  long unsigned int _148;
+
+  <bb 2> :
+  buffer_90 = buffer_arg_89(D);
+  _1 = a_92(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 27>; [INV]
+
+  <bb 4> :
+  _3 = nbytes_93(D) + 7;
+  _4 = _3 / 8;
+  nlimbs_94 = (int) _4;
+  _5 = a_92(D)->alloced;
+  if (nlimbs_94 > _5)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  nlimbs.21_6 = (unsigned int) nlimbs_94;
+  _gcry_mpi_resize (a_92(D), nlimbs.21_6);
+
+  <bb 6> :
+  a_92(D)->sign = sign_96(D);
+  i_98 = 0;
+  _7 = (sizetype) nbytes_93(D);
+  _8 = _7 + 18446744073709551615;
+  p_99 = buffer_90 + _8;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  p.22_9 = p_69;
+  p_127 = p.22_9 + 18446744073709551615;
+  _10 = *p.22_9;
+  alimb_128 = (mpi_limb_t) _10;
+  p.23_11 = p_127;
+  p_129 = p.23_11 + 18446744073709551615;
+  _12 = *p.23_11;
+  _13 = (long unsigned int) _12;
+  _130 = _13 << 8;
+  alimb_131 = _130 | alimb_128;
+  p.24_14 = p_129;
+  p_132 = p.24_14 + 18446744073709551615;
+  _15 = *p.24_14;
+  _16 = (long unsigned int) _15;
+  _133 = _16 << 16;
+  alimb_134 = _133 | alimb_131;
+  p.25_17 = p_132;
+  p_135 = p.25_17 + 18446744073709551615;
+  _18 = *p.25_17;
+  _19 = (long unsigned int) _18;
+  _136 = _19 << 24;
+  alimb_137 = _136 | alimb_134;
+  p.26_20 = p_135;
+  p_138 = p.26_20 + 18446744073709551615;
+  _21 = *p.26_20;
+  _22 = (long unsigned int) _21;
+  _139 = _22 << 32;
+  alimb_140 = _139 | alimb_137;
+  p.27_23 = p_138;
+  p_141 = p.27_23 + 18446744073709551615;
+  _24 = *p.27_23;
+  _25 = (long unsigned int) _24;
+  _142 = _25 << 40;
+  alimb_143 = _142 | alimb_140;
+  p.28_26 = p_141;
+  p_144 = p.28_26 + 18446744073709551615;
+  _27 = *p.28_26;
+  _28 = (long unsigned int) _27;
+  _145 = _28 << 48;
+  alimb_146 = _145 | alimb_143;
+  p.29_29 = p_144;
+  p_147 = p.29_29 + 18446744073709551615;
+  _30 = *p.29_29;
+  _31 = (long unsigned int) _30;
+  _148 = _31 << 56;
+  alimb_149 = _148 | alimb_146;
+  _32 = a_92(D)->d;
+  i.30_33 = i_83;
+  i_150 = i.30_33 + 1;
+  _34 = (long unsigned int) i.30_33;
+  _35 = _34 * 8;
+  _36 = _32 + _35;
+  *_36 = alimb_149;
+
+  <bb 8> :
+  # p_69 = PHI <p_99(6), p_147(7)>
+  # i_83 = PHI <i_98(6), i_150(7)>
+  _37 = buffer_90 + 8;
+  if (p_69 >= _37)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  if (p_69 >= buffer_90)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 10> :
+  p.31_38 = p_69;
+  p_100 = p.31_38 + 18446744073709551615;
+  _39 = *p.31_38;
+  alimb_101 = (mpi_limb_t) _39;
+  if (p_100 >= buffer_90)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  p.32_40 = p_100;
+  p_102 = p.32_40 + 18446744073709551615;
+  _41 = *p.32_40;
+  _42 = (long unsigned int) _41;
+  _103 = _42 << 8;
+  alimb_104 = _103 | alimb_101;
+
+  <bb 12> :
+  # p_70 = PHI <p_100(10), p_102(11)>
+  # alimb_76 = PHI <alimb_101(10), alimb_104(11)>
+  if (p_70 >= buffer_90)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  p.33_43 = p_70;
+  p_105 = p.33_43 + 18446744073709551615;
+  _44 = *p.33_43;
+  _45 = (long unsigned int) _44;
+  _106 = _45 << 16;
+  alimb_107 = _106 | alimb_76;
+
+  <bb 14> :
+  # p_71 = PHI <p_70(12), p_105(13)>
+  # alimb_77 = PHI <alimb_76(12), alimb_107(13)>
+  if (p_71 >= buffer_90)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  p.34_46 = p_71;
+  p_108 = p.34_46 + 18446744073709551615;
+  _47 = *p.34_46;
+  _48 = (long unsigned int) _47;
+  _109 = _48 << 24;
+  alimb_110 = _109 | alimb_77;
+
+  <bb 16> :
+  # p_72 = PHI <p_71(14), p_108(15)>
+  # alimb_78 = PHI <alimb_77(14), alimb_110(15)>
+  if (p_72 >= buffer_90)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  p.35_49 = p_72;
+  p_111 = p.35_49 + 18446744073709551615;
+  _50 = *p.35_49;
+  _51 = (long unsigned int) _50;
+  _112 = _51 << 32;
+  alimb_113 = _112 | alimb_78;
+
+  <bb 18> :
+  # p_73 = PHI <p_72(16), p_111(17)>
+  # alimb_79 = PHI <alimb_78(16), alimb_113(17)>
+  if (p_73 >= buffer_90)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  p.36_52 = p_73;
+  p_114 = p.36_52 + 18446744073709551615;
+  _53 = *p.36_52;
+  _54 = (long unsigned int) _53;
+  _115 = _54 << 40;
+  alimb_116 = _115 | alimb_79;
+
+  <bb 20> :
+  # p_74 = PHI <p_73(18), p_114(19)>
+  # alimb_80 = PHI <alimb_79(18), alimb_116(19)>
+  if (p_74 >= buffer_90)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  p.37_55 = p_74;
+  p_117 = p.37_55 + 18446744073709551615;
+  _56 = *p.37_55;
+  _57 = (long unsigned int) _56;
+  _118 = _57 << 48;
+  alimb_119 = _118 | alimb_80;
+
+  <bb 22> :
+  # p_75 = PHI <p_74(20), p_117(21)>
+  # alimb_81 = PHI <alimb_80(20), alimb_119(21)>
+  if (p_75 >= buffer_90)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  p.38_58 = p_75;
+  p_120 = p.38_58 + 18446744073709551615;
+  _59 = *p.38_58;
+  _60 = (long unsigned int) _59;
+  _121 = _60 << 56;
+  alimb_122 = _121 | alimb_81;
+
+  <bb 24> :
+  # alimb_82 = PHI <alimb_81(22), alimb_122(23)>
+  _61 = a_92(D)->d;
+  i.39_62 = i_83;
+  i_123 = i.39_62 + 1;
+  _63 = (long unsigned int) i.39_62;
+  _64 = _63 * 8;
+  _65 = _61 + _64;
+  *_65 = alimb_82;
+
+  <bb 25> :
+  # i_84 = PHI <i_83(9), i_123(24)>
+  a_92(D)->nlimbs = i_84;
+  _66 = i_84 == nlimbs_94;
+  _67 = (long int) _66;
+  _68 = __builtin_expect (_67, 1);
+  if (_68 == 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  _gcry_assert_failed ("i == nlimbs", "mpicoder.c", 407, &__FUNCTION__);
+
+  <bb 27> :
+<L25>:
+  return;
+
+}
+
+
+
+;; Function onecompl (onecompl, funcdef_no=37, decl_uid=10164, cgraph_uid=38, symbol_order=37)
+
+void onecompl (struct gcry_mpi * a)
+{
+  unsigned int nbits;
+  unsigned int i;
+  mpi_size_t n;
+  mpi_limb_t * ap;
+  unsigned int _1;
+  unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  long unsigned int _10;
+  unsigned int n.40_11;
+  unsigned int _12;
+
+  <bb 2> :
+  if (a_16(D) == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = a_16(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+  nbits_19 = _gcry_mpi_get_nbits (a_16(D));
+  _gcry_mpi_normalize (a_16(D));
+  ap_21 = a_16(D)->d;
+  n_22 = a_16(D)->nlimbs;
+  i_23 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _3 = (long unsigned int) i_13;
+  _4 = _3 * 8;
+  _5 = ap_21 + _4;
+  _6 = *_5;
+  _7 = (long unsigned int) i_13;
+  _8 = _7 * 8;
+  _9 = ap_21 + _8;
+  _10 = ~_6;
+  *_9 = _10;
+  i_27 = i_13 + 1;
+
+  <bb 7> :
+  # i_13 = PHI <i_23(5), i_27(6)>
+  n.40_11 = (unsigned int) n_22;
+  if (i_13 < n.40_11)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  a_16(D)->sign = 0;
+  _12 = nbits_19 + 4294967295;
+  _gcry_mpi_clear_highbit (a_16(D), _12);
+
+  <bb 9> :
+<L6>:
+  return;
+
+}
+
+
+
+;; Function twocompl (twocompl, funcdef_no=38, decl_uid=10176, cgraph_uid=39, symbol_order=38)
+
+void twocompl (unsigned char * p, unsigned int n)
+{
+  int i;
+  unsigned int _1;
+  sizetype _2;
+  unsigned char * _3;
+  unsigned char _4;
+  sizetype _5;
+  unsigned char * _6;
+  unsigned char _7;
+  int _8;
+  int _9;
+  sizetype _10;
+  unsigned char * _11;
+  unsigned char _12;
+  unsigned char _13;
+  sizetype _14;
+  unsigned char * _15;
+  unsigned char _16;
+  sizetype _17;
+  unsigned char * _18;
+  unsigned char _19;
+  int _20;
+  int _21;
+  sizetype _22;
+  unsigned char * _23;
+  unsigned char _24;
+  unsigned char _25;
+  unsigned char _26;
+  sizetype _27;
+  unsigned char * _28;
+  unsigned char _29;
+  sizetype _30;
+  unsigned char * _31;
+  unsigned char _32;
+  int _33;
+  int _34;
+  sizetype _35;
+  unsigned char * _36;
+  unsigned char _37;
+  unsigned char _38;
+  unsigned char _39;
+  sizetype _40;
+  unsigned char * _41;
+  unsigned char _42;
+  sizetype _43;
+  unsigned char * _44;
+  unsigned char _45;
+  int _46;
+  int _47;
+  sizetype _48;
+  unsigned char * _49;
+  unsigned char _50;
+  unsigned char _51;
+  unsigned char _52;
+  sizetype _53;
+  unsigned char * _54;
+  unsigned char _55;
+  sizetype _56;
+  unsigned char * _57;
+  unsigned char _58;
+  int _59;
+  int _60;
+  sizetype _61;
+  unsigned char * _62;
+  unsigned char _63;
+  unsigned char _64;
+  unsigned char _65;
+  sizetype _66;
+  unsigned char * _67;
+  unsigned char _68;
+  sizetype _69;
+  unsigned char * _70;
+  unsigned char _71;
+  int _72;
+  int _73;
+  sizetype _74;
+  unsigned char * _75;
+  unsigned char _76;
+  unsigned char _77;
+  unsigned char _78;
+  sizetype _79;
+  unsigned char * _80;
+  unsigned char _81;
+  sizetype _82;
+  unsigned char * _83;
+  unsigned char _84;
+  int _85;
+  int _86;
+  sizetype _87;
+  unsigned char * _88;
+  unsigned char _89;
+  unsigned char _90;
+  unsigned char _91;
+  sizetype _92;
+  unsigned char * _93;
+  unsigned char _94;
+  sizetype _95;
+  unsigned char * _96;
+  sizetype _97;
+  unsigned char * _98;
+  unsigned char _99;
+  sizetype _100;
+  unsigned char * _101;
+  unsigned char _102;
+
+  <bb 2> :
+  _1 = n_108(D) + 4294967295;
+  i_109 = (int) _1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  i_112 = i_103 + -1;
+
+  <bb 4> :
+  # i_103 = PHI <i_109(2), i_112(3)>
+  if (i_103 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _2 = (sizetype) i_103;
+  _3 = p_110(D) + _2;
+  _4 = *_3;
+  if (_4 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (i_103 >= 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 7> :
+  _5 = (sizetype) i_103;
+  _6 = p_110(D) + _5;
+  _7 = *_6;
+  _8 = (int) _7;
+  _9 = _8 & 1;
+  if (_9 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _10 = (sizetype) i_103;
+  _11 = p_110(D) + _10;
+  _12 = *_11;
+  _13 = ~_12;
+  _14 = (sizetype) i_103;
+  _15 = p_110(D) + _14;
+  _16 = _13 | 1;
+  *_15 = _16;
+  goto <bb 22>; [INV]
+
+  <bb 9> :
+  _17 = (sizetype) i_103;
+  _18 = p_110(D) + _17;
+  _19 = *_18;
+  _20 = (int) _19;
+  _21 = _20 & 2;
+  if (_21 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _22 = (sizetype) i_103;
+  _23 = p_110(D) + _22;
+  _24 = *_23;
+  _25 = ~_24;
+  _26 = _25 & 252;
+  _27 = (sizetype) i_103;
+  _28 = p_110(D) + _27;
+  _29 = _26 | 2;
+  *_28 = _29;
+  goto <bb 22>; [INV]
+
+  <bb 11> :
+  _30 = (sizetype) i_103;
+  _31 = p_110(D) + _30;
+  _32 = *_31;
+  _33 = (int) _32;
+  _34 = _33 & 4;
+  if (_34 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _35 = (sizetype) i_103;
+  _36 = p_110(D) + _35;
+  _37 = *_36;
+  _38 = ~_37;
+  _39 = _38 & 248;
+  _40 = (sizetype) i_103;
+  _41 = p_110(D) + _40;
+  _42 = _39 | 4;
+  *_41 = _42;
+  goto <bb 22>; [INV]
+
+  <bb 13> :
+  _43 = (sizetype) i_103;
+  _44 = p_110(D) + _43;
+  _45 = *_44;
+  _46 = (int) _45;
+  _47 = _46 & 8;
+  if (_47 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  _48 = (sizetype) i_103;
+  _49 = p_110(D) + _48;
+  _50 = *_49;
+  _51 = ~_50;
+  _52 = _51 & 240;
+  _53 = (sizetype) i_103;
+  _54 = p_110(D) + _53;
+  _55 = _52 | 8;
+  *_54 = _55;
+  goto <bb 22>; [INV]
+
+  <bb 15> :
+  _56 = (sizetype) i_103;
+  _57 = p_110(D) + _56;
+  _58 = *_57;
+  _59 = (int) _58;
+  _60 = _59 & 16;
+  if (_60 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  _61 = (sizetype) i_103;
+  _62 = p_110(D) + _61;
+  _63 = *_62;
+  _64 = ~_63;
+  _65 = _64 & 224;
+  _66 = (sizetype) i_103;
+  _67 = p_110(D) + _66;
+  _68 = _65 | 16;
+  *_67 = _68;
+  goto <bb 22>; [INV]
+
+  <bb 17> :
+  _69 = (sizetype) i_103;
+  _70 = p_110(D) + _69;
+  _71 = *_70;
+  _72 = (int) _71;
+  _73 = _72 & 32;
+  if (_73 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  _74 = (sizetype) i_103;
+  _75 = p_110(D) + _74;
+  _76 = *_75;
+  _77 = ~_76;
+  _78 = _77 & 192;
+  _79 = (sizetype) i_103;
+  _80 = p_110(D) + _79;
+  _81 = _78 | 32;
+  *_80 = _81;
+  goto <bb 22>; [INV]
+
+  <bb 19> :
+  _82 = (sizetype) i_103;
+  _83 = p_110(D) + _82;
+  _84 = *_83;
+  _85 = (int) _84;
+  _86 = _85 & 64;
+  if (_86 != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  _87 = (sizetype) i_103;
+  _88 = p_110(D) + _87;
+  _89 = *_88;
+  _90 = ~_89;
+  _91 = _90 & 128;
+  _92 = (sizetype) i_103;
+  _93 = p_110(D) + _92;
+  _94 = _91 | 64;
+  *_93 = _94;
+  goto <bb 22>; [INV]
+
+  <bb 21> :
+  _95 = (sizetype) i_103;
+  _96 = p_110(D) + _95;
+  *_96 = 128;
+
+  <bb 22> :
+  i_121 = i_103 + -1;
+  goto <bb 24>; [INV]
+
+  <bb 23> :
+  _97 = (sizetype) i_104;
+  _98 = p_110(D) + _97;
+  _99 = *_98;
+  _100 = (sizetype) i_104;
+  _101 = p_110(D) + _100;
+  _102 = ~_99;
+  *_101 = _102;
+  i_123 = i_104 + -1;
+
+  <bb 24> :
+  # i_104 = PHI <i_121(22), i_123(23)>
+  if (i_104 >= 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 25> :
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_scan (_gcry_mpi_scan, funcdef_no=39, decl_uid=9090, cgraph_uid=40, symbol_order=39)
+
+gcry_err_code_t _gcry_mpi_scan (struct gcry_mpi * * ret_mpi, gcry_mpi_format format, const void * buffer_arg, size_t buflen, size_t * nscanned)
+{
+  size_t n;
+  const unsigned char * s;
+  const unsigned char * s;
+  int secure;
+  unsigned int len;
+  struct gcry_mpi * a;
+  const unsigned char * buffer;
+  struct gcry_mpi * iftmp.63;
+  struct gcry_mpi * iftmp.62;
+  gpg_err_code_t iftmp.55;
+  struct gcry_mpi * iftmp.48;
+  struct gcry_mpi * iftmp.42;
+  gpg_err_code_t D.10427;
+  int iftmp.41;
+  int _1;
+  unsigned int _2;
+  unsigned int len.43_3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int len.44_6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int len.45_9;
+  unsigned int len.46_10;
+  unsigned char _11;
+  signed char _12;
+  _Bool _13;
+  int _14;
+  int _15;
+  unsigned int len.47_16;
+  long unsigned int _17;
+  unsigned int len.49_18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int len.50_21;
+  unsigned int _22;
+  unsigned int _23;
+  unsigned int len.51_24;
+  unsigned int len.52_25;
+  unsigned int len.53_26;
+  long unsigned int _27;
+  unsigned int len.54_28;
+  long unsigned int _29;
+  unsigned int len.56_30;
+  unsigned int len.57_31;
+  unsigned char _32;
+  int _33;
+  int _34;
+  const unsigned char * _35;
+  unsigned char _36;
+  int _37;
+  int _38;
+  int _39;
+  const unsigned char * _40;
+  unsigned char _41;
+  int _42;
+  int _43;
+  int _44;
+  const unsigned char * _45;
+  unsigned char _46;
+  int _47;
+  int _48;
+  unsigned int len.58_49;
+  unsigned int len.59_50;
+  unsigned int _51;
+  unsigned int len.60_52;
+  unsigned int len.61_53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  unsigned int _60;
+  unsigned int _61;
+  unsigned char _62;
+  signed char _63;
+  _Bool _64;
+  int _65;
+  int _66;
+  long unsigned int _67;
+  int _68;
+  long unsigned int _69;
+  int iftmp.41_71;
+  gpg_err_code_t _72;
+  struct gcry_mpi * iftmp.42_73;
+  struct gcry_mpi * iftmp.48_74;
+  gpg_err_code_t iftmp.55_75;
+  struct gcry_mpi * iftmp.62_76;
+  struct gcry_mpi * iftmp.63_77;
+  int iftmp.41_103;
+  int iftmp.41_104;
+  gpg_err_code_t _110;
+  struct gcry_mpi * iftmp.63_112;
+  struct gcry_mpi * iftmp.63_114;
+  gpg_err_code_t _123;
+  gpg_err_code_t _125;
+  gpg_err_code_t _126;
+  gpg_err_code_t _128;
+  gpg_err_code_t _132;
+  struct gcry_mpi * iftmp.62_134;
+  struct gcry_mpi * iftmp.62_136;
+  gpg_err_code_t _147;
+  gpg_err_code_t iftmp.55_155;
+  gpg_err_code_t iftmp.55_156;
+  gpg_err_code_t _157;
+  struct gcry_mpi * iftmp.48_159;
+  struct gcry_mpi * iftmp.48_161;
+  gpg_err_code_t _168;
+  struct gcry_mpi * iftmp.42_171;
+  struct gcry_mpi * iftmp.42_173;
+  gpg_err_code_t _184;
+  gpg_err_code_t _186;
+
+  <bb 2> :
+  buffer_100 = buffer_arg_99(D);
+  a_101 = 0B;
+  if (buffer_100 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _1 = _gcry_is_secure (buffer_100);
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.41_103 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.41_104 = 0;
+
+  <bb 6> :
+  # iftmp.41_71 = PHI <iftmp.41_103(4), iftmp.41_104(5)>
+  secure_105 = iftmp.41_71;
+  if (buflen_106(D) > 16777216)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  if (nscanned_121(D) != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  *nscanned_121(D) = 0;
+
+  <bb 9> :
+  _186 = 65;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 10> :
+  if (format_107(D) == 3)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  len = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _2 = (unsigned int) buflen_106(D);
+  len = _2;
+
+  <bb 13> :
+  if (format_107(D) == 1)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 14> :
+  s_169 = buffer_100;
+  if (secure_105 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  len.43_3 = len;
+  _4 = len.43_3 + 7;
+  _5 = _4 / 8;
+  iftmp.42_173 = _gcry_mpi_alloc_secure (_5);
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  len.44_6 = len;
+  _7 = len.44_6 + 7;
+  _8 = _7 / 8;
+  iftmp.42_171 = _gcry_mpi_alloc (_8);
+
+  <bb 17> :
+  # iftmp.42_73 = PHI <iftmp.42_173(15), iftmp.42_171(16)>
+  a_174 = iftmp.42_73;
+  len.45_9 = len;
+  if (len.45_9 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  len.46_10 = len;
+  _gcry_mpi_set_buffer (a_174, s_169, len.46_10, 0);
+  _11 = *s_169;
+  _12 = (signed char) _11;
+  _13 = _12 < 0;
+  _14 = (int) _13;
+  a_174->sign = _14;
+  _15 = a_174->sign;
+  if (_15 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  onecompl (a_174);
+  _gcry_mpi_add_ui (a_174, a_174, 1);
+  a_174->sign = 1;
+
+  <bb 20> :
+  if (ret_mpi_117(D) != 0B)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  _gcry_mpi_normalize (a_174);
+  *ret_mpi_117(D) = a_174;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  _gcry_mpi_free (a_174);
+
+  <bb 23> :
+  if (nscanned_121(D) != 0B)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  len.47_16 = len;
+  _17 = (long unsigned int) len.47_16;
+  *nscanned_121(D) = _17;
+
+  <bb 25> :
+  _184 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 26> :
+  if (format_107(D) == 5)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 27> :
+  if (secure_105 != 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  len.49_18 = len;
+  _19 = len.49_18 + 7;
+  _20 = _19 / 8;
+  iftmp.48_161 = _gcry_mpi_alloc_secure (_20);
+  goto <bb 30>; [INV]
+
+  <bb 29> :
+  len.50_21 = len;
+  _22 = len.50_21 + 7;
+  _23 = _22 / 8;
+  iftmp.48_159 = _gcry_mpi_alloc (_23);
+
+  <bb 30> :
+  # iftmp.48_74 = PHI <iftmp.48_161(28), iftmp.48_159(29)>
+  a_162 = iftmp.48_74;
+  len.51_24 = len;
+  if (len.51_24 != 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  len.52_25 = len;
+  _gcry_mpi_set_buffer (a_162, buffer_100, len.52_25, 0);
+
+  <bb 32> :
+  if (ret_mpi_117(D) != 0B)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 33> :
+  _gcry_mpi_normalize (a_162);
+  *ret_mpi_117(D) = a_162;
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  _gcry_mpi_free (a_162);
+
+  <bb 35> :
+  if (nscanned_121(D) != 0B)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  len.53_26 = len;
+  _27 = (long unsigned int) len.53_26;
+  *nscanned_121(D) = _27;
+
+  <bb 37> :
+  _168 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 38> :
+  if (format_107(D) == 2)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 50>; [INV]
+
+  <bb 39> :
+  a_149 = mpi_read_from_buffer (buffer_100, &len, secure_105);
+  if (nscanned_121(D) != 0B)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 40> :
+  len.54_28 = len;
+  _29 = (long unsigned int) len.54_28;
+  *nscanned_121(D) = _29;
+
+  <bb 41> :
+  if (ret_mpi_117(D) != 0B)
+    goto <bb 42>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 42> :
+  if (a_149 != 0B)
+    goto <bb 43>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 43> :
+  _gcry_mpi_normalize (a_149);
+  *ret_mpi_117(D) = a_149;
+  goto <bb 46>; [INV]
+
+  <bb 44> :
+  if (a_149 != 0B)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 46>; [INV]
+
+  <bb 45> :
+  _gcry_mpi_free (a_149);
+  a_154 = 0B;
+
+  <bb 46> :
+  # a_70 = PHI <a_149(43), a_149(44), a_154(45)>
+  if (a_70 != 0B)
+    goto <bb 47>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 47> :
+  iftmp.55_156 = 0;
+  goto <bb 49>; [INV]
+
+  <bb 48> :
+  iftmp.55_155 = 65;
+
+  <bb 49> :
+  # iftmp.55_75 = PHI <iftmp.55_156(47), iftmp.55_155(48)>
+  _157 = iftmp.55_75;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 50> :
+  if (format_107(D) == 3)
+    goto <bb 51>; [INV]
+  else
+    goto <bb 71>; [INV]
+
+  <bb 51> :
+  s_127 = buffer_100;
+  len.56_30 = len;
+  if (len.56_30 != 0)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 54>; [INV]
+
+  <bb 52> :
+  len.57_31 = len;
+  if (len.57_31 <= 3)
+    goto <bb 53>; [INV]
+  else
+    goto <bb 54>; [INV]
+
+  <bb 53> :
+  _128 = 66;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 54> :
+  _32 = *s_127;
+  _33 = (int) _32;
+  _34 = _33 << 24;
+  _35 = s_127 + 1;
+  _36 = *_35;
+  _37 = (int) _36;
+  _38 = _37 << 16;
+  _39 = _34 | _38;
+  _40 = s_127 + 2;
+  _41 = *_40;
+  _42 = (int) _41;
+  _43 = _42 << 8;
+  _44 = _39 | _43;
+  _45 = s_127 + 3;
+  _46 = *_45;
+  _47 = (int) _46;
+  _48 = _44 | _47;
+  n_129 = (size_t) _48;
+  s_130 = s_127 + 4;
+  len.58_49 = len;
+  if (len.58_49 != 0)
+    goto <bb 55>; [INV]
+  else
+    goto <bb 56>; [INV]
+
+  <bb 55> :
+  len.59_50 = len;
+  _51 = len.59_50 + 4294967292;
+  len = _51;
+
+  <bb 56> :
+  len.60_52 = len;
+  if (len.60_52 != 0)
+    goto <bb 57>; [INV]
+  else
+    goto <bb 59>; [INV]
+
+  <bb 57> :
+  len.61_53 = len;
+  _54 = (long unsigned int) len.61_53;
+  if (n_129 > _54)
+    goto <bb 58>; [INV]
+  else
+    goto <bb 59>; [INV]
+
+  <bb 58> :
+  _132 = 67;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 59> :
+  if (secure_105 != 0)
+    goto <bb 60>; [INV]
+  else
+    goto <bb 61>; [INV]
+
+  <bb 60> :
+  _55 = n_129 + 7;
+  _56 = _55 / 8;
+  _57 = (unsigned int) _56;
+  iftmp.62_136 = _gcry_mpi_alloc_secure (_57);
+  goto <bb 62>; [INV]
+
+  <bb 61> :
+  _58 = n_129 + 7;
+  _59 = _58 / 8;
+  _60 = (unsigned int) _59;
+  iftmp.62_134 = _gcry_mpi_alloc (_60);
+
+  <bb 62> :
+  # iftmp.62_76 = PHI <iftmp.62_136(60), iftmp.62_134(61)>
+  a_137 = iftmp.62_76;
+  if (n_129 != 0)
+    goto <bb 63>; [INV]
+  else
+    goto <bb 65>; [INV]
+
+  <bb 63> :
+  _61 = (unsigned int) n_129;
+  _gcry_mpi_set_buffer (a_137, s_130, _61, 0);
+  _62 = *s_130;
+  _63 = (signed char) _62;
+  _64 = _63 < 0;
+  _65 = (int) _64;
+  a_137->sign = _65;
+  _66 = a_137->sign;
+  if (_66 != 0)
+    goto <bb 64>; [INV]
+  else
+    goto <bb 65>; [INV]
+
+  <bb 64> :
+  onecompl (a_137);
+  _gcry_mpi_add_ui (a_137, a_137, 1);
+  a_137->sign = 1;
+
+  <bb 65> :
+  if (nscanned_121(D) != 0B)
+    goto <bb 66>; [INV]
+  else
+    goto <bb 67>; [INV]
+
+  <bb 66> :
+  _67 = n_129 + 4;
+  *nscanned_121(D) = _67;
+
+  <bb 67> :
+  if (ret_mpi_117(D) != 0B)
+    goto <bb 68>; [INV]
+  else
+    goto <bb 69>; [INV]
+
+  <bb 68> :
+  _gcry_mpi_normalize (a_137);
+  *ret_mpi_117(D) = a_137;
+  goto <bb 70>; [INV]
+
+  <bb 69> :
+  _gcry_mpi_free (a_137);
+
+  <bb 70> :
+  _147 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 71> :
+  if (format_107(D) == 4)
+    goto <bb 72>; [INV]
+  else
+    goto <bb 85>; [INV]
+
+  <bb 72> :
+  if (buflen_106(D) != 0)
+    goto <bb 73>; [INV]
+  else
+    goto <bb 74>; [INV]
+
+  <bb 73> :
+  _126 = 45;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 74> :
+  if (secure_105 != 0)
+    goto <bb 75>; [INV]
+  else
+    goto <bb 76>; [INV]
+
+  <bb 75> :
+  iftmp.63_114 = _gcry_mpi_alloc_secure (0);
+  goto <bb 77>; [INV]
+
+  <bb 76> :
+  iftmp.63_112 = _gcry_mpi_alloc (0);
+
+  <bb 77> :
+  # iftmp.63_77 = PHI <iftmp.63_114(75), iftmp.63_112(76)>
+  a_115 = iftmp.63_77;
+  _68 = mpi_fromstr (a_115, buffer_100);
+  if (_68 != 0)
+    goto <bb 78>; [INV]
+  else
+    goto <bb 79>; [INV]
+
+  <bb 78> :
+  _gcry_mpi_free (a_115);
+  _125 = 65;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 79> :
+  if (ret_mpi_117(D) != 0B)
+    goto <bb 80>; [INV]
+  else
+    goto <bb 81>; [INV]
+
+  <bb 80> :
+  _gcry_mpi_normalize (a_115);
+  *ret_mpi_117(D) = a_115;
+  goto <bb 82>; [INV]
+
+  <bb 81> :
+  _gcry_mpi_free (a_115);
+
+  <bb 82> :
+  if (nscanned_121(D) != 0B)
+    goto <bb 83>; [INV]
+  else
+    goto <bb 84>; [INV]
+
+  <bb 83> :
+  _69 = strlen (buffer_100);
+  *nscanned_121(D) = _69;
+
+  <bb 84> :
+  _123 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 86>; [INV]
+
+  <bb 85> :
+  _110 = 45;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 86> :
+  # _72 = PHI <_186(9), _184(25), _168(37), _157(49), _128(53), _132(58), _147(70), _126(73), _125(78), _123(84), _110(85)>
+  len ={v} {CLOBBER(eos)};
+
+  <bb 87> :
+<L89>:
+  return _72;
+
+}
+
+
+
+;; Function _gcry_mpi_print (_gcry_mpi_print, funcdef_no=40, decl_uid=9096, cgraph_uid=41, symbol_order=40)
+
+gcry_err_code_t _gcry_mpi_print (gcry_mpi_format format, unsigned char * buffer, size_t buflen, size_t * nwritten, struct gcry_mpi * a)
+{
+  unsigned int c;
+  unsigned char * s;
+  unsigned int n;
+  int extra;
+  int i;
+  unsigned char * tmp;
+  unsigned char * s;
+  unsigned int n;
+  int extra;
+  unsigned char * tmp;
+  unsigned char * s;
+  unsigned char * tmp;
+  unsigned int n;
+  unsigned char * tmp;
+  unsigned int n;
+  unsigned char * s;
+  unsigned int n;
+  int extra;
+  unsigned char * tmp;
+  int negative;
+  size_t dummy_nwritten;
+  size_t len;
+  unsigned int nbits;
+  unsigned char iftmp.105;
+  unsigned char iftmp.103;
+  gpg_err_code_t D.10525;
+  int _1;
+  int _2;
+  unsigned int n.64_3;
+  unsigned char _4;
+  signed char _5;
+  unsigned int n.65_6;
+  unsigned int _7;
+  unsigned int n.66_8;
+  unsigned char _9;
+  signed char _10;
+  unsigned int n.67_11;
+  unsigned int _12;
+  unsigned int n.68_13;
+  long unsigned int _14;
+  unsigned char * s.69_15;
+  unsigned char * s.70_16;
+  unsigned int n.71_17;
+  _Bool _18;
+  unsigned int _19;
+  unsigned int _20;
+  long unsigned int _21;
+  unsigned int n.72_22;
+  long unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int n.73_26;
+  long unsigned int _27;
+  unsigned int n.74_28;
+  long unsigned int _29;
+  unsigned int n.75_30;
+  long unsigned int _31;
+  unsigned int _32;
+  unsigned int _33;
+  unsigned int n.76_34;
+  unsigned int _35;
+  long unsigned int _36;
+  unsigned int _37;
+  unsigned char _38;
+  unsigned char * _39;
+  unsigned char _40;
+  unsigned char * _41;
+  unsigned int n.77_42;
+  long unsigned int _43;
+  unsigned int n.78_44;
+  unsigned int _45;
+  long unsigned int _46;
+  unsigned int n.79_47;
+  unsigned char _48;
+  signed char _49;
+  unsigned int n.80_50;
+  unsigned int _51;
+  unsigned int n.81_52;
+  unsigned char _53;
+  signed char _54;
+  unsigned int n.82_55;
+  unsigned int _56;
+  unsigned int n.83_57;
+  unsigned int _58;
+  long unsigned int _59;
+  unsigned int n.84_60;
+  unsigned int _61;
+  unsigned char * s.85_62;
+  unsigned char _63;
+  unsigned int n.86_64;
+  unsigned int _65;
+  unsigned char * s.87_66;
+  unsigned char _67;
+  unsigned int n.88_68;
+  unsigned int _69;
+  unsigned char * s.89_70;
+  unsigned char _71;
+  unsigned int n.90_72;
+  unsigned char * s.91_73;
+  unsigned char _74;
+  unsigned char * s.92_75;
+  unsigned char * s.93_76;
+  unsigned int n.94_77;
+  _Bool _78;
+  unsigned int _79;
+  unsigned int _80;
+  long unsigned int _81;
+  unsigned int n.95_82;
+  unsigned int _83;
+  long unsigned int _84;
+  unsigned int n.96_85;
+  unsigned char _86;
+  signed char _87;
+  unsigned int n.97_88;
+  unsigned int _89;
+  unsigned int extra.98_90;
+  unsigned int _91;
+  unsigned int negative.99_92;
+  unsigned int _93;
+  unsigned int _94;
+  long unsigned int _95;
+  unsigned char * s.100_96;
+  unsigned char * s.101_97;
+  unsigned char * s.102_98;
+  sizetype _99;
+  unsigned char * _100;
+  unsigned char _101;
+  unsigned int _102;
+  unsigned int _103;
+  unsigned char _104;
+  unsigned int _105;
+  unsigned char _106;
+  unsigned char * s.104_107;
+  unsigned char _108;
+  unsigned char _109;
+  unsigned char * s.106_110;
+  unsigned int i.107_111;
+  unsigned int n.108_112;
+  unsigned char * s.109_113;
+  long int _114;
+  long unsigned int _115;
+  unsigned int n.110_116;
+  unsigned int _117;
+  unsigned int extra.111_118;
+  unsigned int _119;
+  unsigned int negative.112_120;
+  unsigned int _121;
+  unsigned int _122;
+  long unsigned int _123;
+  gpg_err_code_t _135;
+  gpg_err_code_t _136;
+  gpg_err_code_t _137;
+  gpg_err_code_t _138;
+  gpg_err_code_t _139;
+  gpg_err_code_t _140;
+  unsigned char iftmp.103_141;
+  unsigned char iftmp.105_142;
+  gpg_err_code_t _176;
+  gpg_err_code_t _184;
+  unsigned char iftmp.103_198;
+  unsigned char iftmp.103_199;
+  unsigned char iftmp.105_203;
+  unsigned char iftmp.105_204;
+  gpg_err_code_t _209;
+  gpg_err_code_t _211;
+  gpg_err_code_t _222;
+  gpg_err_code_t _239;
+  gpg_err_code_t _241;
+  gpg_err_code_t _244;
+  gpg_err_code_t _253;
+  gpg_err_code_t _255;
+  gpg_err_code_t _256;
+  gpg_err_code_t _259;
+  gpg_err_code_t _265;
+  gpg_err_code_t _267;
+  gpg_err_code_t _278;
+  gpg_err_code_t _287;
+  gpg_err_code_t _289;
+
+  <bb 2> :
+  nbits_166 = _gcry_mpi_get_nbits (a_164(D));
+  if (nwritten_167(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  nwritten_168 = &dummy_nwritten;
+
+  <bb 4> :
+  # nwritten_124 = PHI <nwritten_167(D)(2), nwritten_168(3)>
+  _1 = a_164(D)->sign;
+  if (_1 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _2 = _gcry_mpi_cmp_ui (a_164(D), 0);
+  if (_2 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  negative_170 = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  negative_171 = 0;
+
+  <bb 8> :
+  # negative_125 = PHI <negative_170(6), negative_171(7)>
+  len_173 = buflen_172(D);
+  *nwritten_124 = 0;
+  if (format_175(D) == 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 9> :
+  extra_269 = 0;
+  tmp_271 = _gcry_mpi_get_buffer (a_164(D), 0, &n, 0B);
+  if (tmp_271 == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _289 = gpg_err_code_from_syserror ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 27>; [INV]
+
+  <bb 11> :
+  if (negative_125 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  n.64_3 = n;
+  twocompl (tmp_271, n.64_3);
+  _4 = *tmp_271;
+  _5 = (signed char) _4;
+  if (_5 >= 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 13> :
+  n.65_6 = n;
+  _7 = n.65_6 + 1;
+  n = _7;
+  extra_276 = 2;
+  goto <bb 17>; [INV]
+
+  <bb 14> :
+  n.66_8 = n;
+  if (n.66_8 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 15> :
+  _9 = *tmp_271;
+  _10 = (signed char) _9;
+  if (_10 < 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  n.67_11 = n;
+  _12 = n.67_11 + 1;
+  n = _12;
+  extra_273 = 1;
+
+  <bb 17> :
+  # extra_126 = PHI <extra_276(13), extra_269(14), extra_269(15), extra_273(16), extra_269(12)>
+  if (buffer_182(D) != 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  n.68_13 = n;
+  _14 = (long unsigned int) n.68_13;
+  if (len_173 < _14)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _gcry_free (tmp_271);
+  _278 = 66;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 27>; [INV]
+
+  <bb 20> :
+  if (buffer_182(D) != 0B)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 21> :
+  s_279 = buffer_182(D);
+  if (extra_126 == 1)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  s.69_15 = s_279;
+  s_282 = s.69_15 + 1;
+  *s.69_15 = 0;
+  goto <bb 25>; [INV]
+
+  <bb 23> :
+  if (extra_126 != 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  s.70_16 = s_279;
+  s_280 = s.70_16 + 1;
+  *s.70_16 = 255;
+
+  <bb 25> :
+  # s_127 = PHI <s_282(22), s_279(23), s_280(24)>
+  n.71_17 = n;
+  _18 = extra_126 != 0;
+  _19 = (unsigned int) _18;
+  _20 = n.71_17 - _19;
+  _21 = (long unsigned int) _20;
+  memcpy (s_127, tmp_271, _21);
+
+  <bb 26> :
+  _gcry_free (tmp_271);
+  n.72_22 = n;
+  _23 = (long unsigned int) n.72_22;
+  *nwritten_124 = _23;
+  _287 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 27> :
+  # _135 = PHI <_289(10), _278(19), _287(26)>
+  n ={v} {CLOBBER(eos)};
+  goto <bb 98>; [INV]
+
+  <bb 28> :
+  if (format_175(D) == 5)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 29> :
+  _24 = nbits_166 + 7;
+  _25 = _24 / 8;
+  n = _25;
+  if (buffer_182(D) != 0B)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 30> :
+  n.73_26 = n;
+  _27 = (long unsigned int) n.73_26;
+  if (len_173 < _27)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  _259 = 66;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 37>; [INV]
+
+  <bb 32> :
+  if (buffer_182(D) != 0B)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 33> :
+  tmp_261 = _gcry_mpi_get_buffer (a_164(D), 0, &n, 0B);
+  if (tmp_261 == 0B)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 34> :
+  _265 = gpg_err_code_from_syserror ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 37>; [INV]
+
+  <bb 35> :
+  n.74_28 = n;
+  _29 = (long unsigned int) n.74_28;
+  memcpy (buffer_182(D), tmp_261, _29);
+  _gcry_free (tmp_261);
+
+  <bb 36> :
+  n.75_30 = n;
+  _31 = (long unsigned int) n.75_30;
+  *nwritten_124 = _31;
+  _267 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 37> :
+  # _136 = PHI <_259(31), _265(34), _267(36)>
+  n ={v} {CLOBBER(eos)};
+  goto <bb 98>; [INV]
+
+  <bb 38> :
+  if (format_175(D) == 2)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 50>; [INV]
+
+  <bb 39> :
+  _32 = nbits_166 + 7;
+  _33 = _32 / 8;
+  n = _33;
+  if (negative_125 != 0)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 40> :
+  _256 = 45;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 49>; [INV]
+
+  <bb 41> :
+  if (buffer_182(D) != 0B)
+    goto <bb 42>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 42> :
+  n.76_34 = n;
+  _35 = n.76_34 + 2;
+  _36 = (long unsigned int) _35;
+  if (len_173 < _36)
+    goto <bb 43>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 43> :
+  _244 = 66;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 49>; [INV]
+
+  <bb 44> :
+  if (buffer_182(D) != 0B)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 45> :
+  s_245 = buffer_182(D);
+  _37 = nbits_166 >> 8;
+  _38 = (unsigned char) _37;
+  *s_245 = _38;
+  _39 = s_245 + 1;
+  _40 = (unsigned char) nbits_166;
+  *_39 = _40;
+  tmp_249 = _gcry_mpi_get_buffer (a_164(D), 0, &n, 0B);
+  if (tmp_249 == 0B)
+    goto <bb 46>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 46> :
+  _253 = gpg_err_code_from_syserror ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 49>; [INV]
+
+  <bb 47> :
+  _41 = s_245 + 2;
+  n.77_42 = n;
+  _43 = (long unsigned int) n.77_42;
+  memcpy (_41, tmp_249, _43);
+  _gcry_free (tmp_249);
+
+  <bb 48> :
+  n.78_44 = n;
+  _45 = n.78_44 + 2;
+  _46 = (long unsigned int) _45;
+  *nwritten_124 = _46;
+  _255 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 49> :
+  # _137 = PHI <_256(40), _244(43), _253(46), _255(48)>
+  n ={v} {CLOBBER(eos)};
+  goto <bb 98>; [INV]
+
+  <bb 50> :
+  if (format_175(D) == 3)
+    goto <bb 51>; [INV]
+  else
+    goto <bb 70>; [INV]
+
+  <bb 51> :
+  extra_213 = 0;
+  tmp_215 = _gcry_mpi_get_buffer (a_164(D), 0, &n, 0B);
+  if (tmp_215 == 0B)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 53>; [INV]
+
+  <bb 52> :
+  _241 = gpg_err_code_from_syserror ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 69>; [INV]
+
+  <bb 53> :
+  if (negative_125 != 0)
+    goto <bb 54>; [INV]
+  else
+    goto <bb 56>; [INV]
+
+  <bb 54> :
+  n.79_47 = n;
+  twocompl (tmp_215, n.79_47);
+  _48 = *tmp_215;
+  _49 = (signed char) _48;
+  if (_49 >= 0)
+    goto <bb 55>; [INV]
+  else
+    goto <bb 59>; [INV]
+
+  <bb 55> :
+  n.80_50 = n;
+  _51 = n.80_50 + 1;
+  n = _51;
+  extra_220 = 2;
+  goto <bb 59>; [INV]
+
+  <bb 56> :
+  n.81_52 = n;
+  if (n.81_52 != 0)
+    goto <bb 57>; [INV]
+  else
+    goto <bb 59>; [INV]
+
+  <bb 57> :
+  _53 = *tmp_215;
+  _54 = (signed char) _53;
+  if (_54 < 0)
+    goto <bb 58>; [INV]
+  else
+    goto <bb 59>; [INV]
+
+  <bb 58> :
+  n.82_55 = n;
+  _56 = n.82_55 + 1;
+  n = _56;
+  extra_217 = 1;
+
+  <bb 59> :
+  # extra_128 = PHI <extra_220(55), extra_213(56), extra_213(57), extra_217(58), extra_213(54)>
+  if (buffer_182(D) != 0B)
+    goto <bb 60>; [INV]
+  else
+    goto <bb 62>; [INV]
+
+  <bb 60> :
+  n.83_57 = n;
+  _58 = n.83_57 + 4;
+  _59 = (long unsigned int) _58;
+  if (len_173 < _59)
+    goto <bb 61>; [INV]
+  else
+    goto <bb 62>; [INV]
+
+  <bb 61> :
+  _gcry_free (tmp_215);
+  _222 = 66;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 69>; [INV]
+
+  <bb 62> :
+  if (buffer_182(D) != 0B)
+    goto <bb 63>; [INV]
+  else
+    goto <bb 68>; [INV]
+
+  <bb 63> :
+  s_223 = buffer_182(D);
+  n.84_60 = n;
+  _61 = n.84_60 >> 24;
+  s.85_62 = s_223;
+  s_224 = s.85_62 + 1;
+  _63 = (unsigned char) _61;
+  *s.85_62 = _63;
+  n.86_64 = n;
+  _65 = n.86_64 >> 16;
+  s.87_66 = s_224;
+  s_226 = s.87_66 + 1;
+  _67 = (unsigned char) _65;
+  *s.87_66 = _67;
+  n.88_68 = n;
+  _69 = n.88_68 >> 8;
+  s.89_70 = s_226;
+  s_228 = s.89_70 + 1;
+  _71 = (unsigned char) _69;
+  *s.89_70 = _71;
+  n.90_72 = n;
+  s.91_73 = s_228;
+  s_230 = s.91_73 + 1;
+  _74 = (unsigned char) n.90_72;
+  *s.91_73 = _74;
+  if (extra_128 == 1)
+    goto <bb 64>; [INV]
+  else
+    goto <bb 65>; [INV]
+
+  <bb 64> :
+  s.92_75 = s_230;
+  s_234 = s.92_75 + 1;
+  *s.92_75 = 0;
+  goto <bb 67>; [INV]
+
+  <bb 65> :
+  if (extra_128 != 0)
+    goto <bb 66>; [INV]
+  else
+    goto <bb 67>; [INV]
+
+  <bb 66> :
+  s.93_76 = s_230;
+  s_232 = s.93_76 + 1;
+  *s.93_76 = 255;
+
+  <bb 67> :
+  # s_129 = PHI <s_234(64), s_230(65), s_232(66)>
+  n.94_77 = n;
+  _78 = extra_128 != 0;
+  _79 = (unsigned int) _78;
+  _80 = n.94_77 - _79;
+  _81 = (long unsigned int) _80;
+  memcpy (s_129, tmp_215, _81);
+
+  <bb 68> :
+  _gcry_free (tmp_215);
+  n.95_82 = n;
+  _83 = n.95_82 + 4;
+  _84 = (long unsigned int) _83;
+  *nwritten_124 = _84;
+  _239 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 69> :
+  # _138 = PHI <_241(52), _222(61), _239(68)>
+  n ={v} {CLOBBER(eos)};
+  goto <bb 98>; [INV]
+
+  <bb 70> :
+  if (format_175(D) == 4)
+    goto <bb 71>; [INV]
+  else
+    goto <bb 97>; [INV]
+
+  <bb 71> :
+  extra_177 = 0;
+  n = 0;
+  tmp_180 = _gcry_mpi_get_buffer (a_164(D), 0, &n, 0B);
+  if (tmp_180 == 0B)
+    goto <bb 72>; [INV]
+  else
+    goto <bb 73>; [INV]
+
+  <bb 72> :
+  _211 = gpg_err_code_from_syserror ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 96>; [INV]
+
+  <bb 73> :
+  n.96_85 = n;
+  if (n.96_85 == 0)
+    goto <bb 75>; [INV]
+  else
+    goto <bb 74>; [INV]
+
+  <bb 74> :
+  _86 = *tmp_180;
+  _87 = (signed char) _86;
+  if (_87 < 0)
+    goto <bb 75>; [INV]
+  else
+    goto <bb 76>; [INV]
+
+  <bb 75> :
+  extra_181 = 2;
+
+  <bb 76> :
+  # extra_131 = PHI <extra_177(74), extra_181(75)>
+  if (buffer_182(D) != 0B)
+    goto <bb 77>; [INV]
+  else
+    goto <bb 79>; [INV]
+
+  <bb 77> :
+  n.97_88 = n;
+  _89 = n.97_88 * 2;
+  extra.98_90 = (unsigned int) extra_131;
+  _91 = _89 + extra.98_90;
+  negative.99_92 = (unsigned int) negative_125;
+  _93 = _91 + negative.99_92;
+  _94 = _93 + 1;
+  _95 = (long unsigned int) _94;
+  if (len_173 < _95)
+    goto <bb 78>; [INV]
+  else
+    goto <bb 79>; [INV]
+
+  <bb 78> :
+  _gcry_free (tmp_180);
+  _184 = 66;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 96>; [INV]
+
+  <bb 79> :
+  if (buffer_182(D) != 0B)
+    goto <bb 80>; [INV]
+  else
+    goto <bb 94>; [INV]
+
+  <bb 80> :
+  s_186 = buffer_182(D);
+  if (negative_125 != 0)
+    goto <bb 81>; [INV]
+  else
+    goto <bb 82>; [INV]
+
+  <bb 81> :
+  s.100_96 = s_186;
+  s_187 = s.100_96 + 1;
+  *s.100_96 = 45;
+
+  <bb 82> :
+  # s_132 = PHI <s_186(80), s_187(81)>
+  if (extra_131 != 0)
+    goto <bb 83>; [INV]
+  else
+    goto <bb 84>; [INV]
+
+  <bb 83> :
+  s.101_97 = s_132;
+  s_189 = s.101_97 + 1;
+  *s.101_97 = 48;
+  s.102_98 = s_189;
+  s_191 = s.102_98 + 1;
+  *s.102_98 = 48;
+
+  <bb 84> :
+  # s_133 = PHI <s_132(82), s_191(83)>
+  i_193 = 0;
+  goto <bb 92>; [INV]
+
+  <bb 85> :
+  _99 = (sizetype) i_130;
+  _100 = tmp_180 + _99;
+  _101 = *_100;
+  c_197 = (unsigned int) _101;
+  _102 = c_197 >> 4;
+  if (_102 <= 9)
+    goto <bb 86>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 86> :
+  _103 = c_197 >> 4;
+  _104 = (unsigned char) _103;
+  iftmp.103_199 = _104 + 48;
+  goto <bb 88>; [INV]
+
+  <bb 87> :
+  _105 = c_197 >> 4;
+  _106 = (unsigned char) _105;
+  iftmp.103_198 = _106 + 55;
+
+  <bb 88> :
+  # iftmp.103_141 = PHI <iftmp.103_199(86), iftmp.103_198(87)>
+  s.104_107 = s_134;
+  s_200 = s.104_107 + 1;
+  *s.104_107 = iftmp.103_141;
+  c_202 = c_197 & 15;
+  if (c_202 <= 9)
+    goto <bb 89>; [INV]
+  else
+    goto <bb 90>; [INV]
+
+  <bb 89> :
+  _108 = (unsigned char) c_202;
+  iftmp.105_204 = _108 + 48;
+  goto <bb 91>; [INV]
+
+  <bb 90> :
+  _109 = (unsigned char) c_202;
+  iftmp.105_203 = _109 + 55;
+
+  <bb 91> :
+  # iftmp.105_142 = PHI <iftmp.105_204(89), iftmp.105_203(90)>
+  s.106_110 = s_200;
+  s_205 = s.106_110 + 1;
+  *s.106_110 = iftmp.105_142;
+  i_207 = i_130 + 1;
+
+  <bb 92> :
+  # i_130 = PHI <i_193(84), i_207(91)>
+  # s_134 = PHI <s_133(84), s_205(91)>
+  i.107_111 = (unsigned int) i_130;
+  n.108_112 = n;
+  if (i.107_111 < n.108_112)
+    goto <bb 85>; [INV]
+  else
+    goto <bb 93>; [INV]
+
+  <bb 93> :
+  s.109_113 = s_134;
+  s_194 = s.109_113 + 1;
+  *s.109_113 = 0;
+  _114 = s_194 - buffer_182(D);
+  _115 = (long unsigned int) _114;
+  *nwritten_124 = _115;
+  goto <bb 95>; [INV]
+
+  <bb 94> :
+  n.110_116 = n;
+  _117 = n.110_116 * 2;
+  extra.111_118 = (unsigned int) extra_131;
+  _119 = _117 + extra.111_118;
+  negative.112_120 = (unsigned int) negative_125;
+  _121 = _119 + negative.112_120;
+  _122 = _121 + 1;
+  _123 = (long unsigned int) _122;
+  *nwritten_124 = _123;
+
+  <bb 95> :
+  _gcry_free (tmp_180);
+  _209 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 96> :
+  # _139 = PHI <_211(72), _184(78), _209(95)>
+  n ={v} {CLOBBER(eos)};
+  goto <bb 98>; [INV]
+
+  <bb 97> :
+  _176 = 45;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 98> :
+  # _140 = PHI <_135(27), _136(37), _137(49), _138(69), _139(96), _176(97)>
+  dummy_nwritten ={v} {CLOBBER(eos)};
+
+  <bb 99> :
+<L109>:
+  return _140;
+
+}
+
+
+
+;; Function _gcry_mpi_aprint (_gcry_mpi_aprint, funcdef_no=41, decl_uid=9101, cgraph_uid=42, symbol_order=41)
+
+gcry_err_code_t _gcry_mpi_aprint (gcry_mpi_format format, unsigned char * * buffer, size_t * nwritten, struct gcry_mpi * a)
+{
+  gcry_err_code_t rc;
+  size_t n;
+  size_t iftmp.116;
+  size_t iftmp.114;
+  void * iftmp.113;
+  gpg_err_code_t D.10627;
+  unsigned int _1;
+  unsigned int _2;
+  long unsigned int n.115_3;
+  long unsigned int n.117_4;
+  unsigned char * _5;
+  long unsigned int n.118_6;
+  unsigned char * _7;
+  unsigned char * _8;
+  long unsigned int n.119_9;
+  unsigned char * _10;
+  long unsigned int n.120_11;
+  gpg_err_code_t _12;
+  void * iftmp.113_13;
+  size_t iftmp.114_14;
+  size_t iftmp.116_15;
+  size_t iftmp.114_27;
+  size_t iftmp.114_28;
+  void * iftmp.113_30;
+  size_t iftmp.116_31;
+  size_t iftmp.116_32;
+  void * iftmp.113_34;
+  gpg_err_code_t _43;
+  gpg_err_code_t _45;
+  gpg_err_code_t _46;
+
+  <bb 2> :
+  *buffer_21(D) = 0B;
+  rc_26 = _gcry_mpi_print (format_23(D), 0B, 0, &n, a_24(D));
+  if (rc_26 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _46 = rc_26;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 4> :
+  if (a_24(D) != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 5> :
+  _1 = a_24(D)->flags;
+  _2 = _1 & 1;
+  if (_2 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  n.115_3 = n;
+  if (n.115_3 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.114_28 = n;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.114_27 = 1;
+
+  <bb 9> :
+  # iftmp.114_14 = PHI <iftmp.114_28(7), iftmp.114_27(8)>
+  iftmp.113_30 = _gcry_malloc_secure (iftmp.114_14);
+  goto <bb 14>; [INV]
+
+  <bb 10> :
+  n.117_4 = n;
+  if (n.117_4 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.116_32 = n;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  iftmp.116_31 = 1;
+
+  <bb 13> :
+  # iftmp.116_15 = PHI <iftmp.116_32(11), iftmp.116_31(12)>
+  iftmp.113_34 = _gcry_malloc (iftmp.116_15);
+
+  <bb 14> :
+  # iftmp.113_13 = PHI <iftmp.113_30(9), iftmp.113_34(13)>
+  *buffer_21(D) = iftmp.113_13;
+  _5 = *buffer_21(D);
+  if (_5 == 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _45 = gpg_err_code_from_syserror ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 16> :
+  n.118_6 = n;
+  if (n.118_6 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  _7 = *buffer_21(D);
+  *_7 = 0;
+
+  <bb 18> :
+  _8 = *buffer_21(D);
+  n.119_9 = n;
+  rc_38 = _gcry_mpi_print (format_23(D), _8, n.119_9, &n, a_24(D));
+  if (rc_38 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _10 = *buffer_21(D);
+  _gcry_free (_10);
+  *buffer_21(D) = 0B;
+  goto <bb 22>; [INV]
+
+  <bb 20> :
+  if (nwritten_39(D) != 0B)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  n.120_11 = n;
+  *nwritten_39(D) = n.120_11;
+
+  <bb 22> :
+  _43 = rc_38;
+
+  <bb 23> :
+  # _12 = PHI <_46(3), _45(15), _43(22)>
+  n ={v} {CLOBBER(eos)};
+
+  <bb 24> :
+<L22>:
+  return _12;
+
+}
+
+
+
+;; Function _gcry_mpi_to_octet_string (_gcry_mpi_to_octet_string, funcdef_no=42, decl_uid=9631, cgraph_uid=43, symbol_order=42)
+
+gpg_err_code_t _gcry_mpi_to_octet_string (unsigned char * * r_frame, void * space, struct gcry_mpi * value, size_t nbytes)
+{
+  unsigned char * frame;
+  size_t n;
+  size_t noff;
+  size_t nframe;
+  gpg_err_code_t rc;
+  void * iftmp.126;
+  size_t iftmp.122;
+  gpg_err_code_t D.10654;
+  _Bool _1;
+  _Bool _2;
+  _Bool _3;
+  long unsigned int nframe.121_4;
+  long unsigned int nframe.123_5;
+  long unsigned int nframe.124_6;
+  long unsigned int nframe.125_7;
+  unsigned int _8;
+  unsigned int _9;
+  long unsigned int nframe.127_10;
+  long unsigned int _11;
+  unsigned char * _12;
+  long unsigned int nframe.128_13;
+  long unsigned int _14;
+  gpg_err_code_t _16;
+  size_t iftmp.122_17;
+  void * iftmp.126_18;
+  size_t iftmp.122_33;
+  size_t iftmp.122_34;
+  void * iftmp.126_38;
+  void * iftmp.126_40;
+  gpg_err_code_t _44;
+  gpg_err_code_t _51;
+  gpg_err_code_t _53;
+  gpg_err_code_t _54;
+  gpg_err_code_t _55;
+  gpg_err_code_t _56;
+
+  <bb 2> :
+  _1 = r_frame_25(D) != 0B;
+  _2 = space_26(D) == 0B;
+  _3 = _1 ^ _2;
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _56 = 45;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 4> :
+  if (r_frame_25(D) != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  *r_frame_25(D) = 0B;
+
+  <bb 6> :
+  rc_31 = _gcry_mpi_print (5, 0B, 0, &nframe, value_29(D));
+  if (rc_31 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _55 = rc_31;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 8> :
+  nframe.121_4 = nframe;
+  if (nbytes_32(D) < nframe.121_4)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _54 = 67;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 10> :
+  nframe.123_5 = nframe;
+  if (nbytes_32(D) > nframe.123_5)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  nframe.124_6 = nframe;
+  iftmp.122_34 = nbytes_32(D) - nframe.124_6;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  iftmp.122_33 = 0;
+
+  <bb 13> :
+  # iftmp.122_17 = PHI <iftmp.122_34(11), iftmp.122_33(12)>
+  noff_35 = iftmp.122_17;
+  nframe.125_7 = nframe;
+  n_36 = noff_35 + nframe.125_7;
+  if (space_26(D) != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  frame_45 = space_26(D);
+  goto <bb 21>; [INV]
+
+  <bb 15> :
+  if (value_29(D) != 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 16> :
+  _8 = value_29(D)->flags;
+  _9 = _8 & 1;
+  if (_9 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  iftmp.126_38 = _gcry_malloc_secure (n_36);
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  iftmp.126_40 = _gcry_malloc (n_36);
+
+  <bb 19> :
+  # iftmp.126_18 = PHI <iftmp.126_38(17), iftmp.126_40(18)>
+  frame_41 = iftmp.126_18;
+  if (frame_41 == 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  rc_43 = gpg_err_code_from_syserror ();
+  _44 = rc_43;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 21> :
+  # frame_15 = PHI <frame_45(14), frame_41(19)>
+  if (noff_35 != 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  memset (frame_15, 0, noff_35);
+
+  <bb 23> :
+  nframe.127_10 = nframe;
+  _11 = noff_35 + nframe.127_10;
+  nframe = _11;
+  _12 = frame_15 + noff_35;
+  nframe.128_13 = nframe;
+  _14 = nframe.128_13 - noff_35;
+  rc_49 = _gcry_mpi_print (5, _12, _14, 0B, value_29(D));
+  if (rc_49 != 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  _gcry_free (frame_15);
+  _53 = rc_49;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 28>; [INV]
+
+  <bb 25> :
+  if (r_frame_25(D) != 0B)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  *r_frame_25(D) = frame_15;
+
+  <bb 27> :
+  _51 = 0;
+
+  <bb 28> :
+  # _16 = PHI <_56(3), _55(7), _54(9), _44(20), _53(24), _51(27)>
+  nframe ={v} {CLOBBER(eos)};
+
+  <bb 29> :
+<L27>:
+  return _16;
+
+}
+
+

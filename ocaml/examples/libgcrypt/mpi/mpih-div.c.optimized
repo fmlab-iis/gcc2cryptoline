@@ -1,0 +1,1904 @@
+
+;; Function _gcry_mpih_mod_1 (_gcry_mpih_mod_1, funcdef_no=30, decl_uid=9920, cgraph_uid=31, symbol_order=30)
+
+mpi_limb_t _gcry_mpih_mod_1 (mpi_limb_t * dividend_ptr, mpi_size_t dividend_size, mpi_limb_t divisor_limb)
+{
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UDItype __co;
+  int normalization_steps;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  mpi_limb_t _xl;
+  mpi_limb_t _xh;
+  mpi_limb_t _r;
+  mpi_limb_t _q;
+  mpi_limb_t _ql;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t divisor_limb_inverted;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  mpi_limb_t _xl;
+  mpi_limb_t _xh;
+  mpi_limb_t _r;
+  mpi_limb_t _q;
+  mpi_limb_t _ql;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  mpi_limb_t _xl;
+  mpi_limb_t _xh;
+  mpi_limb_t _r;
+  mpi_limb_t _q;
+  mpi_limb_t _ql;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t divisor_limb_inverted;
+  UDItype __co;
+  int normalization_steps;
+  mpi_limb_t dummy;
+  mpi_limb_t r;
+  mpi_limb_t n0;
+  mpi_limb_t n1;
+  mpi_size_t i;
+  mpi_limb_t D.10422;
+  mpi_limb_t _6;
+  long unsigned int _28;
+  long unsigned int _29;
+  sizetype _30;
+  mpi_limb_t * _31;
+  int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  mpi_limb_t * _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  mpi_limb_t * _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  mpi_limb_t * _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  mpi_limb_t _70;
+  mpi_limb_t _121;
+  mpi_limb_t _147;
+
+  <bb 2> :
+  if (dividend_size_7(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _147 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 4> :
+  __asm__("clz %0, %1" : "=r" __co_9 : "r" divisor_limb_8(D));
+  normalization_steps_4 = (int) __co_9;
+  if (normalization_steps_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 5> :
+  divisor_limb_95 = divisor_limb_8(D) << normalization_steps_4;
+  _28 = (long unsigned int) dividend_size_7(D);
+  _29 = _28 * 8;
+  _30 = _29 + 18446744073709551608;
+  _31 = dividend_ptr_3(D) + _30;
+  n1_96 = *_31;
+  _32 = 64 - normalization_steps_4;
+  r_97 = n1_96 >> _32;
+  i_98 = dividend_size_7(D) + -2;
+  goto <bb 15>; [INV]
+
+  <bb 6> :
+  _33 = (long unsigned int) i_25;
+  _34 = _33 * 8;
+  _35 = dividend_ptr_3(D) + _34;
+  n0_122 = *_35;
+  __d1_123 = divisor_limb_95 >> 32;
+  __d0_124 = divisor_limb_95 & 4294967295;
+  __r1_125 = r_23 % __d1_123;
+  __q1_126 = r_23 / __d1_123;
+  __m_127 = __q1_126 * __d0_124;
+  _36 = __r1_125 * 4294967296;
+  _37 = n1_22 << normalization_steps_4;
+  _38 = 64 - normalization_steps_4;
+  _39 = n0_122 >> _38;
+  _40 = _37 | _39;
+  _41 = _40 >> 32;
+  __r1_128 = _36 | _41;
+  if (__r1_128 < __m_127)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  __q1_129 = __q1_126 + 18446744073709551615;
+  __r1_130 = __r1_128 + divisor_limb_95;
+  if (__r1_130 >= divisor_limb_95)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  if (__r1_130 < __m_127)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  __q1_131 = __q1_129 + 18446744073709551615;
+  __r1_132 = __r1_130 + divisor_limb_95;
+
+  <bb 10> :
+  # __q1_19 = PHI <__q1_126(6), __q1_129(7), __q1_129(8), __q1_131(9)>
+  # __r1_18 = PHI <__r1_128(6), __r1_130(7), __r1_130(8), __r1_132(9)>
+  __r1_133 = __r1_18 - __m_127;
+  __r0_134 = __r1_133 % __d1_123;
+  __q0_135 = __r1_133 / __d1_123;
+  __m_136 = __q0_135 * __d0_124;
+  _42 = __r0_134 * 4294967296;
+  _43 = n1_22 << normalization_steps_4;
+  _44 = 64 - normalization_steps_4;
+  _45 = n0_122 >> _44;
+  _46 = _43 | _45;
+  _47 = _46 & 4294967295;
+  __r0_137 = _42 | _47;
+  if (__r0_137 < __m_136)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  __q0_138 = __q0_135 + 18446744073709551615;
+  __r0_139 = __r0_137 + divisor_limb_95;
+  if (__r0_139 >= divisor_limb_95)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  if (__r0_139 < __m_136)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  __q0_140 = __q0_138 + 18446744073709551615;
+  __r0_141 = __r0_139 + divisor_limb_95;
+
+  <bb 14> :
+  # __q0_20 = PHI <__q0_135(10), __q0_138(11), __q0_138(12), __q0_140(13)>
+  # __r0_17 = PHI <__r0_137(10), __r0_139(11), __r0_139(12), __r0_141(13)>
+  __r0_142 = __r0_17 - __m_136;
+  _48 = __q1_19 * 4294967296;
+  dummy_143 = __q0_20 | _48;
+  r_144 = __r0_142;
+  n1_145 = n0_122;
+  i_146 = i_25 + -1;
+
+  <bb 15> :
+  # i_25 = PHI <i_98(5), i_146(14)>
+  # n1_22 = PHI <n1_96(5), n1_145(14)>
+  # r_23 = PHI <r_97(5), r_144(14)>
+  if (i_25 >= 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  __d1_99 = divisor_limb_95 >> 32;
+  __d0_100 = divisor_limb_95 & 4294967295;
+  __r1_101 = r_23 % __d1_99;
+  __q1_102 = r_23 / __d1_99;
+  __m_103 = __q1_102 * __d0_100;
+  _49 = __r1_101 * 4294967296;
+  _50 = n1_22 << normalization_steps_4;
+  _51 = _50 >> 32;
+  __r1_104 = _49 | _51;
+  if (__r1_104 < __m_103)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 17> :
+  __q1_105 = __q1_102 + 18446744073709551615;
+  __r1_106 = __r1_104 + divisor_limb_95;
+  if (__r1_106 >= divisor_limb_95)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  if (__r1_106 < __m_103)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  __q1_107 = __q1_105 + 18446744073709551615;
+  __r1_108 = __r1_106 + divisor_limb_95;
+
+  <bb 20> :
+  # __q1_10 = PHI <__q1_102(16), __q1_105(17), __q1_105(18), __q1_107(19)>
+  # __r1_12 = PHI <__r1_104(16), __r1_106(17), __r1_106(18), __r1_108(19)>
+  __r1_109 = __r1_12 - __m_103;
+  __r0_110 = __r1_109 % __d1_99;
+  __q0_111 = __r1_109 / __d1_99;
+  __m_112 = __q0_111 * __d0_100;
+  _52 = __r0_110 * 4294967296;
+  _53 = n1_22 << normalization_steps_4;
+  _54 = _53 & 4294967295;
+  __r0_113 = _52 | _54;
+  if (__r0_113 < __m_112)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 21> :
+  __q0_114 = __q0_111 + 18446744073709551615;
+  __r0_115 = __r0_113 + divisor_limb_95;
+  if (__r0_115 >= divisor_limb_95)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 22> :
+  if (__r0_115 < __m_112)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  __q0_116 = __q0_114 + 18446744073709551615;
+  __r0_117 = __r0_115 + divisor_limb_95;
+
+  <bb 24> :
+  # __q0_11 = PHI <__q0_111(20), __q0_114(21), __q0_114(22), __q0_116(23)>
+  # __r0_13 = PHI <__r0_113(20), __r0_115(21), __r0_115(22), __r0_117(23)>
+  __r0_118 = __r0_13 - __m_112;
+  _55 = __q1_10 * 4294967296;
+  dummy_119 = __q0_11 | _55;
+  r_120 = __r0_118;
+  _121 = r_120 >> normalization_steps_4;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 25> :
+  i_2 = dividend_size_7(D) + -1;
+  _56 = (long unsigned int) i_2;
+  _57 = _56 * 8;
+  _58 = dividend_ptr_3(D) + _57;
+  r_67 = *_58;
+  if (r_67 >= divisor_limb_8(D))
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  r_69 = 0;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  i_68 = i_2 + -1;
+
+  <bb 28> :
+  # i_26 = PHI <i_2(26), i_68(27)>
+  # r_24 = PHI <r_69(26), r_67(27)>
+  goto <bb 38>; [INV]
+
+  <bb 29> :
+  _59 = (long unsigned int) i_27;
+  _60 = _59 * 8;
+  _61 = dividend_ptr_3(D) + _60;
+  n0_71 = *_61;
+  __d1_72 = divisor_limb_8(D) >> 32;
+  __d0_73 = divisor_limb_8(D) & 4294967295;
+  __r1_74 = r_21 % __d1_72;
+  __q1_75 = r_21 / __d1_72;
+  __m_76 = __q1_75 * __d0_73;
+  _62 = __r1_74 * 4294967296;
+  _63 = n0_71 >> 32;
+  __r1_77 = _62 | _63;
+  if (__r1_77 < __m_76)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 30> :
+  __q1_78 = __q1_75 + 18446744073709551615;
+  __r1_79 = __r1_77 + divisor_limb_8(D);
+  if (__r1_79 >= divisor_limb_8(D))
+    goto <bb 31>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 31> :
+  if (__r1_79 < __m_76)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  __q1_80 = __q1_78 + 18446744073709551615;
+  __r1_81 = __r1_79 + divisor_limb_8(D);
+
+  <bb 33> :
+  # __q1_14 = PHI <__q1_75(29), __q1_78(30), __q1_78(31), __q1_80(32)>
+  # __r1_16 = PHI <__r1_77(29), __r1_79(30), __r1_79(31), __r1_81(32)>
+  __r1_82 = __r1_16 - __m_76;
+  __r0_83 = __r1_82 % __d1_72;
+  __q0_84 = __r1_82 / __d1_72;
+  __m_85 = __q0_84 * __d0_73;
+  _64 = __r0_83 * 4294967296;
+  _65 = n0_71 & 4294967295;
+  __r0_86 = _64 | _65;
+  if (__r0_86 < __m_85)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 34> :
+  __q0_87 = __q0_84 + 18446744073709551615;
+  __r0_88 = __r0_86 + divisor_limb_8(D);
+  if (__r0_88 >= divisor_limb_8(D))
+    goto <bb 35>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 35> :
+  if (__r0_88 < __m_85)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  __q0_89 = __q0_87 + 18446744073709551615;
+  __r0_90 = __r0_88 + divisor_limb_8(D);
+
+  <bb 37> :
+  # __q0_15 = PHI <__q0_84(33), __q0_87(34), __q0_87(35), __q0_89(36)>
+  # __r0_5 = PHI <__r0_86(33), __r0_88(34), __r0_88(35), __r0_90(36)>
+  __r0_91 = __r0_5 - __m_85;
+  _66 = __q1_14 * 4294967296;
+  dummy_92 = __q0_15 | _66;
+  r_93 = __r0_91;
+  i_94 = i_27 + -1;
+
+  <bb 38> :
+  # i_27 = PHI <i_26(28), i_94(37)>
+  # r_21 = PHI <r_24(28), r_93(37)>
+  if (i_27 >= 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 39> :
+  _70 = r_21;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 40> :
+  # _6 = PHI <_147(3), _70(39), _121(24)>
+<L112>:
+  return _6;
+
+}
+
+
+
+;; Function _gcry_mpih_divrem (_gcry_mpih_divrem, funcdef_no=31, decl_uid=9927, cgraph_uid=32, symbol_order=31)
+
+mpi_limb_t _gcry_mpih_divrem (mpi_limb_t * qp, mpi_size_t qextra_limbs, mpi_limb_t * np, mpi_size_t nsize, mpi_limb_t * dp, mpi_size_t dsize)
+{
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t r;
+  mpi_size_t _i;
+  mpi_limb_t cy_limb;
+  mpi_limb_t n2;
+  mpi_limb_t n1;
+  mpi_limb_t q;
+  mpi_limb_t n0;
+  mpi_limb_t d1;
+  mpi_limb_t dX;
+  mpi_size_t i;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t r;
+  mpi_limb_t q;
+  mpi_limb_t d0;
+  mpi_limb_t d1;
+  mpi_limb_t n2;
+  mpi_limb_t n0;
+  mpi_limb_t n1;
+  mpi_size_t i;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t d;
+  mpi_limb_t n1;
+  mpi_size_t i;
+  mpi_limb_t most_significant_q_limb;
+  mpi_limb_t D.10612;
+  mpi_limb_t iftmp.0;
+  long unsigned int _1;
+  long unsigned int _2;
+  sizetype _3;
+  mpi_limb_t * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  mpi_limb_t * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  mpi_limb_t * _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  mpi_limb_t * _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  sizetype _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  mpi_limb_t * _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  sizetype _34;
+  int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  mpi_limb_t * _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  mpi_limb_t * _48;
+  mpi_limb_t * _49;
+  int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  sizetype _55;
+  mpi_limb_t * _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  sizetype _59;
+  mpi_limb_t * _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  sizetype _63;
+  mpi_limb_t * _64;
+  int _65;
+  int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  sizetype _69;
+  mpi_limb_t * _70;
+  int _71;
+  int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  mpi_limb_t * _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  sizetype _78;
+  mpi_limb_t * _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  mpi_limb_t * _82;
+  sizetype _83;
+  sizetype _84;
+  sizetype _85;
+  mpi_limb_t * _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  sizetype _91;
+  mpi_limb_t * _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  sizetype _98;
+  mpi_limb_t * _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  _Bool _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  sizetype _107;
+  mpi_limb_t * _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  long unsigned int _111;
+  mpi_limb_t * _112;
+  long unsigned int _113;
+  long unsigned int _114;
+  sizetype _115;
+  mpi_limb_t * _116;
+  mpi_limb_t iftmp.0_176;
+  mpi_limb_t iftmp.0_238;
+  mpi_limb_t iftmp.0_239;
+  mpi_limb_t _366;
+
+  <bb 2> :
+  most_significant_q_limb_189 = 0;
+  if (dsize_190(D) == 2)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (dsize_190(D) > 2)
+    goto <bb 66>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (dsize_190(D) == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (dsize_190(D) == 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 66>; [INV]
+
+  <bb 6> :
+  _gcry_divide_by_zero ();
+
+  <bb 7> :
+  d_255 = *dp_195(D);
+  _1 = (long unsigned int) nsize_191(D);
+  _2 = _1 * 8;
+  _3 = _2 + 18446744073709551608;
+  _4 = np_192(D) + _3;
+  n1_256 = *_4;
+  if (n1_256 >= d_255)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  n1_257 = n1_256 - d_255;
+  most_significant_q_limb_258 = 1;
+
+  <bb 9> :
+  # most_significant_q_limb_121 = PHI <most_significant_q_limb_189(7), most_significant_q_limb_258(8)>
+  # n1_127 = PHI <n1_256(7), n1_257(8)>
+  _5 = (long unsigned int) qextra_limbs_203(D);
+  _6 = _5 * 8;
+  qp_259 = qp_244(D) + _6;
+  i_260 = nsize_191(D) + -2;
+  goto <bb 19>; [INV]
+
+  <bb 10> :
+  __d1_287 = d_255 >> 32;
+  __d0_288 = d_255 & 4294967295;
+  __r1_289 = n1_128 % __d1_287;
+  __q1_290 = n1_128 / __d1_287;
+  __m_291 = __q1_290 * __d0_288;
+  _7 = __r1_289 * 4294967296;
+  _8 = (long unsigned int) i_125;
+  _9 = _8 * 8;
+  _10 = np_192(D) + _9;
+  _11 = *_10;
+  _12 = _11 >> 32;
+  __r1_292 = _7 | _12;
+  if (__r1_292 < __m_291)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  __q1_293 = __q1_290 + 18446744073709551615;
+  __r1_294 = __r1_292 + d_255;
+  if (__r1_294 >= d_255)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  if (__r1_294 < __m_291)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  __q1_295 = __q1_293 + 18446744073709551615;
+  __r1_296 = __r1_294 + d_255;
+
+  <bb 14> :
+  # __q1_130 = PHI <__q1_290(10), __q1_293(11), __q1_293(12), __q1_295(13)>
+  # __r1_132 = PHI <__r1_292(10), __r1_294(11), __r1_294(12), __r1_296(13)>
+  __r1_297 = __r1_132 - __m_291;
+  __r0_298 = __r1_297 % __d1_287;
+  __q0_299 = __r1_297 / __d1_287;
+  __m_300 = __q0_299 * __d0_288;
+  _13 = __r0_298 * 4294967296;
+  _14 = (long unsigned int) i_125;
+  _15 = _14 * 8;
+  _16 = np_192(D) + _15;
+  _17 = *_16;
+  _18 = _17 & 4294967295;
+  __r0_301 = _13 | _18;
+  if (__r0_301 < __m_300)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 15> :
+  __q0_302 = __q0_299 + 18446744073709551615;
+  __r0_303 = __r0_301 + d_255;
+  if (__r0_303 >= d_255)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 16> :
+  if (__r0_303 < __m_300)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  __q0_304 = __q0_302 + 18446744073709551615;
+  __r0_305 = __r0_303 + d_255;
+
+  <bb 18> :
+  # __q0_131 = PHI <__q0_299(14), __q0_302(15), __q0_302(16), __q0_304(17)>
+  # __r0_133 = PHI <__r0_301(14), __r0_303(15), __r0_303(16), __r0_305(17)>
+  __r0_306 = __r0_133 - __m_300;
+  _19 = __q1_130 * 4294967296;
+  _20 = (long unsigned int) i_125;
+  _21 = _20 * 8;
+  _22 = qp_259 + _21;
+  _23 = __q0_131 | _19;
+  *_22 = _23;
+  n1_308 = __r0_306;
+  i_309 = i_125 + -1;
+
+  <bb 19> :
+  # i_125 = PHI <i_260(9), i_309(18)>
+  # n1_128 = PHI <n1_127(9), n1_308(18)>
+  if (i_125 >= 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  _24 = (long unsigned int) qextra_limbs_203(D);
+  _25 = _24 * 8;
+  _26 = -_25;
+  qp_261 = qp_259 + _26;
+  i_262 = qextra_limbs_203(D) + -1;
+  goto <bb 30>; [INV]
+
+  <bb 21> :
+  __d1_264 = d_255 >> 32;
+  __d0_265 = d_255 & 4294967295;
+  __r1_266 = n1_129 % __d1_264;
+  __q1_267 = n1_129 / __d1_264;
+  __m_268 = __q1_267 * __d0_265;
+  __r1_269 = __r1_266 * 4294967296;
+  if (__r1_269 < __m_268)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 22> :
+  __q1_270 = __q1_267 + 18446744073709551615;
+  __r1_271 = __r1_269 + d_255;
+  if (__r1_271 >= d_255)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 23> :
+  if (__r1_271 < __m_268)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  __q1_272 = __q1_270 + 18446744073709551615;
+  __r1_273 = __r1_271 + d_255;
+
+  <bb 25> :
+  # __q1_134 = PHI <__q1_267(21), __q1_270(22), __q1_270(23), __q1_272(24)>
+  # __r1_136 = PHI <__r1_269(21), __r1_271(22), __r1_271(23), __r1_273(24)>
+  __r1_274 = __r1_136 - __m_268;
+  __r0_275 = __r1_274 % __d1_264;
+  __q0_276 = __r1_274 / __d1_264;
+  __m_277 = __q0_276 * __d0_265;
+  __r0_278 = __r0_275 * 4294967296;
+  if (__r0_278 < __m_277)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 26> :
+  __q0_279 = __q0_276 + 18446744073709551615;
+  __r0_280 = __r0_278 + d_255;
+  if (__r0_280 >= d_255)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 27> :
+  if (__r0_280 < __m_277)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  __q0_281 = __q0_279 + 18446744073709551615;
+  __r0_282 = __r0_280 + d_255;
+
+  <bb 29> :
+  # __q0_135 = PHI <__q0_276(25), __q0_279(26), __q0_279(27), __q0_281(28)>
+  # __r0_137 = PHI <__r0_278(25), __r0_280(26), __r0_280(27), __r0_282(28)>
+  __r0_283 = __r0_137 - __m_277;
+  _27 = __q1_134 * 4294967296;
+  _28 = (long unsigned int) i_126;
+  _29 = _28 * 8;
+  _30 = qp_261 + _29;
+  _31 = __q0_135 | _27;
+  *_30 = _31;
+  n1_285 = __r0_283;
+  i_286 = i_126 + -1;
+
+  <bb 30> :
+  # i_126 = PHI <i_262(20), i_286(29)>
+  # n1_129 = PHI <n1_128(20), n1_285(29)>
+  if (i_126 >= 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 31> :
+  *np_192(D) = n1_129;
+  goto <bb 98>; [INV]
+
+  <bb 32> :
+  _32 = (long unsigned int) nsize_191(D);
+  _33 = _32 * 8;
+  _34 = _33 + 18446744073709551600;
+  np_193 = np_192(D) + _34;
+  d1_196 = MEM[(mpi_limb_t *)dp_195(D) + 8B];
+  d0_197 = *dp_195(D);
+  n1_198 = MEM[(mpi_limb_t *)np_193 + 8B];
+  n0_199 = *np_193;
+  if (n1_198 >= d1_196)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 33> :
+  if (n1_198 > d1_196)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 34> :
+  if (n0_199 >= d0_197)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  __asm__("subs %1, %4, %5\nsbc  %0, %2, %3" : "=r" n1_200, "=&r" n0_201 : "r" n1_198, "r" d1_196, "r" n0_199, "r" d0_197 : "cc");
+  most_significant_q_limb_202 = 1;
+
+  <bb 36> :
+  # most_significant_q_limb_122 = PHI <most_significant_q_limb_189(32), most_significant_q_limb_189(34), most_significant_q_limb_202(35)>
+  # n1_139 = PHI <n1_198(32), n1_198(34), n1_200(35)>
+  # n0_145 = PHI <n0_199(32), n0_199(34), n0_201(35)>
+  _35 = qextra_limbs_203(D) + nsize_191(D);
+  i_204 = _35 + -3;
+  goto <bb 64>; [INV]
+
+  <bb 37> :
+  if (i_138 >= qextra_limbs_203(D))
+    goto <bb 38>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 38> :
+  np_208 = np_118 + 18446744073709551608;
+  goto <bb 40>; [INV]
+
+  <bb 39> :
+  *np_118 = 0;
+
+  <bb 40> :
+  # np_117 = PHI <np_208(38), np_118(39)>
+  if (n1_144 == d1_196)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 41> :
+  q_236 = 18446744073709551615;
+  r_237 = n0_150 + d1_196;
+  if (r_237 < d1_196)
+    goto <bb 42>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 42> :
+  _36 = r_237 - d0_197;
+  _37 = *np_117;
+  __asm__("adds %1, %4, %5\nadc  %0, %2, %3" : "=r" n1_242, "=&r" n0_243 : "r" _36, "r" 0, "r" _37, "r" d0_197 : "cc");
+  _38 = (long unsigned int) i_138;
+  _39 = _38 * 8;
+  _40 = qp_244(D) + _39;
+  *_40 = q_236;
+  // predicted unlikely by continue predictor.
+  goto <bb 63>; [INV]
+
+  <bb 43> :
+  if (d0_197 != 0)
+    goto <bb 44>; [INV]
+  else
+    goto <bb 45>; [INV]
+
+  <bb 44> :
+  iftmp.0_239 = 1;
+  goto <bb 46>; [INV]
+
+  <bb 45> :
+  iftmp.0_238 = 0;
+
+  <bb 46> :
+  # iftmp.0_176 = PHI <iftmp.0_239(44), iftmp.0_238(45)>
+  n1_240 = d0_197 - iftmp.0_176;
+  n0_241 = -d0_197;
+  goto <bb 56>; [INV]
+
+  <bb 47> :
+  __d1_209 = d1_196 >> 32;
+  __d0_210 = d1_196 & 4294967295;
+  __r1_211 = n1_144 % __d1_209;
+  __q1_212 = n1_144 / __d1_209;
+  __m_213 = __q1_212 * __d0_210;
+  _41 = __r1_211 * 4294967296;
+  _42 = n0_150 >> 32;
+  __r1_214 = _41 | _42;
+  if (__r1_214 < __m_213)
+    goto <bb 48>; [INV]
+  else
+    goto <bb 51>; [INV]
+
+  <bb 48> :
+  __q1_215 = __q1_212 + 18446744073709551615;
+  __r1_216 = __r1_214 + d1_196;
+  if (__r1_216 >= d1_196)
+    goto <bb 49>; [INV]
+  else
+    goto <bb 51>; [INV]
+
+  <bb 49> :
+  if (__r1_216 < __m_213)
+    goto <bb 50>; [INV]
+  else
+    goto <bb 51>; [INV]
+
+  <bb 50> :
+  __q1_217 = __q1_215 + 18446744073709551615;
+  __r1_218 = __r1_216 + d1_196;
+
+  <bb 51> :
+  # __q1_157 = PHI <__q1_212(47), __q1_215(48), __q1_215(49), __q1_217(50)>
+  # __r1_159 = PHI <__r1_214(47), __r1_216(48), __r1_216(49), __r1_218(50)>
+  __r1_219 = __r1_159 - __m_213;
+  __r0_220 = __r1_219 % __d1_209;
+  __q0_221 = __r1_219 / __d1_209;
+  __m_222 = __q0_221 * __d0_210;
+  _43 = __r0_220 * 4294967296;
+  _44 = n0_150 & 4294967295;
+  __r0_223 = _43 | _44;
+  if (__r0_223 < __m_222)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 55>; [INV]
+
+  <bb 52> :
+  __q0_224 = __q0_221 + 18446744073709551615;
+  __r0_225 = __r0_223 + d1_196;
+  if (__r0_225 >= d1_196)
+    goto <bb 53>; [INV]
+  else
+    goto <bb 55>; [INV]
+
+  <bb 53> :
+  if (__r0_225 < __m_222)
+    goto <bb 54>; [INV]
+  else
+    goto <bb 55>; [INV]
+
+  <bb 54> :
+  __q0_226 = __q0_224 + 18446744073709551615;
+  __r0_227 = __r0_225 + d1_196;
+
+  <bb 55> :
+  # __q0_158 = PHI <__q0_221(51), __q0_224(52), __q0_224(53), __q0_226(54)>
+  # __r0_160 = PHI <__r0_223(51), __r0_225(52), __r0_225(53), __r0_227(54)>
+  __r0_228 = __r0_160 - __m_222;
+  _45 = __q1_157 * 4294967296;
+  q_229 = __q0_158 | _45;
+  r_230 = __r0_228;
+  __m0_231 = d0_197;
+  __m1_232 = q_229;
+  n0_233 = __m0_231 * __m1_232;
+  __asm__("umulh %0,%1,%2" : "=r" __ph_234 : "r" __m0_231, "r" __m1_232);
+  n1_235 = __ph_234;
+
+  <bb 56> :
+  # n1_140 = PHI <n1_240(46), n1_235(55)>
+  # n0_146 = PHI <n0_241(46), n0_233(55)>
+  # q_151 = PHI <q_236(46), q_229(55)>
+  # r_154 = PHI <r_237(46), r_230(55)>
+  n2_246 = *np_117;
+
+  <bb 57> :
+  # n1_141 = PHI <n1_140(56), n1_248(61)>
+  # n0_147 = PHI <n0_146(56), n0_249(61)>
+  # q_152 = PHI <q_151(56), q_247(61)>
+  # r_155 = PHI <r_154(56), r_250(61)>
+q_test:
+  if (n1_141 > r_155)
+    goto <bb 60>; [INV]
+  else
+    goto <bb 58>; [INV]
+
+  <bb 58> :
+  if (n1_141 == r_155)
+    goto <bb 59>; [INV]
+  else
+    goto <bb 62>; [INV]
+
+  <bb 59> :
+  if (n0_147 > n2_246)
+    goto <bb 60>; [INV]
+  else
+    goto <bb 62>; [INV]
+
+  <bb 60> :
+  q_247 = q_152 + 18446744073709551615;
+  __asm__("subs %1, %4, %5\nsbc  %0, %2, %3" : "=r" n1_248, "=&r" n0_249 : "r" n1_141, "r" 0, "r" n0_147, "r" d0_197 : "cc");
+  r_250 = r_155 + d1_196;
+  if (r_250 >= d1_196)
+    goto <bb 61>; [INV]
+  else
+    goto <bb 62>; [INV]
+
+  <bb 61> :
+  // predicted unlikely by goto predictor.
+  goto <bb 57>; [INV]
+
+  <bb 62> :
+  # n1_142 = PHI <n1_141(58), n1_141(59), n1_248(60)>
+  # n0_148 = PHI <n0_147(58), n0_147(59), n0_249(60)>
+  # q_153 = PHI <q_152(58), q_152(59), q_247(60)>
+  # r_156 = PHI <r_155(58), r_155(59), r_250(60)>
+  _46 = (long unsigned int) i_138;
+  _47 = _46 * 8;
+  _48 = qp_244(D) + _47;
+  *_48 = q_153;
+  __asm__("subs %1, %4, %5\nsbc  %0, %2, %3" : "=r" n1_252, "=&r" n0_253 : "r" r_156, "r" n1_142, "r" n2_246, "r" n0_148 : "cc");
+
+  <bb 63> :
+  # n1_143 = PHI <n1_242(42), n1_252(62)>
+  # n0_149 = PHI <n0_243(42), n0_253(62)>
+  i_254 = i_138 + -1;
+
+  <bb 64> :
+  # np_118 = PHI <np_193(36), np_117(63)>
+  # i_138 = PHI <i_204(36), i_254(63)>
+  # n1_144 = PHI <n1_139(36), n1_143(63)>
+  # n0_150 = PHI <n0_145(36), n0_149(63)>
+  if (i_138 >= 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 65>; [INV]
+
+  <bb 65> :
+  _49 = np_118 + 8;
+  *_49 = n1_144;
+  *np_118 = n0_150;
+  goto <bb 98>; [INV]
+
+  <bb 66> :
+  _50 = nsize_191(D) - dsize_190(D);
+  _51 = (long unsigned int) _50;
+  _52 = _51 * 8;
+  np_311 = np_192(D) + _52;
+  _53 = (long unsigned int) dsize_190(D);
+  _54 = _53 * 8;
+  _55 = _54 + 18446744073709551608;
+  _56 = dp_195(D) + _55;
+  dX_312 = *_56;
+  _57 = (long unsigned int) dsize_190(D);
+  _58 = _57 * 8;
+  _59 = _58 + 18446744073709551600;
+  _60 = dp_195(D) + _59;
+  d1_313 = *_60;
+  _61 = (long unsigned int) dsize_190(D);
+  _62 = _61 * 8;
+  _63 = _62 + 18446744073709551608;
+  _64 = np_311 + _63;
+  n0_314 = *_64;
+  if (n0_314 >= dX_312)
+    goto <bb 67>; [INV]
+  else
+    goto <bb 70>; [INV]
+
+  <bb 67> :
+  if (n0_314 > dX_312)
+    goto <bb 69>; [INV]
+  else
+    goto <bb 68>; [INV]
+
+  <bb 68> :
+  _65 = dsize_190(D) + -1;
+  _66 = _gcry_mpih_cmp (np_311, dp_195(D), _65);
+  if (_66 >= 0)
+    goto <bb 69>; [INV]
+  else
+    goto <bb 70>; [INV]
+
+  <bb 69> :
+  _gcry_mpih_sub_n (np_311, np_311, dp_195(D), dsize_190(D));
+  _67 = (long unsigned int) dsize_190(D);
+  _68 = _67 * 8;
+  _69 = _68 + 18446744073709551608;
+  _70 = np_311 + _69;
+  n0_317 = *_70;
+  most_significant_q_limb_318 = 1;
+
+  <bb 70> :
+  # most_significant_q_limb_123 = PHI <most_significant_q_limb_189(66), most_significant_q_limb_189(68), most_significant_q_limb_318(69)>
+  # n0_162 = PHI <n0_314(66), n0_314(68), n0_317(69)>
+  _71 = qextra_limbs_203(D) + nsize_191(D);
+  _72 = _71 - dsize_190(D);
+  i_319 = _72 + -1;
+  goto <bb 97>; [INV]
+
+  <bb 71> :
+  if (i_161 >= qextra_limbs_203(D))
+    goto <bb 72>; [INV]
+  else
+    goto <bb 73>; [INV]
+
+  <bb 72> :
+  np_325 = np_120 + 18446744073709551608;
+  _73 = (long unsigned int) dsize_190(D);
+  _74 = _73 * 8;
+  _75 = np_325 + _74;
+  n2_326 = *_75;
+  goto <bb 77>; [INV]
+
+  <bb 73> :
+  _76 = (long unsigned int) dsize_190(D);
+  _77 = _76 * 8;
+  _78 = _77 + 18446744073709551608;
+  _79 = np_120 + _78;
+  n2_320 = *_79;
+  _i_321 = dsize_190(D) + -2;
+  goto <bb 75>; [INV]
+
+  <bb 74> :
+  _80 = (long unsigned int) _i_170;
+  _81 = _80 * 8;
+  _82 = np_120 + _81;
+  _83 = (sizetype) _i_170;
+  _84 = _83 + 1;
+  _85 = _84 * 8;
+  _86 = np_120 + _85;
+  _87 = *_82;
+  *_86 = _87;
+  _i_324 = _i_170 + -1;
+
+  <bb 75> :
+  # _i_170 = PHI <_i_321(73), _i_324(74)>
+  if (_i_170 >= 0)
+    goto <bb 74>; [INV]
+  else
+    goto <bb 76>; [INV]
+
+  <bb 76> :
+  *np_120 = 0;
+
+  <bb 77> :
+  # np_119 = PHI <np_325(72), np_120(76)>
+  # n2_169 = PHI <n2_326(72), n2_320(76)>
+  if (n0_164 == dX_312)
+    goto <bb 78>; [INV]
+  else
+    goto <bb 79>; [INV]
+
+  <bb 78> :
+  q_358 = 18446744073709551615;
+  goto <bb 94>; [INV]
+
+  <bb 79> :
+  __d1_327 = dX_312 >> 32;
+  __d0_328 = dX_312 & 4294967295;
+  __r1_329 = n0_164 % __d1_327;
+  __q1_330 = n0_164 / __d1_327;
+  __m_331 = __q1_330 * __d0_328;
+  _88 = __r1_329 * 4294967296;
+  _89 = (long unsigned int) dsize_190(D);
+  _90 = _89 * 8;
+  _91 = _90 + 18446744073709551608;
+  _92 = np_119 + _91;
+  _93 = *_92;
+  _94 = _93 >> 32;
+  __r1_332 = _88 | _94;
+  if (__r1_332 < __m_331)
+    goto <bb 80>; [INV]
+  else
+    goto <bb 83>; [INV]
+
+  <bb 80> :
+  __q1_333 = __q1_330 + 18446744073709551615;
+  __r1_334 = __r1_332 + dX_312;
+  if (__r1_334 >= dX_312)
+    goto <bb 81>; [INV]
+  else
+    goto <bb 83>; [INV]
+
+  <bb 81> :
+  if (__r1_334 < __m_331)
+    goto <bb 82>; [INV]
+  else
+    goto <bb 83>; [INV]
+
+  <bb 82> :
+  __q1_335 = __q1_333 + 18446744073709551615;
+  __r1_336 = __r1_334 + dX_312;
+
+  <bb 83> :
+  # __q1_172 = PHI <__q1_330(79), __q1_333(80), __q1_333(81), __q1_335(82)>
+  # __r1_174 = PHI <__r1_332(79), __r1_334(80), __r1_334(81), __r1_336(82)>
+  __r1_337 = __r1_174 - __m_331;
+  __r0_338 = __r1_337 % __d1_327;
+  __q0_339 = __r1_337 / __d1_327;
+  __m_340 = __q0_339 * __d0_328;
+  _95 = __r0_338 * 4294967296;
+  _96 = (long unsigned int) dsize_190(D);
+  _97 = _96 * 8;
+  _98 = _97 + 18446744073709551608;
+  _99 = np_119 + _98;
+  _100 = *_99;
+  _101 = _100 & 4294967295;
+  __r0_341 = _95 | _101;
+  if (__r0_341 < __m_340)
+    goto <bb 84>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 84> :
+  __q0_342 = __q0_339 + 18446744073709551615;
+  __r0_343 = __r0_341 + dX_312;
+  if (__r0_343 >= dX_312)
+    goto <bb 85>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 85> :
+  if (__r0_343 < __m_340)
+    goto <bb 86>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 86> :
+  __q0_344 = __q0_342 + 18446744073709551615;
+  __r0_345 = __r0_343 + dX_312;
+
+  <bb 87> :
+  # __q0_173 = PHI <__q0_339(83), __q0_342(84), __q0_342(85), __q0_344(86)>
+  # __r0_175 = PHI <__r0_341(83), __r0_343(84), __r0_343(85), __r0_345(86)>
+  __r0_346 = __r0_175 - __m_340;
+  _102 = __q1_172 * 4294967296;
+  q_347 = __q0_173 | _102;
+  r_348 = __r0_346;
+  __m0_349 = d1_313;
+  __m1_350 = q_347;
+  n0_351 = __m0_349 * __m1_350;
+  __asm__("umulh %0,%1,%2" : "=r" __ph_352 : "r" __m0_349, "r" __m1_350);
+  n1_353 = __ph_352;
+  goto <bb 91>; [INV]
+
+  <bb 88> :
+  q_354 = q_165 + 18446744073709551615;
+  r_355 = r_171 + dX_312;
+  if (r_355 < dX_312)
+    goto <bb 89>; [INV]
+  else
+    goto <bb 90>; [INV]
+
+  <bb 89> :
+  goto <bb 94>; [INV]
+
+  <bb 90> :
+  _103 = n0_163 < d1_313;
+  _104 = (long unsigned int) _103;
+  n1_356 = n1_168 - _104;
+  n0_357 = n0_163 - d1_313;
+
+  <bb 91> :
+  # n0_163 = PHI <n0_351(87), n0_357(90)>
+  # q_165 = PHI <q_347(87), q_354(90)>
+  # n1_168 = PHI <n1_353(87), n1_356(90)>
+  # r_171 = PHI <r_348(87), r_355(90)>
+  if (n1_168 > r_171)
+    goto <bb 88>; [INV]
+  else
+    goto <bb 92>; [INV]
+
+  <bb 92> :
+  if (n1_168 == r_171)
+    goto <bb 93>; [INV]
+  else
+    goto <bb 94>; [INV]
+
+  <bb 93> :
+  _105 = (long unsigned int) dsize_190(D);
+  _106 = _105 * 8;
+  _107 = _106 + 18446744073709551600;
+  _108 = np_119 + _107;
+  _109 = *_108;
+  if (n0_163 > _109)
+    goto <bb 88>; [INV]
+  else
+    goto <bb 94>; [INV]
+
+  <bb 94> :
+  # q_166 = PHI <q_358(78), q_354(89), q_165(92), q_165(93)>
+  cy_limb_360 = _gcry_mpih_submul_1 (np_119, dp_195(D), dsize_190(D), q_166);
+  if (n2_169 != cy_limb_360)
+    goto <bb 95>; [INV]
+  else
+    goto <bb 96>; [INV]
+
+  <bb 95> :
+  _gcry_mpih_add_n (np_119, np_119, dp_195(D), dsize_190(D));
+  q_362 = q_166 + 18446744073709551615;
+
+  <bb 96> :
+  # q_167 = PHI <q_166(94), q_362(95)>
+  _110 = (long unsigned int) i_161;
+  _111 = _110 * 8;
+  _112 = qp_244(D) + _111;
+  *_112 = q_167;
+  _113 = (long unsigned int) dsize_190(D);
+  _114 = _113 * 8;
+  _115 = _114 + 18446744073709551608;
+  _116 = np_119 + _115;
+  n0_364 = *_116;
+  i_365 = i_161 + -1;
+
+  <bb 97> :
+  # np_120 = PHI <np_311(70), np_119(96)>
+  # i_161 = PHI <i_319(70), i_365(96)>
+  # n0_164 = PHI <n0_162(70), n0_364(96)>
+  if (i_161 >= 0)
+    goto <bb 71>; [INV]
+  else
+    goto <bb 98>; [INV]
+
+  <bb 98> :
+  # most_significant_q_limb_124 = PHI <most_significant_q_limb_121(31), most_significant_q_limb_122(65), most_significant_q_limb_123(97)>
+  _366 = most_significant_q_limb_124;
+
+  <bb 99> :
+<L114>:
+  return _366;
+
+}
+
+
+
+;; Function _gcry_mpih_divmod_1 (_gcry_mpih_divmod_1, funcdef_no=32, decl_uid=9932, cgraph_uid=33, symbol_order=32)
+
+mpi_limb_t _gcry_mpih_divmod_1 (mpi_limb_t * quot_ptr, mpi_limb_t * dividend_ptr, mpi_size_t dividend_size, mpi_limb_t divisor_limb)
+{
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  UDItype __co;
+  int normalization_steps;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  mpi_limb_t _xl;
+  mpi_limb_t _xh;
+  mpi_limb_t _r;
+  mpi_limb_t _q;
+  mpi_limb_t _ql;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t divisor_limb_inverted;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  mpi_limb_t _xl;
+  mpi_limb_t _xh;
+  mpi_limb_t _r;
+  mpi_limb_t _q;
+  mpi_limb_t _ql;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  UDItype __ph;
+  UDItype __m1;
+  UDItype __m0;
+  mpi_limb_t _xl;
+  mpi_limb_t _xh;
+  mpi_limb_t _r;
+  mpi_limb_t _q;
+  mpi_limb_t _ql;
+  UWtype __m;
+  UWtype __r0;
+  UWtype __r1;
+  UWtype __q0;
+  UWtype __q1;
+  UWtype __d0;
+  UWtype __d1;
+  mpi_limb_t divisor_limb_inverted;
+  UDItype __co;
+  int normalization_steps;
+  mpi_limb_t dummy;
+  mpi_limb_t r;
+  mpi_limb_t n0;
+  mpi_limb_t n1;
+  mpi_size_t i;
+  mpi_limb_t D.10616;
+  mpi_limb_t _3;
+  mpi_limb_t _18;
+  long unsigned int _39;
+  long unsigned int _40;
+  sizetype _41;
+  mpi_limb_t * _42;
+  int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  mpi_limb_t * _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  sizetype _60;
+  sizetype _61;
+  sizetype _62;
+  mpi_limb_t * _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  mpi_limb_t * _75;
+  int i.2_76;
+  long unsigned int _77;
+  long unsigned int _78;
+  mpi_limb_t * _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  mpi_limb_t * _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  mpi_limb_t * _90;
+  long unsigned int _91;
+  mpi_limb_t _141;
+  mpi_limb_t _167;
+
+  <bb 2> :
+  if (dividend_size_12(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _167 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 4> :
+  __asm__("clz %0, %1" : "=r" __co_14 : "r" divisor_limb_13(D));
+  normalization_steps_15 = (int) __co_14;
+  if (normalization_steps_15 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 5> :
+  divisor_limb_115 = divisor_limb_13(D) << normalization_steps_15;
+  _39 = (long unsigned int) dividend_size_12(D);
+  _40 = _39 * 8;
+  _41 = _40 + 18446744073709551608;
+  _42 = dividend_ptr_5(D) + _41;
+  n1_116 = *_42;
+  _43 = 64 - normalization_steps_15;
+  r_117 = n1_116 >> _43;
+  i_118 = dividend_size_12(D) + -2;
+  goto <bb 15>; [INV]
+
+  <bb 6> :
+  _44 = (long unsigned int) i_36;
+  _45 = _44 * 8;
+  _46 = dividend_ptr_5(D) + _45;
+  n0_142 = *_46;
+  __d1_143 = divisor_limb_115 >> 32;
+  __d0_144 = divisor_limb_115 & 4294967295;
+  __r1_145 = r_34 % __d1_143;
+  __q1_146 = r_34 / __d1_143;
+  __m_147 = __q1_146 * __d0_144;
+  _47 = __r1_145 * 4294967296;
+  _48 = n1_33 << normalization_steps_15;
+  _49 = 64 - normalization_steps_15;
+  _50 = n0_142 >> _49;
+  _51 = _48 | _50;
+  _52 = _51 >> 32;
+  __r1_148 = _47 | _52;
+  if (__r1_148 < __m_147)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 7> :
+  __q1_149 = __q1_146 + 18446744073709551615;
+  __r1_150 = __r1_148 + divisor_limb_115;
+  if (__r1_150 >= divisor_limb_115)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  if (__r1_150 < __m_147)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  __q1_151 = __q1_149 + 18446744073709551615;
+  __r1_152 = __r1_150 + divisor_limb_115;
+
+  <bb 10> :
+  # __q1_30 = PHI <__q1_146(6), __q1_149(7), __q1_149(8), __q1_151(9)>
+  # __r1_32 = PHI <__r1_148(6), __r1_150(7), __r1_150(8), __r1_152(9)>
+  __r1_153 = __r1_32 - __m_147;
+  __r0_154 = __r1_153 % __d1_143;
+  __q0_155 = __r1_153 / __d1_143;
+  __m_156 = __q0_155 * __d0_144;
+  _53 = __r0_154 * 4294967296;
+  _54 = n1_33 << normalization_steps_15;
+  _55 = 64 - normalization_steps_15;
+  _56 = n0_142 >> _55;
+  _57 = _54 | _56;
+  _58 = _57 & 4294967295;
+  __r0_157 = _53 | _58;
+  if (__r0_157 < __m_156)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  __q0_158 = __q0_155 + 18446744073709551615;
+  __r0_159 = __r0_157 + divisor_limb_115;
+  if (__r0_159 >= divisor_limb_115)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  if (__r0_159 < __m_156)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  __q0_160 = __q0_158 + 18446744073709551615;
+  __r0_161 = __r0_159 + divisor_limb_115;
+
+  <bb 14> :
+  # __q0_31 = PHI <__q0_155(10), __q0_158(11), __q0_158(12), __q0_160(13)>
+  # __r0_26 = PHI <__r0_157(10), __r0_159(11), __r0_159(12), __r0_161(13)>
+  __r0_162 = __r0_26 - __m_156;
+  _59 = __q1_30 * 4294967296;
+  _60 = (sizetype) i_36;
+  _61 = _60 + 1;
+  _62 = _61 * 8;
+  _63 = quot_ptr_9(D) + _62;
+  _64 = __q0_31 | _59;
+  *_63 = _64;
+  r_164 = __r0_162;
+  n1_165 = n0_142;
+  i_166 = i_36 + -1;
+
+  <bb 15> :
+  # i_36 = PHI <i_118(5), i_166(14)>
+  # n1_33 = PHI <n1_116(5), n1_165(14)>
+  # r_34 = PHI <r_117(5), r_164(14)>
+  if (i_36 >= 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  __d1_119 = divisor_limb_115 >> 32;
+  __d0_120 = divisor_limb_115 & 4294967295;
+  __r1_121 = r_34 % __d1_119;
+  __q1_122 = r_34 / __d1_119;
+  __m_123 = __q1_122 * __d0_120;
+  _65 = __r1_121 * 4294967296;
+  _66 = n1_33 << normalization_steps_15;
+  _67 = _66 >> 32;
+  __r1_124 = _65 | _67;
+  if (__r1_124 < __m_123)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 17> :
+  __q1_125 = __q1_122 + 18446744073709551615;
+  __r1_126 = __r1_124 + divisor_limb_115;
+  if (__r1_126 >= divisor_limb_115)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  if (__r1_126 < __m_123)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  __q1_127 = __q1_125 + 18446744073709551615;
+  __r1_128 = __r1_126 + divisor_limb_115;
+
+  <bb 20> :
+  # __q1_27 = PHI <__q1_122(16), __q1_125(17), __q1_125(18), __q1_127(19)>
+  # __r1_25 = PHI <__r1_124(16), __r1_126(17), __r1_126(18), __r1_128(19)>
+  __r1_129 = __r1_25 - __m_123;
+  __r0_130 = __r1_129 % __d1_119;
+  __q0_131 = __r1_129 / __d1_119;
+  __m_132 = __q0_131 * __d0_120;
+  _68 = __r0_130 * 4294967296;
+  _69 = n1_33 << normalization_steps_15;
+  _70 = _69 & 4294967295;
+  __r0_133 = _68 | _70;
+  if (__r0_133 < __m_132)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 21> :
+  __q0_134 = __q0_131 + 18446744073709551615;
+  __r0_135 = __r0_133 + divisor_limb_115;
+  if (__r0_135 >= divisor_limb_115)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 22> :
+  if (__r0_135 < __m_132)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  __q0_136 = __q0_134 + 18446744073709551615;
+  __r0_137 = __r0_135 + divisor_limb_115;
+
+  <bb 24> :
+  # __q0_28 = PHI <__q0_131(20), __q0_134(21), __q0_134(22), __q0_136(23)>
+  # __r0_23 = PHI <__r0_133(20), __r0_135(21), __r0_135(22), __r0_137(23)>
+  __r0_138 = __r0_23 - __m_132;
+  _71 = __q1_27 * 4294967296;
+  _72 = __q0_28 | _71;
+  *quot_ptr_9(D) = _72;
+  r_140 = __r0_138;
+  _141 = r_140 >> normalization_steps_15;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 25> :
+  i_16 = dividend_size_12(D) + -1;
+  _73 = (long unsigned int) i_16;
+  _74 = _73 * 8;
+  _75 = dividend_ptr_5(D) + _74;
+  r_7 = *_75;
+  if (r_7 >= divisor_limb_13(D))
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  r_2 = 0;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  i.2_76 = i_16;
+  i_8 = i.2_76 + -1;
+  _77 = (long unsigned int) i.2_76;
+  _78 = _77 * 8;
+  _79 = quot_ptr_9(D) + _78;
+  *_79 = 0;
+
+  <bb 28> :
+  # i_37 = PHI <i_16(26), i_8(27)>
+  # r_35 = PHI <r_2(26), r_7(27)>
+  goto <bb 38>; [INV]
+
+  <bb 29> :
+  _80 = (long unsigned int) i_38;
+  _81 = _80 * 8;
+  _82 = dividend_ptr_5(D) + _81;
+  n0_1 = *_82;
+  __d1_92 = divisor_limb_13(D) >> 32;
+  __d0_93 = divisor_limb_13(D) & 4294967295;
+  __r1_94 = r_29 % __d1_92;
+  __q1_95 = r_29 / __d1_92;
+  __m_96 = __q1_95 * __d0_93;
+  _83 = __r1_94 * 4294967296;
+  _84 = n0_1 >> 32;
+  __r1_97 = _83 | _84;
+  if (__r1_97 < __m_96)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 30> :
+  __q1_98 = __q1_95 + 18446744073709551615;
+  __r1_99 = __r1_97 + divisor_limb_13(D);
+  if (__r1_99 >= divisor_limb_13(D))
+    goto <bb 31>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 31> :
+  if (__r1_99 < __m_96)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  __q1_100 = __q1_98 + 18446744073709551615;
+  __r1_101 = __r1_99 + divisor_limb_13(D);
+
+  <bb 33> :
+  # __q1_24 = PHI <__q1_95(29), __q1_98(30), __q1_98(31), __q1_100(32)>
+  # __r1_21 = PHI <__r1_97(29), __r1_99(30), __r1_99(31), __r1_101(32)>
+  __r1_102 = __r1_21 - __m_96;
+  __r0_103 = __r1_102 % __d1_92;
+  __q0_104 = __r1_102 / __d1_92;
+  __m_105 = __q0_104 * __d0_93;
+  _85 = __r0_103 * 4294967296;
+  _86 = n0_1 & 4294967295;
+  __r0_106 = _85 | _86;
+  if (__r0_106 < __m_105)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 34> :
+  __q0_107 = __q0_104 + 18446744073709551615;
+  __r0_108 = __r0_106 + divisor_limb_13(D);
+  if (__r0_108 >= divisor_limb_13(D))
+    goto <bb 35>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 35> :
+  if (__r0_108 < __m_105)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  __q0_109 = __q0_107 + 18446744073709551615;
+  __r0_110 = __r0_108 + divisor_limb_13(D);
+
+  <bb 37> :
+  # __q0_22 = PHI <__q0_104(33), __q0_107(34), __q0_107(35), __q0_109(36)>
+  # __r0_17 = PHI <__r0_106(33), __r0_108(34), __r0_108(35), __r0_110(36)>
+  __r0_111 = __r0_17 - __m_105;
+  _87 = __q1_24 * 4294967296;
+  _88 = (long unsigned int) i_38;
+  _89 = _88 * 8;
+  _90 = quot_ptr_9(D) + _89;
+  _91 = __q0_22 | _87;
+  *_90 = _91;
+  r_113 = __r0_111;
+  i_114 = i_38 + -1;
+
+  <bb 38> :
+  # i_38 = PHI <i_37(28), i_114(37)>
+  # r_29 = PHI <r_35(28), r_113(37)>
+  if (i_38 >= 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 39> :
+  _3 = r_29;
+  // predicted unlikely by early return (on trees) predictor.
+
+  <bb 40> :
+  # _18 = PHI <_167(3), _3(39), _141(24)>
+<L112>:
+  return _18;
+
+}
+
+

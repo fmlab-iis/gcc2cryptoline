@@ -1,0 +1,1501 @@
+
+;; Function _gcry_mpi_normalize (_gcry_mpi_normalize, funcdef_no=30, decl_uid=9696, cgraph_uid=31, symbol_order=30)
+
+void _gcry_mpi_normalize (struct gcry_mpi * a)
+{
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  int _4;
+  int _5;
+  mpi_limb_t * _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  sizetype _10;
+  mpi_limb_t * _11;
+  long unsigned int _12;
+
+  <bb 2> :
+  if (a_15(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _1 = a_15(D)->flags;
+  _2 = _1 & 4;
+  if (_2 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 5> :
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _3 = a_15(D)->nlimbs;
+  _4 = _3 + -1;
+  a_15(D)->nlimbs = _4;
+
+  <bb 7> :
+  _5 = a_15(D)->nlimbs;
+  if (_5 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _6 = a_15(D)->d;
+  _7 = a_15(D)->nlimbs;
+  _8 = (long unsigned int) _7;
+  _9 = _8 * 8;
+  _10 = _9 + 18446744073709551608;
+  _11 = _6 + _10;
+  _12 = *_11;
+  if (_12 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+<L8>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_get_nbits (_gcry_mpi_get_nbits, funcdef_no=31, decl_uid=9235, cgraph_uid=32, symbol_order=31)
+
+unsigned int _gcry_mpi_get_nbits (struct gcry_mpi * a)
+{
+  UDItype __co;
+  mpi_limb_t alimb;
+  unsigned int n;
+  unsigned int D.10209;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  int _4;
+  mpi_limb_t * _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  sizetype _9;
+  mpi_limb_t * _10;
+  int _11;
+  int _12;
+  int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _18;
+  unsigned int _22;
+  unsigned int _30;
+
+  <bb 2> :
+  if (a_20(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _1 = a_20(D)->flags;
+  _2 = _1 & 4;
+  if (_2 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _3 = a_20(D)->sign;
+  _22 = (unsigned int) _3;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 5> :
+  _gcry_mpi_normalize (a_20(D));
+  _4 = a_20(D)->nlimbs;
+  if (_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 6> :
+  _5 = a_20(D)->d;
+  _6 = a_20(D)->nlimbs;
+  _7 = (long unsigned int) _6;
+  _8 = _7 * 8;
+  _9 = _8 + 18446744073709551608;
+  _10 = _5 + _9;
+  alimb_25 = *_10;
+  if (alimb_25 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  __asm__("clz %0, %1" : "=r" __co_27 : "r" alimb_25);
+  n_28 = (unsigned int) __co_27;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  n_26 = 64;
+
+  <bb 9> :
+  # n_16 = PHI <n_28(7), n_26(8)>
+  _11 = a_20(D)->nlimbs;
+  _12 = _11 + -1;
+  _13 = _12 * 64;
+  _14 = (unsigned int) _13;
+  _15 = _14 - n_16;
+  n_29 = _15 + 64;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  n_24 = 0;
+
+  <bb 11> :
+  # n_17 = PHI <n_29(9), n_24(10)>
+  _30 = n_17;
+
+  <bb 12> :
+  # _18 = PHI <_22(4), _30(11)>
+<L10>:
+  return _18;
+
+}
+
+
+
+;; Function _gcry_mpi_test_bit (_gcry_mpi_test_bit, funcdef_no=32, decl_uid=9238, cgraph_uid=33, symbol_order=32)
+
+int _gcry_mpi_test_bit (struct gcry_mpi * a, unsigned int n)
+{
+  mpi_limb_t limb;
+  unsigned int bitno;
+  unsigned int limbno;
+  int D.10219;
+  int _1;
+  unsigned int _2;
+  mpi_limb_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  mpi_limb_t * _6;
+  long unsigned int _7;
+  int _8;
+  int _9;
+  int _16;
+  int _17;
+
+  <bb 2> :
+  limbno_11 = n_10(D) / 64;
+  bitno_12 = n_10(D) & 63;
+  _1 = a_14(D)->nlimbs;
+  _2 = (unsigned int) _1;
+  if (limbno_11 >= _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _17 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _3 = a_14(D)->d;
+  _4 = (long unsigned int) limbno_11;
+  _5 = _4 * 8;
+  _6 = _3 + _5;
+  limb_15 = *_6;
+  _7 = limb_15 >> bitno_12;
+  _8 = (int) _7;
+  _16 = _8 & 1;
+
+  <bb 5> :
+  # _9 = PHI <_17(3), _16(4)>
+<L2>:
+  return _9;
+
+}
+
+
+
+;; Function _gcry_mpi_set_bit (_gcry_mpi_set_bit, funcdef_no=33, decl_uid=9241, cgraph_uid=34, symbol_order=33)
+
+void _gcry_mpi_set_bit (struct gcry_mpi * a, unsigned int n)
+{
+  unsigned int bitno;
+  unsigned int limbno;
+  unsigned int i;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  unsigned int _4;
+  int _5;
+  mpi_limb_t * _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  int _14;
+  mpi_limb_t * _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  mpi_limb_t * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  mpi_limb_t * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  mpi_limb_t * _24;
+  long unsigned int _25;
+
+  <bb 2> :
+  _1 = a_31(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  limbno_33 = n_32(D) / 64;
+  bitno_34 = n_32(D) & 63;
+  _3 = a_31(D)->nlimbs;
+  _4 = (unsigned int) _3;
+  if (limbno_33 >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  _5 = a_31(D)->nlimbs;
+  i_35 = (unsigned int) _5;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _6 = a_31(D)->d;
+  _7 = (long unsigned int) i_26;
+  _8 = _7 * 8;
+  _9 = _6 + _8;
+  *_9 = 0;
+  i_39 = i_26 + 1;
+
+  <bb 7> :
+  # i_26 = PHI <i_35(5), i_39(6)>
+  _10 = a_31(D)->alloced;
+  _11 = (unsigned int) _10;
+  if (i_26 < _11)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _12 = limbno_33 + 1;
+  _gcry_mpi_resize (a_31(D), _12);
+  _13 = limbno_33 + 1;
+  _14 = (int) _13;
+  a_31(D)->nlimbs = _14;
+
+  <bb 9> :
+  _15 = a_31(D)->d;
+  _16 = (long unsigned int) limbno_33;
+  _17 = _16 * 8;
+  _18 = _15 + _17;
+  _19 = *_18;
+  _20 = 1 << bitno_34;
+  _21 = a_31(D)->d;
+  _22 = (long unsigned int) limbno_33;
+  _23 = _22 * 8;
+  _24 = _21 + _23;
+  _25 = _19 | _20;
+  *_24 = _25;
+
+  <bb 10> :
+<L7>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_set_highbit (_gcry_mpi_set_highbit, funcdef_no=34, decl_uid=9247, cgraph_uid=35, symbol_order=34)
+
+void _gcry_mpi_set_highbit (struct gcry_mpi * a, unsigned int n)
+{
+  unsigned int bitno;
+  unsigned int limbno;
+  unsigned int i;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  unsigned int _4;
+  int _5;
+  mpi_limb_t * _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  int _14;
+  mpi_limb_t * _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  mpi_limb_t * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  mpi_limb_t * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  mpi_limb_t * _24;
+  long unsigned int _25;
+  mpi_limb_t * _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  mpi_limb_t * _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  mpi_limb_t * _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  mpi_limb_t * _36;
+  long unsigned int _37;
+  unsigned int _38;
+  int _39;
+
+  <bb 2> :
+  _1 = a_47(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  limbno_49 = n_48(D) / 64;
+  bitno_50 = n_48(D) & 63;
+  _3 = a_47(D)->nlimbs;
+  _4 = (unsigned int) _3;
+  if (limbno_49 >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 5> :
+  _5 = a_47(D)->nlimbs;
+  i_51 = (unsigned int) _5;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _6 = a_47(D)->d;
+  _7 = (long unsigned int) i_40;
+  _8 = _7 * 8;
+  _9 = _6 + _8;
+  *_9 = 0;
+  i_55 = i_40 + 1;
+
+  <bb 7> :
+  # i_40 = PHI <i_51(5), i_55(6)>
+  _10 = a_47(D)->alloced;
+  _11 = (unsigned int) _10;
+  if (i_40 < _11)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _12 = limbno_49 + 1;
+  _gcry_mpi_resize (a_47(D), _12);
+  _13 = limbno_49 + 1;
+  _14 = (int) _13;
+  a_47(D)->nlimbs = _14;
+
+  <bb 9> :
+  _15 = a_47(D)->d;
+  _16 = (long unsigned int) limbno_49;
+  _17 = _16 * 8;
+  _18 = _15 + _17;
+  _19 = *_18;
+  _20 = 1 << bitno_50;
+  _21 = a_47(D)->d;
+  _22 = (long unsigned int) limbno_49;
+  _23 = _22 * 8;
+  _24 = _21 + _23;
+  _25 = _19 | _20;
+  *_24 = _25;
+  bitno_57 = bitno_50 + 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _26 = a_47(D)->d;
+  _27 = (long unsigned int) limbno_49;
+  _28 = _27 * 8;
+  _29 = _26 + _28;
+  _30 = *_29;
+  _31 = 1 << bitno_41;
+  _32 = ~_31;
+  _33 = a_47(D)->d;
+  _34 = (long unsigned int) limbno_49;
+  _35 = _34 * 8;
+  _36 = _33 + _35;
+  _37 = _30 & _32;
+  *_36 = _37;
+  bitno_60 = bitno_41 + 1;
+
+  <bb 11> :
+  # bitno_41 = PHI <bitno_57(9), bitno_60(10)>
+  if (bitno_41 <= 63)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _38 = limbno_49 + 1;
+  _39 = (int) _38;
+  a_47(D)->nlimbs = _39;
+
+  <bb 13> :
+<L10>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_clear_highbit (_gcry_mpi_clear_highbit, funcdef_no=35, decl_uid=9250, cgraph_uid=36, symbol_order=35)
+
+void _gcry_mpi_clear_highbit (struct gcry_mpi * a, unsigned int n)
+{
+  unsigned int bitno;
+  unsigned int limbno;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  mpi_limb_t * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  mpi_limb_t * _15;
+  long unsigned int _16;
+  unsigned int _17;
+  int _18;
+
+  <bb 2> :
+  _1 = a_23(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  limbno_25 = n_24(D) / 64;
+  bitno_26 = n_24(D) & 63;
+  _3 = a_23(D)->nlimbs;
+  _4 = (unsigned int) _3;
+  if (limbno_25 >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _5 = a_23(D)->d;
+  _6 = (long unsigned int) limbno_25;
+  _7 = _6 * 8;
+  _8 = _5 + _7;
+  _9 = *_8;
+  _10 = 1 << bitno_19;
+  _11 = ~_10;
+  _12 = a_23(D)->d;
+  _13 = (long unsigned int) limbno_25;
+  _14 = _13 * 8;
+  _15 = _12 + _14;
+  _16 = _9 & _11;
+  *_15 = _16;
+  bitno_29 = bitno_19 + 1;
+
+  <bb 8> :
+  # bitno_19 = PHI <bitno_26(6), bitno_29(7)>
+  if (bitno_19 <= 63)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _17 = limbno_25 + 1;
+  _18 = (int) _17;
+  a_23(D)->nlimbs = _18;
+
+  <bb 10> :
+<L7>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_clear_bit (_gcry_mpi_clear_bit, funcdef_no=36, decl_uid=9244, cgraph_uid=37, symbol_order=36)
+
+void _gcry_mpi_clear_bit (struct gcry_mpi * a, unsigned int n)
+{
+  unsigned int bitno;
+  unsigned int limbno;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  unsigned int _4;
+  mpi_limb_t * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  mpi_limb_t * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  mpi_limb_t * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  mpi_limb_t * _15;
+  long unsigned int _16;
+
+  <bb 2> :
+  _1 = a_19(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  limbno_21 = n_20(D) / 64;
+  bitno_22 = n_20(D) & 63;
+  _3 = a_19(D)->nlimbs;
+  _4 = (unsigned int) _3;
+  if (limbno_21 >= _4)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _5 = a_19(D)->d;
+  _6 = (long unsigned int) limbno_21;
+  _7 = _6 * 8;
+  _8 = _5 + _7;
+  _9 = *_8;
+  _10 = 1 << bitno_22;
+  _11 = ~_10;
+  _12 = a_19(D)->d;
+  _13 = (long unsigned int) limbno_21;
+  _14 = _13 * 8;
+  _15 = _12 + _14;
+  _16 = _9 & _11;
+  *_15 = _16;
+
+  <bb 7> :
+<L4>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_rshift_limbs (_gcry_mpi_rshift_limbs, funcdef_no=37, decl_uid=9825, cgraph_uid=38, symbol_order=37)
+
+void _gcry_mpi_rshift_limbs (struct gcry_mpi * a, unsigned int count)
+{
+  unsigned int i;
+  mpi_size_t n;
+  mpi_limb_t * ap;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int n.0_3;
+  unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  mpi_limb_t * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  mpi_limb_t * _10;
+  long unsigned int _11;
+  unsigned int n.1_12;
+  unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  mpi_limb_t * _16;
+  int _17;
+  unsigned int _18;
+  unsigned int _19;
+  int _20;
+
+  <bb 2> :
+  ap_26 = a_25(D)->d;
+  n_27 = a_25(D)->nlimbs;
+  _1 = a_25(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  n.0_3 = (unsigned int) n_27;
+  if (count_28(D) >= n.0_3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  a_25(D)->nlimbs = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  i_29 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _4 = i_21 + count_28(D);
+  _5 = (long unsigned int) _4;
+  _6 = _5 * 8;
+  _7 = ap_26 + _6;
+  _8 = (long unsigned int) i_21;
+  _9 = _8 * 8;
+  _10 = ap_26 + _9;
+  _11 = *_7;
+  *_10 = _11;
+  i_33 = i_21 + 1;
+
+  <bb 8> :
+  # i_21 = PHI <i_29(6), i_33(7)>
+  n.1_12 = (unsigned int) n_27;
+  _13 = n.1_12 - count_28(D);
+  if (i_21 < _13)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _14 = (long unsigned int) i_21;
+  _15 = _14 * 8;
+  _16 = ap_26 + _15;
+  *_16 = 0;
+  _17 = a_25(D)->nlimbs;
+  _18 = (unsigned int) _17;
+  _19 = _18 - count_28(D);
+  _20 = (int) _19;
+  a_25(D)->nlimbs = _20;
+
+  <bb 10> :
+<L7>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_rshift (_gcry_mpi_rshift, funcdef_no=38, decl_uid=9254, cgraph_uid=39, symbol_order=38)
+
+void _gcry_mpi_rshift (struct gcry_mpi * x, struct gcry_mpi * a, unsigned int n)
+{
+  unsigned int nbits;
+  unsigned int nlimbs;
+  unsigned int i;
+  mpi_size_t xsize;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  unsigned int _4;
+  mpi_limb_t * _5;
+  unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  mpi_limb_t * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  mpi_limb_t * _13;
+  long unsigned int _14;
+  int _15;
+  unsigned int _16;
+  unsigned int _17;
+  mpi_limb_t * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  mpi_limb_t * _21;
+  int _22;
+  unsigned int _23;
+  unsigned int _24;
+  int _25;
+  int _26;
+  mpi_limb_t * _27;
+  mpi_limb_t * _28;
+  int _29;
+  int _30;
+  int _31;
+  unsigned int xsize.2_32;
+  mpi_limb_t * _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  mpi_limb_t * _36;
+  mpi_limb_t * _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  mpi_limb_t * _40;
+  long unsigned int _41;
+  int _42;
+  unsigned int _43;
+  int i.3_44;
+  int _45;
+  unsigned int _46;
+  mpi_limb_t * _47;
+  unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  mpi_limb_t * _51;
+  mpi_limb_t * _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  mpi_limb_t * _55;
+  long unsigned int _56;
+  int _57;
+  unsigned int _58;
+  unsigned int _59;
+  mpi_limb_t * _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  mpi_limb_t * _63;
+  int _64;
+  unsigned int _65;
+  unsigned int _66;
+  int _67;
+  int _68;
+  mpi_limb_t * _69;
+  mpi_limb_t * _70;
+  int _71;
+  int _72;
+  int _73;
+  unsigned int xsize.4_74;
+  mpi_limb_t * _75;
+  mpi_limb_t * _76;
+  int _77;
+  mpi_limb_t * _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  mpi_limb_t * _81;
+  mpi_limb_t * _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  mpi_limb_t * _85;
+  long unsigned int _86;
+  int _87;
+  unsigned int _88;
+  mpi_limb_t * _89;
+  int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  sizetype _93;
+  mpi_limb_t * _94;
+  long unsigned int _95;
+  int _96;
+  int _97;
+  int _98;
+
+  <bb 2> :
+  nlimbs_115 = n_114(D) / 64;
+  nbits_116 = n_114(D) & 63;
+  _1 = x_118(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 44>; [INV]
+
+  <bb 4> :
+  if (x_118(D) == a_119(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 5> :
+  _3 = x_118(D)->nlimbs;
+  _4 = (unsigned int) _3;
+  if (nlimbs_115 >= _4)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  x_118(D)->nlimbs = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 44>; [INV]
+
+  <bb 7> :
+  if (nlimbs_115 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  i_143 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _5 = x_118(D)->d;
+  _6 = i_99 + nlimbs_115;
+  _7 = (long unsigned int) _6;
+  _8 = _7 * 8;
+  _9 = _5 + _8;
+  _10 = x_118(D)->d;
+  _11 = (long unsigned int) i_99;
+  _12 = _11 * 8;
+  _13 = _10 + _12;
+  _14 = *_9;
+  *_13 = _14;
+  i_147 = i_99 + 1;
+
+  <bb 10> :
+  # i_99 = PHI <i_143(8), i_147(9)>
+  _15 = x_118(D)->nlimbs;
+  _16 = (unsigned int) _15;
+  _17 = _16 - nlimbs_115;
+  if (i_99 < _17)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  _18 = x_118(D)->d;
+  _19 = (long unsigned int) i_99;
+  _20 = _19 * 8;
+  _21 = _18 + _20;
+  *_21 = 0;
+  _22 = x_118(D)->nlimbs;
+  _23 = (unsigned int) _22;
+  _24 = _23 - nlimbs_115;
+  _25 = (int) _24;
+  x_118(D)->nlimbs = _25;
+
+  <bb 12> :
+  _26 = x_118(D)->nlimbs;
+  if (_26 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 13> :
+  if (nbits_116 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 14> :
+  _27 = x_118(D)->d;
+  _28 = x_118(D)->d;
+  _29 = x_118(D)->nlimbs;
+  _gcry_mpih_rshift (_27, _28, _29, nbits_116);
+  goto <bb 39>; [INV]
+
+  <bb 15> :
+  if (nlimbs_115 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 16> :
+  xsize_128 = a_119(D)->nlimbs;
+  _30 = a_119(D)->sign;
+  x_118(D)->sign = _30;
+  _31 = x_118(D)->alloced;
+  if (xsize_128 > _31)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  xsize.2_32 = (unsigned int) xsize_128;
+  _gcry_mpi_resize (x_118(D), xsize.2_32);
+
+  <bb 18> :
+  x_118(D)->nlimbs = xsize_128;
+  i_132 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _33 = a_119(D)->d;
+  _34 = (long unsigned int) i_100;
+  _35 = _34 * 8;
+  _36 = _33 + _35;
+  _37 = x_118(D)->d;
+  _38 = (long unsigned int) i_100;
+  _39 = _38 * 8;
+  _40 = _37 + _39;
+  _41 = *_36;
+  *_40 = _41;
+  i_142 = i_100 + 1;
+
+  <bb 20> :
+  # i_100 = PHI <i_132(18), i_142(19)>
+  _42 = a_119(D)->nlimbs;
+  _43 = (unsigned int) _42;
+  if (i_100 < _43)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  i.3_44 = (int) i_100;
+  x_118(D)->nlimbs = i.3_44;
+  _45 = x_118(D)->nlimbs;
+  _46 = (unsigned int) _45;
+  if (nlimbs_115 >= _46)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  x_118(D)->nlimbs = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 44>; [INV]
+
+  <bb 23> :
+  if (nlimbs_115 != 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 24> :
+  i_134 = 0;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  _47 = x_118(D)->d;
+  _48 = i_101 + nlimbs_115;
+  _49 = (long unsigned int) _48;
+  _50 = _49 * 8;
+  _51 = _47 + _50;
+  _52 = x_118(D)->d;
+  _53 = (long unsigned int) i_101;
+  _54 = _53 * 8;
+  _55 = _52 + _54;
+  _56 = *_51;
+  *_55 = _56;
+  i_138 = i_101 + 1;
+
+  <bb 26> :
+  # i_101 = PHI <i_134(24), i_138(25)>
+  _57 = x_118(D)->nlimbs;
+  _58 = (unsigned int) _57;
+  _59 = _58 - nlimbs_115;
+  if (i_101 < _59)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  _60 = x_118(D)->d;
+  _61 = (long unsigned int) i_101;
+  _62 = _61 * 8;
+  _63 = _60 + _62;
+  *_63 = 0;
+  _64 = x_118(D)->nlimbs;
+  _65 = (unsigned int) _64;
+  _66 = _65 - nlimbs_115;
+  _67 = (int) _66;
+  x_118(D)->nlimbs = _67;
+
+  <bb 28> :
+  _68 = x_118(D)->nlimbs;
+  if (_68 != 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 29> :
+  if (nbits_116 != 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 30> :
+  _69 = x_118(D)->d;
+  _70 = x_118(D)->d;
+  _71 = x_118(D)->nlimbs;
+  _gcry_mpih_rshift (_69, _70, _71, nbits_116);
+  goto <bb 39>; [INV]
+
+  <bb 31> :
+  xsize_120 = a_119(D)->nlimbs;
+  _72 = a_119(D)->sign;
+  x_118(D)->sign = _72;
+  _73 = x_118(D)->alloced;
+  if (xsize_120 > _73)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  xsize.4_74 = (unsigned int) xsize_120;
+  _gcry_mpi_resize (x_118(D), xsize.4_74);
+
+  <bb 33> :
+  x_118(D)->nlimbs = xsize_120;
+  if (xsize_120 != 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 34> :
+  if (nbits_116 != 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  _75 = x_118(D)->d;
+  _76 = a_119(D)->d;
+  _77 = x_118(D)->nlimbs;
+  _gcry_mpih_rshift (_75, _76, _77, nbits_116);
+  goto <bb 39>; [INV]
+
+  <bb 36> :
+  i_124 = 0;
+  goto <bb 38>; [INV]
+
+  <bb 37> :
+  _78 = a_119(D)->d;
+  _79 = (long unsigned int) i_102;
+  _80 = _79 * 8;
+  _81 = _78 + _80;
+  _82 = x_118(D)->d;
+  _83 = (long unsigned int) i_102;
+  _84 = _83 * 8;
+  _85 = _82 + _84;
+  _86 = *_81;
+  *_85 = _86;
+  i_126 = i_102 + 1;
+
+  <bb 38> :
+  # i_102 = PHI <i_124(36), i_126(37)>
+  _87 = x_118(D)->nlimbs;
+  _88 = (unsigned int) _87;
+  if (i_102 < _88)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 39> :
+  goto <bb 43>; [INV]
+
+  <bb 40> :
+  _89 = x_118(D)->d;
+  _90 = x_118(D)->nlimbs;
+  _91 = (long unsigned int) _90;
+  _92 = _91 * 8;
+  _93 = _92 + 18446744073709551608;
+  _94 = _89 + _93;
+  _95 = *_94;
+  if (_95 != 0)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 42>; [INV]
+
+  <bb 41> :
+  goto <bb 44>; [INV]
+
+  <bb 42> :
+  _96 = x_118(D)->nlimbs;
+  _97 = _96 + -1;
+  x_118(D)->nlimbs = _97;
+
+  <bb 43> :
+  _98 = x_118(D)->nlimbs;
+  if (_98 > 0)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 44> :
+<L50>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_lshift_limbs (_gcry_mpi_lshift_limbs, funcdef_no=39, decl_uid=9828, cgraph_uid=40, symbol_order=39)
+
+void _gcry_mpi_lshift_limbs (struct gcry_mpi * a, unsigned int count)
+{
+  int i;
+  int n;
+  mpi_limb_t * ap;
+  int _1;
+  unsigned int _2;
+  unsigned int n.5_3;
+  unsigned int _4;
+  unsigned int n.6_5;
+  unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  mpi_limb_t * _9;
+  unsigned int i.7_10;
+  unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  mpi_limb_t * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  mpi_limb_t * _18;
+  unsigned int i.8_19;
+  int _20;
+  unsigned int _21;
+  unsigned int _22;
+  int _23;
+
+  <bb 2> :
+  n_32 = a_31(D)->nlimbs;
+  if (count_33(D) == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (n_32 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 5> :
+  _1 = a_31(D)->alloced;
+  _2 = (unsigned int) _1;
+  n.5_3 = (unsigned int) n_32;
+  _4 = count_33(D) + n.5_3;
+  if (_2 < _4)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  n.6_5 = (unsigned int) n_32;
+  _6 = count_33(D) + n.6_5;
+  _gcry_mpi_resize (a_31(D), _6);
+
+  <bb 7> :
+  ap_35 = a_31(D)->d;
+  i_36 = n_32 + -1;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _7 = (long unsigned int) i_24;
+  _8 = _7 * 8;
+  _9 = ap_35 + _8;
+  i.7_10 = (unsigned int) i_24;
+  _11 = count_33(D) + i.7_10;
+  _12 = (long unsigned int) _11;
+  _13 = _12 * 8;
+  _14 = ap_35 + _13;
+  _15 = *_9;
+  *_14 = _15;
+  i_42 = i_24 + -1;
+
+  <bb 9> :
+  # i_24 = PHI <i_36(7), i_42(8)>
+  if (i_24 >= 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  i_37 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _16 = (long unsigned int) i_25;
+  _17 = _16 * 8;
+  _18 = ap_35 + _17;
+  *_18 = 0;
+  i_40 = i_25 + 1;
+
+  <bb 12> :
+  # i_25 = PHI <i_37(10), i_40(11)>
+  i.8_19 = (unsigned int) i_25;
+  if (count_33(D) > i.8_19)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _20 = a_31(D)->nlimbs;
+  _21 = (unsigned int) _20;
+  _22 = count_33(D) + _21;
+  _23 = (int) _22;
+  a_31(D)->nlimbs = _23;
+
+  <bb 14> :
+<L11>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_lshift (_gcry_mpi_lshift, funcdef_no=40, decl_uid=9258, cgraph_uid=41, symbol_order=40)
+
+void _gcry_mpi_lshift (struct gcry_mpi * x, struct gcry_mpi * a, unsigned int n)
+{
+  mpi_size_t _i;
+  mpi_limb_t * ap;
+  mpi_limb_t * xp;
+  int asign;
+  unsigned int alimbs;
+  unsigned int nbits;
+  unsigned int nlimbs;
+  unsigned int _1;
+  unsigned int _2;
+  int _3;
+  int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  mpi_limb_t * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  mpi_limb_t * _15;
+  long unsigned int _16;
+  unsigned int _i.9_17;
+  int alimbs.10_18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  mpi_limb_t * _22;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  sizetype _26;
+  mpi_limb_t * _27;
+  long unsigned int _28;
+  int _29;
+  int _30;
+  int _31;
+
+  <bb 2> :
+  nlimbs_40 = n_39(D) / 64;
+  nbits_41 = n_39(D) & 63;
+  _1 = x_43(D)->flags;
+  _2 = _1 & 16;
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _gcry_mpi_immutable_failed ();
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 4> :
+  if (x_43(D) == a_44(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  if (n_39(D) == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 7> :
+  if (x_43(D) != a_44(D))
+    goto <bb 8>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 8> :
+  _3 = a_44(D)->nlimbs;
+  alimbs_45 = (unsigned int) _3;
+  asign_46 = a_44(D)->sign;
+  _4 = x_43(D)->alloced;
+  _5 = (unsigned int) _4;
+  _6 = alimbs_45 + nlimbs_40;
+  _7 = _6 + 1;
+  if (_5 < _7)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _8 = alimbs_45 + nlimbs_40;
+  _9 = _8 + 1;
+  _gcry_mpi_resize (x_43(D), _9);
+
+  <bb 10> :
+  xp_48 = x_43(D)->d;
+  ap_49 = a_44(D)->d;
+  _i_50 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _10 = (long unsigned int) _i_32;
+  _11 = _10 * 8;
+  _12 = ap_49 + _11;
+  _13 = (long unsigned int) _i_32;
+  _14 = _13 * 8;
+  _15 = xp_48 + _14;
+  _16 = *_12;
+  *_15 = _16;
+  _i_55 = _i_32 + 1;
+
+  <bb 12> :
+  # _i_32 = PHI <_i_50(10), _i_55(11)>
+  _i.9_17 = (unsigned int) _i_32;
+  if (alimbs_45 > _i.9_17)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  alimbs.10_18 = (int) alimbs_45;
+  x_43(D)->nlimbs = alimbs.10_18;
+  _19 = a_44(D)->flags;
+  x_43(D)->flags = _19;
+  x_43(D)->sign = asign_46;
+
+  <bb 14> :
+  if (nlimbs_40 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 15> :
+  if (nbits_41 == 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  _gcry_mpi_lshift_limbs (x_43(D), nlimbs_40);
+  goto <bb 19>; [INV]
+
+  <bb 17> :
+  if (n_39(D) != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  _20 = nlimbs_40 + 1;
+  _gcry_mpi_lshift_limbs (x_43(D), _20);
+  _21 = 64 - nbits_41;
+  _gcry_mpi_rshift (x_43(D), x_43(D), _21);
+
+  <bb 19> :
+  goto <bb 23>; [INV]
+
+  <bb 20> :
+  _22 = x_43(D)->d;
+  _23 = x_43(D)->nlimbs;
+  _24 = (long unsigned int) _23;
+  _25 = _24 * 8;
+  _26 = _25 + 18446744073709551608;
+  _27 = _22 + _26;
+  _28 = *_27;
+  if (_28 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  goto <bb 24>; [INV]
+
+  <bb 22> :
+  _29 = x_43(D)->nlimbs;
+  _30 = _29 + -1;
+  x_43(D)->nlimbs = _30;
+
+  <bb 23> :
+  _31 = x_43(D)->nlimbs;
+  if (_31 > 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+<L24>:
+  return;
+
+}
+
+

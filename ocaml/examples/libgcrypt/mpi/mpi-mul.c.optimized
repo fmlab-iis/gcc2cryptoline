@@ -1,0 +1,735 @@
+
+;; Function _gcry_mpi_mul_ui (_gcry_mpi_mul_ui, funcdef_no=30, decl_uid=9137, cgraph_uid=31, symbol_order=30)
+
+void _gcry_mpi_mul_ui (struct gcry_mpi * prod, struct gcry_mpi * mult, long unsigned int small_mult)
+{
+  int sign;
+  mpi_limb_t cy;
+  mpi_limb_t * prod_ptr;
+  mpi_size_t prod_size;
+  mpi_size_t size;
+  int _1;
+  unsigned int prod_size.0_2;
+  mpi_limb_t * _3;
+  int size.1_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  mpi_limb_t * _7;
+
+  <bb 2> :
+  size_14 = mult_13(D)->nlimbs;
+  sign_15 = mult_13(D)->sign;
+  if (size_14 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (small_mult_16(D) == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  prod_18(D)->nlimbs = 0;
+  prod_18(D)->sign = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+  prod_size_17 = size_14 + 1;
+  _1 = prod_18(D)->alloced;
+  if (prod_size_17 > _1)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  prod_size.0_2 = (unsigned int) prod_size_17;
+  _gcry_mpi_resize (prod_18(D), prod_size.0_2);
+
+  <bb 7> :
+  prod_ptr_20 = prod_18(D)->d;
+  _3 = mult_13(D)->d;
+  cy_22 = _gcry_mpih_mul_1 (prod_ptr_20, _3, size_14, small_mult_16(D));
+  if (cy_22 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  size.1_4 = size_14;
+  size_23 = size.1_4 + 1;
+  _5 = (long unsigned int) size.1_4;
+  _6 = _5 * 8;
+  _7 = prod_ptr_20 + _6;
+  *_7 = cy_22;
+
+  <bb 9> :
+  # size_8 = PHI <size_14(7), size_23(8)>
+  prod_18(D)->nlimbs = size_8;
+  prod_18(D)->sign = sign_15;
+
+  <bb 10> :
+<L7>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_mul_2exp (_gcry_mpi_mul_2exp, funcdef_no=31, decl_uid=9146, cgraph_uid=32, symbol_order=31)
+
+void _gcry_mpi_mul_2exp (struct gcry_mpi * w, struct gcry_mpi * u, long unsigned int cnt)
+{
+  int _i;
+  mpi_size_t _i;
+  int wsign;
+  int usign;
+  mpi_limb_t wlimb;
+  mpi_limb_t * wp;
+  mpi_size_t limb_cnt;
+  mpi_size_t wsize;
+  mpi_size_t usize;
+  long unsigned int _1;
+  int _2;
+  int _3;
+  unsigned int wsize.2_4;
+  long unsigned int _5;
+  long unsigned int _6;
+  mpi_limb_t * _7;
+  mpi_limb_t * _8;
+  unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  mpi_limb_t * _12;
+  mpi_limb_t * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  mpi_limb_t * _16;
+  sizetype _17;
+  sizetype _18;
+  sizetype _19;
+  sizetype _20;
+  mpi_limb_t * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  mpi_limb_t * _25;
+
+  <bb 2> :
+  usize_36 = u_35(D)->nlimbs;
+  usign_37 = u_35(D)->sign;
+  if (usize_36 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  w_41(D)->nlimbs = 0;
+  w_41(D)->sign = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 16>; [INV]
+
+  <bb 4> :
+  _1 = cnt_38(D) / 64;
+  limb_cnt_39 = (mpi_size_t) _1;
+  _2 = usize_36 + limb_cnt_39;
+  wsize_40 = _2 + 1;
+  _3 = w_41(D)->alloced;
+  if (wsize_40 > _3)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  wsize.2_4 = (unsigned int) wsize_40;
+  _gcry_mpi_resize (w_41(D), wsize.2_4);
+
+  <bb 6> :
+  wp_43 = w_41(D)->d;
+  wsize_44 = usize_36 + limb_cnt_39;
+  wsign_45 = usign_37;
+  cnt_46 = cnt_38(D) & 63;
+  if (cnt_46 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  _5 = (long unsigned int) limb_cnt_39;
+  _6 = _5 * 8;
+  _7 = wp_43 + _6;
+  _8 = u_35(D)->d;
+  _9 = (unsigned int) cnt_46;
+  wlimb_51 = _gcry_mpih_lshift (_7, _8, usize_36, _9);
+  if (wlimb_51 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 8> :
+  _10 = (long unsigned int) wsize_44;
+  _11 = _10 * 8;
+  _12 = wp_43 + _11;
+  *_12 = wlimb_51;
+  wsize_53 = wsize_44 + 1;
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  _i_47 = usize_36 + -1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _13 = u_35(D)->d;
+  _14 = (long unsigned int) _i_27;
+  _15 = _14 * 8;
+  _16 = _13 + _15;
+  _17 = (sizetype) limb_cnt_39;
+  _18 = (sizetype) _i_27;
+  _19 = _17 + _18;
+  _20 = _19 * 8;
+  _21 = wp_43 + _20;
+  _22 = *_16;
+  *_21 = _22;
+  _i_49 = _i_27 + -1;
+
+  <bb 11> :
+  # _i_27 = PHI <_i_47(9), _i_49(10)>
+  if (_i_27 >= 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  # wsize_26 = PHI <wsize_53(8), wsize_44(11), wsize_44(7)>
+  _i_54 = 0;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  _23 = (long unsigned int) _i_28;
+  _24 = _23 * 8;
+  _25 = wp_43 + _24;
+  *_25 = 0;
+  _i_58 = _i_28 + 1;
+
+  <bb 14> :
+  # _i_28 = PHI <_i_54(12), _i_58(13)>
+  if (_i_28 < limb_cnt_39)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  w_41(D)->nlimbs = wsize_26;
+  w_41(D)->sign = wsign_45;
+
+  <bb 16> :
+<L15>:
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_mul (_gcry_mpi_mul, funcdef_no=32, decl_uid=9133, cgraph_uid=33, symbol_order=32)
+
+void _gcry_mpi_mul (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v)
+{
+  mpi_size_t _i;
+  mpi_limb_t * tmp_wp;
+  mpi_size_t _i;
+  mpi_size_t _i;
+  unsigned int tmp_limb_nlimbs;
+  mpi_limb_t * tmp_limb;
+  int assign_wp;
+  int sign_product;
+  int vsecure;
+  int usecure;
+  int vsign;
+  int usign;
+  mpi_limb_t cy;
+  mpi_limb_t * wp;
+  mpi_limb_t * vp;
+  mpi_limb_t * up;
+  mpi_size_t wsize;
+  mpi_size_t vsize;
+  mpi_size_t usize;
+  int iftmp.9;
+  int iftmp.6;
+  int iftmp.5;
+  int iftmp.4;
+  int iftmp.3;
+  int _1;
+  int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int wsize.7_17;
+  int _18;
+  unsigned int wsize.8_19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int wsize.10_22;
+  unsigned int usize.11_23;
+  long unsigned int _24;
+  long unsigned int _25;
+  mpi_limb_t * _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  mpi_limb_t * _29;
+  long unsigned int _30;
+  unsigned int vsize.12_31;
+  long unsigned int _32;
+  long unsigned int _33;
+  mpi_limb_t * _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  mpi_limb_t * _37;
+  long unsigned int _38;
+  _Bool _39;
+  int _40;
+  unsigned int wsize.13_41;
+  long unsigned int _42;
+  long unsigned int _43;
+  mpi_limb_t * _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  mpi_limb_t * _47;
+  long unsigned int _48;
+  unsigned int wsize.14_49;
+  int iftmp.3_72;
+  int iftmp.4_73;
+  int iftmp.5_74;
+  int iftmp.6_75;
+  int iftmp.9_76;
+  int iftmp.5_94;
+  int iftmp.5_95;
+  int iftmp.6_100;
+  int iftmp.6_101;
+  int iftmp.3_106;
+  int iftmp.3_107;
+  int iftmp.4_112;
+  int iftmp.4_113;
+  int iftmp.9_140;
+  int iftmp.9_141;
+
+  <bb 2> :
+  assign_wp_86 = 0;
+  tmp_limb_87 = 0B;
+  tmp_limb_nlimbs_88 = 0;
+  _1 = u_90(D)->nlimbs;
+  _2 = v_91(D)->nlimbs;
+  if (_1 < _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 3> :
+  usize_104 = v_91(D)->nlimbs;
+  usign_105 = v_91(D)->sign;
+  if (v_91(D) != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _3 = v_91(D)->flags;
+  _4 = _3 & 1;
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.3_106 = 1;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.3_107 = 0;
+
+  <bb 7> :
+  # iftmp.3_72 = PHI <iftmp.3_106(5), iftmp.3_107(6)>
+  usecure_108 = iftmp.3_72;
+  up_109 = v_91(D)->d;
+  vsize_110 = u_90(D)->nlimbs;
+  vsign_111 = u_90(D)->sign;
+  if (u_90(D) != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 8> :
+  _5 = u_90(D)->flags;
+  _6 = _5 & 1;
+  if (_6 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.4_112 = 1;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.4_113 = 0;
+
+  <bb 11> :
+  # iftmp.4_73 = PHI <iftmp.4_112(9), iftmp.4_113(10)>
+  vsecure_114 = iftmp.4_73;
+  vp_115 = u_90(D)->d;
+  goto <bb 21>; [INV]
+
+  <bb 12> :
+  usize_92 = u_90(D)->nlimbs;
+  usign_93 = u_90(D)->sign;
+  if (u_90(D) != 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  _7 = u_90(D)->flags;
+  _8 = _7 & 1;
+  if (_8 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.5_94 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.5_95 = 0;
+
+  <bb 16> :
+  # iftmp.5_74 = PHI <iftmp.5_94(14), iftmp.5_95(15)>
+  usecure_96 = iftmp.5_74;
+  up_97 = u_90(D)->d;
+  vsize_98 = v_91(D)->nlimbs;
+  vsign_99 = v_91(D)->sign;
+  if (v_91(D) != 0B)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  _9 = v_91(D)->flags;
+  _10 = _9 & 1;
+  if (_10 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  iftmp.6_100 = 1;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  iftmp.6_101 = 0;
+
+  <bb 20> :
+  # iftmp.6_75 = PHI <iftmp.6_100(18), iftmp.6_101(19)>
+  vsecure_102 = iftmp.6_75;
+  vp_103 = v_91(D)->d;
+
+  <bb 21> :
+  # usize_50 = PHI <usize_104(11), usize_92(20)>
+  # vsize_51 = PHI <vsize_110(11), vsize_98(20)>
+  # up_53 = PHI <up_109(11), up_97(20)>
+  # vp_55 = PHI <vp_115(11), vp_103(20)>
+  # usign_61 = PHI <usign_105(11), usign_93(20)>
+  # vsign_62 = PHI <vsign_111(11), vsign_99(20)>
+  # usecure_63 = PHI <usecure_108(11), usecure_96(20)>
+  # vsecure_64 = PHI <vsecure_114(11), vsecure_102(20)>
+  sign_product_116 = usign_61 ^ vsign_62;
+  wp_118 = w_117(D)->d;
+  wsize_119 = usize_50 + vsize_51;
+  if (w_117(D) == 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  _11 = w_117(D)->flags;
+  _12 = _11 & 1;
+  if (_12 == 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 23> :
+  if (u_90(D) != 0B)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  _13 = u_90(D)->flags;
+  _14 = _13 & 1;
+  if (_14 != 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 25> :
+  if (v_91(D) != 0B)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 26> :
+  _15 = v_91(D)->flags;
+  _16 = _15 & 1;
+  if (_16 != 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  wsize.7_17 = (unsigned int) wsize_119;
+  wp_121 = _gcry_mpi_alloc_limb_space (wsize.7_17, 1);
+  assign_wp_122 = 2;
+  goto <bb 48>; [INV]
+
+  <bb 28> :
+  _18 = w_117(D)->alloced;
+  if (wsize_119 > _18)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 29> :
+  if (wp_118 == up_53)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 30> :
+  if (wp_118 == vp_55)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 31> :
+  wsize.8_19 = (unsigned int) wsize_119;
+  if (w_117(D) != 0B)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 32> :
+  _20 = w_117(D)->flags;
+  _21 = _20 & 1;
+  if (_21 != 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 33> :
+  iftmp.9_140 = 1;
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  iftmp.9_141 = 0;
+
+  <bb 35> :
+  # iftmp.9_76 = PHI <iftmp.9_140(33), iftmp.9_141(34)>
+  wp_143 = _gcry_mpi_alloc_limb_space (wsize.8_19, iftmp.9_76);
+  assign_wp_144 = 1;
+  goto <bb 37>; [INV]
+
+  <bb 36> :
+  wsize.10_22 = (unsigned int) wsize_119;
+  _gcry_mpi_resize (w_117(D), wsize.10_22);
+  wp_139 = w_117(D)->d;
+
+  <bb 37> :
+  # wp_58 = PHI <wp_143(35), wp_139(36)>
+  # assign_wp_65 = PHI <assign_wp_144(35), assign_wp_86(36)>
+  goto <bb 48>; [INV]
+
+  <bb 38> :
+  if (wp_118 == up_53)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 39> :
+  tmp_limb_nlimbs_130 = (unsigned int) usize_50;
+  usize.11_23 = (unsigned int) usize_50;
+  tmp_limb_132 = _gcry_mpi_alloc_limb_space (usize.11_23, usecure_63);
+  up_133 = tmp_limb_132;
+  if (wp_118 == vp_55)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 40> :
+  vp_134 = up_133;
+
+  <bb 41> :
+  # vp_56 = PHI <vp_55(39), vp_134(40)>
+  _i_135 = 0;
+  goto <bb 43>; [INV]
+
+  <bb 42> :
+  _24 = (long unsigned int) _i_69;
+  _25 = _24 * 8;
+  _26 = wp_118 + _25;
+  _27 = (long unsigned int) _i_69;
+  _28 = _27 * 8;
+  _29 = up_133 + _28;
+  _30 = *_26;
+  *_29 = _30;
+  _i_137 = _i_69 + 1;
+
+  <bb 43> :
+  # _i_69 = PHI <_i_135(41), _i_137(42)>
+  if (_i_69 < usize_50)
+    goto <bb 42>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 44> :
+  if (wp_118 == vp_55)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 45> :
+  tmp_limb_nlimbs_123 = (unsigned int) vsize_51;
+  vsize.12_31 = (unsigned int) vsize_51;
+  tmp_limb_125 = _gcry_mpi_alloc_limb_space (vsize.12_31, vsecure_64);
+  vp_126 = tmp_limb_125;
+  _i_127 = 0;
+  goto <bb 47>; [INV]
+
+  <bb 46> :
+  _32 = (long unsigned int) _i_70;
+  _33 = _32 * 8;
+  _34 = wp_118 + _33;
+  _35 = (long unsigned int) _i_70;
+  _36 = _35 * 8;
+  _37 = vp_126 + _36;
+  _38 = *_34;
+  *_37 = _38;
+  _i_129 = _i_70 + 1;
+
+  <bb 47> :
+  # _i_70 = PHI <_i_127(45), _i_129(46)>
+  if (_i_70 < vsize_51)
+    goto <bb 46>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 48> :
+  # up_54 = PHI <up_53(27), up_53(37), up_133(43), up_53(44), up_53(47)>
+  # vp_57 = PHI <vp_55(27), vp_55(37), vp_56(43), vp_55(44), vp_126(47)>
+  # wp_59 = PHI <wp_121(27), wp_58(37), wp_118(43), wp_118(44), wp_118(47)>
+  # assign_wp_66 = PHI <assign_wp_122(27), assign_wp_65(37), assign_wp_86(43), assign_wp_86(44), assign_wp_86(47)>
+  # tmp_limb_67 = PHI <tmp_limb_87(27), tmp_limb_87(37), tmp_limb_132(43), tmp_limb_87(44), tmp_limb_125(47)>
+  # tmp_limb_nlimbs_68 = PHI <tmp_limb_nlimbs_88(27), tmp_limb_nlimbs_88(37), tmp_limb_nlimbs_130(43), tmp_limb_nlimbs_88(44), tmp_limb_nlimbs_123(47)>
+  if (vsize_51 == 0)
+    goto <bb 49>; [INV]
+  else
+    goto <bb 50>; [INV]
+
+  <bb 49> :
+  wsize_148 = 0;
+  goto <bb 51>; [INV]
+
+  <bb 50> :
+  cy_146 = _gcry_mpih_mul (wp_59, up_54, usize_50, vp_57, vsize_51);
+  _39 = cy_146 == 0;
+  _40 = (int) _39;
+  wsize_147 = wsize_119 - _40;
+
+  <bb 51> :
+  # wsize_52 = PHI <wsize_148(49), wsize_147(50)>
+  if (assign_wp_66 != 0)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 58>; [INV]
+
+  <bb 52> :
+  if (assign_wp_66 == 2)
+    goto <bb 53>; [INV]
+  else
+    goto <bb 57>; [INV]
+
+  <bb 53> :
+  wsize.13_41 = (unsigned int) wsize_52;
+  tmp_wp_150 = _gcry_mpi_alloc_limb_space (wsize.13_41, 0);
+  _i_151 = 0;
+  goto <bb 55>; [INV]
+
+  <bb 54> :
+  _42 = (long unsigned int) _i_71;
+  _43 = _42 * 8;
+  _44 = wp_59 + _43;
+  _45 = (long unsigned int) _i_71;
+  _46 = _45 * 8;
+  _47 = tmp_wp_150 + _46;
+  _48 = *_44;
+  *_47 = _48;
+  _i_155 = _i_71 + 1;
+
+  <bb 55> :
+  # _i_71 = PHI <_i_151(53), _i_155(54)>
+  if (_i_71 < wsize_52)
+    goto <bb 54>; [INV]
+  else
+    goto <bb 56>; [INV]
+
+  <bb 56> :
+  _gcry_mpi_free_limb_space (wp_59, 0);
+  wp_153 = tmp_wp_150;
+
+  <bb 57> :
+  # wp_60 = PHI <wp_59(52), wp_153(56)>
+  wsize.14_49 = (unsigned int) wsize_52;
+  _gcry_mpi_assign_limb_space (w_117(D), wp_60, wsize.14_49);
+
+  <bb 58> :
+  w_117(D)->nlimbs = wsize_52;
+  w_117(D)->sign = sign_product_116;
+  if (tmp_limb_67 != 0B)
+    goto <bb 59>; [INV]
+  else
+    goto <bb 60>; [INV]
+
+  <bb 59> :
+  _gcry_mpi_free_limb_space (tmp_limb_67, tmp_limb_nlimbs_68);
+
+  <bb 60> :
+  return;
+
+}
+
+
+
+;; Function _gcry_mpi_mulm (_gcry_mpi_mulm, funcdef_no=33, decl_uid=9142, cgraph_uid=34, symbol_order=33)
+
+void _gcry_mpi_mulm (struct gcry_mpi * w, struct gcry_mpi * u, struct gcry_mpi * v, struct gcry_mpi * m)
+{
+  <bb 2> :
+  _gcry_mpi_mul (w_2(D), u_3(D), v_4(D));
+  _gcry_mpi_tdiv_r (w_2(D), w_2(D), m_6(D));
+  return;
+
+}
+
+
