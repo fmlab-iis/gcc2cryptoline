@@ -1,0 +1,5878 @@
+
+;; Function lh_MEM_hfn_thunk (lh_MEM_hfn_thunk, funcdef_no=153, decl_uid=11076, cgraph_uid=154, symbol_order=153)
+
+long unsigned int lh_MEM_hfn_thunk (const void * data, long unsigned int (*OPENSSL_LH_HASHFUNC) (const void *) hfn)
+{
+  long unsigned int (*<T1306>) (const struct MEM *) hfn_conv;
+  long unsigned int D.12321;
+  long unsigned int _6;
+
+  <bb 2> :
+  hfn_conv_2 = hfn_1(D);
+  _6 = hfn_conv_2 (data_4(D));
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
+
+;; Function lh_MEM_cfn_thunk (lh_MEM_cfn_thunk, funcdef_no=154, decl_uid=11084, cgraph_uid=155, symbol_order=154)
+
+int lh_MEM_cfn_thunk (const void * da, const void * db, int (*OPENSSL_LH_COMPFUNC) (const void *, const void *) cfn)
+{
+  int (*<T130a>) (const struct MEM *, const struct MEM *) cfn_conv;
+  int D.12323;
+  int _7;
+
+  <bb 2> :
+  cfn_conv_2 = cfn_1(D);
+  _7 = cfn_conv_2 (da_4(D), db_5(D));
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function bn_mul_add_words (bn_mul_add_words, funcdef_no=170, decl_uid=11446, cgraph_uid=171, symbol_order=170)
+
+unsigned int bn_mul_add_words (unsigned int * rp, const unsigned int * ap, int num, unsigned int w)
+{
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  static const char __func__[17] = "bn_mul_add_words";
+  unsigned int c1;
+  unsigned int D.12329;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  long long unsigned int _4;
+  unsigned int _5;
+  long long unsigned int _6;
+  long long unsigned int _7;
+  unsigned int _8;
+  long long unsigned int _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  const unsigned int * _15;
+  unsigned int _16;
+  long long unsigned int _17;
+  long long unsigned int _18;
+  unsigned int * _19;
+  unsigned int _20;
+  long long unsigned int _21;
+  long long unsigned int _22;
+  long long unsigned int _23;
+  unsigned int * _24;
+  unsigned int _25;
+  long long unsigned int _26;
+  long long unsigned int _27;
+  const unsigned int * _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  long long unsigned int _31;
+  unsigned int * _32;
+  unsigned int _33;
+  long long unsigned int _34;
+  long long unsigned int _35;
+  long long unsigned int _36;
+  unsigned int * _37;
+  unsigned int _38;
+  long long unsigned int _39;
+  long long unsigned int _40;
+  const unsigned int * _41;
+  unsigned int _42;
+  long long unsigned int _43;
+  long long unsigned int _44;
+  unsigned int * _45;
+  unsigned int _46;
+  long long unsigned int _47;
+  long long unsigned int _48;
+  long long unsigned int _49;
+  unsigned int * _50;
+  unsigned int _51;
+  long long unsigned int _52;
+  unsigned int num.0_53;
+  long long unsigned int _54;
+  unsigned int _55;
+  long long unsigned int _56;
+  long long unsigned int _57;
+  unsigned int _58;
+  long long unsigned int _59;
+  long long unsigned int _60;
+  long long unsigned int _61;
+  unsigned int _62;
+  long long unsigned int _63;
+  unsigned int _72;
+  unsigned int _81;
+  unsigned int _104;
+
+  <bb 2> :
+  c1_76 = 0;
+  _1 = num_77(D) < 0;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  __assert_rtn (&__func__, "bn_asm.c", 22, "num >= 0");
+
+  <bb 4> :
+  if (num_77(D) <= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _104 = c1_76;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _4 = (long long unsigned int) w_82(D);
+  _5 = *ap_66;
+  _6 = (long long unsigned int) _5;
+  _7 = _4 * _6;
+  _8 = *rp_64;
+  _9 = (long long unsigned int) _8;
+  _10 = _7 + _9;
+  _11 = (long long unsigned int) c1_70;
+  t_89 = _10 + _11;
+  _12 = (unsigned int) t_89;
+  *rp_64 = _12;
+  _13 = t_89 >> 32;
+  c1_91 = (unsigned int) _13;
+  _14 = (long long unsigned int) w_82(D);
+  _15 = ap_66 + 4;
+  _16 = *_15;
+  _17 = (long long unsigned int) _16;
+  _18 = _14 * _17;
+  _19 = rp_64 + 4;
+  _20 = *_19;
+  _21 = (long long unsigned int) _20;
+  _22 = _18 + _21;
+  _23 = (long long unsigned int) c1_91;
+  t_92 = _22 + _23;
+  _24 = rp_64 + 4;
+  _25 = (unsigned int) t_92;
+  *_24 = _25;
+  _26 = t_92 >> 32;
+  c1_94 = (unsigned int) _26;
+  _27 = (long long unsigned int) w_82(D);
+  _28 = ap_66 + 8;
+  _29 = *_28;
+  _30 = (long long unsigned int) _29;
+  _31 = _27 * _30;
+  _32 = rp_64 + 8;
+  _33 = *_32;
+  _34 = (long long unsigned int) _33;
+  _35 = _31 + _34;
+  _36 = (long long unsigned int) c1_94;
+  t_95 = _35 + _36;
+  _37 = rp_64 + 8;
+  _38 = (unsigned int) t_95;
+  *_37 = _38;
+  _39 = t_95 >> 32;
+  c1_97 = (unsigned int) _39;
+  _40 = (long long unsigned int) w_82(D);
+  _41 = ap_66 + 12;
+  _42 = *_41;
+  _43 = (long long unsigned int) _42;
+  _44 = _40 * _43;
+  _45 = rp_64 + 12;
+  _46 = *_45;
+  _47 = (long long unsigned int) _46;
+  _48 = _44 + _47;
+  _49 = (long long unsigned int) c1_97;
+  t_98 = _48 + _49;
+  _50 = rp_64 + 12;
+  _51 = (unsigned int) t_98;
+  *_50 = _51;
+  _52 = t_98 >> 32;
+  c1_100 = (unsigned int) _52;
+  ap_101 = ap_66 + 16;
+  rp_102 = rp_64 + 16;
+  num_103 = num_68 + -4;
+
+  <bb 8> :
+  # rp_64 = PHI <rp_78(D)(6), rp_102(7)>
+  # ap_66 = PHI <ap_79(D)(6), ap_101(7)>
+  # num_68 = PHI <num_77(D)(6), num_103(7)>
+  # c1_70 = PHI <c1_76(6), c1_100(7)>
+  num.0_53 = (unsigned int) num_68;
+  if (num.0_53 > 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _54 = (long long unsigned int) w_82(D);
+  _55 = *ap_67;
+  _56 = (long long unsigned int) _55;
+  _57 = _54 * _56;
+  _58 = *rp_65;
+  _59 = (long long unsigned int) _58;
+  _60 = _57 + _59;
+  _61 = (long long unsigned int) c1_71;
+  t_83 = _60 + _61;
+  _62 = (unsigned int) t_83;
+  *rp_65 = _62;
+  _63 = t_83 >> 32;
+  c1_85 = (unsigned int) _63;
+  ap_86 = ap_67 + 4;
+  rp_87 = rp_65 + 4;
+  num_88 = num_69 + -1;
+
+  <bb 11> :
+  # rp_65 = PHI <rp_64(9), rp_87(10)>
+  # ap_67 = PHI <ap_66(9), ap_86(10)>
+  # num_69 = PHI <num_68(9), num_88(10)>
+  # c1_71 = PHI <c1_70(9), c1_85(10)>
+  if (num_69 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _81 = c1_71;
+
+  <bb 13> :
+  # _72 = PHI <_104(5), _81(12)>
+<L10>:
+  return _72;
+
+}
+
+
+
+;; Function bn_mul_words (bn_mul_words, funcdef_no=171, decl_uid=11451, cgraph_uid=172, symbol_order=171)
+
+unsigned int bn_mul_words (unsigned int * rp, const unsigned int * ap, int num, unsigned int w)
+{
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  static const char __func__[13] = "bn_mul_words";
+  unsigned int c1;
+  unsigned int D.12335;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  long long unsigned int _4;
+  unsigned int _5;
+  long long unsigned int _6;
+  long long unsigned int _7;
+  long long unsigned int _8;
+  unsigned int _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  const unsigned int * _12;
+  unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  long long unsigned int _16;
+  unsigned int * _17;
+  unsigned int _18;
+  long long unsigned int _19;
+  long long unsigned int _20;
+  const unsigned int * _21;
+  unsigned int _22;
+  long long unsigned int _23;
+  long long unsigned int _24;
+  long long unsigned int _25;
+  unsigned int * _26;
+  unsigned int _27;
+  long long unsigned int _28;
+  long long unsigned int _29;
+  const unsigned int * _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _33;
+  long long unsigned int _34;
+  unsigned int * _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  unsigned int num.1_38;
+  long long unsigned int _39;
+  unsigned int _40;
+  long long unsigned int _41;
+  long long unsigned int _42;
+  long long unsigned int _43;
+  unsigned int _44;
+  long long unsigned int _45;
+  unsigned int _54;
+  unsigned int _63;
+  unsigned int _86;
+
+  <bb 2> :
+  c1_58 = 0;
+  _1 = num_59(D) < 0;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  __assert_rtn (&__func__, "bn_asm.c", 51, "num >= 0");
+
+  <bb 4> :
+  if (num_59(D) <= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _86 = c1_58;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _4 = (long long unsigned int) w_64(D);
+  _5 = *ap_48;
+  _6 = (long long unsigned int) _5;
+  _7 = _4 * _6;
+  _8 = (long long unsigned int) c1_52;
+  t_71 = _7 + _8;
+  _9 = (unsigned int) t_71;
+  *rp_46 = _9;
+  _10 = t_71 >> 32;
+  c1_73 = (unsigned int) _10;
+  _11 = (long long unsigned int) w_64(D);
+  _12 = ap_48 + 4;
+  _13 = *_12;
+  _14 = (long long unsigned int) _13;
+  _15 = _11 * _14;
+  _16 = (long long unsigned int) c1_73;
+  t_74 = _15 + _16;
+  _17 = rp_46 + 4;
+  _18 = (unsigned int) t_74;
+  *_17 = _18;
+  _19 = t_74 >> 32;
+  c1_76 = (unsigned int) _19;
+  _20 = (long long unsigned int) w_64(D);
+  _21 = ap_48 + 8;
+  _22 = *_21;
+  _23 = (long long unsigned int) _22;
+  _24 = _20 * _23;
+  _25 = (long long unsigned int) c1_76;
+  t_77 = _24 + _25;
+  _26 = rp_46 + 8;
+  _27 = (unsigned int) t_77;
+  *_26 = _27;
+  _28 = t_77 >> 32;
+  c1_79 = (unsigned int) _28;
+  _29 = (long long unsigned int) w_64(D);
+  _30 = ap_48 + 12;
+  _31 = *_30;
+  _32 = (long long unsigned int) _31;
+  _33 = _29 * _32;
+  _34 = (long long unsigned int) c1_79;
+  t_80 = _33 + _34;
+  _35 = rp_46 + 12;
+  _36 = (unsigned int) t_80;
+  *_35 = _36;
+  _37 = t_80 >> 32;
+  c1_82 = (unsigned int) _37;
+  ap_83 = ap_48 + 16;
+  rp_84 = rp_46 + 16;
+  num_85 = num_50 + -4;
+
+  <bb 8> :
+  # rp_46 = PHI <rp_60(D)(6), rp_84(7)>
+  # ap_48 = PHI <ap_61(D)(6), ap_83(7)>
+  # num_50 = PHI <num_59(D)(6), num_85(7)>
+  # c1_52 = PHI <c1_58(6), c1_82(7)>
+  num.1_38 = (unsigned int) num_50;
+  if (num.1_38 > 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _39 = (long long unsigned int) w_64(D);
+  _40 = *ap_49;
+  _41 = (long long unsigned int) _40;
+  _42 = _39 * _41;
+  _43 = (long long unsigned int) c1_53;
+  t_65 = _42 + _43;
+  _44 = (unsigned int) t_65;
+  *rp_47 = _44;
+  _45 = t_65 >> 32;
+  c1_67 = (unsigned int) _45;
+  ap_68 = ap_49 + 4;
+  rp_69 = rp_47 + 4;
+  num_70 = num_51 + -1;
+
+  <bb 11> :
+  # rp_47 = PHI <rp_46(9), rp_69(10)>
+  # ap_49 = PHI <ap_48(9), ap_68(10)>
+  # num_51 = PHI <num_50(9), num_70(10)>
+  # c1_53 = PHI <c1_52(9), c1_67(10)>
+  if (num_51 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _63 = c1_53;
+
+  <bb 13> :
+  # _54 = PHI <_86(5), _63(12)>
+<L10>:
+  return _54;
+
+}
+
+
+
+;; Function bn_sqr_words (bn_sqr_words, funcdef_no=172, decl_uid=11455, cgraph_uid=173, symbol_order=172)
+
+void bn_sqr_words (unsigned int * r, const unsigned int * a, int n)
+{
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  static const char __func__[13] = "bn_sqr_words";
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned int _4;
+  long long unsigned int _5;
+  unsigned int _6;
+  long long unsigned int _7;
+  unsigned int _8;
+  long long unsigned int _9;
+  unsigned int * _10;
+  unsigned int _11;
+  const unsigned int * _12;
+  unsigned int _13;
+  long long unsigned int _14;
+  const unsigned int * _15;
+  unsigned int _16;
+  long long unsigned int _17;
+  unsigned int * _18;
+  unsigned int _19;
+  long long unsigned int _20;
+  unsigned int * _21;
+  unsigned int _22;
+  const unsigned int * _23;
+  unsigned int _24;
+  long long unsigned int _25;
+  const unsigned int * _26;
+  unsigned int _27;
+  long long unsigned int _28;
+  unsigned int * _29;
+  unsigned int _30;
+  long long unsigned int _31;
+  unsigned int * _32;
+  unsigned int _33;
+  const unsigned int * _34;
+  unsigned int _35;
+  long long unsigned int _36;
+  const unsigned int * _37;
+  unsigned int _38;
+  long long unsigned int _39;
+  unsigned int * _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  unsigned int * _43;
+  unsigned int _44;
+  unsigned int n.2_45;
+  unsigned int _46;
+  long long unsigned int _47;
+  unsigned int _48;
+  long long unsigned int _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  unsigned int * _52;
+  unsigned int _53;
+
+  <bb 2> :
+  _1 = n_63(D) < 0;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  __assert_rtn (&__func__, "bn_asm.c", 77, "n >= 0");
+
+  <bb 4> :
+  if (n_63(D) <= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _4 = *a_56;
+  _5 = (long long unsigned int) _4;
+  _6 = *a_56;
+  _7 = (long long unsigned int) _6;
+  t_73 = _5 * _7;
+  _8 = (unsigned int) t_73;
+  *r_54 = _8;
+  _9 = t_73 >> 32;
+  _10 = r_54 + 4;
+  _11 = (unsigned int) _9;
+  *_10 = _11;
+  _12 = a_56 + 4;
+  _13 = *_12;
+  _14 = (long long unsigned int) _13;
+  _15 = a_56 + 4;
+  _16 = *_15;
+  _17 = (long long unsigned int) _16;
+  t_76 = _14 * _17;
+  _18 = r_54 + 8;
+  _19 = (unsigned int) t_76;
+  *_18 = _19;
+  _20 = t_76 >> 32;
+  _21 = r_54 + 12;
+  _22 = (unsigned int) _20;
+  *_21 = _22;
+  _23 = a_56 + 8;
+  _24 = *_23;
+  _25 = (long long unsigned int) _24;
+  _26 = a_56 + 8;
+  _27 = *_26;
+  _28 = (long long unsigned int) _27;
+  t_79 = _25 * _28;
+  _29 = r_54 + 16;
+  _30 = (unsigned int) t_79;
+  *_29 = _30;
+  _31 = t_79 >> 32;
+  _32 = r_54 + 20;
+  _33 = (unsigned int) _31;
+  *_32 = _33;
+  _34 = a_56 + 12;
+  _35 = *_34;
+  _36 = (long long unsigned int) _35;
+  _37 = a_56 + 12;
+  _38 = *_37;
+  _39 = (long long unsigned int) _38;
+  t_82 = _36 * _39;
+  _40 = r_54 + 24;
+  _41 = (unsigned int) t_82;
+  *_40 = _41;
+  _42 = t_82 >> 32;
+  _43 = r_54 + 28;
+  _44 = (unsigned int) _42;
+  *_43 = _44;
+  a_85 = a_56 + 16;
+  r_86 = r_54 + 32;
+  n_87 = n_58 + -4;
+
+  <bb 8> :
+  # r_54 = PHI <r_64(D)(6), r_86(7)>
+  # a_56 = PHI <a_65(D)(6), a_85(7)>
+  # n_58 = PHI <n_63(D)(6), n_87(7)>
+  n.2_45 = (unsigned int) n_58;
+  if (n.2_45 > 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _46 = *a_57;
+  _47 = (long long unsigned int) _46;
+  _48 = *a_57;
+  _49 = (long long unsigned int) _48;
+  t_67 = _47 * _49;
+  _50 = (unsigned int) t_67;
+  *r_55 = _50;
+  _51 = t_67 >> 32;
+  _52 = r_55 + 4;
+  _53 = (unsigned int) _51;
+  *_52 = _53;
+  a_70 = a_57 + 4;
+  r_71 = r_55 + 8;
+  n_72 = n_59 + -1;
+
+  <bb 11> :
+  # r_55 = PHI <r_54(9), r_71(10)>
+  # a_57 = PHI <a_56(9), a_70(10)>
+  # n_59 = PHI <n_58(9), n_72(10)>
+  if (n_59 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+<L10>:
+  return;
+
+}
+
+
+
+;; Function bn_div_words (bn_div_words, funcdef_no=173, decl_uid=11459, cgraph_uid=174, symbol_order=173)
+
+unsigned int bn_div_words (unsigned int h, unsigned int l, unsigned int d)
+{
+  static const char __func__[13] = "bn_div_words";
+  int count;
+  int i;
+  unsigned int t;
+  unsigned int tl;
+  unsigned int th;
+  unsigned int ret;
+  unsigned int q;
+  unsigned int dl;
+  unsigned int dh;
+  unsigned int D.12344;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned int _4;
+  _Bool _5;
+  long int _6;
+  long int _7;
+  unsigned int _8;
+  int _9;
+  unsigned int _10;
+  unsigned int _26;
+  unsigned int _65;
+  unsigned int _66;
+
+  <bb 2> :
+  ret_28 = 0;
+  count_29 = 2;
+  if (d_30(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _66 = 4294967295;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 27>; [INV]
+
+  <bb 4> :
+  i_33 = BN_num_bits_word (d_30(D));
+  _1 = i_33 != 32;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _4 = 1 << i_33;
+  _5 = h_34(D) > _4;
+  _6 = (long int) _5;
+  _7 = __builtin_expect (_6, 0);
+  if (_7 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  __assert_rtn (&__func__, "bn_asm.c", 216, "(i == BN_BITS2) || (h <= (BN_ULONG)1 << i)");
+
+  <bb 7> :
+  i_36 = 32 - i_33;
+  if (h_34(D) >= d_30(D))
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  h_37 = h_34(D) - d_30(D);
+
+  <bb 9> :
+  # h_11 = PHI <h_34(D)(7), h_37(8)>
+  if (i_36 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  d_39 = d_30(D) << i_36;
+  _8 = h_11 << i_36;
+  _9 = 32 - i_36;
+  _10 = l_38(D) >> _9;
+  h_40 = _8 | _10;
+  l_41 = l_38(D) << i_36;
+
+  <bb 11> :
+  # h_12 = PHI <h_11(9), h_40(10)>
+  # l_15 = PHI <l_38(D)(9), l_41(10)>
+  # d_17 = PHI <d_30(D)(9), d_39(10)>
+  dh_42 = 0;
+  dl_43 = d_17;
+
+  <bb 12> :
+  # h_13 = PHI <h_12(11), h_62(25)>
+  # l_16 = PHI <l_15(11), l_63(25)>
+  # ret_21 = PHI <ret_28(11), ret_61(25)>
+  # count_25 = PHI <count_29(11), count_60(25)>
+  if (dh_42 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  q_45 = 4294967295;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  q_44 = h_13 / dh_42;
+
+  <bb 15> :
+  # q_18 = PHI <q_45(13), q_44(14)>
+  th_46 = q_18 * dh_42;
+  tl_47 = dl_43 * q_18;
+
+  <bb 16> :
+  # q_19 = PHI <q_18(15), q_49(18)>
+  # th_22 = PHI <th_46(15), th_50(18)>
+  # tl_24 = PHI <tl_47(15), tl_51(18)>
+  t_48 = h_13 - th_22;
+  if (tl_24 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  q_49 = q_19 + 4294967295;
+  th_50 = th_22 - dh_42;
+  tl_51 = tl_24 - dl_43;
+  goto <bb 16>; [INV]
+
+  <bb 19> :
+  t_52 = 0;
+  tl_53 = 0;
+  th_54 = th_22 + t_52;
+  if (l_16 < tl_53)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  th_55 = th_54 + 1;
+
+  <bb 21> :
+  # th_23 = PHI <th_54(19), th_55(20)>
+  l_56 = l_16 - tl_53;
+  if (h_13 < th_23)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  h_57 = h_13 + d_17;
+  q_58 = q_19 + 4294967295;
+
+  <bb 23> :
+  # h_14 = PHI <h_13(21), h_57(22)>
+  # q_20 = PHI <q_19(21), q_58(22)>
+  h_59 = h_14 - th_23;
+  count_60 = count_25 + -1;
+  if (count_60 == 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  ret_61 = 0;
+  h_62 = 0;
+  l_63 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 26> :
+  ret_64 = ret_21 | q_20;
+  _65 = ret_64;
+
+  <bb 27> :
+  # _26 = PHI <_66(3), _65(26)>
+<L25>:
+  return _26;
+
+}
+
+
+
+;; Function bn_add_words (bn_add_words, funcdef_no=174, decl_uid=11464, cgraph_uid=175, symbol_order=174)
+
+unsigned int bn_add_words (unsigned int * r, const unsigned int * a, const unsigned int * b, int n)
+{
+  static const char __func__[13] = "bn_add_words";
+  long long unsigned int ll;
+  unsigned int D.12369;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned int _4;
+  long long unsigned int _5;
+  unsigned int _6;
+  long long unsigned int _7;
+  long long unsigned int _8;
+  unsigned int _9;
+  const unsigned int * _10;
+  unsigned int _11;
+  long long unsigned int _12;
+  const unsigned int * _13;
+  unsigned int _14;
+  long long unsigned int _15;
+  long long unsigned int _16;
+  unsigned int * _17;
+  unsigned int _18;
+  const unsigned int * _19;
+  unsigned int _20;
+  long long unsigned int _21;
+  const unsigned int * _22;
+  unsigned int _23;
+  long long unsigned int _24;
+  long long unsigned int _25;
+  unsigned int * _26;
+  unsigned int _27;
+  const unsigned int * _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  const unsigned int * _31;
+  unsigned int _32;
+  long long unsigned int _33;
+  long long unsigned int _34;
+  unsigned int * _35;
+  unsigned int _36;
+  unsigned int n.3_37;
+  unsigned int _38;
+  long long unsigned int _39;
+  unsigned int _40;
+  long long unsigned int _41;
+  long long unsigned int _42;
+  unsigned int _43;
+  unsigned int _54;
+  unsigned int _64;
+  unsigned int _88;
+
+  <bb 2> :
+  ll_58 = 0;
+  _1 = n_59(D) < 0;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  __assert_rtn (&__func__, "bn_asm.c", 277, "n >= 0");
+
+  <bb 4> :
+  if (n_59(D) <= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _88 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _4 = *a_46;
+  _5 = (long long unsigned int) _4;
+  _6 = *b_48;
+  _7 = (long long unsigned int) _6;
+  _8 = _5 + _7;
+  ll_72 = ll_52 + _8;
+  _9 = (unsigned int) ll_72;
+  *r_44 = _9;
+  ll_74 = ll_72 >> 32;
+  _10 = a_46 + 4;
+  _11 = *_10;
+  _12 = (long long unsigned int) _11;
+  _13 = b_48 + 4;
+  _14 = *_13;
+  _15 = (long long unsigned int) _14;
+  _16 = _12 + _15;
+  ll_75 = ll_74 + _16;
+  _17 = r_44 + 4;
+  _18 = (unsigned int) ll_75;
+  *_17 = _18;
+  ll_77 = ll_75 >> 32;
+  _19 = a_46 + 8;
+  _20 = *_19;
+  _21 = (long long unsigned int) _20;
+  _22 = b_48 + 8;
+  _23 = *_22;
+  _24 = (long long unsigned int) _23;
+  _25 = _21 + _24;
+  ll_78 = ll_77 + _25;
+  _26 = r_44 + 8;
+  _27 = (unsigned int) ll_78;
+  *_26 = _27;
+  ll_80 = ll_78 >> 32;
+  _28 = a_46 + 12;
+  _29 = *_28;
+  _30 = (long long unsigned int) _29;
+  _31 = b_48 + 12;
+  _32 = *_31;
+  _33 = (long long unsigned int) _32;
+  _34 = _30 + _33;
+  ll_81 = ll_80 + _34;
+  _35 = r_44 + 12;
+  _36 = (unsigned int) ll_81;
+  *_35 = _36;
+  ll_83 = ll_81 >> 32;
+  a_84 = a_46 + 16;
+  b_85 = b_48 + 16;
+  r_86 = r_44 + 16;
+  n_87 = n_50 + -4;
+
+  <bb 8> :
+  # r_44 = PHI <r_60(D)(6), r_86(7)>
+  # a_46 = PHI <a_61(D)(6), a_84(7)>
+  # b_48 = PHI <b_62(D)(6), b_85(7)>
+  # n_50 = PHI <n_59(D)(6), n_87(7)>
+  # ll_52 = PHI <ll_58(6), ll_83(7)>
+  n.3_37 = (unsigned int) n_50;
+  if (n.3_37 > 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _38 = *a_47;
+  _39 = (long long unsigned int) _38;
+  _40 = *b_49;
+  _41 = (long long unsigned int) _40;
+  _42 = _39 + _41;
+  ll_65 = ll_53 + _42;
+  _43 = (unsigned int) ll_65;
+  *r_45 = _43;
+  ll_67 = ll_65 >> 32;
+  a_68 = a_47 + 4;
+  b_69 = b_49 + 4;
+  r_70 = r_45 + 4;
+  n_71 = n_51 + -1;
+
+  <bb 11> :
+  # r_45 = PHI <r_44(9), r_70(10)>
+  # a_47 = PHI <a_46(9), a_68(10)>
+  # b_49 = PHI <b_48(9), b_69(10)>
+  # n_51 = PHI <n_50(9), n_71(10)>
+  # ll_53 = PHI <ll_52(9), ll_67(10)>
+  if (n_51 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _64 = (unsigned int) ll_53;
+
+  <bb 13> :
+  # _54 = PHI <_88(5), _64(12)>
+<L10>:
+  return _54;
+
+}
+
+
+
+;; Function bn_sub_words (bn_sub_words, funcdef_no=175, decl_uid=11469, cgraph_uid=176, symbol_order=175)
+
+unsigned int bn_sub_words (unsigned int * r, const unsigned int * a, const unsigned int * b, int n)
+{
+  static const char __func__[13] = "bn_sub_words";
+  int c;
+  unsigned int t2;
+  unsigned int t1;
+  unsigned int D.12375;
+  _Bool _1;
+  long int _2;
+  long int _3;
+  unsigned int c.4_4;
+  _Bool _5;
+  _Bool _6;
+  int _7;
+  const unsigned int * _8;
+  unsigned int c.5_9;
+  _Bool _10;
+  const unsigned int * _11;
+  unsigned int * _12;
+  _Bool _13;
+  int _14;
+  const unsigned int * _15;
+  unsigned int c.6_16;
+  _Bool _17;
+  const unsigned int * _18;
+  unsigned int * _19;
+  _Bool _20;
+  int _21;
+  const unsigned int * _22;
+  unsigned int c.7_23;
+  _Bool _24;
+  const unsigned int * _25;
+  unsigned int * _26;
+  _Bool _27;
+  int _28;
+  unsigned int n.8_29;
+  unsigned int c.9_30;
+  _Bool _31;
+  _Bool _32;
+  int _33;
+  unsigned int _44;
+  unsigned int _54;
+  unsigned int _98;
+
+  <bb 2> :
+  c_48 = 0;
+  _1 = n_49(D) < 0;
+  _2 = (long int) _1;
+  _3 = __builtin_expect (_2, 0);
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  __assert_rtn (&__func__, "bn_asm.c", 377, "n >= 0");
+
+  <bb 4> :
+  if (n_49(D) <= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _98 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  t1_66 = *a_36;
+  c.4_4 = (unsigned int) c_42;
+  t2_67 = t1_66 - c.4_4;
+  _5 = t2_67 > t1_66;
+  c_68 = (int) _5;
+  t1_69 = *b_38;
+  t1_70 = t2_67 - t1_69;
+  *r_34 = t1_70;
+  _6 = t1_70 > t2_67;
+  _7 = (int) _6;
+  c_72 = c_68 + _7;
+  _8 = a_36 + 4;
+  t1_73 = *_8;
+  c.5_9 = (unsigned int) c_72;
+  t2_74 = t1_73 - c.5_9;
+  _10 = t2_74 > t1_73;
+  c_75 = (int) _10;
+  _11 = b_38 + 4;
+  t1_76 = *_11;
+  t1_77 = t2_74 - t1_76;
+  _12 = r_34 + 4;
+  *_12 = t1_77;
+  _13 = t1_77 > t2_74;
+  _14 = (int) _13;
+  c_79 = c_75 + _14;
+  _15 = a_36 + 8;
+  t1_80 = *_15;
+  c.6_16 = (unsigned int) c_79;
+  t2_81 = t1_80 - c.6_16;
+  _17 = t2_81 > t1_80;
+  c_82 = (int) _17;
+  _18 = b_38 + 8;
+  t1_83 = *_18;
+  t1_84 = t2_81 - t1_83;
+  _19 = r_34 + 8;
+  *_19 = t1_84;
+  _20 = t1_84 > t2_81;
+  _21 = (int) _20;
+  c_86 = c_82 + _21;
+  _22 = a_36 + 12;
+  t1_87 = *_22;
+  c.7_23 = (unsigned int) c_86;
+  t2_88 = t1_87 - c.7_23;
+  _24 = t2_88 > t1_87;
+  c_89 = (int) _24;
+  _25 = b_38 + 12;
+  t1_90 = *_25;
+  t1_91 = t2_88 - t1_90;
+  _26 = r_34 + 12;
+  *_26 = t1_91;
+  _27 = t1_91 > t2_88;
+  _28 = (int) _27;
+  c_93 = c_89 + _28;
+  a_94 = a_36 + 16;
+  b_95 = b_38 + 16;
+  r_96 = r_34 + 16;
+  n_97 = n_40 + -4;
+
+  <bb 8> :
+  # r_34 = PHI <r_50(D)(6), r_96(7)>
+  # a_36 = PHI <a_51(D)(6), a_94(7)>
+  # b_38 = PHI <b_52(D)(6), b_95(7)>
+  # n_40 = PHI <n_49(D)(6), n_97(7)>
+  # c_42 = PHI <c_48(6), c_93(7)>
+  n.8_29 = (unsigned int) n_40;
+  if (n.8_29 > 3)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  t1_55 = *a_37;
+  c.9_30 = (unsigned int) c_43;
+  t2_56 = t1_55 - c.9_30;
+  _31 = t2_56 > t1_55;
+  c_57 = (int) _31;
+  t1_58 = *b_39;
+  t1_59 = t2_56 - t1_58;
+  *r_35 = t1_59;
+  _32 = t1_59 > t2_56;
+  _33 = (int) _32;
+  c_61 = c_57 + _33;
+  a_62 = a_37 + 4;
+  b_63 = b_39 + 4;
+  r_64 = r_35 + 4;
+  n_65 = n_41 + -1;
+
+  <bb 11> :
+  # r_35 = PHI <r_34(9), r_64(10)>
+  # a_37 = PHI <a_36(9), a_62(10)>
+  # b_39 = PHI <b_38(9), b_63(10)>
+  # n_41 = PHI <n_40(9), n_65(10)>
+  # c_43 = PHI <c_42(9), c_61(10)>
+  if (n_41 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _54 = (unsigned int) c_43;
+
+  <bb 13> :
+  # _44 = PHI <_98(5), _54(12)>
+<L10>:
+  return _44;
+
+}
+
+
+
+;; Function bn_mul_comba8 (bn_mul_comba8, funcdef_no=176, decl_uid=11513, cgraph_uid=177, symbol_order=176)
+
+void bn_mul_comba8 (unsigned int * r, unsigned int * a, unsigned int * b)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  _Bool _7;
+  unsigned int _8;
+  unsigned int _9;
+  long long unsigned int _10;
+  unsigned int * _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  _Bool _16;
+  unsigned int _17;
+  unsigned int * _18;
+  unsigned int _19;
+  long long unsigned int _20;
+  unsigned int _21;
+  long long unsigned int _22;
+  long long unsigned int _23;
+  long long unsigned int _24;
+  _Bool _25;
+  unsigned int _26;
+  unsigned int * _27;
+  unsigned int * _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _33;
+  long long unsigned int _34;
+  _Bool _35;
+  unsigned int _36;
+  unsigned int * _37;
+  unsigned int _38;
+  long long unsigned int _39;
+  unsigned int * _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  long long unsigned int _43;
+  long long unsigned int _44;
+  _Bool _45;
+  unsigned int _46;
+  unsigned int _47;
+  long long unsigned int _48;
+  unsigned int * _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  long long unsigned int _52;
+  long long unsigned int _53;
+  _Bool _54;
+  unsigned int _55;
+  unsigned int * _56;
+  unsigned int _57;
+  long long unsigned int _58;
+  unsigned int * _59;
+  unsigned int _60;
+  long long unsigned int _61;
+  long long unsigned int _62;
+  long long unsigned int _63;
+  _Bool _64;
+  unsigned int _65;
+  unsigned int * _66;
+  unsigned int _67;
+  long long unsigned int _68;
+  unsigned int * _69;
+  unsigned int _70;
+  long long unsigned int _71;
+  long long unsigned int _72;
+  long long unsigned int _73;
+  _Bool _74;
+  unsigned int _75;
+  unsigned int * _76;
+  unsigned int _77;
+  long long unsigned int _78;
+  unsigned int * _79;
+  unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  long long unsigned int _83;
+  _Bool _84;
+  unsigned int _85;
+  unsigned int * _86;
+  unsigned int _87;
+  long long unsigned int _88;
+  unsigned int _89;
+  long long unsigned int _90;
+  long long unsigned int _91;
+  long long unsigned int _92;
+  _Bool _93;
+  unsigned int _94;
+  unsigned int * _95;
+  unsigned int * _96;
+  unsigned int _97;
+  long long unsigned int _98;
+  unsigned int _99;
+  long long unsigned int _100;
+  long long unsigned int _101;
+  long long unsigned int _102;
+  _Bool _103;
+  unsigned int _104;
+  unsigned int * _105;
+  unsigned int _106;
+  long long unsigned int _107;
+  unsigned int * _108;
+  unsigned int _109;
+  long long unsigned int _110;
+  long long unsigned int _111;
+  long long unsigned int _112;
+  _Bool _113;
+  unsigned int _114;
+  unsigned int * _115;
+  unsigned int _116;
+  long long unsigned int _117;
+  unsigned int * _118;
+  unsigned int _119;
+  long long unsigned int _120;
+  long long unsigned int _121;
+  long long unsigned int _122;
+  _Bool _123;
+  unsigned int _124;
+  unsigned int * _125;
+  unsigned int _126;
+  long long unsigned int _127;
+  unsigned int * _128;
+  unsigned int _129;
+  long long unsigned int _130;
+  long long unsigned int _131;
+  long long unsigned int _132;
+  _Bool _133;
+  unsigned int _134;
+  unsigned int _135;
+  long long unsigned int _136;
+  unsigned int * _137;
+  unsigned int _138;
+  long long unsigned int _139;
+  long long unsigned int _140;
+  long long unsigned int _141;
+  _Bool _142;
+  unsigned int _143;
+  unsigned int * _144;
+  unsigned int _145;
+  long long unsigned int _146;
+  unsigned int * _147;
+  unsigned int _148;
+  long long unsigned int _149;
+  long long unsigned int _150;
+  long long unsigned int _151;
+  _Bool _152;
+  unsigned int _153;
+  unsigned int * _154;
+  unsigned int _155;
+  long long unsigned int _156;
+  unsigned int * _157;
+  unsigned int _158;
+  long long unsigned int _159;
+  long long unsigned int _160;
+  long long unsigned int _161;
+  _Bool _162;
+  unsigned int _163;
+  unsigned int * _164;
+  unsigned int _165;
+  long long unsigned int _166;
+  unsigned int * _167;
+  unsigned int _168;
+  long long unsigned int _169;
+  long long unsigned int _170;
+  long long unsigned int _171;
+  _Bool _172;
+  unsigned int _173;
+  unsigned int * _174;
+  unsigned int _175;
+  long long unsigned int _176;
+  unsigned int * _177;
+  unsigned int _178;
+  long long unsigned int _179;
+  long long unsigned int _180;
+  long long unsigned int _181;
+  _Bool _182;
+  unsigned int _183;
+  unsigned int * _184;
+  unsigned int _185;
+  long long unsigned int _186;
+  unsigned int * _187;
+  unsigned int _188;
+  long long unsigned int _189;
+  long long unsigned int _190;
+  long long unsigned int _191;
+  _Bool _192;
+  unsigned int _193;
+  unsigned int * _194;
+  unsigned int _195;
+  long long unsigned int _196;
+  unsigned int _197;
+  long long unsigned int _198;
+  long long unsigned int _199;
+  long long unsigned int _200;
+  _Bool _201;
+  unsigned int _202;
+  unsigned int * _203;
+  unsigned int * _204;
+  unsigned int _205;
+  long long unsigned int _206;
+  unsigned int _207;
+  long long unsigned int _208;
+  long long unsigned int _209;
+  long long unsigned int _210;
+  _Bool _211;
+  unsigned int _212;
+  unsigned int * _213;
+  unsigned int _214;
+  long long unsigned int _215;
+  unsigned int * _216;
+  unsigned int _217;
+  long long unsigned int _218;
+  long long unsigned int _219;
+  long long unsigned int _220;
+  _Bool _221;
+  unsigned int _222;
+  unsigned int * _223;
+  unsigned int _224;
+  long long unsigned int _225;
+  unsigned int * _226;
+  unsigned int _227;
+  long long unsigned int _228;
+  long long unsigned int _229;
+  long long unsigned int _230;
+  _Bool _231;
+  unsigned int _232;
+  unsigned int * _233;
+  unsigned int _234;
+  long long unsigned int _235;
+  unsigned int * _236;
+  unsigned int _237;
+  long long unsigned int _238;
+  long long unsigned int _239;
+  long long unsigned int _240;
+  _Bool _241;
+  unsigned int _242;
+  unsigned int * _243;
+  unsigned int _244;
+  long long unsigned int _245;
+  unsigned int * _246;
+  unsigned int _247;
+  long long unsigned int _248;
+  long long unsigned int _249;
+  long long unsigned int _250;
+  _Bool _251;
+  unsigned int _252;
+  unsigned int * _253;
+  unsigned int _254;
+  long long unsigned int _255;
+  unsigned int * _256;
+  unsigned int _257;
+  long long unsigned int _258;
+  long long unsigned int _259;
+  long long unsigned int _260;
+  _Bool _261;
+  unsigned int _262;
+  unsigned int _263;
+  long long unsigned int _264;
+  unsigned int * _265;
+  unsigned int _266;
+  long long unsigned int _267;
+  long long unsigned int _268;
+  long long unsigned int _269;
+  _Bool _270;
+  unsigned int _271;
+  unsigned int * _272;
+  unsigned int _273;
+  long long unsigned int _274;
+  unsigned int * _275;
+  unsigned int _276;
+  long long unsigned int _277;
+  long long unsigned int _278;
+  long long unsigned int _279;
+  _Bool _280;
+  unsigned int _281;
+  unsigned int * _282;
+  unsigned int _283;
+  long long unsigned int _284;
+  unsigned int * _285;
+  unsigned int _286;
+  long long unsigned int _287;
+  long long unsigned int _288;
+  long long unsigned int _289;
+  _Bool _290;
+  unsigned int _291;
+  unsigned int * _292;
+  unsigned int _293;
+  long long unsigned int _294;
+  unsigned int * _295;
+  unsigned int _296;
+  long long unsigned int _297;
+  long long unsigned int _298;
+  long long unsigned int _299;
+  _Bool _300;
+  unsigned int _301;
+  unsigned int * _302;
+  unsigned int _303;
+  long long unsigned int _304;
+  unsigned int * _305;
+  unsigned int _306;
+  long long unsigned int _307;
+  long long unsigned int _308;
+  long long unsigned int _309;
+  _Bool _310;
+  unsigned int _311;
+  unsigned int * _312;
+  unsigned int _313;
+  long long unsigned int _314;
+  unsigned int * _315;
+  unsigned int _316;
+  long long unsigned int _317;
+  long long unsigned int _318;
+  long long unsigned int _319;
+  _Bool _320;
+  unsigned int _321;
+  unsigned int * _322;
+  unsigned int _323;
+  long long unsigned int _324;
+  unsigned int * _325;
+  unsigned int _326;
+  long long unsigned int _327;
+  long long unsigned int _328;
+  long long unsigned int _329;
+  _Bool _330;
+  unsigned int _331;
+  unsigned int * _332;
+  unsigned int _333;
+  long long unsigned int _334;
+  unsigned int * _335;
+  unsigned int _336;
+  long long unsigned int _337;
+  long long unsigned int _338;
+  long long unsigned int _339;
+  _Bool _340;
+  unsigned int _341;
+  unsigned int * _342;
+  unsigned int _343;
+  long long unsigned int _344;
+  unsigned int _345;
+  long long unsigned int _346;
+  long long unsigned int _347;
+  long long unsigned int _348;
+  _Bool _349;
+  unsigned int _350;
+  unsigned int * _351;
+  unsigned int * _352;
+  unsigned int _353;
+  long long unsigned int _354;
+  unsigned int * _355;
+  unsigned int _356;
+  long long unsigned int _357;
+  long long unsigned int _358;
+  long long unsigned int _359;
+  _Bool _360;
+  unsigned int _361;
+  unsigned int * _362;
+  unsigned int _363;
+  long long unsigned int _364;
+  unsigned int * _365;
+  unsigned int _366;
+  long long unsigned int _367;
+  long long unsigned int _368;
+  long long unsigned int _369;
+  _Bool _370;
+  unsigned int _371;
+  unsigned int * _372;
+  unsigned int _373;
+  long long unsigned int _374;
+  unsigned int * _375;
+  unsigned int _376;
+  long long unsigned int _377;
+  long long unsigned int _378;
+  long long unsigned int _379;
+  _Bool _380;
+  unsigned int _381;
+  unsigned int * _382;
+  unsigned int _383;
+  long long unsigned int _384;
+  unsigned int * _385;
+  unsigned int _386;
+  long long unsigned int _387;
+  long long unsigned int _388;
+  long long unsigned int _389;
+  _Bool _390;
+  unsigned int _391;
+  unsigned int * _392;
+  unsigned int _393;
+  long long unsigned int _394;
+  unsigned int * _395;
+  unsigned int _396;
+  long long unsigned int _397;
+  long long unsigned int _398;
+  long long unsigned int _399;
+  _Bool _400;
+  unsigned int _401;
+  unsigned int * _402;
+  unsigned int _403;
+  long long unsigned int _404;
+  unsigned int * _405;
+  unsigned int _406;
+  long long unsigned int _407;
+  long long unsigned int _408;
+  long long unsigned int _409;
+  _Bool _410;
+  unsigned int _411;
+  unsigned int * _412;
+  unsigned int _413;
+  long long unsigned int _414;
+  unsigned int * _415;
+  unsigned int _416;
+  long long unsigned int _417;
+  long long unsigned int _418;
+  long long unsigned int _419;
+  _Bool _420;
+  unsigned int _421;
+  unsigned int * _422;
+  unsigned int * _423;
+  unsigned int _424;
+  long long unsigned int _425;
+  unsigned int * _426;
+  unsigned int _427;
+  long long unsigned int _428;
+  long long unsigned int _429;
+  long long unsigned int _430;
+  _Bool _431;
+  unsigned int _432;
+  unsigned int * _433;
+  unsigned int _434;
+  long long unsigned int _435;
+  unsigned int * _436;
+  unsigned int _437;
+  long long unsigned int _438;
+  long long unsigned int _439;
+  long long unsigned int _440;
+  _Bool _441;
+  unsigned int _442;
+  unsigned int * _443;
+  unsigned int _444;
+  long long unsigned int _445;
+  unsigned int * _446;
+  unsigned int _447;
+  long long unsigned int _448;
+  long long unsigned int _449;
+  long long unsigned int _450;
+  _Bool _451;
+  unsigned int _452;
+  unsigned int * _453;
+  unsigned int _454;
+  long long unsigned int _455;
+  unsigned int * _456;
+  unsigned int _457;
+  long long unsigned int _458;
+  long long unsigned int _459;
+  long long unsigned int _460;
+  _Bool _461;
+  unsigned int _462;
+  unsigned int * _463;
+  unsigned int _464;
+  long long unsigned int _465;
+  unsigned int * _466;
+  unsigned int _467;
+  long long unsigned int _468;
+  long long unsigned int _469;
+  long long unsigned int _470;
+  _Bool _471;
+  unsigned int _472;
+  unsigned int * _473;
+  unsigned int _474;
+  long long unsigned int _475;
+  unsigned int * _476;
+  unsigned int _477;
+  long long unsigned int _478;
+  long long unsigned int _479;
+  long long unsigned int _480;
+  _Bool _481;
+  unsigned int _482;
+  unsigned int * _483;
+  unsigned int * _484;
+  unsigned int _485;
+  long long unsigned int _486;
+  unsigned int * _487;
+  unsigned int _488;
+  long long unsigned int _489;
+  long long unsigned int _490;
+  long long unsigned int _491;
+  _Bool _492;
+  unsigned int _493;
+  unsigned int * _494;
+  unsigned int _495;
+  long long unsigned int _496;
+  unsigned int * _497;
+  unsigned int _498;
+  long long unsigned int _499;
+  long long unsigned int _500;
+  long long unsigned int _501;
+  _Bool _502;
+  unsigned int _503;
+  unsigned int * _504;
+  unsigned int _505;
+  long long unsigned int _506;
+  unsigned int * _507;
+  unsigned int _508;
+  long long unsigned int _509;
+  long long unsigned int _510;
+  long long unsigned int _511;
+  _Bool _512;
+  unsigned int _513;
+  unsigned int * _514;
+  unsigned int _515;
+  long long unsigned int _516;
+  unsigned int * _517;
+  unsigned int _518;
+  long long unsigned int _519;
+  long long unsigned int _520;
+  long long unsigned int _521;
+  _Bool _522;
+  unsigned int _523;
+  unsigned int * _524;
+  unsigned int _525;
+  long long unsigned int _526;
+  unsigned int * _527;
+  unsigned int _528;
+  long long unsigned int _529;
+  long long unsigned int _530;
+  long long unsigned int _531;
+  _Bool _532;
+  unsigned int _533;
+  unsigned int * _534;
+  unsigned int * _535;
+  unsigned int _536;
+  long long unsigned int _537;
+  unsigned int * _538;
+  unsigned int _539;
+  long long unsigned int _540;
+  long long unsigned int _541;
+  long long unsigned int _542;
+  _Bool _543;
+  unsigned int _544;
+  unsigned int * _545;
+  unsigned int _546;
+  long long unsigned int _547;
+  unsigned int * _548;
+  unsigned int _549;
+  long long unsigned int _550;
+  long long unsigned int _551;
+  long long unsigned int _552;
+  _Bool _553;
+  unsigned int _554;
+  unsigned int * _555;
+  unsigned int _556;
+  long long unsigned int _557;
+  unsigned int * _558;
+  unsigned int _559;
+  long long unsigned int _560;
+  long long unsigned int _561;
+  long long unsigned int _562;
+  _Bool _563;
+  unsigned int _564;
+  unsigned int * _565;
+  unsigned int _566;
+  long long unsigned int _567;
+  unsigned int * _568;
+  unsigned int _569;
+  long long unsigned int _570;
+  long long unsigned int _571;
+  long long unsigned int _572;
+  _Bool _573;
+  unsigned int _574;
+  unsigned int * _575;
+  unsigned int * _576;
+  unsigned int _577;
+  long long unsigned int _578;
+  unsigned int * _579;
+  unsigned int _580;
+  long long unsigned int _581;
+  long long unsigned int _582;
+  long long unsigned int _583;
+  _Bool _584;
+  unsigned int _585;
+  unsigned int * _586;
+  unsigned int _587;
+  long long unsigned int _588;
+  unsigned int * _589;
+  unsigned int _590;
+  long long unsigned int _591;
+  long long unsigned int _592;
+  long long unsigned int _593;
+  _Bool _594;
+  unsigned int _595;
+  unsigned int * _596;
+  unsigned int _597;
+  long long unsigned int _598;
+  unsigned int * _599;
+  unsigned int _600;
+  long long unsigned int _601;
+  long long unsigned int _602;
+  long long unsigned int _603;
+  _Bool _604;
+  unsigned int _605;
+  unsigned int * _606;
+  unsigned int * _607;
+  unsigned int _608;
+  long long unsigned int _609;
+  unsigned int * _610;
+  unsigned int _611;
+  long long unsigned int _612;
+  long long unsigned int _613;
+  long long unsigned int _614;
+  _Bool _615;
+  unsigned int _616;
+  unsigned int * _617;
+  unsigned int _618;
+  long long unsigned int _619;
+  unsigned int * _620;
+  unsigned int _621;
+  long long unsigned int _622;
+  long long unsigned int _623;
+  long long unsigned int _624;
+  _Bool _625;
+  unsigned int _626;
+  unsigned int * _627;
+  unsigned int * _628;
+  unsigned int _629;
+  long long unsigned int _630;
+  unsigned int * _631;
+  unsigned int _632;
+  long long unsigned int _633;
+  long long unsigned int _634;
+  long long unsigned int _635;
+  _Bool _636;
+  unsigned int _637;
+  unsigned int * _638;
+  unsigned int * _639;
+
+  <bb 2> :
+  c1_640 = 0;
+  c2_641 = 0;
+  c3_642 = 0;
+  _1 = *a_644(D);
+  _2 = (long long unsigned int) _1;
+  _3 = *b_645(D);
+  _4 = (long long unsigned int) _3;
+  t_646 = _2 * _4;
+  _5 = (long long unsigned int) c1_640;
+  t_647 = t_646 + _5;
+  c1_648 = (unsigned int) t_647;
+  _6 = t_647 >> 32;
+  hi_649 = (unsigned int) _6;
+  c2_650 = c2_641 + hi_649;
+  _7 = c2_650 < hi_649;
+  _8 = (unsigned int) _7;
+  c3_651 = c3_642 + _8;
+  *r_652(D) = c1_648;
+  c1_654 = 0;
+  _9 = *a_644(D);
+  _10 = (long long unsigned int) _9;
+  _11 = b_645(D) + 4;
+  _12 = *_11;
+  _13 = (long long unsigned int) _12;
+  t_655 = _10 * _13;
+  _14 = (long long unsigned int) c2_650;
+  t_656 = t_655 + _14;
+  c2_657 = (unsigned int) t_656;
+  _15 = t_656 >> 32;
+  hi_658 = (unsigned int) _15;
+  c3_659 = c3_651 + hi_658;
+  _16 = c3_659 < hi_658;
+  _17 = (unsigned int) _16;
+  c1_660 = c1_654 + _17;
+  _18 = a_644(D) + 4;
+  _19 = *_18;
+  _20 = (long long unsigned int) _19;
+  _21 = *b_645(D);
+  _22 = (long long unsigned int) _21;
+  t_661 = _20 * _22;
+  _23 = (long long unsigned int) c2_657;
+  t_662 = t_661 + _23;
+  c2_663 = (unsigned int) t_662;
+  _24 = t_662 >> 32;
+  hi_664 = (unsigned int) _24;
+  c3_665 = c3_659 + hi_664;
+  _25 = c3_665 < hi_664;
+  _26 = (unsigned int) _25;
+  c1_666 = c1_660 + _26;
+  _27 = r_652(D) + 4;
+  *_27 = c2_663;
+  c2_668 = 0;
+  _28 = a_644(D) + 8;
+  _29 = *_28;
+  _30 = (long long unsigned int) _29;
+  _31 = *b_645(D);
+  _32 = (long long unsigned int) _31;
+  t_669 = _30 * _32;
+  _33 = (long long unsigned int) c3_665;
+  t_670 = t_669 + _33;
+  c3_671 = (unsigned int) t_670;
+  _34 = t_670 >> 32;
+  hi_672 = (unsigned int) _34;
+  c1_673 = c1_666 + hi_672;
+  _35 = c1_673 < hi_672;
+  _36 = (unsigned int) _35;
+  c2_674 = c2_668 + _36;
+  _37 = a_644(D) + 4;
+  _38 = *_37;
+  _39 = (long long unsigned int) _38;
+  _40 = b_645(D) + 4;
+  _41 = *_40;
+  _42 = (long long unsigned int) _41;
+  t_675 = _39 * _42;
+  _43 = (long long unsigned int) c3_671;
+  t_676 = t_675 + _43;
+  c3_677 = (unsigned int) t_676;
+  _44 = t_676 >> 32;
+  hi_678 = (unsigned int) _44;
+  c1_679 = c1_673 + hi_678;
+  _45 = c1_679 < hi_678;
+  _46 = (unsigned int) _45;
+  c2_680 = c2_674 + _46;
+  _47 = *a_644(D);
+  _48 = (long long unsigned int) _47;
+  _49 = b_645(D) + 8;
+  _50 = *_49;
+  _51 = (long long unsigned int) _50;
+  t_681 = _48 * _51;
+  _52 = (long long unsigned int) c3_677;
+  t_682 = t_681 + _52;
+  c3_683 = (unsigned int) t_682;
+  _53 = t_682 >> 32;
+  hi_684 = (unsigned int) _53;
+  c1_685 = c1_679 + hi_684;
+  _54 = c1_685 < hi_684;
+  _55 = (unsigned int) _54;
+  c2_686 = c2_680 + _55;
+  _56 = r_652(D) + 8;
+  *_56 = c3_683;
+  c3_688 = 0;
+  _57 = *a_644(D);
+  _58 = (long long unsigned int) _57;
+  _59 = b_645(D) + 12;
+  _60 = *_59;
+  _61 = (long long unsigned int) _60;
+  t_689 = _58 * _61;
+  _62 = (long long unsigned int) c1_685;
+  t_690 = t_689 + _62;
+  c1_691 = (unsigned int) t_690;
+  _63 = t_690 >> 32;
+  hi_692 = (unsigned int) _63;
+  c2_693 = c2_686 + hi_692;
+  _64 = c2_693 < hi_692;
+  _65 = (unsigned int) _64;
+  c3_694 = c3_688 + _65;
+  _66 = a_644(D) + 4;
+  _67 = *_66;
+  _68 = (long long unsigned int) _67;
+  _69 = b_645(D) + 8;
+  _70 = *_69;
+  _71 = (long long unsigned int) _70;
+  t_695 = _68 * _71;
+  _72 = (long long unsigned int) c1_691;
+  t_696 = t_695 + _72;
+  c1_697 = (unsigned int) t_696;
+  _73 = t_696 >> 32;
+  hi_698 = (unsigned int) _73;
+  c2_699 = c2_693 + hi_698;
+  _74 = c2_699 < hi_698;
+  _75 = (unsigned int) _74;
+  c3_700 = c3_694 + _75;
+  _76 = a_644(D) + 8;
+  _77 = *_76;
+  _78 = (long long unsigned int) _77;
+  _79 = b_645(D) + 4;
+  _80 = *_79;
+  _81 = (long long unsigned int) _80;
+  t_701 = _78 * _81;
+  _82 = (long long unsigned int) c1_697;
+  t_702 = t_701 + _82;
+  c1_703 = (unsigned int) t_702;
+  _83 = t_702 >> 32;
+  hi_704 = (unsigned int) _83;
+  c2_705 = c2_699 + hi_704;
+  _84 = c2_705 < hi_704;
+  _85 = (unsigned int) _84;
+  c3_706 = c3_700 + _85;
+  _86 = a_644(D) + 12;
+  _87 = *_86;
+  _88 = (long long unsigned int) _87;
+  _89 = *b_645(D);
+  _90 = (long long unsigned int) _89;
+  t_707 = _88 * _90;
+  _91 = (long long unsigned int) c1_703;
+  t_708 = t_707 + _91;
+  c1_709 = (unsigned int) t_708;
+  _92 = t_708 >> 32;
+  hi_710 = (unsigned int) _92;
+  c2_711 = c2_705 + hi_710;
+  _93 = c2_711 < hi_710;
+  _94 = (unsigned int) _93;
+  c3_712 = c3_706 + _94;
+  _95 = r_652(D) + 12;
+  *_95 = c1_709;
+  c1_714 = 0;
+  _96 = a_644(D) + 16;
+  _97 = *_96;
+  _98 = (long long unsigned int) _97;
+  _99 = *b_645(D);
+  _100 = (long long unsigned int) _99;
+  t_715 = _98 * _100;
+  _101 = (long long unsigned int) c2_711;
+  t_716 = t_715 + _101;
+  c2_717 = (unsigned int) t_716;
+  _102 = t_716 >> 32;
+  hi_718 = (unsigned int) _102;
+  c3_719 = c3_712 + hi_718;
+  _103 = c3_719 < hi_718;
+  _104 = (unsigned int) _103;
+  c1_720 = c1_714 + _104;
+  _105 = a_644(D) + 12;
+  _106 = *_105;
+  _107 = (long long unsigned int) _106;
+  _108 = b_645(D) + 4;
+  _109 = *_108;
+  _110 = (long long unsigned int) _109;
+  t_721 = _107 * _110;
+  _111 = (long long unsigned int) c2_717;
+  t_722 = t_721 + _111;
+  c2_723 = (unsigned int) t_722;
+  _112 = t_722 >> 32;
+  hi_724 = (unsigned int) _112;
+  c3_725 = c3_719 + hi_724;
+  _113 = c3_725 < hi_724;
+  _114 = (unsigned int) _113;
+  c1_726 = c1_720 + _114;
+  _115 = a_644(D) + 8;
+  _116 = *_115;
+  _117 = (long long unsigned int) _116;
+  _118 = b_645(D) + 8;
+  _119 = *_118;
+  _120 = (long long unsigned int) _119;
+  t_727 = _117 * _120;
+  _121 = (long long unsigned int) c2_723;
+  t_728 = t_727 + _121;
+  c2_729 = (unsigned int) t_728;
+  _122 = t_728 >> 32;
+  hi_730 = (unsigned int) _122;
+  c3_731 = c3_725 + hi_730;
+  _123 = c3_731 < hi_730;
+  _124 = (unsigned int) _123;
+  c1_732 = c1_726 + _124;
+  _125 = a_644(D) + 4;
+  _126 = *_125;
+  _127 = (long long unsigned int) _126;
+  _128 = b_645(D) + 12;
+  _129 = *_128;
+  _130 = (long long unsigned int) _129;
+  t_733 = _127 * _130;
+  _131 = (long long unsigned int) c2_729;
+  t_734 = t_733 + _131;
+  c2_735 = (unsigned int) t_734;
+  _132 = t_734 >> 32;
+  hi_736 = (unsigned int) _132;
+  c3_737 = c3_731 + hi_736;
+  _133 = c3_737 < hi_736;
+  _134 = (unsigned int) _133;
+  c1_738 = c1_732 + _134;
+  _135 = *a_644(D);
+  _136 = (long long unsigned int) _135;
+  _137 = b_645(D) + 16;
+  _138 = *_137;
+  _139 = (long long unsigned int) _138;
+  t_739 = _136 * _139;
+  _140 = (long long unsigned int) c2_735;
+  t_740 = t_739 + _140;
+  c2_741 = (unsigned int) t_740;
+  _141 = t_740 >> 32;
+  hi_742 = (unsigned int) _141;
+  c3_743 = c3_737 + hi_742;
+  _142 = c3_743 < hi_742;
+  _143 = (unsigned int) _142;
+  c1_744 = c1_738 + _143;
+  _144 = r_652(D) + 16;
+  *_144 = c2_741;
+  c2_746 = 0;
+  _145 = *a_644(D);
+  _146 = (long long unsigned int) _145;
+  _147 = b_645(D) + 20;
+  _148 = *_147;
+  _149 = (long long unsigned int) _148;
+  t_747 = _146 * _149;
+  _150 = (long long unsigned int) c3_743;
+  t_748 = t_747 + _150;
+  c3_749 = (unsigned int) t_748;
+  _151 = t_748 >> 32;
+  hi_750 = (unsigned int) _151;
+  c1_751 = c1_744 + hi_750;
+  _152 = c1_751 < hi_750;
+  _153 = (unsigned int) _152;
+  c2_752 = c2_746 + _153;
+  _154 = a_644(D) + 4;
+  _155 = *_154;
+  _156 = (long long unsigned int) _155;
+  _157 = b_645(D) + 16;
+  _158 = *_157;
+  _159 = (long long unsigned int) _158;
+  t_753 = _156 * _159;
+  _160 = (long long unsigned int) c3_749;
+  t_754 = t_753 + _160;
+  c3_755 = (unsigned int) t_754;
+  _161 = t_754 >> 32;
+  hi_756 = (unsigned int) _161;
+  c1_757 = c1_751 + hi_756;
+  _162 = c1_757 < hi_756;
+  _163 = (unsigned int) _162;
+  c2_758 = c2_752 + _163;
+  _164 = a_644(D) + 8;
+  _165 = *_164;
+  _166 = (long long unsigned int) _165;
+  _167 = b_645(D) + 12;
+  _168 = *_167;
+  _169 = (long long unsigned int) _168;
+  t_759 = _166 * _169;
+  _170 = (long long unsigned int) c3_755;
+  t_760 = t_759 + _170;
+  c3_761 = (unsigned int) t_760;
+  _171 = t_760 >> 32;
+  hi_762 = (unsigned int) _171;
+  c1_763 = c1_757 + hi_762;
+  _172 = c1_763 < hi_762;
+  _173 = (unsigned int) _172;
+  c2_764 = c2_758 + _173;
+  _174 = a_644(D) + 12;
+  _175 = *_174;
+  _176 = (long long unsigned int) _175;
+  _177 = b_645(D) + 8;
+  _178 = *_177;
+  _179 = (long long unsigned int) _178;
+  t_765 = _176 * _179;
+  _180 = (long long unsigned int) c3_761;
+  t_766 = t_765 + _180;
+  c3_767 = (unsigned int) t_766;
+  _181 = t_766 >> 32;
+  hi_768 = (unsigned int) _181;
+  c1_769 = c1_763 + hi_768;
+  _182 = c1_769 < hi_768;
+  _183 = (unsigned int) _182;
+  c2_770 = c2_764 + _183;
+  _184 = a_644(D) + 16;
+  _185 = *_184;
+  _186 = (long long unsigned int) _185;
+  _187 = b_645(D) + 4;
+  _188 = *_187;
+  _189 = (long long unsigned int) _188;
+  t_771 = _186 * _189;
+  _190 = (long long unsigned int) c3_767;
+  t_772 = t_771 + _190;
+  c3_773 = (unsigned int) t_772;
+  _191 = t_772 >> 32;
+  hi_774 = (unsigned int) _191;
+  c1_775 = c1_769 + hi_774;
+  _192 = c1_775 < hi_774;
+  _193 = (unsigned int) _192;
+  c2_776 = c2_770 + _193;
+  _194 = a_644(D) + 20;
+  _195 = *_194;
+  _196 = (long long unsigned int) _195;
+  _197 = *b_645(D);
+  _198 = (long long unsigned int) _197;
+  t_777 = _196 * _198;
+  _199 = (long long unsigned int) c3_773;
+  t_778 = t_777 + _199;
+  c3_779 = (unsigned int) t_778;
+  _200 = t_778 >> 32;
+  hi_780 = (unsigned int) _200;
+  c1_781 = c1_775 + hi_780;
+  _201 = c1_781 < hi_780;
+  _202 = (unsigned int) _201;
+  c2_782 = c2_776 + _202;
+  _203 = r_652(D) + 20;
+  *_203 = c3_779;
+  c3_784 = 0;
+  _204 = a_644(D) + 24;
+  _205 = *_204;
+  _206 = (long long unsigned int) _205;
+  _207 = *b_645(D);
+  _208 = (long long unsigned int) _207;
+  t_785 = _206 * _208;
+  _209 = (long long unsigned int) c1_781;
+  t_786 = t_785 + _209;
+  c1_787 = (unsigned int) t_786;
+  _210 = t_786 >> 32;
+  hi_788 = (unsigned int) _210;
+  c2_789 = c2_782 + hi_788;
+  _211 = c2_789 < hi_788;
+  _212 = (unsigned int) _211;
+  c3_790 = c3_784 + _212;
+  _213 = a_644(D) + 20;
+  _214 = *_213;
+  _215 = (long long unsigned int) _214;
+  _216 = b_645(D) + 4;
+  _217 = *_216;
+  _218 = (long long unsigned int) _217;
+  t_791 = _215 * _218;
+  _219 = (long long unsigned int) c1_787;
+  t_792 = t_791 + _219;
+  c1_793 = (unsigned int) t_792;
+  _220 = t_792 >> 32;
+  hi_794 = (unsigned int) _220;
+  c2_795 = c2_789 + hi_794;
+  _221 = c2_795 < hi_794;
+  _222 = (unsigned int) _221;
+  c3_796 = c3_790 + _222;
+  _223 = a_644(D) + 16;
+  _224 = *_223;
+  _225 = (long long unsigned int) _224;
+  _226 = b_645(D) + 8;
+  _227 = *_226;
+  _228 = (long long unsigned int) _227;
+  t_797 = _225 * _228;
+  _229 = (long long unsigned int) c1_793;
+  t_798 = t_797 + _229;
+  c1_799 = (unsigned int) t_798;
+  _230 = t_798 >> 32;
+  hi_800 = (unsigned int) _230;
+  c2_801 = c2_795 + hi_800;
+  _231 = c2_801 < hi_800;
+  _232 = (unsigned int) _231;
+  c3_802 = c3_796 + _232;
+  _233 = a_644(D) + 12;
+  _234 = *_233;
+  _235 = (long long unsigned int) _234;
+  _236 = b_645(D) + 12;
+  _237 = *_236;
+  _238 = (long long unsigned int) _237;
+  t_803 = _235 * _238;
+  _239 = (long long unsigned int) c1_799;
+  t_804 = t_803 + _239;
+  c1_805 = (unsigned int) t_804;
+  _240 = t_804 >> 32;
+  hi_806 = (unsigned int) _240;
+  c2_807 = c2_801 + hi_806;
+  _241 = c2_807 < hi_806;
+  _242 = (unsigned int) _241;
+  c3_808 = c3_802 + _242;
+  _243 = a_644(D) + 8;
+  _244 = *_243;
+  _245 = (long long unsigned int) _244;
+  _246 = b_645(D) + 16;
+  _247 = *_246;
+  _248 = (long long unsigned int) _247;
+  t_809 = _245 * _248;
+  _249 = (long long unsigned int) c1_805;
+  t_810 = t_809 + _249;
+  c1_811 = (unsigned int) t_810;
+  _250 = t_810 >> 32;
+  hi_812 = (unsigned int) _250;
+  c2_813 = c2_807 + hi_812;
+  _251 = c2_813 < hi_812;
+  _252 = (unsigned int) _251;
+  c3_814 = c3_808 + _252;
+  _253 = a_644(D) + 4;
+  _254 = *_253;
+  _255 = (long long unsigned int) _254;
+  _256 = b_645(D) + 20;
+  _257 = *_256;
+  _258 = (long long unsigned int) _257;
+  t_815 = _255 * _258;
+  _259 = (long long unsigned int) c1_811;
+  t_816 = t_815 + _259;
+  c1_817 = (unsigned int) t_816;
+  _260 = t_816 >> 32;
+  hi_818 = (unsigned int) _260;
+  c2_819 = c2_813 + hi_818;
+  _261 = c2_819 < hi_818;
+  _262 = (unsigned int) _261;
+  c3_820 = c3_814 + _262;
+  _263 = *a_644(D);
+  _264 = (long long unsigned int) _263;
+  _265 = b_645(D) + 24;
+  _266 = *_265;
+  _267 = (long long unsigned int) _266;
+  t_821 = _264 * _267;
+  _268 = (long long unsigned int) c1_817;
+  t_822 = t_821 + _268;
+  c1_823 = (unsigned int) t_822;
+  _269 = t_822 >> 32;
+  hi_824 = (unsigned int) _269;
+  c2_825 = c2_819 + hi_824;
+  _270 = c2_825 < hi_824;
+  _271 = (unsigned int) _270;
+  c3_826 = c3_820 + _271;
+  _272 = r_652(D) + 24;
+  *_272 = c1_823;
+  c1_828 = 0;
+  _273 = *a_644(D);
+  _274 = (long long unsigned int) _273;
+  _275 = b_645(D) + 28;
+  _276 = *_275;
+  _277 = (long long unsigned int) _276;
+  t_829 = _274 * _277;
+  _278 = (long long unsigned int) c2_825;
+  t_830 = t_829 + _278;
+  c2_831 = (unsigned int) t_830;
+  _279 = t_830 >> 32;
+  hi_832 = (unsigned int) _279;
+  c3_833 = c3_826 + hi_832;
+  _280 = c3_833 < hi_832;
+  _281 = (unsigned int) _280;
+  c1_834 = c1_828 + _281;
+  _282 = a_644(D) + 4;
+  _283 = *_282;
+  _284 = (long long unsigned int) _283;
+  _285 = b_645(D) + 24;
+  _286 = *_285;
+  _287 = (long long unsigned int) _286;
+  t_835 = _284 * _287;
+  _288 = (long long unsigned int) c2_831;
+  t_836 = t_835 + _288;
+  c2_837 = (unsigned int) t_836;
+  _289 = t_836 >> 32;
+  hi_838 = (unsigned int) _289;
+  c3_839 = c3_833 + hi_838;
+  _290 = c3_839 < hi_838;
+  _291 = (unsigned int) _290;
+  c1_840 = c1_834 + _291;
+  _292 = a_644(D) + 8;
+  _293 = *_292;
+  _294 = (long long unsigned int) _293;
+  _295 = b_645(D) + 20;
+  _296 = *_295;
+  _297 = (long long unsigned int) _296;
+  t_841 = _294 * _297;
+  _298 = (long long unsigned int) c2_837;
+  t_842 = t_841 + _298;
+  c2_843 = (unsigned int) t_842;
+  _299 = t_842 >> 32;
+  hi_844 = (unsigned int) _299;
+  c3_845 = c3_839 + hi_844;
+  _300 = c3_845 < hi_844;
+  _301 = (unsigned int) _300;
+  c1_846 = c1_840 + _301;
+  _302 = a_644(D) + 12;
+  _303 = *_302;
+  _304 = (long long unsigned int) _303;
+  _305 = b_645(D) + 16;
+  _306 = *_305;
+  _307 = (long long unsigned int) _306;
+  t_847 = _304 * _307;
+  _308 = (long long unsigned int) c2_843;
+  t_848 = t_847 + _308;
+  c2_849 = (unsigned int) t_848;
+  _309 = t_848 >> 32;
+  hi_850 = (unsigned int) _309;
+  c3_851 = c3_845 + hi_850;
+  _310 = c3_851 < hi_850;
+  _311 = (unsigned int) _310;
+  c1_852 = c1_846 + _311;
+  _312 = a_644(D) + 16;
+  _313 = *_312;
+  _314 = (long long unsigned int) _313;
+  _315 = b_645(D) + 12;
+  _316 = *_315;
+  _317 = (long long unsigned int) _316;
+  t_853 = _314 * _317;
+  _318 = (long long unsigned int) c2_849;
+  t_854 = t_853 + _318;
+  c2_855 = (unsigned int) t_854;
+  _319 = t_854 >> 32;
+  hi_856 = (unsigned int) _319;
+  c3_857 = c3_851 + hi_856;
+  _320 = c3_857 < hi_856;
+  _321 = (unsigned int) _320;
+  c1_858 = c1_852 + _321;
+  _322 = a_644(D) + 20;
+  _323 = *_322;
+  _324 = (long long unsigned int) _323;
+  _325 = b_645(D) + 8;
+  _326 = *_325;
+  _327 = (long long unsigned int) _326;
+  t_859 = _324 * _327;
+  _328 = (long long unsigned int) c2_855;
+  t_860 = t_859 + _328;
+  c2_861 = (unsigned int) t_860;
+  _329 = t_860 >> 32;
+  hi_862 = (unsigned int) _329;
+  c3_863 = c3_857 + hi_862;
+  _330 = c3_863 < hi_862;
+  _331 = (unsigned int) _330;
+  c1_864 = c1_858 + _331;
+  _332 = a_644(D) + 24;
+  _333 = *_332;
+  _334 = (long long unsigned int) _333;
+  _335 = b_645(D) + 4;
+  _336 = *_335;
+  _337 = (long long unsigned int) _336;
+  t_865 = _334 * _337;
+  _338 = (long long unsigned int) c2_861;
+  t_866 = t_865 + _338;
+  c2_867 = (unsigned int) t_866;
+  _339 = t_866 >> 32;
+  hi_868 = (unsigned int) _339;
+  c3_869 = c3_863 + hi_868;
+  _340 = c3_869 < hi_868;
+  _341 = (unsigned int) _340;
+  c1_870 = c1_864 + _341;
+  _342 = a_644(D) + 28;
+  _343 = *_342;
+  _344 = (long long unsigned int) _343;
+  _345 = *b_645(D);
+  _346 = (long long unsigned int) _345;
+  t_871 = _344 * _346;
+  _347 = (long long unsigned int) c2_867;
+  t_872 = t_871 + _347;
+  c2_873 = (unsigned int) t_872;
+  _348 = t_872 >> 32;
+  hi_874 = (unsigned int) _348;
+  c3_875 = c3_869 + hi_874;
+  _349 = c3_875 < hi_874;
+  _350 = (unsigned int) _349;
+  c1_876 = c1_870 + _350;
+  _351 = r_652(D) + 28;
+  *_351 = c2_873;
+  c2_878 = 0;
+  _352 = a_644(D) + 28;
+  _353 = *_352;
+  _354 = (long long unsigned int) _353;
+  _355 = b_645(D) + 4;
+  _356 = *_355;
+  _357 = (long long unsigned int) _356;
+  t_879 = _354 * _357;
+  _358 = (long long unsigned int) c3_875;
+  t_880 = t_879 + _358;
+  c3_881 = (unsigned int) t_880;
+  _359 = t_880 >> 32;
+  hi_882 = (unsigned int) _359;
+  c1_883 = c1_876 + hi_882;
+  _360 = c1_883 < hi_882;
+  _361 = (unsigned int) _360;
+  c2_884 = c2_878 + _361;
+  _362 = a_644(D) + 24;
+  _363 = *_362;
+  _364 = (long long unsigned int) _363;
+  _365 = b_645(D) + 8;
+  _366 = *_365;
+  _367 = (long long unsigned int) _366;
+  t_885 = _364 * _367;
+  _368 = (long long unsigned int) c3_881;
+  t_886 = t_885 + _368;
+  c3_887 = (unsigned int) t_886;
+  _369 = t_886 >> 32;
+  hi_888 = (unsigned int) _369;
+  c1_889 = c1_883 + hi_888;
+  _370 = c1_889 < hi_888;
+  _371 = (unsigned int) _370;
+  c2_890 = c2_884 + _371;
+  _372 = a_644(D) + 20;
+  _373 = *_372;
+  _374 = (long long unsigned int) _373;
+  _375 = b_645(D) + 12;
+  _376 = *_375;
+  _377 = (long long unsigned int) _376;
+  t_891 = _374 * _377;
+  _378 = (long long unsigned int) c3_887;
+  t_892 = t_891 + _378;
+  c3_893 = (unsigned int) t_892;
+  _379 = t_892 >> 32;
+  hi_894 = (unsigned int) _379;
+  c1_895 = c1_889 + hi_894;
+  _380 = c1_895 < hi_894;
+  _381 = (unsigned int) _380;
+  c2_896 = c2_890 + _381;
+  _382 = a_644(D) + 16;
+  _383 = *_382;
+  _384 = (long long unsigned int) _383;
+  _385 = b_645(D) + 16;
+  _386 = *_385;
+  _387 = (long long unsigned int) _386;
+  t_897 = _384 * _387;
+  _388 = (long long unsigned int) c3_893;
+  t_898 = t_897 + _388;
+  c3_899 = (unsigned int) t_898;
+  _389 = t_898 >> 32;
+  hi_900 = (unsigned int) _389;
+  c1_901 = c1_895 + hi_900;
+  _390 = c1_901 < hi_900;
+  _391 = (unsigned int) _390;
+  c2_902 = c2_896 + _391;
+  _392 = a_644(D) + 12;
+  _393 = *_392;
+  _394 = (long long unsigned int) _393;
+  _395 = b_645(D) + 20;
+  _396 = *_395;
+  _397 = (long long unsigned int) _396;
+  t_903 = _394 * _397;
+  _398 = (long long unsigned int) c3_899;
+  t_904 = t_903 + _398;
+  c3_905 = (unsigned int) t_904;
+  _399 = t_904 >> 32;
+  hi_906 = (unsigned int) _399;
+  c1_907 = c1_901 + hi_906;
+  _400 = c1_907 < hi_906;
+  _401 = (unsigned int) _400;
+  c2_908 = c2_902 + _401;
+  _402 = a_644(D) + 8;
+  _403 = *_402;
+  _404 = (long long unsigned int) _403;
+  _405 = b_645(D) + 24;
+  _406 = *_405;
+  _407 = (long long unsigned int) _406;
+  t_909 = _404 * _407;
+  _408 = (long long unsigned int) c3_905;
+  t_910 = t_909 + _408;
+  c3_911 = (unsigned int) t_910;
+  _409 = t_910 >> 32;
+  hi_912 = (unsigned int) _409;
+  c1_913 = c1_907 + hi_912;
+  _410 = c1_913 < hi_912;
+  _411 = (unsigned int) _410;
+  c2_914 = c2_908 + _411;
+  _412 = a_644(D) + 4;
+  _413 = *_412;
+  _414 = (long long unsigned int) _413;
+  _415 = b_645(D) + 28;
+  _416 = *_415;
+  _417 = (long long unsigned int) _416;
+  t_915 = _414 * _417;
+  _418 = (long long unsigned int) c3_911;
+  t_916 = t_915 + _418;
+  c3_917 = (unsigned int) t_916;
+  _419 = t_916 >> 32;
+  hi_918 = (unsigned int) _419;
+  c1_919 = c1_913 + hi_918;
+  _420 = c1_919 < hi_918;
+  _421 = (unsigned int) _420;
+  c2_920 = c2_914 + _421;
+  _422 = r_652(D) + 32;
+  *_422 = c3_917;
+  c3_922 = 0;
+  _423 = a_644(D) + 8;
+  _424 = *_423;
+  _425 = (long long unsigned int) _424;
+  _426 = b_645(D) + 28;
+  _427 = *_426;
+  _428 = (long long unsigned int) _427;
+  t_923 = _425 * _428;
+  _429 = (long long unsigned int) c1_919;
+  t_924 = t_923 + _429;
+  c1_925 = (unsigned int) t_924;
+  _430 = t_924 >> 32;
+  hi_926 = (unsigned int) _430;
+  c2_927 = c2_920 + hi_926;
+  _431 = c2_927 < hi_926;
+  _432 = (unsigned int) _431;
+  c3_928 = c3_922 + _432;
+  _433 = a_644(D) + 12;
+  _434 = *_433;
+  _435 = (long long unsigned int) _434;
+  _436 = b_645(D) + 24;
+  _437 = *_436;
+  _438 = (long long unsigned int) _437;
+  t_929 = _435 * _438;
+  _439 = (long long unsigned int) c1_925;
+  t_930 = t_929 + _439;
+  c1_931 = (unsigned int) t_930;
+  _440 = t_930 >> 32;
+  hi_932 = (unsigned int) _440;
+  c2_933 = c2_927 + hi_932;
+  _441 = c2_933 < hi_932;
+  _442 = (unsigned int) _441;
+  c3_934 = c3_928 + _442;
+  _443 = a_644(D) + 16;
+  _444 = *_443;
+  _445 = (long long unsigned int) _444;
+  _446 = b_645(D) + 20;
+  _447 = *_446;
+  _448 = (long long unsigned int) _447;
+  t_935 = _445 * _448;
+  _449 = (long long unsigned int) c1_931;
+  t_936 = t_935 + _449;
+  c1_937 = (unsigned int) t_936;
+  _450 = t_936 >> 32;
+  hi_938 = (unsigned int) _450;
+  c2_939 = c2_933 + hi_938;
+  _451 = c2_939 < hi_938;
+  _452 = (unsigned int) _451;
+  c3_940 = c3_934 + _452;
+  _453 = a_644(D) + 20;
+  _454 = *_453;
+  _455 = (long long unsigned int) _454;
+  _456 = b_645(D) + 16;
+  _457 = *_456;
+  _458 = (long long unsigned int) _457;
+  t_941 = _455 * _458;
+  _459 = (long long unsigned int) c1_937;
+  t_942 = t_941 + _459;
+  c1_943 = (unsigned int) t_942;
+  _460 = t_942 >> 32;
+  hi_944 = (unsigned int) _460;
+  c2_945 = c2_939 + hi_944;
+  _461 = c2_945 < hi_944;
+  _462 = (unsigned int) _461;
+  c3_946 = c3_940 + _462;
+  _463 = a_644(D) + 24;
+  _464 = *_463;
+  _465 = (long long unsigned int) _464;
+  _466 = b_645(D) + 12;
+  _467 = *_466;
+  _468 = (long long unsigned int) _467;
+  t_947 = _465 * _468;
+  _469 = (long long unsigned int) c1_943;
+  t_948 = t_947 + _469;
+  c1_949 = (unsigned int) t_948;
+  _470 = t_948 >> 32;
+  hi_950 = (unsigned int) _470;
+  c2_951 = c2_945 + hi_950;
+  _471 = c2_951 < hi_950;
+  _472 = (unsigned int) _471;
+  c3_952 = c3_946 + _472;
+  _473 = a_644(D) + 28;
+  _474 = *_473;
+  _475 = (long long unsigned int) _474;
+  _476 = b_645(D) + 8;
+  _477 = *_476;
+  _478 = (long long unsigned int) _477;
+  t_953 = _475 * _478;
+  _479 = (long long unsigned int) c1_949;
+  t_954 = t_953 + _479;
+  c1_955 = (unsigned int) t_954;
+  _480 = t_954 >> 32;
+  hi_956 = (unsigned int) _480;
+  c2_957 = c2_951 + hi_956;
+  _481 = c2_957 < hi_956;
+  _482 = (unsigned int) _481;
+  c3_958 = c3_952 + _482;
+  _483 = r_652(D) + 36;
+  *_483 = c1_955;
+  c1_960 = 0;
+  _484 = a_644(D) + 28;
+  _485 = *_484;
+  _486 = (long long unsigned int) _485;
+  _487 = b_645(D) + 12;
+  _488 = *_487;
+  _489 = (long long unsigned int) _488;
+  t_961 = _486 * _489;
+  _490 = (long long unsigned int) c2_957;
+  t_962 = t_961 + _490;
+  c2_963 = (unsigned int) t_962;
+  _491 = t_962 >> 32;
+  hi_964 = (unsigned int) _491;
+  c3_965 = c3_958 + hi_964;
+  _492 = c3_965 < hi_964;
+  _493 = (unsigned int) _492;
+  c1_966 = c1_960 + _493;
+  _494 = a_644(D) + 24;
+  _495 = *_494;
+  _496 = (long long unsigned int) _495;
+  _497 = b_645(D) + 16;
+  _498 = *_497;
+  _499 = (long long unsigned int) _498;
+  t_967 = _496 * _499;
+  _500 = (long long unsigned int) c2_963;
+  t_968 = t_967 + _500;
+  c2_969 = (unsigned int) t_968;
+  _501 = t_968 >> 32;
+  hi_970 = (unsigned int) _501;
+  c3_971 = c3_965 + hi_970;
+  _502 = c3_971 < hi_970;
+  _503 = (unsigned int) _502;
+  c1_972 = c1_966 + _503;
+  _504 = a_644(D) + 20;
+  _505 = *_504;
+  _506 = (long long unsigned int) _505;
+  _507 = b_645(D) + 20;
+  _508 = *_507;
+  _509 = (long long unsigned int) _508;
+  t_973 = _506 * _509;
+  _510 = (long long unsigned int) c2_969;
+  t_974 = t_973 + _510;
+  c2_975 = (unsigned int) t_974;
+  _511 = t_974 >> 32;
+  hi_976 = (unsigned int) _511;
+  c3_977 = c3_971 + hi_976;
+  _512 = c3_977 < hi_976;
+  _513 = (unsigned int) _512;
+  c1_978 = c1_972 + _513;
+  _514 = a_644(D) + 16;
+  _515 = *_514;
+  _516 = (long long unsigned int) _515;
+  _517 = b_645(D) + 24;
+  _518 = *_517;
+  _519 = (long long unsigned int) _518;
+  t_979 = _516 * _519;
+  _520 = (long long unsigned int) c2_975;
+  t_980 = t_979 + _520;
+  c2_981 = (unsigned int) t_980;
+  _521 = t_980 >> 32;
+  hi_982 = (unsigned int) _521;
+  c3_983 = c3_977 + hi_982;
+  _522 = c3_983 < hi_982;
+  _523 = (unsigned int) _522;
+  c1_984 = c1_978 + _523;
+  _524 = a_644(D) + 12;
+  _525 = *_524;
+  _526 = (long long unsigned int) _525;
+  _527 = b_645(D) + 28;
+  _528 = *_527;
+  _529 = (long long unsigned int) _528;
+  t_985 = _526 * _529;
+  _530 = (long long unsigned int) c2_981;
+  t_986 = t_985 + _530;
+  c2_987 = (unsigned int) t_986;
+  _531 = t_986 >> 32;
+  hi_988 = (unsigned int) _531;
+  c3_989 = c3_983 + hi_988;
+  _532 = c3_989 < hi_988;
+  _533 = (unsigned int) _532;
+  c1_990 = c1_984 + _533;
+  _534 = r_652(D) + 40;
+  *_534 = c2_987;
+  c2_992 = 0;
+  _535 = a_644(D) + 16;
+  _536 = *_535;
+  _537 = (long long unsigned int) _536;
+  _538 = b_645(D) + 28;
+  _539 = *_538;
+  _540 = (long long unsigned int) _539;
+  t_993 = _537 * _540;
+  _541 = (long long unsigned int) c3_989;
+  t_994 = t_993 + _541;
+  c3_995 = (unsigned int) t_994;
+  _542 = t_994 >> 32;
+  hi_996 = (unsigned int) _542;
+  c1_997 = c1_990 + hi_996;
+  _543 = c1_997 < hi_996;
+  _544 = (unsigned int) _543;
+  c2_998 = c2_992 + _544;
+  _545 = a_644(D) + 20;
+  _546 = *_545;
+  _547 = (long long unsigned int) _546;
+  _548 = b_645(D) + 24;
+  _549 = *_548;
+  _550 = (long long unsigned int) _549;
+  t_999 = _547 * _550;
+  _551 = (long long unsigned int) c3_995;
+  t_1000 = t_999 + _551;
+  c3_1001 = (unsigned int) t_1000;
+  _552 = t_1000 >> 32;
+  hi_1002 = (unsigned int) _552;
+  c1_1003 = c1_997 + hi_1002;
+  _553 = c1_1003 < hi_1002;
+  _554 = (unsigned int) _553;
+  c2_1004 = c2_998 + _554;
+  _555 = a_644(D) + 24;
+  _556 = *_555;
+  _557 = (long long unsigned int) _556;
+  _558 = b_645(D) + 20;
+  _559 = *_558;
+  _560 = (long long unsigned int) _559;
+  t_1005 = _557 * _560;
+  _561 = (long long unsigned int) c3_1001;
+  t_1006 = t_1005 + _561;
+  c3_1007 = (unsigned int) t_1006;
+  _562 = t_1006 >> 32;
+  hi_1008 = (unsigned int) _562;
+  c1_1009 = c1_1003 + hi_1008;
+  _563 = c1_1009 < hi_1008;
+  _564 = (unsigned int) _563;
+  c2_1010 = c2_1004 + _564;
+  _565 = a_644(D) + 28;
+  _566 = *_565;
+  _567 = (long long unsigned int) _566;
+  _568 = b_645(D) + 16;
+  _569 = *_568;
+  _570 = (long long unsigned int) _569;
+  t_1011 = _567 * _570;
+  _571 = (long long unsigned int) c3_1007;
+  t_1012 = t_1011 + _571;
+  c3_1013 = (unsigned int) t_1012;
+  _572 = t_1012 >> 32;
+  hi_1014 = (unsigned int) _572;
+  c1_1015 = c1_1009 + hi_1014;
+  _573 = c1_1015 < hi_1014;
+  _574 = (unsigned int) _573;
+  c2_1016 = c2_1010 + _574;
+  _575 = r_652(D) + 44;
+  *_575 = c3_1013;
+  c3_1018 = 0;
+  _576 = a_644(D) + 28;
+  _577 = *_576;
+  _578 = (long long unsigned int) _577;
+  _579 = b_645(D) + 20;
+  _580 = *_579;
+  _581 = (long long unsigned int) _580;
+  t_1019 = _578 * _581;
+  _582 = (long long unsigned int) c1_1015;
+  t_1020 = t_1019 + _582;
+  c1_1021 = (unsigned int) t_1020;
+  _583 = t_1020 >> 32;
+  hi_1022 = (unsigned int) _583;
+  c2_1023 = c2_1016 + hi_1022;
+  _584 = c2_1023 < hi_1022;
+  _585 = (unsigned int) _584;
+  c3_1024 = c3_1018 + _585;
+  _586 = a_644(D) + 24;
+  _587 = *_586;
+  _588 = (long long unsigned int) _587;
+  _589 = b_645(D) + 24;
+  _590 = *_589;
+  _591 = (long long unsigned int) _590;
+  t_1025 = _588 * _591;
+  _592 = (long long unsigned int) c1_1021;
+  t_1026 = t_1025 + _592;
+  c1_1027 = (unsigned int) t_1026;
+  _593 = t_1026 >> 32;
+  hi_1028 = (unsigned int) _593;
+  c2_1029 = c2_1023 + hi_1028;
+  _594 = c2_1029 < hi_1028;
+  _595 = (unsigned int) _594;
+  c3_1030 = c3_1024 + _595;
+  _596 = a_644(D) + 20;
+  _597 = *_596;
+  _598 = (long long unsigned int) _597;
+  _599 = b_645(D) + 28;
+  _600 = *_599;
+  _601 = (long long unsigned int) _600;
+  t_1031 = _598 * _601;
+  _602 = (long long unsigned int) c1_1027;
+  t_1032 = t_1031 + _602;
+  c1_1033 = (unsigned int) t_1032;
+  _603 = t_1032 >> 32;
+  hi_1034 = (unsigned int) _603;
+  c2_1035 = c2_1029 + hi_1034;
+  _604 = c2_1035 < hi_1034;
+  _605 = (unsigned int) _604;
+  c3_1036 = c3_1030 + _605;
+  _606 = r_652(D) + 48;
+  *_606 = c1_1033;
+  c1_1038 = 0;
+  _607 = a_644(D) + 24;
+  _608 = *_607;
+  _609 = (long long unsigned int) _608;
+  _610 = b_645(D) + 28;
+  _611 = *_610;
+  _612 = (long long unsigned int) _611;
+  t_1039 = _609 * _612;
+  _613 = (long long unsigned int) c2_1035;
+  t_1040 = t_1039 + _613;
+  c2_1041 = (unsigned int) t_1040;
+  _614 = t_1040 >> 32;
+  hi_1042 = (unsigned int) _614;
+  c3_1043 = c3_1036 + hi_1042;
+  _615 = c3_1043 < hi_1042;
+  _616 = (unsigned int) _615;
+  c1_1044 = c1_1038 + _616;
+  _617 = a_644(D) + 28;
+  _618 = *_617;
+  _619 = (long long unsigned int) _618;
+  _620 = b_645(D) + 24;
+  _621 = *_620;
+  _622 = (long long unsigned int) _621;
+  t_1045 = _619 * _622;
+  _623 = (long long unsigned int) c2_1041;
+  t_1046 = t_1045 + _623;
+  c2_1047 = (unsigned int) t_1046;
+  _624 = t_1046 >> 32;
+  hi_1048 = (unsigned int) _624;
+  c3_1049 = c3_1043 + hi_1048;
+  _625 = c3_1049 < hi_1048;
+  _626 = (unsigned int) _625;
+  c1_1050 = c1_1044 + _626;
+  _627 = r_652(D) + 52;
+  *_627 = c2_1047;
+  c2_1052 = 0;
+  _628 = a_644(D) + 28;
+  _629 = *_628;
+  _630 = (long long unsigned int) _629;
+  _631 = b_645(D) + 28;
+  _632 = *_631;
+  _633 = (long long unsigned int) _632;
+  t_1053 = _630 * _633;
+  _634 = (long long unsigned int) c3_1049;
+  t_1054 = t_1053 + _634;
+  c3_1055 = (unsigned int) t_1054;
+  _635 = t_1054 >> 32;
+  hi_1056 = (unsigned int) _635;
+  c1_1057 = c1_1050 + hi_1056;
+  _636 = c1_1057 < hi_1056;
+  _637 = (unsigned int) _636;
+  c2_1058 = c2_1052 + _637;
+  _638 = r_652(D) + 56;
+  *_638 = c3_1055;
+  _639 = r_652(D) + 60;
+  *_639 = c1_1057;
+  return;
+
+}
+
+
+
+;; Function bn_mul_comba4 (bn_mul_comba4, funcdef_no=177, decl_uid=11517, cgraph_uid=178, symbol_order=177)
+
+void bn_mul_comba4 (unsigned int * r, unsigned int * a, unsigned int * b)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  _Bool _7;
+  unsigned int _8;
+  unsigned int _9;
+  long long unsigned int _10;
+  unsigned int * _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  _Bool _16;
+  unsigned int _17;
+  unsigned int * _18;
+  unsigned int _19;
+  long long unsigned int _20;
+  unsigned int _21;
+  long long unsigned int _22;
+  long long unsigned int _23;
+  long long unsigned int _24;
+  _Bool _25;
+  unsigned int _26;
+  unsigned int * _27;
+  unsigned int * _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _33;
+  long long unsigned int _34;
+  _Bool _35;
+  unsigned int _36;
+  unsigned int * _37;
+  unsigned int _38;
+  long long unsigned int _39;
+  unsigned int * _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  long long unsigned int _43;
+  long long unsigned int _44;
+  _Bool _45;
+  unsigned int _46;
+  unsigned int _47;
+  long long unsigned int _48;
+  unsigned int * _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  long long unsigned int _52;
+  long long unsigned int _53;
+  _Bool _54;
+  unsigned int _55;
+  unsigned int * _56;
+  unsigned int _57;
+  long long unsigned int _58;
+  unsigned int * _59;
+  unsigned int _60;
+  long long unsigned int _61;
+  long long unsigned int _62;
+  long long unsigned int _63;
+  _Bool _64;
+  unsigned int _65;
+  unsigned int * _66;
+  unsigned int _67;
+  long long unsigned int _68;
+  unsigned int * _69;
+  unsigned int _70;
+  long long unsigned int _71;
+  long long unsigned int _72;
+  long long unsigned int _73;
+  _Bool _74;
+  unsigned int _75;
+  unsigned int * _76;
+  unsigned int _77;
+  long long unsigned int _78;
+  unsigned int * _79;
+  unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  long long unsigned int _83;
+  _Bool _84;
+  unsigned int _85;
+  unsigned int * _86;
+  unsigned int _87;
+  long long unsigned int _88;
+  unsigned int _89;
+  long long unsigned int _90;
+  long long unsigned int _91;
+  long long unsigned int _92;
+  _Bool _93;
+  unsigned int _94;
+  unsigned int * _95;
+  unsigned int * _96;
+  unsigned int _97;
+  long long unsigned int _98;
+  unsigned int * _99;
+  unsigned int _100;
+  long long unsigned int _101;
+  long long unsigned int _102;
+  long long unsigned int _103;
+  _Bool _104;
+  unsigned int _105;
+  unsigned int * _106;
+  unsigned int _107;
+  long long unsigned int _108;
+  unsigned int * _109;
+  unsigned int _110;
+  long long unsigned int _111;
+  long long unsigned int _112;
+  long long unsigned int _113;
+  _Bool _114;
+  unsigned int _115;
+  unsigned int * _116;
+  unsigned int _117;
+  long long unsigned int _118;
+  unsigned int * _119;
+  unsigned int _120;
+  long long unsigned int _121;
+  long long unsigned int _122;
+  long long unsigned int _123;
+  _Bool _124;
+  unsigned int _125;
+  unsigned int * _126;
+  unsigned int * _127;
+  unsigned int _128;
+  long long unsigned int _129;
+  unsigned int * _130;
+  unsigned int _131;
+  long long unsigned int _132;
+  long long unsigned int _133;
+  long long unsigned int _134;
+  _Bool _135;
+  unsigned int _136;
+  unsigned int * _137;
+  unsigned int _138;
+  long long unsigned int _139;
+  unsigned int * _140;
+  unsigned int _141;
+  long long unsigned int _142;
+  long long unsigned int _143;
+  long long unsigned int _144;
+  _Bool _145;
+  unsigned int _146;
+  unsigned int * _147;
+  unsigned int * _148;
+  unsigned int _149;
+  long long unsigned int _150;
+  unsigned int * _151;
+  unsigned int _152;
+  long long unsigned int _153;
+  long long unsigned int _154;
+  long long unsigned int _155;
+  _Bool _156;
+  unsigned int _157;
+  unsigned int * _158;
+  unsigned int * _159;
+
+  <bb 2> :
+  c1_160 = 0;
+  c2_161 = 0;
+  c3_162 = 0;
+  _1 = *a_164(D);
+  _2 = (long long unsigned int) _1;
+  _3 = *b_165(D);
+  _4 = (long long unsigned int) _3;
+  t_166 = _2 * _4;
+  _5 = (long long unsigned int) c1_160;
+  t_167 = t_166 + _5;
+  c1_168 = (unsigned int) t_167;
+  _6 = t_167 >> 32;
+  hi_169 = (unsigned int) _6;
+  c2_170 = c2_161 + hi_169;
+  _7 = c2_170 < hi_169;
+  _8 = (unsigned int) _7;
+  c3_171 = c3_162 + _8;
+  *r_172(D) = c1_168;
+  c1_174 = 0;
+  _9 = *a_164(D);
+  _10 = (long long unsigned int) _9;
+  _11 = b_165(D) + 4;
+  _12 = *_11;
+  _13 = (long long unsigned int) _12;
+  t_175 = _10 * _13;
+  _14 = (long long unsigned int) c2_170;
+  t_176 = t_175 + _14;
+  c2_177 = (unsigned int) t_176;
+  _15 = t_176 >> 32;
+  hi_178 = (unsigned int) _15;
+  c3_179 = c3_171 + hi_178;
+  _16 = c3_179 < hi_178;
+  _17 = (unsigned int) _16;
+  c1_180 = c1_174 + _17;
+  _18 = a_164(D) + 4;
+  _19 = *_18;
+  _20 = (long long unsigned int) _19;
+  _21 = *b_165(D);
+  _22 = (long long unsigned int) _21;
+  t_181 = _20 * _22;
+  _23 = (long long unsigned int) c2_177;
+  t_182 = t_181 + _23;
+  c2_183 = (unsigned int) t_182;
+  _24 = t_182 >> 32;
+  hi_184 = (unsigned int) _24;
+  c3_185 = c3_179 + hi_184;
+  _25 = c3_185 < hi_184;
+  _26 = (unsigned int) _25;
+  c1_186 = c1_180 + _26;
+  _27 = r_172(D) + 4;
+  *_27 = c2_183;
+  c2_188 = 0;
+  _28 = a_164(D) + 8;
+  _29 = *_28;
+  _30 = (long long unsigned int) _29;
+  _31 = *b_165(D);
+  _32 = (long long unsigned int) _31;
+  t_189 = _30 * _32;
+  _33 = (long long unsigned int) c3_185;
+  t_190 = t_189 + _33;
+  c3_191 = (unsigned int) t_190;
+  _34 = t_190 >> 32;
+  hi_192 = (unsigned int) _34;
+  c1_193 = c1_186 + hi_192;
+  _35 = c1_193 < hi_192;
+  _36 = (unsigned int) _35;
+  c2_194 = c2_188 + _36;
+  _37 = a_164(D) + 4;
+  _38 = *_37;
+  _39 = (long long unsigned int) _38;
+  _40 = b_165(D) + 4;
+  _41 = *_40;
+  _42 = (long long unsigned int) _41;
+  t_195 = _39 * _42;
+  _43 = (long long unsigned int) c3_191;
+  t_196 = t_195 + _43;
+  c3_197 = (unsigned int) t_196;
+  _44 = t_196 >> 32;
+  hi_198 = (unsigned int) _44;
+  c1_199 = c1_193 + hi_198;
+  _45 = c1_199 < hi_198;
+  _46 = (unsigned int) _45;
+  c2_200 = c2_194 + _46;
+  _47 = *a_164(D);
+  _48 = (long long unsigned int) _47;
+  _49 = b_165(D) + 8;
+  _50 = *_49;
+  _51 = (long long unsigned int) _50;
+  t_201 = _48 * _51;
+  _52 = (long long unsigned int) c3_197;
+  t_202 = t_201 + _52;
+  c3_203 = (unsigned int) t_202;
+  _53 = t_202 >> 32;
+  hi_204 = (unsigned int) _53;
+  c1_205 = c1_199 + hi_204;
+  _54 = c1_205 < hi_204;
+  _55 = (unsigned int) _54;
+  c2_206 = c2_200 + _55;
+  _56 = r_172(D) + 8;
+  *_56 = c3_203;
+  c3_208 = 0;
+  _57 = *a_164(D);
+  _58 = (long long unsigned int) _57;
+  _59 = b_165(D) + 12;
+  _60 = *_59;
+  _61 = (long long unsigned int) _60;
+  t_209 = _58 * _61;
+  _62 = (long long unsigned int) c1_205;
+  t_210 = t_209 + _62;
+  c1_211 = (unsigned int) t_210;
+  _63 = t_210 >> 32;
+  hi_212 = (unsigned int) _63;
+  c2_213 = c2_206 + hi_212;
+  _64 = c2_213 < hi_212;
+  _65 = (unsigned int) _64;
+  c3_214 = c3_208 + _65;
+  _66 = a_164(D) + 4;
+  _67 = *_66;
+  _68 = (long long unsigned int) _67;
+  _69 = b_165(D) + 8;
+  _70 = *_69;
+  _71 = (long long unsigned int) _70;
+  t_215 = _68 * _71;
+  _72 = (long long unsigned int) c1_211;
+  t_216 = t_215 + _72;
+  c1_217 = (unsigned int) t_216;
+  _73 = t_216 >> 32;
+  hi_218 = (unsigned int) _73;
+  c2_219 = c2_213 + hi_218;
+  _74 = c2_219 < hi_218;
+  _75 = (unsigned int) _74;
+  c3_220 = c3_214 + _75;
+  _76 = a_164(D) + 8;
+  _77 = *_76;
+  _78 = (long long unsigned int) _77;
+  _79 = b_165(D) + 4;
+  _80 = *_79;
+  _81 = (long long unsigned int) _80;
+  t_221 = _78 * _81;
+  _82 = (long long unsigned int) c1_217;
+  t_222 = t_221 + _82;
+  c1_223 = (unsigned int) t_222;
+  _83 = t_222 >> 32;
+  hi_224 = (unsigned int) _83;
+  c2_225 = c2_219 + hi_224;
+  _84 = c2_225 < hi_224;
+  _85 = (unsigned int) _84;
+  c3_226 = c3_220 + _85;
+  _86 = a_164(D) + 12;
+  _87 = *_86;
+  _88 = (long long unsigned int) _87;
+  _89 = *b_165(D);
+  _90 = (long long unsigned int) _89;
+  t_227 = _88 * _90;
+  _91 = (long long unsigned int) c1_223;
+  t_228 = t_227 + _91;
+  c1_229 = (unsigned int) t_228;
+  _92 = t_228 >> 32;
+  hi_230 = (unsigned int) _92;
+  c2_231 = c2_225 + hi_230;
+  _93 = c2_231 < hi_230;
+  _94 = (unsigned int) _93;
+  c3_232 = c3_226 + _94;
+  _95 = r_172(D) + 12;
+  *_95 = c1_229;
+  c1_234 = 0;
+  _96 = a_164(D) + 12;
+  _97 = *_96;
+  _98 = (long long unsigned int) _97;
+  _99 = b_165(D) + 4;
+  _100 = *_99;
+  _101 = (long long unsigned int) _100;
+  t_235 = _98 * _101;
+  _102 = (long long unsigned int) c2_231;
+  t_236 = t_235 + _102;
+  c2_237 = (unsigned int) t_236;
+  _103 = t_236 >> 32;
+  hi_238 = (unsigned int) _103;
+  c3_239 = c3_232 + hi_238;
+  _104 = c3_239 < hi_238;
+  _105 = (unsigned int) _104;
+  c1_240 = c1_234 + _105;
+  _106 = a_164(D) + 8;
+  _107 = *_106;
+  _108 = (long long unsigned int) _107;
+  _109 = b_165(D) + 8;
+  _110 = *_109;
+  _111 = (long long unsigned int) _110;
+  t_241 = _108 * _111;
+  _112 = (long long unsigned int) c2_237;
+  t_242 = t_241 + _112;
+  c2_243 = (unsigned int) t_242;
+  _113 = t_242 >> 32;
+  hi_244 = (unsigned int) _113;
+  c3_245 = c3_239 + hi_244;
+  _114 = c3_245 < hi_244;
+  _115 = (unsigned int) _114;
+  c1_246 = c1_240 + _115;
+  _116 = a_164(D) + 4;
+  _117 = *_116;
+  _118 = (long long unsigned int) _117;
+  _119 = b_165(D) + 12;
+  _120 = *_119;
+  _121 = (long long unsigned int) _120;
+  t_247 = _118 * _121;
+  _122 = (long long unsigned int) c2_243;
+  t_248 = t_247 + _122;
+  c2_249 = (unsigned int) t_248;
+  _123 = t_248 >> 32;
+  hi_250 = (unsigned int) _123;
+  c3_251 = c3_245 + hi_250;
+  _124 = c3_251 < hi_250;
+  _125 = (unsigned int) _124;
+  c1_252 = c1_246 + _125;
+  _126 = r_172(D) + 16;
+  *_126 = c2_249;
+  c2_254 = 0;
+  _127 = a_164(D) + 8;
+  _128 = *_127;
+  _129 = (long long unsigned int) _128;
+  _130 = b_165(D) + 12;
+  _131 = *_130;
+  _132 = (long long unsigned int) _131;
+  t_255 = _129 * _132;
+  _133 = (long long unsigned int) c3_251;
+  t_256 = t_255 + _133;
+  c3_257 = (unsigned int) t_256;
+  _134 = t_256 >> 32;
+  hi_258 = (unsigned int) _134;
+  c1_259 = c1_252 + hi_258;
+  _135 = c1_259 < hi_258;
+  _136 = (unsigned int) _135;
+  c2_260 = c2_254 + _136;
+  _137 = a_164(D) + 12;
+  _138 = *_137;
+  _139 = (long long unsigned int) _138;
+  _140 = b_165(D) + 8;
+  _141 = *_140;
+  _142 = (long long unsigned int) _141;
+  t_261 = _139 * _142;
+  _143 = (long long unsigned int) c3_257;
+  t_262 = t_261 + _143;
+  c3_263 = (unsigned int) t_262;
+  _144 = t_262 >> 32;
+  hi_264 = (unsigned int) _144;
+  c1_265 = c1_259 + hi_264;
+  _145 = c1_265 < hi_264;
+  _146 = (unsigned int) _145;
+  c2_266 = c2_260 + _146;
+  _147 = r_172(D) + 20;
+  *_147 = c3_263;
+  c3_268 = 0;
+  _148 = a_164(D) + 12;
+  _149 = *_148;
+  _150 = (long long unsigned int) _149;
+  _151 = b_165(D) + 12;
+  _152 = *_151;
+  _153 = (long long unsigned int) _152;
+  t_269 = _150 * _153;
+  _154 = (long long unsigned int) c1_265;
+  t_270 = t_269 + _154;
+  c1_271 = (unsigned int) t_270;
+  _155 = t_270 >> 32;
+  hi_272 = (unsigned int) _155;
+  c2_273 = c2_266 + hi_272;
+  _156 = c2_273 < hi_272;
+  _157 = (unsigned int) _156;
+  c3_274 = c3_268 + _157;
+  _158 = r_172(D) + 24;
+  *_158 = c1_271;
+  _159 = r_172(D) + 28;
+  *_159 = c2_273;
+  return;
+
+}
+
+
+
+;; Function bn_sqr_comba8 (bn_sqr_comba8, funcdef_no=178, decl_uid=11525, cgraph_uid=179, symbol_order=178)
+
+void bn_sqr_comba8 (unsigned int * r, const unsigned int * a)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  _Bool _7;
+  unsigned int _8;
+  const unsigned int * _9;
+  unsigned int _10;
+  long long unsigned int _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  _Bool _16;
+  unsigned int _17;
+  long long unsigned int _18;
+  long long unsigned int _19;
+  _Bool _20;
+  unsigned int _21;
+  unsigned int * _22;
+  const unsigned int * _23;
+  unsigned int _24;
+  long long unsigned int _25;
+  const unsigned int * _26;
+  unsigned int _27;
+  long long unsigned int _28;
+  long long unsigned int _29;
+  long long unsigned int _30;
+  _Bool _31;
+  unsigned int _32;
+  const unsigned int * _33;
+  unsigned int _34;
+  long long unsigned int _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  long long unsigned int _38;
+  long long unsigned int _39;
+  _Bool _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  long long unsigned int _43;
+  _Bool _44;
+  unsigned int _45;
+  unsigned int * _46;
+  const unsigned int * _47;
+  unsigned int _48;
+  long long unsigned int _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  long long unsigned int _52;
+  long long unsigned int _53;
+  _Bool _54;
+  unsigned int _55;
+  long long unsigned int _56;
+  long long unsigned int _57;
+  _Bool _58;
+  unsigned int _59;
+  const unsigned int * _60;
+  unsigned int _61;
+  long long unsigned int _62;
+  const unsigned int * _63;
+  unsigned int _64;
+  long long unsigned int _65;
+  long long unsigned int _66;
+  long long unsigned int _67;
+  _Bool _68;
+  unsigned int _69;
+  long long unsigned int _70;
+  long long unsigned int _71;
+  _Bool _72;
+  unsigned int _73;
+  unsigned int * _74;
+  const unsigned int * _75;
+  unsigned int _76;
+  long long unsigned int _77;
+  const unsigned int * _78;
+  unsigned int _79;
+  long long unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  _Bool _83;
+  unsigned int _84;
+  const unsigned int * _85;
+  unsigned int _86;
+  long long unsigned int _87;
+  const unsigned int * _88;
+  unsigned int _89;
+  long long unsigned int _90;
+  long long unsigned int _91;
+  long long unsigned int _92;
+  _Bool _93;
+  unsigned int _94;
+  long long unsigned int _95;
+  long long unsigned int _96;
+  _Bool _97;
+  unsigned int _98;
+  const unsigned int * _99;
+  unsigned int _100;
+  long long unsigned int _101;
+  unsigned int _102;
+  long long unsigned int _103;
+  long long unsigned int _104;
+  long long unsigned int _105;
+  _Bool _106;
+  unsigned int _107;
+  long long unsigned int _108;
+  long long unsigned int _109;
+  _Bool _110;
+  unsigned int _111;
+  unsigned int * _112;
+  const unsigned int * _113;
+  unsigned int _114;
+  long long unsigned int _115;
+  unsigned int _116;
+  long long unsigned int _117;
+  long long unsigned int _118;
+  long long unsigned int _119;
+  _Bool _120;
+  unsigned int _121;
+  long long unsigned int _122;
+  long long unsigned int _123;
+  _Bool _124;
+  unsigned int _125;
+  const unsigned int * _126;
+  unsigned int _127;
+  long long unsigned int _128;
+  const unsigned int * _129;
+  unsigned int _130;
+  long long unsigned int _131;
+  long long unsigned int _132;
+  long long unsigned int _133;
+  _Bool _134;
+  unsigned int _135;
+  long long unsigned int _136;
+  long long unsigned int _137;
+  _Bool _138;
+  unsigned int _139;
+  const unsigned int * _140;
+  unsigned int _141;
+  long long unsigned int _142;
+  const unsigned int * _143;
+  unsigned int _144;
+  long long unsigned int _145;
+  long long unsigned int _146;
+  long long unsigned int _147;
+  _Bool _148;
+  unsigned int _149;
+  long long unsigned int _150;
+  long long unsigned int _151;
+  _Bool _152;
+  unsigned int _153;
+  unsigned int * _154;
+  const unsigned int * _155;
+  unsigned int _156;
+  long long unsigned int _157;
+  const unsigned int * _158;
+  unsigned int _159;
+  long long unsigned int _160;
+  long long unsigned int _161;
+  long long unsigned int _162;
+  _Bool _163;
+  unsigned int _164;
+  const unsigned int * _165;
+  unsigned int _166;
+  long long unsigned int _167;
+  const unsigned int * _168;
+  unsigned int _169;
+  long long unsigned int _170;
+  long long unsigned int _171;
+  long long unsigned int _172;
+  _Bool _173;
+  unsigned int _174;
+  long long unsigned int _175;
+  long long unsigned int _176;
+  _Bool _177;
+  unsigned int _178;
+  const unsigned int * _179;
+  unsigned int _180;
+  long long unsigned int _181;
+  const unsigned int * _182;
+  unsigned int _183;
+  long long unsigned int _184;
+  long long unsigned int _185;
+  long long unsigned int _186;
+  _Bool _187;
+  unsigned int _188;
+  long long unsigned int _189;
+  long long unsigned int _190;
+  _Bool _191;
+  unsigned int _192;
+  const unsigned int * _193;
+  unsigned int _194;
+  long long unsigned int _195;
+  unsigned int _196;
+  long long unsigned int _197;
+  long long unsigned int _198;
+  long long unsigned int _199;
+  _Bool _200;
+  unsigned int _201;
+  long long unsigned int _202;
+  long long unsigned int _203;
+  _Bool _204;
+  unsigned int _205;
+  unsigned int * _206;
+  const unsigned int * _207;
+  unsigned int _208;
+  long long unsigned int _209;
+  unsigned int _210;
+  long long unsigned int _211;
+  long long unsigned int _212;
+  long long unsigned int _213;
+  _Bool _214;
+  unsigned int _215;
+  long long unsigned int _216;
+  long long unsigned int _217;
+  _Bool _218;
+  unsigned int _219;
+  const unsigned int * _220;
+  unsigned int _221;
+  long long unsigned int _222;
+  const unsigned int * _223;
+  unsigned int _224;
+  long long unsigned int _225;
+  long long unsigned int _226;
+  long long unsigned int _227;
+  _Bool _228;
+  unsigned int _229;
+  long long unsigned int _230;
+  long long unsigned int _231;
+  _Bool _232;
+  unsigned int _233;
+  const unsigned int * _234;
+  unsigned int _235;
+  long long unsigned int _236;
+  const unsigned int * _237;
+  unsigned int _238;
+  long long unsigned int _239;
+  long long unsigned int _240;
+  long long unsigned int _241;
+  _Bool _242;
+  unsigned int _243;
+  long long unsigned int _244;
+  long long unsigned int _245;
+  _Bool _246;
+  unsigned int _247;
+  const unsigned int * _248;
+  unsigned int _249;
+  long long unsigned int _250;
+  const unsigned int * _251;
+  unsigned int _252;
+  long long unsigned int _253;
+  long long unsigned int _254;
+  long long unsigned int _255;
+  _Bool _256;
+  unsigned int _257;
+  long long unsigned int _258;
+  long long unsigned int _259;
+  _Bool _260;
+  unsigned int _261;
+  unsigned int * _262;
+  const unsigned int * _263;
+  unsigned int _264;
+  long long unsigned int _265;
+  const unsigned int * _266;
+  unsigned int _267;
+  long long unsigned int _268;
+  long long unsigned int _269;
+  long long unsigned int _270;
+  _Bool _271;
+  unsigned int _272;
+  const unsigned int * _273;
+  unsigned int _274;
+  long long unsigned int _275;
+  const unsigned int * _276;
+  unsigned int _277;
+  long long unsigned int _278;
+  long long unsigned int _279;
+  long long unsigned int _280;
+  _Bool _281;
+  unsigned int _282;
+  long long unsigned int _283;
+  long long unsigned int _284;
+  _Bool _285;
+  unsigned int _286;
+  const unsigned int * _287;
+  unsigned int _288;
+  long long unsigned int _289;
+  const unsigned int * _290;
+  unsigned int _291;
+  long long unsigned int _292;
+  long long unsigned int _293;
+  long long unsigned int _294;
+  _Bool _295;
+  unsigned int _296;
+  long long unsigned int _297;
+  long long unsigned int _298;
+  _Bool _299;
+  unsigned int _300;
+  const unsigned int * _301;
+  unsigned int _302;
+  long long unsigned int _303;
+  const unsigned int * _304;
+  unsigned int _305;
+  long long unsigned int _306;
+  long long unsigned int _307;
+  long long unsigned int _308;
+  _Bool _309;
+  unsigned int _310;
+  long long unsigned int _311;
+  long long unsigned int _312;
+  _Bool _313;
+  unsigned int _314;
+  unsigned int * _315;
+  const unsigned int * _316;
+  unsigned int _317;
+  long long unsigned int _318;
+  const unsigned int * _319;
+  unsigned int _320;
+  long long unsigned int _321;
+  long long unsigned int _322;
+  long long unsigned int _323;
+  _Bool _324;
+  unsigned int _325;
+  long long unsigned int _326;
+  long long unsigned int _327;
+  _Bool _328;
+  unsigned int _329;
+  const unsigned int * _330;
+  unsigned int _331;
+  long long unsigned int _332;
+  const unsigned int * _333;
+  unsigned int _334;
+  long long unsigned int _335;
+  long long unsigned int _336;
+  long long unsigned int _337;
+  _Bool _338;
+  unsigned int _339;
+  long long unsigned int _340;
+  long long unsigned int _341;
+  _Bool _342;
+  unsigned int _343;
+  const unsigned int * _344;
+  unsigned int _345;
+  long long unsigned int _346;
+  const unsigned int * _347;
+  unsigned int _348;
+  long long unsigned int _349;
+  long long unsigned int _350;
+  long long unsigned int _351;
+  _Bool _352;
+  unsigned int _353;
+  long long unsigned int _354;
+  long long unsigned int _355;
+  _Bool _356;
+  unsigned int _357;
+  unsigned int * _358;
+  const unsigned int * _359;
+  unsigned int _360;
+  long long unsigned int _361;
+  const unsigned int * _362;
+  unsigned int _363;
+  long long unsigned int _364;
+  long long unsigned int _365;
+  long long unsigned int _366;
+  _Bool _367;
+  unsigned int _368;
+  const unsigned int * _369;
+  unsigned int _370;
+  long long unsigned int _371;
+  const unsigned int * _372;
+  unsigned int _373;
+  long long unsigned int _374;
+  long long unsigned int _375;
+  long long unsigned int _376;
+  _Bool _377;
+  unsigned int _378;
+  long long unsigned int _379;
+  long long unsigned int _380;
+  _Bool _381;
+  unsigned int _382;
+  const unsigned int * _383;
+  unsigned int _384;
+  long long unsigned int _385;
+  const unsigned int * _386;
+  unsigned int _387;
+  long long unsigned int _388;
+  long long unsigned int _389;
+  long long unsigned int _390;
+  _Bool _391;
+  unsigned int _392;
+  long long unsigned int _393;
+  long long unsigned int _394;
+  _Bool _395;
+  unsigned int _396;
+  unsigned int * _397;
+  const unsigned int * _398;
+  unsigned int _399;
+  long long unsigned int _400;
+  const unsigned int * _401;
+  unsigned int _402;
+  long long unsigned int _403;
+  long long unsigned int _404;
+  long long unsigned int _405;
+  _Bool _406;
+  unsigned int _407;
+  long long unsigned int _408;
+  long long unsigned int _409;
+  _Bool _410;
+  unsigned int _411;
+  const unsigned int * _412;
+  unsigned int _413;
+  long long unsigned int _414;
+  const unsigned int * _415;
+  unsigned int _416;
+  long long unsigned int _417;
+  long long unsigned int _418;
+  long long unsigned int _419;
+  _Bool _420;
+  unsigned int _421;
+  long long unsigned int _422;
+  long long unsigned int _423;
+  _Bool _424;
+  unsigned int _425;
+  unsigned int * _426;
+  const unsigned int * _427;
+  unsigned int _428;
+  long long unsigned int _429;
+  const unsigned int * _430;
+  unsigned int _431;
+  long long unsigned int _432;
+  long long unsigned int _433;
+  long long unsigned int _434;
+  _Bool _435;
+  unsigned int _436;
+  const unsigned int * _437;
+  unsigned int _438;
+  long long unsigned int _439;
+  const unsigned int * _440;
+  unsigned int _441;
+  long long unsigned int _442;
+  long long unsigned int _443;
+  long long unsigned int _444;
+  _Bool _445;
+  unsigned int _446;
+  long long unsigned int _447;
+  long long unsigned int _448;
+  _Bool _449;
+  unsigned int _450;
+  unsigned int * _451;
+  const unsigned int * _452;
+  unsigned int _453;
+  long long unsigned int _454;
+  const unsigned int * _455;
+  unsigned int _456;
+  long long unsigned int _457;
+  long long unsigned int _458;
+  long long unsigned int _459;
+  _Bool _460;
+  unsigned int _461;
+  long long unsigned int _462;
+  long long unsigned int _463;
+  _Bool _464;
+  unsigned int _465;
+  unsigned int * _466;
+  const unsigned int * _467;
+  unsigned int _468;
+  long long unsigned int _469;
+  const unsigned int * _470;
+  unsigned int _471;
+  long long unsigned int _472;
+  long long unsigned int _473;
+  long long unsigned int _474;
+  _Bool _475;
+  unsigned int _476;
+  unsigned int * _477;
+  unsigned int * _478;
+
+  <bb 2> :
+  c1_479 = 0;
+  c2_480 = 0;
+  c3_481 = 0;
+  _1 = *a_483(D);
+  _2 = (long long unsigned int) _1;
+  _3 = *a_483(D);
+  _4 = (long long unsigned int) _3;
+  t_484 = _2 * _4;
+  _5 = (long long unsigned int) c1_479;
+  t_485 = t_484 + _5;
+  c1_486 = (unsigned int) t_485;
+  _6 = t_485 >> 32;
+  hi_487 = (unsigned int) _6;
+  c2_488 = c2_480 + hi_487;
+  _7 = c2_488 < hi_487;
+  _8 = (unsigned int) _7;
+  c3_489 = c3_481 + _8;
+  *r_490(D) = c1_486;
+  c1_492 = 0;
+  _9 = a_483(D) + 4;
+  _10 = *_9;
+  _11 = (long long unsigned int) _10;
+  _12 = *a_483(D);
+  _13 = (long long unsigned int) _12;
+  t_493 = _11 * _13;
+  _14 = (long long unsigned int) c2_488;
+  tt_494 = t_493 + _14;
+  c2_495 = (unsigned int) tt_494;
+  _15 = tt_494 >> 32;
+  hi_496 = (unsigned int) _15;
+  c3_497 = c3_489 + hi_496;
+  _16 = c3_497 < hi_496;
+  _17 = (unsigned int) _16;
+  c1_498 = c1_492 + _17;
+  _18 = (long long unsigned int) c2_495;
+  t_499 = t_493 + _18;
+  c2_500 = (unsigned int) t_499;
+  _19 = t_499 >> 32;
+  hi_501 = (unsigned int) _19;
+  c3_502 = c3_497 + hi_501;
+  _20 = c3_502 < hi_501;
+  _21 = (unsigned int) _20;
+  c1_503 = c1_498 + _21;
+  _22 = r_490(D) + 4;
+  *_22 = c2_500;
+  c2_505 = 0;
+  _23 = a_483(D) + 4;
+  _24 = *_23;
+  _25 = (long long unsigned int) _24;
+  _26 = a_483(D) + 4;
+  _27 = *_26;
+  _28 = (long long unsigned int) _27;
+  t_506 = _25 * _28;
+  _29 = (long long unsigned int) c3_502;
+  t_507 = t_506 + _29;
+  c3_508 = (unsigned int) t_507;
+  _30 = t_507 >> 32;
+  hi_509 = (unsigned int) _30;
+  c1_510 = c1_503 + hi_509;
+  _31 = c1_510 < hi_509;
+  _32 = (unsigned int) _31;
+  c2_511 = c2_505 + _32;
+  _33 = a_483(D) + 8;
+  _34 = *_33;
+  _35 = (long long unsigned int) _34;
+  _36 = *a_483(D);
+  _37 = (long long unsigned int) _36;
+  t_512 = _35 * _37;
+  _38 = (long long unsigned int) c3_508;
+  tt_513 = t_512 + _38;
+  c3_514 = (unsigned int) tt_513;
+  _39 = tt_513 >> 32;
+  hi_515 = (unsigned int) _39;
+  c1_516 = c1_510 + hi_515;
+  _40 = c1_516 < hi_515;
+  _41 = (unsigned int) _40;
+  c2_517 = c2_511 + _41;
+  _42 = (long long unsigned int) c3_514;
+  t_518 = t_512 + _42;
+  c3_519 = (unsigned int) t_518;
+  _43 = t_518 >> 32;
+  hi_520 = (unsigned int) _43;
+  c1_521 = c1_516 + hi_520;
+  _44 = c1_521 < hi_520;
+  _45 = (unsigned int) _44;
+  c2_522 = c2_517 + _45;
+  _46 = r_490(D) + 8;
+  *_46 = c3_519;
+  c3_524 = 0;
+  _47 = a_483(D) + 12;
+  _48 = *_47;
+  _49 = (long long unsigned int) _48;
+  _50 = *a_483(D);
+  _51 = (long long unsigned int) _50;
+  t_525 = _49 * _51;
+  _52 = (long long unsigned int) c1_521;
+  tt_526 = t_525 + _52;
+  c1_527 = (unsigned int) tt_526;
+  _53 = tt_526 >> 32;
+  hi_528 = (unsigned int) _53;
+  c2_529 = c2_522 + hi_528;
+  _54 = c2_529 < hi_528;
+  _55 = (unsigned int) _54;
+  c3_530 = c3_524 + _55;
+  _56 = (long long unsigned int) c1_527;
+  t_531 = t_525 + _56;
+  c1_532 = (unsigned int) t_531;
+  _57 = t_531 >> 32;
+  hi_533 = (unsigned int) _57;
+  c2_534 = c2_529 + hi_533;
+  _58 = c2_534 < hi_533;
+  _59 = (unsigned int) _58;
+  c3_535 = c3_530 + _59;
+  _60 = a_483(D) + 8;
+  _61 = *_60;
+  _62 = (long long unsigned int) _61;
+  _63 = a_483(D) + 4;
+  _64 = *_63;
+  _65 = (long long unsigned int) _64;
+  t_536 = _62 * _65;
+  _66 = (long long unsigned int) c1_532;
+  tt_537 = t_536 + _66;
+  c1_538 = (unsigned int) tt_537;
+  _67 = tt_537 >> 32;
+  hi_539 = (unsigned int) _67;
+  c2_540 = c2_534 + hi_539;
+  _68 = c2_540 < hi_539;
+  _69 = (unsigned int) _68;
+  c3_541 = c3_535 + _69;
+  _70 = (long long unsigned int) c1_538;
+  t_542 = t_536 + _70;
+  c1_543 = (unsigned int) t_542;
+  _71 = t_542 >> 32;
+  hi_544 = (unsigned int) _71;
+  c2_545 = c2_540 + hi_544;
+  _72 = c2_545 < hi_544;
+  _73 = (unsigned int) _72;
+  c3_546 = c3_541 + _73;
+  _74 = r_490(D) + 12;
+  *_74 = c1_543;
+  c1_548 = 0;
+  _75 = a_483(D) + 8;
+  _76 = *_75;
+  _77 = (long long unsigned int) _76;
+  _78 = a_483(D) + 8;
+  _79 = *_78;
+  _80 = (long long unsigned int) _79;
+  t_549 = _77 * _80;
+  _81 = (long long unsigned int) c2_545;
+  t_550 = t_549 + _81;
+  c2_551 = (unsigned int) t_550;
+  _82 = t_550 >> 32;
+  hi_552 = (unsigned int) _82;
+  c3_553 = c3_546 + hi_552;
+  _83 = c3_553 < hi_552;
+  _84 = (unsigned int) _83;
+  c1_554 = c1_548 + _84;
+  _85 = a_483(D) + 12;
+  _86 = *_85;
+  _87 = (long long unsigned int) _86;
+  _88 = a_483(D) + 4;
+  _89 = *_88;
+  _90 = (long long unsigned int) _89;
+  t_555 = _87 * _90;
+  _91 = (long long unsigned int) c2_551;
+  tt_556 = t_555 + _91;
+  c2_557 = (unsigned int) tt_556;
+  _92 = tt_556 >> 32;
+  hi_558 = (unsigned int) _92;
+  c3_559 = c3_553 + hi_558;
+  _93 = c3_559 < hi_558;
+  _94 = (unsigned int) _93;
+  c1_560 = c1_554 + _94;
+  _95 = (long long unsigned int) c2_557;
+  t_561 = t_555 + _95;
+  c2_562 = (unsigned int) t_561;
+  _96 = t_561 >> 32;
+  hi_563 = (unsigned int) _96;
+  c3_564 = c3_559 + hi_563;
+  _97 = c3_564 < hi_563;
+  _98 = (unsigned int) _97;
+  c1_565 = c1_560 + _98;
+  _99 = a_483(D) + 16;
+  _100 = *_99;
+  _101 = (long long unsigned int) _100;
+  _102 = *a_483(D);
+  _103 = (long long unsigned int) _102;
+  t_566 = _101 * _103;
+  _104 = (long long unsigned int) c2_562;
+  tt_567 = t_566 + _104;
+  c2_568 = (unsigned int) tt_567;
+  _105 = tt_567 >> 32;
+  hi_569 = (unsigned int) _105;
+  c3_570 = c3_564 + hi_569;
+  _106 = c3_570 < hi_569;
+  _107 = (unsigned int) _106;
+  c1_571 = c1_565 + _107;
+  _108 = (long long unsigned int) c2_568;
+  t_572 = t_566 + _108;
+  c2_573 = (unsigned int) t_572;
+  _109 = t_572 >> 32;
+  hi_574 = (unsigned int) _109;
+  c3_575 = c3_570 + hi_574;
+  _110 = c3_575 < hi_574;
+  _111 = (unsigned int) _110;
+  c1_576 = c1_571 + _111;
+  _112 = r_490(D) + 16;
+  *_112 = c2_573;
+  c2_578 = 0;
+  _113 = a_483(D) + 20;
+  _114 = *_113;
+  _115 = (long long unsigned int) _114;
+  _116 = *a_483(D);
+  _117 = (long long unsigned int) _116;
+  t_579 = _115 * _117;
+  _118 = (long long unsigned int) c3_575;
+  tt_580 = t_579 + _118;
+  c3_581 = (unsigned int) tt_580;
+  _119 = tt_580 >> 32;
+  hi_582 = (unsigned int) _119;
+  c1_583 = c1_576 + hi_582;
+  _120 = c1_583 < hi_582;
+  _121 = (unsigned int) _120;
+  c2_584 = c2_578 + _121;
+  _122 = (long long unsigned int) c3_581;
+  t_585 = t_579 + _122;
+  c3_586 = (unsigned int) t_585;
+  _123 = t_585 >> 32;
+  hi_587 = (unsigned int) _123;
+  c1_588 = c1_583 + hi_587;
+  _124 = c1_588 < hi_587;
+  _125 = (unsigned int) _124;
+  c2_589 = c2_584 + _125;
+  _126 = a_483(D) + 16;
+  _127 = *_126;
+  _128 = (long long unsigned int) _127;
+  _129 = a_483(D) + 4;
+  _130 = *_129;
+  _131 = (long long unsigned int) _130;
+  t_590 = _128 * _131;
+  _132 = (long long unsigned int) c3_586;
+  tt_591 = t_590 + _132;
+  c3_592 = (unsigned int) tt_591;
+  _133 = tt_591 >> 32;
+  hi_593 = (unsigned int) _133;
+  c1_594 = c1_588 + hi_593;
+  _134 = c1_594 < hi_593;
+  _135 = (unsigned int) _134;
+  c2_595 = c2_589 + _135;
+  _136 = (long long unsigned int) c3_592;
+  t_596 = t_590 + _136;
+  c3_597 = (unsigned int) t_596;
+  _137 = t_596 >> 32;
+  hi_598 = (unsigned int) _137;
+  c1_599 = c1_594 + hi_598;
+  _138 = c1_599 < hi_598;
+  _139 = (unsigned int) _138;
+  c2_600 = c2_595 + _139;
+  _140 = a_483(D) + 12;
+  _141 = *_140;
+  _142 = (long long unsigned int) _141;
+  _143 = a_483(D) + 8;
+  _144 = *_143;
+  _145 = (long long unsigned int) _144;
+  t_601 = _142 * _145;
+  _146 = (long long unsigned int) c3_597;
+  tt_602 = t_601 + _146;
+  c3_603 = (unsigned int) tt_602;
+  _147 = tt_602 >> 32;
+  hi_604 = (unsigned int) _147;
+  c1_605 = c1_599 + hi_604;
+  _148 = c1_605 < hi_604;
+  _149 = (unsigned int) _148;
+  c2_606 = c2_600 + _149;
+  _150 = (long long unsigned int) c3_603;
+  t_607 = t_601 + _150;
+  c3_608 = (unsigned int) t_607;
+  _151 = t_607 >> 32;
+  hi_609 = (unsigned int) _151;
+  c1_610 = c1_605 + hi_609;
+  _152 = c1_610 < hi_609;
+  _153 = (unsigned int) _152;
+  c2_611 = c2_606 + _153;
+  _154 = r_490(D) + 20;
+  *_154 = c3_608;
+  c3_613 = 0;
+  _155 = a_483(D) + 12;
+  _156 = *_155;
+  _157 = (long long unsigned int) _156;
+  _158 = a_483(D) + 12;
+  _159 = *_158;
+  _160 = (long long unsigned int) _159;
+  t_614 = _157 * _160;
+  _161 = (long long unsigned int) c1_610;
+  t_615 = t_614 + _161;
+  c1_616 = (unsigned int) t_615;
+  _162 = t_615 >> 32;
+  hi_617 = (unsigned int) _162;
+  c2_618 = c2_611 + hi_617;
+  _163 = c2_618 < hi_617;
+  _164 = (unsigned int) _163;
+  c3_619 = c3_613 + _164;
+  _165 = a_483(D) + 16;
+  _166 = *_165;
+  _167 = (long long unsigned int) _166;
+  _168 = a_483(D) + 8;
+  _169 = *_168;
+  _170 = (long long unsigned int) _169;
+  t_620 = _167 * _170;
+  _171 = (long long unsigned int) c1_616;
+  tt_621 = t_620 + _171;
+  c1_622 = (unsigned int) tt_621;
+  _172 = tt_621 >> 32;
+  hi_623 = (unsigned int) _172;
+  c2_624 = c2_618 + hi_623;
+  _173 = c2_624 < hi_623;
+  _174 = (unsigned int) _173;
+  c3_625 = c3_619 + _174;
+  _175 = (long long unsigned int) c1_622;
+  t_626 = t_620 + _175;
+  c1_627 = (unsigned int) t_626;
+  _176 = t_626 >> 32;
+  hi_628 = (unsigned int) _176;
+  c2_629 = c2_624 + hi_628;
+  _177 = c2_629 < hi_628;
+  _178 = (unsigned int) _177;
+  c3_630 = c3_625 + _178;
+  _179 = a_483(D) + 20;
+  _180 = *_179;
+  _181 = (long long unsigned int) _180;
+  _182 = a_483(D) + 4;
+  _183 = *_182;
+  _184 = (long long unsigned int) _183;
+  t_631 = _181 * _184;
+  _185 = (long long unsigned int) c1_627;
+  tt_632 = t_631 + _185;
+  c1_633 = (unsigned int) tt_632;
+  _186 = tt_632 >> 32;
+  hi_634 = (unsigned int) _186;
+  c2_635 = c2_629 + hi_634;
+  _187 = c2_635 < hi_634;
+  _188 = (unsigned int) _187;
+  c3_636 = c3_630 + _188;
+  _189 = (long long unsigned int) c1_633;
+  t_637 = t_631 + _189;
+  c1_638 = (unsigned int) t_637;
+  _190 = t_637 >> 32;
+  hi_639 = (unsigned int) _190;
+  c2_640 = c2_635 + hi_639;
+  _191 = c2_640 < hi_639;
+  _192 = (unsigned int) _191;
+  c3_641 = c3_636 + _192;
+  _193 = a_483(D) + 24;
+  _194 = *_193;
+  _195 = (long long unsigned int) _194;
+  _196 = *a_483(D);
+  _197 = (long long unsigned int) _196;
+  t_642 = _195 * _197;
+  _198 = (long long unsigned int) c1_638;
+  tt_643 = t_642 + _198;
+  c1_644 = (unsigned int) tt_643;
+  _199 = tt_643 >> 32;
+  hi_645 = (unsigned int) _199;
+  c2_646 = c2_640 + hi_645;
+  _200 = c2_646 < hi_645;
+  _201 = (unsigned int) _200;
+  c3_647 = c3_641 + _201;
+  _202 = (long long unsigned int) c1_644;
+  t_648 = t_642 + _202;
+  c1_649 = (unsigned int) t_648;
+  _203 = t_648 >> 32;
+  hi_650 = (unsigned int) _203;
+  c2_651 = c2_646 + hi_650;
+  _204 = c2_651 < hi_650;
+  _205 = (unsigned int) _204;
+  c3_652 = c3_647 + _205;
+  _206 = r_490(D) + 24;
+  *_206 = c1_649;
+  c1_654 = 0;
+  _207 = a_483(D) + 28;
+  _208 = *_207;
+  _209 = (long long unsigned int) _208;
+  _210 = *a_483(D);
+  _211 = (long long unsigned int) _210;
+  t_655 = _209 * _211;
+  _212 = (long long unsigned int) c2_651;
+  tt_656 = t_655 + _212;
+  c2_657 = (unsigned int) tt_656;
+  _213 = tt_656 >> 32;
+  hi_658 = (unsigned int) _213;
+  c3_659 = c3_652 + hi_658;
+  _214 = c3_659 < hi_658;
+  _215 = (unsigned int) _214;
+  c1_660 = c1_654 + _215;
+  _216 = (long long unsigned int) c2_657;
+  t_661 = t_655 + _216;
+  c2_662 = (unsigned int) t_661;
+  _217 = t_661 >> 32;
+  hi_663 = (unsigned int) _217;
+  c3_664 = c3_659 + hi_663;
+  _218 = c3_664 < hi_663;
+  _219 = (unsigned int) _218;
+  c1_665 = c1_660 + _219;
+  _220 = a_483(D) + 24;
+  _221 = *_220;
+  _222 = (long long unsigned int) _221;
+  _223 = a_483(D) + 4;
+  _224 = *_223;
+  _225 = (long long unsigned int) _224;
+  t_666 = _222 * _225;
+  _226 = (long long unsigned int) c2_662;
+  tt_667 = t_666 + _226;
+  c2_668 = (unsigned int) tt_667;
+  _227 = tt_667 >> 32;
+  hi_669 = (unsigned int) _227;
+  c3_670 = c3_664 + hi_669;
+  _228 = c3_670 < hi_669;
+  _229 = (unsigned int) _228;
+  c1_671 = c1_665 + _229;
+  _230 = (long long unsigned int) c2_668;
+  t_672 = t_666 + _230;
+  c2_673 = (unsigned int) t_672;
+  _231 = t_672 >> 32;
+  hi_674 = (unsigned int) _231;
+  c3_675 = c3_670 + hi_674;
+  _232 = c3_675 < hi_674;
+  _233 = (unsigned int) _232;
+  c1_676 = c1_671 + _233;
+  _234 = a_483(D) + 20;
+  _235 = *_234;
+  _236 = (long long unsigned int) _235;
+  _237 = a_483(D) + 8;
+  _238 = *_237;
+  _239 = (long long unsigned int) _238;
+  t_677 = _236 * _239;
+  _240 = (long long unsigned int) c2_673;
+  tt_678 = t_677 + _240;
+  c2_679 = (unsigned int) tt_678;
+  _241 = tt_678 >> 32;
+  hi_680 = (unsigned int) _241;
+  c3_681 = c3_675 + hi_680;
+  _242 = c3_681 < hi_680;
+  _243 = (unsigned int) _242;
+  c1_682 = c1_676 + _243;
+  _244 = (long long unsigned int) c2_679;
+  t_683 = t_677 + _244;
+  c2_684 = (unsigned int) t_683;
+  _245 = t_683 >> 32;
+  hi_685 = (unsigned int) _245;
+  c3_686 = c3_681 + hi_685;
+  _246 = c3_686 < hi_685;
+  _247 = (unsigned int) _246;
+  c1_687 = c1_682 + _247;
+  _248 = a_483(D) + 16;
+  _249 = *_248;
+  _250 = (long long unsigned int) _249;
+  _251 = a_483(D) + 12;
+  _252 = *_251;
+  _253 = (long long unsigned int) _252;
+  t_688 = _250 * _253;
+  _254 = (long long unsigned int) c2_684;
+  tt_689 = t_688 + _254;
+  c2_690 = (unsigned int) tt_689;
+  _255 = tt_689 >> 32;
+  hi_691 = (unsigned int) _255;
+  c3_692 = c3_686 + hi_691;
+  _256 = c3_692 < hi_691;
+  _257 = (unsigned int) _256;
+  c1_693 = c1_687 + _257;
+  _258 = (long long unsigned int) c2_690;
+  t_694 = t_688 + _258;
+  c2_695 = (unsigned int) t_694;
+  _259 = t_694 >> 32;
+  hi_696 = (unsigned int) _259;
+  c3_697 = c3_692 + hi_696;
+  _260 = c3_697 < hi_696;
+  _261 = (unsigned int) _260;
+  c1_698 = c1_693 + _261;
+  _262 = r_490(D) + 28;
+  *_262 = c2_695;
+  c2_700 = 0;
+  _263 = a_483(D) + 16;
+  _264 = *_263;
+  _265 = (long long unsigned int) _264;
+  _266 = a_483(D) + 16;
+  _267 = *_266;
+  _268 = (long long unsigned int) _267;
+  t_701 = _265 * _268;
+  _269 = (long long unsigned int) c3_697;
+  t_702 = t_701 + _269;
+  c3_703 = (unsigned int) t_702;
+  _270 = t_702 >> 32;
+  hi_704 = (unsigned int) _270;
+  c1_705 = c1_698 + hi_704;
+  _271 = c1_705 < hi_704;
+  _272 = (unsigned int) _271;
+  c2_706 = c2_700 + _272;
+  _273 = a_483(D) + 20;
+  _274 = *_273;
+  _275 = (long long unsigned int) _274;
+  _276 = a_483(D) + 12;
+  _277 = *_276;
+  _278 = (long long unsigned int) _277;
+  t_707 = _275 * _278;
+  _279 = (long long unsigned int) c3_703;
+  tt_708 = t_707 + _279;
+  c3_709 = (unsigned int) tt_708;
+  _280 = tt_708 >> 32;
+  hi_710 = (unsigned int) _280;
+  c1_711 = c1_705 + hi_710;
+  _281 = c1_711 < hi_710;
+  _282 = (unsigned int) _281;
+  c2_712 = c2_706 + _282;
+  _283 = (long long unsigned int) c3_709;
+  t_713 = t_707 + _283;
+  c3_714 = (unsigned int) t_713;
+  _284 = t_713 >> 32;
+  hi_715 = (unsigned int) _284;
+  c1_716 = c1_711 + hi_715;
+  _285 = c1_716 < hi_715;
+  _286 = (unsigned int) _285;
+  c2_717 = c2_712 + _286;
+  _287 = a_483(D) + 24;
+  _288 = *_287;
+  _289 = (long long unsigned int) _288;
+  _290 = a_483(D) + 8;
+  _291 = *_290;
+  _292 = (long long unsigned int) _291;
+  t_718 = _289 * _292;
+  _293 = (long long unsigned int) c3_714;
+  tt_719 = t_718 + _293;
+  c3_720 = (unsigned int) tt_719;
+  _294 = tt_719 >> 32;
+  hi_721 = (unsigned int) _294;
+  c1_722 = c1_716 + hi_721;
+  _295 = c1_722 < hi_721;
+  _296 = (unsigned int) _295;
+  c2_723 = c2_717 + _296;
+  _297 = (long long unsigned int) c3_720;
+  t_724 = t_718 + _297;
+  c3_725 = (unsigned int) t_724;
+  _298 = t_724 >> 32;
+  hi_726 = (unsigned int) _298;
+  c1_727 = c1_722 + hi_726;
+  _299 = c1_727 < hi_726;
+  _300 = (unsigned int) _299;
+  c2_728 = c2_723 + _300;
+  _301 = a_483(D) + 28;
+  _302 = *_301;
+  _303 = (long long unsigned int) _302;
+  _304 = a_483(D) + 4;
+  _305 = *_304;
+  _306 = (long long unsigned int) _305;
+  t_729 = _303 * _306;
+  _307 = (long long unsigned int) c3_725;
+  tt_730 = t_729 + _307;
+  c3_731 = (unsigned int) tt_730;
+  _308 = tt_730 >> 32;
+  hi_732 = (unsigned int) _308;
+  c1_733 = c1_727 + hi_732;
+  _309 = c1_733 < hi_732;
+  _310 = (unsigned int) _309;
+  c2_734 = c2_728 + _310;
+  _311 = (long long unsigned int) c3_731;
+  t_735 = t_729 + _311;
+  c3_736 = (unsigned int) t_735;
+  _312 = t_735 >> 32;
+  hi_737 = (unsigned int) _312;
+  c1_738 = c1_733 + hi_737;
+  _313 = c1_738 < hi_737;
+  _314 = (unsigned int) _313;
+  c2_739 = c2_734 + _314;
+  _315 = r_490(D) + 32;
+  *_315 = c3_736;
+  c3_741 = 0;
+  _316 = a_483(D) + 28;
+  _317 = *_316;
+  _318 = (long long unsigned int) _317;
+  _319 = a_483(D) + 8;
+  _320 = *_319;
+  _321 = (long long unsigned int) _320;
+  t_742 = _318 * _321;
+  _322 = (long long unsigned int) c1_738;
+  tt_743 = t_742 + _322;
+  c1_744 = (unsigned int) tt_743;
+  _323 = tt_743 >> 32;
+  hi_745 = (unsigned int) _323;
+  c2_746 = c2_739 + hi_745;
+  _324 = c2_746 < hi_745;
+  _325 = (unsigned int) _324;
+  c3_747 = c3_741 + _325;
+  _326 = (long long unsigned int) c1_744;
+  t_748 = t_742 + _326;
+  c1_749 = (unsigned int) t_748;
+  _327 = t_748 >> 32;
+  hi_750 = (unsigned int) _327;
+  c2_751 = c2_746 + hi_750;
+  _328 = c2_751 < hi_750;
+  _329 = (unsigned int) _328;
+  c3_752 = c3_747 + _329;
+  _330 = a_483(D) + 24;
+  _331 = *_330;
+  _332 = (long long unsigned int) _331;
+  _333 = a_483(D) + 12;
+  _334 = *_333;
+  _335 = (long long unsigned int) _334;
+  t_753 = _332 * _335;
+  _336 = (long long unsigned int) c1_749;
+  tt_754 = t_753 + _336;
+  c1_755 = (unsigned int) tt_754;
+  _337 = tt_754 >> 32;
+  hi_756 = (unsigned int) _337;
+  c2_757 = c2_751 + hi_756;
+  _338 = c2_757 < hi_756;
+  _339 = (unsigned int) _338;
+  c3_758 = c3_752 + _339;
+  _340 = (long long unsigned int) c1_755;
+  t_759 = t_753 + _340;
+  c1_760 = (unsigned int) t_759;
+  _341 = t_759 >> 32;
+  hi_761 = (unsigned int) _341;
+  c2_762 = c2_757 + hi_761;
+  _342 = c2_762 < hi_761;
+  _343 = (unsigned int) _342;
+  c3_763 = c3_758 + _343;
+  _344 = a_483(D) + 20;
+  _345 = *_344;
+  _346 = (long long unsigned int) _345;
+  _347 = a_483(D) + 16;
+  _348 = *_347;
+  _349 = (long long unsigned int) _348;
+  t_764 = _346 * _349;
+  _350 = (long long unsigned int) c1_760;
+  tt_765 = t_764 + _350;
+  c1_766 = (unsigned int) tt_765;
+  _351 = tt_765 >> 32;
+  hi_767 = (unsigned int) _351;
+  c2_768 = c2_762 + hi_767;
+  _352 = c2_768 < hi_767;
+  _353 = (unsigned int) _352;
+  c3_769 = c3_763 + _353;
+  _354 = (long long unsigned int) c1_766;
+  t_770 = t_764 + _354;
+  c1_771 = (unsigned int) t_770;
+  _355 = t_770 >> 32;
+  hi_772 = (unsigned int) _355;
+  c2_773 = c2_768 + hi_772;
+  _356 = c2_773 < hi_772;
+  _357 = (unsigned int) _356;
+  c3_774 = c3_769 + _357;
+  _358 = r_490(D) + 36;
+  *_358 = c1_771;
+  c1_776 = 0;
+  _359 = a_483(D) + 20;
+  _360 = *_359;
+  _361 = (long long unsigned int) _360;
+  _362 = a_483(D) + 20;
+  _363 = *_362;
+  _364 = (long long unsigned int) _363;
+  t_777 = _361 * _364;
+  _365 = (long long unsigned int) c2_773;
+  t_778 = t_777 + _365;
+  c2_779 = (unsigned int) t_778;
+  _366 = t_778 >> 32;
+  hi_780 = (unsigned int) _366;
+  c3_781 = c3_774 + hi_780;
+  _367 = c3_781 < hi_780;
+  _368 = (unsigned int) _367;
+  c1_782 = c1_776 + _368;
+  _369 = a_483(D) + 24;
+  _370 = *_369;
+  _371 = (long long unsigned int) _370;
+  _372 = a_483(D) + 16;
+  _373 = *_372;
+  _374 = (long long unsigned int) _373;
+  t_783 = _371 * _374;
+  _375 = (long long unsigned int) c2_779;
+  tt_784 = t_783 + _375;
+  c2_785 = (unsigned int) tt_784;
+  _376 = tt_784 >> 32;
+  hi_786 = (unsigned int) _376;
+  c3_787 = c3_781 + hi_786;
+  _377 = c3_787 < hi_786;
+  _378 = (unsigned int) _377;
+  c1_788 = c1_782 + _378;
+  _379 = (long long unsigned int) c2_785;
+  t_789 = t_783 + _379;
+  c2_790 = (unsigned int) t_789;
+  _380 = t_789 >> 32;
+  hi_791 = (unsigned int) _380;
+  c3_792 = c3_787 + hi_791;
+  _381 = c3_792 < hi_791;
+  _382 = (unsigned int) _381;
+  c1_793 = c1_788 + _382;
+  _383 = a_483(D) + 28;
+  _384 = *_383;
+  _385 = (long long unsigned int) _384;
+  _386 = a_483(D) + 12;
+  _387 = *_386;
+  _388 = (long long unsigned int) _387;
+  t_794 = _385 * _388;
+  _389 = (long long unsigned int) c2_790;
+  tt_795 = t_794 + _389;
+  c2_796 = (unsigned int) tt_795;
+  _390 = tt_795 >> 32;
+  hi_797 = (unsigned int) _390;
+  c3_798 = c3_792 + hi_797;
+  _391 = c3_798 < hi_797;
+  _392 = (unsigned int) _391;
+  c1_799 = c1_793 + _392;
+  _393 = (long long unsigned int) c2_796;
+  t_800 = t_794 + _393;
+  c2_801 = (unsigned int) t_800;
+  _394 = t_800 >> 32;
+  hi_802 = (unsigned int) _394;
+  c3_803 = c3_798 + hi_802;
+  _395 = c3_803 < hi_802;
+  _396 = (unsigned int) _395;
+  c1_804 = c1_799 + _396;
+  _397 = r_490(D) + 40;
+  *_397 = c2_801;
+  c2_806 = 0;
+  _398 = a_483(D) + 28;
+  _399 = *_398;
+  _400 = (long long unsigned int) _399;
+  _401 = a_483(D) + 16;
+  _402 = *_401;
+  _403 = (long long unsigned int) _402;
+  t_807 = _400 * _403;
+  _404 = (long long unsigned int) c3_803;
+  tt_808 = t_807 + _404;
+  c3_809 = (unsigned int) tt_808;
+  _405 = tt_808 >> 32;
+  hi_810 = (unsigned int) _405;
+  c1_811 = c1_804 + hi_810;
+  _406 = c1_811 < hi_810;
+  _407 = (unsigned int) _406;
+  c2_812 = c2_806 + _407;
+  _408 = (long long unsigned int) c3_809;
+  t_813 = t_807 + _408;
+  c3_814 = (unsigned int) t_813;
+  _409 = t_813 >> 32;
+  hi_815 = (unsigned int) _409;
+  c1_816 = c1_811 + hi_815;
+  _410 = c1_816 < hi_815;
+  _411 = (unsigned int) _410;
+  c2_817 = c2_812 + _411;
+  _412 = a_483(D) + 24;
+  _413 = *_412;
+  _414 = (long long unsigned int) _413;
+  _415 = a_483(D) + 20;
+  _416 = *_415;
+  _417 = (long long unsigned int) _416;
+  t_818 = _414 * _417;
+  _418 = (long long unsigned int) c3_814;
+  tt_819 = t_818 + _418;
+  c3_820 = (unsigned int) tt_819;
+  _419 = tt_819 >> 32;
+  hi_821 = (unsigned int) _419;
+  c1_822 = c1_816 + hi_821;
+  _420 = c1_822 < hi_821;
+  _421 = (unsigned int) _420;
+  c2_823 = c2_817 + _421;
+  _422 = (long long unsigned int) c3_820;
+  t_824 = t_818 + _422;
+  c3_825 = (unsigned int) t_824;
+  _423 = t_824 >> 32;
+  hi_826 = (unsigned int) _423;
+  c1_827 = c1_822 + hi_826;
+  _424 = c1_827 < hi_826;
+  _425 = (unsigned int) _424;
+  c2_828 = c2_823 + _425;
+  _426 = r_490(D) + 44;
+  *_426 = c3_825;
+  c3_830 = 0;
+  _427 = a_483(D) + 24;
+  _428 = *_427;
+  _429 = (long long unsigned int) _428;
+  _430 = a_483(D) + 24;
+  _431 = *_430;
+  _432 = (long long unsigned int) _431;
+  t_831 = _429 * _432;
+  _433 = (long long unsigned int) c1_827;
+  t_832 = t_831 + _433;
+  c1_833 = (unsigned int) t_832;
+  _434 = t_832 >> 32;
+  hi_834 = (unsigned int) _434;
+  c2_835 = c2_828 + hi_834;
+  _435 = c2_835 < hi_834;
+  _436 = (unsigned int) _435;
+  c3_836 = c3_830 + _436;
+  _437 = a_483(D) + 28;
+  _438 = *_437;
+  _439 = (long long unsigned int) _438;
+  _440 = a_483(D) + 20;
+  _441 = *_440;
+  _442 = (long long unsigned int) _441;
+  t_837 = _439 * _442;
+  _443 = (long long unsigned int) c1_833;
+  tt_838 = t_837 + _443;
+  c1_839 = (unsigned int) tt_838;
+  _444 = tt_838 >> 32;
+  hi_840 = (unsigned int) _444;
+  c2_841 = c2_835 + hi_840;
+  _445 = c2_841 < hi_840;
+  _446 = (unsigned int) _445;
+  c3_842 = c3_836 + _446;
+  _447 = (long long unsigned int) c1_839;
+  t_843 = t_837 + _447;
+  c1_844 = (unsigned int) t_843;
+  _448 = t_843 >> 32;
+  hi_845 = (unsigned int) _448;
+  c2_846 = c2_841 + hi_845;
+  _449 = c2_846 < hi_845;
+  _450 = (unsigned int) _449;
+  c3_847 = c3_842 + _450;
+  _451 = r_490(D) + 48;
+  *_451 = c1_844;
+  c1_849 = 0;
+  _452 = a_483(D) + 28;
+  _453 = *_452;
+  _454 = (long long unsigned int) _453;
+  _455 = a_483(D) + 24;
+  _456 = *_455;
+  _457 = (long long unsigned int) _456;
+  t_850 = _454 * _457;
+  _458 = (long long unsigned int) c2_846;
+  tt_851 = t_850 + _458;
+  c2_852 = (unsigned int) tt_851;
+  _459 = tt_851 >> 32;
+  hi_853 = (unsigned int) _459;
+  c3_854 = c3_847 + hi_853;
+  _460 = c3_854 < hi_853;
+  _461 = (unsigned int) _460;
+  c1_855 = c1_849 + _461;
+  _462 = (long long unsigned int) c2_852;
+  t_856 = t_850 + _462;
+  c2_857 = (unsigned int) t_856;
+  _463 = t_856 >> 32;
+  hi_858 = (unsigned int) _463;
+  c3_859 = c3_854 + hi_858;
+  _464 = c3_859 < hi_858;
+  _465 = (unsigned int) _464;
+  c1_860 = c1_855 + _465;
+  _466 = r_490(D) + 52;
+  *_466 = c2_857;
+  c2_862 = 0;
+  _467 = a_483(D) + 28;
+  _468 = *_467;
+  _469 = (long long unsigned int) _468;
+  _470 = a_483(D) + 28;
+  _471 = *_470;
+  _472 = (long long unsigned int) _471;
+  t_863 = _469 * _472;
+  _473 = (long long unsigned int) c3_859;
+  t_864 = t_863 + _473;
+  c3_865 = (unsigned int) t_864;
+  _474 = t_864 >> 32;
+  hi_866 = (unsigned int) _474;
+  c1_867 = c1_860 + hi_866;
+  _475 = c1_867 < hi_866;
+  _476 = (unsigned int) _475;
+  c2_868 = c2_862 + _476;
+  _477 = r_490(D) + 56;
+  *_477 = c3_865;
+  _478 = r_490(D) + 60;
+  *_478 = c1_867;
+  return;
+
+}
+
+
+
+;; Function bn_sqr_comba4 (bn_sqr_comba4, funcdef_no=179, decl_uid=11528, cgraph_uid=180, symbol_order=179)
+
+void bn_sqr_comba4 (unsigned int * r, const unsigned int * a)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  _Bool _7;
+  unsigned int _8;
+  const unsigned int * _9;
+  unsigned int _10;
+  long long unsigned int _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  _Bool _16;
+  unsigned int _17;
+  long long unsigned int _18;
+  long long unsigned int _19;
+  _Bool _20;
+  unsigned int _21;
+  unsigned int * _22;
+  const unsigned int * _23;
+  unsigned int _24;
+  long long unsigned int _25;
+  const unsigned int * _26;
+  unsigned int _27;
+  long long unsigned int _28;
+  long long unsigned int _29;
+  long long unsigned int _30;
+  _Bool _31;
+  unsigned int _32;
+  const unsigned int * _33;
+  unsigned int _34;
+  long long unsigned int _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  long long unsigned int _38;
+  long long unsigned int _39;
+  _Bool _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  long long unsigned int _43;
+  _Bool _44;
+  unsigned int _45;
+  unsigned int * _46;
+  const unsigned int * _47;
+  unsigned int _48;
+  long long unsigned int _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  long long unsigned int _52;
+  long long unsigned int _53;
+  _Bool _54;
+  unsigned int _55;
+  long long unsigned int _56;
+  long long unsigned int _57;
+  _Bool _58;
+  unsigned int _59;
+  const unsigned int * _60;
+  unsigned int _61;
+  long long unsigned int _62;
+  const unsigned int * _63;
+  unsigned int _64;
+  long long unsigned int _65;
+  long long unsigned int _66;
+  long long unsigned int _67;
+  _Bool _68;
+  unsigned int _69;
+  long long unsigned int _70;
+  long long unsigned int _71;
+  _Bool _72;
+  unsigned int _73;
+  unsigned int * _74;
+  const unsigned int * _75;
+  unsigned int _76;
+  long long unsigned int _77;
+  const unsigned int * _78;
+  unsigned int _79;
+  long long unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  _Bool _83;
+  unsigned int _84;
+  const unsigned int * _85;
+  unsigned int _86;
+  long long unsigned int _87;
+  const unsigned int * _88;
+  unsigned int _89;
+  long long unsigned int _90;
+  long long unsigned int _91;
+  long long unsigned int _92;
+  _Bool _93;
+  unsigned int _94;
+  long long unsigned int _95;
+  long long unsigned int _96;
+  _Bool _97;
+  unsigned int _98;
+  unsigned int * _99;
+  const unsigned int * _100;
+  unsigned int _101;
+  long long unsigned int _102;
+  const unsigned int * _103;
+  unsigned int _104;
+  long long unsigned int _105;
+  long long unsigned int _106;
+  long long unsigned int _107;
+  _Bool _108;
+  unsigned int _109;
+  long long unsigned int _110;
+  long long unsigned int _111;
+  _Bool _112;
+  unsigned int _113;
+  unsigned int * _114;
+  const unsigned int * _115;
+  unsigned int _116;
+  long long unsigned int _117;
+  const unsigned int * _118;
+  unsigned int _119;
+  long long unsigned int _120;
+  long long unsigned int _121;
+  long long unsigned int _122;
+  _Bool _123;
+  unsigned int _124;
+  unsigned int * _125;
+  unsigned int * _126;
+
+  <bb 2> :
+  c1_127 = 0;
+  c2_128 = 0;
+  c3_129 = 0;
+  _1 = *a_131(D);
+  _2 = (long long unsigned int) _1;
+  _3 = *a_131(D);
+  _4 = (long long unsigned int) _3;
+  t_132 = _2 * _4;
+  _5 = (long long unsigned int) c1_127;
+  t_133 = t_132 + _5;
+  c1_134 = (unsigned int) t_133;
+  _6 = t_133 >> 32;
+  hi_135 = (unsigned int) _6;
+  c2_136 = c2_128 + hi_135;
+  _7 = c2_136 < hi_135;
+  _8 = (unsigned int) _7;
+  c3_137 = c3_129 + _8;
+  *r_138(D) = c1_134;
+  c1_140 = 0;
+  _9 = a_131(D) + 4;
+  _10 = *_9;
+  _11 = (long long unsigned int) _10;
+  _12 = *a_131(D);
+  _13 = (long long unsigned int) _12;
+  t_141 = _11 * _13;
+  _14 = (long long unsigned int) c2_136;
+  tt_142 = t_141 + _14;
+  c2_143 = (unsigned int) tt_142;
+  _15 = tt_142 >> 32;
+  hi_144 = (unsigned int) _15;
+  c3_145 = c3_137 + hi_144;
+  _16 = c3_145 < hi_144;
+  _17 = (unsigned int) _16;
+  c1_146 = c1_140 + _17;
+  _18 = (long long unsigned int) c2_143;
+  t_147 = t_141 + _18;
+  c2_148 = (unsigned int) t_147;
+  _19 = t_147 >> 32;
+  hi_149 = (unsigned int) _19;
+  c3_150 = c3_145 + hi_149;
+  _20 = c3_150 < hi_149;
+  _21 = (unsigned int) _20;
+  c1_151 = c1_146 + _21;
+  _22 = r_138(D) + 4;
+  *_22 = c2_148;
+  c2_153 = 0;
+  _23 = a_131(D) + 4;
+  _24 = *_23;
+  _25 = (long long unsigned int) _24;
+  _26 = a_131(D) + 4;
+  _27 = *_26;
+  _28 = (long long unsigned int) _27;
+  t_154 = _25 * _28;
+  _29 = (long long unsigned int) c3_150;
+  t_155 = t_154 + _29;
+  c3_156 = (unsigned int) t_155;
+  _30 = t_155 >> 32;
+  hi_157 = (unsigned int) _30;
+  c1_158 = c1_151 + hi_157;
+  _31 = c1_158 < hi_157;
+  _32 = (unsigned int) _31;
+  c2_159 = c2_153 + _32;
+  _33 = a_131(D) + 8;
+  _34 = *_33;
+  _35 = (long long unsigned int) _34;
+  _36 = *a_131(D);
+  _37 = (long long unsigned int) _36;
+  t_160 = _35 * _37;
+  _38 = (long long unsigned int) c3_156;
+  tt_161 = t_160 + _38;
+  c3_162 = (unsigned int) tt_161;
+  _39 = tt_161 >> 32;
+  hi_163 = (unsigned int) _39;
+  c1_164 = c1_158 + hi_163;
+  _40 = c1_164 < hi_163;
+  _41 = (unsigned int) _40;
+  c2_165 = c2_159 + _41;
+  _42 = (long long unsigned int) c3_162;
+  t_166 = t_160 + _42;
+  c3_167 = (unsigned int) t_166;
+  _43 = t_166 >> 32;
+  hi_168 = (unsigned int) _43;
+  c1_169 = c1_164 + hi_168;
+  _44 = c1_169 < hi_168;
+  _45 = (unsigned int) _44;
+  c2_170 = c2_165 + _45;
+  _46 = r_138(D) + 8;
+  *_46 = c3_167;
+  c3_172 = 0;
+  _47 = a_131(D) + 12;
+  _48 = *_47;
+  _49 = (long long unsigned int) _48;
+  _50 = *a_131(D);
+  _51 = (long long unsigned int) _50;
+  t_173 = _49 * _51;
+  _52 = (long long unsigned int) c1_169;
+  tt_174 = t_173 + _52;
+  c1_175 = (unsigned int) tt_174;
+  _53 = tt_174 >> 32;
+  hi_176 = (unsigned int) _53;
+  c2_177 = c2_170 + hi_176;
+  _54 = c2_177 < hi_176;
+  _55 = (unsigned int) _54;
+  c3_178 = c3_172 + _55;
+  _56 = (long long unsigned int) c1_175;
+  t_179 = t_173 + _56;
+  c1_180 = (unsigned int) t_179;
+  _57 = t_179 >> 32;
+  hi_181 = (unsigned int) _57;
+  c2_182 = c2_177 + hi_181;
+  _58 = c2_182 < hi_181;
+  _59 = (unsigned int) _58;
+  c3_183 = c3_178 + _59;
+  _60 = a_131(D) + 8;
+  _61 = *_60;
+  _62 = (long long unsigned int) _61;
+  _63 = a_131(D) + 4;
+  _64 = *_63;
+  _65 = (long long unsigned int) _64;
+  t_184 = _62 * _65;
+  _66 = (long long unsigned int) c1_180;
+  tt_185 = t_184 + _66;
+  c1_186 = (unsigned int) tt_185;
+  _67 = tt_185 >> 32;
+  hi_187 = (unsigned int) _67;
+  c2_188 = c2_182 + hi_187;
+  _68 = c2_188 < hi_187;
+  _69 = (unsigned int) _68;
+  c3_189 = c3_183 + _69;
+  _70 = (long long unsigned int) c1_186;
+  t_190 = t_184 + _70;
+  c1_191 = (unsigned int) t_190;
+  _71 = t_190 >> 32;
+  hi_192 = (unsigned int) _71;
+  c2_193 = c2_188 + hi_192;
+  _72 = c2_193 < hi_192;
+  _73 = (unsigned int) _72;
+  c3_194 = c3_189 + _73;
+  _74 = r_138(D) + 12;
+  *_74 = c1_191;
+  c1_196 = 0;
+  _75 = a_131(D) + 8;
+  _76 = *_75;
+  _77 = (long long unsigned int) _76;
+  _78 = a_131(D) + 8;
+  _79 = *_78;
+  _80 = (long long unsigned int) _79;
+  t_197 = _77 * _80;
+  _81 = (long long unsigned int) c2_193;
+  t_198 = t_197 + _81;
+  c2_199 = (unsigned int) t_198;
+  _82 = t_198 >> 32;
+  hi_200 = (unsigned int) _82;
+  c3_201 = c3_194 + hi_200;
+  _83 = c3_201 < hi_200;
+  _84 = (unsigned int) _83;
+  c1_202 = c1_196 + _84;
+  _85 = a_131(D) + 12;
+  _86 = *_85;
+  _87 = (long long unsigned int) _86;
+  _88 = a_131(D) + 4;
+  _89 = *_88;
+  _90 = (long long unsigned int) _89;
+  t_203 = _87 * _90;
+  _91 = (long long unsigned int) c2_199;
+  tt_204 = t_203 + _91;
+  c2_205 = (unsigned int) tt_204;
+  _92 = tt_204 >> 32;
+  hi_206 = (unsigned int) _92;
+  c3_207 = c3_201 + hi_206;
+  _93 = c3_207 < hi_206;
+  _94 = (unsigned int) _93;
+  c1_208 = c1_202 + _94;
+  _95 = (long long unsigned int) c2_205;
+  t_209 = t_203 + _95;
+  c2_210 = (unsigned int) t_209;
+  _96 = t_209 >> 32;
+  hi_211 = (unsigned int) _96;
+  c3_212 = c3_207 + hi_211;
+  _97 = c3_212 < hi_211;
+  _98 = (unsigned int) _97;
+  c1_213 = c1_208 + _98;
+  _99 = r_138(D) + 16;
+  *_99 = c2_210;
+  c2_215 = 0;
+  _100 = a_131(D) + 12;
+  _101 = *_100;
+  _102 = (long long unsigned int) _101;
+  _103 = a_131(D) + 8;
+  _104 = *_103;
+  _105 = (long long unsigned int) _104;
+  t_216 = _102 * _105;
+  _106 = (long long unsigned int) c3_212;
+  tt_217 = t_216 + _106;
+  c3_218 = (unsigned int) tt_217;
+  _107 = tt_217 >> 32;
+  hi_219 = (unsigned int) _107;
+  c1_220 = c1_213 + hi_219;
+  _108 = c1_220 < hi_219;
+  _109 = (unsigned int) _108;
+  c2_221 = c2_215 + _109;
+  _110 = (long long unsigned int) c3_218;
+  t_222 = t_216 + _110;
+  c3_223 = (unsigned int) t_222;
+  _111 = t_222 >> 32;
+  hi_224 = (unsigned int) _111;
+  c1_225 = c1_220 + hi_224;
+  _112 = c1_225 < hi_224;
+  _113 = (unsigned int) _112;
+  c2_226 = c2_221 + _113;
+  _114 = r_138(D) + 20;
+  *_114 = c3_223;
+  c3_228 = 0;
+  _115 = a_131(D) + 12;
+  _116 = *_115;
+  _117 = (long long unsigned int) _116;
+  _118 = a_131(D) + 12;
+  _119 = *_118;
+  _120 = (long long unsigned int) _119;
+  t_229 = _117 * _120;
+  _121 = (long long unsigned int) c1_225;
+  t_230 = t_229 + _121;
+  c1_231 = (unsigned int) t_230;
+  _122 = t_230 >> 32;
+  hi_232 = (unsigned int) _122;
+  c2_233 = c2_226 + hi_232;
+  _123 = c2_233 < hi_232;
+  _124 = (unsigned int) _123;
+  c3_234 = c3_228 + _124;
+  _125 = r_138(D) + 24;
+  *_125 = c1_231;
+  _126 = r_138(D) + 28;
+  *_126 = c2_233;
+  return;
+
+}
+
+
+
+;; Function bn_mul_mont (bn_mul_mont, funcdef_no=180, decl_uid=11582, cgraph_uid=181, symbol_order=180)
+
+int bn_mul_mont (unsigned int * rp, const unsigned int * ap, const unsigned int * bp, const unsigned int * np, const unsigned int * n0p, int num)
+{
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  int j;
+  int i;
+  volatile unsigned int * vp;
+  unsigned int n0;
+  unsigned int * tp;
+  unsigned int ml;
+  unsigned int c1;
+  unsigned int c0;
+  int D.12387;
+  unsigned int iftmp.10;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const unsigned int * _7;
+  unsigned int _8;
+  long long unsigned int _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  unsigned int * _14;
+  unsigned int _15;
+  long long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  unsigned int * _19;
+  sizetype _20;
+  sizetype _21;
+  sizetype _22;
+  unsigned int * _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  const unsigned int * _26;
+  long long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  const unsigned int * _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  unsigned int * _36;
+  unsigned int _37;
+  long long unsigned int _38;
+  long long unsigned int _39;
+  long long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  unsigned int * _43;
+  unsigned int _44;
+  long long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  unsigned int * _48;
+  unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  unsigned int * _52;
+  _Bool _53;
+  sizetype _54;
+  sizetype _55;
+  sizetype _56;
+  unsigned int * _57;
+  unsigned int _58;
+  unsigned int _59;
+  long long unsigned int _60;
+  long long unsigned int _61;
+  long long unsigned int _62;
+  long long unsigned int _63;
+  long long unsigned int _64;
+  long long unsigned int _65;
+  long long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  unsigned int * _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  const unsigned int * _72;
+  unsigned int _73;
+  long long unsigned int _74;
+  long long unsigned int _75;
+  long long unsigned int _76;
+  long long unsigned int _77;
+  long long unsigned int _78;
+  long long unsigned int _79;
+  long long unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  sizetype _83;
+  unsigned int * _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  unsigned int * _87;
+  unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  sizetype _91;
+  unsigned int * _92;
+  sizetype _93;
+  sizetype _94;
+  sizetype _95;
+  unsigned int * _96;
+  unsigned int _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  unsigned int * _100;
+  unsigned int _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  unsigned int * _104;
+  unsigned int _105;
+  long unsigned int _106;
+  long unsigned int _107;
+  sizetype _108;
+  unsigned int * _109;
+  unsigned int _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  sizetype _113;
+  const unsigned int * _114;
+  unsigned int _115;
+  long unsigned int _116;
+  long unsigned int _117;
+  unsigned int * _118;
+  unsigned int _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  volatile unsigned int * _122;
+  int _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  unsigned int * _126;
+  long unsigned int _127;
+  long unsigned int _128;
+  unsigned int * _129;
+  unsigned int _130;
+  long unsigned int _131;
+  long unsigned int _132;
+  volatile unsigned int * _133;
+  long unsigned int _134;
+  long unsigned int _135;
+  volatile unsigned int * _136;
+  sizetype _137;
+  sizetype _138;
+  sizetype _139;
+  volatile unsigned int * _140;
+  unsigned int iftmp.10_150;
+  int _151;
+  unsigned int iftmp.10_184;
+  unsigned int iftmp.10_185;
+  int _192;
+  int _198;
+
+  <bb 2> :
+  i_160 = 0;
+  _1 = num_161(D) + 2;
+  _2 = (long unsigned int) _1;
+  _3 = _2 * 4;
+  tp_164 = __builtin_alloca (_3);
+  vp_165 = tp_164;
+  n0_167 = *n0p_166(D);
+  c0_168 = 0;
+  ml_170 = *bp_169(D);
+  j_171 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _4 = (long long unsigned int) ml_170;
+  _5 = (long unsigned int) j_147;
+  _6 = _5 * 4;
+  _7 = ap_208(D) + _6;
+  _8 = *_7;
+  _9 = (long long unsigned int) _8;
+  _10 = _4 * _9;
+  _11 = (long long unsigned int) c0_141;
+  t_219 = _10 + _11;
+  _12 = (long unsigned int) j_147;
+  _13 = _12 * 4;
+  _14 = tp_164 + _13;
+  _15 = (unsigned int) t_219;
+  *_14 = _15;
+  _16 = t_219 >> 32;
+  c0_221 = (unsigned int) _16;
+  j_222 = j_147 + 1;
+
+  <bb 4> :
+  # c0_141 = PHI <c0_168(2), c0_221(3)>
+  # j_147 = PHI <j_171(2), j_222(3)>
+  if (j_147 < num_161(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _17 = (long unsigned int) num_161(D);
+  _18 = _17 * 4;
+  _19 = tp_164 + _18;
+  *_19 = c0_141;
+  _20 = (sizetype) num_161(D);
+  _21 = _20 + 1;
+  _22 = _21 * 4;
+  _23 = tp_164 + _22;
+  *_23 = 0;
+  // predicted unlikely by goto predictor.
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  c0_202 = 0;
+  _24 = (long unsigned int) i_187;
+  _25 = _24 * 4;
+  _26 = bp_169(D) + _25;
+  ml_203 = *_26;
+  j_204 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _27 = (long long unsigned int) ml_203;
+  _28 = (long unsigned int) j_148;
+  _29 = _28 * 4;
+  _30 = ap_208(D) + _29;
+  _31 = *_30;
+  _32 = (long long unsigned int) _31;
+  _33 = _27 * _32;
+  _34 = (long unsigned int) j_148;
+  _35 = _34 * 4;
+  _36 = tp_164 + _35;
+  _37 = *_36;
+  _38 = (long long unsigned int) _37;
+  _39 = _33 + _38;
+  _40 = (long long unsigned int) c0_142;
+  t_209 = _39 + _40;
+  _41 = (long unsigned int) j_148;
+  _42 = _41 * 4;
+  _43 = tp_164 + _42;
+  _44 = (unsigned int) t_209;
+  *_43 = _44;
+  _45 = t_209 >> 32;
+  c0_211 = (unsigned int) _45;
+  j_212 = j_148 + 1;
+
+  <bb 8> :
+  # c0_142 = PHI <c0_202(6), c0_211(7)>
+  # j_148 = PHI <j_204(6), j_212(7)>
+  if (j_148 < num_161(D))
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _46 = (long unsigned int) num_161(D);
+  _47 = _46 * 4;
+  _48 = tp_164 + _47;
+  _49 = *_48;
+  c1_205 = c0_142 + _49;
+  _50 = (long unsigned int) num_161(D);
+  _51 = _50 * 4;
+  _52 = tp_164 + _51;
+  *_52 = c1_205;
+  _53 = c1_205 < c0_142;
+  _54 = (sizetype) num_161(D);
+  _55 = _54 + 1;
+  _56 = _55 * 4;
+  _57 = tp_164 + _56;
+  _58 = (unsigned int) _53;
+  *_57 = _58;
+
+  <bb 10> :
+  # i_144 = PHI <i_160(5), i_187(9)>
+enter:
+  c1_174 = *tp_164;
+  ml_175 = c1_174 * n0_167;
+  c0_176 = 0;
+  _59 = *np_177(D);
+  _60 = (long long unsigned int) _59;
+  _61 = (long long unsigned int) ml_175;
+  _62 = _60 * _61;
+  _63 = (long long unsigned int) c1_174;
+  _64 = _62 + _63;
+  _65 = (long long unsigned int) c0_176;
+  t_178 = _64 + _65;
+  c1_179 = (unsigned int) t_178;
+  _66 = t_178 >> 32;
+  c0_180 = (unsigned int) _66;
+  j_181 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _67 = (long unsigned int) j_149;
+  _68 = _67 * 4;
+  _69 = tp_164 + _68;
+  c1_213 = *_69;
+  _70 = (long unsigned int) j_149;
+  _71 = _70 * 4;
+  _72 = np_177(D) + _71;
+  _73 = *_72;
+  _74 = (long long unsigned int) _73;
+  _75 = (long long unsigned int) ml_175;
+  _76 = _74 * _75;
+  _77 = (long long unsigned int) c1_213;
+  _78 = _76 + _77;
+  _79 = (long long unsigned int) c0_143;
+  t_214 = _78 + _79;
+  c1_215 = (unsigned int) t_214;
+  _80 = t_214 >> 32;
+  c0_216 = (unsigned int) _80;
+  _81 = (long unsigned int) j_149;
+  _82 = _81 * 4;
+  _83 = _82 + 18446744073709551612;
+  _84 = tp_164 + _83;
+  *_84 = c1_215;
+  j_218 = j_149 + 1;
+
+  <bb 12> :
+  # c0_143 = PHI <c0_180(10), c0_216(11)>
+  # j_149 = PHI <j_181(10), j_218(11)>
+  if (j_149 < num_161(D))
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _85 = (long unsigned int) num_161(D);
+  _86 = _85 * 4;
+  _87 = tp_164 + _86;
+  _88 = *_87;
+  c1_182 = c0_143 + _88;
+  _89 = (long unsigned int) num_161(D);
+  _90 = _89 * 4;
+  _91 = _90 + 18446744073709551612;
+  _92 = tp_164 + _91;
+  *_92 = c1_182;
+  _93 = (sizetype) num_161(D);
+  _94 = _93 + 1;
+  _95 = _94 * 4;
+  _96 = tp_164 + _95;
+  _97 = *_96;
+  if (c1_182 < c0_143)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.10_185 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.10_184 = 0;
+
+  <bb 16> :
+  # iftmp.10_150 = PHI <iftmp.10_185(14), iftmp.10_184(15)>
+  _98 = (long unsigned int) num_161(D);
+  _99 = _98 * 4;
+  _100 = tp_164 + _99;
+  _101 = iftmp.10_150 + _97;
+  *_100 = _101;
+  i_187 = i_144 + 1;
+  if (i_187 < num_161(D))
+    goto <bb 6>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  _102 = (long unsigned int) num_161(D);
+  _103 = _102 * 4;
+  _104 = tp_164 + _103;
+  _105 = *_104;
+  if (_105 != 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  _106 = (long unsigned int) num_161(D);
+  _107 = _106 * 4;
+  _108 = _107 + 18446744073709551612;
+  _109 = tp_164 + _108;
+  _110 = *_109;
+  _111 = (long unsigned int) num_161(D);
+  _112 = _111 * 4;
+  _113 = _112 + 18446744073709551612;
+  _114 = np_177(D) + _113;
+  _115 = *_114;
+  if (_110 >= _115)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 19> :
+  c0_190 = bn_sub_words (rp_188(D), tp_164, np_177(D), num_161(D));
+  _116 = (long unsigned int) num_161(D);
+  _117 = _116 * 4;
+  _118 = tp_164 + _117;
+  _119 = *_118;
+  if (_119 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  if (c0_190 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 21> :
+  i_191 = 0;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  _120 = (long unsigned int) i_145;
+  _121 = _120 * 4;
+  _122 = vp_165 + _121;
+  *_122 ={v} 0;
+  i_194 = i_145 + 1;
+
+  <bb 23> :
+  # i_145 = PHI <i_191(21), i_194(22)>
+  _123 = num_161(D) + 1;
+  if (i_145 <= _123)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  _192 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 29>; [INV]
+
+  <bb 25> :
+  i_195 = 0;
+  goto <bb 27>; [INV]
+
+  <bb 26> :
+  _124 = (long unsigned int) i_146;
+  _125 = _124 * 4;
+  _126 = tp_164 + _125;
+  _127 = (long unsigned int) i_146;
+  _128 = _127 * 4;
+  _129 = rp_188(D) + _128;
+  _130 = *_126;
+  *_129 = _130;
+  _131 = (long unsigned int) i_146;
+  _132 = _131 * 4;
+  _133 = vp_165 + _132;
+  *_133 ={v} 0;
+  i_201 = i_146 + 1;
+
+  <bb 27> :
+  # i_146 = PHI <i_195(25), i_201(26)>
+  if (i_146 < num_161(D))
+    goto <bb 26>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 28> :
+  _134 = (long unsigned int) num_161(D);
+  _135 = _134 * 4;
+  _136 = vp_165 + _135;
+  *_136 ={v} 0;
+  _137 = (sizetype) num_161(D);
+  _138 = _137 + 1;
+  _139 = _138 * 4;
+  _140 = vp_165 + _139;
+  *_140 ={v} 0;
+  _198 = 1;
+
+  <bb 29> :
+  # _151 = PHI <_192(24), _198(28)>
+<L28>:
+  return _151;
+
+}
+
+
