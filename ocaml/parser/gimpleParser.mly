@@ -23,7 +23,7 @@
 %token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR VZERO VONE
 %token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF VEC_PACK_TRUNC_EXPR
-%token MIN_EXPR
+%token MIN_EXPR MAX_EXPR
 
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
@@ -121,6 +121,7 @@ ground_typ:
 | INT                                     { Int }
 | SIGNED INT                              { Int }
 | UNSIGNED LONG                           { Ulong }
+| SIGNED LONG                             { Long }
 | LONG INT                                { Long }
 | LONG LONG UNSIGNED INT                  { Ullong }
 | LONG UNSIGNED INT                       { Ulong }
@@ -250,6 +251,8 @@ instr:
                                           { Ite ($1, $3, $5, $7) }
 | op EQOP MIN_EXPR LANGLE op COMMA op RANGLE SEMICOLON
                                           { Min ($1, $5, $7) }
+| op EQOP MAX_EXPR LANGLE op COMMA op RANGLE SEMICOLON
+                                          { Max ($1, $5, $7) }
 | ID LPAREN ops RPAREN SEMICOLON          { Call (None, $1, $3) }
 | ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call (None, $1, $3) }

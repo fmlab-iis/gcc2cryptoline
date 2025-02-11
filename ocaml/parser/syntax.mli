@@ -59,6 +59,7 @@ type instr_t = Nop
              | Rrotate of operand_t * operand_t * operand_t
              | Ite of operand_t * operand_t * operand_t * operand_t
              | Min of operand_t * operand_t * operand_t
+             | Max of operand_t * operand_t * operand_t
              | Call of operand_t option * string * operand_t list
              | CondBranch of cond_t * label_t * label_t
              | Goto of label_t

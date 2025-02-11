@@ -153,6 +153,8 @@ let string_of_instr instr =
                                  string_of_operand b1
   | Min (l, r0, r1) -> string_of_operand l ^ " = MIN_EXPR <" ^ string_of_operand r0
                        ^ ", " ^ string_of_operand r1 ^ ">"
+  | Max (l, r0, r1) -> string_of_operand l ^ " = MAX_EXPR <" ^ string_of_operand r0
+                       ^ ", " ^ string_of_operand r1 ^ ">"
   | Call (op, f, ops) -> let op_strs = List.map string_of_operand ops in
                          (match op with
                             None -> ""

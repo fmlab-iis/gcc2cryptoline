@@ -23,6 +23,7 @@
               "vector"                     , VECTOR;
               "MEM"                        , MEM;
               "MIN_EXPR"                   , MIN_EXPR;
+              "MAX_EXPR"                   , MAX_EXPR;
               "INV"                        , INV;
               "bb"                         , BB;
               "if"                         , IF;
@@ -118,7 +119,7 @@ token = parse
   (* Offsets *)
   | ('-'? (number+) as byte) "B"   { BYTE (int_of_string byte) }
   (* Strings *)
-  | '"' (([^'\r''\n''"']+) as s) '"'  { STRING s }
+  | '"' (([^'\r''\n''"']*) as s) '"'  { STRING s }
   (* Misc *)
   | "Removing basic block"         { REMOVING_BASIC_BLOCK }
   | "char * {ref-all}"             { CHAR_REF_ALL }
