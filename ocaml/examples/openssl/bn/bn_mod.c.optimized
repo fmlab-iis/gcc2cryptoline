@@ -1,0 +1,1263 @@
+
+;; Function BN_nnmod (BN_nnmod, funcdef_no=134, decl_uid=8555, cgraph_uid=135, symbol_order=134)
+
+int BN_nnmod (struct BIGNUM * r, const struct BIGNUM * m, const struct BIGNUM * d, struct BN_CTX * ctx)
+{
+  static const char __func__[9] = "BN_nnmod";
+  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0;
+  int D.11337;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_5;
+  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_13;
+  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_14;
+  int _16;
+  int _17;
+  int _18;
+  int _22;
+
+  <bb 2> :
+  if (r_7(D) == d_8(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  ERR_new ();
+  ERR_set_debug ("bn_mod.c", 22, &__func__);
+  ERR_set_error (3, 524550, 0B);
+  _22 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  _1 = BN_div (0B, r_7(D), m_10(D), d_8(D), ctx_11(D));
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _18 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  _2 = r_7(D)->neg;
+  if (_2 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _17 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  _3 = d_8(D)->neg;
+  if (_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.0_14 = BN_sub;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.0_13 = BN_add;
+
+  <bb 11> :
+  # iftmp.0_5 = PHI <iftmp.0_14(9), iftmp.0_13(10)>
+  _16 = iftmp.0_5 (r_7(D), r_7(D), d_8(D));
+
+  <bb 12> :
+  # _4 = PHI <_22(3), _18(5), _17(7), _16(11)>
+<L9>:
+  return _4;
+
+}
+
+
+
+;; Function BN_mod_add (BN_mod_add, funcdef_no=135, decl_uid=8561, cgraph_uid=136, symbol_order=135)
+
+int BN_mod_add (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  int D.11349;
+  int _1;
+  int _2;
+  int _12;
+  int _13;
+
+  <bb 2> :
+  _1 = BN_add (r_5(D), a_6(D), b_7(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _13 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _12 = BN_nnmod (r_5(D), r_5(D), m_9(D), ctx_10(D));
+
+  <bb 5> :
+  # _2 = PHI <_13(3), _12(4)>
+<L2>:
+  return _2;
+
+}
+
+
+
+;; Function bn_mod_add_fixed_top (bn_mod_add_fixed_top, funcdef_no=136, decl_uid=10927, cgraph_uid=137, symbol_order=136)
+
+int bn_mod_add_fixed_top (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m)
+{
+  const long unsigned int * bp;
+  const long unsigned int * ap;
+  long unsigned int * tp;
+  long unsigned int * rp;
+  long unsigned int mask;
+  long unsigned int temp;
+  long unsigned int carry;
+  long unsigned int storage[16];
+  size_t mtop;
+  size_t bi;
+  size_t ai;
+  size_t i;
+  long unsigned int D.11366;
+  const long unsigned int * iftmp.2;
+  const long unsigned int * iftmp.1;
+  int D.11353;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  long unsigned int _4;
+  long unsigned int * _5;
+  long unsigned int * _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  signed long _10;
+  signed long _11;
+  long unsigned int _12;
+  const long unsigned int * _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  _Bool _16;
+  int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  signed long _20;
+  signed long _21;
+  long unsigned int _22;
+  const long unsigned int * _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int * _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int * _30;
+  long unsigned int _31;
+  _Bool _32;
+  long unsigned int _33;
+  int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int * _42;
+  int _43;
+  long unsigned int _44;
+  long unsigned int * _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int * _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int * _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  volatile long unsigned int * _57;
+  int _58;
+  int _59;
+  int _66;
+  const long unsigned int * iftmp.1_67;
+  const long unsigned int * iftmp.2_68;
+  int _82;
+  const long unsigned int * iftmp.1_84;
+  const long unsigned int * iftmp.1_85;
+  const long unsigned int * iftmp.2_88;
+  const long unsigned int * iftmp.2_89;
+  long unsigned int _97;
+  int _104;
+  int _117;
+
+  <bb 2> :
+  _1 = m_75(D)->top;
+  mtop_76 = (size_t) _1;
+  tp_77 = &storage;
+  _2 = (int) mtop_76;
+  _3 = bn_wexpand (r_78(D), _2);
+  if (_3 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _117 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 4> :
+  if (mtop_76 > 16)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _4 = mtop_76 * 8;
+  tp_81 = CRYPTO_malloc (_4, "bn_mod.c", 66);
+  if (tp_81 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _82 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 7> :
+  # tp_65 = PHI <tp_77(4), tp_81(5)>
+  _5 = a_83(D)->d;
+  if (_5 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.1_85 = a_83(D)->d;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.1_84 = tp_65;
+
+  <bb 10> :
+  # iftmp.1_67 = PHI <iftmp.1_85(8), iftmp.1_84(9)>
+  ap_86 = iftmp.1_67;
+  _6 = b_87(D)->d;
+  if (_6 != 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.2_89 = b_87(D)->d;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  iftmp.2_88 = tp_65;
+
+  <bb 13> :
+  # iftmp.2_68 = PHI <iftmp.2_89(11), iftmp.2_88(12)>
+  bp_90 = iftmp.2_68;
+  i_91 = 0;
+  ai_92 = 0;
+  bi_93 = 0;
+  carry_94 = 0;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  _7 = a_83(D)->top;
+  _8 = (long unsigned int) _7;
+  _9 = i_60 - _8;
+  _10 = (signed long) _9;
+  _11 = _10 >> 63;
+  mask_108 = (long unsigned int) _11;
+  _12 = ai_62 * 8;
+  _13 = ap_86 + _12;
+  _14 = *_13;
+  _15 = mask_108 & _14;
+  temp_109 = carry_64 + _15;
+  _16 = temp_109 < carry_64;
+  carry_110 = (long unsigned int) _16;
+  _17 = b_87(D)->top;
+  _18 = (long unsigned int) _17;
+  _19 = i_60 - _18;
+  _20 = (signed long) _19;
+  _21 = _20 >> 63;
+  mask_111 = (long unsigned int) _21;
+  _22 = bi_63 * 8;
+  _23 = bp_90 + _22;
+  _24 = *_23;
+  _25 = mask_111 & _24;
+  _26 = i_60 * 8;
+  _27 = tp_65 + _26;
+  _28 = temp_109 + _25;
+  *_27 = _28;
+  _29 = i_60 * 8;
+  _30 = tp_65 + _29;
+  _31 = *_30;
+  _32 = temp_109 > _31;
+  _33 = (long unsigned int) _32;
+  carry_113 = carry_110 + _33;
+  i_114 = i_60 + 1;
+  _34 = a_83(D)->dmax;
+  _35 = (long unsigned int) _34;
+  _36 = i_114 - _35;
+  _37 = _36 >> 63;
+  ai_115 = ai_62 + _37;
+  _38 = b_87(D)->dmax;
+  _39 = (long unsigned int) _38;
+  _40 = i_114 - _39;
+  _41 = _40 >> 63;
+  bi_116 = bi_63 + _41;
+
+  <bb 15> :
+  # i_60 = PHI <i_91(13), i_114(14)>
+  # ai_62 = PHI <ai_92(13), ai_115(14)>
+  # bi_63 = PHI <bi_93(13), bi_116(14)>
+  # carry_64 = PHI <carry_94(13), carry_113(14)>
+  if (i_60 < mtop_76)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  rp_95 = r_78(D)->d;
+  _42 = m_75(D)->d;
+  _43 = (int) mtop_76;
+  _97 = bn_sub_words (rp_95, tp_65, _42, _43);
+  carry_98 = carry_64 - _97;
+  i_99 = 0;
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  _44 = i_61 * 8;
+  _45 = tp_65 + _44;
+  _46 = *_45;
+  _47 = carry_98 & _46;
+  _48 = ~carry_98;
+  _49 = i_61 * 8;
+  _50 = rp_95 + _49;
+  _51 = *_50;
+  _52 = _48 & _51;
+  _53 = i_61 * 8;
+  _54 = rp_95 + _53;
+  _55 = _47 | _52;
+  *_54 = _55;
+  _56 = i_61 * 8;
+  _57 = tp_65 + _56;
+  *_57 ={v} 0;
+  i_107 = i_61 + 1;
+
+  <bb 18> :
+  # i_61 = PHI <i_99(16), i_107(17)>
+  if (i_61 < mtop_76)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 19> :
+  _58 = (int) mtop_76;
+  r_78(D)->top = _58;
+  _59 = r_78(D)->flags;
+  r_78(D)->flags = _59;
+  r_78(D)->neg = 0;
+  if (&storage != tp_65)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  CRYPTO_free (tp_65, "bn_mod.c", 98);
+
+  <bb 21> :
+  _104 = 1;
+
+  <bb 22> :
+  # _66 = PHI <_117(3), _82(6), _104(21)>
+  storage ={v} {CLOBBER(eos)};
+
+  <bb 23> :
+<L21>:
+  return _66;
+
+}
+
+
+
+;; Function BN_mod_add_quick (BN_mod_add_quick, funcdef_no=137, decl_uid=8566, cgraph_uid=138, symbol_order=137)
+
+int BN_mod_add_quick (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m)
+{
+  int ret;
+  int D.11373;
+  int _10;
+
+  <bb 2> :
+  ret_8 = bn_mod_add_fixed_top (r_3(D), a_4(D), b_5(D), m_6(D));
+  if (ret_8 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  bn_correct_top (r_3(D));
+
+  <bb 4> :
+  _10 = ret_8;
+
+  <bb 5> :
+<L2>:
+  return _10;
+
+}
+
+
+
+;; Function BN_mod_sub (BN_mod_sub, funcdef_no=138, decl_uid=8572, cgraph_uid=139, symbol_order=138)
+
+int BN_mod_sub (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  int D.11377;
+  int _1;
+  int _2;
+  int _12;
+  int _13;
+
+  <bb 2> :
+  _1 = BN_sub (r_5(D), a_6(D), b_7(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _13 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _12 = BN_nnmod (r_5(D), r_5(D), m_9(D), ctx_10(D));
+
+  <bb 5> :
+  # _2 = PHI <_13(3), _12(4)>
+<L2>:
+  return _2;
+
+}
+
+
+
+;; Function bn_mod_sub_fixed_top (bn_mod_sub_fixed_top, funcdef_no=139, decl_uid=10932, cgraph_uid=140, symbol_order=139)
+
+int bn_mod_sub_fixed_top (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m)
+{
+  const long unsigned int * bp;
+  const long unsigned int * ap;
+  long unsigned int * rp;
+  long unsigned int mask;
+  long unsigned int tb;
+  long unsigned int ta;
+  long unsigned int carry;
+  long unsigned int borrow;
+  size_t mtop;
+  size_t bi;
+  size_t ai;
+  size_t i;
+  const long unsigned int * iftmp.4;
+  const long unsigned int * iftmp.3;
+  int D.11381;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  long unsigned int * _4;
+  long unsigned int * _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  signed long _9;
+  signed long _10;
+  long unsigned int _11;
+  const long unsigned int * _12;
+  long unsigned int _13;
+  int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  signed long _17;
+  signed long _18;
+  long unsigned int _19;
+  const long unsigned int * _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int * _24;
+  long unsigned int _25;
+  _Bool _26;
+  int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  const long unsigned int * _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  _Bool _39;
+  long unsigned int _40;
+  long unsigned int * _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int * _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int * _47;
+  long unsigned int _48;
+  _Bool _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  const long unsigned int * _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  _Bool _55;
+  long unsigned int _56;
+  long unsigned int * _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int * _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int * _63;
+  long unsigned int _64;
+  _Bool _65;
+  long unsigned int _66;
+  int _67;
+  int _68;
+  int _78;
+  const long unsigned int * iftmp.3_79;
+  const long unsigned int * iftmp.4_80;
+  const long unsigned int * iftmp.3_92;
+  const long unsigned int * iftmp.3_93;
+  const long unsigned int * iftmp.4_96;
+  const long unsigned int * iftmp.4_97;
+  int _114;
+  int _134;
+
+  <bb 2> :
+  _1 = m_86(D)->top;
+  mtop_87 = (size_t) _1;
+  _2 = (int) mtop_87;
+  _3 = bn_wexpand (r_88(D), _2);
+  if (_3 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _134 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 4> :
+  rp_90 = r_88(D)->d;
+  _4 = a_91(D)->d;
+  if (_4 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.3_93 = a_91(D)->d;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.3_92 = rp_90;
+
+  <bb 7> :
+  # iftmp.3_79 = PHI <iftmp.3_93(5), iftmp.3_92(6)>
+  ap_94 = iftmp.3_79;
+  _5 = b_95(D)->d;
+  if (_5 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.4_97 = b_95(D)->d;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.4_96 = rp_90;
+
+  <bb 10> :
+  # iftmp.4_80 = PHI <iftmp.4_97(8), iftmp.4_96(9)>
+  bp_98 = iftmp.4_80;
+  i_99 = 0;
+  ai_100 = 0;
+  bi_101 = 0;
+  borrow_102 = 0;
+  goto <bb 14>; [INV]
+
+  <bb 11> :
+  _6 = a_91(D)->top;
+  _7 = (long unsigned int) _6;
+  _8 = i_69 - _7;
+  _9 = (signed long) _8;
+  _10 = _9 >> 63;
+  mask_125 = (long unsigned int) _10;
+  _11 = ai_72 * 8;
+  _12 = ap_94 + _11;
+  _13 = *_12;
+  ta_126 = mask_125 & _13;
+  _14 = b_95(D)->top;
+  _15 = (long unsigned int) _14;
+  _16 = i_69 - _15;
+  _17 = (signed long) _16;
+  _18 = _17 >> 63;
+  mask_127 = (long unsigned int) _18;
+  _19 = bi_73 * 8;
+  _20 = bp_98 + _19;
+  _21 = *_20;
+  tb_128 = mask_127 & _21;
+  _22 = ta_126 - tb_128;
+  _23 = i_69 * 8;
+  _24 = rp_90 + _23;
+  _25 = _22 - borrow_75;
+  *_24 = _25;
+  if (ta_126 != tb_128)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _26 = ta_126 < tb_128;
+  borrow_130 = (long unsigned int) _26;
+
+  <bb 13> :
+  # borrow_74 = PHI <borrow_75(11), borrow_130(12)>
+  i_131 = i_69 + 1;
+  _27 = a_91(D)->dmax;
+  _28 = (long unsigned int) _27;
+  _29 = i_131 - _28;
+  _30 = _29 >> 63;
+  ai_132 = ai_72 + _30;
+  _31 = b_95(D)->dmax;
+  _32 = (long unsigned int) _31;
+  _33 = i_131 - _32;
+  _34 = _33 >> 63;
+  bi_133 = bi_73 + _34;
+
+  <bb 14> :
+  # i_69 = PHI <i_99(10), i_131(13)>
+  # ai_72 = PHI <ai_100(10), ai_132(13)>
+  # bi_73 = PHI <bi_101(10), bi_133(13)>
+  # borrow_75 = PHI <borrow_102(10), borrow_74(13)>
+  if (i_69 < mtop_87)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  ap_103 = m_86(D)->d;
+  i_104 = 0;
+  mask_105 = -borrow_75;
+  carry_106 = 0;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  _35 = i_70 * 8;
+  _36 = ap_103 + _35;
+  _37 = *_36;
+  _38 = mask_105 & _37;
+  ta_120 = carry_76 + _38;
+  _39 = ta_120 < carry_76;
+  carry_121 = (long unsigned int) _39;
+  _40 = i_70 * 8;
+  _41 = rp_90 + _40;
+  _42 = *_41;
+  _43 = i_70 * 8;
+  _44 = rp_90 + _43;
+  _45 = ta_120 + _42;
+  *_44 = _45;
+  _46 = i_70 * 8;
+  _47 = rp_90 + _46;
+  _48 = *_47;
+  _49 = ta_120 > _48;
+  _50 = (long unsigned int) _49;
+  carry_123 = carry_121 + _50;
+  i_124 = i_70 + 1;
+
+  <bb 17> :
+  # i_70 = PHI <i_104(15), i_124(16)>
+  # carry_76 = PHI <carry_106(15), carry_123(16)>
+  if (i_70 < mtop_87)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  borrow_107 = borrow_75 - carry_76;
+  i_108 = 0;
+  mask_109 = -borrow_107;
+  carry_110 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _51 = i_71 * 8;
+  _52 = ap_103 + _51;
+  _53 = *_52;
+  _54 = mask_109 & _53;
+  ta_115 = carry_77 + _54;
+  _55 = ta_115 < carry_77;
+  carry_116 = (long unsigned int) _55;
+  _56 = i_71 * 8;
+  _57 = rp_90 + _56;
+  _58 = *_57;
+  _59 = i_71 * 8;
+  _60 = rp_90 + _59;
+  _61 = ta_115 + _58;
+  *_60 = _61;
+  _62 = i_71 * 8;
+  _63 = rp_90 + _62;
+  _64 = *_63;
+  _65 = ta_115 > _64;
+  _66 = (long unsigned int) _65;
+  carry_118 = carry_116 + _66;
+  i_119 = i_71 + 1;
+
+  <bb 20> :
+  # i_71 = PHI <i_108(18), i_119(19)>
+  # carry_77 = PHI <carry_110(18), carry_118(19)>
+  if (i_71 < mtop_87)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  _67 = (int) mtop_87;
+  r_88(D)->top = _67;
+  _68 = r_88(D)->flags;
+  r_88(D)->flags = _68;
+  r_88(D)->neg = 0;
+  _114 = 1;
+
+  <bb 22> :
+  # _78 = PHI <_134(3), _114(21)>
+<L19>:
+  return _78;
+
+}
+
+
+
+;; Function BN_mod_sub_quick (BN_mod_sub_quick, funcdef_no=140, decl_uid=8577, cgraph_uid=141, symbol_order=140)
+
+int BN_mod_sub_quick (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m)
+{
+  static const char __func__[17] = "BN_mod_sub_quick";
+  int D.11395;
+  int _1;
+  int _2;
+  int _3;
+  int _11;
+  int _13;
+  int _14;
+  int _18;
+
+  <bb 2> :
+  if (r_5(D) == m_6(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  ERR_new ();
+  ERR_set_debug ("bn_mod.c", 194, &__func__);
+  ERR_set_error (3, 524550, 0B);
+  _18 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  _1 = BN_sub (r_5(D), a_8(D), b_9(D));
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _14 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  _2 = r_5(D)->neg;
+  if (_2 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _13 = BN_add (r_5(D), r_5(D), m_6(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _11 = 1;
+
+  <bb 9> :
+  # _3 = PHI <_18(3), _14(5), _13(7), _11(8)>
+<L6>:
+  return _3;
+
+}
+
+
+
+;; Function BN_mod_mul (BN_mod_mul, funcdef_no=141, decl_uid=8583, cgraph_uid=142, symbol_order=141)
+
+int BN_mod_mul (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  int ret;
+  struct BIGNUM * t;
+  int D.11412;
+  int _1;
+  int _2;
+  int _3;
+  int _22;
+
+  <bb 2> :
+  ret_7 = 0;
+  BN_CTX_start (ctx_9(D));
+  t_12 = BN_CTX_get (ctx_9(D));
+  if (t_12 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  if (a_13(D) == b_14(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _1 = BN_sqr (t_12, a_13(D), ctx_9(D));
+  if (_1 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  _2 = BN_mul (t_12, a_13(D), b_14(D), ctx_9(D));
+  if (_2 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  _3 = BN_nnmod (r_17(D), t_12, m_18(D), ctx_9(D));
+  if (_3 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  ret_20 = 1;
+
+  <bb 12> :
+  # ret_4 = PHI <ret_7(3), ret_7(6), ret_7(8), ret_7(10), ret_20(11)>
+err:
+  BN_CTX_end (ctx_9(D));
+  _22 = ret_4;
+
+  <bb 13> :
+<L12>:
+  return _22;
+
+}
+
+
+
+;; Function BN_mod_sqr (BN_mod_sqr, funcdef_no=142, decl_uid=8588, cgraph_uid=143, symbol_order=142)
+
+int BN_mod_sqr (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  int D.11416;
+  int _1;
+  int _2;
+  int _11;
+  int _12;
+
+  <bb 2> :
+  _1 = BN_sqr (r_5(D), a_6(D), ctx_7(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _12 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _11 = BN_div (0B, r_5(D), r_5(D), m_9(D), ctx_7(D));
+
+  <bb 5> :
+  # _2 = PHI <_12(3), _11(4)>
+<L2>:
+  return _2;
+
+}
+
+
+
+;; Function BN_mod_lshift1 (BN_mod_lshift1, funcdef_no=143, decl_uid=8593, cgraph_uid=144, symbol_order=143)
+
+int BN_mod_lshift1 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  int D.11420;
+  int _1;
+  int _2;
+  int _11;
+  int _12;
+
+  <bb 2> :
+  _1 = BN_lshift1 (r_5(D), a_6(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _12 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _11 = BN_nnmod (r_5(D), r_5(D), m_8(D), ctx_9(D));
+
+  <bb 5> :
+  # _2 = PHI <_12(3), _11(4)>
+<L2>:
+  return _2;
+
+}
+
+
+
+;; Function BN_mod_lshift1_quick (BN_mod_lshift1_quick, funcdef_no=144, decl_uid=8597, cgraph_uid=145, symbol_order=144)
+
+int BN_mod_lshift1_quick (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * m)
+{
+  int D.11424;
+  int _1;
+  int _2;
+  int _3;
+  int _11;
+  int _13;
+  int _14;
+
+  <bb 2> :
+  _1 = BN_lshift1 (r_6(D), a_7(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _14 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _2 = BN_cmp (r_6(D), m_9(D));
+  if (_2 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _13 = BN_sub (r_6(D), r_6(D), m_9(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _11 = 1;
+
+  <bb 7> :
+  # _3 = PHI <_14(3), _13(5), _11(6)>
+<L4>:
+  return _3;
+
+}
+
+
+
+;; Function BN_mod_lshift (BN_mod_lshift, funcdef_no=145, decl_uid=8603, cgraph_uid=146, symbol_order=145)
+
+int BN_mod_lshift (struct BIGNUM * r, const struct BIGNUM * a, int n, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  int ret;
+  struct BIGNUM * abs_m;
+  const struct BIGNUM * iftmp.5;
+  int D.11430;
+  int _1;
+  int _2;
+  int _4;
+  const struct BIGNUM * iftmp.5_5;
+  int _18;
+  const struct BIGNUM * iftmp.5_19;
+  const struct BIGNUM * iftmp.5_20;
+  int _25;
+  int _26;
+
+  <bb 2> :
+  abs_m_8 = 0B;
+  _1 = BN_nnmod (r_10(D), a_11(D), m_12(D), ctx_13(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _26 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  _2 = m_12(D)->neg;
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  abs_m_16 = BN_dup (m_12(D));
+  if (abs_m_16 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _18 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  abs_m_16->neg = 0;
+
+  <bb 8> :
+  # abs_m_3 = PHI <abs_m_8(4), abs_m_16(7)>
+  if (abs_m_3 != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.5_20 = abs_m_3;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.5_19 = m_12(D);
+
+  <bb 11> :
+  # iftmp.5_5 = PHI <iftmp.5_20(9), iftmp.5_19(10)>
+  ret_23 = BN_mod_lshift_quick (r_10(D), r_10(D), n_21(D), iftmp.5_5);
+  BN_free (abs_m_3);
+  _25 = ret_23;
+
+  <bb 12> :
+  # _4 = PHI <_26(3), _18(6), _25(11)>
+<L9>:
+  return _4;
+
+}
+
+
+
+;; Function BN_mod_lshift_quick (BN_mod_lshift_quick, funcdef_no=146, decl_uid=8608, cgraph_uid=147, symbol_order=146)
+
+int BN_mod_lshift_quick (struct BIGNUM * r, const struct BIGNUM * a, int n, const struct BIGNUM * m)
+{
+  int max_shift;
+  static const char __func__[20] = "BN_mod_lshift_quick";
+  int D.11444;
+  struct BIGNUM * _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+  int _11;
+  int _20;
+  int _22;
+  int _30;
+  int _33;
+  int _36;
+  int _40;
+
+  <bb 2> :
+  if (r_16(D) != a_17(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _1 = BN_copy (r_16(D), a_17(D));
+  if (_1 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _20 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 5> :
+  goto <bb 21>; [INV]
+
+  <bb 6> :
+  _2 = BN_num_bits (m_23(D));
+  _3 = BN_num_bits (r_16(D));
+  max_shift_26 = _2 - _3;
+  if (max_shift_26 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  ERR_new ();
+  ERR_set_debug ("bn_mod.c", 307, &__func__);
+  ERR_set_error (3, 110, 0B);
+  _40 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 8> :
+  if (max_shift_26 > n_9)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  max_shift_27 = n_9;
+
+  <bb 10> :
+  # max_shift_10 = PHI <max_shift_26(8), max_shift_27(9)>
+  if (max_shift_10 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 11> :
+  _4 = BN_lshift (r_16(D), r_16(D), max_shift_10);
+  if (_4 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _33 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 13> :
+  n_32 = n_9 - max_shift_10;
+  goto <bb 17>; [INV]
+
+  <bb 14> :
+  _5 = BN_lshift1 (r_16(D), r_16(D));
+  if (_5 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _30 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 16> :
+  n_29 = n_9 + -1;
+
+  <bb 17> :
+  # n_8 = PHI <n_32(13), n_29(16)>
+  _6 = BN_cmp (r_16(D), m_23(D));
+  if (_6 >= 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  _7 = BN_sub (r_16(D), r_16(D), m_23(D));
+  if (_7 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _36 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 20> :
+  # n_41 = PHI <n_8(18), n_8(17)>
+
+  <bb 21> :
+  # n_9 = PHI <n_41(20), n_21(D)(5)>
+  if (n_9 > 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  _22 = 1;
+
+  <bb 23> :
+  # _11 = PHI <_20(4), _40(7), _33(12), _30(15), _36(19), _22(22)>
+<L22>:
+  return _11;
+
+}
+
+

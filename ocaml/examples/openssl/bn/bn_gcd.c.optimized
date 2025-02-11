@@ -1,0 +1,1755 @@
+
+;; Function value_barrier_bn (value_barrier_bn, funcdef_no=142, decl_uid=11286, cgraph_uid=143, symbol_order=142)
+
+long unsigned int value_barrier_bn (long unsigned int a)
+{
+  long unsigned int r;
+  long unsigned int D.11803;
+  long unsigned int _3;
+
+  <bb 2> :
+  __asm__("" : "=r" r_2 : "0" a_1(D));
+  _3 = r_2;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function constant_time_msb_bn (constant_time_msb_bn, funcdef_no=143, decl_uid=11290, cgraph_uid=144, symbol_order=143)
+
+long unsigned int constant_time_msb_bn (long unsigned int a)
+{
+  long unsigned int D.11799;
+  signed long a.3_1;
+  signed long _2;
+  long unsigned int _4;
+
+  <bb 2> :
+  a.3_1 = (signed long) a_3(D);
+  _2 = a.3_1 >> 63;
+  _4 = (long unsigned int) _2;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function constant_time_is_zero_bn (constant_time_is_zero_bn, funcdef_no=145, decl_uid=11297, cgraph_uid=146, symbol_order=145)
+
+long unsigned int constant_time_is_zero_bn (long unsigned int a)
+{
+  long unsigned int D.11797;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _7;
+
+  <bb 2> :
+  _1 = ~a_4(D);
+  _2 = a_4(D) + 18446744073709551615;
+  _3 = _1 & _2;
+  _7 = constant_time_msb_bn (_3);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function constant_time_select_bn (constant_time_select_bn, funcdef_no=147, decl_uid=11306, cgraph_uid=148, symbol_order=147)
+
+long unsigned int constant_time_select_bn (long unsigned int mask, long unsigned int a, long unsigned int b)
+{
+  long unsigned int D.11801;
+  long unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _12;
+
+  <bb 2> :
+  _1 = value_barrier_bn (mask_7(D));
+  _2 = a_9(D) & _1;
+  _3 = ~mask_7(D);
+  _4 = value_barrier_bn (_3);
+  _5 = b_11(D) & _4;
+  _12 = _2 | _5;
+
+  <bb 3> :
+<L0>:
+  return _12;
+
+}
+
+
+
+;; Function bn_mod_inverse_no_branch (bn_mod_inverse_no_branch, funcdef_no=178, decl_uid=11465, cgraph_uid=179, symbol_order=178)
+
+struct BIGNUM * bn_mod_inverse_no_branch (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * n, struct BN_CTX * ctx, int * pnoinv)
+{
+  struct BIGNUM local_A;
+  struct BIGNUM * tmp;
+  struct BIGNUM local_B;
+  int sign;
+  struct BIGNUM * ret;
+  struct BIGNUM * R;
+  struct BIGNUM * T;
+  struct BIGNUM * D;
+  struct BIGNUM * M;
+  struct BIGNUM * Y;
+  struct BIGNUM * X;
+  struct BIGNUM * B;
+  struct BIGNUM * A;
+  struct BIGNUM * D.11752;
+  int _1;
+  struct BIGNUM * _2;
+  struct BIGNUM * _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  struct BIGNUM * _15;
+  int _16;
+  struct BIGNUM * _98;
+
+  <bb 2> :
+  R_35 = 0B;
+  ret_36 = 0B;
+  BN_CTX_start (ctx_38(D));
+  A_41 = BN_CTX_get (ctx_38(D));
+  B_43 = BN_CTX_get (ctx_38(D));
+  X_45 = BN_CTX_get (ctx_38(D));
+  D_47 = BN_CTX_get (ctx_38(D));
+  M_49 = BN_CTX_get (ctx_38(D));
+  Y_51 = BN_CTX_get (ctx_38(D));
+  T_53 = BN_CTX_get (ctx_38(D));
+  if (T_53 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 4> :
+  if (in_54(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  R_57 = BN_new ();
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  R_55 = in_54(D);
+
+  <bb 7> :
+  # R_22 = PHI <R_57(5), R_55(6)>
+  if (R_22 == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 9> :
+  _1 = BN_set_word (X_45, 1);
+  if (_1 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 11> :
+  BN_zero_ex (Y_51);
+  _2 = BN_copy (B_43, a_60(D));
+  if (_2 == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 13> :
+  _3 = BN_copy (A_41, n_62(D));
+  if (_3 == 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 15> :
+  A_41->neg = 0;
+  _4 = B_43->neg;
+  if (_4 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  _5 = BN_ucmp (B_43, A_41);
+  if (_5 >= 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 17> :
+  bn_init (&local_B);
+  BN_with_flags (&local_B, B_43, 4);
+  _6 = BN_nnmod (B_43, &local_B, A_41, ctx_38(D));
+  if (_6 == 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  // predicted unlikely by goto predictor.
+  local_B ={v} {CLOBBER(eos)};
+  goto <bb 43>; [INV]
+
+  <bb 19> :
+  local_B ={v} {CLOBBER(eos)};
+
+  <bb 20> :
+  sign_71 = -1;
+  goto <bb 28>; [INV]
+
+  <bb 21> :
+  bn_init (&local_A);
+  BN_with_flags (&local_A, A_17, 4);
+  _7 = BN_div (D_47, M_21, &local_A, B_18, ctx_38(D));
+  if (_7 == 0)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 22> :
+  // predicted unlikely by goto predictor.
+  local_A ={v} {CLOBBER(eos)};
+  goto <bb 43>; [INV]
+
+  <bb 23> :
+  local_A ={v} {CLOBBER(eos)};
+  tmp_86 = A_17;
+  A_87 = B_18;
+  B_88 = M_21;
+  _8 = BN_mul (tmp_86, D_47, X_19, ctx_38(D));
+  if (_8 == 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 25> :
+  _9 = BN_add (tmp_86, tmp_86, Y_20);
+  if (_9 == 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 27> :
+  M_91 = Y_20;
+  Y_92 = X_19;
+  X_93 = tmp_86;
+  sign_94 = -sign_25;
+
+  <bb 28> :
+  # A_17 = PHI <A_41(20), A_87(27)>
+  # B_18 = PHI <B_43(20), B_88(27)>
+  # X_19 = PHI <X_45(20), X_93(27)>
+  # Y_20 = PHI <Y_51(20), Y_92(27)>
+  # M_21 = PHI <M_49(20), M_91(27)>
+  # sign_25 = PHI <sign_71(20), sign_94(27)>
+  _10 = BN_is_zero (B_18);
+  if (_10 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 29> :
+  if (sign_25 < 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 30> :
+  _11 = BN_sub (Y_20, n_62(D), Y_20);
+  if (_11 == 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 32> :
+  _12 = BN_is_one (A_17);
+  if (_12 != 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 33> :
+  _13 = Y_20->neg;
+  if (_13 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 34> :
+  _14 = BN_ucmp (Y_20, n_62(D));
+  if (_14 < 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 35> :
+  _15 = BN_copy (R_22, Y_20);
+  if (_15 == 0B)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 37> :
+  goto <bb 40>; [INV]
+
+  <bb 38> :
+  _16 = BN_nnmod (R_22, Y_20, n_62(D), ctx_38(D));
+  if (_16 == 0)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 40>; [INV]
+
+  <bb 39> :
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 40> :
+  goto <bb 42>; [INV]
+
+  <bb 41> :
+  *pnoinv_75(D) = 1;
+  // predicted unlikely by goto predictor.
+  goto <bb 43>; [INV]
+
+  <bb 42> :
+  ret_80 = R_22;
+  *pnoinv_75(D) = 0;
+
+  <bb 43> :
+  # R_23 = PHI <R_35(3), R_22(8), R_22(10), R_22(12), R_22(14), R_22(18), R_22(22), R_22(24), R_22(26), R_22(31), R_22(36), R_22(39), R_22(41), R_22(42)>
+  # ret_24 = PHI <ret_36(3), ret_36(8), ret_36(10), ret_36(12), ret_36(14), ret_36(18), ret_36(22), ret_36(24), ret_36(26), ret_36(31), ret_36(36), ret_36(39), ret_36(41), ret_80(42)>
+err:
+  if (ret_24 == 0B)
+    goto <bb 44>; [INV]
+  else
+    goto <bb 46>; [INV]
+
+  <bb 44> :
+  if (in_54(D) == 0B)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 46>; [INV]
+
+  <bb 45> :
+  BN_free (R_23);
+
+  <bb 46> :
+  BN_CTX_end (ctx_38(D));
+  _98 = ret_24;
+
+  <bb 47> :
+<L51>:
+  return _98;
+
+}
+
+
+
+;; Function int_bn_mod_inverse (int_bn_mod_inverse, funcdef_no=179, decl_uid=11187, cgraph_uid=180, symbol_order=179)
+
+struct BIGNUM * int_bn_mod_inverse (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * n, struct BN_CTX * ctx, int * pnoinv)
+{
+  struct BIGNUM * tmp;
+  int shift;
+  int sign;
+  struct BIGNUM * ret;
+  struct BIGNUM * R;
+  struct BIGNUM * T;
+  struct BIGNUM * D;
+  struct BIGNUM * M;
+  struct BIGNUM * Y;
+  struct BIGNUM * X;
+  struct BIGNUM * B;
+  struct BIGNUM * A;
+  struct BIGNUM * D.11573;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  struct BIGNUM * _6;
+  struct BIGNUM * _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  int _15;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  int _23;
+  int _24;
+  int _25;
+  int _26;
+  int _27;
+  int _28;
+  int _29;
+  int _30;
+  int _31;
+  int _32;
+  int _33;
+  int _34;
+  int _35;
+  int _36;
+  int _37;
+  int _38;
+  int _39;
+  int _40;
+  int _41;
+  int _42;
+  int _43;
+  int _44;
+  int _45;
+  int _46;
+  int _47;
+  int _48;
+  int _49;
+  int _50;
+  int _51;
+  int _52;
+  int _53;
+  struct BIGNUM * _54;
+  long unsigned int * _55;
+  long unsigned int _56;
+  int _57;
+  int _58;
+  int _59;
+  int _60;
+  int _61;
+  int _62;
+  int _63;
+  int _64;
+  struct BIGNUM * _65;
+  int _66;
+  struct BIGNUM * _81;
+  struct BIGNUM * _211;
+  struct BIGNUM * _213;
+  struct BIGNUM * _215;
+
+  <bb 2> :
+  R_106 = 0B;
+  ret_107 = 0B;
+  _1 = BN_abs_is_word (n_109(D), 1);
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = BN_is_zero (n_109(D));
+  if (_2 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  *pnoinv_112(D) = 1;
+  _215 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 125>; [INV]
+
+  <bb 5> :
+  *pnoinv_112(D) = 0;
+  _3 = BN_get_flags (a_114(D), 4);
+  if (_3 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _4 = BN_get_flags (n_109(D), 4);
+  if (_4 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _213 = bn_mod_inverse_no_branch (in_133(D), a_114(D), n_109(D), ctx_117(D), pnoinv_112(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 125>; [INV]
+
+  <bb 8> :
+  BN_CTX_start (ctx_117(D));
+  A_120 = BN_CTX_get (ctx_117(D));
+  B_122 = BN_CTX_get (ctx_117(D));
+  X_124 = BN_CTX_get (ctx_117(D));
+  D_126 = BN_CTX_get (ctx_117(D));
+  M_128 = BN_CTX_get (ctx_117(D));
+  Y_130 = BN_CTX_get (ctx_117(D));
+  T_132 = BN_CTX_get (ctx_117(D));
+  if (T_132 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 10> :
+  if (in_133(D) == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  R_136 = BN_new ();
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  R_134 = in_133(D);
+
+  <bb 13> :
+  # R_74 = PHI <R_136(11), R_134(12)>
+  if (R_74 == 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 15> :
+  _5 = BN_set_word (X_124, 1);
+  if (_5 == 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 17> :
+  BN_zero_ex (Y_130);
+  _6 = BN_copy (B_122, a_114(D));
+  if (_6 == 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 19> :
+  _7 = BN_copy (A_120, n_109(D));
+  if (_7 == 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 21> :
+  A_120->neg = 0;
+  _8 = B_122->neg;
+  if (_8 != 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  _9 = BN_ucmp (B_122, A_120);
+  if (_9 >= 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 23> :
+  _10 = BN_nnmod (B_122, B_122, A_120, ctx_117(D));
+  if (_10 == 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 25> :
+  sign_144 = -1;
+  _11 = BN_is_odd (n_109(D));
+  if (_11 != 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 60>; [INV]
+
+  <bb 26> :
+  _12 = BN_num_bits (n_109(D));
+  if (_12 <= 2048)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 60>; [INV]
+
+  <bb 27> :
+  goto <bb 58>; [INV]
+
+  <bb 28> :
+  shift_148 = 0;
+  goto <bb 34>; [INV]
+
+  <bb 29> :
+  shift_163 = shift_79 + 1;
+  _13 = BN_is_odd (X_124);
+  if (_13 != 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 30> :
+  _14 = BN_uadd (X_124, X_124, n_109(D));
+  if (_14 == 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 32> :
+  _15 = BN_rshift1 (X_124, X_124);
+  if (_15 == 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 33> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 34> :
+  # shift_79 = PHI <shift_148(28), shift_163(32)>
+  _16 = BN_is_bit_set (B_122, shift_79);
+  if (_16 == 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 35> :
+  if (shift_79 > 0)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 36> :
+  _17 = BN_rshift (B_122, B_122, shift_79);
+  if (_17 == 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 37> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 38> :
+  shift_151 = 0;
+  goto <bb 44>; [INV]
+
+  <bb 39> :
+  shift_159 = shift_80 + 1;
+  _18 = BN_is_odd (Y_130);
+  if (_18 != 0)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 42>; [INV]
+
+  <bb 40> :
+  _19 = BN_uadd (Y_130, Y_130, n_109(D));
+  if (_19 == 0)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 42>; [INV]
+
+  <bb 41> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 42> :
+  _20 = BN_rshift1 (Y_130, Y_130);
+  if (_20 == 0)
+    goto <bb 43>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 43> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 44> :
+  # shift_80 = PHI <shift_151(38), shift_159(42)>
+  _21 = BN_is_bit_set (A_120, shift_80);
+  if (_21 == 0)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 45>; [INV]
+
+  <bb 45> :
+  if (shift_80 > 0)
+    goto <bb 46>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 46> :
+  _22 = BN_rshift (A_120, A_120, shift_80);
+  if (_22 == 0)
+    goto <bb 47>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 47> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 48> :
+  _23 = BN_ucmp (B_122, A_120);
+  if (_23 >= 0)
+    goto <bb 49>; [INV]
+  else
+    goto <bb 53>; [INV]
+
+  <bb 49> :
+  _24 = BN_uadd (X_124, X_124, Y_130);
+  if (_24 == 0)
+    goto <bb 50>; [INV]
+  else
+    goto <bb 51>; [INV]
+
+  <bb 50> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 51> :
+  _25 = BN_usub (B_122, B_122, A_120);
+  if (_25 == 0)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 57>; [INV]
+
+  <bb 52> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 53> :
+  _26 = BN_uadd (Y_130, Y_130, X_124);
+  if (_26 == 0)
+    goto <bb 54>; [INV]
+  else
+    goto <bb 55>; [INV]
+
+  <bb 54> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 55> :
+  _27 = BN_usub (A_120, A_120, B_122);
+  if (_27 == 0)
+    goto <bb 56>; [INV]
+  else
+    goto <bb 57>; [INV]
+
+  <bb 56> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 57> :
+
+  <bb 58> :
+  _28 = BN_is_zero (B_122);
+  if (_28 == 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 59>; [INV]
+
+  <bb 59> :
+  goto <bb 107>; [INV]
+
+  <bb 60> :
+  goto <bb 106>; [INV]
+
+  <bb 61> :
+  _29 = BN_num_bits (A_67);
+  _30 = BN_num_bits (B_69);
+  if (_29 == _30)
+    goto <bb 62>; [INV]
+  else
+    goto <bb 66>; [INV]
+
+  <bb 62> :
+  _31 = BN_set_word (D_126, 1);
+  if (_31 == 0)
+    goto <bb 63>; [INV]
+  else
+    goto <bb 64>; [INV]
+
+  <bb 63> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 64> :
+  _32 = BN_sub (M_73, A_67, B_69);
+  if (_32 == 0)
+    goto <bb 65>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 65> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 66> :
+  _33 = BN_num_bits (A_67);
+  _34 = BN_num_bits (B_69);
+  _35 = _34 + 1;
+  if (_33 == _35)
+    goto <bb 67>; [INV]
+  else
+    goto <bb 85>; [INV]
+
+  <bb 67> :
+  _36 = BN_lshift1 (T_132, B_69);
+  if (_36 == 0)
+    goto <bb 68>; [INV]
+  else
+    goto <bb 69>; [INV]
+
+  <bb 68> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 69> :
+  _37 = BN_ucmp (A_67, T_132);
+  if (_37 < 0)
+    goto <bb 70>; [INV]
+  else
+    goto <bb 74>; [INV]
+
+  <bb 70> :
+  _38 = BN_set_word (D_126, 1);
+  if (_38 == 0)
+    goto <bb 71>; [INV]
+  else
+    goto <bb 72>; [INV]
+
+  <bb 71> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 72> :
+  _39 = BN_sub (M_73, A_67, B_69);
+  if (_39 == 0)
+    goto <bb 73>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 73> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 74> :
+  _40 = BN_sub (M_73, A_67, T_132);
+  if (_40 == 0)
+    goto <bb 75>; [INV]
+  else
+    goto <bb 76>; [INV]
+
+  <bb 75> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 76> :
+  _41 = BN_add (D_126, T_132, B_69);
+  if (_41 == 0)
+    goto <bb 77>; [INV]
+  else
+    goto <bb 78>; [INV]
+
+  <bb 77> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 78> :
+  _42 = BN_ucmp (A_67, D_126);
+  if (_42 < 0)
+    goto <bb 79>; [INV]
+  else
+    goto <bb 81>; [INV]
+
+  <bb 79> :
+  _43 = BN_set_word (D_126, 2);
+  if (_43 == 0)
+    goto <bb 80>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 80> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 81> :
+  _44 = BN_set_word (D_126, 3);
+  if (_44 == 0)
+    goto <bb 82>; [INV]
+  else
+    goto <bb 83>; [INV]
+
+  <bb 82> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 83> :
+  _45 = BN_sub (M_73, M_73, B_69);
+  if (_45 == 0)
+    goto <bb 84>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 84> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 85> :
+  _46 = BN_div (D_126, M_73, A_67, B_69, ctx_117(D));
+  if (_46 == 0)
+    goto <bb 86>; [INV]
+  else
+    goto <bb 87>; [INV]
+
+  <bb 86> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 87> :
+  tmp_185 = A_67;
+  A_186 = B_69;
+  B_187 = M_73;
+  _47 = BN_is_one (D_126);
+  if (_47 != 0)
+    goto <bb 88>; [INV]
+  else
+    goto <bb 90>; [INV]
+
+  <bb 88> :
+  _48 = BN_add (tmp_185, X_70, Y_71);
+  if (_48 == 0)
+    goto <bb 89>; [INV]
+  else
+    goto <bb 105>; [INV]
+
+  <bb 89> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 90> :
+  _49 = BN_is_word (D_126, 2);
+  if (_49 != 0)
+    goto <bb 91>; [INV]
+  else
+    goto <bb 93>; [INV]
+
+  <bb 91> :
+  _50 = BN_lshift1 (tmp_185, X_70);
+  if (_50 == 0)
+    goto <bb 92>; [INV]
+  else
+    goto <bb 103>; [INV]
+
+  <bb 92> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 93> :
+  _51 = BN_is_word (D_126, 4);
+  if (_51 != 0)
+    goto <bb 94>; [INV]
+  else
+    goto <bb 96>; [INV]
+
+  <bb 94> :
+  _52 = BN_lshift (tmp_185, X_70, 2);
+  if (_52 == 0)
+    goto <bb 95>; [INV]
+  else
+    goto <bb 103>; [INV]
+
+  <bb 95> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 96> :
+  _53 = D_126->top;
+  if (_53 == 1)
+    goto <bb 97>; [INV]
+  else
+    goto <bb 101>; [INV]
+
+  <bb 97> :
+  _54 = BN_copy (tmp_185, X_70);
+  if (_54 == 0B)
+    goto <bb 98>; [INV]
+  else
+    goto <bb 99>; [INV]
+
+  <bb 98> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 99> :
+  _55 = D_126->d;
+  _56 = *_55;
+  _57 = BN_mul_word (tmp_185, _56);
+  if (_57 == 0)
+    goto <bb 100>; [INV]
+  else
+    goto <bb 103>; [INV]
+
+  <bb 100> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 101> :
+  _58 = BN_mul (tmp_185, D_126, X_70, ctx_117(D));
+  if (_58 == 0)
+    goto <bb 102>; [INV]
+  else
+    goto <bb 103>; [INV]
+
+  <bb 102> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 103> :
+  _59 = BN_add (tmp_185, tmp_185, Y_71);
+  if (_59 == 0)
+    goto <bb 104>; [INV]
+  else
+    goto <bb 105>; [INV]
+
+  <bb 104> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 105> :
+  M_198 = Y_71;
+  Y_199 = X_70;
+  X_200 = tmp_185;
+  sign_201 = -sign_77;
+
+  <bb 106> :
+  # A_67 = PHI <A_120(60), A_186(105)>
+  # B_69 = PHI <B_122(60), B_187(105)>
+  # X_70 = PHI <X_124(60), X_200(105)>
+  # Y_71 = PHI <Y_130(60), Y_199(105)>
+  # M_73 = PHI <M_128(60), M_198(105)>
+  # sign_77 = PHI <sign_144(60), sign_201(105)>
+  _60 = BN_is_zero (B_69);
+  if (_60 == 0)
+    goto <bb 61>; [INV]
+  else
+    goto <bb 107>; [INV]
+
+  <bb 107> :
+  # A_68 = PHI <A_120(59), A_67(106)>
+  # Y_72 = PHI <Y_130(59), Y_71(106)>
+  # sign_78 = PHI <sign_144(59), sign_77(106)>
+  if (sign_78 < 0)
+    goto <bb 108>; [INV]
+  else
+    goto <bb 110>; [INV]
+
+  <bb 108> :
+  _61 = BN_sub (Y_72, n_109(D), Y_72);
+  if (_61 == 0)
+    goto <bb 109>; [INV]
+  else
+    goto <bb 110>; [INV]
+
+  <bb 109> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 110> :
+  _62 = BN_is_one (A_68);
+  if (_62 != 0)
+    goto <bb 111>; [INV]
+  else
+    goto <bb 119>; [INV]
+
+  <bb 111> :
+  _63 = Y_72->neg;
+  if (_63 == 0)
+    goto <bb 112>; [INV]
+  else
+    goto <bb 116>; [INV]
+
+  <bb 112> :
+  _64 = BN_ucmp (Y_72, n_109(D));
+  if (_64 < 0)
+    goto <bb 113>; [INV]
+  else
+    goto <bb 116>; [INV]
+
+  <bb 113> :
+  _65 = BN_copy (R_74, Y_72);
+  if (_65 == 0B)
+    goto <bb 114>; [INV]
+  else
+    goto <bb 115>; [INV]
+
+  <bb 114> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 115> :
+  goto <bb 118>; [INV]
+
+  <bb 116> :
+  _66 = BN_nnmod (R_74, Y_72, n_109(D), ctx_117(D));
+  if (_66 == 0)
+    goto <bb 117>; [INV]
+  else
+    goto <bb 118>; [INV]
+
+  <bb 117> :
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 118> :
+  goto <bb 120>; [INV]
+
+  <bb 119> :
+  *pnoinv_112(D) = 1;
+  // predicted unlikely by goto predictor.
+  goto <bb 121>; [INV]
+
+  <bb 120> :
+  ret_208 = R_74;
+
+  <bb 121> :
+  # R_75 = PHI <R_106(9), R_74(14), R_74(16), R_74(18), R_74(20), R_74(24), R_74(31), R_74(33), R_74(37), R_74(41), R_74(43), R_74(47), R_74(50), R_74(52), R_74(54), R_74(56), R_74(63), R_74(65), R_74(68), R_74(71), R_74(73), R_74(75), R_74(77), R_74(80), R_74(82), R_74(84), R_74(86), R_74(89), R_74(92), R_74(95), R_74(98), R_74(100), R_74(102), R_74(104), R_74(109), R_74(114), R_74(117), R_74(119), R_74(120)>
+  # ret_76 = PHI <ret_107(9), ret_107(14), ret_107(16), ret_107(18), ret_107(20), ret_107(24), ret_107(31), ret_107(33), ret_107(37), ret_107(41), ret_107(43), ret_107(47), ret_107(50), ret_107(52), ret_107(54), ret_107(56), ret_107(63), ret_107(65), ret_107(68), ret_107(71), ret_107(73), ret_107(75), ret_107(77), ret_107(80), ret_107(82), ret_107(84), ret_107(86), ret_107(89), ret_107(92), ret_107(95), ret_107(98), ret_107(100), ret_107(102), ret_107(104), ret_107(109), ret_107(114), ret_107(117), ret_107(119), ret_208(120)>
+err:
+  if (ret_76 == 0B)
+    goto <bb 122>; [INV]
+  else
+    goto <bb 124>; [INV]
+
+  <bb 122> :
+  if (in_133(D) == 0B)
+    goto <bb 123>; [INV]
+  else
+    goto <bb 124>; [INV]
+
+  <bb 123> :
+  BN_free (R_75);
+
+  <bb 124> :
+  BN_CTX_end (ctx_117(D));
+  _211 = ret_76;
+
+  <bb 125> :
+  # _81 = PHI <_215(4), _213(7), _211(124)>
+<L150>:
+  return _81;
+
+}
+
+
+
+;; Function BN_mod_inverse (BN_mod_inverse, funcdef_no=180, decl_uid=8763, cgraph_uid=181, symbol_order=180)
+
+struct BIGNUM * BN_mod_inverse (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * n, struct BN_CTX * ctx)
+{
+  static const char __func__[15] = "BN_mod_inverse";
+  int noinv;
+  struct BIGNUM * rv;
+  struct BN_CTX * new_ctx;
+  struct BIGNUM * D.11762;
+  int noinv.0_1;
+  struct BIGNUM * _4;
+  struct BIGNUM * _18;
+  struct BIGNUM * _28;
+
+  <bb 2> :
+  new_ctx_8 = 0B;
+  noinv = 0;
+  if (ctx_11(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  new_ctx_13 = BN_CTX_new_ex (0B);
+  ctx_14 = new_ctx_13;
+  if (ctx_14 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  ERR_new ();
+  ERR_set_debug ("bn_gcd.c", 526, &__func__);
+  ERR_set_error (3, 524291, 0B);
+  _18 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  # ctx_2 = PHI <ctx_11(D)(2), ctx_14(3)>
+  # new_ctx_3 = PHI <new_ctx_8(2), new_ctx_13(3)>
+  rv_23 = int_bn_mod_inverse (in_19(D), a_20(D), n_21(D), ctx_2, &noinv);
+  noinv.0_1 = noinv;
+  if (noinv.0_1 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_gcd.c", 533, &__func__);
+  ERR_set_error (3, 108, 0B);
+
+  <bb 7> :
+  BN_CTX_free (new_ctx_3);
+  _28 = rv_23;
+
+  <bb 8> :
+  # _4 = PHI <_18(4), _28(7)>
+  noinv ={v} {CLOBBER(eos)};
+
+  <bb 9> :
+<L7>:
+  return _4;
+
+}
+
+
+
+;; Function BN_are_coprime (BN_are_coprime, funcdef_no=181, decl_uid=11529, cgraph_uid=182, symbol_order=181)
+
+int BN_are_coprime (struct BIGNUM * a, const struct BIGNUM * b, struct BN_CTX * ctx)
+{
+  struct BIGNUM * tmp;
+  int ret;
+  int D.11769;
+  struct BIGNUM * _1;
+  _Bool _2;
+  int _19;
+
+  <bb 2> :
+  ret_5 = 0;
+  BN_CTX_start (ctx_7(D));
+  tmp_10 = BN_CTX_get (ctx_7(D));
+  if (tmp_10 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  ERR_set_mark ();
+  BN_set_flags (a_12(D), 4);
+  _1 = BN_mod_inverse (tmp_10, a_12(D), b_14(D), ctx_7(D));
+  _2 = _1 != 0B;
+  ret_16 = (int) _2;
+  ERR_pop_to_mark ();
+
+  <bb 5> :
+  # ret_3 = PHI <ret_5(3), ret_16(4)>
+end:
+  BN_CTX_end (ctx_7(D));
+  _19 = ret_3;
+
+  <bb 6> :
+<L3>:
+  return _19;
+
+}
+
+
+
+;; Function BN_gcd (BN_gcd, funcdef_no=182, decl_uid=8754, cgraph_uid=183, symbol_order=182)
+
+int BN_gcd (struct BIGNUM * r, const struct BIGNUM * in_a, const struct BIGNUM * in_b, struct BN_CTX * ctx)
+{
+  int ret;
+  int pow2_shifts;
+  int cond;
+  int delta;
+  int m;
+  int glen;
+  int rlen;
+  int top;
+  int j;
+  int i;
+  long unsigned int pow2_flag;
+  long unsigned int pow2_condition_mask;
+  long unsigned int pow2_numbits_temp;
+  long unsigned int pow2_numbits;
+  struct BIGNUM * temp;
+  struct BIGNUM * g;
+  long unsigned int D.11780;
+  int D.11773;
+  int _1;
+  struct BIGNUM * _2;
+  _Bool _3;
+  int _4;
+  struct BIGNUM * _5;
+  _Bool _6;
+  int _7;
+  int _8;
+  long unsigned int * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int * _12;
+  long unsigned int _13;
+  long unsigned int * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int * _17;
+  long unsigned int _18;
+  unsigned int _19;
+  unsigned int pow2_shifts.1_20;
+  unsigned int _21;
+  int _22;
+  int _23;
+  unsigned int _24;
+  unsigned int pow2_shifts.2_25;
+  unsigned int _26;
+  int _27;
+  int _28;
+  int _29;
+  int _30;
+  int _31;
+  struct BIGNUM * _32;
+  struct BIGNUM * _33;
+  struct BIGNUM * _34;
+  long unsigned int * _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  int _39;
+  int _40;
+  int _41;
+  unsigned int _42;
+  unsigned int _43;
+  long unsigned int * _44;
+  long unsigned int _45;
+  unsigned int _46;
+  unsigned int _47;
+  int _48;
+  int _49;
+  unsigned int _50;
+  unsigned int _51;
+  unsigned int _52;
+  unsigned int _53;
+  int _54;
+  int _55;
+  int _56;
+  int _57;
+  int _58;
+  int _59;
+  int _60;
+  int _61;
+  long unsigned int _62;
+  int _63;
+  long unsigned int * _64;
+  long unsigned int _65;
+  int _66;
+  int _67;
+  unsigned int _68;
+  unsigned int _69;
+  unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  int _74;
+  int _75;
+  int _76;
+  int _88;
+  long unsigned int _123;
+  int _164;
+  int _168;
+  int _172;
+
+  <bb 2> :
+  temp_97 = 0B;
+  delta_98 = 1;
+  cond_99 = 0;
+  ret_100 = 0;
+  _1 = BN_is_zero (in_b_102(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = BN_copy (r_113(D), in_a_104(D));
+  _3 = _2 != 0B;
+  ret_170 = (int) _3;
+  r_113(D)->neg = 0;
+  _172 = ret_170;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 36>; [INV]
+
+  <bb 4> :
+  _4 = BN_is_zero (in_a_104(D));
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _5 = BN_copy (r_113(D), in_b_102(D));
+  _6 = _5 != 0B;
+  ret_166 = (int) _6;
+  r_113(D)->neg = 0;
+  _168 = ret_166;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 36>; [INV]
+
+  <bb 6> :
+  BN_CTX_start (ctx_106(D));
+  temp_109 = BN_CTX_get (ctx_106(D));
+  g_111 = BN_CTX_get (ctx_106(D));
+  if (g_111 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _7 = BN_lshift1 (g_111, in_b_102(D));
+  if (_7 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _8 = BN_lshift1 (r_113(D), in_a_104(D));
+  if (_8 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  // predicted unlikely by goto predictor.
+  goto <bb 35>; [INV]
+
+  <bb 10> :
+  pow2_flag_115 = 1;
+  pow2_shifts_116 = 0;
+  pow2_numbits_117 = 0;
+  i_118 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _9 = r_113(D)->d;
+  _10 = (long unsigned int) i_81;
+  _11 = _10 * 8;
+  _12 = _9 + _11;
+  _13 = *_12;
+  _14 = g_111->d;
+  _15 = (long unsigned int) i_81;
+  _16 = _15 * 8;
+  _17 = _14 + _16;
+  _18 = *_17;
+  pow2_numbits_temp_119 = _13 | _18;
+  pow2_condition_mask_121 = constant_time_is_zero_bn (pow2_flag_79);
+  _123 = constant_time_is_zero_bn (pow2_numbits_temp_119);
+  pow2_flag_124 = _123 & pow2_flag_79;
+  _19 = (unsigned int) pow2_flag_124;
+  pow2_shifts.1_20 = (unsigned int) pow2_shifts_85;
+  _21 = _19 + pow2_shifts.1_20;
+  pow2_shifts_125 = (int) _21;
+  pow2_numbits_127 = constant_time_select_bn (pow2_condition_mask_121, pow2_numbits_77, pow2_numbits_temp_119);
+  i_128 = i_81 + 1;
+
+  <bb 12> :
+  # pow2_numbits_77 = PHI <pow2_numbits_117(10), pow2_numbits_127(11)>
+  # pow2_flag_79 = PHI <pow2_flag_115(10), pow2_flag_124(11)>
+  # i_81 = PHI <i_118(10), i_128(11)>
+  # pow2_shifts_85 = PHI <pow2_shifts_116(10), pow2_shifts_125(11)>
+  _22 = r_113(D)->dmax;
+  if (i_81 < _22)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  _23 = g_111->dmax;
+  if (i_81 < _23)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  pow2_numbits_129 = ~pow2_numbits_77;
+  pow2_shifts_130 = pow2_shifts_85 * 64;
+  pow2_flag_131 = 1;
+  j_132 = 0;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  pow2_flag_159 = pow2_flag_80 & pow2_numbits_78;
+  _24 = (unsigned int) pow2_flag_159;
+  pow2_shifts.2_25 = (unsigned int) pow2_shifts_86;
+  _26 = _24 + pow2_shifts.2_25;
+  pow2_shifts_160 = (int) _26;
+  pow2_numbits_161 = pow2_numbits_78 >> 1;
+  j_162 = j_83 + 1;
+
+  <bb 16> :
+  # pow2_numbits_78 = PHI <pow2_numbits_129(14), pow2_numbits_161(15)>
+  # pow2_flag_80 = PHI <pow2_flag_131(14), pow2_flag_159(15)>
+  # j_83 = PHI <j_132(14), j_162(15)>
+  # pow2_shifts_86 = PHI <pow2_shifts_130(14), pow2_shifts_160(15)>
+  if (j_83 <= 63)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  _27 = BN_rshift (r_113(D), r_113(D), pow2_shifts_86);
+  if (_27 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  _28 = BN_rshift (g_111, g_111, pow2_shifts_86);
+  if (_28 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  // predicted unlikely by goto predictor.
+  goto <bb 35>; [INV]
+
+  <bb 20> :
+  _29 = r_113(D)->top;
+  _30 = g_111->top;
+  _31 = MAX_EXPR <_29, _30>;
+  top_135 = _31 + 1;
+  _32 = bn_wexpand (r_113(D), top_135);
+  if (_32 == 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  _33 = bn_wexpand (g_111, top_135);
+  if (_33 == 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  _34 = bn_wexpand (temp_109, top_135);
+  if (_34 == 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  // predicted unlikely by goto predictor.
+  goto <bb 35>; [INV]
+
+  <bb 24> :
+  _35 = r_113(D)->d;
+  _36 = *_35;
+  _37 = ~_36;
+  _38 = _37 & 1;
+  BN_consttime_swap (_38, r_113(D), g_111, top_135);
+  rlen_141 = BN_num_bits (r_113(D));
+  glen_143 = BN_num_bits (g_111);
+  _39 = MAX_EXPR <rlen_141, glen_143>;
+  _40 = _39 * 3;
+  m_144 = _40 + 4;
+  i_145 = 0;
+  goto <bb 30>; [INV]
+
+  <bb 25> :
+  _41 = -delta_84;
+  _42 = (unsigned int) _41;
+  _43 = _42 >> 31;
+  _44 = g_111->d;
+  _45 = *_44;
+  _46 = (unsigned int) _45;
+  _47 = _43 & _46;
+  _48 = g_111->top;
+  _49 = _48 + -1;
+  _50 = (unsigned int) _49;
+  _51 = _50 >> 31;
+  _52 = ~_51;
+  _53 = _47 & _52;
+  _54 = (int) _53;
+  cond_150 = _54 & 1;
+  _55 = -cond_150;
+  _56 = -delta_84;
+  _57 = _55 & _56;
+  _58 = cond_150 + -1;
+  _59 = delta_84 & _58;
+  delta_151 = _57 | _59;
+  _60 = r_113(D)->neg;
+  _61 = cond_150 ^ _60;
+  r_113(D)->neg = _61;
+  _62 = (long unsigned int) cond_150;
+  BN_consttime_swap (_62, r_113(D), g_111, top_135);
+  delta_154 = delta_151 + 1;
+  _63 = BN_add (temp_109, g_111, r_113(D));
+  if (_63 == 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  // predicted unlikely by goto predictor.
+  goto <bb 35>; [INV]
+
+  <bb 27> :
+  _64 = g_111->d;
+  _65 = *_64;
+  _66 = g_111->top;
+  _67 = _66 + -1;
+  _68 = (unsigned int) _67;
+  _69 = _68 >> 31;
+  _70 = ~_69;
+  _71 = (long unsigned int) _70;
+  _72 = _65 & _71;
+  _73 = _72 & 1;
+  BN_consttime_swap (_73, g_111, temp_109, top_135);
+  _74 = BN_rshift1 (g_111, g_111);
+  if (_74 == 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  // predicted unlikely by goto predictor.
+  goto <bb 35>; [INV]
+
+  <bb 29> :
+  i_158 = i_82 + 1;
+
+  <bb 30> :
+  # i_82 = PHI <i_145(24), i_158(29)>
+  # delta_84 = PHI <delta_98(24), delta_154(29)>
+  if (i_82 < m_144)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 31> :
+  r_113(D)->neg = 0;
+  _75 = BN_lshift (r_113(D), r_113(D), pow2_shifts_86);
+  if (_75 == 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 32> :
+  _76 = BN_rshift1 (r_113(D), r_113(D));
+  if (_76 == 0)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 33> :
+  // predicted unlikely by goto predictor.
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  ret_149 = 1;
+
+  <bb 35> :
+  # ret_87 = PHI <ret_100(9), ret_100(19), ret_100(23), ret_100(26), ret_100(28), ret_100(33), ret_149(34)>
+err:
+  BN_CTX_end (ctx_106(D));
+  _164 = ret_87;
+
+  <bb 36> :
+  # _88 = PHI <_172(3), _168(5), _164(35)>
+<L33>:
+  return _88;
+
+}
+
+

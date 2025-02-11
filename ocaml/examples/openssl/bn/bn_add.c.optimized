@@ -1,0 +1,393 @@
+
+;; Function BN_add (BN_add, funcdef_no=134, decl_uid=8530, cgraph_uid=135, symbol_order=134)
+
+int BN_add (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  int cmp_res;
+  int r_neg;
+  int ret;
+  int D.11263;
+  int _1;
+  int _2;
+  int _25;
+
+  <bb 2> :
+  _1 = a_7(D)->neg;
+  _2 = b_8(D)->neg;
+  if (_1 == _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  r_neg_21 = a_7(D)->neg;
+  ret_23 = BN_uadd (r_12(D), a_7(D), b_8(D));
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  cmp_res_10 = BN_ucmp (a_7(D), b_8(D));
+  if (cmp_res_10 > 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  r_neg_18 = a_7(D)->neg;
+  ret_20 = BN_usub (r_12(D), a_7(D), b_8(D));
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  if (cmp_res_10 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  r_neg_15 = b_8(D)->neg;
+  ret_17 = BN_usub (r_12(D), b_8(D), a_7(D));
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  r_neg_11 = 0;
+  BN_zero_ex (r_12(D));
+  ret_14 = 1;
+
+  <bb 9> :
+  # ret_3 = PHI <ret_23(3), ret_20(5), ret_17(7), ret_14(8)>
+  # r_neg_4 = PHI <r_neg_21(3), r_neg_18(5), r_neg_15(7), r_neg_11(8)>
+  r_12(D)->neg = r_neg_4;
+  _25 = ret_3;
+
+  <bb 10> :
+<L9>:
+  return _25;
+
+}
+
+
+
+;; Function BN_sub (BN_sub, funcdef_no=135, decl_uid=8518, cgraph_uid=136, symbol_order=135)
+
+int BN_sub (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  int cmp_res;
+  int r_neg;
+  int ret;
+  int D.11274;
+  int _1;
+  int _2;
+  int _3;
+  _Bool _4;
+  int _27;
+
+  <bb 2> :
+  _1 = a_9(D)->neg;
+  _2 = b_10(D)->neg;
+  if (_1 != _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  r_neg_23 = a_9(D)->neg;
+  ret_25 = BN_uadd (r_14(D), a_9(D), b_10(D));
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  cmp_res_12 = BN_ucmp (a_9(D), b_10(D));
+  if (cmp_res_12 > 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  r_neg_20 = a_9(D)->neg;
+  ret_22 = BN_usub (r_14(D), a_9(D), b_10(D));
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  if (cmp_res_12 < 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _3 = b_10(D)->neg;
+  _4 = _3 == 0;
+  r_neg_17 = (int) _4;
+  ret_19 = BN_usub (r_14(D), b_10(D), a_9(D));
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  r_neg_13 = 0;
+  BN_zero_ex (r_14(D));
+  ret_16 = 1;
+
+  <bb 9> :
+  # ret_5 = PHI <ret_25(3), ret_22(5), ret_19(7), ret_16(8)>
+  # r_neg_6 = PHI <r_neg_23(3), r_neg_20(5), r_neg_17(7), r_neg_13(8)>
+  r_14(D)->neg = r_neg_6;
+  _27 = ret_5;
+
+  <bb 10> :
+<L9>:
+  return _27;
+
+}
+
+
+
+;; Function BN_uadd (BN_uadd, funcdef_no=136, decl_uid=8526, cgraph_uid=137, symbol_order=136)
+
+int BN_uadd (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  const struct BIGNUM * tmp;
+  long unsigned int t2;
+  long unsigned int t1;
+  long unsigned int carry;
+  long unsigned int * rp;
+  const long unsigned int * bp;
+  const long unsigned int * ap;
+  int dif;
+  int min;
+  int max;
+  int D.11280;
+  int _1;
+  int _2;
+  int _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  const long unsigned int * ap.0_9;
+  long unsigned int * rp.1_10;
+  _Bool _11;
+  long unsigned int _12;
+  int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  int _17;
+  int _24;
+  int _49;
+  int _57;
+
+  <bb 2> :
+  _1 = a_28(D)->top;
+  _2 = b_29(D)->top;
+  if (_1 < _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  tmp_30 = a_28(D);
+  a_31 = b_29(D);
+  b_32 = tmp_30;
+
+  <bb 4> :
+  # a_18 = PHI <a_28(D)(2), a_31(3)>
+  # b_19 = PHI <b_29(D)(2), b_32(3)>
+  max_33 = a_18->top;
+  min_34 = b_19->top;
+  dif_35 = max_33 - min_34;
+  _3 = max_33 + 1;
+  _4 = bn_wexpand (r_36(D), _3);
+  if (_4 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _57 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 6> :
+  r_36(D)->top = max_33;
+  ap_39 = a_18->d;
+  bp_40 = b_19->d;
+  rp_41 = r_36(D)->d;
+  carry_43 = bn_add_words (rp_41, ap_39, bp_40, min_34);
+  _5 = (long unsigned int) min_34;
+  _6 = _5 * 8;
+  rp_44 = rp_41 + _6;
+  _7 = (long unsigned int) min_34;
+  _8 = _7 * 8;
+  ap_45 = ap_39 + _8;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  dif_50 = dif_20 + -1;
+  ap.0_9 = ap_21;
+  ap_51 = ap.0_9 + 8;
+  t1_52 = *ap.0_9;
+  t2_53 = t1_52 + carry_23;
+  rp.1_10 = rp_22;
+  rp_54 = rp.1_10 + 8;
+  *rp.1_10 = t2_53;
+  _11 = t2_53 == 0;
+  _12 = (long unsigned int) _11;
+  carry_56 = carry_23 & _12;
+
+  <bb 8> :
+  # dif_20 = PHI <dif_35(6), dif_50(7)>
+  # ap_21 = PHI <ap_45(6), ap_51(7)>
+  # rp_22 = PHI <rp_44(6), rp_54(7)>
+  # carry_23 = PHI <carry_43(6), carry_56(7)>
+  if (dif_20 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  *rp_22 = carry_23;
+  _13 = r_36(D)->top;
+  _14 = (unsigned int) _13;
+  _15 = (unsigned int) carry_23;
+  _16 = _14 + _15;
+  _17 = (int) _16;
+  r_36(D)->top = _17;
+  r_36(D)->neg = 0;
+  _49 = 1;
+
+  <bb 10> :
+  # _24 = PHI <_57(5), _49(9)>
+<L7>:
+  return _24;
+
+}
+
+
+
+;; Function BN_usub (BN_usub, funcdef_no=137, decl_uid=8522, cgraph_uid=138, symbol_order=137)
+
+int BN_usub (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  static const char __func__[8] = "BN_usub";
+  const long unsigned int * bp;
+  const long unsigned int * ap;
+  long unsigned int * rp;
+  long unsigned int borrow;
+  long unsigned int t2;
+  long unsigned int t1;
+  int dif;
+  int min;
+  int max;
+  int D.11284;
+  struct BIGNUM * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  const long unsigned int * ap.2_6;
+  long unsigned int * rp.3_7;
+  _Bool _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  int _17;
+  int _39;
+  int _47;
+  int _51;
+
+  <bb 2> :
+  max_22 = a_21(D)->top;
+  min_24 = b_23(D)->top;
+  dif_25 = max_22 - min_24;
+  if (dif_25 < 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  ERR_new ();
+  ERR_set_debug ("bn_add.c", 139, &__func__);
+  ERR_set_error (3, 100, 0B);
+  _51 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 4> :
+  _1 = bn_wexpand (r_26(D), max_22);
+  if (_1 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _47 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  ap_28 = a_21(D)->d;
+  bp_29 = b_23(D)->d;
+  rp_30 = r_26(D)->d;
+  borrow_32 = bn_sub_words (rp_30, ap_28, bp_29, min_24);
+  _2 = (long unsigned int) min_24;
+  _3 = _2 * 8;
+  ap_33 = ap_28 + _3;
+  _4 = (long unsigned int) min_24;
+  _5 = _4 * 8;
+  rp_34 = rp_30 + _5;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  dif_40 = dif_12 + -1;
+  ap.2_6 = ap_16;
+  ap_41 = ap.2_6 + 8;
+  t1_42 = *ap.2_6;
+  t2_43 = t1_42 - borrow_13;
+  rp.3_7 = rp_14;
+  rp_44 = rp.3_7 + 8;
+  *rp.3_7 = t2_43;
+  _8 = t1_42 == 0;
+  _9 = (long unsigned int) _8;
+  borrow_46 = borrow_13 & _9;
+
+  <bb 8> :
+  # dif_12 = PHI <dif_25(6), dif_40(7)>
+  # borrow_13 = PHI <borrow_32(6), borrow_46(7)>
+  # rp_14 = PHI <rp_34(6), rp_44(7)>
+  # ap_16 = PHI <ap_33(6), ap_41(7)>
+  if (dif_12 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  max_36 = max_11 + -1;
+
+  <bb 11> :
+  # max_11 = PHI <max_22(9), max_36(10)>
+  # rp_15 = PHI <rp_14(9), rp_35(10)>
+  if (max_11 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  rp_35 = rp_15 + 18446744073709551608;
+  _10 = *rp_35;
+  if (_10 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  r_26(D)->top = max_11;
+  r_26(D)->neg = 0;
+  _39 = 1;
+
+  <bb 14> :
+  # _17 = PHI <_51(3), _47(5), _39(13)>
+<L11>:
+  return _17;
+
+}
+
+

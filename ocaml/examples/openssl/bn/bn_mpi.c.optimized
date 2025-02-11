@@ -1,0 +1,323 @@
+
+;; Function BN_bn2mpi (BN_bn2mpi, funcdef_no=134, decl_uid=8514, cgraph_uid=135, symbol_order=134)
+
+int BN_bn2mpi (const struct BIGNUM * a, unsigned char * d)
+{
+  long int l;
+  int ext;
+  int num;
+  int bits;
+  int D.11220;
+  int _1;
+  int _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  long int _6;
+  unsigned char _7;
+  long int _8;
+  unsigned char * _9;
+  unsigned char _10;
+  long int _11;
+  unsigned char * _12;
+  unsigned char _13;
+  unsigned char * _14;
+  unsigned char _15;
+  unsigned char * _16;
+  int _17;
+  sizetype _18;
+  unsigned char * _19;
+  int _20;
+  unsigned char * _21;
+  unsigned char _22;
+  unsigned char * _23;
+  unsigned char _24;
+  int _25;
+  int _27;
+  int _49;
+  int _50;
+
+  <bb 2> :
+  num_31 = 0;
+  ext_32 = 0;
+  bits_36 = BN_num_bits (a_34(D));
+  _1 = bits_36 + 7;
+  num_37 = _1 / 8;
+  if (bits_36 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = bits_36 & 7;
+  _3 = _2 == 0;
+  ext_38 = (int) _3;
+
+  <bb 4> :
+  # ext_26 = PHI <ext_32(2), ext_38(3)>
+  if (d_39(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _4 = num_37 + 4;
+  _50 = ext_26 + _4;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  _5 = num_37 + ext_26;
+  l_40 = (long int) _5;
+  _6 = l_40 >> 24;
+  _7 = (unsigned char) _6;
+  *d_39(D) = _7;
+  _8 = l_40 >> 16;
+  _9 = d_39(D) + 1;
+  _10 = (unsigned char) _8;
+  *_9 = _10;
+  _11 = l_40 >> 8;
+  _12 = d_39(D) + 2;
+  _13 = (unsigned char) _11;
+  *_12 = _13;
+  _14 = d_39(D) + 3;
+  _15 = (unsigned char) l_40;
+  *_14 = _15;
+  if (ext_26 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _16 = d_39(D) + 4;
+  *_16 = 0;
+
+  <bb 8> :
+  _17 = ext_26 + 4;
+  _18 = (sizetype) _17;
+  _19 = d_39(D) + _18;
+  num_47 = BN_bn2bin (a_34(D), _19);
+  _20 = a_34(D)->neg;
+  if (_20 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _21 = d_39(D) + 4;
+  _22 = *_21;
+  _23 = d_39(D) + 4;
+  _24 = _22 | 128;
+  *_23 = _24;
+
+  <bb 10> :
+  _25 = num_47 + 4;
+  _49 = ext_26 + _25;
+
+  <bb 11> :
+  # _27 = PHI <_50(5), _49(10)>
+<L8>:
+  return _27;
+
+}
+
+
+
+;; Function BN_mpi2bn (BN_mpi2bn, funcdef_no=135, decl_uid=8511, cgraph_uid=136, symbol_order=135)
+
+struct BIGNUM * BN_mpi2bn (const unsigned char * d, int n, struct BIGNUM * ain)
+{
+  static const char __func__[10] = "BN_mpi2bn";
+  struct BIGNUM * a;
+  int neg;
+  long int len;
+  struct BIGNUM * D.11229;
+  unsigned char _1;
+  signed char _2;
+  unsigned char _3;
+  long int _4;
+  long int _5;
+  const unsigned char * _6;
+  unsigned char _7;
+  long int _8;
+  long int _9;
+  long int _10;
+  const unsigned char * _11;
+  unsigned char _12;
+  int _13;
+  int _14;
+  long int _15;
+  long int _16;
+  const unsigned char * _17;
+  unsigned char _18;
+  long int _19;
+  long int _20;
+  long int _21;
+  unsigned char _22;
+  signed char _23;
+  int _24;
+  struct BIGNUM * _25;
+  int _26;
+  int _27;
+  struct BIGNUM * _30;
+  struct BIGNUM * _51;
+  struct BIGNUM * _53;
+  struct BIGNUM * _56;
+  struct BIGNUM * _57;
+  struct BIGNUM * _61;
+  struct BIGNUM * _65;
+
+  <bb 2> :
+  neg_35 = 0;
+  a_36 = 0B;
+  if (n_37(D) <= 3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = *d_39(D);
+  _2 = (signed char) _1;
+  if (_2 < 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  ERR_new ();
+  ERR_set_debug ("bn_mpi.c", 49, &__func__);
+  ERR_set_error (3, 106, 0B);
+  _65 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 5> :
+  _3 = *d_39(D);
+  _4 = (long int) _3;
+  _5 = _4 << 24;
+  _6 = d_39(D) + 1;
+  _7 = *_6;
+  _8 = (long int) _7;
+  _9 = _8 << 16;
+  _10 = _5 | _9;
+  _11 = d_39(D) + 2;
+  _12 = *_11;
+  _13 = (int) _12;
+  _14 = _13 << 8;
+  _15 = (long int) _14;
+  _16 = _10 | _15;
+  _17 = d_39(D) + 3;
+  _18 = *_17;
+  _19 = (long int) _18;
+  len_40 = _16 | _19;
+  _20 = len_40 + 4;
+  _21 = (long int) n_37(D);
+  if (_20 != _21)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_mpi.c", 55, &__func__);
+  ERR_set_error (3, 104, 0B);
+  _61 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 7> :
+  if (ain_41(D) == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  a_44 = BN_new ();
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  a_42 = ain_41(D);
+
+  <bb 10> :
+  # a_29 = PHI <a_44(8), a_42(9)>
+  if (a_29 == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  _57 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 12> :
+  if (len_40 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  a_29->neg = 0;
+  a_29->top = 0;
+  _56 = a_29;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 14> :
+  d_45 = d_39(D) + 4;
+  _22 = *d_45;
+  _23 = (signed char) _22;
+  if (_23 < 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  neg_46 = 1;
+
+  <bb 16> :
+  # neg_28 = PHI <neg_35(14), neg_46(15)>
+  _24 = (int) len_40;
+  _25 = BN_bin2bn (d_45, _24, a_29);
+  if (_25 == 0B)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 17> :
+  if (ain_41(D) == 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  BN_free (a_29);
+
+  <bb 19> :
+  _53 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 23>; [INV]
+
+  <bb 20> :
+  a_29->neg = neg_28;
+  if (neg_28 != 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  _26 = BN_num_bits (a_29);
+  _27 = _26 + -1;
+  BN_clear_bit (a_29, _27);
+
+  <bb 22> :
+  _51 = a_29;
+
+  <bb 23> :
+  # _30 = PHI <_65(4), _61(6), _57(11), _56(13), _53(19), _51(22)>
+<L20>:
+  return _30;
+
+}
+
+
