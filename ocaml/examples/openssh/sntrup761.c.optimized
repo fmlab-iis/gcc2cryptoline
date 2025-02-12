@@ -1,0 +1,4699 @@
+
+;; Function crypto_sort_int32 (crypto_sort_int32, funcdef_no=6, decl_uid=9510, cgraph_uid=7, symbol_order=6)
+
+void crypto_sort_int32 (void * array, long long int n)
+{
+  int64_t c;
+  int64_t ab;
+  crypto_int32 a;
+  int64_t c;
+  int64_t ab;
+  crypto_int32 a;
+  int64_t c;
+  int64_t ab;
+  crypto_int32 a;
+  int64_t c;
+  int64_t ab;
+  int64_t c;
+  int64_t ab;
+  crypto_int32 * x;
+  long long int j;
+  long long int i;
+  long long int r;
+  long long int q;
+  long long int p;
+  long long int top;
+  long long int _1;
+  long long int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  crypto_int32 * _5;
+  int _6;
+  long unsigned int j.0_7;
+  long unsigned int _8;
+  crypto_int32 * _9;
+  int _10;
+  int _11;
+  long long int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  crypto_int32 * _15;
+  int _16;
+  long int _17;
+  long unsigned int j.1_18;
+  long unsigned int _19;
+  crypto_int32 * _20;
+  int _21;
+  long int _22;
+  long long int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  crypto_int32 * _26;
+  int _27;
+  long int _28;
+  long int _29;
+  long int _30;
+  long unsigned int j.2_31;
+  long unsigned int _32;
+  crypto_int32 * _33;
+  int _34;
+  int _35;
+  long unsigned int j.3_36;
+  long unsigned int _37;
+  crypto_int32 * _38;
+  int _39;
+  long long int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  crypto_int32 * _43;
+  int _44;
+  int _45;
+  long long int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  crypto_int32 * _49;
+  int _50;
+  long long int _51;
+  long long int _52;
+  long long int _53;
+  long long int _54;
+  long long int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  crypto_int32 * _58;
+  int _59;
+  long unsigned int j.4_60;
+  long unsigned int _61;
+  crypto_int32 * _62;
+  int _63;
+  int _64;
+  long long int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  crypto_int32 * _68;
+  int _69;
+  long int _70;
+  long unsigned int j.5_71;
+  long unsigned int _72;
+  crypto_int32 * _73;
+  int _74;
+  long int _75;
+  long long int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  crypto_int32 * _79;
+  int _80;
+  long int _81;
+  long int _82;
+  long int _83;
+  long unsigned int j.6_84;
+  long unsigned int _85;
+  crypto_int32 * _86;
+  int _87;
+  int _88;
+  long unsigned int j.7_89;
+  long unsigned int _90;
+  crypto_int32 * _91;
+  int _92;
+  long long int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  crypto_int32 * _96;
+  int _97;
+  int _98;
+  long long int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  crypto_int32 * _102;
+  int _103;
+  long long int _104;
+  long long int _105;
+  long long int _106;
+  long unsigned int _107;
+  long unsigned int _108;
+  crypto_int32 * _109;
+  long long int _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  crypto_int32 * _113;
+  int _114;
+  int _115;
+  long long int _116;
+  long unsigned int _117;
+  long unsigned int _118;
+  crypto_int32 * _119;
+  int _120;
+  long int _121;
+  long int _122;
+  long long int _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  crypto_int32 * _126;
+  int _127;
+  long int _128;
+  long int _129;
+  long int _130;
+  int _131;
+  long long int _132;
+  long unsigned int _133;
+  long unsigned int _134;
+  crypto_int32 * _135;
+  int _136;
+  int _137;
+  long long int _138;
+  long unsigned int _139;
+  long unsigned int _140;
+  crypto_int32 * _141;
+  int _142;
+  long long int _143;
+  long unsigned int _144;
+  long unsigned int _145;
+  crypto_int32 * _146;
+  long long int _147;
+  long long int _148;
+  long long int _149;
+  long unsigned int _150;
+  long unsigned int _151;
+  crypto_int32 * _152;
+  long long int _153;
+  long unsigned int _154;
+  long unsigned int _155;
+  crypto_int32 * _156;
+  int _157;
+  int _158;
+  long long int _159;
+  long unsigned int _160;
+  long unsigned int _161;
+  crypto_int32 * _162;
+  int _163;
+  long int _164;
+  long int _165;
+  long long int _166;
+  long unsigned int _167;
+  long unsigned int _168;
+  crypto_int32 * _169;
+  int _170;
+  long int _171;
+  long int _172;
+  long int _173;
+  int _174;
+  long long int _175;
+  long unsigned int _176;
+  long unsigned int _177;
+  crypto_int32 * _178;
+  int _179;
+  int _180;
+  long long int _181;
+  long unsigned int _182;
+  long unsigned int _183;
+  crypto_int32 * _184;
+  int _185;
+  long long int _186;
+  long unsigned int _187;
+  long unsigned int _188;
+  crypto_int32 * _189;
+  long long int _190;
+  long long int _191;
+  long long int _192;
+  long long int _193;
+  long long int _194;
+  long unsigned int _195;
+  long unsigned int _196;
+  crypto_int32 * _197;
+  long long int _198;
+  long unsigned int _199;
+  long unsigned int _200;
+  crypto_int32 * _201;
+  int _202;
+  int _203;
+  long long int _204;
+  long unsigned int _205;
+  long unsigned int _206;
+  crypto_int32 * _207;
+  int _208;
+  long int _209;
+  long int _210;
+  long long int _211;
+  long unsigned int _212;
+  long unsigned int _213;
+  crypto_int32 * _214;
+  int _215;
+  long int _216;
+  long int _217;
+  long int _218;
+  int _219;
+  long long int _220;
+  long unsigned int _221;
+  long unsigned int _222;
+  crypto_int32 * _223;
+  int _224;
+  int _225;
+  long long int _226;
+  long unsigned int _227;
+  long unsigned int _228;
+  crypto_int32 * _229;
+  int _230;
+  long long int _231;
+  long unsigned int _232;
+  long unsigned int _233;
+  crypto_int32 * _234;
+  long long int _235;
+
+  <bb 2> :
+  x_273 = array_272(D);
+  if (n_274(D) <= 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 46>; [INV]
+
+  <bb 4> :
+  top_275 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  top_343 = top_236 * 2;
+
+  <bb 6> :
+  # top_236 = PHI <top_275(4), top_343(5)>
+  _1 = n_274(D) - top_236;
+  if (top_236 < _1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  p_276 = top_236;
+  goto <bb 45>; [INV]
+
+  <bb 8> :
+  i_278 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  j_333 = i_242;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _2 = j_247 + p_237;
+  _3 = (long unsigned int) _2;
+  _4 = _3 * 4;
+  _5 = x_273 + _4;
+  _6 = *_5;
+  j.0_7 = (long unsigned int) j_247;
+  _8 = j.0_7 * 4;
+  _9 = x_273 + _8;
+  _10 = *_9;
+  _11 = _6 ^ _10;
+  ab_335 = (int64_t) _11;
+  _12 = j_247 + p_237;
+  _13 = (long unsigned int) _12;
+  _14 = _13 * 4;
+  _15 = x_273 + _14;
+  _16 = *_15;
+  _17 = (long int) _16;
+  j.1_18 = (long unsigned int) j_247;
+  _19 = j.1_18 * 4;
+  _20 = x_273 + _19;
+  _21 = *_20;
+  _22 = (long int) _21;
+  c_336 = _17 - _22;
+  _23 = j_247 + p_237;
+  _24 = (long unsigned int) _23;
+  _25 = _24 * 4;
+  _26 = x_273 + _25;
+  _27 = *_26;
+  _28 = (long int) _27;
+  _29 = c_336 ^ _28;
+  _30 = ab_335 & _29;
+  c_337 = c_336 ^ _30;
+  c_338 = c_337 >> 31;
+  c_339 = c_338 & ab_335;
+  j.2_31 = (long unsigned int) j_247;
+  _32 = j.2_31 * 4;
+  _33 = x_273 + _32;
+  _34 = *_33;
+  _35 = (int) c_339;
+  j.3_36 = (long unsigned int) j_247;
+  _37 = j.3_36 * 4;
+  _38 = x_273 + _37;
+  _39 = _34 ^ _35;
+  *_38 = _39;
+  _40 = j_247 + p_237;
+  _41 = (long unsigned int) _40;
+  _42 = _41 * 4;
+  _43 = x_273 + _42;
+  _44 = *_43;
+  _45 = (int) c_339;
+  _46 = j_247 + p_237;
+  _47 = (long unsigned int) _46;
+  _48 = _47 * 4;
+  _49 = x_273 + _48;
+  _50 = _44 ^ _45;
+  *_49 = _50;
+  j_342 = j_247 + 1;
+
+  <bb 11> :
+  # j_247 = PHI <j_333(9), j_342(10)>
+  _51 = i_242 + p_237;
+  if (j_247 < _51)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _52 = p_237 * 2;
+  i_334 = i_242 + _52;
+
+  <bb 13> :
+  # i_242 = PHI <i_278(8), i_334(12)>
+  _53 = p_237 * 2;
+  _54 = i_242 + _53;
+  if (n_274(D) >= _54)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  j_279 = i_242;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  _55 = j_248 + p_237;
+  _56 = (long unsigned int) _55;
+  _57 = _56 * 4;
+  _58 = x_273 + _57;
+  _59 = *_58;
+  j.4_60 = (long unsigned int) j_248;
+  _61 = j.4_60 * 4;
+  _62 = x_273 + _61;
+  _63 = *_62;
+  _64 = _59 ^ _63;
+  ab_325 = (int64_t) _64;
+  _65 = j_248 + p_237;
+  _66 = (long unsigned int) _65;
+  _67 = _66 * 4;
+  _68 = x_273 + _67;
+  _69 = *_68;
+  _70 = (long int) _69;
+  j.5_71 = (long unsigned int) j_248;
+  _72 = j.5_71 * 4;
+  _73 = x_273 + _72;
+  _74 = *_73;
+  _75 = (long int) _74;
+  c_326 = _70 - _75;
+  _76 = j_248 + p_237;
+  _77 = (long unsigned int) _76;
+  _78 = _77 * 4;
+  _79 = x_273 + _78;
+  _80 = *_79;
+  _81 = (long int) _80;
+  _82 = c_326 ^ _81;
+  _83 = ab_325 & _82;
+  c_327 = c_326 ^ _83;
+  c_328 = c_327 >> 31;
+  c_329 = c_328 & ab_325;
+  j.6_84 = (long unsigned int) j_248;
+  _85 = j.6_84 * 4;
+  _86 = x_273 + _85;
+  _87 = *_86;
+  _88 = (int) c_329;
+  j.7_89 = (long unsigned int) j_248;
+  _90 = j.7_89 * 4;
+  _91 = x_273 + _90;
+  _92 = _87 ^ _88;
+  *_91 = _92;
+  _93 = j_248 + p_237;
+  _94 = (long unsigned int) _93;
+  _95 = _94 * 4;
+  _96 = x_273 + _95;
+  _97 = *_96;
+  _98 = (int) c_329;
+  _99 = j_248 + p_237;
+  _100 = (long unsigned int) _99;
+  _101 = _100 * 4;
+  _102 = x_273 + _101;
+  _103 = _97 ^ _98;
+  *_102 = _103;
+  j_332 = j_248 + 1;
+
+  <bb 16> :
+  # j_248 = PHI <j_279(14), j_332(15)>
+  _104 = n_274(D) - p_237;
+  if (j_248 < _104)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  i_280 = 0;
+  j_281 = 0;
+  q_282 = top_236;
+  goto <bb 43>; [INV]
+
+  <bb 18> :
+  if (j_253 != i_246)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 19> :
+  # j_249 = PHI <j_253(18), j_287(26)>
+  _105 = n_274(D) - q_238;
+  if (j_249 == _105)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  // predicted unlikely by goto predictor.
+  goto <bb 42>; [INV]
+
+  <bb 21> :
+  _106 = j_249 + p_237;
+  _107 = (long unsigned int) _106;
+  _108 = _107 * 4;
+  _109 = x_273 + _108;
+  a_284 = *_109;
+  r_285 = q_238;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  _110 = j_249 + r_239;
+  _111 = (long unsigned int) _110;
+  _112 = _111 * 4;
+  _113 = x_273 + _112;
+  _114 = *_113;
+  _115 = a_254 ^ _114;
+  ab_289 = (int64_t) _115;
+  _116 = j_249 + r_239;
+  _117 = (long unsigned int) _116;
+  _118 = _117 * 4;
+  _119 = x_273 + _118;
+  _120 = *_119;
+  _121 = (long int) _120;
+  _122 = (long int) a_254;
+  c_290 = _121 - _122;
+  _123 = j_249 + r_239;
+  _124 = (long unsigned int) _123;
+  _125 = _124 * 4;
+  _126 = x_273 + _125;
+  _127 = *_126;
+  _128 = (long int) _127;
+  _129 = c_290 ^ _128;
+  _130 = ab_289 & _129;
+  c_291 = c_290 ^ _130;
+  c_292 = c_291 >> 31;
+  c_293 = c_292 & ab_289;
+  _131 = (int) c_293;
+  a_294 = a_254 ^ _131;
+  _132 = j_249 + r_239;
+  _133 = (long unsigned int) _132;
+  _134 = _133 * 4;
+  _135 = x_273 + _134;
+  _136 = *_135;
+  _137 = (int) c_293;
+  _138 = j_249 + r_239;
+  _139 = (long unsigned int) _138;
+  _140 = _139 * 4;
+  _141 = x_273 + _140;
+  _142 = _136 ^ _137;
+  *_141 = _142;
+  r_296 = r_239 >> 1;
+
+  <bb 23> :
+  # r_239 = PHI <r_285(21), r_296(22)>
+  # a_254 = PHI <a_284(21), a_294(22)>
+  if (r_239 > p_237)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  _143 = j_249 + p_237;
+  _144 = (long unsigned int) _143;
+  _145 = _144 * 4;
+  _146 = x_273 + _145;
+  *_146 = a_254;
+  j_287 = j_249 + 1;
+  _147 = i_246 + p_237;
+  if (j_287 == _147)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  _148 = p_237 * 2;
+  i_288 = i_246 + _148;
+  goto <bb 27>; [INV]
+
+  <bb 26> :
+  goto <bb 19>; [INV]
+
+  <bb 27> :
+  # i_243 = PHI <i_246(18), i_288(25)>
+  goto <bb 35>; [INV]
+
+  <bb 28> :
+  j_310 = i_244;
+  goto <bb 33>; [INV]
+
+  <bb 29> :
+  _149 = j_250 + p_237;
+  _150 = (long unsigned int) _149;
+  _151 = _150 * 4;
+  _152 = x_273 + _151;
+  a_312 = *_152;
+  r_313 = q_238;
+  goto <bb 31>; [INV]
+
+  <bb 30> :
+  _153 = j_250 + r_240;
+  _154 = (long unsigned int) _153;
+  _155 = _154 * 4;
+  _156 = x_273 + _155;
+  _157 = *_156;
+  _158 = a_255 ^ _157;
+  ab_316 = (int64_t) _158;
+  _159 = j_250 + r_240;
+  _160 = (long unsigned int) _159;
+  _161 = _160 * 4;
+  _162 = x_273 + _161;
+  _163 = *_162;
+  _164 = (long int) _163;
+  _165 = (long int) a_255;
+  c_317 = _164 - _165;
+  _166 = j_250 + r_240;
+  _167 = (long unsigned int) _166;
+  _168 = _167 * 4;
+  _169 = x_273 + _168;
+  _170 = *_169;
+  _171 = (long int) _170;
+  _172 = c_317 ^ _171;
+  _173 = ab_316 & _172;
+  c_318 = c_317 ^ _173;
+  c_319 = c_318 >> 31;
+  c_320 = c_319 & ab_316;
+  _174 = (int) c_320;
+  a_321 = a_255 ^ _174;
+  _175 = j_250 + r_240;
+  _176 = (long unsigned int) _175;
+  _177 = _176 * 4;
+  _178 = x_273 + _177;
+  _179 = *_178;
+  _180 = (int) c_320;
+  _181 = j_250 + r_240;
+  _182 = (long unsigned int) _181;
+  _183 = _182 * 4;
+  _184 = x_273 + _183;
+  _185 = _179 ^ _180;
+  *_184 = _185;
+  r_323 = r_240 >> 1;
+
+  <bb 31> :
+  # r_240 = PHI <r_313(29), r_323(30)>
+  # a_255 = PHI <a_312(29), a_321(30)>
+  if (r_240 > p_237)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 32> :
+  _186 = j_250 + p_237;
+  _187 = (long unsigned int) _186;
+  _188 = _187 * 4;
+  _189 = x_273 + _188;
+  *_189 = a_255;
+  j_315 = j_250 + 1;
+
+  <bb 33> :
+  # j_250 = PHI <j_310(28), j_315(32)>
+  _190 = i_244 + p_237;
+  if (j_250 < _190)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 34> :
+  _191 = p_237 * 2;
+  i_311 = i_244 + _191;
+
+  <bb 35> :
+  # i_244 = PHI <i_243(27), i_311(34)>
+  _192 = i_244 + p_237;
+  _193 = n_274(D) - q_238;
+  if (_192 <= _193)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+  j_297 = i_244;
+  goto <bb 41>; [INV]
+
+  <bb 37> :
+  _194 = j_251 + p_237;
+  _195 = (long unsigned int) _194;
+  _196 = _195 * 4;
+  _197 = x_273 + _196;
+  a_298 = *_197;
+  r_299 = q_238;
+  goto <bb 39>; [INV]
+
+  <bb 38> :
+  _198 = j_251 + r_241;
+  _199 = (long unsigned int) _198;
+  _200 = _199 * 4;
+  _201 = x_273 + _200;
+  _202 = *_201;
+  _203 = a_256 ^ _202;
+  ab_302 = (int64_t) _203;
+  _204 = j_251 + r_241;
+  _205 = (long unsigned int) _204;
+  _206 = _205 * 4;
+  _207 = x_273 + _206;
+  _208 = *_207;
+  _209 = (long int) _208;
+  _210 = (long int) a_256;
+  c_303 = _209 - _210;
+  _211 = j_251 + r_241;
+  _212 = (long unsigned int) _211;
+  _213 = _212 * 4;
+  _214 = x_273 + _213;
+  _215 = *_214;
+  _216 = (long int) _215;
+  _217 = c_303 ^ _216;
+  _218 = ab_302 & _217;
+  c_304 = c_303 ^ _218;
+  c_305 = c_304 >> 31;
+  c_306 = c_305 & ab_302;
+  _219 = (int) c_306;
+  a_307 = a_256 ^ _219;
+  _220 = j_251 + r_241;
+  _221 = (long unsigned int) _220;
+  _222 = _221 * 4;
+  _223 = x_273 + _222;
+  _224 = *_223;
+  _225 = (int) c_306;
+  _226 = j_251 + r_241;
+  _227 = (long unsigned int) _226;
+  _228 = _227 * 4;
+  _229 = x_273 + _228;
+  _230 = _224 ^ _225;
+  *_229 = _230;
+  r_309 = r_241 >> 1;
+
+  <bb 39> :
+  # r_241 = PHI <r_299(37), r_309(38)>
+  # a_256 = PHI <a_298(37), a_307(38)>
+  if (r_241 > p_237)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 40>; [INV]
+
+  <bb 40> :
+  _231 = j_251 + p_237;
+  _232 = (long unsigned int) _231;
+  _233 = _232 * 4;
+  _234 = x_273 + _233;
+  *_234 = a_256;
+  j_301 = j_251 + 1;
+
+  <bb 41> :
+  # j_251 = PHI <j_297(36), j_301(40)>
+  _235 = n_274(D) - q_238;
+  if (j_251 < _235)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 42>; [INV]
+
+  <bb 42> :
+  # i_245 = PHI <i_246(20), i_244(41)>
+  # j_252 = PHI <j_249(20), j_251(41)>
+done:
+  q_324 = q_238 >> 1;
+
+  <bb 43> :
+  # q_238 = PHI <q_282(17), q_324(42)>
+  # i_246 = PHI <i_280(17), i_245(42)>
+  # j_253 = PHI <j_281(17), j_252(42)>
+  if (q_238 > p_237)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 44>; [INV]
+
+  <bb 44> :
+  p_283 = p_237 >> 1;
+
+  <bb 45> :
+  # p_237 = PHI <p_276(7), p_283(44)>
+  if (p_237 > 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 46>; [INV]
+
+  <bb 46> :
+<L47>:
+  return;
+
+}
+
+
+
+;; Function crypto_sort_uint32 (crypto_sort_uint32, funcdef_no=7, decl_uid=9592, cgraph_uid=8, symbol_order=7)
+
+void crypto_sort_uint32 (void * array, long long int n)
+{
+  long long int j;
+  crypto_uint32 * x;
+  long unsigned int j.8_1;
+  long unsigned int _2;
+  crypto_uint32 * _3;
+  unsigned int _4;
+  long unsigned int j.9_5;
+  long unsigned int _6;
+  crypto_uint32 * _7;
+  unsigned int _8;
+  long unsigned int j.10_9;
+  long unsigned int _10;
+  crypto_uint32 * _11;
+  unsigned int _12;
+  long unsigned int j.11_13;
+  long unsigned int _14;
+  crypto_uint32 * _15;
+  unsigned int _16;
+
+  <bb 2> :
+  x_22 = array_21(D);
+  j_23 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  j.8_1 = (long unsigned int) j_17;
+  _2 = j.8_1 * 4;
+  _3 = x_22 + _2;
+  _4 = *_3;
+  j.9_5 = (long unsigned int) j_17;
+  _6 = j.9_5 * 4;
+  _7 = x_22 + _6;
+  _8 = _4 ^ 2147483648;
+  *_7 = _8;
+  j_31 = j_17 + 1;
+
+  <bb 4> :
+  # j_17 = PHI <j_23(2), j_31(3)>
+  if (j_17 < n_25(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  crypto_sort_int32 (array_21(D), n_25(D));
+  j_27 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  j.10_9 = (long unsigned int) j_18;
+  _10 = j.10_9 * 4;
+  _11 = x_22 + _10;
+  _12 = *_11;
+  j.11_13 = (long unsigned int) j_18;
+  _14 = j.11_13 * 4;
+  _15 = x_22 + _14;
+  _16 = _12 ^ 2147483648;
+  *_15 = _16;
+  j_29 = j_18 + 1;
+
+  <bb 7> :
+  # j_18 = PHI <j_27(5), j_29(6)>
+  if (j_18 < n_25(D))
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
+
+;; Function uint32_divmod_uint14 (uint32_divmod_uint14, funcdef_no=8, decl_uid=9608, cgraph_uid=9, symbol_order=8)
+
+void uint32_divmod_uint14 (crypto_uint32 * q, crypto_uint16 * r, crypto_uint32 x, crypto_uint16 m)
+{
+  crypto_uint32 mask;
+  crypto_uint32 qpart;
+  crypto_uint32 v;
+  unsigned int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int _19;
+  unsigned int _20;
+  signed int x.12_21;
+  signed int _22;
+  unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  short unsigned int _27;
+
+  <bb 2> :
+  v_28 = 2147483648;
+  _1 = (unsigned int) m_29(D);
+  v_30 = v_28 / _1;
+  *q_32(D) = 0;
+  _2 = (long unsigned int) x_34(D);
+  _3 = (long unsigned int) v_30;
+  _4 = _2 * _3;
+  _5 = _4 >> 31;
+  qpart_35 = (crypto_uint32) _5;
+  _6 = (unsigned int) m_29(D);
+  _7 = qpart_35 * _6;
+  x_36 = x_34(D) - _7;
+  _8 = *q_32(D);
+  _9 = qpart_35 + _8;
+  *q_32(D) = _9;
+  _10 = (long unsigned int) x_36;
+  _11 = (long unsigned int) v_30;
+  _12 = _10 * _11;
+  _13 = _12 >> 31;
+  qpart_38 = (crypto_uint32) _13;
+  _14 = (unsigned int) m_29(D);
+  _15 = qpart_38 * _14;
+  x_39 = x_36 - _15;
+  _16 = *q_32(D);
+  _17 = qpart_38 + _16;
+  *q_32(D) = _17;
+  _18 = (unsigned int) m_29(D);
+  x_41 = x_39 - _18;
+  _19 = *q_32(D);
+  _20 = _19 + 1;
+  *q_32(D) = _20;
+  x.12_21 = (signed int) x_41;
+  _22 = x.12_21 >> 31;
+  mask_43 = (crypto_uint32) _22;
+  _23 = (unsigned int) m_29(D);
+  _24 = mask_43 & _23;
+  x_44 = x_41 + _24;
+  _25 = *q_32(D);
+  _26 = mask_43 + _25;
+  *q_32(D) = _26;
+  _27 = (short unsigned int) x_44;
+  *r_46(D) = _27;
+  return;
+
+}
+
+
+
+;; Function uint32_mod_uint14 (uint32_mod_uint14, funcdef_no=9, decl_uid=9615, cgraph_uid=10, symbol_order=9)
+
+crypto_uint16 uint32_mod_uint14 (crypto_uint32 x, crypto_uint16 m)
+{
+  crypto_uint16 r;
+  crypto_uint32 q;
+  crypto_uint16 D.10222;
+  crypto_uint16 _5;
+
+  <bb 2> :
+  uint32_divmod_uint14 (&q, &r, x_2(D), m_3(D));
+  _5 = r;
+  q ={v} {CLOBBER(eos)};
+  r ={v} {CLOBBER(eos)};
+
+  <bb 3> :
+<L1>:
+  return _5;
+
+}
+
+
+
+;; Function int32_divmod_uint14 (int32_divmod_uint14, funcdef_no=10, decl_uid=9623, cgraph_uid=11, symbol_order=10)
+
+void int32_divmod_uint14 (crypto_int32 * q, crypto_uint16 * r, crypto_int32 x, crypto_uint16 m)
+{
+  crypto_uint32 mask;
+  crypto_uint16 ur2;
+  crypto_uint16 ur;
+  crypto_uint32 uq2;
+  crypto_uint32 uq;
+  unsigned int x.13_1;
+  unsigned int _2;
+  short unsigned int ur.14_3;
+  short unsigned int ur2.15_4;
+  short unsigned int _5;
+  unsigned int uq.16_6;
+  unsigned int uq2.17_7;
+  unsigned int _8;
+  short unsigned int ur.18_9;
+  short unsigned int _10;
+  unsigned int _11;
+  short unsigned int _12;
+  short unsigned int _13;
+  short unsigned int ur.19_14;
+  short unsigned int _15;
+  unsigned int uq.20_16;
+  unsigned int _17;
+  short unsigned int ur.21_18;
+  unsigned int uq.22_19;
+  int uq.23_20;
+
+  <bb 2> :
+  x.13_1 = (unsigned int) x_21(D);
+  _2 = x.13_1 + 2147483648;
+  uint32_divmod_uint14 (&uq, &ur, _2, m_23(D));
+  uint32_divmod_uint14 (&uq2, &ur2, 2147483648, m_23(D));
+  ur.14_3 = ur;
+  ur2.15_4 = ur2;
+  _5 = ur.14_3 - ur2.15_4;
+  ur = _5;
+  uq.16_6 = uq;
+  uq2.17_7 = uq2;
+  _8 = uq.16_6 - uq2.17_7;
+  uq = _8;
+  ur.18_9 = ur;
+  _10 = ur.18_9 >> 15;
+  _11 = (unsigned int) _10;
+  mask_28 = -_11;
+  _12 = (short unsigned int) mask_28;
+  _13 = m_23(D) & _12;
+  ur.19_14 = ur;
+  _15 = _13 + ur.19_14;
+  ur = _15;
+  uq.20_16 = uq;
+  _17 = mask_28 + uq.20_16;
+  uq = _17;
+  ur.21_18 = ur;
+  *r_31(D) = ur.21_18;
+  uq.22_19 = uq;
+  uq.23_20 = (int) uq.22_19;
+  *q_33(D) = uq.23_20;
+  uq ={v} {CLOBBER(eos)};
+  uq2 ={v} {CLOBBER(eos)};
+  ur ={v} {CLOBBER(eos)};
+  ur2 ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function int32_mod_uint14 (int32_mod_uint14, funcdef_no=11, decl_uid=9632, cgraph_uid=12, symbol_order=11)
+
+crypto_uint16 int32_mod_uint14 (crypto_int32 x, crypto_uint16 m)
+{
+  crypto_uint16 r;
+  crypto_int32 q;
+  crypto_uint16 D.10225;
+  crypto_uint16 _5;
+
+  <bb 2> :
+  int32_divmod_uint14 (&q, &r, x_2(D), m_3(D));
+  _5 = r;
+  q ={v} {CLOBBER(eos)};
+  r ={v} {CLOBBER(eos)};
+
+  <bb 3> :
+<L1>:
+  return _5;
+
+}
+
+
+
+;; Function Decode (Decode, funcdef_no=12, decl_uid=9640, cgraph_uid=13, symbol_order=12)
+
+void Decode (crypto_uint16 * out, const unsigned char * S, const crypto_uint16 * M, long long int len)
+{
+  crypto_uint16 r0;
+  crypto_uint32 r1;
+  crypto_uint32 r;
+  crypto_uint32 m;
+  long long int i;
+  crypto_uint32 bottomt[0:D.10260] [value-expr: *bottomt.27];
+  crypto_uint16 bottomr[0:D.10253] [value-expr: *bottomr.26];
+  crypto_uint16 M2[0:D.10246] [value-expr: *M2.25];
+  crypto_uint16 R2[0:D.10239] [value-expr: *R2.24];
+  void * saved_stack.39;
+  crypto_uint32[0:D.10260] * bottomt.27;
+  sizetype D.10264;
+  bitsizetype D.10263;
+  sizetype D.10262;
+  bitsizetype D.10261;
+  sizetype D.10260;
+  long long int D.10259;
+  crypto_uint16[0:D.10253] * bottomr.26;
+  sizetype D.10257;
+  bitsizetype D.10256;
+  sizetype D.10255;
+  bitsizetype D.10254;
+  sizetype D.10253;
+  long long int D.10252;
+  crypto_uint16[0:D.10246] * M2.25;
+  sizetype D.10250;
+  bitsizetype D.10249;
+  sizetype D.10248;
+  bitsizetype D.10247;
+  sizetype D.10246;
+  long long int D.10245;
+  crypto_uint16[0:D.10239] * R2.24;
+  sizetype D.10243;
+  bitsizetype D.10242;
+  sizetype D.10241;
+  bitsizetype D.10240;
+  sizetype D.10239;
+  long long int D.10238;
+  short unsigned int _1;
+  short unsigned int _2;
+  unsigned char _3;
+  unsigned int _4;
+  short unsigned int _5;
+  short unsigned int _6;
+  unsigned char _7;
+  int _8;
+  const unsigned char * _9;
+  unsigned char _10;
+  int _11;
+  int _12;
+  int _13;
+  unsigned int _14;
+  short unsigned int _15;
+  short unsigned int _16;
+  long long int _17;
+  long int _18;
+  sizetype _19;
+  sizetype _20;
+  bitsizetype _21;
+  bitsizetype _22;
+  sizetype _23;
+  sizetype _24;
+  sizetype _25;
+  bitsizetype _26;
+  bitsizetype _27;
+  sizetype _28;
+  sizetype _29;
+  long long int _30;
+  long int _31;
+  sizetype _32;
+  sizetype _33;
+  bitsizetype _34;
+  bitsizetype _35;
+  sizetype _36;
+  sizetype _37;
+  sizetype _38;
+  bitsizetype _39;
+  bitsizetype _40;
+  sizetype _41;
+  sizetype _42;
+  long int _43;
+  sizetype _44;
+  sizetype _45;
+  bitsizetype _46;
+  bitsizetype _47;
+  sizetype _48;
+  sizetype _49;
+  sizetype _50;
+  bitsizetype _51;
+  bitsizetype _52;
+  sizetype _53;
+  sizetype _54;
+  long int _55;
+  sizetype _56;
+  sizetype _57;
+  bitsizetype _58;
+  bitsizetype _59;
+  sizetype _60;
+  sizetype _61;
+  sizetype _62;
+  bitsizetype _63;
+  bitsizetype _64;
+  sizetype _65;
+  sizetype _66;
+  long unsigned int i.28_67;
+  long unsigned int _68;
+  const crypto_uint16 * _69;
+  short unsigned int _70;
+  unsigned int _71;
+  sizetype i.29_72;
+  sizetype _73;
+  sizetype _74;
+  const crypto_uint16 * _75;
+  short unsigned int _76;
+  unsigned int _77;
+  long long int _78;
+  unsigned char _79;
+  short unsigned int _80;
+  const unsigned char * _81;
+  unsigned char _82;
+  short unsigned int _83;
+  short unsigned int _84;
+  long long int _85;
+  short unsigned int _86;
+  unsigned int _87;
+  unsigned int _88;
+  unsigned int _89;
+  unsigned int _90;
+  long long int _91;
+  short unsigned int _92;
+  long long int _93;
+  unsigned char _94;
+  long long int _95;
+  short unsigned int _96;
+  unsigned int _97;
+  unsigned int _98;
+  long long int _99;
+  short unsigned int _100;
+  long long int _101;
+  long long int _102;
+  long long int _103;
+  short unsigned int _104;
+  long long int _105;
+  long unsigned int i.30_106;
+  long unsigned int _107;
+  const crypto_uint16 * _108;
+  long long int _109;
+  short unsigned int _110;
+  long long int _111;
+  long long int _112;
+  long long int _113;
+  short unsigned int _114;
+  long long int _115;
+  unsigned int _116;
+  long long int _117;
+  short unsigned int _118;
+  unsigned int _119;
+  unsigned int _120;
+  long unsigned int i.31_121;
+  long unsigned int _122;
+  const crypto_uint16 * _123;
+  short unsigned int _124;
+  unsigned int r1.32_125;
+  sizetype i.33_126;
+  sizetype _127;
+  sizetype _128;
+  const crypto_uint16 * _129;
+  short unsigned int _130;
+  short unsigned int _131;
+  unsigned int _132;
+  crypto_uint16 * out.34_133;
+  short unsigned int r0.35_134;
+  unsigned int r1.36_135;
+  crypto_uint16 * out.37_136;
+  short unsigned int _137;
+  long long int _138;
+  long long int _139;
+  crypto_uint16 * out.38_140;
+  short unsigned int _141;
+  void * saved_stack.39_165;
+  long long int _166;
+  sizetype _167;
+  bitsizetype _168;
+  sizetype _169;
+  bitsizetype _170;
+  sizetype _171;
+  long long int _174;
+  sizetype _175;
+  bitsizetype _176;
+  sizetype _177;
+  bitsizetype _178;
+  sizetype _179;
+  long long int _182;
+  sizetype _183;
+  bitsizetype _184;
+  sizetype _185;
+  bitsizetype _186;
+  sizetype _187;
+  long long int _190;
+  sizetype _191;
+  bitsizetype _192;
+  sizetype _193;
+  bitsizetype _194;
+  sizetype _195;
+
+  <bb 2> :
+  if (len_154(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 3> :
+  _1 = *M_156(D);
+  if (_1 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  *out_159(D) = 0;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  _2 = *M_156(D);
+  if (_2 <= 256)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _3 = *S_157(D);
+  _4 = (unsigned int) _3;
+  _5 = *M_156(D);
+  _6 = uint32_mod_uint14 (_4, _5);
+  *out_159(D) = _6;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _7 = *S_157(D);
+  _8 = (int) _7;
+  _9 = S_157(D) + 1;
+  _10 = *_9;
+  _11 = (int) _10;
+  _12 = _11 << 8;
+  _13 = _8 + _12;
+  _14 = (unsigned int) _13;
+  _15 = *M_156(D);
+  _16 = uint32_mod_uint14 (_14, _15);
+  *out_159(D) = _16;
+
+  <bb 8> :
+  if (len_154(D) > 1)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 9> :
+  saved_stack.39_165 = __builtin_stack_save ();
+  _17 = len_154(D) + 1;
+  _166 = _17 / 2;
+  _18 = _166 + -1;
+  _19 = (sizetype) _18;
+  _167 = _19;
+  _20 = (sizetype) _166;
+  _21 = (bitsizetype) _20;
+  _22 = _21 * 16;
+  _168 = _22;
+  _23 = (sizetype) _166;
+  _24 = _23 * 2;
+  _169 = _24;
+  _25 = (sizetype) _166;
+  _26 = (bitsizetype) _25;
+  _27 = _26 * 16;
+  _170 = _27;
+  _28 = (sizetype) _166;
+  _29 = _28 * 2;
+  _171 = _29;
+  R2.24_173 = __builtin_alloca_with_align (_171, 16);
+  _30 = len_154(D) + 1;
+  _174 = _30 / 2;
+  _31 = _174 + -1;
+  _32 = (sizetype) _31;
+  _175 = _32;
+  _33 = (sizetype) _174;
+  _34 = (bitsizetype) _33;
+  _35 = _34 * 16;
+  _176 = _35;
+  _36 = (sizetype) _174;
+  _37 = _36 * 2;
+  _177 = _37;
+  _38 = (sizetype) _174;
+  _39 = (bitsizetype) _38;
+  _40 = _39 * 16;
+  _178 = _40;
+  _41 = (sizetype) _174;
+  _42 = _41 * 2;
+  _179 = _42;
+  M2.25_181 = __builtin_alloca_with_align (_179, 16);
+  _182 = len_154(D) / 2;
+  _43 = _182 + -1;
+  _44 = (sizetype) _43;
+  _183 = _44;
+  _45 = (sizetype) _182;
+  _46 = (bitsizetype) _45;
+  _47 = _46 * 16;
+  _184 = _47;
+  _48 = (sizetype) _182;
+  _49 = _48 * 2;
+  _185 = _49;
+  _50 = (sizetype) _182;
+  _51 = (bitsizetype) _50;
+  _52 = _51 * 16;
+  _186 = _52;
+  _53 = (sizetype) _182;
+  _54 = _53 * 2;
+  _187 = _54;
+  bottomr.26_189 = __builtin_alloca_with_align (_187, 16);
+  _190 = len_154(D) / 2;
+  _55 = _190 + -1;
+  _56 = (sizetype) _55;
+  _191 = _56;
+  _57 = (sizetype) _190;
+  _58 = (bitsizetype) _57;
+  _59 = _58 * 32;
+  _192 = _59;
+  _60 = (sizetype) _190;
+  _61 = _60 * 4;
+  _193 = _61;
+  _62 = (sizetype) _190;
+  _63 = (bitsizetype) _62;
+  _64 = _63 * 32;
+  _194 = _64;
+  _65 = (sizetype) _190;
+  _66 = _65 * 4;
+  _195 = _66;
+  bottomt.27_197 = __builtin_alloca_with_align (_195, 32);
+  i_198 = 0;
+  goto <bb 16>; [INV]
+
+  <bb 10> :
+  i.28_67 = (long unsigned int) i_145;
+  _68 = i.28_67 * 2;
+  _69 = M_156(D) + _68;
+  _70 = *_69;
+  _71 = (unsigned int) _70;
+  i.29_72 = (sizetype) i_145;
+  _73 = i.29_72 + 1;
+  _74 = _73 * 2;
+  _75 = M_156(D) + _74;
+  _76 = *_75;
+  _77 = (unsigned int) _76;
+  m_217 = _71 * _77;
+  if (m_217 > 4194048)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  _78 = i_145 / 2;
+  (*bottomt.27_197)[_78] = 65536;
+  _79 = *S_144;
+  _80 = (short unsigned int) _79;
+  _81 = S_144 + 1;
+  _82 = *_81;
+  _83 = (short unsigned int) _82;
+  _84 = _83 * 256;
+  _85 = i_145 / 2;
+  _86 = _80 + _84;
+  (*bottomr.26_189)[_85] = _86;
+  S_227 = S_144 + 2;
+  _87 = m_217 + 255;
+  _88 = _87 >> 8;
+  _89 = _88 + 255;
+  _90 = _89 >> 8;
+  _91 = i_145 / 2;
+  _92 = (short unsigned int) _90;
+  (*M2.25_181)[_91] = _92;
+  goto <bb 15>; [INV]
+
+  <bb 12> :
+  if (m_217 > 16383)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  _93 = i_145 / 2;
+  (*bottomt.27_197)[_93] = 256;
+  _94 = *S_144;
+  _95 = i_145 / 2;
+  _96 = (short unsigned int) _94;
+  (*bottomr.26_189)[_95] = _96;
+  S_223 = S_144 + 1;
+  _97 = m_217 + 255;
+  _98 = _97 >> 8;
+  _99 = i_145 / 2;
+  _100 = (short unsigned int) _98;
+  (*M2.25_181)[_99] = _100;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  _101 = i_145 / 2;
+  (*bottomt.27_197)[_101] = 1;
+  _102 = i_145 / 2;
+  (*bottomr.26_189)[_102] = 0;
+  _103 = i_145 / 2;
+  _104 = (short unsigned int) m_217;
+  (*M2.25_181)[_103] = _104;
+
+  <bb 15> :
+  # S_143 = PHI <S_227(11), S_223(13), S_144(14)>
+  i_229 = i_145 + 2;
+
+  <bb 16> :
+  # S_144 = PHI <S_157(D)(9), S_143(15)>
+  # i_145 = PHI <i_198(9), i_229(15)>
+  _105 = len_154(D) + -1;
+  if (i_145 < _105)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  if (i_145 < len_154(D))
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  i.30_106 = (long unsigned int) i_145;
+  _107 = i.30_106 * 2;
+  _108 = M_156(D) + _107;
+  _109 = i_145 / 2;
+  _110 = *_108;
+  (*M2.25_181)[_109] = _110;
+
+  <bb 19> :
+  _111 = len_154(D) + 1;
+  _112 = _111 / 2;
+  Decode (R2.24_173, S_144, M2.25_181, _112);
+  i_201 = 0;
+  goto <bb 21>; [INV]
+
+  <bb 20> :
+  _113 = i_146 / 2;
+  _114 = (*bottomr.26_189)[_113];
+  r_205 = (crypto_uint32) _114;
+  _115 = i_146 / 2;
+  _116 = (*bottomt.27_197)[_115];
+  _117 = i_146 / 2;
+  _118 = (*R2.24_173)[_117];
+  _119 = (unsigned int) _118;
+  _120 = _116 * _119;
+  r_206 = r_205 + _120;
+  i.31_121 = (long unsigned int) i_146;
+  _122 = i.31_121 * 2;
+  _123 = M_156(D) + _122;
+  _124 = *_123;
+  uint32_divmod_uint14 (&r1, &r0, r_206, _124);
+  r1.32_125 = r1;
+  i.33_126 = (sizetype) i_146;
+  _127 = i.33_126 + 1;
+  _128 = _127 * 2;
+  _129 = M_156(D) + _128;
+  _130 = *_129;
+  _131 = uint32_mod_uint14 (r1.32_125, _130);
+  _132 = (unsigned int) _131;
+  r1 = _132;
+  out.34_133 = out_142;
+  out_210 = out.34_133 + 2;
+  r0.35_134 = r0;
+  *out.34_133 = r0.35_134;
+  r1.36_135 = r1;
+  out.37_136 = out_210;
+  out_212 = out.37_136 + 2;
+  _137 = (short unsigned int) r1.36_135;
+  *out.37_136 = _137;
+  r1 ={v} {CLOBBER(eos)};
+  r0 ={v} {CLOBBER(eos)};
+  i_216 = i_146 + 2;
+
+  <bb 21> :
+  # out_142 = PHI <out_159(D)(19), out_212(20)>
+  # i_146 = PHI <i_201(19), i_216(20)>
+  _138 = len_154(D) + -1;
+  if (i_146 < _138)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  if (i_146 < len_154(D))
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  _139 = i_146 / 2;
+  out.38_140 = out_142;
+  out_202 = out.38_140 + 2;
+  _141 = (*R2.24_173)[_139];
+  *out.38_140 = _141;
+
+  <bb 24> :
+  __builtin_stack_restore (saved_stack.39_165);
+
+  <bb 25> :
+  return;
+
+}
+
+
+
+;; Function Encode (Encode, funcdef_no=13, decl_uid=9663, cgraph_uid=14, symbol_order=13)
+
+void Encode (unsigned char * out, const crypto_uint16 * R, const crypto_uint16 * M, long long int len)
+{
+  crypto_uint32 m;
+  crypto_uint32 r;
+  crypto_uint32 m0;
+  long long int i;
+  crypto_uint16 M2[0:D.10289] [value-expr: *M2.42];
+  crypto_uint16 R2[0:D.10282] [value-expr: *R2.41];
+  crypto_uint16 m;
+  crypto_uint16 r;
+  void * saved_stack.50;
+  crypto_uint16[0:D.10289] * M2.42;
+  sizetype D.10293;
+  bitsizetype D.10292;
+  sizetype D.10291;
+  bitsizetype D.10290;
+  sizetype D.10289;
+  long long int D.10288;
+  crypto_uint16[0:D.10282] * R2.41;
+  sizetype D.10286;
+  bitsizetype D.10285;
+  sizetype D.10284;
+  bitsizetype D.10283;
+  sizetype D.10282;
+  long long int D.10281;
+  unsigned char * out.40_1;
+  unsigned char _2;
+  int _3;
+  int _4;
+  int _5;
+  long long int _6;
+  long int _7;
+  sizetype _8;
+  sizetype _9;
+  bitsizetype _10;
+  bitsizetype _11;
+  sizetype _12;
+  sizetype _13;
+  sizetype _14;
+  bitsizetype _15;
+  bitsizetype _16;
+  sizetype _17;
+  sizetype _18;
+  long long int _19;
+  long int _20;
+  sizetype _21;
+  sizetype _22;
+  bitsizetype _23;
+  bitsizetype _24;
+  sizetype _25;
+  sizetype _26;
+  sizetype _27;
+  bitsizetype _28;
+  bitsizetype _29;
+  sizetype _30;
+  sizetype _31;
+  long unsigned int i.43_32;
+  long unsigned int _33;
+  const crypto_uint16 * _34;
+  short unsigned int _35;
+  long unsigned int i.44_36;
+  long unsigned int _37;
+  const crypto_uint16 * _38;
+  short unsigned int _39;
+  unsigned int _40;
+  sizetype i.45_41;
+  sizetype _42;
+  sizetype _43;
+  const crypto_uint16 * _44;
+  short unsigned int _45;
+  unsigned int _46;
+  unsigned int _47;
+  sizetype i.46_48;
+  sizetype _49;
+  sizetype _50;
+  const crypto_uint16 * _51;
+  short unsigned int _52;
+  unsigned int _53;
+  unsigned char * out.47_54;
+  unsigned char _55;
+  unsigned int _56;
+  long long int _57;
+  short unsigned int _58;
+  long long int _59;
+  short unsigned int _60;
+  long long int _61;
+  long unsigned int i.48_62;
+  long unsigned int _63;
+  const crypto_uint16 * _64;
+  long long int _65;
+  short unsigned int _66;
+  long unsigned int i.49_67;
+  long unsigned int _68;
+  const crypto_uint16 * _69;
+  long long int _70;
+  short unsigned int _71;
+  long long int _72;
+  long long int _73;
+  void * saved_stack.50_101;
+  long long int _102;
+  sizetype _103;
+  bitsizetype _104;
+  sizetype _105;
+  bitsizetype _106;
+  sizetype _107;
+  long long int _110;
+  sizetype _111;
+  bitsizetype _112;
+  sizetype _113;
+  bitsizetype _114;
+  sizetype _115;
+
+  <bb 2> :
+  if (len_89(D) == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  r_93 = *R_92(D);
+  m_95 = *M_94(D);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  out.40_1 = out_74;
+  out_96 = out.40_1 + 1;
+  _2 = (unsigned char) r_78;
+  *out.40_1 = _2;
+  r_98 = r_78 >> 8;
+  _3 = (int) m_79;
+  _4 = _3 + 255;
+  _5 = _4 >> 8;
+  m_99 = (crypto_uint16) _5;
+
+  <bb 5> :
+  # out_74 = PHI <out_90(D)(3), out_96(4)>
+  # r_78 = PHI <r_93(3), r_98(4)>
+  # m_79 = PHI <m_95(3), m_99(4)>
+  if (m_79 > 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  # out_75 = PHI <out_90(D)(2), out_74(5)>
+  if (len_89(D) > 1)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 7> :
+  saved_stack.50_101 = __builtin_stack_save ();
+  _6 = len_89(D) + 1;
+  _102 = _6 / 2;
+  _7 = _102 + -1;
+  _8 = (sizetype) _7;
+  _103 = _8;
+  _9 = (sizetype) _102;
+  _10 = (bitsizetype) _9;
+  _11 = _10 * 16;
+  _104 = _11;
+  _12 = (sizetype) _102;
+  _13 = _12 * 2;
+  _105 = _13;
+  _14 = (sizetype) _102;
+  _15 = (bitsizetype) _14;
+  _16 = _15 * 16;
+  _106 = _16;
+  _17 = (sizetype) _102;
+  _18 = _17 * 2;
+  _107 = _18;
+  R2.41_109 = __builtin_alloca_with_align (_107, 16);
+  _19 = len_89(D) + 1;
+  _110 = _19 / 2;
+  _20 = _110 + -1;
+  _21 = (sizetype) _20;
+  _111 = _21;
+  _22 = (sizetype) _110;
+  _23 = (bitsizetype) _22;
+  _24 = _23 * 16;
+  _112 = _24;
+  _25 = (sizetype) _110;
+  _26 = _25 * 2;
+  _113 = _26;
+  _27 = (sizetype) _110;
+  _28 = (bitsizetype) _27;
+  _29 = _28 * 16;
+  _114 = _29;
+  _30 = (sizetype) _110;
+  _31 = _30 * 2;
+  _115 = _31;
+  M2.42_117 = __builtin_alloca_with_align (_115, 16);
+  i_118 = 0;
+  goto <bb 12>; [INV]
+
+  <bb 8> :
+  i.43_32 = (long unsigned int) i_80;
+  _33 = i.43_32 * 2;
+  _34 = M_94(D) + _33;
+  _35 = *_34;
+  m0_123 = (crypto_uint32) _35;
+  i.44_36 = (long unsigned int) i_80;
+  _37 = i.44_36 * 2;
+  _38 = R_92(D) + _37;
+  _39 = *_38;
+  _40 = (unsigned int) _39;
+  i.45_41 = (sizetype) i_80;
+  _42 = i.45_41 + 1;
+  _43 = _42 * 2;
+  _44 = R_92(D) + _43;
+  _45 = *_44;
+  _46 = (unsigned int) _45;
+  _47 = m0_123 * _46;
+  r_124 = _40 + _47;
+  i.46_48 = (sizetype) i_80;
+  _49 = i.46_48 + 1;
+  _50 = _49 * 2;
+  _51 = M_94(D) + _50;
+  _52 = *_51;
+  _53 = (unsigned int) _52;
+  m_125 = m0_123 * _53;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  out.47_54 = out_76;
+  out_129 = out.47_54 + 1;
+  _55 = (unsigned char) r_81;
+  *out.47_54 = _55;
+  r_131 = r_81 >> 8;
+  _56 = m_82 + 255;
+  m_132 = _56 >> 8;
+
+  <bb 10> :
+  # out_76 = PHI <out_77(8), out_129(9)>
+  # r_81 = PHI <r_124(8), r_131(9)>
+  # m_82 = PHI <m_125(8), m_132(9)>
+  if (m_82 > 16383)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  _57 = i_80 / 2;
+  _58 = (short unsigned int) r_81;
+  (*R2.41_109)[_57] = _58;
+  _59 = i_80 / 2;
+  _60 = (short unsigned int) m_82;
+  (*M2.42_117)[_59] = _60;
+  i_128 = i_80 + 2;
+
+  <bb 12> :
+  # out_77 = PHI <out_75(7), out_76(11)>
+  # i_80 = PHI <i_118(7), i_128(11)>
+  _61 = len_89(D) + -1;
+  if (i_80 < _61)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  if (i_80 < len_89(D))
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  i.48_62 = (long unsigned int) i_80;
+  _63 = i.48_62 * 2;
+  _64 = R_92(D) + _63;
+  _65 = i_80 / 2;
+  _66 = *_64;
+  (*R2.41_109)[_65] = _66;
+  i.49_67 = (long unsigned int) i_80;
+  _68 = i.49_67 * 2;
+  _69 = M_94(D) + _68;
+  _70 = i_80 / 2;
+  _71 = *_69;
+  (*M2.42_117)[_70] = _71;
+
+  <bb 15> :
+  _72 = len_89(D) + 1;
+  _73 = _72 / 2;
+  Encode (out_77, R2.41_109, M2.42_117, _73);
+  __builtin_stack_restore (saved_stack.50_101);
+
+  <bb 16> :
+  return;
+
+}
+
+
+
+;; Function int16_nonzero_mask (int16_nonzero_mask, funcdef_no=14, decl_uid=9684, cgraph_uid=15, symbol_order=14)
+
+int int16_nonzero_mask (crypto_int16 x)
+{
+  crypto_uint32 v;
+  crypto_uint16 u;
+  int D.10298;
+  unsigned int _1;
+  int _7;
+
+  <bb 2> :
+  u_3 = (crypto_uint16) x_2(D);
+  v_4 = (crypto_uint32) u_3;
+  v_5 = -v_4;
+  v_6 = v_5 >> 31;
+  _1 = -v_6;
+  _7 = (int) _1;
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function int16_negative_mask (int16_negative_mask, funcdef_no=15, decl_uid=9689, cgraph_uid=16, symbol_order=15)
+
+int int16_negative_mask (crypto_int16 x)
+{
+  crypto_uint16 u;
+  int D.10300;
+  int _1;
+  int _5;
+
+  <bb 2> :
+  u_3 = (crypto_uint16) x_2(D);
+  u_4 = u_3 >> 15;
+  _1 = (int) u_4;
+  _5 = -_1;
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+
+
+;; Function F3_freeze (F3_freeze, funcdef_no=16, decl_uid=9694, cgraph_uid=17, symbol_order=16)
+
+small F3_freeze (crypto_int16 x)
+{
+  small D.10302;
+  int _1;
+  int _2;
+  short unsigned int _3;
+  unsigned char _4;
+  unsigned char _5;
+  small _9;
+
+  <bb 2> :
+  _1 = (int) x_6(D);
+  _2 = _1 + 1;
+  _3 = int32_mod_uint14 (_2, 3);
+  _4 = (unsigned char) _3;
+  _5 = _4 + 255;
+  _9 = (small) _5;
+
+  <bb 3> :
+<L0>:
+  return _9;
+
+}
+
+
+
+;; Function Fq_freeze (Fq_freeze, funcdef_no=17, decl_uid=9698, cgraph_uid=18, symbol_order=17)
+
+Fq Fq_freeze (crypto_int32 x)
+{
+  Fq D.10304;
+  int _1;
+  short unsigned int _2;
+  unsigned short _3;
+  Fq _7;
+
+  <bb 2> :
+  _1 = x_4(D) + 2295;
+  _2 = int32_mod_uint14 (_1, 4591);
+  _3 = _2 + 63241;
+  _7 = (Fq) _3;
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function Fq_recip (Fq_recip, funcdef_no=18, decl_uid=9701, cgraph_uid=19, symbol_order=18)
+
+Fq Fq_recip (Fq a1)
+{
+  Fq ai;
+  int i;
+  Fq D.10306;
+  int _1;
+  int _2;
+  int _3;
+  Fq _11;
+
+  <bb 2> :
+  i_7 = 1;
+  ai_9 = a1_8(D);
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (int) a1_8(D);
+  _2 = (int) ai_5;
+  _3 = _1 * _2;
+  ai_13 = Fq_freeze (_3);
+  i_14 = i_4 + 1;
+
+  <bb 4> :
+  # i_4 = PHI <i_7(2), i_14(3)>
+  # ai_5 = PHI <ai_9(2), ai_13(3)>
+  if (i_4 <= 4588)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _11 = ai_5;
+
+  <bb 6> :
+<L3>:
+  return _11;
+
+}
+
+
+
+;; Function Weightw_mask (Weightw_mask, funcdef_no=19, decl_uid=9709, cgraph_uid=20, symbol_order=19)
+
+int Weightw_mask (small * r)
+{
+  int i;
+  int weight;
+  int D.10308;
+  sizetype _1;
+  small * _2;
+  signed char _3;
+  unsigned char _4;
+  int _5;
+  int _6;
+  unsigned short _7;
+  unsigned short _8;
+  short int _9;
+  int _16;
+
+  <bb 2> :
+  weight_12 = 0;
+  i_13 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (sizetype) i_11;
+  _2 = r_17(D) + _1;
+  _3 = *_2;
+  _4 = (unsigned char) _3;
+  _5 = (int) _4;
+  _6 = _5 & 1;
+  weight_18 = weight_10 + _6;
+  i_19 = i_11 + 1;
+
+  <bb 4> :
+  # weight_10 = PHI <weight_12(2), weight_18(3)>
+  # i_11 = PHI <i_13(2), i_19(3)>
+  if (i_11 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _7 = (unsigned short) weight_10;
+  _8 = _7 + 65250;
+  _9 = (short int) _8;
+  _16 = int16_nonzero_mask (_9);
+
+  <bb 6> :
+<L3>:
+  return _16;
+
+}
+
+
+
+;; Function R3_fromRq (R3_fromRq, funcdef_no=20, decl_uid=9719, cgraph_uid=21, symbol_order=20)
+
+void R3_fromRq (small * out, const Fq * r)
+{
+  int i;
+  long unsigned int _1;
+  long unsigned int _2;
+  const Fq * _3;
+  short int _4;
+  sizetype _5;
+  small * _6;
+  signed char _7;
+
+  <bb 2> :
+  i_10 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_8;
+  _2 = _1 * 2;
+  _3 = r_12(D) + _2;
+  _4 = *_3;
+  _5 = (sizetype) i_8;
+  _6 = out_13(D) + _5;
+  _7 = F3_freeze (_4);
+  *_6 = _7;
+  i_16 = i_8 + 1;
+
+  <bb 4> :
+  # i_8 = PHI <i_10(2), i_16(3)>
+  if (i_8 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function R3_mult (R3_mult, funcdef_no=21, decl_uid=9729, cgraph_uid=22, symbol_order=21)
+
+void R3_mult (small * h, const small * f, const small * g)
+{
+  int j;
+  int i;
+  small result;
+  small fg[1521];
+  unsigned short _1;
+  sizetype _2;
+  const small * _3;
+  signed char _4;
+  signed short _5;
+  int _6;
+  sizetype _7;
+  const small * _8;
+  signed char _9;
+  signed short _10;
+  signed short _11;
+  unsigned short _12;
+  unsigned short _13;
+  short int _14;
+  unsigned short _15;
+  sizetype _16;
+  const small * _17;
+  signed char _18;
+  signed short _19;
+  int _20;
+  sizetype _21;
+  const small * _22;
+  signed char _23;
+  signed short _24;
+  signed short _25;
+  unsigned short _26;
+  unsigned short _27;
+  short int _28;
+  int _29;
+  signed char _30;
+  short int _31;
+  signed char _32;
+  short int _33;
+  short int _34;
+  int _35;
+  signed char _36;
+  int _37;
+  signed char _38;
+  short int _39;
+  signed char _40;
+  short int _41;
+  short int _42;
+  int _43;
+  signed char _44;
+  sizetype _45;
+  small * _46;
+  signed char _47;
+
+  <bb 2> :
+  i_62 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  result_85 = 0;
+  j_86 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _1 = (unsigned short) result_48;
+  _2 = (sizetype) j_54;
+  _3 = f_80(D) + _2;
+  _4 = *_3;
+  _5 = (signed short) _4;
+  _6 = i_50 - j_54;
+  _7 = (sizetype) _6;
+  _8 = g_81(D) + _7;
+  _9 = *_8;
+  _10 = (signed short) _9;
+  _11 = _5 * _10;
+  _12 = (unsigned short) _11;
+  _13 = _1 + _12;
+  _14 = (short int) _13;
+  result_90 = F3_freeze (_14);
+  j_91 = j_54 + 1;
+
+  <bb 5> :
+  # result_48 = PHI <result_85(3), result_90(4)>
+  # j_54 = PHI <j_86(3), j_91(4)>
+  if (j_54 <= i_50)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  fg[i_50] = result_48;
+  i_88 = i_50 + 1;
+
+  <bb 7> :
+  # i_50 = PHI <i_62(2), i_88(6)>
+  if (i_50 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  i_64 = 761;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  result_76 = 0;
+  j_77 = i_51 + -760;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _15 = (unsigned short) result_49;
+  _16 = (sizetype) j_55;
+  _17 = f_80(D) + _16;
+  _18 = *_17;
+  _19 = (signed short) _18;
+  _20 = i_51 - j_55;
+  _21 = (sizetype) _20;
+  _22 = g_81(D) + _21;
+  _23 = *_22;
+  _24 = (signed short) _23;
+  _25 = _19 * _24;
+  _26 = (unsigned short) _25;
+  _27 = _15 + _26;
+  _28 = (short int) _27;
+  result_83 = F3_freeze (_28);
+  j_84 = j_55 + 1;
+
+  <bb 11> :
+  # result_49 = PHI <result_76(9), result_83(10)>
+  # j_55 = PHI <j_77(9), j_84(10)>
+  if (j_55 <= 760)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  fg[i_51] = result_49;
+  i_79 = i_51 + 1;
+
+  <bb 13> :
+  # i_51 = PHI <i_64(8), i_79(12)>
+  if (i_51 <= 1520)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  i_65 = 1520;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  _29 = i_52 + -761;
+  _30 = fg[_29];
+  _31 = (short int) _30;
+  _32 = fg[i_52];
+  _33 = (short int) _32;
+  _34 = _31 + _33;
+  _35 = i_52 + -761;
+  _36 = F3_freeze (_34);
+  fg[_35] = _36;
+  _37 = i_52 + -760;
+  _38 = fg[_37];
+  _39 = (short int) _38;
+  _40 = fg[i_52];
+  _41 = (short int) _40;
+  _42 = _39 + _41;
+  _43 = i_52 + -760;
+  _44 = F3_freeze (_42);
+  fg[_43] = _44;
+  i_75 = i_52 + -1;
+
+  <bb 16> :
+  # i_52 = PHI <i_65(14), i_75(15)>
+  if (i_52 > 760)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  i_66 = 0;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _45 = (sizetype) i_53;
+  _46 = h_68(D) + _45;
+  _47 = fg[i_53];
+  *_46 = _47;
+  i_70 = i_53 + 1;
+
+  <bb 19> :
+  # i_53 = PHI <i_66(17), i_70(18)>
+  if (i_53 <= 760)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  fg ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function R3_recip (R3_recip, funcdef_no=22, decl_uid=9761, cgraph_uid=23, symbol_order=22)
+
+int R3_recip (small * out, const small * in)
+{
+  int t;
+  int swap;
+  int sign;
+  int delta;
+  int loop;
+  int i;
+  small r[762];
+  small v[762];
+  small g[762];
+  small f[762];
+  int D.10310;
+  signed char _1;
+  sizetype _2;
+  const small * _3;
+  int _4;
+  signed char _5;
+  int _6;
+  signed char _7;
+  signed char _8;
+  int _9;
+  int _10;
+  signed char _11;
+  int _12;
+  unsigned short _13;
+  unsigned short _14;
+  short int _15;
+  int _16;
+  signed char _17;
+  short int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  signed char _23;
+  signed char _24;
+  signed char _25;
+  int _26;
+  signed char _27;
+  signed char _28;
+  signed char _29;
+  signed char _30;
+  signed char _31;
+  signed char _32;
+  signed char _33;
+  signed char _34;
+  signed char _35;
+  int _36;
+  signed char _37;
+  signed char _38;
+  signed char _39;
+  signed char _40;
+  signed char _41;
+  signed char _42;
+  signed char _43;
+  unsigned short _44;
+  signed char _45;
+  unsigned short _46;
+  unsigned short _47;
+  unsigned short _48;
+  unsigned short _49;
+  short int _50;
+  signed char _51;
+  signed char _52;
+  unsigned short _53;
+  signed char _54;
+  unsigned short _55;
+  unsigned short _56;
+  unsigned short _57;
+  unsigned short _58;
+  short int _59;
+  signed char _60;
+  int _61;
+  signed char _62;
+  signed char _63;
+  int _64;
+  signed char _65;
+  unsigned char _66;
+  unsigned char _67;
+  unsigned char _68;
+  sizetype _69;
+  small * _70;
+  signed char _71;
+  short int _72;
+  int _111;
+
+  <bb 2> :
+  i_96 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  v[i_73] = 0;
+  i_158 = i_73 + 1;
+
+  <bb 4> :
+  # i_73 = PHI <i_96(2), i_158(3)>
+  if (i_73 <= 761)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_98 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  r[i_74] = 0;
+  i_156 = i_74 + 1;
+
+  <bb 7> :
+  # i_74 = PHI <i_98(5), i_156(6)>
+  if (i_74 <= 761)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  r[0] = 1;
+  i_100 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  f[i_75] = 0;
+  i_154 = i_75 + 1;
+
+  <bb 10> :
+  # i_75 = PHI <i_100(8), i_154(9)>
+  if (i_75 <= 760)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  f[0] = 1;
+  f[761] = -1;
+  _1 = f[761];
+  f[760] = _1;
+  i_104 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _2 = (sizetype) i_76;
+  _3 = in_150(D) + _2;
+  _4 = 760 - i_76;
+  _5 = *_3;
+  g[_4] = _5;
+  i_152 = i_76 + 1;
+
+  <bb 13> :
+  # i_76 = PHI <i_104(11), i_152(12)>
+  if (i_76 <= 760)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  g[761] = 0;
+  delta_106 = 1;
+  loop_107 = 0;
+  goto <bb 31>; [INV]
+
+  <bb 15> :
+  i_119 = 761;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  _6 = i_77 + -1;
+  _7 = v[_6];
+  v[i_77] = _7;
+  i_149 = i_77 + -1;
+
+  <bb 17> :
+  # i_77 = PHI <i_119(15), i_149(16)>
+  if (i_77 > 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  v[0] = 0;
+  _8 = g[0];
+  _9 = (int) _8;
+  _10 = -_9;
+  _11 = f[0];
+  _12 = (int) _11;
+  sign_121 = _10 * _12;
+  _13 = (unsigned short) delta_84;
+  _14 = -_13;
+  _15 = (short int) _14;
+  _16 = int16_negative_mask (_15);
+  _17 = g[0];
+  _18 = (short int) _17;
+  _19 = int16_nonzero_mask (_18);
+  swap_124 = _16 & _19;
+  _20 = -delta_84;
+  _21 = delta_84 ^ _20;
+  _22 = swap_124 & _21;
+  delta_125 = delta_84 ^ _22;
+  delta_126 = delta_125 + 1;
+  i_127 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _23 = f[i_78];
+  _24 = g[i_78];
+  _25 = _23 ^ _24;
+  _26 = (int) _25;
+  t_141 = swap_124 & _26;
+  _27 = f[i_78];
+  _28 = (signed char) t_141;
+  _29 = _27 ^ _28;
+  f[i_78] = _29;
+  _30 = g[i_78];
+  _31 = (signed char) t_141;
+  _32 = _30 ^ _31;
+  g[i_78] = _32;
+  _33 = v[i_78];
+  _34 = r[i_78];
+  _35 = _33 ^ _34;
+  _36 = (int) _35;
+  t_144 = swap_124 & _36;
+  _37 = v[i_78];
+  _38 = (signed char) t_144;
+  _39 = _37 ^ _38;
+  v[i_78] = _39;
+  _40 = r[i_78];
+  _41 = (signed char) t_144;
+  _42 = _40 ^ _41;
+  r[i_78] = _42;
+  i_147 = i_78 + 1;
+
+  <bb 20> :
+  # i_78 = PHI <i_127(18), i_147(19)>
+  if (i_78 <= 761)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  i_128 = 0;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  _43 = g[i_79];
+  _44 = (unsigned short) _43;
+  _45 = f[i_79];
+  _46 = (unsigned short) _45;
+  _47 = (unsigned short) sign_121;
+  _48 = _46 * _47;
+  _49 = _44 + _48;
+  _50 = (short int) _49;
+  _51 = F3_freeze (_50);
+  g[i_79] = _51;
+  i_140 = i_79 + 1;
+
+  <bb 23> :
+  # i_79 = PHI <i_128(21), i_140(22)>
+  if (i_79 <= 761)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  i_129 = 0;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  _52 = r[i_80];
+  _53 = (unsigned short) _52;
+  _54 = v[i_80];
+  _55 = (unsigned short) _54;
+  _56 = (unsigned short) sign_121;
+  _57 = _55 * _56;
+  _58 = _53 + _57;
+  _59 = (short int) _58;
+  _60 = F3_freeze (_59);
+  r[i_80] = _60;
+  i_137 = i_80 + 1;
+
+  <bb 26> :
+  # i_80 = PHI <i_129(24), i_137(25)>
+  if (i_80 <= 761)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  i_130 = 0;
+  goto <bb 29>; [INV]
+
+  <bb 28> :
+  _61 = i_81 + 1;
+  _62 = g[_61];
+  g[i_81] = _62;
+  i_134 = i_81 + 1;
+
+  <bb 29> :
+  # i_81 = PHI <i_130(27), i_134(28)>
+  if (i_81 <= 760)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 30> :
+  g[761] = 0;
+  loop_132 = loop_83 + 1;
+
+  <bb 31> :
+  # loop_83 = PHI <loop_107(14), loop_132(30)>
+  # delta_84 = PHI <delta_106(14), delta_126(30)>
+  if (loop_83 <= 1520)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 32> :
+  _63 = f[0];
+  sign_108 = (int) _63;
+  i_109 = 0;
+  goto <bb 34>; [INV]
+
+  <bb 33> :
+  _64 = 760 - i_82;
+  _65 = v[_64];
+  _66 = (unsigned char) _65;
+  _67 = (unsigned char) sign_108;
+  _68 = _66 * _67;
+  _69 = (sizetype) i_82;
+  _70 = out_116(D) + _69;
+  _71 = (signed char) _68;
+  *_70 = _71;
+  i_118 = i_82 + 1;
+
+  <bb 34> :
+  # i_82 = PHI <i_109(32), i_118(33)>
+  if (i_82 <= 760)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 35> :
+  _72 = (short int) delta_84;
+  _111 = int16_nonzero_mask (_72);
+  f ={v} {CLOBBER(eos)};
+  g ={v} {CLOBBER(eos)};
+  v ={v} {CLOBBER(eos)};
+  r ={v} {CLOBBER(eos)};
+
+  <bb 36> :
+<L34>:
+  return _111;
+
+}
+
+
+
+;; Function Rq_mult_small (Rq_mult_small, funcdef_no=23, decl_uid=9820, cgraph_uid=24, symbol_order=23)
+
+void Rq_mult_small (Fq * h, const Fq * f, const small * g)
+{
+  int j;
+  int i;
+  Fq result;
+  Fq fg[1521];
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  const Fq * _4;
+  short int _5;
+  int _6;
+  int _7;
+  sizetype _8;
+  const small * _9;
+  signed char _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  const Fq * _17;
+  short int _18;
+  int _19;
+  int _20;
+  sizetype _21;
+  const small * _22;
+  signed char _23;
+  int _24;
+  int _25;
+  int _26;
+  int _27;
+  short int _28;
+  int _29;
+  short int _30;
+  int _31;
+  int _32;
+  int _33;
+  short int _34;
+  int _35;
+  short int _36;
+  int _37;
+  short int _38;
+  int _39;
+  int _40;
+  int _41;
+  short int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  Fq * _45;
+  short int _46;
+
+  <bb 2> :
+  i_61 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  result_84 = 0;
+  j_85 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _1 = (int) result_47;
+  _2 = (long unsigned int) j_53;
+  _3 = _2 * 2;
+  _4 = f_79(D) + _3;
+  _5 = *_4;
+  _6 = (int) _5;
+  _7 = i_49 - j_53;
+  _8 = (sizetype) _7;
+  _9 = g_80(D) + _8;
+  _10 = *_9;
+  _11 = (int) _10;
+  _12 = _6 * _11;
+  _13 = _1 + _12;
+  result_89 = Fq_freeze (_13);
+  j_90 = j_53 + 1;
+
+  <bb 5> :
+  # result_47 = PHI <result_84(3), result_89(4)>
+  # j_53 = PHI <j_85(3), j_90(4)>
+  if (j_53 <= i_49)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  fg[i_49] = result_47;
+  i_87 = i_49 + 1;
+
+  <bb 7> :
+  # i_49 = PHI <i_61(2), i_87(6)>
+  if (i_49 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  i_63 = 761;
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  result_75 = 0;
+  j_76 = i_50 + -760;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  _14 = (int) result_48;
+  _15 = (long unsigned int) j_54;
+  _16 = _15 * 2;
+  _17 = f_79(D) + _16;
+  _18 = *_17;
+  _19 = (int) _18;
+  _20 = i_50 - j_54;
+  _21 = (sizetype) _20;
+  _22 = g_80(D) + _21;
+  _23 = *_22;
+  _24 = (int) _23;
+  _25 = _19 * _24;
+  _26 = _14 + _25;
+  result_82 = Fq_freeze (_26);
+  j_83 = j_54 + 1;
+
+  <bb 11> :
+  # result_48 = PHI <result_75(9), result_82(10)>
+  # j_54 = PHI <j_76(9), j_83(10)>
+  if (j_54 <= 760)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  fg[i_50] = result_48;
+  i_78 = i_50 + 1;
+
+  <bb 13> :
+  # i_50 = PHI <i_63(8), i_78(12)>
+  if (i_50 <= 1520)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  i_64 = 1520;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  _27 = i_51 + -761;
+  _28 = fg[_27];
+  _29 = (int) _28;
+  _30 = fg[i_51];
+  _31 = (int) _30;
+  _32 = _29 + _31;
+  _33 = i_51 + -761;
+  _34 = Fq_freeze (_32);
+  fg[_33] = _34;
+  _35 = i_51 + -760;
+  _36 = fg[_35];
+  _37 = (int) _36;
+  _38 = fg[i_51];
+  _39 = (int) _38;
+  _40 = _37 + _39;
+  _41 = i_51 + -760;
+  _42 = Fq_freeze (_40);
+  fg[_41] = _42;
+  i_74 = i_51 + -1;
+
+  <bb 16> :
+  # i_51 = PHI <i_64(14), i_74(15)>
+  if (i_51 > 760)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 17> :
+  i_65 = 0;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _43 = (long unsigned int) i_52;
+  _44 = _43 * 2;
+  _45 = h_67(D) + _44;
+  _46 = fg[i_52];
+  *_45 = _46;
+  i_69 = i_52 + 1;
+
+  <bb 19> :
+  # i_52 = PHI <i_65(17), i_69(18)>
+  if (i_52 <= 760)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  fg ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Rq_mult3 (Rq_mult3, funcdef_no=24, decl_uid=9852, cgraph_uid=25, symbol_order=24)
+
+void Rq_mult3 (Fq * h, const Fq * f)
+{
+  int i;
+  long unsigned int _1;
+  long unsigned int _2;
+  const Fq * _3;
+  short int _4;
+  int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  Fq * _9;
+  short int _10;
+
+  <bb 2> :
+  i_13 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_11;
+  _2 = _1 * 2;
+  _3 = f_15(D) + _2;
+  _4 = *_3;
+  _5 = (int) _4;
+  _6 = _5 * 3;
+  _7 = (long unsigned int) i_11;
+  _8 = _7 * 2;
+  _9 = h_16(D) + _8;
+  _10 = Fq_freeze (_6);
+  *_9 = _10;
+  i_19 = i_11 + 1;
+
+  <bb 4> :
+  # i_11 = PHI <i_13(2), i_19(3)>
+  if (i_11 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function Rq_recip3 (Rq_recip3, funcdef_no=25, decl_uid=9861, cgraph_uid=26, symbol_order=25)
+
+int Rq_recip3 (Fq * out, const small * in)
+{
+  Fq scale;
+  crypto_int32 g0;
+  crypto_int32 f0;
+  int t;
+  int swap;
+  int delta;
+  int loop;
+  int i;
+  Fq r[762];
+  Fq v[762];
+  Fq g[762];
+  Fq f[762];
+  int D.10313;
+  short int _1;
+  short int _2;
+  sizetype _3;
+  const small * _4;
+  signed char _5;
+  int _6;
+  short int _7;
+  int _8;
+  short int _9;
+  unsigned short _10;
+  unsigned short _11;
+  short int _12;
+  int _13;
+  short int _14;
+  int _15;
+  int _16;
+  int _17;
+  int _18;
+  short int _19;
+  short int _20;
+  short int _21;
+  int _22;
+  short int _23;
+  short int _24;
+  short int _25;
+  short int _26;
+  short int _27;
+  short int _28;
+  short int _29;
+  short int _30;
+  short int _31;
+  int _32;
+  short int _33;
+  short int _34;
+  short int _35;
+  short int _36;
+  short int _37;
+  short int _38;
+  short int _39;
+  short int _40;
+  short int _41;
+  int _42;
+  int _43;
+  short int _44;
+  int _45;
+  int _46;
+  int _47;
+  short int _48;
+  short int _49;
+  int _50;
+  int _51;
+  short int _52;
+  int _53;
+  int _54;
+  int _55;
+  short int _56;
+  int _57;
+  short int _58;
+  short int _59;
+  int _60;
+  int _61;
+  short int _62;
+  int _63;
+  int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  Fq * _67;
+  short int _68;
+  short int _69;
+  int _110;
+
+  <bb 2> :
+  i_93 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  v[i_70] = 0;
+  i_159 = i_70 + 1;
+
+  <bb 4> :
+  # i_70 = PHI <i_93(2), i_159(3)>
+  if (i_70 <= 761)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_95 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  r[i_71] = 0;
+  i_157 = i_71 + 1;
+
+  <bb 7> :
+  # i_71 = PHI <i_95(5), i_157(6)>
+  if (i_71 <= 761)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _1 = Fq_recip (3);
+  r[0] = _1;
+  i_98 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  f[i_72] = 0;
+  i_155 = i_72 + 1;
+
+  <bb 10> :
+  # i_72 = PHI <i_98(8), i_155(9)>
+  if (i_72 <= 760)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  f[0] = 1;
+  f[761] = -1;
+  _2 = f[761];
+  f[760] = _2;
+  i_102 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _3 = (sizetype) i_73;
+  _4 = in_151(D) + _3;
+  _5 = *_4;
+  _6 = 760 - i_73;
+  _7 = (short int) _5;
+  g[_6] = _7;
+  i_153 = i_73 + 1;
+
+  <bb 13> :
+  # i_73 = PHI <i_102(11), i_153(12)>
+  if (i_73 <= 760)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  g[761] = 0;
+  delta_104 = 1;
+  loop_105 = 0;
+  goto <bb 31>; [INV]
+
+  <bb 15> :
+  i_119 = 761;
+  goto <bb 17>; [INV]
+
+  <bb 16> :
+  _8 = i_74 + -1;
+  _9 = v[_8];
+  v[i_74] = _9;
+  i_150 = i_74 + -1;
+
+  <bb 17> :
+  # i_74 = PHI <i_119(15), i_150(16)>
+  if (i_74 > 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  v[0] = 0;
+  _10 = (unsigned short) delta_81;
+  _11 = -_10;
+  _12 = (short int) _11;
+  _13 = int16_negative_mask (_12);
+  _14 = g[0];
+  _15 = int16_nonzero_mask (_14);
+  swap_123 = _13 & _15;
+  _16 = -delta_81;
+  _17 = delta_81 ^ _16;
+  _18 = swap_123 & _17;
+  delta_124 = delta_81 ^ _18;
+  delta_125 = delta_124 + 1;
+  i_126 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _19 = f[i_75];
+  _20 = g[i_75];
+  _21 = _19 ^ _20;
+  _22 = (int) _21;
+  t_142 = swap_123 & _22;
+  _23 = f[i_75];
+  _24 = (short int) t_142;
+  _25 = _23 ^ _24;
+  f[i_75] = _25;
+  _26 = g[i_75];
+  _27 = (short int) t_142;
+  _28 = _26 ^ _27;
+  g[i_75] = _28;
+  _29 = v[i_75];
+  _30 = r[i_75];
+  _31 = _29 ^ _30;
+  _32 = (int) _31;
+  t_145 = swap_123 & _32;
+  _33 = v[i_75];
+  _34 = (short int) t_145;
+  _35 = _33 ^ _34;
+  v[i_75] = _35;
+  _36 = r[i_75];
+  _37 = (short int) t_145;
+  _38 = _36 ^ _37;
+  r[i_75] = _38;
+  i_148 = i_75 + 1;
+
+  <bb 20> :
+  # i_75 = PHI <i_126(18), i_148(19)>
+  if (i_75 <= 761)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  _39 = f[0];
+  f0_127 = (crypto_int32) _39;
+  _40 = g[0];
+  g0_128 = (crypto_int32) _40;
+  i_129 = 0;
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  _41 = g[i_76];
+  _42 = (int) _41;
+  _43 = f0_127 * _42;
+  _44 = f[i_76];
+  _45 = (int) _44;
+  _46 = g0_128 * _45;
+  _47 = _43 - _46;
+  _48 = Fq_freeze (_47);
+  g[i_76] = _48;
+  i_141 = i_76 + 1;
+
+  <bb 23> :
+  # i_76 = PHI <i_129(21), i_141(22)>
+  if (i_76 <= 761)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  i_130 = 0;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  _49 = r[i_77];
+  _50 = (int) _49;
+  _51 = f0_127 * _50;
+  _52 = v[i_77];
+  _53 = (int) _52;
+  _54 = g0_128 * _53;
+  _55 = _51 - _54;
+  _56 = Fq_freeze (_55);
+  r[i_77] = _56;
+  i_138 = i_77 + 1;
+
+  <bb 26> :
+  # i_77 = PHI <i_130(24), i_138(25)>
+  if (i_77 <= 761)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  i_131 = 0;
+  goto <bb 29>; [INV]
+
+  <bb 28> :
+  _57 = i_78 + 1;
+  _58 = g[_57];
+  g[i_78] = _58;
+  i_135 = i_78 + 1;
+
+  <bb 29> :
+  # i_78 = PHI <i_131(27), i_135(28)>
+  if (i_78 <= 760)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 30> :
+  g[761] = 0;
+  loop_133 = loop_80 + 1;
+
+  <bb 31> :
+  # loop_80 = PHI <loop_105(14), loop_133(30)>
+  # delta_81 = PHI <delta_104(14), delta_125(30)>
+  if (loop_80 <= 1520)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 32> :
+  _59 = f[0];
+  scale_107 = Fq_recip (_59);
+  i_108 = 0;
+  goto <bb 34>; [INV]
+
+  <bb 33> :
+  _60 = (int) scale_107;
+  _61 = 760 - i_79;
+  _62 = v[_61];
+  _63 = (int) _62;
+  _64 = _60 * _63;
+  _65 = (long unsigned int) i_79;
+  _66 = _65 * 2;
+  _67 = out_115(D) + _66;
+  _68 = Fq_freeze (_64);
+  *_67 = _68;
+  i_118 = i_79 + 1;
+
+  <bb 34> :
+  # i_79 = PHI <i_108(32), i_118(33)>
+  if (i_79 <= 760)
+    goto <bb 33>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 35> :
+  _69 = (short int) delta_81;
+  _110 = int16_nonzero_mask (_69);
+  f ={v} {CLOBBER(eos)};
+  g ={v} {CLOBBER(eos)};
+  v ={v} {CLOBBER(eos)};
+  r ={v} {CLOBBER(eos)};
+
+  <bb 36> :
+<L34>:
+  return _110;
+
+}
+
+
+
+;; Function Round (Round, funcdef_no=26, decl_uid=9921, cgraph_uid=27, symbol_order=26)
+
+void Round (Fq * out, const Fq * a)
+{
+  int i;
+  long unsigned int _1;
+  long unsigned int _2;
+  const Fq * _3;
+  short int _4;
+  unsigned short _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  const Fq * _8;
+  short int _9;
+  signed char _10;
+  unsigned short _11;
+  unsigned short _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  Fq * _15;
+  short int _16;
+
+  <bb 2> :
+  i_19 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_17;
+  _2 = _1 * 2;
+  _3 = a_21(D) + _2;
+  _4 = *_3;
+  _5 = (unsigned short) _4;
+  _6 = (long unsigned int) i_17;
+  _7 = _6 * 2;
+  _8 = a_21(D) + _7;
+  _9 = *_8;
+  _10 = F3_freeze (_9);
+  _11 = (unsigned short) _10;
+  _12 = _5 - _11;
+  _13 = (long unsigned int) i_17;
+  _14 = _13 * 2;
+  _15 = out_23(D) + _14;
+  _16 = (short int) _12;
+  *_15 = _16;
+  i_25 = i_17 + 1;
+
+  <bb 4> :
+  # i_17 = PHI <i_19(2), i_25(3)>
+  if (i_17 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function Short_fromlist (Short_fromlist, funcdef_no=27, decl_uid=9930, cgraph_uid=28, symbol_order=27)
+
+void Short_fromlist (small * out, const crypto_uint32 * in)
+{
+  int i;
+  crypto_uint32 L[761];
+  long unsigned int _1;
+  long unsigned int _2;
+  const crypto_uint32 * _3;
+  unsigned int _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  const crypto_uint32 * _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned char _13;
+  unsigned char _14;
+  unsigned char _15;
+  sizetype _16;
+  small * _17;
+  signed char _18;
+
+  <bb 2> :
+  i_25 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_19;
+  _2 = _1 * 4;
+  _3 = in_34(D) + _2;
+  _4 = *_3;
+  _5 = _4 & 4294967294;
+  L[i_19] = _5;
+  i_38 = i_19 + 1;
+
+  <bb 4> :
+  # i_19 = PHI <i_25(2), i_38(3)>
+  if (i_19 <= 285)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_27 = 286;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _6 = (long unsigned int) i_20;
+  _7 = _6 * 4;
+  _8 = in_34(D) + _7;
+  _9 = *_8;
+  _10 = _9 & 4294967292;
+  _11 = _10 | 1;
+  L[i_20] = _11;
+  i_36 = i_20 + 1;
+
+  <bb 7> :
+  # i_20 = PHI <i_27(5), i_36(6)>
+  if (i_20 <= 760)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  crypto_sort_uint32 (&L, 761);
+  i_29 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _12 = L[i_21];
+  _13 = (unsigned char) _12;
+  _14 = _13 & 3;
+  _15 = _14 + 255;
+  _16 = (sizetype) i_21;
+  _17 = out_31(D) + _16;
+  _18 = (signed char) _15;
+  *_17 = _18;
+  i_33 = i_21 + 1;
+
+  <bb 10> :
+  # i_21 = PHI <i_29(8), i_33(9)>
+  if (i_21 <= 760)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  L ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Hash_prefix (Hash_prefix, funcdef_no=28, decl_uid=9950, cgraph_uid=29, symbol_order=28)
+
+void Hash_prefix (unsigned char * out, int b, const unsigned char * in, int inlen)
+{
+  int i;
+  unsigned char h[64];
+  unsigned char x[0:D.10317] [value-expr: *x.51];
+  void * saved_stack.52;
+  unsigned char[0:D.10317] * x.51;
+  sizetype D.10321;
+  bitsizetype D.10320;
+  sizetype D.10319;
+  bitsizetype D.10318;
+  sizetype D.10317;
+  int D.10316;
+  long int _1;
+  long int _2;
+  sizetype _3;
+  sizetype _4;
+  bitsizetype _5;
+  bitsizetype _6;
+  sizetype _7;
+  sizetype _8;
+  bitsizetype _9;
+  bitsizetype _10;
+  sizetype _11;
+  unsigned char _12;
+  sizetype _13;
+  const unsigned char * _14;
+  int _15;
+  unsigned char _16;
+  int _17;
+  long long unsigned int _18;
+  sizetype _19;
+  unsigned char * _20;
+  unsigned char _21;
+  void * saved_stack.52_28;
+  int _30;
+  sizetype _31;
+  bitsizetype _32;
+  sizetype _33;
+  bitsizetype _34;
+  sizetype _35;
+
+  <bb 2> :
+  saved_stack.52_28 = __builtin_stack_save ();
+  _30 = inlen_29(D) + 1;
+  _1 = (long int) _30;
+  _2 = _1 + -1;
+  _3 = (sizetype) _2;
+  _31 = _3;
+  _4 = (sizetype) _30;
+  _5 = (bitsizetype) _4;
+  _6 = _5 * 8;
+  _32 = _6;
+  _7 = (sizetype) _30;
+  _33 = _7;
+  _8 = (sizetype) _30;
+  _9 = (bitsizetype) _8;
+  _10 = _9 * 8;
+  _34 = _10;
+  _11 = (sizetype) _30;
+  _35 = _11;
+  x.51_37 = __builtin_alloca_with_align (_35, 8);
+  _12 = (unsigned char) b_38(D);
+  (*x.51_37)[0] = _12;
+  i_40 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _13 = (sizetype) i_22;
+  _14 = in_48(D) + _13;
+  _15 = i_22 + 1;
+  _16 = *_14;
+  (*x.51_37)[_15] = _16;
+  i_50 = i_22 + 1;
+
+  <bb 4> :
+  # i_22 = PHI <i_40(2), i_50(3)>
+  if (i_22 < inlen_29(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _17 = inlen_29(D) + 1;
+  _18 = (long long unsigned int) _17;
+  crypto_hash_sha512 (&h, x.51_37, _18);
+  i_42 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _19 = (sizetype) i_23;
+  _20 = out_45(D) + _19;
+  _21 = h[i_23];
+  *_20 = _21;
+  i_47 = i_23 + 1;
+
+  <bb 7> :
+  # i_23 = PHI <i_42(5), i_47(6)>
+  if (i_23 <= 31)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  h ={v} {CLOBBER(eos)};
+  __builtin_stack_restore (saved_stack.52_28);
+  return;
+
+}
+
+
+
+;; Function urandom32 (urandom32, funcdef_no=29, decl_uid=9964, cgraph_uid=30, symbol_order=29)
+
+crypto_uint32 urandom32 ()
+{
+  crypto_uint32 out[4];
+  unsigned char c[4];
+  crypto_uint32 D.10324;
+  unsigned char _1;
+  unsigned int _2;
+  unsigned char _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned char _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned char _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  crypto_uint32 _24;
+
+  <bb 2> :
+  arc4random_buf (&c, 4);
+  _1 = c[0];
+  _2 = (unsigned int) _1;
+  out[0] = _2;
+  _3 = c[1];
+  _4 = (unsigned int) _3;
+  _5 = _4 << 8;
+  out[1] = _5;
+  _6 = c[2];
+  _7 = (unsigned int) _6;
+  _8 = _7 << 16;
+  out[2] = _8;
+  _9 = c[3];
+  _10 = (unsigned int) _9;
+  _11 = _10 << 24;
+  out[3] = _11;
+  _12 = out[0];
+  _13 = out[1];
+  _14 = _12 + _13;
+  _15 = out[2];
+  _16 = _14 + _15;
+  _17 = out[3];
+  _24 = _16 + _17;
+  c ={v} {CLOBBER(eos)};
+  out ={v} {CLOBBER(eos)};
+
+  <bb 3> :
+<L1>:
+  return _24;
+
+}
+
+
+
+;; Function Short_random (Short_random, funcdef_no=30, decl_uid=9969, cgraph_uid=31, symbol_order=30)
+
+void Short_random (small * out)
+{
+  int i;
+  crypto_uint32 L[761];
+  unsigned int _1;
+
+  <bb 2> :
+  i_4 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = urandom32 ();
+  L[i_2] = _1;
+  i_11 = i_2 + 1;
+
+  <bb 4> :
+  # i_2 = PHI <i_4(2), i_11(3)>
+  if (i_2 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Short_fromlist (out_6(D), &L);
+  L ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Small_random (Small_random, funcdef_no=31, decl_uid=9978, cgraph_uid=32, symbol_order=31)
+
+void Small_random (small * out)
+{
+  int i;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned char _5;
+  unsigned char _6;
+  sizetype _7;
+  small * _8;
+  signed char _9;
+
+  <bb 2> :
+  i_12 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = urandom32 ();
+  _2 = _1 & 1073741823;
+  _3 = _2 * 3;
+  _4 = _3 >> 30;
+  _5 = (unsigned char) _4;
+  _6 = _5 + 255;
+  _7 = (sizetype) i_10;
+  _8 = out_15(D) + _7;
+  _9 = (signed char) _6;
+  *_8 = _9;
+  i_17 = i_10 + 1;
+
+  <bb 4> :
+  # i_10 = PHI <i_12(2), i_17(3)>
+  if (i_10 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function KeyGen (KeyGen, funcdef_no=32, decl_uid=9988, cgraph_uid=33, symbol_order=32)
+
+void KeyGen (Fq * h, small * f, small * ginv)
+{
+  Fq finv[761];
+  small g[761];
+  int _1;
+
+  <bb 2> :
+
+  <bb 3> :
+  Small_random (&g);
+  _1 = R3_recip (ginv_5(D), &g);
+  if (_1 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  goto <bb 3>; [INV]
+
+  <bb 6> :
+  Short_random (f_7(D));
+  Rq_recip3 (&finv, f_7(D));
+  Rq_mult_small (h_10(D), &finv, &g);
+  g ={v} {CLOBBER(eos)};
+  finv ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Encrypt (Encrypt, funcdef_no=33, decl_uid=9998, cgraph_uid=34, symbol_order=33)
+
+void Encrypt (Fq * c, const small * r, const Fq * h)
+{
+  Fq hr[761];
+
+  <bb 2> :
+  Rq_mult_small (&hr, h_2(D), r_3(D));
+  Round (c_5(D), &hr);
+  hr ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Decrypt (Decrypt, funcdef_no=34, decl_uid=10005, cgraph_uid=35, symbol_order=34)
+
+void Decrypt (small * r, const Fq * c, const small * f, const small * ginv)
+{
+  int i;
+  int mask;
+  small ev[761];
+  small e[761];
+  Fq cf3[761];
+  Fq cf[761];
+  signed char _1;
+  signed char _2;
+  signed char _3;
+  signed char _4;
+  signed char _5;
+  sizetype _6;
+  small * _7;
+  signed char _8;
+  signed char _9;
+  signed char _10;
+  signed char _11;
+  sizetype _12;
+  small * _13;
+  signed char _14;
+
+  <bb 2> :
+  Rq_mult_small (&cf, c_20(D), f_21(D));
+  Rq_mult3 (&cf3, &cf);
+  R3_fromRq (&e, &cf3);
+  R3_mult (&ev, &e, ginv_25(D));
+  mask_28 = Weightw_mask (&ev);
+  i_29 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = ev[i_15];
+  _2 = _1 ^ 1;
+  _3 = (signed char) mask_28;
+  _4 = ~_3;
+  _5 = _2 & _4;
+  _6 = (sizetype) i_15;
+  _7 = r_35(D) + _6;
+  _8 = _5 ^ 1;
+  *_7 = _8;
+  i_39 = i_15 + 1;
+
+  <bb 4> :
+  # i_15 = PHI <i_29(2), i_39(3)>
+  if (i_15 <= 285)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_30 = 286;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _9 = ev[i_16];
+  _10 = (signed char) mask_28;
+  _11 = ~_10;
+  _12 = (sizetype) i_16;
+  _13 = r_35(D) + _12;
+  _14 = _9 & _11;
+  *_13 = _14;
+  i_37 = i_16 + 1;
+
+  <bb 7> :
+  # i_16 = PHI <i_30(5), i_37(6)>
+  if (i_16 <= 760)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  cf ={v} {CLOBBER(eos)};
+  cf3 ={v} {CLOBBER(eos)};
+  e ={v} {CLOBBER(eos)};
+  ev ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Small_encode (Small_encode, funcdef_no=35, decl_uid=10023, cgraph_uid=36, symbol_order=35)
+
+void Small_encode (unsigned char * s, const small * f)
+{
+  int i;
+  small x;
+  int D.10331;
+  int D.10330;
+  int D.10329;
+  const small * f.53_1;
+  signed char _2;
+  unsigned char _3;
+  unsigned char _4;
+  const small * f.54_5;
+  signed char _6;
+  int _7;
+  int _8;
+  unsigned char _9;
+  unsigned char x.55_10;
+  unsigned char _11;
+  const small * f.56_12;
+  signed char _13;
+  int _14;
+  int _15;
+  unsigned char _16;
+  unsigned char x.57_17;
+  unsigned char _18;
+  const small * f.58_19;
+  signed char _20;
+  int _21;
+  int _22;
+  unsigned char _23;
+  unsigned char x.59_24;
+  unsigned char _25;
+  unsigned char * s.60_26;
+  unsigned char x.61_27;
+  const small * f.62_28;
+  signed char _29;
+  unsigned char _30;
+  unsigned char _31;
+  unsigned char * s.63_32;
+  unsigned char x.64_33;
+  int _49;
+  int _52;
+  int _55;
+
+  <bb 2> :
+  i_38 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  f.53_1 = f_35;
+  f_46 = f.53_1 + 1;
+  _2 = *f.53_1;
+  _3 = (unsigned char) _2;
+  _4 = _3 + 1;
+  x_47 = (small) _4;
+  f.54_5 = f_46;
+  f_48 = f.54_5 + 1;
+  _6 = *f.54_5;
+  _7 = (int) _6;
+  _8 = _7 + 1;
+  _49 = _8 << 2;
+  _9 = (unsigned char) _49;
+  x.55_10 = (unsigned char) x_47;
+  _11 = _9 + x.55_10;
+  x_50 = (small) _11;
+  f.56_12 = f_48;
+  f_51 = f.56_12 + 1;
+  _13 = *f.56_12;
+  _14 = (int) _13;
+  _15 = _14 + 1;
+  _52 = _15 << 4;
+  _16 = (unsigned char) _52;
+  x.57_17 = (unsigned char) x_50;
+  _18 = _16 + x.57_17;
+  x_53 = (small) _18;
+  f.58_19 = f_51;
+  f_54 = f.58_19 + 1;
+  _20 = *f.58_19;
+  _21 = (int) _20;
+  _22 = _21 + 1;
+  _55 = _22 << 6;
+  _23 = (unsigned char) _55;
+  x.59_24 = (unsigned char) x_53;
+  _25 = _23 + x.59_24;
+  x_56 = (small) _25;
+  s.60_26 = s_34;
+  s_57 = s.60_26 + 1;
+  x.61_27 = (unsigned char) x_56;
+  *s.60_26 = x.61_27;
+  i_59 = i_36 + 1;
+
+  <bb 4> :
+  # s_34 = PHI <s_39(D)(2), s_57(3)>
+  # f_35 = PHI <f_40(D)(2), f_54(3)>
+  # i_36 = PHI <i_38(2), i_59(3)>
+  if (i_36 <= 189)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  f.62_28 = f_35;
+  f_42 = f.62_28 + 1;
+  _29 = *f.62_28;
+  _30 = (unsigned char) _29;
+  _31 = _30 + 1;
+  x_43 = (small) _31;
+  s.63_32 = s_34;
+  s_44 = s.63_32 + 1;
+  x.64_33 = (unsigned char) x_43;
+  *s.63_32 = x.64_33;
+  return;
+
+}
+
+
+
+;; Function Small_decode (Small_decode, funcdef_no=36, decl_uid=10033, cgraph_uid=37, symbol_order=36)
+
+void Small_decode (small * f, const unsigned char * s)
+{
+  int i;
+  unsigned char x;
+  const unsigned char * s.65_1;
+  unsigned char _2;
+  unsigned char _3;
+  small * f.66_4;
+  signed char _5;
+  unsigned char _6;
+  unsigned char _7;
+  small * f.67_8;
+  signed char _9;
+  unsigned char _10;
+  unsigned char _11;
+  small * f.68_12;
+  signed char _13;
+  unsigned char _14;
+  unsigned char _15;
+  small * f.69_16;
+  signed char _17;
+  const unsigned char * s.70_18;
+  unsigned char _19;
+  unsigned char _20;
+  small * f.71_21;
+  signed char _22;
+
+  <bb 2> :
+  i_27 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  s.65_1 = s_24;
+  s_35 = s.65_1 + 1;
+  x_36 = *s.65_1;
+  _2 = x_36 & 3;
+  _3 = _2 + 255;
+  f.66_4 = f_23;
+  f_37 = f.66_4 + 1;
+  _5 = (signed char) _3;
+  *f.66_4 = _5;
+  x_39 = x_36 >> 2;
+  _6 = x_39 & 3;
+  _7 = _6 + 255;
+  f.67_8 = f_37;
+  f_40 = f.67_8 + 1;
+  _9 = (signed char) _7;
+  *f.67_8 = _9;
+  x_42 = x_39 >> 2;
+  _10 = x_42 & 3;
+  _11 = _10 + 255;
+  f.68_12 = f_40;
+  f_43 = f.68_12 + 1;
+  _13 = (signed char) _11;
+  *f.68_12 = _13;
+  x_45 = x_42 >> 2;
+  _14 = x_45 & 3;
+  _15 = _14 + 255;
+  f.69_16 = f_43;
+  f_46 = f.69_16 + 1;
+  _17 = (signed char) _15;
+  *f.69_16 = _17;
+  i_48 = i_25 + 1;
+
+  <bb 4> :
+  # f_23 = PHI <f_28(D)(2), f_46(3)>
+  # s_24 = PHI <s_29(D)(2), s_35(3)>
+  # i_25 = PHI <i_27(2), i_48(3)>
+  if (i_25 <= 189)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  s.70_18 = s_24;
+  s_31 = s.70_18 + 1;
+  x_32 = *s.70_18;
+  _19 = x_32 & 3;
+  _20 = _19 + 255;
+  f.71_21 = f_23;
+  f_33 = f.71_21 + 1;
+  _22 = (signed char) _20;
+  *f.71_21 = _22;
+  return;
+
+}
+
+
+
+;; Function Rq_encode (Rq_encode, funcdef_no=37, decl_uid=10043, cgraph_uid=38, symbol_order=37)
+
+void Rq_encode (unsigned char * s, const Fq * r)
+{
+  int i;
+  crypto_uint16 M[761];
+  crypto_uint16 R[761];
+  long unsigned int _1;
+  long unsigned int _2;
+  const Fq * _3;
+  short int _4;
+  short unsigned int _5;
+  short unsigned int _6;
+
+  <bb 2> :
+  i_11 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_7;
+  _2 = _1 * 2;
+  _3 = r_20(D) + _2;
+  _4 = *_3;
+  _5 = (short unsigned int) _4;
+  _6 = _5 + 2295;
+  R[i_7] = _6;
+  i_22 = i_7 + 1;
+
+  <bb 4> :
+  # i_7 = PHI <i_11(2), i_22(3)>
+  if (i_7 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_13 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  M[i_8] = 4591;
+  i_19 = i_8 + 1;
+
+  <bb 7> :
+  # i_8 = PHI <i_13(5), i_19(6)>
+  if (i_8 <= 760)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  Encode (s_14(D), &R, &M, 761);
+  R ={v} {CLOBBER(eos)};
+  M ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Rq_decode (Rq_decode, funcdef_no=38, decl_uid=10058, cgraph_uid=39, symbol_order=38)
+
+void Rq_decode (Fq * r, const unsigned char * s)
+{
+  int i;
+  crypto_uint16 M[761];
+  crypto_uint16 R[761];
+  short unsigned int _1;
+  unsigned short _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  Fq * _5;
+  short int _6;
+
+  <bb 2> :
+  i_11 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  M[i_7] = 4591;
+  i_22 = i_7 + 1;
+
+  <bb 4> :
+  # i_7 = PHI <i_11(2), i_22(3)>
+  if (i_7 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Decode (&R, s_13(D), &M, 761);
+  i_15 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _1 = R[i_8];
+  _2 = _1 + 63241;
+  _3 = (long unsigned int) i_8;
+  _4 = _3 * 2;
+  _5 = r_18(D) + _4;
+  _6 = (short int) _2;
+  *_5 = _6;
+  i_20 = i_8 + 1;
+
+  <bb 7> :
+  # i_8 = PHI <i_15(5), i_20(6)>
+  if (i_8 <= 760)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  R ={v} {CLOBBER(eos)};
+  M ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Rounded_encode (Rounded_encode, funcdef_no=39, decl_uid=10073, cgraph_uid=40, symbol_order=39)
+
+void Rounded_encode (unsigned char * s, const Fq * r)
+{
+  int i;
+  crypto_uint16 M[761];
+  crypto_uint16 R[761];
+  long unsigned int _1;
+  long unsigned int _2;
+  const Fq * _3;
+  short int _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  short unsigned int _9;
+
+  <bb 2> :
+  i_14 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_10;
+  _2 = _1 * 2;
+  _3 = r_23(D) + _2;
+  _4 = *_3;
+  _5 = (int) _4;
+  _6 = _5 + 2295;
+  _7 = _6 * 10923;
+  _8 = _7 >> 15;
+  _9 = (short unsigned int) _8;
+  R[i_10] = _9;
+  i_25 = i_10 + 1;
+
+  <bb 4> :
+  # i_10 = PHI <i_14(2), i_25(3)>
+  if (i_10 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  i_16 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  M[i_11] = 1531;
+  i_22 = i_11 + 1;
+
+  <bb 7> :
+  # i_11 = PHI <i_16(5), i_22(6)>
+  if (i_11 <= 760)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  Encode (s_17(D), &R, &M, 761);
+  R ={v} {CLOBBER(eos)};
+  M ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Rounded_decode (Rounded_decode, funcdef_no=40, decl_uid=10088, cgraph_uid=41, symbol_order=40)
+
+void Rounded_decode (Fq * r, const unsigned char * s)
+{
+  int i;
+  crypto_uint16 M[761];
+  crypto_uint16 R[761];
+  short unsigned int _1;
+  unsigned short _2;
+  unsigned short _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  Fq * _6;
+  short int _7;
+
+  <bb 2> :
+  i_12 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  M[i_8] = 1531;
+  i_23 = i_8 + 1;
+
+  <bb 4> :
+  # i_8 = PHI <i_12(2), i_23(3)>
+  if (i_8 <= 760)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Decode (&R, s_14(D), &M, 761);
+  i_16 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _1 = R[i_9];
+  _2 = _1 * 3;
+  _3 = _2 + 63241;
+  _4 = (long unsigned int) i_9;
+  _5 = _4 * 2;
+  _6 = r_19(D) + _5;
+  _7 = (short int) _3;
+  *_6 = _7;
+  i_21 = i_9 + 1;
+
+  <bb 7> :
+  # i_9 = PHI <i_16(5), i_21(6)>
+  if (i_9 <= 760)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  R ={v} {CLOBBER(eos)};
+  M ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function ZKeyGen (ZKeyGen, funcdef_no=41, decl_uid=10104, cgraph_uid=42, symbol_order=41)
+
+void ZKeyGen (unsigned char * pk, unsigned char * sk)
+{
+  small v[761];
+  small f[761];
+  Fq h[761];
+
+  <bb 2> :
+  KeyGen (&h, &f, &v);
+  Rq_encode (pk_3(D), &h);
+  Small_encode (sk_5(D), &f);
+  sk_7 = sk_5(D) + 191;
+  Small_encode (sk_7, &v);
+  h ={v} {CLOBBER(eos)};
+  f ={v} {CLOBBER(eos)};
+  v ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function ZEncrypt (ZEncrypt, funcdef_no=42, decl_uid=10112, cgraph_uid=43, symbol_order=42)
+
+__attribute__((access ("^1[761]", )))
+void ZEncrypt (unsigned char * C, const small * r, const unsigned char * pk)
+{
+  Fq c[761];
+  Fq h[761];
+
+  <bb 2> :
+  Rq_decode (&h, pk_2(D));
+  Encrypt (&c, r_4(D), &h);
+  Rounded_encode (C_6(D), &c);
+  h ={v} {CLOBBER(eos)};
+  c ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function ZDecrypt (ZDecrypt, funcdef_no=43, decl_uid=10119, cgraph_uid=44, symbol_order=43)
+
+__attribute__((access ("^0[761]", )))
+void ZDecrypt (small * r, const unsigned char * C, const unsigned char * sk)
+{
+  Fq c[761];
+  small v[761];
+  small f[761];
+
+  <bb 2> :
+  Small_decode (&f, sk_2(D));
+  sk_4 = sk_2(D) + 191;
+  Small_decode (&v, sk_4);
+  Rounded_decode (&c, C_6(D));
+  Decrypt (r_8(D), &c, &f, &v);
+  f ={v} {CLOBBER(eos)};
+  v ={v} {CLOBBER(eos)};
+  c ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function HashConfirm (HashConfirm, funcdef_no=44, decl_uid=10128, cgraph_uid=45, symbol_order=44)
+
+void HashConfirm (unsigned char * h, const unsigned char * r, const unsigned char * pk, const unsigned char * cache)
+{
+  int i;
+  unsigned char x[64];
+  sizetype _1;
+  const unsigned char * _2;
+  int _3;
+  unsigned char _4;
+
+  <bb 2> :
+  Hash_prefix (&x, 3, r_8(D), 191);
+  i_10 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (sizetype) i_5;
+  _2 = cache_14(D) + _1;
+  _3 = i_5 + 32;
+  _4 = *_2;
+  x[_3] = _4;
+  i_16 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_10(2), i_16(3)>
+  if (i_5 <= 31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Hash_prefix (h_11(D), 2, &x, 64);
+  x ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function HashSession (HashSession, funcdef_no=45, decl_uid=10140, cgraph_uid=46, symbol_order=45)
+
+void HashSession (unsigned char * k, int b, const unsigned char * y, const unsigned char * z)
+{
+  int i;
+  unsigned char x[1071];
+  sizetype _1;
+  const unsigned char * _2;
+  int _3;
+  unsigned char _4;
+
+  <bb 2> :
+  Hash_prefix (&x, 3, y_8(D), 191);
+  i_10 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (sizetype) i_5;
+  _2 = z_15(D) + _1;
+  _3 = i_5 + 32;
+  _4 = *_2;
+  x[_3] = _4;
+  i_17 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_10(2), i_17(3)>
+  if (i_5 <= 1038)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  Hash_prefix (k_11(D), b_12(D), &x, 1071);
+  x ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function KEM_KeyGen (KEM_KeyGen, funcdef_no=46, decl_uid=10150, cgraph_uid=47, symbol_order=46)
+
+void KEM_KeyGen (unsigned char * pk, unsigned char * sk)
+{
+  int i;
+  sizetype _1;
+  unsigned char * _2;
+  unsigned char * sk.72_3;
+  unsigned char _4;
+
+  <bb 2> :
+  ZKeyGen (pk_9(D), sk_10(D));
+  sk_12 = sk_10(D) + 382;
+  i_13 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (sizetype) i_6;
+  _2 = pk_9(D) + _1;
+  sk.72_3 = sk_5;
+  sk_17 = sk.72_3 + 1;
+  _4 = *_2;
+  *sk.72_3 = _4;
+  i_19 = i_6 + 1;
+
+  <bb 4> :
+  # sk_5 = PHI <sk_12(2), sk_17(3)>
+  # i_6 = PHI <i_13(2), i_19(3)>
+  if (i_6 <= 1157)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  arc4random_buf (sk_5, 191);
+  sk_15 = sk_5 + 191;
+  Hash_prefix (sk_15, 4, pk_9(D), 1158);
+  return;
+
+}
+
+
+
+;; Function Hide (Hide, funcdef_no=47, decl_uid=10162, cgraph_uid=48, symbol_order=47)
+
+__attribute__((access ("^2[761]", )))
+void Hide (unsigned char * c, unsigned char * r_enc, const small * r, const unsigned char * pk, const unsigned char * cache)
+{
+  <bb 2> :
+  Small_encode (r_enc_2(D), r_3(D));
+  ZEncrypt (c_5(D), r_3(D), pk_6(D));
+  c_8 = c_5(D) + 1007;
+  HashConfirm (c_8, r_enc_2(D), pk_6(D), cache_9(D));
+  return;
+
+}
+
+
+
+;; Function Encap (Encap, funcdef_no=48, decl_uid=10167, cgraph_uid=49, symbol_order=48)
+
+void Encap (unsigned char * c, unsigned char * k, const unsigned char * pk)
+{
+  unsigned char cache[32];
+  unsigned char r_enc[191];
+  small r[761];
+
+  <bb 2> :
+  Hash_prefix (&cache, 4, pk_2(D), 1158);
+  Short_random (&r);
+  Hide (c_5(D), &r_enc, &r, pk_2(D), &cache);
+  HashSession (k_7(D), 1, &r_enc, c_5(D));
+  r ={v} {CLOBBER(eos)};
+  r_enc ={v} {CLOBBER(eos)};
+  cache ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function Ciphertexts_diff_mask (Ciphertexts_diff_mask, funcdef_no=49, decl_uid=10174, cgraph_uid=50, symbol_order=49)
+
+int Ciphertexts_diff_mask (const unsigned char * c, const unsigned char * c2)
+{
+  int len;
+  crypto_uint16 differentbits;
+  int D.10333;
+  int D.10332;
+  const unsigned char * c.73_1;
+  unsigned char _2;
+  const unsigned char * c2.74_3;
+  unsigned char _4;
+  unsigned char _5;
+  signed short _6;
+  signed short differentbits.75_7;
+  signed short _8;
+  int len.76_9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _23;
+  int _27;
+
+  <bb 2> :
+  differentbits_18 = 0;
+  len_19 = 1039;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  c.73_1 = c_14;
+  c_25 = c.73_1 + 1;
+  _2 = *c.73_1;
+  c2.74_3 = c2_15;
+  c2_26 = c2.74_3 + 1;
+  _4 = *c2.74_3;
+  _5 = _2 ^ _4;
+  _27 = (int) _5;
+  _6 = (signed short) _27;
+  differentbits.75_7 = (signed short) differentbits_16;
+  _8 = _6 | differentbits.75_7;
+  differentbits_28 = (crypto_uint16) _8;
+
+  <bb 4> :
+  # c_14 = PHI <c_20(D)(2), c_25(3)>
+  # c2_15 = PHI <c2_21(D)(2), c2_26(3)>
+  # differentbits_16 = PHI <differentbits_18(2), differentbits_28(3)>
+  # len_17 = PHI <len_19(2), len_22(3)>
+  len.76_9 = len_17;
+  len_22 = len.76_9 + -1;
+  if (len.76_9 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _10 = (int) differentbits_16;
+  _11 = _10 + -1;
+  _12 = _11 >> 8;
+  _13 = _12 & 1;
+  _23 = _13 + -1;
+
+  <bb 6> :
+<L3>:
+  return _23;
+
+}
+
+
+
+;; Function Decap (Decap, funcdef_no=50, decl_uid=10184, cgraph_uid=51, symbol_order=50)
+
+void Decap (unsigned char * k, const unsigned char * c, const unsigned char * sk)
+{
+  int i;
+  int mask;
+  unsigned char cnew[1039];
+  unsigned char r_enc[191];
+  small r[761];
+  const unsigned char * cache;
+  const unsigned char * rho;
+  const unsigned char * pk;
+  unsigned char _1;
+  signed char _2;
+  unsigned char _3;
+  sizetype _4;
+  const unsigned char * _5;
+  unsigned char _6;
+  unsigned char _7;
+  signed char _8;
+  signed char _9;
+  signed char _10;
+  signed char _11;
+  unsigned char _12;
+  int _13;
+
+  <bb 2> :
+  pk_17 = sk_16(D) + 382;
+  rho_18 = pk_17 + 1158;
+  cache_19 = rho_18 + 191;
+  ZDecrypt (&r, c_21(D), sk_16(D));
+  Hide (&cnew, &r_enc, &r, pk_17, cache_19);
+  mask_25 = Ciphertexts_diff_mask (c_21(D), &cnew);
+  i_26 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = r_enc[i_14];
+  _2 = (signed char) _1;
+  _3 = r_enc[i_14];
+  _4 = (sizetype) i_14;
+  _5 = rho_18 + _4;
+  _6 = *_5;
+  _7 = _3 ^ _6;
+  _8 = (signed char) _7;
+  _9 = (signed char) mask_25;
+  _10 = _8 & _9;
+  _11 = _2 ^ _10;
+  _12 = (unsigned char) _11;
+  r_enc[i_14] = _12;
+  i_33 = i_14 + 1;
+
+  <bb 4> :
+  # i_14 = PHI <i_26(2), i_33(3)>
+  if (i_14 <= 190)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _13 = mask_25 + 1;
+  HashSession (k_27(D), _13, &r_enc, c_21(D));
+  r ={v} {CLOBBER(eos)};
+  r_enc ={v} {CLOBBER(eos)};
+  cnew ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function crypto_kem_sntrup761_keypair (crypto_kem_sntrup761_keypair, funcdef_no=51, decl_uid=9507, cgraph_uid=52, symbol_order=51)
+
+int crypto_kem_sntrup761_keypair (unsigned char * pk, unsigned char * sk)
+{
+  int D.10335;
+  int _5;
+
+  <bb 2> :
+  KEM_KeyGen (pk_2(D), sk_3(D));
+  _5 = 0;
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+
+
+;; Function crypto_kem_sntrup761_enc (crypto_kem_sntrup761_enc, funcdef_no=52, decl_uid=9500, cgraph_uid=53, symbol_order=52)
+
+int crypto_kem_sntrup761_enc (unsigned char * c, unsigned char * k, const unsigned char * pk)
+{
+  int D.10337;
+  int _6;
+
+  <bb 2> :
+  Encap (c_2(D), k_3(D), pk_4(D));
+  _6 = 0;
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
+
+;; Function crypto_kem_sntrup761_dec (crypto_kem_sntrup761_dec, funcdef_no=53, decl_uid=9504, cgraph_uid=54, symbol_order=53)
+
+int crypto_kem_sntrup761_dec (unsigned char * k, const unsigned char * c, const unsigned char * sk)
+{
+  int D.10339;
+  int _6;
+
+  <bb 2> :
+  Decap (k_2(D), c_3(D), sk_4(D));
+  _6 = 0;
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
