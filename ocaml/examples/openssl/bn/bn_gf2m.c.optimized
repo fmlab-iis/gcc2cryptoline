@@ -1,0 +1,3707 @@
+
+;; Function lh_MEM_hfn_thunk (lh_MEM_hfn_thunk, funcdef_no=153, decl_uid=11076, cgraph_uid=154, symbol_order=153)
+
+#long unsigned int lh_MEM_hfn_thunk (const void * data, long unsigned int (*OPENSSL_LH_HASHFUNC) (const void *) hfn)
+#{
+#  long unsigned int (*<T1306>) (const struct MEM *) hfn_conv;
+#  long unsigned int D.12970;
+#  long unsigned int _6;
+#
+#  <bb 2> :
+#  hfn_conv_2 = hfn_1(D);
+#  _6 = hfn_conv_2 (data_4(D));
+#
+#  <bb 3> :
+#<L0>:
+#  return _6;
+#
+#}
+
+
+
+;; Function lh_MEM_cfn_thunk (lh_MEM_cfn_thunk, funcdef_no=154, decl_uid=11084, cgraph_uid=155, symbol_order=154)
+
+#int lh_MEM_cfn_thunk (const void * da, const void * db, int (*OPENSSL_LH_COMPFUNC) (const void *, const void *) cfn)
+#{
+#  int (*<T130a>) (const struct MEM *, const struct MEM *) cfn_conv;
+#  int D.12972;
+#  int _7;
+#
+#  <bb 2> :
+#  cfn_conv_2 = cfn_1(D);
+#  _7 = cfn_conv_2 (da_4(D), db_5(D));
+#
+#  <bb 3> :
+#<L0>:
+#  return _7;
+#
+#}
+
+
+
+;; Function bn_GF2m_mul_1x1 (bn_GF2m_mul_1x1, funcdef_no=170, decl_uid=12609, cgraph_uid=171, symbol_order=170)
+
+void bn_GF2m_mul_1x1 (unsigned int * r1, unsigned int * r0, const unsigned int a, const unsigned int b)
+{
+  register unsigned int a8;
+  register unsigned int a4;
+  register unsigned int a2;
+  register unsigned int a1;
+  unsigned int top3b;
+  unsigned int tab[16];
+  register unsigned int s;
+  register unsigned int l;
+  register unsigned int h;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int _22;
+  unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned int _27;
+  unsigned int _28;
+  unsigned int _29;
+  unsigned int _30;
+  unsigned int _31;
+  unsigned int _32;
+  unsigned int _33;
+  unsigned int _34;
+  unsigned int _35;
+  unsigned int _36;
+  unsigned int _37;
+  unsigned int _38;
+  unsigned int _39;
+  unsigned int _40;
+  unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  unsigned int _44;
+  unsigned int _45;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned int _48;
+  unsigned int _49;
+  unsigned int _50;
+  unsigned int _51;
+
+  <bb 2> :
+  top3b_58 = 0;
+  a1_60 = a_59(D);
+  a2_61 = a1_60 << 1;
+  a4_62 = a2_61 << 1;
+  a8_63 = a4_62 << 1;
+  tab[0] = 0;
+  tab[1] = a1_60;
+  tab[2] = a2_61;
+  _1 = a1_60 ^ a2_61;
+  tab[3] = _1;
+  tab[4] = a4_62;
+  _2 = a1_60 ^ a4_62;
+  tab[5] = _2;
+  _3 = a2_61 ^ a4_62;
+  tab[6] = _3;
+  _4 = a1_60 ^ a2_61;
+  _5 = a4_62 ^ _4;
+  tab[7] = _5;
+  tab[8] = a8_63;
+  _6 = a1_60 ^ a8_63;
+  tab[9] = _6;
+  _7 = a2_61 ^ a8_63;
+  tab[10] = _7;
+  _8 = a1_60 ^ a2_61;
+  _9 = a8_63 ^ _8;
+  tab[11] = _9;
+  _10 = a4_62 ^ a8_63;
+  tab[12] = _10;
+  _11 = a1_60 ^ a4_62;
+  _12 = a8_63 ^ _11;
+  tab[13] = _12;
+  _13 = a2_61 ^ a4_62;
+  _14 = a8_63 ^ _13;
+  tab[14] = _14;
+  _15 = a1_60 ^ a2_61;
+  _16 = a4_62 ^ _15;
+  _17 = a8_63 ^ _16;
+  tab[15] = _17;
+  _18 = b_81(D) & 15;
+  s_82 = tab[_18];
+  l_83 = s_82;
+  _19 = b_81(D) >> 4;
+  _20 = _19 & 15;
+  s_84 = tab[_20];
+  _21 = s_84 << 4;
+  l_85 = l_83 ^ _21;
+  h_86 = 0;
+  _22 = b_81(D) >> 8;
+  _23 = _22 & 15;
+  s_87 = tab[_23];
+  _24 = s_87 << 8;
+  l_88 = l_85 ^ _24;
+  h_89 = h_86;
+  _25 = b_81(D) >> 12;
+  _26 = _25 & 15;
+  s_90 = tab[_26];
+  _27 = s_90 << 12;
+  l_91 = l_88 ^ _27;
+  h_92 = h_89;
+  _28 = b_81(D) >> 16;
+  _29 = _28 & 15;
+  s_93 = tab[_29];
+  _30 = s_93 << 16;
+  l_94 = l_91 ^ _30;
+  h_95 = h_92;
+  _31 = b_81(D) >> 20;
+  _32 = _31 & 15;
+  s_96 = tab[_32];
+  _33 = s_96 << 20;
+  l_97 = l_94 ^ _33;
+  h_98 = h_95;
+  _34 = b_81(D) >> 24;
+  _35 = _34 & 15;
+  s_99 = tab[_35];
+  _36 = s_99 << 24;
+  l_100 = l_97 ^ _36;
+  h_101 = h_98;
+  _37 = b_81(D) >> 28;
+  s_102 = tab[_37];
+  _38 = s_102 << 28;
+  l_103 = l_100 ^ _38;
+  h_104 = h_101;
+  s_105 = tab[0];
+  l_106 = l_103;
+  h_107 = h_104;
+  s_108 = tab[0];
+  l_109 = l_106;
+  _39 = s_108 >> 28;
+  h_110 = h_107 ^ _39;
+  s_111 = tab[0];
+  l_112 = l_109;
+  _40 = s_111 >> 24;
+  h_113 = h_110 ^ _40;
+  s_114 = tab[0];
+  l_115 = l_112;
+  _41 = s_114 >> 20;
+  h_116 = h_113 ^ _41;
+  s_117 = tab[0];
+  l_118 = l_115;
+  _42 = s_117 >> 16;
+  h_119 = h_116 ^ _42;
+  s_120 = tab[0];
+  l_121 = l_118;
+  _43 = s_120 >> 12;
+  h_122 = h_119 ^ _43;
+  s_123 = tab[0];
+  l_124 = l_121;
+  _44 = s_123 >> 8;
+  h_125 = h_122 ^ _44;
+  s_126 = tab[0];
+  l_127 = l_124;
+  _45 = s_126 >> 4;
+  h_128 = h_125 ^ _45;
+  _46 = top3b_58 & 1;
+  if (_46 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  l_129 = l_127;
+  _47 = b_81(D) >> 3;
+  h_130 = h_128 ^ _47;
+
+  <bb 4> :
+  # h_52 = PHI <h_128(2), h_130(3)>
+  # l_55 = PHI <l_127(2), l_129(3)>
+  _48 = top3b_58 & 2;
+  if (_48 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  l_131 = l_55;
+  _49 = b_81(D) >> 2;
+  h_132 = h_52 ^ _49;
+
+  <bb 6> :
+  # h_53 = PHI <h_52(4), h_132(5)>
+  # l_56 = PHI <l_55(4), l_131(5)>
+  _50 = top3b_58 & 4;
+  if (_50 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  l_133 = l_56;
+  _51 = b_81(D) >> 1;
+  h_134 = h_53 ^ _51;
+
+  <bb 8> :
+  # h_54 = PHI <h_53(6), h_134(7)>
+  # l_57 = PHI <l_56(6), l_133(7)>
+  *r1_135(D) = h_54;
+  *r0_137(D) = l_57;
+  tab ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function bn_GF2m_mul_2x2 (bn_GF2m_mul_2x2, funcdef_no=171, decl_uid=12625, cgraph_uid=172, symbol_order=171)
+
+void bn_GF2m_mul_2x2 (unsigned int * r, const unsigned int a1, const unsigned int a0, const unsigned int b1, const unsigned int b0)
+{
+  unsigned int m0;
+  unsigned int m1;
+  unsigned int * _1;
+  unsigned int * _2;
+  unsigned int * _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int * _6;
+  unsigned int _7;
+  unsigned int * _8;
+  unsigned int _9;
+  unsigned int m1.0_10;
+  unsigned int _11;
+  unsigned int * _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int * _15;
+  unsigned int _16;
+  unsigned int * _17;
+  unsigned int _18;
+  unsigned int * _19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int _22;
+  unsigned int _23;
+  unsigned int m1.1_24;
+  unsigned int _25;
+  unsigned int m0.2_26;
+  unsigned int * _27;
+  unsigned int _28;
+
+  <bb 2> :
+  _1 = r_29(D) + 12;
+  _2 = r_29(D) + 8;
+  bn_GF2m_mul_1x1 (_1, _2, a1_31(D), b1_32(D));
+  _3 = r_29(D) + 4;
+  bn_GF2m_mul_1x1 (_3, r_29(D), a0_34(D), b0_35(D));
+  _4 = a0_34(D) ^ a1_31(D);
+  _5 = b0_35(D) ^ b1_32(D);
+  bn_GF2m_mul_1x1 (&m1, &m0, _4, _5);
+  _6 = r_29(D) + 8;
+  _7 = *_6;
+  _8 = r_29(D) + 4;
+  _9 = *_8;
+  m1.0_10 = m1;
+  _11 = _9 ^ m1.0_10;
+  _12 = r_29(D) + 12;
+  _13 = *_12;
+  _14 = _11 ^ _13;
+  _15 = r_29(D) + 8;
+  _16 = _7 ^ _14;
+  *_15 = _16;
+  _17 = r_29(D) + 12;
+  _18 = *_17;
+  _19 = r_29(D) + 8;
+  _20 = *_19;
+  _21 = _18 ^ _20;
+  _22 = *r_29(D);
+  _23 = _21 ^ _22;
+  m1.1_24 = m1;
+  _25 = _23 ^ m1.1_24;
+  m0.2_26 = m0;
+  _27 = r_29(D) + 4;
+  _28 = _25 ^ m0.2_26;
+  *_27 = _28;
+  m1 ={v} {CLOBBER(eos)};
+  m0 ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function BN_GF2m_add (BN_GF2m_add, funcdef_no=172, decl_uid=9145, cgraph_uid=173, symbol_order=172)
+
+int BN_GF2m_add (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  const struct BIGNUM * bt;
+  const struct BIGNUM * at;
+  int i;
+  int D.12985;
+  int _1;
+  int _2;
+  int _3;
+  struct BIGNUM * _4;
+  unsigned int * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int * _8;
+  unsigned int _9;
+  unsigned int * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  unsigned int * _13;
+  unsigned int _14;
+  unsigned int * _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  unsigned int * _18;
+  unsigned int _19;
+  int _20;
+  unsigned int * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  unsigned int * _24;
+  unsigned int * _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  unsigned int * _28;
+  unsigned int _29;
+  int _30;
+  int _31;
+  int _36;
+  int _52;
+  int _57;
+
+  <bb 2> :
+  _1 = a_41(D)->top;
+  _2 = b_42(D)->top;
+  if (_1 < _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  at_45 = b_42(D);
+  bt_46 = a_41(D);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  at_43 = a_41(D);
+  bt_44 = b_42(D);
+
+  <bb 5> :
+  # at_34 = PHI <at_45(3), at_43(4)>
+  # bt_35 = PHI <bt_46(3), bt_44(4)>
+  _3 = at_34->top;
+  _4 = bn_wexpand (r_47(D), _3);
+  if (_4 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _57 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 7> :
+  i_49 = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _5 = at_34->d;
+  _6 = (long unsigned int) i_32;
+  _7 = _6 * 4;
+  _8 = _5 + _7;
+  _9 = *_8;
+  _10 = bt_35->d;
+  _11 = (long unsigned int) i_32;
+  _12 = _11 * 4;
+  _13 = _10 + _12;
+  _14 = *_13;
+  _15 = r_47(D)->d;
+  _16 = (long unsigned int) i_32;
+  _17 = _16 * 4;
+  _18 = _15 + _17;
+  _19 = _9 ^ _14;
+  *_18 = _19;
+  i_56 = i_32 + 1;
+
+  <bb 9> :
+  # i_32 = PHI <i_49(7), i_56(8)>
+  _20 = bt_35->top;
+  if (i_32 < _20)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  _21 = at_34->d;
+  _22 = (long unsigned int) i_33;
+  _23 = _22 * 4;
+  _24 = _21 + _23;
+  _25 = r_47(D)->d;
+  _26 = (long unsigned int) i_33;
+  _27 = _26 * 4;
+  _28 = _25 + _27;
+  _29 = *_24;
+  *_28 = _29;
+  i_54 = i_33 + 1;
+
+  <bb 12> :
+  # i_33 = PHI <i_32(10), i_54(11)>
+  _30 = at_34->top;
+  if (i_33 < _30)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  _31 = at_34->top;
+  r_47(D)->top = _31;
+  bn_correct_top (r_47(D));
+  _52 = 1;
+
+  <bb 14> :
+  # _36 = PHI <_57(6), _52(13)>
+<L11>:
+  return _36;
+
+}
+
+
+
+;; Function BN_GF2m_mod_arr (BN_GF2m_mod_arr, funcdef_no=173, decl_uid=9191, cgraph_uid=174, symbol_order=173)
+
+__attribute__((access ("^2[ ]", )))
+int BN_GF2m_mod_arr (struct BIGNUM * r, const struct BIGNUM * a, const int * p)
+{
+  unsigned int tmp_ulong;
+  unsigned int * z;
+  unsigned int zz;
+  int d1;
+  int d0;
+  int dN;
+  int n;
+  int k;
+  int j;
+  int D.12989;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  unsigned int * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int * _7;
+  unsigned int * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int * _11;
+  unsigned int _12;
+  int _13;
+  int _14;
+  int _15;
+  int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  unsigned int * _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  unsigned int * _22;
+  unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  unsigned int * _26;
+  int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  const int * _30;
+  int _31;
+  int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  unsigned int * _35;
+  unsigned int _36;
+  unsigned int _37;
+  int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  unsigned int * _41;
+  unsigned int _42;
+  int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  sizetype _46;
+  unsigned int * _47;
+  unsigned int _48;
+  unsigned int _49;
+  int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  sizetype _53;
+  unsigned int * _54;
+  unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  const int * _58;
+  int _59;
+  int _60;
+  int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  unsigned int * _64;
+  unsigned int _65;
+  unsigned int _66;
+  int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  unsigned int * _70;
+  unsigned int _71;
+  int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  sizetype _75;
+  unsigned int * _76;
+  unsigned int _77;
+  unsigned int _78;
+  int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  sizetype _82;
+  unsigned int * _83;
+  unsigned int _84;
+  int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  unsigned int * _88;
+  unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  unsigned int * _92;
+  unsigned int _93;
+  unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  unsigned int * _97;
+  unsigned int _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  unsigned int * _101;
+  unsigned int _102;
+  unsigned int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  const int * _106;
+  int _107;
+  long unsigned int _108;
+  long unsigned int _109;
+  const int * _110;
+  int _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  unsigned int * _114;
+  unsigned int _115;
+  unsigned int _116;
+  long unsigned int _117;
+  long unsigned int _118;
+  unsigned int * _119;
+  unsigned int _120;
+  sizetype _121;
+  sizetype _122;
+  sizetype _123;
+  unsigned int * _124;
+  unsigned int _125;
+  sizetype _126;
+  sizetype _127;
+  sizetype _128;
+  unsigned int * _129;
+  unsigned int _130;
+  long unsigned int _131;
+  long unsigned int _132;
+  const int * _133;
+  int _134;
+  int _139;
+  int _159;
+  int _178;
+  int _196;
+
+  <bb 2> :
+  _1 = *p_151(D);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  BN_zero_ex (r_153(D));
+  _196 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 36>; [INV]
+
+  <bb 4> :
+  if (a_152(D) != r_153(D))
+    goto <bb 5>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 5> :
+  _2 = a_152(D)->top;
+  _3 = bn_wexpand (r_153(D), _2);
+  if (_3 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _159 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 36>; [INV]
+
+  <bb 7> :
+  j_155 = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _4 = a_152(D)->d;
+  _5 = (long unsigned int) j_135;
+  _6 = _5 * 4;
+  _7 = _4 + _6;
+  _8 = r_153(D)->d;
+  _9 = (long unsigned int) j_135;
+  _10 = _9 * 4;
+  _11 = _8 + _10;
+  _12 = *_7;
+  *_11 = _12;
+  j_158 = j_135 + 1;
+
+  <bb 9> :
+  # j_135 = PHI <j_155(7), j_158(8)>
+  _13 = a_152(D)->top;
+  if (j_135 < _13)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  _14 = a_152(D)->top;
+  r_153(D)->top = _14;
+
+  <bb 11> :
+  z_160 = r_153(D)->d;
+  _15 = *p_151(D);
+  dN_161 = _15 / 32;
+  _16 = r_153(D)->top;
+  j_162 = _16 + -1;
+  goto <bb 21>; [INV]
+
+  <bb 12> :
+  _17 = (long unsigned int) j_136;
+  _18 = _17 * 4;
+  _19 = z_160 + _18;
+  zz_179 = *_19;
+  _20 = (long unsigned int) j_136;
+  _21 = _20 * 4;
+  _22 = z_160 + _21;
+  _23 = *_22;
+  if (_23 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  j_194 = j_136 + -1;
+  // predicted unlikely by continue predictor.
+  goto <bb 21>; [INV]
+
+  <bb 14> :
+  _24 = (long unsigned int) j_136;
+  _25 = _24 * 4;
+  _26 = z_160 + _25;
+  *_26 = 0;
+  k_181 = 1;
+  goto <bb 18>; [INV]
+
+  <bb 15> :
+  _27 = *p_151(D);
+  _28 = (long unsigned int) k_137;
+  _29 = _28 * 4;
+  _30 = p_151(D) + _29;
+  _31 = *_30;
+  n_187 = _27 - _31;
+  d0_188 = n_187 % 32;
+  d1_189 = 32 - d0_188;
+  n_190 = n_187 / 32;
+  _32 = j_136 - n_190;
+  _33 = (long unsigned int) _32;
+  _34 = _33 * 4;
+  _35 = z_160 + _34;
+  _36 = *_35;
+  _37 = zz_179 >> d0_188;
+  _38 = j_136 - n_190;
+  _39 = (long unsigned int) _38;
+  _40 = _39 * 4;
+  _41 = z_160 + _40;
+  _42 = _36 ^ _37;
+  *_41 = _42;
+  if (d0_188 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  _43 = j_136 - n_190;
+  _44 = (long unsigned int) _43;
+  _45 = _44 * 4;
+  _46 = _45 + 18446744073709551612;
+  _47 = z_160 + _46;
+  _48 = *_47;
+  _49 = zz_179 << d1_189;
+  _50 = j_136 - n_190;
+  _51 = (long unsigned int) _50;
+  _52 = _51 * 4;
+  _53 = _52 + 18446744073709551612;
+  _54 = z_160 + _53;
+  _55 = _48 ^ _49;
+  *_54 = _55;
+
+  <bb 17> :
+  k_193 = k_137 + 1;
+
+  <bb 18> :
+  # k_137 = PHI <k_181(14), k_193(17)>
+  _56 = (long unsigned int) k_137;
+  _57 = _56 * 4;
+  _58 = p_151(D) + _57;
+  _59 = *_58;
+  if (_59 != 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 19> :
+  n_182 = dN_161;
+  _60 = *p_151(D);
+  d0_183 = _60 % 32;
+  d1_184 = 32 - d0_183;
+  _61 = j_136 - n_182;
+  _62 = (long unsigned int) _61;
+  _63 = _62 * 4;
+  _64 = z_160 + _63;
+  _65 = *_64;
+  _66 = zz_179 >> d0_183;
+  _67 = j_136 - n_182;
+  _68 = (long unsigned int) _67;
+  _69 = _68 * 4;
+  _70 = z_160 + _69;
+  _71 = _65 ^ _66;
+  *_70 = _71;
+  if (d0_183 != 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  _72 = j_136 - n_182;
+  _73 = (long unsigned int) _72;
+  _74 = _73 * 4;
+  _75 = _74 + 18446744073709551612;
+  _76 = z_160 + _75;
+  _77 = *_76;
+  _78 = zz_179 << d1_184;
+  _79 = j_136 - n_182;
+  _80 = (long unsigned int) _79;
+  _81 = _80 * 4;
+  _82 = _81 + 18446744073709551612;
+  _83 = z_160 + _82;
+  _84 = _77 ^ _78;
+  *_83 = _84;
+
+  <bb 21> :
+  # j_136 = PHI <j_162(11), j_194(13), j_136(19), j_136(20)>
+  if (j_136 > dN_161)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  goto <bb 34>; [INV]
+
+  <bb 23> :
+  _85 = *p_151(D);
+  d0_163 = _85 % 32;
+  _86 = (long unsigned int) dN_161;
+  _87 = _86 * 4;
+  _88 = z_160 + _87;
+  _89 = *_88;
+  zz_164 = _89 >> d0_163;
+  if (zz_164 == 0)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  goto <bb 35>; [INV]
+
+  <bb 25> :
+  d1_165 = 32 - d0_163;
+  if (d0_163 != 0)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 26> :
+  _90 = (long unsigned int) dN_161;
+  _91 = _90 * 4;
+  _92 = z_160 + _91;
+  _93 = *_92;
+  _94 = _93 << d1_165;
+  _95 = (long unsigned int) dN_161;
+  _96 = _95 * 4;
+  _97 = z_160 + _96;
+  _98 = _94 >> d1_165;
+  *_97 = _98;
+  goto <bb 28>; [INV]
+
+  <bb 27> :
+  _99 = (long unsigned int) dN_161;
+  _100 = _99 * 4;
+  _101 = z_160 + _100;
+  *_101 = 0;
+
+  <bb 28> :
+  _102 = *z_160;
+  _103 = zz_164 ^ _102;
+  *z_160 = _103;
+  k_169 = 1;
+  goto <bb 33>; [INV]
+
+  <bb 29> :
+  _104 = (long unsigned int) k_138;
+  _105 = _104 * 4;
+  _106 = p_151(D) + _105;
+  _107 = *_106;
+  n_170 = _107 / 32;
+  _108 = (long unsigned int) k_138;
+  _109 = _108 * 4;
+  _110 = p_151(D) + _109;
+  _111 = *_110;
+  d0_171 = _111 % 32;
+  d1_172 = 32 - d0_171;
+  _112 = (long unsigned int) n_170;
+  _113 = _112 * 4;
+  _114 = z_160 + _113;
+  _115 = *_114;
+  _116 = zz_164 << d0_171;
+  _117 = (long unsigned int) n_170;
+  _118 = _117 * 4;
+  _119 = z_160 + _118;
+  _120 = _115 ^ _116;
+  *_119 = _120;
+  if (d0_171 != 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 30> :
+  tmp_ulong_174 = zz_164 >> d1_172;
+  if (tmp_ulong_174 != 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  _121 = (sizetype) n_170;
+  _122 = _121 + 1;
+  _123 = _122 * 4;
+  _124 = z_160 + _123;
+  _125 = *_124;
+  _126 = (sizetype) n_170;
+  _127 = _126 + 1;
+  _128 = _127 * 4;
+  _129 = z_160 + _128;
+  _130 = tmp_ulong_174 ^ _125;
+  *_129 = _130;
+
+  <bb 32> :
+  k_176 = k_138 + 1;
+
+  <bb 33> :
+  # k_138 = PHI <k_169(28), k_176(32)>
+  _131 = (long unsigned int) k_138;
+  _132 = _131 * 4;
+  _133 = p_151(D) + _132;
+  _134 = *_133;
+  if (_134 != 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 34> :
+  if (j_136 == dN_161)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 35> :
+  bn_correct_top (r_153(D));
+  _178 = 1;
+
+  <bb 36> :
+  # _139 = PHI <_196(3), _159(6), _178(35)>
+<L36>:
+  return _139;
+
+}
+
+
+
+;; Function BN_GF2m_mod (BN_GF2m_mod, funcdef_no=174, decl_uid=9149, cgraph_uid=175, symbol_order=174)
+
+int BN_GF2m_mod (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p)
+{
+  static const char __func__[12] = "BN_GF2m_mod";
+  int arr[6];
+  int ret;
+  int D.13013;
+  int _1;
+  int _12;
+  int _16;
+
+  <bb 2> :
+  ret_3 = 0;
+  ret_7 = BN_GF2m_poly2arr (p_5(D), &arr, 6);
+  if (ret_7 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (ret_7 > 6)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 399, &__func__);
+  ERR_set_error (3, 106, 0B);
+  _16 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  ret_11 = BN_GF2m_mod_arr (r_8(D), a_9(D), &arr);
+  _12 = ret_11;
+
+  <bb 6> :
+  # _1 = PHI <_16(4), _12(5)>
+  arr ={v} {CLOBBER(eos)};
+
+  <bb 7> :
+<L4>:
+  return _1;
+
+}
+
+
+
+;; Function BN_GF2m_mod_mul_arr (BN_GF2m_mod_mul_arr, funcdef_no=175, decl_uid=9197, cgraph_uid=176, symbol_order=175)
+
+__attribute__((access ("^3[ ]", )))
+int BN_GF2m_mod_mul_arr (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const int * p, struct BN_CTX * ctx)
+{
+  unsigned int zz[4];
+  unsigned int y0;
+  unsigned int y1;
+  unsigned int x0;
+  unsigned int x1;
+  struct BIGNUM * s;
+  int ret;
+  int k;
+  int j;
+  int i;
+  int zlen;
+  unsigned int iftmp.4;
+  unsigned int iftmp.3;
+  int D.13018;
+  int _1;
+  int _2;
+  int _3;
+  struct BIGNUM * _4;
+  unsigned int * _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int * _8;
+  unsigned int * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  unsigned int * _12;
+  int _13;
+  int _14;
+  unsigned int * _15;
+  sizetype _16;
+  sizetype _17;
+  sizetype _18;
+  unsigned int * _19;
+  unsigned int * _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  unsigned int * _23;
+  int _24;
+  int _25;
+  unsigned int * _26;
+  sizetype _27;
+  sizetype _28;
+  sizetype _29;
+  unsigned int * _30;
+  unsigned int * _31;
+  int _32;
+  int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  unsigned int * _36;
+  unsigned int _37;
+  unsigned int _38;
+  unsigned int * _39;
+  int _40;
+  int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  unsigned int * _44;
+  unsigned int _45;
+  int _46;
+  int _47;
+  int _48;
+  int _54;
+  unsigned int iftmp.3_55;
+  unsigned int iftmp.4_56;
+  unsigned int iftmp.3_82;
+  unsigned int iftmp.3_83;
+  unsigned int iftmp.4_88;
+  unsigned int iftmp.4_89;
+  int _99;
+  int _101;
+
+  <bb 2> :
+  ret_63 = 0;
+  if (a_64(D) == b_65(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _101 = BN_GF2m_mod_sqr_arr (r_77(D), a_64(D), p_78(D), ctx_67(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 29>; [INV]
+
+  <bb 4> :
+  BN_CTX_start (ctx_67(D));
+  s_70 = BN_CTX_get (ctx_67(D));
+  if (s_70 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 28>; [INV]
+
+  <bb 6> :
+  _1 = a_64(D)->top;
+  _2 = b_65(D)->top;
+  _3 = _1 + _2;
+  zlen_71 = _3 + 4;
+  _4 = bn_wexpand (s_70, zlen_71);
+  if (_4 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 28>; [INV]
+
+  <bb 8> :
+  s_70->top = zlen_71;
+  i_74 = 0;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _5 = s_70->d;
+  _6 = (long unsigned int) i_49;
+  _7 = _6 * 4;
+  _8 = _5 + _7;
+  *_8 = 0;
+  i_97 = i_49 + 1;
+
+  <bb 10> :
+  # i_49 = PHI <i_74(8), i_97(9)>
+  if (i_49 < zlen_71)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  j_75 = 0;
+  goto <bb 25>; [INV]
+
+  <bb 12> :
+  _9 = b_65(D)->d;
+  _10 = (long unsigned int) j_51;
+  _11 = _10 * 4;
+  _12 = _9 + _11;
+  y0_81 = *_12;
+  _13 = j_51 + 1;
+  _14 = b_65(D)->top;
+  if (_13 != _14)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  _15 = b_65(D)->d;
+  _16 = (sizetype) j_51;
+  _17 = _16 + 1;
+  _18 = _17 * 4;
+  _19 = _15 + _18;
+  iftmp.3_83 = *_19;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.3_82 = 0;
+
+  <bb 15> :
+  # iftmp.3_55 = PHI <iftmp.3_83(13), iftmp.3_82(14)>
+  y1_84 = iftmp.3_55;
+  i_85 = 0;
+  goto <bb 23>; [INV]
+
+  <bb 16> :
+  _20 = a_64(D)->d;
+  _21 = (long unsigned int) i_50;
+  _22 = _21 * 4;
+  _23 = _20 + _22;
+  x0_87 = *_23;
+  _24 = i_50 + 1;
+  _25 = a_64(D)->top;
+  if (_24 != _25)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  _26 = a_64(D)->d;
+  _27 = (sizetype) i_50;
+  _28 = _27 + 1;
+  _29 = _28 * 4;
+  _30 = _26 + _29;
+  iftmp.4_89 = *_30;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  iftmp.4_88 = 0;
+
+  <bb 19> :
+  # iftmp.4_56 = PHI <iftmp.4_89(17), iftmp.4_88(18)>
+  x1_90 = iftmp.4_56;
+  bn_GF2m_mul_2x2 (&zz, x1_90, x0_87, y1_84, y0_81);
+  k_92 = 0;
+  goto <bb 21>; [INV]
+
+  <bb 20> :
+  _31 = s_70->d;
+  _32 = i_50 + j_51;
+  _33 = k_52 + _32;
+  _34 = (long unsigned int) _33;
+  _35 = _34 * 4;
+  _36 = _31 + _35;
+  _37 = *_36;
+  _38 = zz[k_52];
+  _39 = s_70->d;
+  _40 = i_50 + j_51;
+  _41 = k_52 + _40;
+  _42 = (long unsigned int) _41;
+  _43 = _42 * 4;
+  _44 = _39 + _43;
+  _45 = _37 ^ _38;
+  *_44 = _45;
+  k_95 = k_52 + 1;
+
+  <bb 21> :
+  # k_52 = PHI <k_92(19), k_95(20)>
+  if (k_52 <= 3)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 22> :
+  i_93 = i_50 + 2;
+
+  <bb 23> :
+  # i_50 = PHI <i_85(15), i_93(22)>
+  _46 = a_64(D)->top;
+  if (i_50 < _46)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  j_86 = j_51 + 2;
+
+  <bb 25> :
+  # j_51 = PHI <j_75(11), j_86(24)>
+  _47 = b_65(D)->top;
+  if (j_51 < _47)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 26> :
+  bn_correct_top (s_70);
+  _48 = BN_GF2m_mod_arr (r_77(D), s_70, p_78(D));
+  if (_48 != 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  ret_80 = 1;
+
+  <bb 28> :
+  # ret_53 = PHI <ret_63(5), ret_63(7), ret_63(26), ret_80(27)>
+err:
+  BN_CTX_end (ctx_67(D));
+  _99 = ret_53;
+
+  <bb 29> :
+  # _54 = PHI <_101(3), _99(28)>
+  zz ={v} {CLOBBER(eos)};
+
+  <bb 30> :
+<L28>:
+  return _54;
+
+}
+
+
+
+;; Function BN_GF2m_mod_mul (BN_GF2m_mod_mul, funcdef_no=176, decl_uid=9155, cgraph_uid=177, symbol_order=176)
+
+int BN_GF2m_mod_mul (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[16] = "BN_GF2m_mod_mul";
+  int * arr;
+  const int max;
+  int ret;
+  int D.13037;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _5;
+  int _27;
+  int _28;
+
+  <bb 2> :
+  ret_8 = 0;
+  _1 = BN_num_bits (p_10(D));
+  max_12 = _1 + 1;
+  _2 = (long unsigned int) max_12;
+  _3 = _2 * 4;
+  arr_14 = CRYPTO_malloc (_3, "bn_gf2m.c", 477);
+  if (arr_14 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _28 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  ret_16 = BN_GF2m_poly2arr (p_10(D), arr_14, max_12);
+  if (ret_16 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ret_16 > max_12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 482, &__func__);
+  ERR_set_error (3, 106, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  ret_22 = BN_GF2m_mod_mul_arr (r_17(D), a_18(D), b_19(D), arr_14, ctx_20(D));
+
+  <bb 8> :
+  # ret_4 = PHI <ret_16(6), ret_22(7)>
+err:
+  CRYPTO_free (arr_14, "bn_gf2m.c", 488);
+  _27 = ret_4;
+
+  <bb 9> :
+  # _5 = PHI <_28(3), _27(8)>
+<L6>:
+  return _5;
+
+}
+
+
+
+;; Function BN_GF2m_mod_sqr_arr (BN_GF2m_mod_sqr_arr, funcdef_no=177, decl_uid=9202, cgraph_uid=178, symbol_order=177)
+
+__attribute__((access ("^2[ ]", )))
+int BN_GF2m_mod_sqr_arr (struct BIGNUM * r, const struct BIGNUM * a, const int * p, struct BN_CTX * ctx)
+{
+  struct BIGNUM * s;
+  int ret;
+  int i;
+  int D.13048;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  int _4;
+  unsigned int * _5;
+  int _6;
+  sizetype _7;
+  sizetype _8;
+  sizetype _9;
+  unsigned int * _10;
+  unsigned int * _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  unsigned int * _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int * _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  unsigned int * _22;
+  unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned int _27;
+  unsigned int * _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  unsigned int * _31;
+  unsigned int _32;
+  unsigned int _33;
+  unsigned int _34;
+  unsigned int _35;
+  unsigned int _36;
+  unsigned int * _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  unsigned int * _40;
+  unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  unsigned int _44;
+  unsigned int _45;
+  unsigned int * _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  unsigned int * _49;
+  unsigned int _50;
+  unsigned int _51;
+  unsigned int _52;
+  unsigned int _53;
+  unsigned int * _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  unsigned int * _57;
+  unsigned int _58;
+  unsigned int _59;
+  unsigned int _60;
+  unsigned int _61;
+  unsigned int _62;
+  unsigned int * _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  unsigned int * _66;
+  unsigned int _67;
+  unsigned int _68;
+  unsigned int _69;
+  unsigned int _70;
+  unsigned int _71;
+  unsigned int * _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  unsigned int * _75;
+  unsigned int _76;
+  unsigned int _77;
+  unsigned int _78;
+  unsigned int _79;
+  unsigned int _80;
+  unsigned int _81;
+  unsigned int * _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  unsigned int * _85;
+  unsigned int _86;
+  unsigned int _87;
+  unsigned int _88;
+  unsigned int _89;
+  unsigned int * _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  unsigned int * _93;
+  unsigned int _94;
+  unsigned int _95;
+  unsigned int _96;
+  unsigned int _97;
+  unsigned int _98;
+  unsigned int * _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  unsigned int * _102;
+  unsigned int _103;
+  unsigned int _104;
+  unsigned int _105;
+  unsigned int _106;
+  unsigned int _107;
+  unsigned int * _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  unsigned int * _111;
+  unsigned int _112;
+  unsigned int _113;
+  unsigned int _114;
+  unsigned int _115;
+  unsigned int _116;
+  unsigned int _117;
+  unsigned int * _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  unsigned int * _121;
+  unsigned int _122;
+  unsigned int _123;
+  unsigned int _124;
+  unsigned int * _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  unsigned int * _128;
+  unsigned int _129;
+  unsigned int _130;
+  unsigned int _131;
+  unsigned int _132;
+  unsigned int * _133;
+  long unsigned int _134;
+  long unsigned int _135;
+  unsigned int * _136;
+  unsigned int _137;
+  unsigned int _138;
+  unsigned int _139;
+  unsigned int _140;
+  unsigned int * _141;
+  long unsigned int _142;
+  long unsigned int _143;
+  unsigned int * _144;
+  unsigned int _145;
+  unsigned int _146;
+  unsigned int _147;
+  unsigned int * _148;
+  int _149;
+  long unsigned int _150;
+  long unsigned int _151;
+  unsigned int * _152;
+  unsigned int _153;
+  int _154;
+  int _155;
+  int _156;
+  int _180;
+
+  <bb 2> :
+  ret_161 = 0;
+  BN_CTX_start (ctx_163(D));
+  s_166 = BN_CTX_get (ctx_163(D));
+  if (s_166 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  _1 = a_167(D)->top;
+  _2 = _1 * 2;
+  _3 = bn_wexpand (s_166, _2);
+  if (_3 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  _4 = a_167(D)->top;
+  i_169 = _4 + -1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _5 = s_166->d;
+  _6 = i_157 * 2;
+  _7 = (sizetype) _6;
+  _8 = _7 + 1;
+  _9 = _8 * 4;
+  _10 = _5 + _9;
+  *_10 = 0;
+  _11 = a_167(D)->d;
+  _12 = (long unsigned int) i_157;
+  _13 = _12 * 4;
+  _14 = _11 + _13;
+  _15 = *_14;
+  _16 = _15 >> 12;
+  _17 = _16 << 3;
+  _18 = _17 & 64;
+  _19 = a_167(D)->d;
+  _20 = (long unsigned int) i_157;
+  _21 = _20 * 4;
+  _22 = _19 + _21;
+  _23 = *_22;
+  _24 = _23 >> 12;
+  _25 = _24 << 2;
+  _26 = _25 & 16;
+  _27 = _18 | _26;
+  _28 = a_167(D)->d;
+  _29 = (long unsigned int) i_157;
+  _30 = _29 * 4;
+  _31 = _28 + _30;
+  _32 = *_31;
+  _33 = _32 >> 12;
+  _34 = _33 << 1;
+  _35 = _34 & 4;
+  _36 = _27 | _35;
+  _37 = a_167(D)->d;
+  _38 = (long unsigned int) i_157;
+  _39 = _38 * 4;
+  _40 = _37 + _39;
+  _41 = *_40;
+  _42 = _41 >> 12;
+  _43 = _42 & 1;
+  _44 = _36 | _43;
+  _45 = _44 << 24;
+  _46 = a_167(D)->d;
+  _47 = (long unsigned int) i_157;
+  _48 = _47 * 4;
+  _49 = _46 + _48;
+  _50 = *_49;
+  _51 = _50 >> 8;
+  _52 = _51 << 3;
+  _53 = _52 & 64;
+  _54 = a_167(D)->d;
+  _55 = (long unsigned int) i_157;
+  _56 = _55 * 4;
+  _57 = _54 + _56;
+  _58 = *_57;
+  _59 = _58 >> 8;
+  _60 = _59 << 2;
+  _61 = _60 & 16;
+  _62 = _53 | _61;
+  _63 = a_167(D)->d;
+  _64 = (long unsigned int) i_157;
+  _65 = _64 * 4;
+  _66 = _63 + _65;
+  _67 = *_66;
+  _68 = _67 >> 8;
+  _69 = _68 << 1;
+  _70 = _69 & 4;
+  _71 = _62 | _70;
+  _72 = a_167(D)->d;
+  _73 = (long unsigned int) i_157;
+  _74 = _73 * 4;
+  _75 = _72 + _74;
+  _76 = *_75;
+  _77 = _76 >> 8;
+  _78 = _77 & 1;
+  _79 = _71 | _78;
+  _80 = _79 << 16;
+  _81 = _45 | _80;
+  _82 = a_167(D)->d;
+  _83 = (long unsigned int) i_157;
+  _84 = _83 * 4;
+  _85 = _82 + _84;
+  _86 = *_85;
+  _87 = _86 >> 4;
+  _88 = _87 << 3;
+  _89 = _88 & 64;
+  _90 = a_167(D)->d;
+  _91 = (long unsigned int) i_157;
+  _92 = _91 * 4;
+  _93 = _90 + _92;
+  _94 = *_93;
+  _95 = _94 >> 4;
+  _96 = _95 << 2;
+  _97 = _96 & 16;
+  _98 = _89 | _97;
+  _99 = a_167(D)->d;
+  _100 = (long unsigned int) i_157;
+  _101 = _100 * 4;
+  _102 = _99 + _101;
+  _103 = *_102;
+  _104 = _103 >> 4;
+  _105 = _104 << 1;
+  _106 = _105 & 4;
+  _107 = _98 | _106;
+  _108 = a_167(D)->d;
+  _109 = (long unsigned int) i_157;
+  _110 = _109 * 4;
+  _111 = _108 + _110;
+  _112 = *_111;
+  _113 = _112 >> 4;
+  _114 = _113 & 1;
+  _115 = _107 | _114;
+  _116 = _115 << 8;
+  _117 = _81 | _116;
+  _118 = a_167(D)->d;
+  _119 = (long unsigned int) i_157;
+  _120 = _119 * 4;
+  _121 = _118 + _120;
+  _122 = *_121;
+  _123 = _122 << 3;
+  _124 = _123 & 64;
+  _125 = a_167(D)->d;
+  _126 = (long unsigned int) i_157;
+  _127 = _126 * 4;
+  _128 = _125 + _127;
+  _129 = *_128;
+  _130 = _129 << 2;
+  _131 = _130 & 16;
+  _132 = _124 | _131;
+  _133 = a_167(D)->d;
+  _134 = (long unsigned int) i_157;
+  _135 = _134 * 4;
+  _136 = _133 + _135;
+  _137 = *_136;
+  _138 = _137 << 1;
+  _139 = _138 & 4;
+  _140 = _132 | _139;
+  _141 = a_167(D)->d;
+  _142 = (long unsigned int) i_157;
+  _143 = _142 * 4;
+  _144 = _141 + _143;
+  _145 = *_144;
+  _146 = _145 & 1;
+  _147 = _140 | _146;
+  _148 = s_166->d;
+  _149 = i_157 * 2;
+  _150 = (long unsigned int) _149;
+  _151 = _150 * 4;
+  _152 = _148 + _151;
+  _153 = _117 | _147;
+  *_152 = _153;
+  i_178 = i_157 + -1;
+
+  <bb 8> :
+  # i_157 = PHI <i_169(6), i_178(7)>
+  if (i_157 >= 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _154 = a_167(D)->top;
+  _155 = _154 * 2;
+  s_166->top = _155;
+  bn_correct_top (s_166);
+  _156 = BN_GF2m_mod_arr (r_172(D), s_166, p_173(D));
+  if (_156 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  // predicted unlikely by goto predictor.
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  ret_175 = 1;
+
+  <bb 12> :
+  # ret_158 = PHI <ret_161(3), ret_161(5), ret_161(10), ret_175(11)>
+err:
+  BN_CTX_end (ctx_163(D));
+  _180 = ret_158;
+
+  <bb 13> :
+<L10>:
+  return _180;
+
+}
+
+
+
+;; Function BN_GF2m_mod_sqr (BN_GF2m_mod_sqr, funcdef_no=178, decl_uid=9160, cgraph_uid=179, symbol_order=178)
+
+int BN_GF2m_mod_sqr (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[16] = "BN_GF2m_mod_sqr";
+  int * arr;
+  const int max;
+  int ret;
+  int D.13052;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _5;
+  int _26;
+  int _27;
+
+  <bb 2> :
+  ret_8 = 0;
+  _1 = BN_num_bits (p_10(D));
+  max_12 = _1 + 1;
+  _2 = (long unsigned int) max_12;
+  _3 = _2 * 4;
+  arr_14 = CRYPTO_malloc (_3, "bn_gf2m.c", 537);
+  if (arr_14 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _27 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  ret_16 = BN_GF2m_poly2arr (p_10(D), arr_14, max_12);
+  if (ret_16 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ret_16 > max_12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 542, &__func__);
+  ERR_set_error (3, 106, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  ret_21 = BN_GF2m_mod_sqr_arr (r_17(D), a_18(D), arr_14, ctx_19(D));
+
+  <bb 8> :
+  # ret_4 = PHI <ret_16(6), ret_21(7)>
+err:
+  CRYPTO_free (arr_14, "bn_gf2m.c", 548);
+  _26 = ret_4;
+
+  <bb 9> :
+  # _5 = PHI <_27(3), _26(8)>
+<L6>:
+  return _5;
+
+}
+
+
+
+;; Function BN_GF2m_mod_inv_vartime (BN_GF2m_mod_inv_vartime, funcdef_no=179, decl_uid=12761, cgraph_uid=180, symbol_order=179)
+
+int BN_GF2m_mod_inv_vartime (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  int utop;
+  unsigned int ul;
+  unsigned int mask;
+  unsigned int b1;
+  unsigned int b0;
+  unsigned int u1;
+  unsigned int u0;
+  unsigned int * cdp;
+  unsigned int * vdp;
+  unsigned int * bdp;
+  unsigned int * udp;
+  int top;
+  int vbits;
+  int ubits;
+  int i;
+  int ret;
+  struct BIGNUM * tmp;
+  struct BIGNUM * v;
+  struct BIGNUM * u;
+  struct BIGNUM * c;
+  struct BIGNUM * b;
+  int D.13085;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int * _7;
+  struct BIGNUM * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int * _11;
+  struct BIGNUM * _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  unsigned int * _15;
+  unsigned int _16;
+  unsigned int * _17;
+  unsigned int _18;
+  unsigned int _19;
+  sizetype _20;
+  sizetype _21;
+  sizetype _22;
+  unsigned int * _23;
+  unsigned int _24;
+  unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  unsigned int * _28;
+  unsigned int _29;
+  sizetype _30;
+  sizetype _31;
+  sizetype _32;
+  unsigned int * _33;
+  unsigned int _34;
+  unsigned int * _35;
+  sizetype _36;
+  sizetype _37;
+  sizetype _38;
+  unsigned int * _39;
+  unsigned int _40;
+  unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  unsigned int * _46;
+  unsigned int _47;
+  int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  unsigned int * _51;
+  unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  unsigned int * _55;
+  unsigned int _56;
+  unsigned int _57;
+  unsigned int _58;
+  unsigned int _59;
+  unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  unsigned int * _63;
+  unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  unsigned int * _67;
+  unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  unsigned int * _71;
+  unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  unsigned int * _75;
+  unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  unsigned int * _79;
+  unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  unsigned int * _83;
+  unsigned int _84;
+  int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  unsigned int * _88;
+  int _89;
+  int _90;
+  struct BIGNUM * _91;
+  int _219;
+
+  <bb 2> :
+  c_132 = 0B;
+  u_133 = 0B;
+  v_134 = 0B;
+  ret_135 = 0;
+  BN_CTX_start (ctx_137(D));
+  b_140 = BN_CTX_get (ctx_137(D));
+  c_142 = BN_CTX_get (ctx_137(D));
+  u_144 = BN_CTX_get (ctx_137(D));
+  v_146 = BN_CTX_get (ctx_137(D));
+  if (v_146 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 4> :
+  _1 = BN_GF2m_mod (u_144, a_147(D), p_148(D));
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 6> :
+  _2 = BN_is_zero (u_144);
+  if (_2 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 8> :
+  _3 = BN_copy (v_146, p_148(D));
+  if (_3 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 10> :
+  ubits_153 = BN_num_bits (u_144);
+  vbits_155 = BN_num_bits (v_146);
+  top_156 = p_148(D)->top;
+  _4 = bn_wexpand (u_144, top_156);
+  if (_4 == 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 12> :
+  udp_158 = u_144->d;
+  i_159 = u_144->top;
+  goto <bb 14>; [INV]
+
+  <bb 13> :
+  _5 = (long unsigned int) i_101;
+  _6 = _5 * 4;
+  _7 = udp_158 + _6;
+  *_7 = 0;
+  i_217 = i_101 + 1;
+
+  <bb 14> :
+  # i_101 = PHI <i_159(12), i_217(13)>
+  if (i_101 < top_156)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  u_144->top = top_156;
+  _8 = bn_wexpand (b_140, top_156);
+  if (_8 == 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 17> :
+  bdp_162 = b_140->d;
+  *bdp_162 = 1;
+  i_164 = 1;
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _9 = (long unsigned int) i_102;
+  _10 = _9 * 4;
+  _11 = bdp_162 + _10;
+  *_11 = 0;
+  i_215 = i_102 + 1;
+
+  <bb 19> :
+  # i_102 = PHI <i_164(17), i_215(18)>
+  if (i_102 < top_156)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 20> :
+  b_140->top = top_156;
+  _12 = bn_wexpand (c_142, top_156);
+  if (_12 == 0B)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 22> :
+  cdp_167 = c_142->d;
+  i_168 = 0;
+  goto <bb 24>; [INV]
+
+  <bb 23> :
+  _13 = (long unsigned int) i_103;
+  _14 = _13 * 4;
+  _15 = cdp_167 + _14;
+  *_15 = 0;
+  i_213 = i_103 + 1;
+
+  <bb 24> :
+  # i_103 = PHI <i_168(22), i_213(23)>
+  if (i_103 < top_156)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 25> :
+  c_142->top = top_156;
+  vdp_170 = v_146->d;
+
+  <bb 26> :
+  # b_92 = PHI <b_140(25), b_93(49)>
+  # c_94 = PHI <c_142(25), c_95(49)>
+  # u_96 = PHI <u_144(25), u_97(49)>
+  # v_98 = PHI <v_146(25), v_99(49)>
+  # ubits_106 = PHI <ubits_153(25), ubits_109(49)>
+  # vbits_110 = PHI <vbits_155(25), vbits_111(49)>
+  # udp_112 = PHI <udp_158(25), udp_113(49)>
+  # bdp_114 = PHI <bdp_162(25), bdp_115(49)>
+  # vdp_116 = PHI <vdp_170(25), vdp_117(49)>
+  # cdp_118 = PHI <cdp_167(25), cdp_119(49)>
+  goto <bb 31>; [INV]
+
+  <bb 27> :
+  u0_171 = *udp_112;
+  b0_172 = *bdp_114;
+  _16 = b0_172 & 1;
+  mask_173 = -_16;
+  _17 = p_148(D)->d;
+  _18 = *_17;
+  _19 = mask_173 & _18;
+  b0_174 = b0_172 ^ _19;
+  i_175 = 0;
+  goto <bb 29>; [INV]
+
+  <bb 28> :
+  _20 = (sizetype) i_104;
+  _21 = _20 + 1;
+  _22 = _21 * 4;
+  _23 = udp_112 + _22;
+  u1_179 = *_23;
+  _24 = u0_120 >> 1;
+  _25 = u1_179 << 31;
+  _26 = (long unsigned int) i_104;
+  _27 = _26 * 4;
+  _28 = udp_112 + _27;
+  _29 = _24 | _25;
+  *_28 = _29;
+  u0_181 = u1_179;
+  _30 = (sizetype) i_104;
+  _31 = _30 + 1;
+  _32 = _31 * 4;
+  _33 = bdp_114 + _32;
+  _34 = *_33;
+  _35 = p_148(D)->d;
+  _36 = (sizetype) i_104;
+  _37 = _36 + 1;
+  _38 = _37 * 4;
+  _39 = _35 + _38;
+  _40 = *_39;
+  _41 = mask_173 & _40;
+  b1_182 = _34 ^ _41;
+  _42 = b0_121 >> 1;
+  _43 = b1_182 << 31;
+  _44 = (long unsigned int) i_104;
+  _45 = _44 * 4;
+  _46 = bdp_114 + _45;
+  _47 = _42 | _43;
+  *_46 = _47;
+  b0_184 = b1_182;
+  i_185 = i_104 + 1;
+
+  <bb 29> :
+  # i_104 = PHI <i_175(27), i_185(28)>
+  # u0_120 = PHI <u0_171(27), u0_181(28)>
+  # b0_121 = PHI <b0_174(27), b0_184(28)>
+  _48 = top_156 + -1;
+  if (i_104 < _48)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 30> :
+  _49 = (long unsigned int) i_104;
+  _50 = _49 * 4;
+  _51 = udp_112 + _50;
+  _52 = u0_120 >> 1;
+  *_51 = _52;
+  _53 = (long unsigned int) i_104;
+  _54 = _53 * 4;
+  _55 = bdp_114 + _54;
+  _56 = b0_121 >> 1;
+  *_55 = _56;
+  ubits_178 = ubits_107 + -1;
+
+  <bb 31> :
+  # ubits_107 = PHI <ubits_106(26), ubits_178(30)>
+  if (ubits_107 != 0)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  _57 = *udp_112;
+  _58 = _57 & 1;
+  if (_58 == 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 33> :
+  if (ubits_107 <= 32)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 34> :
+  _59 = *udp_112;
+  if (_59 == 0)
+    goto <bb 35>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 35> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 36> :
+  _60 = *udp_112;
+  if (_60 == 1)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 37> :
+  goto <bb 50>; [INV]
+
+  <bb 38> :
+  if (ubits_107 < vbits_110)
+    goto <bb 39>; [INV]
+  else
+    goto <bb 40>; [INV]
+
+  <bb 39> :
+  i_190 = ubits_107;
+  ubits_191 = vbits_110;
+  vbits_192 = i_190;
+  tmp_193 = u_96;
+  u_194 = v_98;
+  v_195 = tmp_193;
+  tmp_196 = b_92;
+  b_197 = c_94;
+  c_198 = tmp_196;
+  udp_199 = vdp_116;
+  vdp_200 = v_195->d;
+  bdp_201 = cdp_118;
+  cdp_202 = c_198->d;
+
+  <bb 40> :
+  # b_93 = PHI <b_92(38), b_197(39)>
+  # c_95 = PHI <c_94(38), c_198(39)>
+  # u_97 = PHI <u_96(38), u_194(39)>
+  # v_99 = PHI <v_98(38), v_195(39)>
+  # ubits_108 = PHI <ubits_107(38), ubits_191(39)>
+  # vbits_111 = PHI <vbits_110(38), vbits_192(39)>
+  # udp_113 = PHI <udp_112(38), udp_199(39)>
+  # bdp_115 = PHI <bdp_114(38), bdp_201(39)>
+  # vdp_117 = PHI <vdp_116(38), vdp_200(39)>
+  # cdp_119 = PHI <cdp_118(38), cdp_202(39)>
+  i_203 = 0;
+  goto <bb 42>; [INV]
+
+  <bb 41> :
+  _61 = (long unsigned int) i_105;
+  _62 = _61 * 4;
+  _63 = udp_113 + _62;
+  _64 = *_63;
+  _65 = (long unsigned int) i_105;
+  _66 = _65 * 4;
+  _67 = vdp_117 + _66;
+  _68 = *_67;
+  _69 = (long unsigned int) i_105;
+  _70 = _69 * 4;
+  _71 = udp_113 + _70;
+  _72 = _64 ^ _68;
+  *_71 = _72;
+  _73 = (long unsigned int) i_105;
+  _74 = _73 * 4;
+  _75 = bdp_115 + _74;
+  _76 = *_75;
+  _77 = (long unsigned int) i_105;
+  _78 = _77 * 4;
+  _79 = cdp_119 + _78;
+  _80 = *_79;
+  _81 = (long unsigned int) i_105;
+  _82 = _81 * 4;
+  _83 = bdp_115 + _82;
+  _84 = _76 ^ _80;
+  *_83 = _84;
+  i_211 = i_105 + 1;
+
+  <bb 42> :
+  # i_105 = PHI <i_203(40), i_211(41)>
+  if (i_105 < top_156)
+    goto <bb 41>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 43> :
+  if (ubits_108 == vbits_111)
+    goto <bb 44>; [INV]
+  else
+    goto <bb 49>; [INV]
+
+  <bb 44> :
+  _85 = ubits_108 + -1;
+  utop_204 = _85 / 32;
+  goto <bb 46>; [INV]
+
+  <bb 45> :
+  utop_206 = utop_122 + -1;
+
+  <bb 46> :
+  # utop_122 = PHI <utop_204(44), utop_206(45)>
+  _86 = (long unsigned int) utop_122;
+  _87 = _86 * 4;
+  _88 = udp_113 + _87;
+  ul_205 = *_88;
+  if (ul_205 == 0)
+    goto <bb 47>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 47> :
+  if (utop_122 != 0)
+    goto <bb 45>; [INV]
+  else
+    goto <bb 48>; [INV]
+
+  <bb 48> :
+  _89 = utop_122 * 32;
+  _90 = BN_num_bits_word (ul_205);
+  ubits_208 = _89 + _90;
+
+  <bb 49> :
+  # ubits_109 = PHI <ubits_108(43), ubits_208(48)>
+  goto <bb 26>; [INV]
+
+  <bb 50> :
+  bn_correct_top (b_92);
+  _91 = BN_copy (r_187(D), b_92);
+  if (_91 == 0B)
+    goto <bb 51>; [INV]
+  else
+    goto <bb 52>; [INV]
+
+  <bb 51> :
+  // predicted unlikely by goto predictor.
+  goto <bb 53>; [INV]
+
+  <bb 52> :
+  ret_189 = 1;
+
+  <bb 53> :
+  # ret_100 = PHI <ret_135(3), ret_135(5), ret_135(7), ret_135(9), ret_135(11), ret_135(16), ret_135(21), ret_135(35), ret_135(51), ret_189(52)>
+err:
+  BN_CTX_end (ctx_137(D));
+  _219 = ret_100;
+
+  <bb 54> :
+<L52>:
+  return _219;
+
+}
+
+
+
+;; Function BN_GF2m_mod_inv (BN_GF2m_mod_inv, funcdef_no=180, decl_uid=9165, cgraph_uid=181, symbol_order=180)
+
+int BN_GF2m_mod_inv (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  int numbits;
+  int ret;
+  struct BIGNUM * b;
+  int D.13099;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  int _29;
+
+  <bb 2> :
+  b_10 = 0B;
+  ret_11 = 0;
+  BN_CTX_start (ctx_13(D));
+  b_16 = BN_CTX_get (ctx_13(D));
+  if (b_16 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 4> :
+  numbits_19 = BN_num_bits (p_17(D));
+  if (numbits_19 <= 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 6> :
+  _1 = numbits_19 + -1;
+  _2 = BN_priv_rand_ex (b_16, _1, -1, 0, 0, ctx_13(D));
+  if (_2 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 8> :
+  _3 = BN_is_zero (b_16);
+  if (_3 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _4 = BN_GF2m_mod_mul (r_22(D), a_23(D), b_16, p_17(D), ctx_13(D));
+  if (_4 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 11> :
+  _5 = BN_GF2m_mod_inv_vartime (r_22(D), r_22(D), p_17(D), ctx_13(D));
+  if (_5 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 13> :
+  _6 = BN_GF2m_mod_mul (r_22(D), r_22(D), b_16, p_17(D), ctx_13(D));
+  if (_6 == 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  ret_27 = 1;
+
+  <bb 16> :
+  # ret_7 = PHI <ret_11(3), ret_11(5), ret_11(7), ret_11(10), ret_11(12), ret_11(14), ret_27(15)>
+err:
+  BN_CTX_end (ctx_13(D));
+  _29 = ret_7;
+
+  <bb 17> :
+<L15>:
+  return _29;
+
+}
+
+
+
+;; Function BN_GF2m_mod_inv_arr (BN_GF2m_mod_inv_arr, funcdef_no=181, decl_uid=9207, cgraph_uid=182, symbol_order=181)
+
+__attribute__((access ("^2[ ]", )))
+int BN_GF2m_mod_inv_arr (struct BIGNUM * r, const struct BIGNUM * xx, const int * p, struct BN_CTX * ctx)
+{
+  int ret;
+  struct BIGNUM * field;
+  int D.13105;
+  int _1;
+  int _17;
+
+  <bb 2> :
+  ret_4 = 0;
+  BN_CTX_start (ctx_6(D));
+  field_9 = BN_CTX_get (ctx_6(D));
+  if (field_9 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _1 = BN_GF2m_arr2poly (p_10(D), field_9);
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  ret_15 = BN_GF2m_mod_inv (r_12(D), xx_13(D), field_9, ctx_6(D));
+
+  <bb 7> :
+  # ret_2 = PHI <ret_4(3), ret_4(5), ret_15(6)>
+err:
+  BN_CTX_end (ctx_6(D));
+  _17 = ret_2;
+
+  <bb 8> :
+<L5>:
+  return _17;
+
+}
+
+
+
+;; Function BN_GF2m_mod_div (BN_GF2m_mod_div, funcdef_no=182, decl_uid=9171, cgraph_uid=183, symbol_order=182)
+
+int BN_GF2m_mod_div (struct BIGNUM * r, const struct BIGNUM * y, const struct BIGNUM * x, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  int ret;
+  struct BIGNUM * xinv;
+  int D.13113;
+  int _1;
+  int _2;
+  int _20;
+
+  <bb 2> :
+  xinv_5 = 0B;
+  ret_6 = 0;
+  BN_CTX_start (ctx_8(D));
+  xinv_11 = BN_CTX_get (ctx_8(D));
+  if (xinv_11 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  _1 = BN_GF2m_mod_inv (xinv_11, x_12(D), p_13(D), ctx_8(D));
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  _2 = BN_GF2m_mod_mul (r_15(D), y_16(D), xinv_11, p_13(D), ctx_8(D));
+  if (_2 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  ret_18 = 1;
+
+  <bb 9> :
+  # ret_3 = PHI <ret_6(3), ret_6(5), ret_6(7), ret_18(8)>
+err:
+  BN_CTX_end (ctx_8(D));
+  _20 = ret_3;
+
+  <bb 10> :
+<L7>:
+  return _20;
+
+}
+
+
+
+;; Function BN_GF2m_mod_div_arr (BN_GF2m_mod_div_arr, funcdef_no=183, decl_uid=9213, cgraph_uid=184, symbol_order=183)
+
+__attribute__((access ("^3[ ]", )))
+int BN_GF2m_mod_div_arr (struct BIGNUM * r, const struct BIGNUM * yy, const struct BIGNUM * xx, const int * p, struct BN_CTX * ctx)
+{
+  int ret;
+  struct BIGNUM * field;
+  int D.13119;
+  int _1;
+  int _18;
+
+  <bb 2> :
+  ret_4 = 0;
+  BN_CTX_start (ctx_6(D));
+  field_9 = BN_CTX_get (ctx_6(D));
+  if (field_9 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _1 = BN_GF2m_arr2poly (p_10(D), field_9);
+  if (_1 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  ret_16 = BN_GF2m_mod_div (r_12(D), yy_13(D), xx_14(D), field_9, ctx_6(D));
+
+  <bb 7> :
+  # ret_2 = PHI <ret_4(3), ret_4(5), ret_16(6)>
+err:
+  BN_CTX_end (ctx_6(D));
+  _18 = ret_2;
+
+  <bb 8> :
+<L5>:
+  return _18;
+
+}
+
+
+
+;; Function BN_GF2m_mod_exp_arr (BN_GF2m_mod_exp_arr, funcdef_no=184, decl_uid=9219, cgraph_uid=185, symbol_order=184)
+
+__attribute__((access ("^3[ ]", )))
+int BN_GF2m_mod_exp_arr (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const int * p, struct BN_CTX * ctx)
+{
+  struct BIGNUM * u;
+  int n;
+  int i;
+  int ret;
+  int D.13123;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  _Bool _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  struct BIGNUM * _10;
+  int _13;
+  int _41;
+  int _43;
+  int _45;
+
+  <bb 2> :
+  ret_18 = 0;
+  _1 = BN_is_zero (b_20(D));
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _45 = BN_set_word (r_33(D), 1);
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 4> :
+  _2 = BN_abs_is_word (b_20(D), 1);
+  if (_2 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _3 = BN_copy (r_33(D), a_27(D));
+  _4 = _3 != 0B;
+  _43 = (int) _4;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 6> :
+  BN_CTX_start (ctx_23(D));
+  u_26 = BN_CTX_get (ctx_23(D));
+  if (u_26 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 21>; [INV]
+
+  <bb 8> :
+  _5 = BN_GF2m_mod_arr (u_26, a_27(D), p_28(D));
+  if (_5 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  // predicted unlikely by goto predictor.
+  goto <bb 21>; [INV]
+
+  <bb 10> :
+  _6 = BN_num_bits (b_20(D));
+  n_31 = _6 + -1;
+  i_32 = n_31 + -1;
+  goto <bb 17>; [INV]
+
+  <bb 11> :
+  _7 = BN_GF2m_mod_sqr_arr (u_26, u_26, p_28(D), ctx_23(D));
+  if (_7 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  // predicted unlikely by goto predictor.
+  goto <bb 21>; [INV]
+
+  <bb 13> :
+  _8 = BN_is_bit_set (b_20(D), i_12);
+  if (_8 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 14> :
+  _9 = BN_GF2m_mod_mul_arr (u_26, u_26, a_27(D), p_28(D), ctx_23(D));
+  if (_9 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  // predicted unlikely by goto predictor.
+  goto <bb 21>; [INV]
+
+  <bb 16> :
+  i_39 = i_12 + -1;
+
+  <bb 17> :
+  # i_12 = PHI <i_32(10), i_39(16)>
+  if (i_12 >= 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 18> :
+  _10 = BN_copy (r_33(D), u_26);
+  if (_10 == 0B)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  // predicted unlikely by goto predictor.
+  goto <bb 21>; [INV]
+
+  <bb 20> :
+  ret_35 = 1;
+
+  <bb 21> :
+  # ret_11 = PHI <ret_18(7), ret_18(9), ret_18(12), ret_18(15), ret_18(19), ret_35(20)>
+err:
+  BN_CTX_end (ctx_23(D));
+  _41 = ret_11;
+
+  <bb 22> :
+  # _13 = PHI <_45(3), _43(5), _41(21)>
+<L20>:
+  return _13;
+
+}
+
+
+
+;; Function BN_GF2m_mod_exp (BN_GF2m_mod_exp, funcdef_no=185, decl_uid=9177, cgraph_uid=186, symbol_order=185)
+
+int BN_GF2m_mod_exp (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[16] = "BN_GF2m_mod_exp";
+  int * arr;
+  const int max;
+  int ret;
+  int D.13141;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _5;
+  int _27;
+  int _28;
+
+  <bb 2> :
+  ret_8 = 0;
+  _1 = BN_num_bits (p_10(D));
+  max_12 = _1 + 1;
+  _2 = (long unsigned int) max_12;
+  _3 = _2 * 4;
+  arr_14 = CRYPTO_malloc (_3, "bn_gf2m.c", 920);
+  if (arr_14 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _28 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  ret_16 = BN_GF2m_poly2arr (p_10(D), arr_14, max_12);
+  if (ret_16 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ret_16 > max_12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 925, &__func__);
+  ERR_set_error (3, 106, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  ret_22 = BN_GF2m_mod_exp_arr (r_17(D), a_18(D), b_19(D), arr_14, ctx_20(D));
+
+  <bb 8> :
+  # ret_4 = PHI <ret_16(6), ret_22(7)>
+err:
+  CRYPTO_free (arr_14, "bn_gf2m.c", 931);
+  _27 = ret_4;
+
+  <bb 9> :
+  # _5 = PHI <_28(3), _27(8)>
+<L6>:
+  return _5;
+
+}
+
+
+
+;; Function BN_GF2m_mod_sqrt_arr (BN_GF2m_mod_sqrt_arr, funcdef_no=186, decl_uid=9224, cgraph_uid=187, symbol_order=186)
+
+__attribute__((access ("^2[ ]", )))
+int BN_GF2m_mod_sqrt_arr (struct BIGNUM * r, const struct BIGNUM * a, const int * p, struct BN_CTX * ctx)
+{
+  struct BIGNUM * u;
+  int ret;
+  int D.13148;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _6;
+  int _22;
+  int _24;
+
+  <bb 2> :
+  ret_9 = 0;
+  _1 = *p_11(D);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  BN_zero_ex (r_17(D));
+  _24 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  BN_CTX_start (ctx_12(D));
+  u_15 = BN_CTX_get (ctx_12(D));
+  if (u_15 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  _2 = *p_11(D);
+  _3 = _2 + -1;
+  _4 = BN_set_bit (u_15, _3);
+  if (_4 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  ret_20 = BN_GF2m_mod_exp_arr (r_17(D), a_18(D), u_15, p_11(D), ctx_12(D));
+
+  <bb 9> :
+  # ret_5 = PHI <ret_9(5), ret_9(7), ret_20(8)>
+err:
+  BN_CTX_end (ctx_12(D));
+  _22 = ret_5;
+
+  <bb 10> :
+  # _6 = PHI <_24(3), _22(9)>
+<L7>:
+  return _6;
+
+}
+
+
+
+;; Function BN_GF2m_mod_sqrt (BN_GF2m_mod_sqrt, funcdef_no=187, decl_uid=9182, cgraph_uid=188, symbol_order=187)
+
+int BN_GF2m_mod_sqrt (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[17] = "BN_GF2m_mod_sqrt";
+  int * arr;
+  const int max;
+  int ret;
+  int D.13156;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _5;
+  int _26;
+  int _27;
+
+  <bb 2> :
+  ret_8 = 0;
+  _1 = BN_num_bits (p_10(D));
+  max_12 = _1 + 1;
+  _2 = (long unsigned int) max_12;
+  _3 = _2 * 4;
+  arr_14 = CRYPTO_malloc (_3, "bn_gf2m.c", 982);
+  if (arr_14 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _27 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  ret_16 = BN_GF2m_poly2arr (p_10(D), arr_14, max_12);
+  if (ret_16 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ret_16 > max_12)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 987, &__func__);
+  ERR_set_error (3, 106, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  ret_21 = BN_GF2m_mod_sqrt_arr (r_17(D), a_18(D), arr_14, ctx_19(D));
+
+  <bb 8> :
+  # ret_4 = PHI <ret_16(6), ret_21(7)>
+err:
+  CRYPTO_free (arr_14, "bn_gf2m.c", 993);
+  _26 = ret_4;
+
+  <bb 9> :
+  # _5 = PHI <_27(3), _26(8)>
+<L6>:
+  return _5;
+
+}
+
+
+
+;; Function BN_GF2m_mod_solve_quad_arr (BN_GF2m_mod_solve_quad_arr, funcdef_no=188, decl_uid=9229, cgraph_uid=189, symbol_order=188)
+
+__attribute__((access ("^2[ ]", )))
+int BN_GF2m_mod_solve_quad_arr (struct BIGNUM * r, const struct BIGNUM * a_, const int * p, struct BN_CTX * ctx)
+{
+  static const char __func__[27] = "BN_GF2m_mod_solve_quad_arr";
+  struct BIGNUM * tmp;
+  struct BIGNUM * w2;
+  struct BIGNUM * w;
+  struct BIGNUM * rho;
+  struct BIGNUM * z;
+  struct BIGNUM * a;
+  int j;
+  int count;
+  int ret;
+  int D.13163;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  struct BIGNUM * _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  int _15;
+  struct BIGNUM * _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  int _23;
+  int _24;
+  int _25;
+  int _26;
+  int _27;
+  struct BIGNUM * _28;
+  int _33;
+  int _96;
+  int _98;
+
+  <bb 2> :
+  ret_40 = 0;
+  count_41 = 0;
+  _1 = *p_43(D);
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  BN_zero_ex (r_87(D));
+  _98 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 57>; [INV]
+
+  <bb 4> :
+  BN_CTX_start (ctx_44(D));
+  a_47 = BN_CTX_get (ctx_44(D));
+  z_49 = BN_CTX_get (ctx_44(D));
+  w_51 = BN_CTX_get (ctx_44(D));
+  if (w_51 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 6> :
+  _2 = BN_GF2m_mod_arr (a_47, a__52(D), p_43(D));
+  if (_2 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 8> :
+  _3 = BN_is_zero (a_47);
+  if (_3 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  BN_zero_ex (r_87(D));
+  ret_94 = 1;
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 10> :
+  _4 = *p_43(D);
+  _5 = _4 & 1;
+  if (_5 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 11> :
+  _6 = BN_copy (z_49, a_47);
+  if (_6 == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 13> :
+  j_79 = 1;
+  goto <bb 21>; [INV]
+
+  <bb 14> :
+  _7 = BN_GF2m_mod_sqr_arr (z_49, z_49, p_43(D), ctx_44(D));
+  if (_7 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 16> :
+  _8 = BN_GF2m_mod_sqr_arr (z_49, z_49, p_43(D), ctx_44(D));
+  if (_8 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 18> :
+  _9 = BN_GF2m_add (z_49, z_49, a_47);
+  if (_9 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 20> :
+  j_83 = j_31 + 1;
+
+  <bb 21> :
+  # j_31 = PHI <j_79(13), j_83(20)>
+  _10 = *p_43(D);
+  _11 = _10 + -1;
+  _12 = _11 / 2;
+  if (j_31 <= _12)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 22> :
+  rho_56 = BN_CTX_get (ctx_44(D));
+  w2_58 = BN_CTX_get (ctx_44(D));
+  tmp_60 = BN_CTX_get (ctx_44(D));
+  if (tmp_60 == 0B)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 24> :
+  # count_30 = PHI <count_41(22), count_66(44)>
+  _13 = *p_43(D);
+  _14 = BN_priv_rand_ex (rho_56, _13, 0, 0, 0, ctx_44(D));
+  if (_14 == 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 26> :
+  _15 = BN_GF2m_mod_arr (rho_56, rho_56, p_43(D));
+  if (_15 == 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 28> :
+  BN_zero_ex (z_49);
+  _16 = BN_copy (w_51, rho_56);
+  if (_16 == 0B)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 29> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 30> :
+  j_65 = 1;
+  goto <bb 42>; [INV]
+
+  <bb 31> :
+  _17 = BN_GF2m_mod_sqr_arr (z_49, z_49, p_43(D), ctx_44(D));
+  if (_17 == 0)
+    goto <bb 32>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 32> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 33> :
+  _18 = BN_GF2m_mod_sqr_arr (w2_58, w_51, p_43(D), ctx_44(D));
+  if (_18 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 34> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 35> :
+  _19 = BN_GF2m_mod_mul_arr (tmp_60, w2_58, a_47, p_43(D), ctx_44(D));
+  if (_19 == 0)
+    goto <bb 36>; [INV]
+  else
+    goto <bb 37>; [INV]
+
+  <bb 36> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 37> :
+  _20 = BN_GF2m_add (z_49, z_49, tmp_60);
+  if (_20 == 0)
+    goto <bb 38>; [INV]
+  else
+    goto <bb 39>; [INV]
+
+  <bb 38> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 39> :
+  _21 = BN_GF2m_add (w_51, w2_58, rho_56);
+  if (_21 == 0)
+    goto <bb 40>; [INV]
+  else
+    goto <bb 41>; [INV]
+
+  <bb 40> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 41> :
+  j_77 = j_32 + 1;
+
+  <bb 42> :
+  # j_32 = PHI <j_65(30), j_77(41)>
+  _22 = *p_43(D);
+  if (j_32 < _22)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 43>; [INV]
+
+  <bb 43> :
+  count_66 = count_30 + 1;
+  _23 = BN_is_zero (w_51);
+  if (_23 != 0)
+    goto <bb 44>; [INV]
+  else
+    goto <bb 45>; [INV]
+
+  <bb 44> :
+  if (count_66 <= 49)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 45>; [INV]
+
+  <bb 45> :
+  _24 = BN_is_zero (w_51);
+  if (_24 != 0)
+    goto <bb 46>; [INV]
+  else
+    goto <bb 47>; [INV]
+
+  <bb 46> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 1075, &__func__);
+  ERR_set_error (3, 113, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 47> :
+  _25 = BN_GF2m_mod_sqr_arr (w_51, z_49, p_43(D), ctx_44(D));
+  if (_25 == 0)
+    goto <bb 48>; [INV]
+  else
+    goto <bb 49>; [INV]
+
+  <bb 48> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 49> :
+  _26 = BN_GF2m_add (w_51, z_49, w_51);
+  if (_26 == 0)
+    goto <bb 50>; [INV]
+  else
+    goto <bb 51>; [INV]
+
+  <bb 50> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 51> :
+  _27 = BN_ucmp (w_51, a_47);
+  if (_27 != 0)
+    goto <bb 52>; [INV]
+  else
+    goto <bb 53>; [INV]
+
+  <bb 52> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 1085, &__func__);
+  ERR_set_error (3, 116, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 53> :
+  _28 = BN_copy (r_87(D), z_49);
+  if (_28 == 0B)
+    goto <bb 54>; [INV]
+  else
+    goto <bb 55>; [INV]
+
+  <bb 54> :
+  // predicted unlikely by goto predictor.
+  goto <bb 56>; [INV]
+
+  <bb 55> :
+  ret_89 = 1;
+
+  <bb 56> :
+  # ret_29 = PHI <ret_40(5), ret_40(7), ret_94(9), ret_40(12), ret_40(15), ret_40(17), ret_40(19), ret_40(23), ret_40(25), ret_40(27), ret_40(29), ret_40(32), ret_40(34), ret_40(36), ret_40(38), ret_40(40), ret_40(46), ret_40(48), ret_40(50), ret_40(52), ret_40(54), ret_89(55)>
+err:
+  BN_CTX_end (ctx_44(D));
+  _96 = ret_29;
+
+  <bb 57> :
+  # _33 = PHI <_98(3), _96(56)>
+<L57>:
+  return _33;
+
+}
+
+
+
+;; Function BN_GF2m_mod_solve_quad (BN_GF2m_mod_solve_quad, funcdef_no=189, decl_uid=9187, cgraph_uid=190, symbol_order=189)
+
+int BN_GF2m_mod_solve_quad (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[23] = "BN_GF2m_mod_solve_quad";
+  int * arr;
+  const int max;
+  int ret;
+  int D.13216;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _24;
+
+  <bb 2> :
+  ret_6 = 0;
+  _1 = BN_num_bits (p_8(D));
+  max_10 = _1 + 1;
+  _2 = (long unsigned int) max_10;
+  _3 = _2 * 4;
+  arr_12 = CRYPTO_malloc (_3, "bn_gf2m.c", 1116);
+  if (arr_12 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  ret_14 = BN_GF2m_poly2arr (p_8(D), arr_12, max_10);
+  if (ret_14 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (ret_14 > max_10)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  ERR_new ();
+  ERR_set_debug ("bn_gf2m.c", 1121, &__func__);
+  ERR_set_error (3, 106, 0B);
+  // predicted unlikely by goto predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  ret_19 = BN_GF2m_mod_solve_quad_arr (r_15(D), a_16(D), arr_12, ctx_17(D));
+
+  <bb 8> :
+  # ret_4 = PHI <ret_6(3), ret_14(6), ret_19(7)>
+err:
+  CRYPTO_free (arr_12, "bn_gf2m.c", 1127);
+  _24 = ret_4;
+
+  <bb 9> :
+<L6>:
+  return _24;
+
+}
+
+
+
+;; Function BN_GF2m_poly2arr (BN_GF2m_poly2arr, funcdef_no=190, decl_uid=9233, cgraph_uid=191, symbol_order=190)
+
+__attribute__((access ("^1[ ]", )))
+int BN_GF2m_poly2arr (const struct BIGNUM * a, int * p, int max)
+{
+  unsigned int mask;
+  int k;
+  int j;
+  int i;
+  int D.13220;
+  int _1;
+  int _2;
+  unsigned int * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned int * _6;
+  unsigned int _7;
+  unsigned int * _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  unsigned int * _11;
+  unsigned int _12;
+  unsigned int _13;
+  int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  int * _17;
+  int _18;
+  int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  int * _22;
+  int _30;
+  int _44;
+  int _47;
+  int _55;
+
+  <bb 2> :
+  k_38 = 0;
+  _1 = BN_is_odd (a_40(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _55 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 4> :
+  _2 = a_40(D)->top;
+  i_42 = _2 + -1;
+  goto <bb 15>; [INV]
+
+  <bb 5> :
+  _3 = a_40(D)->d;
+  _4 = (long unsigned int) i_23;
+  _5 = _4 * 4;
+  _6 = _3 + _5;
+  _7 = *_6;
+  if (_7 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  // predicted unlikely by continue predictor.
+  goto <bb 14>; [INV]
+
+  <bb 7> :
+  mask_48 = 2147483648;
+  j_49 = 31;
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  _8 = a_40(D)->d;
+  _9 = (long unsigned int) i_23;
+  _10 = _9 * 4;
+  _11 = _8 + _10;
+  _12 = *_11;
+  _13 = mask_29 & _12;
+  if (_13 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 9> :
+  if (k_26 < max_45(D))
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _14 = i_23 * 32;
+  _15 = (long unsigned int) k_26;
+  _16 = _15 * 4;
+  _17 = p_43(D) + _16;
+  _18 = j_24 + _14;
+  *_17 = _18;
+
+  <bb 11> :
+  k_51 = k_26 + 1;
+
+  <bb 12> :
+  # k_25 = PHI <k_26(8), k_51(11)>
+  mask_52 = mask_29 >> 1;
+  j_53 = j_24 + -1;
+
+  <bb 13> :
+  # j_24 = PHI <j_49(7), j_53(12)>
+  # k_26 = PHI <k_28(7), k_25(12)>
+  # mask_29 = PHI <mask_48(7), mask_52(12)>
+  if (j_24 >= 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # k_27 = PHI <k_28(6), k_26(13)>
+  i_54 = i_23 + -1;
+
+  <bb 15> :
+  # i_23 = PHI <i_42(4), i_54(14)>
+  # k_28 = PHI <k_38(4), k_27(14)>
+  if (i_23 >= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  if (k_28 > 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 17> :
+  _19 = *p_43(D);
+  if (_19 > 661)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  _44 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 19> :
+  if (k_28 < max_45(D))
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  _20 = (long unsigned int) k_28;
+  _21 = _20 * 4;
+  _22 = p_43(D) + _21;
+  *_22 = -1;
+
+  <bb 21> :
+  _47 = k_28 + 1;
+
+  <bb 22> :
+  # _30 = PHI <_55(3), _44(18), _47(21)>
+<L21>:
+  return _30;
+
+}
+
+
+
+;; Function BN_GF2m_arr2poly (BN_GF2m_arr2poly, funcdef_no=191, decl_uid=9236, cgraph_uid=192, symbol_order=191)
+
+__attribute__((access ("^0[ ]", )))
+int BN_GF2m_arr2poly (const int * p, struct BIGNUM * a)
+{
+  int i;
+  int D.13236;
+  long unsigned int _1;
+  long unsigned int _2;
+  const int * _3;
+  int _4;
+  int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  const int * _8;
+  int _9;
+  int _11;
+  int _19;
+  int _22;
+
+  <bb 2> :
+  BN_zero_ex (a_15(D));
+  i_17 = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_10;
+  _2 = _1 * 4;
+  _3 = p_18(D) + _2;
+  _4 = *_3;
+  _5 = BN_set_bit (a_15(D), _4);
+  if (_5 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _22 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  i_21 = i_10 + 1;
+
+  <bb 6> :
+  # i_10 = PHI <i_17(2), i_21(5)>
+  _6 = (long unsigned int) i_10;
+  _7 = _6 * 4;
+  _8 = p_18(D) + _7;
+  _9 = *_8;
+  if (_9 != -1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _19 = 1;
+
+  <bb 8> :
+  # _11 = PHI <_22(4), _19(7)>
+<L5>:
+  return _11;
+
+}
+
+

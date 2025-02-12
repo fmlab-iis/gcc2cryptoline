@@ -4,15 +4,15 @@
 int BN_nnmod (struct BIGNUM * r, const struct BIGNUM * m, const struct BIGNUM * d, struct BN_CTX * ctx)
 {
   static const char __func__[9] = "BN_nnmod";
-  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0;
+#  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0;
   int D.11337;
   int _1;
   int _2;
   int _3;
   int _4;
-  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_5;
-  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_13;
-  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_14;
+#  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_5;
+#  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_13;
+#  int (*<T1419>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_14;
   int _16;
   int _17;
   int _18;

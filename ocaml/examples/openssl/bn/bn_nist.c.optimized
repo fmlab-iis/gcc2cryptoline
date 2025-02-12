@@ -1,0 +1,2898 @@
+
+;; Function lh_MEM_hfn_thunk (lh_MEM_hfn_thunk, funcdef_no=153, decl_uid=11242, cgraph_uid=154, symbol_order=153)
+
+# long unsigned int lh_MEM_hfn_thunk (const void * data, long unsigned int (*OPENSSL_LH_HASHFUNC) (const void *) hfn)
+# {
+#   long unsigned int (*<T1324>) (const struct MEM *) hfn_conv;
+#   long unsigned int D.11811;
+#   long unsigned int _6;
+# 
+#   <bb 2> :
+#   hfn_conv_2 = hfn_1(D);
+#   _6 = hfn_conv_2 (data_4(D));
+# 
+#   <bb 3> :
+# <L0>:
+#   return _6;
+# 
+# }
+
+
+
+;; Function lh_MEM_cfn_thunk (lh_MEM_cfn_thunk, funcdef_no=154, decl_uid=11250, cgraph_uid=155, symbol_order=154)
+
+# int lh_MEM_cfn_thunk (const void * da, const void * db, int (*OPENSSL_LH_COMPFUNC) (const void *, const void *) cfn)
+# {
+#   int (*<T1328>) (const struct MEM *, const struct MEM *) cfn_conv;
+#   int D.11813;
+#   int _7;
+# 
+#   <bb 2> :
+#   cfn_conv_2 = cfn_1(D);
+#   _7 = cfn_conv_2 (da_4(D), db_5(D));
+# 
+#   <bb 3> :
+# <L0>:
+#   return _7;
+# 
+# }
+
+
+
+;; Function BN_get0_nist_prime_192 (BN_get0_nist_prime_192, funcdef_no=170, decl_uid=7666, cgraph_uid=171, symbol_order=185)
+
+const struct BIGNUM * BN_get0_nist_prime_192 ()
+{
+  const struct BIGNUM * D.11815;
+  const struct BIGNUM * _1;
+
+  <bb 2> :
+  _1 = &ossl_bignum_nist_p_192;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_224 (BN_get0_nist_prime_224, funcdef_no=171, decl_uid=7668, cgraph_uid=172, symbol_order=186)
+
+const struct BIGNUM * BN_get0_nist_prime_224 ()
+{
+  const struct BIGNUM * D.11817;
+  const struct BIGNUM * _1;
+
+  <bb 2> :
+  _1 = &ossl_bignum_nist_p_224;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_256 (BN_get0_nist_prime_256, funcdef_no=172, decl_uid=7670, cgraph_uid=173, symbol_order=187)
+
+const struct BIGNUM * BN_get0_nist_prime_256 ()
+{
+  const struct BIGNUM * D.11819;
+  const struct BIGNUM * _1;
+
+  <bb 2> :
+  _1 = &ossl_bignum_nist_p_256;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_384 (BN_get0_nist_prime_384, funcdef_no=173, decl_uid=7672, cgraph_uid=174, symbol_order=188)
+
+const struct BIGNUM * BN_get0_nist_prime_384 ()
+{
+  const struct BIGNUM * D.11821;
+  const struct BIGNUM * _1;
+
+  <bb 2> :
+  _1 = &ossl_bignum_nist_p_384;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_521 (BN_get0_nist_prime_521, funcdef_no=174, decl_uid=7674, cgraph_uid=175, symbol_order=189)
+
+const struct BIGNUM * BN_get0_nist_prime_521 ()
+{
+  const struct BIGNUM * D.11823;
+  const struct BIGNUM * _1;
+
+  <bb 2> :
+  _1 = &ossl_bignum_nist_p_521;
+
+  <bb 3> :
+<L0>:
+  return _1;
+
+}
+
+
+
+;; Function nist_cp_bn (nist_cp_bn, funcdef_no=175, decl_uid=11629, cgraph_uid=176, symbol_order=190)
+
+void nist_cp_bn (long unsigned int * dst, const long unsigned int * src, int top)
+{
+  int i;
+  long unsigned int _1;
+  long unsigned int _2;
+  const long unsigned int * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int * _6;
+  long unsigned int _7;
+
+  <bb 2> :
+  i_10 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = (long unsigned int) i_8;
+  _2 = _1 * 8;
+  _3 = src_13(D) + _2;
+  _4 = (long unsigned int) i_8;
+  _5 = _4 * 8;
+  _6 = dst_14(D) + _5;
+  _7 = *_3;
+  *_6 = _7;
+  i_16 = i_8 + 1;
+
+  <bb 4> :
+  # i_8 = PHI <i_10(2), i_16(3)>
+  if (i_8 < top_12(D))
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function BN_nist_mod_192 (BN_nist_mod_192, funcdef_no=176, decl_uid=7644, cgraph_uid=177, symbol_order=191)
+
+int BN_nist_mod_192 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  long unsigned int t_d[3];
+  const long unsigned int * src;
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_192_sqr = {.d=&_nist_p_192_sqr, .top=6, .dmax=6, .neg=0, .flags=2};
+  long unsigned int * res;
+  long unsigned int c_d[3];
+  union 
+  {
+    long unsigned int bn[3];
+    unsigned int ui[6];
+  } buf;
+  register long unsigned int * a_d;
+  register long unsigned int * r_d;
+  int carry;
+  int i;
+  int top;
+  long unsigned int * iftmp.1;
+  int D.11844;
+  int D.11843;
+  int iftmp.0;
+  int D.11828;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const long unsigned int * _7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  int _20;
+  const long unsigned int[3] * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  int _28;
+  int iftmp.0_29;
+  long unsigned int * iftmp.1_30;
+  int _53;
+  int _65;
+  int _71;
+  long unsigned int * iftmp.1_78;
+  long unsigned int * iftmp.1_79;
+  int _84;
+  int iftmp.0_90;
+  int iftmp.0_91;
+  int _92;
+  int _94;
+  int _97;
+
+  <bb 2> :
+  top_41 = a_40(D)->top;
+  a_d_42 = a_40(D)->d;
+  field_43 = &ossl_bignum_nist_p_192;
+  _1 = BN_is_negative (a_40(D));
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = BN_ucmp (a_40(D), &ossl_bignum_nist_p_192_sqr);
+  if (_2 >= 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _97 = BN_nnmod (r_48(D), a_40(D), field_43, ctx_95(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 32>; [INV]
+
+  <bb 5> :
+  i_47 = BN_ucmp (field_43, a_40(D));
+  if (i_47 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  BN_zero_ex (r_48(D));
+  _94 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 32>; [INV]
+
+  <bb 7> :
+  if (i_47 > 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  if (r_48(D) == a_40(D))
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _3 = BN_copy (r_48(D), a_40(D));
+  if (_3 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.0_91 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.0_90 = 0;
+
+  <bb 12> :
+  # iftmp.0_29 = PHI <iftmp.0_91(10), iftmp.0_90(11)>
+  _92 = iftmp.0_29;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 32>; [INV]
+
+  <bb 13> :
+  if (r_48(D) != a_40(D))
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  _4 = bn_wexpand (r_48(D), 3);
+  if (_4 == 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _53 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 32>; [INV]
+
+  <bb 16> :
+  r_d_51 = r_48(D)->d;
+  nist_cp_bn (r_d_51, a_d_42, 3);
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  r_d_49 = a_d_42;
+
+  <bb 18> :
+  # r_d_25 = PHI <r_d_51(16), r_d_49(17)>
+  src_54 = a_d_42 + 24;
+  ii_55 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _5 = (long unsigned int) ii_26;
+  _6 = _5 * 8;
+  _7 = src_54 + _6;
+  _8 = *_7;
+  buf.bn[ii_26] = _8;
+  ii_88 = ii_26 + 1;
+
+  <bb 20> :
+  # ii_26 = PHI <ii_55(18), ii_88(19)>
+  _9 = top_41 + -3;
+  if (ii_26 < _9)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  buf.bn[ii_27] = 0;
+  ii_86 = ii_27 + 1;
+
+  <bb 23> :
+  # ii_27 = PHI <ii_26(21), ii_86(22)>
+  if (ii_27 <= 2)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  _10 = buf.bn[0];
+  t_d[0] = _10;
+  _11 = buf.bn[0];
+  t_d[1] = _11;
+  t_d[2] = 0;
+  _12 = bn_add_words (r_d_25, r_d_25, &t_d, 3);
+  carry_60 = (int) _12;
+  t_d[0] = 0;
+  _13 = buf.bn[1];
+  t_d[1] = _13;
+  _14 = buf.bn[1];
+  t_d[2] = _14;
+  _15 = bn_add_words (r_d_25, r_d_25, &t_d, 3);
+  _65 = (int) _15;
+  carry_66 = _65 + carry_60;
+  _16 = buf.bn[2];
+  t_d[0] = _16;
+  _17 = buf.bn[2];
+  t_d[1] = _17;
+  _18 = buf.bn[2];
+  t_d[2] = _18;
+  _19 = bn_add_words (r_d_25, r_d_25, &t_d, 3);
+  _71 = (int) _19;
+  carry_72 = _71 + carry_66;
+  t_d ={v} {CLOBBER(eos)};
+  if (carry_72 > 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  _20 = carry_72 + -1;
+  _21 = &_nist_p_192[_20];
+  _22 = bn_sub_words (r_d_25, r_d_25, _21, 3);
+  carry_76 = (int) _22;
+  goto <bb 27>; [INV]
+
+  <bb 26> :
+  carry_74 = 1;
+
+  <bb 27> :
+  # carry_24 = PHI <carry_76(25), carry_74(26)>
+  _23 = bn_sub_words (&c_d, r_d_25, &_nist_p_192[0], 3);
+  if (_23 == 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 28> :
+  if (carry_24 == 0)
+    goto <bb 29>; [INV]
+  else
+    goto <bb 30>; [INV]
+
+  <bb 29> :
+  iftmp.1_79 = &c_d;
+  goto <bb 31>; [INV]
+
+  <bb 30> :
+  iftmp.1_78 = r_d_25;
+
+  <bb 31> :
+  # iftmp.1_30 = PHI <iftmp.1_79(29), iftmp.1_78(30)>
+  res_80 = iftmp.1_30;
+  nist_cp_bn (r_d_25, res_80, 3);
+  r_48(D)->top = 3;
+  bn_correct_top (r_48(D));
+  _84 = 1;
+
+  <bb 32> :
+  # _28 = PHI <_97(4), _94(6), _92(12), _53(15), _84(31)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+
+  <bb 33> :
+<L30>:
+  return _28;
+
+}
+
+
+
+;; Function BN_nist_mod_224 (BN_nist_mod_224, funcdef_no=177, decl_uid=7649, cgraph_uid=178, symbol_order=192)
+
+int BN_nist_mod_224 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  long unsigned int t_d[4];
+  const long unsigned int * src;
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_224_sqr = {.d=&_nist_p_224_sqr, .top=7, .dmax=7, .neg=0, .flags=2};
+  long unsigned int (*bn_addsub_f) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) adjust;
+  long unsigned int * res;
+  long unsigned int c_d[4];
+  union 
+  {
+    long unsigned int bn[4];
+    unsigned int ui[8];
+  } buf;
+  long unsigned int * a_d;
+  long unsigned int * r_d;
+  int carry;
+  int i;
+  int top;
+  long unsigned int * iftmp.4;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.3;
+  int D.11875;
+  int D.11874;
+  int D.11873;
+  int iftmp.2;
+  int D.11858;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const long unsigned int * _7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int * _30;
+  long unsigned int _31;
+  long unsigned int * _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int * _96;
+  long unsigned int _97;
+  long unsigned int _98;
+  int _99;
+  const long unsigned int[4] * _100;
+  long unsigned int _101;
+  long unsigned int * _102;
+  long unsigned int _103;
+  long unsigned int _104;
+  int _105;
+  int _106;
+  int _107;
+  const long unsigned int[4] * _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  int _116;
+  int iftmp.2_117;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.3_118;
+  long unsigned int * iftmp.4_119;
+  int _142;
+  int _170;
+  int _180;
+  int _190;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.3_198;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.3_199;
+  long unsigned int * iftmp.4_205;
+  long unsigned int * iftmp.4_206;
+  int _211;
+  int iftmp.2_217;
+  int iftmp.2_218;
+  int _219;
+  int _221;
+  int _224;
+
+  <bb 2> :
+  top_130 = a_129(D)->top;
+  a_d_131 = a_129(D)->d;
+  field_132 = &ossl_bignum_nist_p_224;
+  _1 = BN_is_negative (a_129(D));
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = BN_ucmp (a_129(D), &ossl_bignum_nist_p_224_sqr);
+  if (_2 >= 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _224 = BN_nnmod (r_137(D), a_129(D), field_132, ctx_222(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 37>; [INV]
+
+  <bb 5> :
+  i_136 = BN_ucmp (field_132, a_129(D));
+  if (i_136 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  BN_zero_ex (r_137(D));
+  _221 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 37>; [INV]
+
+  <bb 7> :
+  if (i_136 > 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  if (r_137(D) == a_129(D))
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _3 = BN_copy (r_137(D), a_129(D));
+  if (_3 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.2_218 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.2_217 = 0;
+
+  <bb 12> :
+  # iftmp.2_117 = PHI <iftmp.2_218(10), iftmp.2_217(11)>
+  _219 = iftmp.2_117;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 37>; [INV]
+
+  <bb 13> :
+  if (r_137(D) != a_129(D))
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  _4 = bn_wexpand (r_137(D), 4);
+  if (_4 == 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _142 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 37>; [INV]
+
+  <bb 16> :
+  r_d_140 = r_137(D)->d;
+  nist_cp_bn (r_d_140, a_d_131, 4);
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  r_d_138 = a_d_131;
+
+  <bb 18> :
+  # r_d_112 = PHI <r_d_140(16), r_d_138(17)>
+  src_143 = a_d_131 + 24;
+  ii_144 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _5 = (long unsigned int) ii_114;
+  _6 = _5 * 8;
+  _7 = src_143 + _6;
+  _8 = *_7;
+  c_d[ii_114] = _8;
+  ii_215 = ii_114 + 1;
+
+  <bb 20> :
+  # ii_114 = PHI <ii_144(18), ii_215(19)>
+  _9 = top_130 + -3;
+  if (ii_114 < _9)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  c_d[ii_115] = 0;
+  ii_213 = ii_115 + 1;
+
+  <bb 23> :
+  # ii_115 = PHI <ii_114(21), ii_213(22)>
+  if (ii_115 <= 3)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  _10 = c_d[0];
+  _11 = _10 >> 32;
+  buf.bn[0] = _11;
+  _12 = buf.bn[0];
+  _13 = c_d[1];
+  _14 = _13 << 32;
+  _15 = _12 | _14;
+  buf.bn[0] = _15;
+  _16 = c_d[1];
+  _17 = _16 >> 32;
+  buf.bn[1] = _17;
+  _18 = buf.bn[1];
+  _19 = c_d[2];
+  _20 = _19 << 32;
+  _21 = _18 | _20;
+  buf.bn[1] = _21;
+  _22 = c_d[2];
+  _23 = _22 >> 32;
+  buf.bn[2] = _23;
+  _24 = buf.bn[2];
+  _25 = c_d[3];
+  _26 = _25 << 32;
+  _27 = _24 | _26;
+  buf.bn[2] = _27;
+  _28 = c_d[3];
+  _29 = _28 >> 32;
+  buf.bn[3] = _29;
+  _30 = r_d_112 + 24;
+  _31 = *_30;
+  _32 = r_d_112 + 24;
+  _33 = _31 & 4294967295;
+  *_32 = _33;
+  t_d[0] = 0;
+  _34 = t_d[0];
+  _35 = _34 & 4294967295;
+  t_d[0] = _35;
+  t_d[1] = 0;
+  _36 = t_d[1];
+  _37 = buf.bn[0];
+  _38 = _37 << 32;
+  _39 = _36 | _38;
+  t_d[1] = _39;
+  _40 = buf.bn[0];
+  _41 = _40 >> 32;
+  t_d[2] = _41;
+  _42 = t_d[2];
+  _43 = buf.bn[1];
+  _44 = _43 << 32;
+  _45 = _42 | _44;
+  t_d[2] = _45;
+  _46 = buf.bn[1];
+  _47 = _46 >> 32;
+  t_d[3] = _47;
+  _48 = bn_add_words (r_d_112, r_d_112, &t_d, 4);
+  carry_161 = (int) _48;
+  t_d[0] = 0;
+  _49 = t_d[0];
+  _50 = _49 & 4294967295;
+  t_d[0] = _50;
+  t_d[1] = 0;
+  _51 = t_d[1];
+  _52 = buf.bn[2];
+  _53 = _52 << 32;
+  _54 = _51 | _53;
+  t_d[1] = _54;
+  _55 = buf.bn[2];
+  _56 = _55 >> 32;
+  t_d[2] = _56;
+  _57 = t_d[2];
+  _58 = buf.bn[3];
+  _59 = _58 << 32;
+  _60 = _57 | _59;
+  t_d[2] = _60;
+  t_d[3] = 0;
+  _61 = bn_add_words (r_d_112, r_d_112, &t_d, 4);
+  _170 = (int) _61;
+  carry_171 = _170 + carry_161;
+  _62 = buf.bn[0];
+  _63 = _62 & 4294967295;
+  t_d[0] = _63;
+  _64 = t_d[0];
+  _65 = buf.bn[0];
+  _66 = _65 & 18446744069414584320;
+  _67 = _64 | _66;
+  t_d[0] = _67;
+  _68 = buf.bn[1];
+  _69 = _68 & 4294967295;
+  t_d[1] = _69;
+  _70 = t_d[1];
+  _71 = buf.bn[1];
+  _72 = _71 & 18446744069414584320;
+  _73 = _70 | _72;
+  t_d[1] = _73;
+  _74 = buf.bn[2];
+  _75 = _74 & 4294967295;
+  t_d[2] = _75;
+  _76 = t_d[2];
+  _77 = buf.bn[2];
+  _78 = _77 & 18446744069414584320;
+  _79 = _76 | _78;
+  t_d[2] = _79;
+  _80 = buf.bn[3];
+  _81 = _80 & 4294967295;
+  t_d[3] = _81;
+  _82 = bn_sub_words (r_d_112, r_d_112, &t_d, 4);
+  _180 = (int) _82;
+  carry_181 = carry_171 - _180;
+  _83 = buf.bn[2];
+  _84 = _83 & 4294967295;
+  t_d[0] = _84;
+  _85 = t_d[0];
+  _86 = buf.bn[2];
+  _87 = _86 & 18446744069414584320;
+  _88 = _85 | _87;
+  t_d[0] = _88;
+  _89 = buf.bn[3];
+  _90 = _89 & 4294967295;
+  t_d[1] = _90;
+  _91 = t_d[1];
+  _92 = _91 & 4294967295;
+  t_d[1] = _92;
+  t_d[2] = 0;
+  _93 = t_d[2];
+  _94 = _93 & 4294967295;
+  t_d[2] = _94;
+  t_d[3] = 0;
+  _95 = bn_sub_words (r_d_112, r_d_112, &t_d, 4);
+  _190 = (int) _95;
+  carry_191 = carry_181 - _190;
+  _96 = r_d_112 + 24;
+  _97 = *_96;
+  _98 = _97 >> 32;
+  carry_192 = (int) _98;
+  t_d ={v} {CLOBBER(eos)};
+  adjust_194 = bn_sub_words;
+  if (carry_192 > 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 26>; [INV]
+
+  <bb 25> :
+  _99 = carry_192 + -1;
+  _100 = &_nist_p_224[_99];
+  _101 = bn_sub_words (r_d_112, r_d_112, _100, 4);
+  carry_202 = (int) _101;
+  _102 = r_d_112 + 24;
+  _103 = *_102;
+  _104 = _103 >> 32;
+  _105 = (int) _104;
+  _106 = ~_105;
+  carry_203 = _106 & 1;
+  goto <bb 32>; [INV]
+
+  <bb 26> :
+  if (carry_192 < 0)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 31>; [INV]
+
+  <bb 27> :
+  _107 = ~carry_192;
+  _108 = &_nist_p_224[_107];
+  _109 = bn_add_words (r_d_112, r_d_112, _108, 4);
+  carry_197 = (int) _109;
+  if (carry_197 != 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  iftmp.3_199 = bn_sub_words;
+  goto <bb 30>; [INV]
+
+  <bb 29> :
+  iftmp.3_198 = bn_add_words;
+
+  <bb 30> :
+  # iftmp.3_118 = PHI <iftmp.3_199(28), iftmp.3_198(29)>
+  adjust_200 = iftmp.3_118;
+  goto <bb 32>; [INV]
+
+  <bb 31> :
+  carry_195 = 1;
+
+  <bb 32> :
+  # carry_111 = PHI <carry_203(25), carry_197(30), carry_195(31)>
+  # adjust_113 = PHI <adjust_194(25), adjust_200(30), adjust_194(31)>
+  _110 = adjust_113 (&c_d, r_d_112, &_nist_p_224[0], 4);
+  if (_110 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 33>; [INV]
+
+  <bb 33> :
+  if (carry_111 == 0)
+    goto <bb 34>; [INV]
+  else
+    goto <bb 35>; [INV]
+
+  <bb 34> :
+  iftmp.4_206 = &c_d;
+  goto <bb 36>; [INV]
+
+  <bb 35> :
+  iftmp.4_205 = r_d_112;
+
+  <bb 36> :
+  # iftmp.4_119 = PHI <iftmp.4_206(34), iftmp.4_205(35)>
+  res_207 = iftmp.4_119;
+  nist_cp_bn (r_d_112, res_207, 4);
+  r_137(D)->top = 4;
+  bn_correct_top (r_137(D));
+  _211 = 1;
+
+  <bb 37> :
+  # _116 = PHI <_224(4), _221(6), _219(12), _142(15), _211(36)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+
+  <bb 38> :
+<L36>:
+  return _116;
+
+}
+
+
+
+;; Function BN_nist_mod_256 (BN_nist_mod_256, funcdef_no=178, decl_uid=7654, cgraph_uid=179, symbol_order=193)
+
+int BN_nist_mod_256 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  register long unsigned int c;
+  register long unsigned int t;
+  register long unsigned int * ap;
+  long unsigned int t_d[4];
+  const long unsigned int * src;
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_256_sqr = {.d=&_nist_p_256_sqr, .top=8, .dmax=8, .neg=0, .flags=2};
+  long unsigned int (*bn_addsub_f) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) adjust;
+  long unsigned int * res;
+  long unsigned int c_d[4];
+  union 
+  {
+    long unsigned int bn[4];
+    unsigned int ui[8];
+  } buf;
+  register long unsigned int * r_d;
+  register long unsigned int * a_d;
+  int carry;
+  int top;
+  int i;
+  long unsigned int * iftmp.10;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.9;
+  int D.11917;
+  int D.11916;
+  int D.11915;
+  int D.11914;
+  int D.11913;
+  int D.11912;
+  int D.11911;
+  int iftmp.5;
+  int D.11896;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const long unsigned int * _7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int * ap.6_46;
+  long unsigned int _47;
+  signed long t.7_48;
+  signed long _49;
+  unsigned int _50;
+  long unsigned int _51;
+  unsigned int _52;
+  unsigned int carry.8_53;
+  unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  long unsigned int _107;
+  long unsigned int _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  long unsigned int _114;
+  long unsigned int _115;
+  long unsigned int _116;
+  long unsigned int _117;
+  long unsigned int _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  long unsigned int _122;
+  long unsigned int _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  long unsigned int _128;
+  long unsigned int _129;
+  long unsigned int _130;
+  long unsigned int _131;
+  long unsigned int _132;
+  long unsigned int _133;
+  long unsigned int _134;
+  long unsigned int _135;
+  long unsigned int _136;
+  long unsigned int _137;
+  long unsigned int _138;
+  long unsigned int _139;
+  long unsigned int _140;
+  long unsigned int _141;
+  long unsigned int _142;
+  long unsigned int _143;
+  long unsigned int _144;
+  long unsigned int _145;
+  long unsigned int _146;
+  long unsigned int _147;
+  long unsigned int _148;
+  long unsigned int _149;
+  long unsigned int _150;
+  long unsigned int _151;
+  long unsigned int _152;
+  long unsigned int _153;
+  long unsigned int _154;
+  long unsigned int _155;
+  long unsigned int _156;
+  long unsigned int _157;
+  long unsigned int _158;
+  long unsigned int _159;
+  long unsigned int _160;
+  long unsigned int _161;
+  long unsigned int _162;
+  long unsigned int _163;
+  long unsigned int _164;
+  long unsigned int _165;
+  long unsigned int _166;
+  long unsigned int _167;
+  long unsigned int _168;
+  long unsigned int _169;
+  long unsigned int _170;
+  long unsigned int _171;
+  long unsigned int _172;
+  long unsigned int _173;
+  long unsigned int _174;
+  long unsigned int _175;
+  long unsigned int _176;
+  long unsigned int _177;
+  long unsigned int _178;
+  long unsigned int _179;
+  long unsigned int _180;
+  long unsigned int _181;
+  long unsigned int _182;
+  long unsigned int _183;
+  int _184;
+  const long unsigned int[4] * _185;
+  long unsigned int _186;
+  int _187;
+  const long unsigned int[4] * _188;
+  long unsigned int _189;
+  long unsigned int _190;
+  int _199;
+  int iftmp.5_200;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.9_201;
+  long unsigned int * iftmp.10_202;
+  int _227;
+  int _254;
+  int _265;
+  int _276;
+  int _287;
+  int _298;
+  int _309;
+  int _320;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.9_327;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.9_328;
+  long unsigned int * iftmp.10_333;
+  long unsigned int * iftmp.10_334;
+  int _339;
+  int iftmp.5_350;
+  int iftmp.5_351;
+  int _352;
+  int _354;
+  int _357;
+
+  <bb 2> :
+  top_214 = a_213(D)->top;
+  carry_215 = 0;
+  a_d_216 = a_213(D)->d;
+  field_217 = &ossl_bignum_nist_p_256;
+  _1 = BN_is_negative (a_213(D));
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = BN_ucmp (a_213(D), &ossl_bignum_nist_p_256_sqr);
+  if (_2 >= 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _357 = BN_nnmod (r_222(D), a_213(D), field_217, ctx_355(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 5> :
+  i_221 = BN_ucmp (field_217, a_213(D));
+  if (i_221 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  BN_zero_ex (r_222(D));
+  _354 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 7> :
+  if (i_221 > 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  if (r_222(D) == a_213(D))
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _3 = BN_copy (r_222(D), a_213(D));
+  if (_3 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.5_351 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.5_350 = 0;
+
+  <bb 12> :
+  # iftmp.5_200 = PHI <iftmp.5_351(10), iftmp.5_350(11)>
+  _352 = iftmp.5_200;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 13> :
+  if (r_222(D) != a_213(D))
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  _4 = bn_wexpand (r_222(D), 4);
+  if (_4 == 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _227 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 16> :
+  r_d_225 = r_222(D)->d;
+  nist_cp_bn (r_d_225, a_d_216, 4);
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  r_d_223 = a_d_216;
+
+  <bb 18> :
+  # r_d_193 = PHI <r_d_225(16), r_d_223(17)>
+  src_228 = a_d_216 + 32;
+  ii_229 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _5 = (long unsigned int) ii_195;
+  _6 = _5 * 8;
+  _7 = src_228 + _6;
+  _8 = *_7;
+  buf.bn[ii_195] = _8;
+  ii_348 = ii_195 + 1;
+
+  <bb 20> :
+  # ii_195 = PHI <ii_229(18), ii_348(19)>
+  _9 = top_214 + -4;
+  if (ii_195 < _9)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  buf.bn[ii_196] = 0;
+  ii_346 = ii_196 + 1;
+
+  <bb 23> :
+  # ii_196 = PHI <ii_195(21), ii_346(22)>
+  if (ii_196 <= 3)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  t_d[0] = 0;
+  _10 = t_d[0];
+  _11 = _10 & 4294967295;
+  t_d[0] = _11;
+  t_d[1] = 0;
+  _12 = t_d[1];
+  _13 = buf.bn[1];
+  _14 = _13 & 18446744069414584320;
+  _15 = _12 | _14;
+  t_d[1] = _15;
+  _16 = buf.bn[2];
+  _17 = _16 & 4294967295;
+  t_d[2] = _17;
+  _18 = t_d[2];
+  _19 = buf.bn[2];
+  _20 = _19 & 18446744069414584320;
+  _21 = _18 | _20;
+  t_d[2] = _21;
+  _22 = buf.bn[3];
+  _23 = _22 & 4294967295;
+  t_d[3] = _23;
+  _24 = t_d[3];
+  _25 = buf.bn[3];
+  _26 = _25 & 18446744069414584320;
+  _27 = _24 | _26;
+  t_d[3] = _27;
+  c_d[0] = 0;
+  _28 = c_d[0];
+  _29 = _28 & 4294967295;
+  c_d[0] = _29;
+  c_d[1] = 0;
+  _30 = c_d[1];
+  _31 = buf.bn[2];
+  _32 = _31 << 32;
+  _33 = _30 | _32;
+  c_d[1] = _33;
+  _34 = buf.bn[2];
+  _35 = _34 >> 32;
+  c_d[2] = _35;
+  _36 = c_d[2];
+  _37 = buf.bn[3];
+  _38 = _37 << 32;
+  _39 = _36 | _38;
+  c_d[2] = _39;
+  _40 = buf.bn[3];
+  _41 = _40 >> 32;
+  c_d[3] = _41;
+  _42 = c_d[3];
+  _43 = _42 & 4294967295;
+  c_d[3] = _43;
+  _44 = bn_add_words (&t_d, &t_d, &c_d, 4);
+  carry_247 = (int) _44;
+  ap_248 = &t_d;
+  c_249 = 0;
+  i_250 = 4;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  t_340 = *ap_197;
+  _45 = t_340 << 1;
+  ap.6_46 = ap_197;
+  ap_341 = ap.6_46 + 8;
+  _47 = c_198 | _45;
+  *ap.6_46 = _47;
+  t.7_48 = (signed long) t_340;
+  _49 = t.7_48 >> 63;
+  _50 = (unsigned int) _49;
+  _51 = (long unsigned int) _50;
+  c_343 = _51 & 1;
+  i_344 = i_191 + -1;
+
+  <bb 26> :
+  # i_191 = PHI <i_250(24), i_344(25)>
+  # ap_197 = PHI <ap_248(24), ap_341(25)>
+  # c_198 = PHI <c_249(24), c_343(25)>
+  if (i_191 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  carry_251 = carry_247 << 1;
+  _52 = (unsigned int) c_198;
+  carry.8_53 = (unsigned int) carry_251;
+  _54 = _52 | carry.8_53;
+  carry_252 = (int) _54;
+  _55 = bn_add_words (r_d_193, r_d_193, &t_d, 4);
+  _254 = (int) _55;
+  carry_255 = _254 + carry_252;
+  _56 = buf.bn[0];
+  _57 = _56 & 4294967295;
+  t_d[0] = _57;
+  _58 = t_d[0];
+  _59 = buf.bn[0];
+  _60 = _59 & 18446744069414584320;
+  _61 = _58 | _60;
+  t_d[0] = _61;
+  _62 = buf.bn[1];
+  _63 = _62 & 4294967295;
+  t_d[1] = _63;
+  _64 = t_d[1];
+  _65 = _64 & 4294967295;
+  t_d[1] = _65;
+  t_d[2] = 0;
+  _66 = t_d[2];
+  _67 = _66 & 4294967295;
+  t_d[2] = _67;
+  _68 = buf.bn[3];
+  _69 = _68 & 4294967295;
+  t_d[3] = _69;
+  _70 = t_d[3];
+  _71 = buf.bn[3];
+  _72 = _71 & 18446744069414584320;
+  _73 = _70 | _72;
+  t_d[3] = _73;
+  _74 = bn_add_words (r_d_193, r_d_193, &t_d, 4);
+  _265 = (int) _74;
+  carry_266 = _265 + carry_255;
+  _75 = buf.bn[0];
+  _76 = _75 >> 32;
+  t_d[0] = _76;
+  _77 = t_d[0];
+  _78 = buf.bn[1];
+  _79 = _78 << 32;
+  _80 = _77 | _79;
+  t_d[0] = _80;
+  _81 = buf.bn[1];
+  _82 = _81 >> 32;
+  t_d[1] = _82;
+  _83 = t_d[1];
+  _84 = buf.bn[2];
+  _85 = _84 & 18446744069414584320;
+  _86 = _83 | _85;
+  t_d[1] = _86;
+  _87 = buf.bn[3];
+  _88 = _87 & 4294967295;
+  t_d[2] = _88;
+  _89 = t_d[2];
+  _90 = buf.bn[3];
+  _91 = _90 & 18446744069414584320;
+  _92 = _89 | _91;
+  t_d[2] = _92;
+  _93 = buf.bn[2];
+  _94 = _93 >> 32;
+  t_d[3] = _94;
+  _95 = t_d[3];
+  _96 = buf.bn[0];
+  _97 = _96 << 32;
+  _98 = _95 | _97;
+  t_d[3] = _98;
+  _99 = bn_add_words (r_d_193, r_d_193, &t_d, 4);
+  _276 = (int) _99;
+  carry_277 = _276 + carry_266;
+  _100 = buf.bn[1];
+  _101 = _100 >> 32;
+  t_d[0] = _101;
+  _102 = t_d[0];
+  _103 = buf.bn[2];
+  _104 = _103 << 32;
+  _105 = _102 | _104;
+  t_d[0] = _105;
+  _106 = buf.bn[2];
+  _107 = _106 >> 32;
+  t_d[1] = _107;
+  _108 = t_d[1];
+  _109 = _108 & 4294967295;
+  t_d[1] = _109;
+  t_d[2] = 0;
+  _110 = t_d[2];
+  _111 = _110 & 4294967295;
+  t_d[2] = _111;
+  _112 = buf.bn[0];
+  _113 = _112 & 4294967295;
+  t_d[3] = _113;
+  _114 = t_d[3];
+  _115 = buf.bn[1];
+  _116 = _115 << 32;
+  _117 = _114 | _116;
+  t_d[3] = _117;
+  _118 = bn_sub_words (r_d_193, r_d_193, &t_d, 4);
+  _287 = (int) _118;
+  carry_288 = carry_277 - _287;
+  _119 = buf.bn[2];
+  _120 = _119 & 4294967295;
+  t_d[0] = _120;
+  _121 = t_d[0];
+  _122 = buf.bn[2];
+  _123 = _122 & 18446744069414584320;
+  _124 = _121 | _123;
+  t_d[0] = _124;
+  _125 = buf.bn[3];
+  _126 = _125 & 4294967295;
+  t_d[1] = _126;
+  _127 = t_d[1];
+  _128 = buf.bn[3];
+  _129 = _128 & 18446744069414584320;
+  _130 = _127 | _129;
+  t_d[1] = _130;
+  t_d[2] = 0;
+  _131 = t_d[2];
+  _132 = _131 & 4294967295;
+  t_d[2] = _132;
+  _133 = buf.bn[0];
+  _134 = _133 >> 32;
+  t_d[3] = _134;
+  _135 = t_d[3];
+  _136 = buf.bn[1];
+  _137 = _136 & 18446744069414584320;
+  _138 = _135 | _137;
+  t_d[3] = _138;
+  _139 = bn_sub_words (r_d_193, r_d_193, &t_d, 4);
+  _298 = (int) _139;
+  carry_299 = carry_288 - _298;
+  _140 = buf.bn[2];
+  _141 = _140 >> 32;
+  t_d[0] = _141;
+  _142 = t_d[0];
+  _143 = buf.bn[3];
+  _144 = _143 << 32;
+  _145 = _142 | _144;
+  t_d[0] = _145;
+  _146 = buf.bn[3];
+  _147 = _146 >> 32;
+  t_d[1] = _147;
+  _148 = t_d[1];
+  _149 = buf.bn[0];
+  _150 = _149 << 32;
+  _151 = _148 | _150;
+  t_d[1] = _151;
+  _152 = buf.bn[0];
+  _153 = _152 >> 32;
+  t_d[2] = _153;
+  _154 = t_d[2];
+  _155 = buf.bn[1];
+  _156 = _155 << 32;
+  _157 = _154 | _156;
+  t_d[2] = _157;
+  t_d[3] = 0;
+  _158 = t_d[3];
+  _159 = buf.bn[2];
+  _160 = _159 << 32;
+  _161 = _158 | _160;
+  t_d[3] = _161;
+  _162 = bn_sub_words (r_d_193, r_d_193, &t_d, 4);
+  _309 = (int) _162;
+  carry_310 = carry_299 - _309;
+  _163 = buf.bn[3];
+  _164 = _163 & 4294967295;
+  t_d[0] = _164;
+  _165 = t_d[0];
+  _166 = buf.bn[3];
+  _167 = _166 & 18446744069414584320;
+  _168 = _165 | _167;
+  t_d[0] = _168;
+  t_d[1] = 0;
+  _169 = t_d[1];
+  _170 = buf.bn[0];
+  _171 = _170 & 18446744069414584320;
+  _172 = _169 | _171;
+  t_d[1] = _172;
+  _173 = buf.bn[1];
+  _174 = _173 & 4294967295;
+  t_d[2] = _174;
+  _175 = t_d[2];
+  _176 = buf.bn[1];
+  _177 = _176 & 18446744069414584320;
+  _178 = _175 | _177;
+  t_d[2] = _178;
+  t_d[3] = 0;
+  _179 = t_d[3];
+  _180 = buf.bn[2];
+  _181 = _180 & 18446744069414584320;
+  _182 = _179 | _181;
+  t_d[3] = _182;
+  _183 = bn_sub_words (r_d_193, r_d_193, &t_d, 4);
+  _320 = (int) _183;
+  carry_321 = carry_310 - _320;
+  t_d ={v} {CLOBBER(eos)};
+  adjust_323 = bn_sub_words;
+  if (carry_321 > 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  _184 = carry_321 + -1;
+  _185 = &_nist_p_256[_184];
+  _186 = bn_sub_words (r_d_193, r_d_193, _185, 4);
+  carry_331 = (int) _186;
+  goto <bb 35>; [INV]
+
+  <bb 29> :
+  if (carry_321 < 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 30> :
+  _187 = ~carry_321;
+  _188 = &_nist_p_256[_187];
+  _189 = bn_add_words (r_d_193, r_d_193, _188, 4);
+  carry_326 = (int) _189;
+  if (carry_326 != 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  iftmp.9_328 = bn_sub_words;
+  goto <bb 33>; [INV]
+
+  <bb 32> :
+  iftmp.9_327 = bn_add_words;
+
+  <bb 33> :
+  # iftmp.9_201 = PHI <iftmp.9_328(31), iftmp.9_327(32)>
+  adjust_329 = iftmp.9_201;
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  carry_324 = 1;
+
+  <bb 35> :
+  # carry_192 = PHI <carry_331(28), carry_326(33), carry_324(34)>
+  # adjust_194 = PHI <adjust_323(28), adjust_329(33), adjust_323(34)>
+  _190 = adjust_194 (&c_d, r_d_193, &_nist_p_256[0], 4);
+  if (_190 == 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+  if (carry_192 == 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 37> :
+  iftmp.10_334 = &c_d;
+  goto <bb 39>; [INV]
+
+  <bb 38> :
+  iftmp.10_333 = r_d_193;
+
+  <bb 39> :
+  # iftmp.10_202 = PHI <iftmp.10_334(37), iftmp.10_333(38)>
+  res_335 = iftmp.10_202;
+  nist_cp_bn (r_d_193, res_335, 4);
+  r_222(D)->top = 4;
+  bn_correct_top (r_222(D));
+  _339 = 1;
+
+  <bb 40> :
+  # _199 = PHI <_357(4), _354(6), _352(12), _227(15), _339(39)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+
+  <bb 41> :
+<L39>:
+  return _199;
+
+}
+
+
+
+;; Function BN_nist_mod_384 (BN_nist_mod_384, funcdef_no=179, decl_uid=7659, cgraph_uid=180, symbol_order=194)
+
+int BN_nist_mod_384 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  register long unsigned int c;
+  register long unsigned int t;
+  register long unsigned int * ap;
+  long unsigned int t_d[6];
+  const long unsigned int * src;
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_384_sqr = {.d=&_nist_p_384_sqr, .top=12, .dmax=12, .neg=0, .flags=2};
+  long unsigned int (*bn_addsub_f) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) adjust;
+  long unsigned int * res;
+  long unsigned int c_d[6];
+  union 
+  {
+    long unsigned int bn[6];
+    unsigned int ui[12];
+  } buf;
+  register long unsigned int * a_d;
+  register long unsigned int * r_d;
+  int carry;
+  int top;
+  int i;
+  long unsigned int * iftmp.15;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.14;
+  int D.11960;
+  int D.11959;
+  int D.11958;
+  int D.11957;
+  int D.11956;
+  int D.11955;
+  int D.11954;
+  int D.11953;
+  int iftmp.11;
+  int D.11938;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const long unsigned int * _7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int * ap.12_25;
+  long unsigned int _26;
+  signed long t.13_27;
+  signed long _28;
+  unsigned int _29;
+  long unsigned int _30;
+  long unsigned int * _31;
+  long unsigned int * _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _63;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  long unsigned int _69;
+  long unsigned int _70;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _73;
+  long unsigned int _74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int _77;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _81;
+  long unsigned int _82;
+  long unsigned int _83;
+  long unsigned int _84;
+  long unsigned int _85;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  long unsigned int _100;
+  long unsigned int _101;
+  long unsigned int _102;
+  long unsigned int _103;
+  long unsigned int _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  long unsigned int _107;
+  long unsigned int _108;
+  long unsigned int _109;
+  long unsigned int _110;
+  long unsigned int _111;
+  long unsigned int _112;
+  long unsigned int _113;
+  long unsigned int _114;
+  long unsigned int _115;
+  long unsigned int _116;
+  long unsigned int _117;
+  long unsigned int _118;
+  long unsigned int _119;
+  long unsigned int _120;
+  long unsigned int _121;
+  long unsigned int _122;
+  long unsigned int _123;
+  long unsigned int _124;
+  long unsigned int _125;
+  long unsigned int _126;
+  long unsigned int _127;
+  long unsigned int _128;
+  long unsigned int _129;
+  long unsigned int _130;
+  long unsigned int _131;
+  long unsigned int _132;
+  long unsigned int _133;
+  long unsigned int _134;
+  long unsigned int _135;
+  long unsigned int _136;
+  long unsigned int _137;
+  long unsigned int _138;
+  long unsigned int _139;
+  long unsigned int _140;
+  long unsigned int _141;
+  long unsigned int _142;
+  long unsigned int _143;
+  long unsigned int _144;
+  long unsigned int _145;
+  long unsigned int _146;
+  long unsigned int _147;
+  long unsigned int _148;
+  long unsigned int _149;
+  long unsigned int _150;
+  long unsigned int _151;
+  long unsigned int _152;
+  long unsigned int _153;
+  long unsigned int _154;
+  long unsigned int _155;
+  long unsigned int _156;
+  long unsigned int _157;
+  long unsigned int _158;
+  long unsigned int _159;
+  long unsigned int _160;
+  long unsigned int _161;
+  long unsigned int _162;
+  long unsigned int _163;
+  long unsigned int _164;
+  long unsigned int _165;
+  long unsigned int _166;
+  long unsigned int _167;
+  long unsigned int _168;
+  long unsigned int _169;
+  long unsigned int _170;
+  long unsigned int _171;
+  long unsigned int _172;
+  long unsigned int _173;
+  long unsigned int _174;
+  long unsigned int _175;
+  long unsigned int _176;
+  long unsigned int _177;
+  long unsigned int _178;
+  long unsigned int _179;
+  long unsigned int _180;
+  long unsigned int _181;
+  long unsigned int _182;
+  long unsigned int _183;
+  long unsigned int _184;
+  long unsigned int _185;
+  long unsigned int _186;
+  long unsigned int _187;
+  long unsigned int _188;
+  long unsigned int _189;
+  long unsigned int _190;
+  long unsigned int _191;
+  long unsigned int _192;
+  long unsigned int _193;
+  long unsigned int _194;
+  long unsigned int _195;
+  long unsigned int _196;
+  long unsigned int _197;
+  long unsigned int _198;
+  long unsigned int _199;
+  long unsigned int _200;
+  long unsigned int _201;
+  long unsigned int _202;
+  long unsigned int _203;
+  long unsigned int _204;
+  long unsigned int _205;
+  long unsigned int _206;
+  long unsigned int _207;
+  long unsigned int _208;
+  long unsigned int _209;
+  long unsigned int _210;
+  long unsigned int _211;
+  long unsigned int _212;
+  long unsigned int _213;
+  long unsigned int _214;
+  long unsigned int _215;
+  long unsigned int _216;
+  long unsigned int _217;
+  long unsigned int _218;
+  long unsigned int _219;
+  long unsigned int _220;
+  long unsigned int _221;
+  int _222;
+  const long unsigned int[6] * _223;
+  long unsigned int _224;
+  int _225;
+  const long unsigned int[6] * _226;
+  long unsigned int _227;
+  long unsigned int _228;
+  int _237;
+  int iftmp.11_238;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.14_239;
+  long unsigned int * iftmp.15_240;
+  int _265;
+  int _283;
+  int _298;
+  int _313;
+  int _328;
+  int _343;
+  int _358;
+  int _373;
+  int _388;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.14_395;
+  long unsigned int (*<T13c5>) (long unsigned int *, const long unsigned int *, const long unsigned int *, int) iftmp.14_396;
+  long unsigned int * iftmp.15_401;
+  long unsigned int * iftmp.15_402;
+  int _407;
+  int iftmp.11_418;
+  int iftmp.11_419;
+  int _420;
+  int _422;
+  int _425;
+
+  <bb 2> :
+  top_252 = a_251(D)->top;
+  carry_253 = 0;
+  a_d_254 = a_251(D)->d;
+  field_255 = &ossl_bignum_nist_p_384;
+  _1 = BN_is_negative (a_251(D));
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = BN_ucmp (a_251(D), &ossl_bignum_nist_p_384_sqr);
+  if (_2 >= 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _425 = BN_nnmod (r_260(D), a_251(D), field_255, ctx_423(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 5> :
+  i_259 = BN_ucmp (field_255, a_251(D));
+  if (i_259 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  BN_zero_ex (r_260(D));
+  _422 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 7> :
+  if (i_259 > 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  if (r_260(D) == a_251(D))
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _3 = BN_copy (r_260(D), a_251(D));
+  if (_3 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.11_419 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.11_418 = 0;
+
+  <bb 12> :
+  # iftmp.11_238 = PHI <iftmp.11_419(10), iftmp.11_418(11)>
+  _420 = iftmp.11_238;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 13> :
+  if (r_260(D) != a_251(D))
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  _4 = bn_wexpand (r_260(D), 6);
+  if (_4 == 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _265 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 40>; [INV]
+
+  <bb 16> :
+  r_d_263 = r_260(D)->d;
+  nist_cp_bn (r_d_263, a_d_254, 6);
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  r_d_261 = a_d_254;
+
+  <bb 18> :
+  # r_d_231 = PHI <r_d_263(16), r_d_261(17)>
+  src_266 = a_d_254 + 48;
+  ii_267 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _5 = (long unsigned int) ii_233;
+  _6 = _5 * 8;
+  _7 = src_266 + _6;
+  _8 = *_7;
+  buf.bn[ii_233] = _8;
+  ii_416 = ii_233 + 1;
+
+  <bb 20> :
+  # ii_233 = PHI <ii_267(18), ii_416(19)>
+  _9 = top_252 + -6;
+  if (ii_233 < _9)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  buf.bn[ii_234] = 0;
+  ii_414 = ii_234 + 1;
+
+  <bb 23> :
+  # ii_234 = PHI <ii_233(21), ii_414(22)>
+  if (ii_234 <= 5)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  _10 = buf.bn[4];
+  _11 = _10 >> 32;
+  t_d[0] = _11;
+  _12 = t_d[0];
+  _13 = buf.bn[5];
+  _14 = _13 << 32;
+  _15 = _12 | _14;
+  t_d[0] = _15;
+  _16 = buf.bn[5];
+  _17 = _16 >> 32;
+  t_d[1] = _17;
+  _18 = t_d[1];
+  _19 = _18 & 4294967295;
+  t_d[1] = _19;
+  t_d[2] = 0;
+  _20 = t_d[2];
+  _21 = _20 & 4294967295;
+  t_d[2] = _21;
+  t_d[3] = 0;
+  _22 = t_d[3];
+  _23 = _22 & 4294967295;
+  t_d[3] = _23;
+  ap_276 = &t_d;
+  c_277 = 0;
+  i_278 = 3;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  t_408 = *ap_235;
+  _24 = t_408 << 1;
+  ap.12_25 = ap_235;
+  ap_409 = ap.12_25 + 8;
+  _26 = c_236 | _24;
+  *ap.12_25 = _26;
+  t.13_27 = (signed long) t_408;
+  _28 = t.13_27 >> 63;
+  _29 = (unsigned int) _28;
+  _30 = (long unsigned int) _29;
+  c_411 = _30 & 1;
+  i_412 = i_229 + -1;
+
+  <bb 26> :
+  # i_229 = PHI <i_278(24), i_412(25)>
+  # ap_235 = PHI <ap_276(24), ap_409(25)>
+  # c_236 = PHI <c_277(24), c_411(25)>
+  if (i_229 != 0)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  *ap_235 = c_236;
+  _31 = r_d_231 + 16;
+  _32 = r_d_231 + 16;
+  _33 = bn_add_words (_31, _32, &t_d, 4);
+  carry_281 = (int) _33;
+  _34 = bn_add_words (r_d_231, r_d_231, &buf.bn, 6);
+  _283 = (int) _34;
+  carry_284 = _283 + carry_281;
+  _35 = buf.bn[4];
+  _36 = _35 >> 32;
+  t_d[0] = _36;
+  _37 = t_d[0];
+  _38 = buf.bn[5];
+  _39 = _38 << 32;
+  _40 = _37 | _39;
+  t_d[0] = _40;
+  _41 = buf.bn[5];
+  _42 = _41 >> 32;
+  t_d[1] = _42;
+  _43 = t_d[1];
+  _44 = buf.bn[0];
+  _45 = _44 << 32;
+  _46 = _43 | _45;
+  t_d[1] = _46;
+  _47 = buf.bn[0];
+  _48 = _47 >> 32;
+  t_d[2] = _48;
+  _49 = t_d[2];
+  _50 = buf.bn[1];
+  _51 = _50 << 32;
+  _52 = _49 | _51;
+  t_d[2] = _52;
+  _53 = buf.bn[1];
+  _54 = _53 >> 32;
+  t_d[3] = _54;
+  _55 = t_d[3];
+  _56 = buf.bn[2];
+  _57 = _56 << 32;
+  _58 = _55 | _57;
+  t_d[3] = _58;
+  _59 = buf.bn[2];
+  _60 = _59 >> 32;
+  t_d[4] = _60;
+  _61 = t_d[4];
+  _62 = buf.bn[3];
+  _63 = _62 << 32;
+  _64 = _61 | _63;
+  t_d[4] = _64;
+  _65 = buf.bn[3];
+  _66 = _65 >> 32;
+  t_d[5] = _66;
+  _67 = t_d[5];
+  _68 = buf.bn[4];
+  _69 = _68 << 32;
+  _70 = _67 | _69;
+  t_d[5] = _70;
+  _71 = bn_add_words (r_d_231, r_d_231, &t_d, 6);
+  _298 = (int) _71;
+  carry_299 = _298 + carry_284;
+  t_d[0] = 0;
+  _72 = t_d[0];
+  _73 = buf.bn[5];
+  _74 = _73 & 18446744069414584320;
+  _75 = _72 | _74;
+  t_d[0] = _75;
+  t_d[1] = 0;
+  _76 = t_d[1];
+  _77 = buf.bn[4];
+  _78 = _77 << 32;
+  _79 = _76 | _78;
+  t_d[1] = _79;
+  _80 = buf.bn[0];
+  _81 = _80 & 4294967295;
+  t_d[2] = _81;
+  _82 = t_d[2];
+  _83 = buf.bn[0];
+  _84 = _83 & 18446744069414584320;
+  _85 = _82 | _84;
+  t_d[2] = _85;
+  _86 = buf.bn[1];
+  _87 = _86 & 4294967295;
+  t_d[3] = _87;
+  _88 = t_d[3];
+  _89 = buf.bn[1];
+  _90 = _89 & 18446744069414584320;
+  _91 = _88 | _90;
+  t_d[3] = _91;
+  _92 = buf.bn[2];
+  _93 = _92 & 4294967295;
+  t_d[4] = _93;
+  _94 = t_d[4];
+  _95 = buf.bn[2];
+  _96 = _95 & 18446744069414584320;
+  _97 = _94 | _96;
+  t_d[4] = _97;
+  _98 = buf.bn[3];
+  _99 = _98 & 4294967295;
+  t_d[5] = _99;
+  _100 = t_d[5];
+  _101 = buf.bn[3];
+  _102 = _101 & 18446744069414584320;
+  _103 = _100 | _102;
+  t_d[5] = _103;
+  _104 = bn_add_words (r_d_231, r_d_231, &t_d, 6);
+  _313 = (int) _104;
+  carry_314 = _313 + carry_299;
+  t_d[0] = 0;
+  _105 = t_d[0];
+  _106 = _105 & 4294967295;
+  t_d[0] = _106;
+  t_d[1] = 0;
+  _107 = t_d[1];
+  _108 = _107 & 4294967295;
+  t_d[1] = _108;
+  _109 = buf.bn[4];
+  _110 = _109 & 4294967295;
+  t_d[2] = _110;
+  _111 = t_d[2];
+  _112 = buf.bn[4];
+  _113 = _112 & 18446744069414584320;
+  _114 = _111 | _113;
+  t_d[2] = _114;
+  _115 = buf.bn[5];
+  _116 = _115 & 4294967295;
+  t_d[3] = _116;
+  _117 = t_d[3];
+  _118 = buf.bn[5];
+  _119 = _118 & 18446744069414584320;
+  _120 = _117 | _119;
+  t_d[3] = _120;
+  t_d[4] = 0;
+  _121 = t_d[4];
+  _122 = _121 & 4294967295;
+  t_d[4] = _122;
+  t_d[5] = 0;
+  _123 = t_d[5];
+  _124 = _123 & 4294967295;
+  t_d[5] = _124;
+  _125 = bn_add_words (r_d_231, r_d_231, &t_d, 6);
+  _328 = (int) _125;
+  carry_329 = _328 + carry_314;
+  _126 = buf.bn[4];
+  _127 = _126 & 4294967295;
+  t_d[0] = _127;
+  _128 = t_d[0];
+  _129 = _128 & 4294967295;
+  t_d[0] = _129;
+  t_d[1] = 0;
+  _130 = t_d[1];
+  _131 = buf.bn[4];
+  _132 = _131 & 18446744069414584320;
+  _133 = _130 | _132;
+  t_d[1] = _133;
+  _134 = buf.bn[5];
+  _135 = _134 & 4294967295;
+  t_d[2] = _135;
+  _136 = t_d[2];
+  _137 = buf.bn[5];
+  _138 = _137 & 18446744069414584320;
+  _139 = _136 | _138;
+  t_d[2] = _139;
+  t_d[3] = 0;
+  _140 = t_d[3];
+  _141 = _140 & 4294967295;
+  t_d[3] = _141;
+  t_d[4] = 0;
+  _142 = t_d[4];
+  _143 = _142 & 4294967295;
+  t_d[4] = _143;
+  t_d[5] = 0;
+  _144 = t_d[5];
+  _145 = _144 & 4294967295;
+  t_d[5] = _145;
+  _146 = bn_add_words (r_d_231, r_d_231, &t_d, 6);
+  _343 = (int) _146;
+  carry_344 = _343 + carry_329;
+  _147 = buf.bn[5];
+  _148 = _147 >> 32;
+  t_d[0] = _148;
+  _149 = t_d[0];
+  _150 = buf.bn[0];
+  _151 = _150 << 32;
+  _152 = _149 | _151;
+  t_d[0] = _152;
+  _153 = buf.bn[0];
+  _154 = _153 >> 32;
+  t_d[1] = _154;
+  _155 = t_d[1];
+  _156 = buf.bn[1];
+  _157 = _156 << 32;
+  _158 = _155 | _157;
+  t_d[1] = _158;
+  _159 = buf.bn[1];
+  _160 = _159 >> 32;
+  t_d[2] = _160;
+  _161 = t_d[2];
+  _162 = buf.bn[2];
+  _163 = _162 << 32;
+  _164 = _161 | _163;
+  t_d[2] = _164;
+  _165 = buf.bn[2];
+  _166 = _165 >> 32;
+  t_d[3] = _166;
+  _167 = t_d[3];
+  _168 = buf.bn[3];
+  _169 = _168 << 32;
+  _170 = _167 | _169;
+  t_d[3] = _170;
+  _171 = buf.bn[3];
+  _172 = _171 >> 32;
+  t_d[4] = _172;
+  _173 = t_d[4];
+  _174 = buf.bn[4];
+  _175 = _174 << 32;
+  _176 = _173 | _175;
+  t_d[4] = _176;
+  _177 = buf.bn[4];
+  _178 = _177 >> 32;
+  t_d[5] = _178;
+  _179 = t_d[5];
+  _180 = buf.bn[5];
+  _181 = _180 << 32;
+  _182 = _179 | _181;
+  t_d[5] = _182;
+  _183 = bn_sub_words (r_d_231, r_d_231, &t_d, 6);
+  _358 = (int) _183;
+  carry_359 = carry_344 - _358;
+  t_d[0] = 0;
+  _184 = t_d[0];
+  _185 = buf.bn[4];
+  _186 = _185 << 32;
+  _187 = _184 | _186;
+  t_d[0] = _187;
+  _188 = buf.bn[4];
+  _189 = _188 >> 32;
+  t_d[1] = _189;
+  _190 = t_d[1];
+  _191 = buf.bn[5];
+  _192 = _191 << 32;
+  _193 = _190 | _192;
+  t_d[1] = _193;
+  _194 = buf.bn[5];
+  _195 = _194 >> 32;
+  t_d[2] = _195;
+  _196 = t_d[2];
+  _197 = _196 & 4294967295;
+  t_d[2] = _197;
+  t_d[3] = 0;
+  _198 = t_d[3];
+  _199 = _198 & 4294967295;
+  t_d[3] = _199;
+  t_d[4] = 0;
+  _200 = t_d[4];
+  _201 = _200 & 4294967295;
+  t_d[4] = _201;
+  t_d[5] = 0;
+  _202 = t_d[5];
+  _203 = _202 & 4294967295;
+  t_d[5] = _203;
+  _204 = bn_sub_words (r_d_231, r_d_231, &t_d, 6);
+  _373 = (int) _204;
+  carry_374 = carry_359 - _373;
+  t_d[0] = 0;
+  _205 = t_d[0];
+  _206 = _205 & 4294967295;
+  t_d[0] = _206;
+  t_d[1] = 0;
+  _207 = t_d[1];
+  _208 = buf.bn[5];
+  _209 = _208 & 18446744069414584320;
+  _210 = _207 | _209;
+  t_d[1] = _210;
+  _211 = buf.bn[5];
+  _212 = _211 >> 32;
+  t_d[2] = _212;
+  _213 = t_d[2];
+  _214 = _213 & 4294967295;
+  t_d[2] = _214;
+  t_d[3] = 0;
+  _215 = t_d[3];
+  _216 = _215 & 4294967295;
+  t_d[3] = _216;
+  t_d[4] = 0;
+  _217 = t_d[4];
+  _218 = _217 & 4294967295;
+  t_d[4] = _218;
+  t_d[5] = 0;
+  _219 = t_d[5];
+  _220 = _219 & 4294967295;
+  t_d[5] = _220;
+  _221 = bn_sub_words (r_d_231, r_d_231, &t_d, 6);
+  _388 = (int) _221;
+  carry_389 = carry_374 - _388;
+  t_d ={v} {CLOBBER(eos)};
+  adjust_391 = bn_sub_words;
+  if (carry_389 > 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  _222 = carry_389 + -1;
+  _223 = &_nist_p_384[_222];
+  _224 = bn_sub_words (r_d_231, r_d_231, _223, 6);
+  carry_399 = (int) _224;
+  goto <bb 35>; [INV]
+
+  <bb 29> :
+  if (carry_389 < 0)
+    goto <bb 30>; [INV]
+  else
+    goto <bb 34>; [INV]
+
+  <bb 30> :
+  _225 = ~carry_389;
+  _226 = &_nist_p_384[_225];
+  _227 = bn_add_words (r_d_231, r_d_231, _226, 6);
+  carry_394 = (int) _227;
+  if (carry_394 != 0)
+    goto <bb 31>; [INV]
+  else
+    goto <bb 32>; [INV]
+
+  <bb 31> :
+  iftmp.14_396 = bn_sub_words;
+  goto <bb 33>; [INV]
+
+  <bb 32> :
+  iftmp.14_395 = bn_add_words;
+
+  <bb 33> :
+  # iftmp.14_239 = PHI <iftmp.14_396(31), iftmp.14_395(32)>
+  adjust_397 = iftmp.14_239;
+  goto <bb 35>; [INV]
+
+  <bb 34> :
+  carry_392 = 1;
+
+  <bb 35> :
+  # carry_230 = PHI <carry_399(28), carry_394(33), carry_392(34)>
+  # adjust_232 = PHI <adjust_391(28), adjust_397(33), adjust_391(34)>
+  _228 = adjust_232 (&c_d, r_d_231, &_nist_p_384[0], 6);
+  if (_228 == 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 36>; [INV]
+
+  <bb 36> :
+  if (carry_230 == 0)
+    goto <bb 37>; [INV]
+  else
+    goto <bb 38>; [INV]
+
+  <bb 37> :
+  iftmp.15_402 = &c_d;
+  goto <bb 39>; [INV]
+
+  <bb 38> :
+  iftmp.15_401 = r_d_231;
+
+  <bb 39> :
+  # iftmp.15_240 = PHI <iftmp.15_402(37), iftmp.15_401(38)>
+  res_403 = iftmp.15_240;
+  nist_cp_bn (r_d_231, res_403, 6);
+  r_260(D)->top = 6;
+  bn_correct_top (r_260(D));
+  _407 = 1;
+
+  <bb 40> :
+  # _237 = PHI <_425(4), _422(6), _420(12), _265(15), _407(39)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+
+  <bb 41> :
+<L39>:
+  return _237;
+
+}
+
+
+
+;; Function BN_nist_mod_521 (BN_nist_mod_521, funcdef_no=180, decl_uid=7664, cgraph_uid=181, symbol_order=195)
+
+int BN_nist_mod_521 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  const long unsigned int * src;
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_521_sqr = {.d=&_nist_p_521_sqr, .top=17, .dmax=17, .neg=0, .flags=2};
+  long unsigned int * res;
+  long unsigned int tmp;
+  long unsigned int val;
+  long unsigned int t_d[9];
+  long unsigned int * a_d;
+  long unsigned int * r_d;
+  int i;
+  int top;
+  long unsigned int * iftmp.17;
+  int iftmp.16;
+  int D.11981;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  const long unsigned int * _7;
+  long unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int * _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  int _29;
+  int iftmp.16_30;
+  long unsigned int * iftmp.17_31;
+  int _54;
+  long unsigned int * iftmp.17_63;
+  long unsigned int * iftmp.17_64;
+  int _69;
+  int iftmp.16_79;
+  int iftmp.16_80;
+  int _81;
+  int _83;
+  int _86;
+
+  <bb 2> :
+  top_42 = a_41(D)->top;
+  a_d_43 = a_41(D)->d;
+  field_44 = &ossl_bignum_nist_p_521;
+  _1 = BN_is_negative (a_41(D));
+  if (_1 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = BN_ucmp (a_41(D), &ossl_bignum_nist_p_521_sqr);
+  if (_2 >= 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _86 = BN_nnmod (r_49(D), a_41(D), field_44, ctx_84(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 31>; [INV]
+
+  <bb 5> :
+  i_48 = BN_ucmp (field_44, a_41(D));
+  if (i_48 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  BN_zero_ex (r_49(D));
+  _83 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 31>; [INV]
+
+  <bb 7> :
+  if (i_48 > 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 8> :
+  if (r_49(D) == a_41(D))
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _3 = BN_copy (r_49(D), a_41(D));
+  if (_3 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.16_80 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.16_79 = 0;
+
+  <bb 12> :
+  # iftmp.16_30 = PHI <iftmp.16_80(10), iftmp.16_79(11)>
+  _81 = iftmp.16_30;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 31>; [INV]
+
+  <bb 13> :
+  if (r_49(D) != a_41(D))
+    goto <bb 14>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 14> :
+  _4 = bn_wexpand (r_49(D), 9);
+  if (_4 == 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  _54 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 31>; [INV]
+
+  <bb 16> :
+  r_d_52 = r_49(D)->d;
+  nist_cp_bn (r_d_52, a_d_43, 9);
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  r_d_50 = a_d_43;
+
+  <bb 18> :
+  # r_d_25 = PHI <r_d_52(16), r_d_50(17)>
+  src_55 = a_d_43 + 64;
+  ii_56 = 0;
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _5 = (long unsigned int) ii_27;
+  _6 = _5 * 8;
+  _7 = src_55 + _6;
+  _8 = *_7;
+  t_d[ii_27] = _8;
+  ii_77 = ii_27 + 1;
+
+  <bb 20> :
+  # ii_27 = PHI <ii_56(18), ii_77(19)>
+  _9 = top_42 + -8;
+  if (ii_27 < _9)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 21> :
+  goto <bb 23>; [INV]
+
+  <bb 22> :
+  t_d[ii_28] = 0;
+  ii_75 = ii_28 + 1;
+
+  <bb 23> :
+  # ii_28 = PHI <ii_27(21), ii_75(22)>
+  if (ii_28 <= 8)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 24> :
+  val_57 = t_d[0];
+  i_58 = 0;
+  goto <bb 26>; [INV]
+
+  <bb 25> :
+  _10 = val_26 >> 9;
+  _11 = i_24 + 1;
+  tmp_70 = t_d[_11];
+  _12 = tmp_70 << 55;
+  _13 = _10 | _12;
+  t_d[i_24] = _13;
+  val_72 = tmp_70;
+  i_73 = i_24 + 1;
+
+  <bb 26> :
+  # i_24 = PHI <i_58(24), i_73(25)>
+  # val_26 = PHI <val_57(24), val_72(25)>
+  if (i_24 <= 7)
+    goto <bb 25>; [INV]
+  else
+    goto <bb 27>; [INV]
+
+  <bb 27> :
+  _14 = val_26 >> 9;
+  t_d[i_24] = _14;
+  _15 = (long unsigned int) i_24;
+  _16 = _15 * 8;
+  _17 = r_d_25 + _16;
+  _18 = *_17;
+  _19 = (long unsigned int) i_24;
+  _20 = _19 * 8;
+  _21 = r_d_25 + _20;
+  _22 = _18 & 511;
+  *_21 = _22;
+  bn_add_words (r_d_25, r_d_25, &t_d, 9);
+  _23 = bn_sub_words (&t_d, r_d_25, &_nist_p_521, 9);
+  if (_23 == 0)
+    goto <bb 28>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 28> :
+  iftmp.17_64 = &t_d;
+  goto <bb 30>; [INV]
+
+  <bb 29> :
+  iftmp.17_63 = r_d_25;
+
+  <bb 30> :
+  # iftmp.17_31 = PHI <iftmp.17_64(28), iftmp.17_63(29)>
+  res_65 = iftmp.17_31;
+  nist_cp_bn (r_d_25, res_65, 9);
+  r_49(D)->top = 9;
+  bn_correct_top (r_49(D));
+  _69 = 1;
+
+  <bb 31> :
+  # _29 = PHI <_86(4), _83(6), _81(12), _54(15), _69(30)>
+  t_d ={v} {CLOBBER(eos)};
+
+  <bb 32> :
+<L29>:
+  return _29;
+
+}
+
+
+
+;; Function BN_nist_mod_func (BN_nist_mod_func, funcdef_no=181, decl_uid=7680, cgraph_uid=182, symbol_order=196)
+
+int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) BN_nist_mod_func (const struct BIGNUM * p)
+{
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) D.12004;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _6;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _15;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _16;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _17;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _18;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _19;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _20;
+
+  <bb 2> :
+  _1 = BN_ucmp (&ossl_bignum_nist_p_192, p_9(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _20 = BN_nist_mod_192;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  _2 = BN_ucmp (&ossl_bignum_nist_p_224, p_9(D));
+  if (_2 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _19 = BN_nist_mod_224;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 6> :
+  _3 = BN_ucmp (&ossl_bignum_nist_p_256, p_9(D));
+  if (_3 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _18 = BN_nist_mod_256;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  _4 = BN_ucmp (&ossl_bignum_nist_p_384, p_9(D));
+  if (_4 == 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _17 = BN_nist_mod_384;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 10> :
+  _5 = BN_ucmp (&ossl_bignum_nist_p_521, p_9(D));
+  if (_5 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  _16 = BN_nist_mod_521;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _15 = 0B;
+
+  <bb 13> :
+  # _6 = PHI <_20(3), _19(5), _18(7), _17(9), _16(11), _15(12)>
+<L10>:
+  return _6;
+
+}
+
+

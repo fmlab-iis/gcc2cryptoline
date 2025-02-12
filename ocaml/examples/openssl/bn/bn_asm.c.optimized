@@ -1,41 +1,41 @@
 
 ;; Function lh_MEM_hfn_thunk (lh_MEM_hfn_thunk, funcdef_no=153, decl_uid=11076, cgraph_uid=154, symbol_order=153)
 
-long unsigned int lh_MEM_hfn_thunk (const void * data, long unsigned int (*OPENSSL_LH_HASHFUNC) (const void *) hfn)
-{
-  long unsigned int (*<T1306>) (const struct MEM *) hfn_conv;
-  long unsigned int D.12321;
-  long unsigned int _6;
-
-  <bb 2> :
-  hfn_conv_2 = hfn_1(D);
-  _6 = hfn_conv_2 (data_4(D));
-
-  <bb 3> :
-<L0>:
-  return _6;
-
-}
+# long unsigned int lh_MEM_hfn_thunk (const void * data, long unsigned int (*OPENSSL_LH_HASHFUNC) (const void *) hfn)
+# {
+#  long unsigned int (*<T1306>) (const struct MEM *) hfn_conv;
+#  long unsigned int D.12321;
+#  long unsigned int _6;
+#
+#  <bb 2> :
+#  hfn_conv_2 = hfn_1(D);
+#  _6 = hfn_conv_2 (data_4(D));
+#
+#  <bb 3> :
+#<L0>:
+#  return _6;
+#
+#}
 
 
 
 ;; Function lh_MEM_cfn_thunk (lh_MEM_cfn_thunk, funcdef_no=154, decl_uid=11084, cgraph_uid=155, symbol_order=154)
 
-int lh_MEM_cfn_thunk (const void * da, const void * db, int (*OPENSSL_LH_COMPFUNC) (const void *, const void *) cfn)
-{
-  int (*<T130a>) (const struct MEM *, const struct MEM *) cfn_conv;
-  int D.12323;
-  int _7;
-
-  <bb 2> :
-  cfn_conv_2 = cfn_1(D);
-  _7 = cfn_conv_2 (da_4(D), db_5(D));
-
-  <bb 3> :
-<L0>:
-  return _7;
-
-}
+#int lh_MEM_cfn_thunk (const void * da, const void * db, int (*OPENSSL_LH_COMPFUNC) (const void *, const void *) cfn)
+#{
+#  int (*<T130a>) (const struct MEM *, const struct MEM *) cfn_conv;
+#  int D.12323;
+#  int _7;
+#
+#  <bb 2> :
+#  cfn_conv_2 = cfn_1(D);
+#  _7 = cfn_conv_2 (da_4(D), db_5(D));
+#
+#  <bb 3> :
+#<L0>:
+#  return _7;
+#
+#}
 
 
 
