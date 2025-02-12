@@ -27,7 +27,7 @@
 
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
-%token BOOLS UBOOLS STATIC
+%token BOOLS UBOOLS STATIC VOLATILE REGISTER
 /* Others */
 %token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO ASM
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT
@@ -139,6 +139,8 @@ ground_typ:
 
 typ:
   ground_typ                              { $1 }
+| REGISTER ground_typ                     { $2 }
+| VOLATILE ground_typ                     { $2 }
 | STRUCT MULOP                            { Pointer (Struct "") }
 | typ MULOP                               { Pointer $1 }
 | typ LSQUARE NUM RSQUARE                 { Array ($3, $1) }
@@ -225,6 +227,7 @@ instr:
 | op EQOP LPAREN typ RPAREN op SEMICOLON
                                           { Assign ($1, $4, $6) }
 | op EQOP op SEMICOLON                    { Assign ($1, Void, $3) }
+| op VEQOP op SEMICOLON                { VAssign ($1, Void, $3) }
 | op VEQOP VZERO SEMICOLON                { VAssign ($1, Void, Const Z.zero) }
 | op VEQOP VONE SEMICOLON                 { VAssign ($1, Void, Const Z.one) }
 | op EQOP op ADDOP op SEMICOLON           { Add ($1, $3, $5) }

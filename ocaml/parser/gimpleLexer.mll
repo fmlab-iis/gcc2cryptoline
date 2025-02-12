@@ -16,6 +16,8 @@
               "short"                      , SHORT;
               "struct"                     , STRUCT;
               "const"                      , CONST;
+              "volatile"                   , VOLATILE;
+              "register"                   , REGISTER;
               "static"                     , STATIC;
               "signed"                     , SIGNED;
               "unsigned"                   , UNSIGNED;
