@@ -151,7 +151,7 @@ struct BIGNUM * BN_mod_sqrt (struct BIGNUM * in, const struct BIGNUM * a, const 
   int _61;
   int _62;
   struct BIGNUM * _69;
-  int (*<T13aa>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.1_70;
+#  int (*<T13aa>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.1_70;
   int _83;
   unsigned int _86;
   int _87;

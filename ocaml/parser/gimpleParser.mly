@@ -20,14 +20,15 @@
 /* Operators */
 %token ADDOP SUBOP MULOP WMULOP ANDOP OROP XOROP LSHIFT RSHIFT EQOP VEQOP NEQOP
 %token LEOP GEOP EEQOP DIVOP NOTOP LROTATE RROTATE
-%token WMADDOP WMSUBOP QUESTION RARROW DEFERRED_INIT VCOND_MASK
+%token WMADDOP WMSUBOP WMULLOOP WMULHIOP
+%token QUESTION RARROW DEFERRED_INIT VCOND_MASK
 %token VEC_UNPACK_LO_EXPR VEC_UNPACK_HI_EXPR VIEW_CONVERT_EXPR VZERO VONE
 %token STORE_LANES VEC_PERM_EXPR BIT_FIELD_REF VEC_PACK_TRUNC_EXPR
-%token MIN_EXPR MAX_EXPR
+%token MIN_EXPR MAX_EXPR REALPART_EXPR IMAGPART_EXPR
 
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
-%token BOOLS UBOOLS STATIC VOLATILE REGISTER
+%token BOOLS UBOOLS STATIC VOLATILE REGISTER COMPLEX
 /* Others */
 %token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO ASM
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT
@@ -141,6 +142,7 @@ typ:
   ground_typ                              { $1 }
 | REGISTER ground_typ                     { $2 }
 | VOLATILE ground_typ                     { $2 }
+| COMPLEX ground_typ                      { Complex $2 }
 | STRUCT MULOP                            { Pointer (Struct "") }
 | typ MULOP                               { Pointer $1 }
 | typ LSQUARE NUM RSQUARE                 { Array ($3, $1) }
@@ -256,12 +258,20 @@ instr:
                                           { Min ($1, $5, $7) }
 | op EQOP MAX_EXPR LANGLE op COMMA op RANGLE SEMICOLON
                                           { Max ($1, $5, $7) }
+| op EQOP REALPART_EXPR LANGLE op RANGLE SEMICOLON
+                                          { RealPart ($1, $5) }
+| op EQOP IMAGPART_EXPR LANGLE op RANGLE SEMICOLON
+                                          { ImagPart ($1, $5) }
 | ID LPAREN ops RPAREN SEMICOLON          { Call (None, $1, $3) }
 | ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call (None, $1, $3) }
 | op EQOP ID LPAREN ops RPAREN SEMICOLON  { Call (Some $1, $3, $5) }
 | op EQOP ID LPAREN ops RPAREN SEMICOLON LSQUARE TAIL_CALL RSQUARE
                                           { Call (Some $1, $3, $5) }
+| op EQOP WMULLOOP LANGLE op COMMA op RANGLE SEMICOLON
+                                          { Wmullo ($1, $5, $7) }
+| op EQOP WMULHIOP LANGLE op COMMA op RANGLE SEMICOLON
+                                          { Wmulhi ($1, $5, $7) }
 | op EQOP WMADDOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON
                                           { Wmadd ($1, $5, $7, $9) }
 | op EQOP WMSUBOP LANGLE op COMMA op COMMA op RANGLE SEMICOLON

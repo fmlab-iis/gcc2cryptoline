@@ -42,6 +42,7 @@ let rec string_of_type typ =
   | Struct s -> "struct " ^ s
   | Vector (d, t) -> "vector[" ^ Z.to_string d ^ "] " ^ string_of_type t
   | Array (d, t) -> string_of_type t ^ "[" ^ Z.to_string d ^ "]"
+  | Complex t -> "__complex__ " ^ string_of_type t
   | Typedef s -> s
 
 let string_of_var v =
@@ -155,6 +156,10 @@ let string_of_instr instr =
                        ^ ", " ^ string_of_operand r1 ^ ">"
   | Max (l, r0, r1) -> string_of_operand l ^ " = MAX_EXPR <" ^ string_of_operand r0
                        ^ ", " ^ string_of_operand r1 ^ ">"
+  | RealPart (l, r) -> string_of_operand l ^ " = REALPART_EXPR <" ^
+                         string_of_operand r ^ ">"
+  | ImagPart (l, r) -> string_of_operand l ^ " = IMAGPART_EXPR <" ^
+                         string_of_operand r ^ ">"
   | Call (op, f, ops) -> let op_strs = List.map string_of_operand ops in
                          (match op with
                             None -> ""
@@ -168,16 +173,24 @@ let string_of_instr instr =
   | Return op -> "return" ^ (match op with
                              | None -> ""
                              | Some p -> string_of_operand p)
+  | Wmullo (l, r0, r1) -> string_of_operand l ^
+                            " = WIDEN_MULT_LO_EXPR <" ^
+                               string_of_operand r0 ^ ", " ^
+                               string_of_operand r1 ^ ">"
+  | Wmulhi (l, r0, r1) -> string_of_operand l ^
+                            " = WIDEN_MULT_HI_EXPR <" ^
+                               string_of_operand r0 ^ ", " ^
+                               string_of_operand r1 ^ ">"
   | Wmadd (l, r0, r1, r2) -> string_of_operand l ^
                                " = WIDEN_MULT_PLUS_EXPR <" ^
                                string_of_operand r0 ^ ", " ^
                                string_of_operand r1 ^ ", " ^
-                               string_of_operand r2
+                               string_of_operand r2 ^ ">"
   | Wmsub (l, r0, r1, r2) -> string_of_operand l ^
                                " = WIDEN_MULT_MINUS_EXPR <" ^
                                string_of_operand r0 ^ ", " ^
                                string_of_operand r1 ^ ", " ^
-                                 string_of_operand r2
+                                 string_of_operand r2 ^ ">"
   | VecUnpackLo (l, r) -> string_of_operand l ^
                             " = [vec_unpack_lo_expr] " ^ string_of_operand r
   | VecUnpackHi (l, r) -> string_of_operand l ^

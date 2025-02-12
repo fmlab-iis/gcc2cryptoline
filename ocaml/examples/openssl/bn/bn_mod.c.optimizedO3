@@ -11,7 +11,7 @@ int BN_nnmod (struct BIGNUM * r, const struct BIGNUM * m, const struct BIGNUM * 
   int _2;
   int _3;
   int _17;
-  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_18;
+#  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_18;
   int _19;
 
   <bb 2> [local count: 1073741824]:
@@ -77,7 +77,7 @@ int BN_mod_add (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM 
   int _13;
   int _14;
   int _17;
-  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_18;
+#  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_18;
   int _19;
 
   <bb 2> [local count: 1073741824]:
@@ -430,7 +430,7 @@ int BN_mod_sub (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM 
   int _13;
   int _14;
   int _17;
-  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_18;
+#  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_18;
   int _19;
 
   <bb 2> [local count: 1073741824]:
@@ -804,7 +804,7 @@ int BN_mod_mul (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM 
   int _21;
   int _22;
   int _25;
-  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_26;
+#  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_26;
   int _27;
   _Bool _29;
 
@@ -932,7 +932,7 @@ int BN_mod_lshift1 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIG
   int _12;
   int _13;
   int _16;
-  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_17;
+#  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_17;
   int _18;
 
   <bb 2> [local count: 1073741824]:
@@ -1177,7 +1177,7 @@ int BN_mod_lshift (struct BIGNUM * r, const struct BIGNUM * a, int n, const stru
   int pretmp_21;
   int _22;
   int _23;
-  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_27;
+#  int (*<T1397>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.0_27;
   int _28;
 
   <bb 2> [local count: 1073741822]:

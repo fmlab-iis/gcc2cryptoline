@@ -8,6 +8,7 @@ type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
               | Sword of int | Uword of int | Bools of int | Ubools of int
               | Const of type_t | Pointer of type_t | Struct of string
               | Vector of Z.t * type_t | Array of Z.t * type_t
+              | Complex of type_t
               | Typedef of string
 
 type param_t = { pty : type_t; pname : string }
@@ -60,10 +61,14 @@ type instr_t = Nop
              | Ite of operand_t * operand_t * operand_t * operand_t
              | Min of operand_t * operand_t * operand_t
              | Max of operand_t * operand_t * operand_t
+             | RealPart of operand_t * operand_t
+             | ImagPart of operand_t * operand_t
              | Call of operand_t option * string * operand_t list
              | CondBranch of cond_t * label_t * label_t
              | Goto of label_t
              | Return of operand_t option
+             | Wmullo of operand_t * operand_t * operand_t
+             | Wmulhi of operand_t * operand_t * operand_t
              | Wmadd of operand_t * operand_t * operand_t * operand_t
              | Wmsub of operand_t * operand_t * operand_t * operand_t
              | VecUnpackLo of operand_t * operand_t

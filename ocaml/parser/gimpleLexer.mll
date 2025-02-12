@@ -8,6 +8,7 @@
               (********** keywords **********)
               "__attribute__"              , ATTRIBUTE;
               "__asm__"                    , ASM;
+              "__complex__"                , COMPLEX;
 	      "access"                     , ACCESS;
               "void"                       , VOID;
               "_Bool"                      , BOOL;
@@ -26,6 +27,8 @@
               "MEM"                        , MEM;
               "MIN_EXPR"                   , MIN_EXPR;
               "MAX_EXPR"                   , MAX_EXPR;
+              "REALPART_EXPR"              , REALPART_EXPR;
+              "IMAGPART_EXPR"              , IMAGPART_EXPR;
               "INV"                        , INV;
               "bb"                         , BB;
               "if"                         , IF;
@@ -93,6 +96,8 @@ token = parse
   | "r>>"                          { RROTATE }
   | "->"                           { RARROW }
   (* intrinsics *)
+  | "WIDEN_MULT_LO_EXPR"           { WMULLOOP }
+  | "WIDEN_MULT_HI_EXPR"           { WMULHIOP }
   | "WIDEN_MULT_PLUS_EXPR"         { WMADDOP }
   | "WIDEN_MULT_MINUS_EXPR"        { WMSUBOP }
   | ".DEFERRED_INIT"               { DEFERRED_INIT }
