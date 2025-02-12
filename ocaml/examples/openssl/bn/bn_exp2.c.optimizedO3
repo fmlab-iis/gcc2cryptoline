@@ -1,0 +1,861 @@
+
+;; Function BN_mod_exp2_mont (BN_mod_exp2_mont, funcdef_no=170, decl_uid=8840, cgraph_uid=171, symbol_order=170)
+
+Removing basic block 14
+Removing basic block 19
+Removing basic block 94
+Removing basic block 95
+Removing basic block 96
+Removing basic block 97
+Removing basic block 98
+Removing basic block 99
+Removing basic block 100
+Removing basic block 101
+Removing basic block 103
+Removing basic block 104
+Removing basic block 105
+Removing basic block 107
+Removing basic block 108
+Removing basic block 109
+Removing basic block 110
+Removing basic block 111
+Removing basic block 112
+Removing basic block 113
+Removing basic block 114
+Removing basic block 115
+Removing basic block 116
+Removing basic block 117
+Removing basic block 118
+Removing basic block 119
+Removing basic block 120
+Removing basic block 121
+Removing basic block 122
+Removing basic block 123
+Removing basic block 124
+Removing basic block 125
+Removing basic block 126
+Removing basic block 127
+Removing basic block 128
+Removing basic block 129
+Removing basic block 130
+Removing basic block 131
+Removing basic block 132
+Removing basic block 133
+Removing basic block 134
+Removing basic block 135
+Removing basic block 136
+Removing basic block 137
+Removing basic block 138
+Removing basic block 139
+Removing basic block 140
+Removing basic block 141
+Removing basic block 142
+Removing basic block 143
+Removing basic block 144
+Removing basic block 145
+Removing basic block 146
+Removing basic block 147
+Removing basic block 148
+Removing basic block 149
+Removing basic block 150
+Removing basic block 151
+Removing basic block 152
+Removing basic block 153
+Removing basic block 154
+Removing basic block 155
+Removing basic block 156
+Removing basic block 157
+Removing basic block 158
+Removing basic block 159
+Removing basic block 160
+Removing basic block 161
+Removing basic block 162
+Removing basic block 163
+Removing basic block 164
+Removing basic block 165
+Removing basic block 166
+Removing basic block 167
+Removing basic block 168
+Removing basic block 169
+Removing basic block 170
+Removing basic block 171
+Removing basic block 172
+Removing basic block 173
+Removing basic block 174
+Removing basic block 175
+Removing basic block 176
+Removing basic block 177
+Removing basic block 178
+int BN_mod_exp2_mont (struct BIGNUM * rr, const struct BIGNUM * a1, const struct BIGNUM * p1, const struct BIGNUM * a2, const struct BIGNUM * p2, const struct BIGNUM * m, struct BN_CTX * ctx, struct BN_MONT_CTX * in_mont)
+{
+  unsigned long ivtmp.69;
+  unsigned long ivtmp.61;
+  static const char __func__[17] = "BN_mod_exp2_mont";
+  struct BN_MONT_CTX * mont;
+  struct BIGNUM * val2[32];
+  struct BIGNUM * val1[32];
+  const struct BIGNUM * a_mod_m;
+  struct BIGNUM * r;
+  struct BIGNUM * d;
+  int r_is_one;
+  int wvalue2;
+  int wvalue1;
+  int wpos2;
+  int wpos1;
+  int ret;
+  int bits2;
+  int bits1;
+  int b;
+  int bits;
+  int i;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  unsigned int _12;
+  struct BIGNUM * _13;
+  struct BIGNUM * _15;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  unsigned int _23;
+  struct BIGNUM * _24;
+  struct BIGNUM * _26;
+  int _27;
+  const struct BIGNUM * _28;
+  int _29;
+  int _30;
+  int _31;
+  int _33;
+  int _34;
+  int _35;
+  int _37;
+  int _38;
+  void * _41;
+  int _42;
+  struct BIGNUM * _43;
+  int _44;
+  int _48;
+  struct BIGNUM * _49;
+  int _50;
+  int _51;
+  unsigned int _57;
+  unsigned int _58;
+  int _65;
+  int _81;
+  int iftmp.0_82;
+  _Bool _84;
+  int iftmp.4_86;
+  unsigned int _95;
+  int prephitmp_96;
+  unsigned int _98;
+  int _105;
+  _Bool prephitmp_195;
+  int prephitmp_197;
+  _Bool prephitmp_199;
+  int _200;
+  unsigned int _201;
+  struct BIGNUM * _210;
+  int _213;
+  _Bool _219;
+  unsigned int _238;
+  void * _242;
+  _Bool prephitmp_243;
+  _Bool _245;
+  _Bool _246;
+  unsigned int _248;
+  _Bool _249;
+  _Bool _250;
+  _Bool _251;
+  _Bool _252;
+  unsigned int _256;
+  _Bool _261;
+  _Bool _262;
+  int _293;
+  int _380;
+
+  <bb 2> [local count: 1073741820]:
+  _1 = BN_is_odd (m_112(D));
+  if (_1 == 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072223]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp2.c", 36, &__func__);
+  ERR_set_error (3, 102, 0B);
+  goto <bb 91>; [100.00%]
+
+  <bb 4> [local count: 708669597]:
+  bits1_116 = BN_num_bits (p1_114(D));
+  bits2_119 = BN_num_bits (p2_117(D));
+  _2 = bits1_116 | bits2_119;
+  if (_2 == 0)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 240947666]:
+  ret_189 = BN_set_word (rr_160(D), 1); [tail call]
+  goto <bb 91>; [100.00%]
+
+  <bb 6> [local count: 467721932]:
+  BN_CTX_start (ctx_121(D));
+  d_124 = BN_CTX_get (ctx_121(D));
+  r_126 = BN_CTX_get (ctx_121(D));
+  _3 = BN_CTX_get (ctx_121(D));
+  val1[0] = _3;
+  _4 = BN_CTX_get (ctx_121(D));
+  val2[0] = _4;
+  if (_4 == 0B)
+    goto <bb 88>; [18.09%]
+  else
+    goto <bb 7>; [81.91%]
+
+  <bb 7> [local count: 383111034]:
+  if (in_mont_131(D) != 0B)
+    goto <bb 10>; [82.57%]
+  else
+    goto <bb 8>; [17.43%]
+
+  <bb 8> [local count: 66776253]:
+  mont_133 = BN_MONT_CTX_new ();
+  if (mont_133 == 0B)
+    goto <bb 89>; [30.95%]
+  else
+    goto <bb 9>; [69.05%]
+
+  <bb 9> [local count: 46109003]:
+  _5 = BN_MONT_CTX_set (mont_133, m_112(D), ctx_121(D));
+  if (_5 == 0)
+    goto <bb 89>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 10> [local count: 346766723]:
+  # mont_79 = PHI <in_mont_131(D)(7), mont_133(9)>
+  if (bits1_116 <= 671)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 11> [local count: 173383361]:
+  if (bits1_116 <= 239)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 12> [local count: 86691681]:
+  if (bits1_116 <= 79)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 13> [local count: 43345840]:
+  if (bits1_116 > 23)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 21672920]:
+
+  <bb 15> [local count: 346766723]:
+  # iftmp.0_82 = PHI <5(11), 6(10), 4(12), 1(13), 3(14)>
+  # prephitmp_96 = PHI <16(11), 32(10), 8(12), 1(13), 4(14)>
+  if (bits2_119 <= 671)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 20>; [50.00%]
+
+  <bb 16> [local count: 173383362]:
+  if (bits2_119 <= 239)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 20>; [50.00%]
+
+  <bb 17> [local count: 86691681]:
+  if (bits2_119 <= 79)
+    goto <bb 18>; [50.00%]
+  else
+    goto <bb 20>; [50.00%]
+
+  <bb 18> [local count: 43345840]:
+  if (bits2_119 > 23)
+    goto <bb 19>; [50.00%]
+  else
+    goto <bb 20>; [50.00%]
+
+  <bb 19> [local count: 21672920]:
+
+  <bb 20> [local count: 346766724]:
+  # iftmp.4_86 = PHI <5(16), 6(15), 4(17), 1(18), 3(19)>
+  # prephitmp_197 = PHI <16(16), 32(15), 8(17), 1(18), 4(19)>
+  _6 = a1_135(D)->neg;
+  if (_6 != 0)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 21> [local count: 275679546]:
+  _8 = BN_div (0B, _3, a1_135(D), m_112(D), ctx_121(D));
+  if (_8 == 0)
+    goto <bb 26>; [34.00%]
+  else
+    goto <bb 23>; [66.00%]
+
+  <bb 22> [local count: 173383362]:
+  _7 = BN_ucmp (a1_135(D), m_112(D));
+  if (_7 >= 0)
+    goto <bb 21>; [59.00%]
+  else
+    goto <bb 23>; [41.00%]
+
+  <bb 23> [local count: 253035677]:
+  # a_mod_m_77 = PHI <_3(21), a1_135(D)(22)>
+  _9 = BN_is_zero (a_mod_m_77);
+  if (_9 != 0)
+    goto <bb 24>; [34.00%]
+  else
+    goto <bb 25>; [66.00%]
+
+  <bb 24> [local count: 86032131]:
+  BN_zero_ex (rr_160(D));
+  goto <bb 38>; [100.00%]
+
+  <bb 25> [local count: 167003546]:
+  _10 = BN_to_montgomery (_3, a_mod_m_77, mont_79, ctx_121(D));
+  if (_10 == 0)
+    goto <bb 26>; [34.00%]
+  else
+    goto <bb 27>; [66.00%]
+
+  <bb 26> [local count: 164989304]:
+  goto <bb 88>; [100.00%]
+
+  <bb 27> [local count: 110222340]:
+  if (iftmp.0_82 != 1)
+    goto <bb 29>; [48.88%]
+  else
+    goto <bb 28>; [51.12%]
+
+  <bb 28> [local count: 68643126]:
+  _17 = a2_146(D)->neg;
+  if (_17 != 0)
+    goto <bb 34>; [50.00%]
+  else
+    goto <bb 35>; [50.00%]
+
+  <bb 29> [local count: 53876679]:
+  _11 = BN_mod_mul_montgomery (d_124, _3, _3, mont_79, ctx_121(D));
+  if (_11 == 0)
+    goto <bb 88>; [34.00%]
+  else
+    goto <bb 30>; [66.00%]
+
+  <bb 30> [local count: 35558608]:
+  ivtmp.69_39 = (unsigned long) &val1;
+
+  <bb 31> [local count: 323698852]:
+  # i_198 = PHI <i_145(33), 1(30)>
+  # ivtmp.69_203 = PHI <ivtmp.69_90(33), ivtmp.69_39(30)>
+  _13 = BN_CTX_get (ctx_121(D));
+  _41 = (void *) ivtmp.69_203;
+  MEM[(struct BIGNUM * *)_41 + 8B] = _13;
+  if (_13 == 0B)
+    goto <bb 26>; [3.66%]
+  else
+    goto <bb 32>; [96.34%]
+
+  <bb 32> [local count: 311851473]:
+  _15 = MEM[(struct BIGNUM * *)_41];
+  _16 = BN_mod_mul_montgomery (_13, _15, d_124, mont_79, ctx_121(D));
+  if (_16 == 0)
+    goto <bb 26>; [3.66%]
+  else
+    goto <bb 33>; [96.34%]
+
+  <bb 33> [local count: 300437709]:
+  i_145 = i_198 + 1;
+  ivtmp.69_90 = ivtmp.69_203 + 8;
+  if (prephitmp_96 > i_145)
+    goto <bb 31>; [95.91%]
+  else
+    goto <bb 28>; [4.09%]
+
+  <bb 34> [local count: 54571285]:
+  _19 = BN_div (0B, _4, a2_146(D), m_112(D), ctx_121(D));
+  if (_19 == 0)
+    goto <bb 26>; [34.00%]
+  else
+    goto <bb 36>; [66.00%]
+
+  <bb 35> [local count: 34321563]:
+  _18 = BN_ucmp (a2_146(D), m_112(D));
+  if (_18 >= 0)
+    goto <bb 34>; [59.00%]
+  else
+    goto <bb 36>; [41.00%]
+
+  <bb 36> [local count: 50088889]:
+  # a_mod_m_78 = PHI <_4(34), a2_146(D)(35)>
+  _20 = BN_is_zero (a_mod_m_78);
+  if (_20 != 0)
+    goto <bb 37>; [34.00%]
+  else
+    goto <bb 39>; [66.00%]
+
+  <bb 37> [local count: 17030222]:
+  BN_zero_ex (rr_160(D));
+
+  <bb 38> [local count: 86032131]:
+  goto <bb 88>; [100.00%]
+
+  <bb 39> [local count: 33058666]:
+  _21 = BN_to_montgomery (_4, a_mod_m_78, mont_79, ctx_121(D));
+  if (_21 == 0)
+    goto <bb 26>; [34.00%]
+  else
+    goto <bb 40>; [66.00%]
+
+  <bb 40> [local count: 21818720]:
+  if (iftmp.4_86 != 1)
+    goto <bb 42>; [66.00%]
+  else
+    goto <bb 41>; [34.00%]
+
+  <bb 41> [local count: 10705276]:
+  _28 = BN_value_one ();
+  _29 = BN_to_montgomery (r_126, _28, mont_79, ctx_121(D));
+  if (_29 == 0)
+    goto <bb 26>; [34.00%]
+  else
+    goto <bb 47>; [66.00%]
+
+  <bb 42> [local count: 14400355]:
+  _22 = BN_mod_mul_montgomery (d_124, _4, _4, mont_79, ctx_121(D));
+  if (_22 == 0)
+    goto <bb 26>; [34.00%]
+  else
+    goto <bb 43>; [66.00%]
+
+  <bb 43> [local count: 9504234]:
+  ivtmp.61_260 = (unsigned long) &val2;
+
+  <bb 44> [local count: 86519407]:
+  # i_222 = PHI <i_156(46), 1(43)>
+  # ivtmp.61_241 = PHI <ivtmp.61_259(46), ivtmp.61_260(43)>
+  _24 = BN_CTX_get (ctx_121(D));
+  _242 = (void *) ivtmp.61_241;
+  MEM[(struct BIGNUM * *)_242 + 8B] = _24;
+  if (_24 == 0B)
+    goto <bb 26>; [3.66%]
+  else
+    goto <bb 45>; [96.34%]
+
+  <bb 45> [local count: 83352797]:
+  _26 = MEM[(struct BIGNUM * *)_242];
+  _27 = BN_mod_mul_montgomery (_24, _26, d_124, mont_79, ctx_121(D));
+  if (_27 == 0)
+    goto <bb 26>; [3.66%]
+  else
+    goto <bb 46>; [96.34%]
+
+  <bb 46> [local count: 80302085]:
+  i_156 = i_222 + 1;
+  ivtmp.61_259 = ivtmp.61_241 + 8;
+  if (i_156 < prephitmp_197)
+    goto <bb 44>; [95.91%]
+  else
+    goto <bb 41>; [4.09%]
+
+  <bb 47> [local count: 7065482]:
+  bits_120 = MAX_EXPR <bits1_116, bits2_119>;
+  b_159 = bits_120 + -1;
+  if (b_159 >= 0)
+    goto <bb 51>; [97.25%]
+  else
+    goto <bb 48>; [2.75%]
+
+  <bb 48> [local count: 3615788]:
+  _51 = BN_from_montgomery (rr_160(D), r_126, mont_79, ctx_121(D));
+  _219 = _51 != 0;
+  _200 = (int) _219;
+  goto <bb 88>; [100.00%]
+
+  <bb 49> [local count: 38866868]:
+  if (r_is_one_75 == 0)
+    goto <bb 52>; [5.16%]
+  else
+    goto <bb 50>; [94.84%]
+
+  <bb 50> [local count: 77898918]:
+  # b_284 = PHI <b_183(49), b_328(52)>
+  # wpos1_357 = PHI <wpos1_322(49), wpos1_337(52)>
+  # wpos2_358 = PHI <wpos2_324(49), wpos2_340(52)>
+  # wvalue1_359 = PHI <wvalue1_316(49), wvalue1_344(52)>
+  # wvalue2_360 = PHI <wvalue2_72(49), wvalue2_346(52)>
+  # r_is_one_361 = PHI <r_is_one_75(49), _20(52)>
+
+  <bb 51> [local count: 112806763]:
+  # b_327 = PHI <b_284(50), b_159(47)>
+  # wpos1_336 = PHI <wpos1_357(50), _20(47)>
+  # wpos2_339 = PHI <wpos2_358(50), _20(47)>
+  # wvalue1_343 = PHI <wvalue1_359(50), _20(47)>
+  # wvalue2_345 = PHI <wvalue2_360(50), _20(47)>
+  # r_is_one_349 = PHI <r_is_one_361(50), 1(47)>
+  if (wvalue1_343 == 0)
+    goto <bb 55>; [24.74%]
+  else
+    goto <bb 66>; [75.26%]
+
+  <bb 52> [local count: 42196242]:
+  # b_328 = PHI <b_183(49), b_68(80), b_275(82), b_294(84), b_306(86)>
+  # wpos1_337 = PHI <wpos1_322(49), wpos1_365(80), wpos1_336(82), wpos1_336(84), wpos1_321(86)>
+  # wpos2_340 = PHI <wpos2_324(49), wpos2_363(80), wpos2_339(82), wpos2_339(84), wpos2_323(86)>
+  # wvalue1_344 = PHI <wvalue1_316(49), _20(80), r_is_one_396(82), r_is_one_394(84), wvalue1_315(86)>
+  # wvalue2_346 = PHI <wvalue2_72(49), wvalue2_364(80), r_is_one_396(82), wvalue2_345(84), _20(86)>
+  _30 = BN_mod_mul_montgomery (r_126, r_126, r_126, mont_79, ctx_121(D));
+  if (_30 == 0)
+    goto <bb 26>; [2.75%]
+  else
+    goto <bb 50>; [97.25%]
+
+  <bb 53> [local count: 10224132]:
+  _293 = BN_is_bit_set (p1_114(D), b_294);
+  if (_293 != 0)
+    goto <bb 58>; [27.00%]
+  else
+    goto <bb 57>; [73.00%]
+
+  <bb 54> [local count: 3676110]:
+  _380 = BN_is_bit_set (p1_114(D), b_275);
+  if (_380 != 0)
+    goto <bb 58>; [27.00%]
+  else
+    goto <bb 92>; [73.00%]
+
+  <bb 55> [local count: 27913069]:
+  _31 = BN_is_bit_set (p1_114(D), b_327);
+  if (_31 != 0)
+    goto <bb 58>; [27.00%]
+  else
+    goto <bb 56>; [73.00%]
+
+  <bb 56> [local count: 20376541]:
+  if (wvalue2_345 == 0)
+    goto <bb 92>; [36.26%]
+  else
+    goto <bb 57>; [63.74%]
+
+  <bb 57> [local count: 20450890]:
+  # b_384 = PHI <b_327(56), b_294(53)>
+  # r_is_one_394 = PHI <r_is_one_349(56), r_is_one_394(53)>
+  if (wpos2_339 == b_384)
+    goto <bb 85>; [39.17%]
+  else
+    goto <bb 83>; [60.83%]
+
+  <bb 58> [local count: 11289594]:
+  # b_385 = PHI <b_327(55), b_294(53), b_275(54)>
+  # wpos2_390 = PHI <wpos2_339(55), wpos2_339(53), wpos2_339(54)>
+  # wvalue2_393 = PHI <wvalue2_345(55), wvalue2_345(53), _65(54)>
+  # r_is_one_395 = PHI <r_is_one_349(55), r_is_one_394(53), r_is_one_396(54)>
+  _57 = (unsigned int) iftmp.0_82;
+  _12 = (unsigned int) b_385;
+  _238 = 1 - _57;
+  _23 = _12 + _238;
+  i_164 = (int) _23;
+  goto <bb 60>; [100.00%]
+
+  <bb 59> [local count: 91343081]:
+  i_171 = i_54 + 1;
+
+  <bb 60> [local count: 102632675]:
+  # i_54 = PHI <i_164(58), i_171(59)>
+  _33 = BN_is_bit_set (p1_114(D), i_54);
+  if (_33 == 0)
+    goto <bb 59>; [89.00%]
+  else
+    goto <bb 61>; [11.00%]
+
+  <bb 61> [local count: 11289594]:
+  _201 = _12 + 4294967295;
+  i_166 = (int) _201;
+  if (i_54 <= i_166)
+    goto <bb 62>; [89.00%]
+  else
+    goto <bb 66>; [11.00%]
+
+  <bb 62> [local count: 91343081]:
+  # i_223 = PHI <i_170(64), i_166(61)>
+  # wvalue1_228 = PHI <wvalue1_64(64), 1(61)>
+  wvalue1_167 = wvalue1_228 << 1;
+  _34 = BN_is_bit_set (p1_114(D), i_223);
+  if (_34 != 0)
+    goto <bb 63>; [50.00%]
+  else
+    goto <bb 64>; [50.00%]
+
+  <bb 63> [local count: 45671540]:
+  wvalue1_169 = wvalue1_167 + 1;
+
+  <bb 64> [local count: 91343081]:
+  # wvalue1_64 = PHI <wvalue1_167(62), wvalue1_169(63)>
+  i_170 = i_223 + -1;
+  if (i_54 <= i_170)
+    goto <bb 62>; [89.00%]
+  else
+    goto <bb 65>; [11.00%]
+
+  <bb 65> [local count: 10047739]:
+  _84 = wvalue1_64 != 0;
+
+  <bb 66> [local count: 96183288]:
+  # wpos1_60 = PHI <wpos1_336(51), i_54(65), i_54(61)>
+  # wvalue1_66 = PHI <wvalue1_343(51), wvalue1_64(65), 1(61)>
+  # prephitmp_199 = PHI <1(51), _84(65), 1(61)>
+  # b_330 = PHI <b_327(51), b_385(65), b_385(61)>
+  # wpos2_342 = PHI <wpos2_339(51), wpos2_390(65), wpos2_390(61)>
+  # wvalue2_348 = PHI <wvalue2_345(51), wvalue2_393(65), wvalue2_393(61)>
+  # r_is_one_352 = PHI <r_is_one_349(51), r_is_one_395(65), r_is_one_395(61)>
+  _261 = wpos1_60 == b_330;
+  _262 = prephitmp_199 & _261;
+  if (wvalue2_348 == 0)
+    goto <bb 67>; [33.00%]
+  else
+    goto <bb 76>; [67.00%]
+
+  <bb 67> [local count: 31740484]:
+  _35 = BN_is_bit_set (p2_117(D), b_330);
+  if (_35 != 0)
+    goto <bb 68>; [27.00%]
+  else
+    goto <bb 75>; [73.00%]
+
+  <bb 68> [local count: 11289594]:
+  # wpos1_202 = PHI <wpos1_60(67), wpos1_336(92)>
+  # wvalue1_217 = PHI <wvalue1_66(67), wvalue2_345(92)>
+  # prephitmp_195 = PHI <_262(67), 0(92)>
+  # b_331 = PHI <b_330(67), b_386(92)>
+  # r_is_one_353 = PHI <r_is_one_352(67), r_is_one_396(92)>
+  _58 = (unsigned int) iftmp.4_86;
+  _256 = (unsigned int) b_331;
+  _98 = 1 - _58;
+  _248 = _98 + _256;
+  i_173 = (int) _248;
+  goto <bb 70>; [100.00%]
+
+  <bb 69> [local count: 91343081]:
+  i_180 = i_56 + 1;
+
+  <bb 70> [local count: 102632675]:
+  # i_56 = PHI <i_173(68), i_180(69)>
+  _37 = BN_is_bit_set (p2_117(D), i_56);
+  if (_37 == 0)
+    goto <bb 69>; [89.00%]
+  else
+    goto <bb 71>; [11.00%]
+
+  <bb 71> [local count: 11289594]:
+  _95 = _256 + 4294967295;
+  i_175 = (int) _95;
+  if (i_56 <= i_175)
+    goto <bb 72>; [89.00%]
+  else
+    goto <bb 76>; [11.00%]
+
+  <bb 72> [local count: 91343081]:
+  # i_224 = PHI <i_179(74), i_175(71)>
+  # wvalue2_230 = PHI <wvalue2_69(74), 1(71)>
+  wvalue2_176 = wvalue2_230 << 1;
+  _38 = BN_is_bit_set (p2_117(D), i_224);
+  if (_38 != 0)
+    goto <bb 73>; [50.00%]
+  else
+    goto <bb 74>; [50.00%]
+
+  <bb 73> [local count: 45671540]:
+  wvalue2_178 = wvalue2_176 + 1;
+
+  <bb 74> [local count: 91343081]:
+  # wvalue2_69 = PHI <wvalue2_176(72), wvalue2_178(73)>
+  i_179 = i_224 + -1;
+  if (i_56 <= i_179)
+    goto <bb 72>; [89.00%]
+  else
+    goto <bb 76>; [11.00%]
+
+  <bb 75> [local count: 23170553]:
+  if (_262 != 0)
+    goto <bb 93>; [42.28%]
+  else
+    goto <bb 87>; [57.72%]
+
+  <bb 76> [local count: 75732398]:
+  # wpos2_62 = PHI <wpos2_342(66), i_56(71), i_56(74)>
+  # wvalue2_71 = PHI <wvalue2_348(66), 1(71), wvalue2_69(74)>
+  # wpos1_208 = PHI <wpos1_60(66), wpos1_202(71), wpos1_202(74)>
+  # wvalue1_212 = PHI <wvalue1_66(66), wvalue1_217(71), wvalue1_217(74)>
+  # prephitmp_243 = PHI <_262(66), prephitmp_195(71), prephitmp_195(74)>
+  # b_332 = PHI <b_330(66), b_331(71), b_331(74)>
+  # r_is_one_354 = PHI <r_is_one_352(66), r_is_one_353(71), r_is_one_353(74)>
+  if (prephitmp_243 != 0)
+    goto <bb 78>; [42.28%]
+  else
+    goto <bb 77>; [57.72%]
+
+  <bb 77> [local count: 43714927]:
+  _245 = wvalue2_71 != 0;
+  _249 = wpos2_62 == b_332;
+  _250 = _245 & _249;
+  if (_250 != 0)
+    goto <bb 85>; [39.17%]
+  else
+    goto <bb 87>; [60.83%]
+
+  <bb 78> [local count: 32017470]:
+  _42 = wvalue1_212 >> 1;
+  _43 = val1[_42];
+  _44 = BN_mod_mul_montgomery (r_126, r_126, _43, mont_79, ctx_121(D));
+  if (_44 == 0)
+    goto <bb 26>; [2.75%]
+  else
+    goto <bb 79>; [97.25%]
+
+  <bb 79> [local count: 31136990]:
+  _246 = wvalue2_71 != 0;
+  _251 = wpos2_62 == b_332;
+  _252 = _246 & _251;
+  if (_252 != 0)
+    goto <bb 85>; [43.10%]
+  else
+    goto <bb 80>; [56.90%]
+
+  <bb 80> [local count: 27244508]:
+  # wpos2_363 = PHI <wpos2_62(79), wpos2_342(93)>
+  # wvalue2_364 = PHI <wvalue2_71(79), _35(93)>
+  # wpos1_365 = PHI <wpos1_208(79), wpos1_60(93)>
+  # b_366 = PHI <b_332(79), b_330(93)>
+  b_68 = b_366 + -1;
+  if (b_68 != -1)
+    goto <bb 52>; [97.25%]
+  else
+    goto <bb 48>; [2.75%]
+
+  <bb 81> [local count: 7353164]:
+  b_275 = b_386 + -1;
+  if (b_275 != -1)
+    goto <bb 82>; [97.25%]
+  else
+    goto <bb 48>; [2.75%]
+
+  <bb 82> [local count: 4349831]:
+  if (r_is_one_396 == 0)
+    goto <bb 52>; [15.49%]
+  else
+    goto <bb 54>; [84.51%]
+
+  <bb 83> [local count: 12440009]:
+  b_294 = b_384 + -1;
+  if (b_294 != -1)
+    goto <bb 84>; [97.25%]
+  else
+    goto <bb 48>; [2.75%]
+
+  <bb 84> [local count: 12097909]:
+  if (r_is_one_394 == 0)
+    goto <bb 52>; [15.49%]
+  else
+    goto <bb 53>; [84.51%]
+
+  <bb 85> [local count: 41433856]:
+  # wvalue1_315 = PHI <wvalue1_212(77), _20(79), _31(57)>
+  # wpos1_321 = PHI <wpos1_208(77), wpos1_208(79), wpos1_336(57)>
+  # wpos2_323 = PHI <wpos2_62(77), wpos2_62(79), wpos2_339(57)>
+  # wvalue2_326 = PHI <wvalue2_71(77), wvalue2_71(79), wvalue2_345(57)>
+  # b_334 = PHI <b_332(77), b_332(79), b_384(57)>
+  _48 = wvalue2_326 >> 1;
+  _49 = val2[_48];
+  _50 = BN_mod_mul_montgomery (r_126, r_126, _49, mont_79, ctx_121(D));
+  if (_50 == 0)
+    goto <bb 26>; [2.75%]
+  else
+    goto <bb 86>; [97.25%]
+
+  <bb 86> [local count: 40294425]:
+  b_306 = b_334 + -1;
+  if (b_306 != -1)
+    goto <bb 52>; [97.25%]
+  else
+    goto <bb 48>; [2.75%]
+
+  <bb 87> [local count: 39965932]:
+  # wvalue2_72 = PHI <wvalue2_71(77), _35(75)>
+  # r_is_one_75 = PHI <r_is_one_354(77), r_is_one_352(75)>
+  # wvalue1_316 = PHI <wvalue1_212(77), wvalue1_66(75)>
+  # wpos1_322 = PHI <wpos1_208(77), wpos1_60(75)>
+  # wpos2_324 = PHI <wpos2_62(77), wpos2_342(75)>
+  # b_335 = PHI <b_332(77), b_330(75)>
+  b_183 = b_335 + -1;
+  if (b_183 != -1)
+    goto <bb 49>; [97.25%]
+  else
+    goto <bb 48>; [2.75%]
+
+  <bb 88> [local count: 431377623]:
+  # ret_59 = PHI <_11(29), 1(38), 0(6), 0(26), _200(48)>
+  # mont_80 = PHI <mont_79(29), mont_79(38), _4(6), mont_79(26), mont_79(48)>
+err:
+  if (in_mont_131(D) == 0B)
+    goto <bb 89>; [10.47%]
+  else
+    goto <bb 90>; [89.53%]
+
+  <bb 89> [local count: 81523933]:
+  # ret_205 = PHI <ret_59(88), _5(9), 0(8)>
+  # mont_214 = PHI <mont_80(88), mont_133(9), mont_133(8)>
+  BN_MONT_CTX_free (mont_214);
+
+  <bb 90> [local count: 467721934]:
+  # ret_206 = PHI <ret_59(88), ret_205(89)>
+  BN_CTX_end (ctx_121(D));
+
+  <bb 91> [local count: 1073741824]:
+  # _81 = PHI <_1(3), ret_189(5), ret_206(90)>
+  val1 ={v} {CLOBBER(eos)};
+  val2 ={v} {CLOBBER(eos)};
+  return _81;
+
+  <bb 92> [local count: 10072827]:
+  # b_386 = PHI <b_327(56), b_275(54)>
+  # r_is_one_396 = PHI <r_is_one_349(56), r_is_one_396(54)>
+  _65 = BN_is_bit_set (p2_117(D), b_386);
+  if (_65 != 0)
+    goto <bb 68>; [27.00%]
+  else
+    goto <bb 81>; [73.00%]
+
+  <bb 93> [local count: 9795841]:
+  _213 = wvalue1_66 >> 1;
+  _210 = val1[_213];
+  _105 = BN_mod_mul_montgomery (r_126, r_126, _210, mont_79, ctx_121(D));
+  if (_105 == 0)
+    goto <bb 26>; [2.75%]
+  else
+    goto <bb 80>; [97.25%]
+
+}
+
+

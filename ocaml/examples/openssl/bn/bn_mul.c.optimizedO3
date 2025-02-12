@@ -1,0 +1,2098 @@
+
+;; Function bn_sub_part_words (bn_sub_part_words, funcdef_no=170, decl_uid=11575, cgraph_uid=171, symbol_order=170)
+
+Removing basic block 9
+Removing basic block 12
+Removing basic block 15
+Removing basic block 18
+Removing basic block 22
+Removing basic block 25
+Removing basic block 28
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+Removing basic block 50
+Removing basic block 52
+Removing basic block 54
+Removing basic block 56
+Removing basic block 58
+Removing basic block 60
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+unsigned int bn_sub_part_words (unsigned int * r, const unsigned int * a, const unsigned int * b, int cl, int dl)
+{
+  static const char __func__[18] = "bn_sub_part_words";
+  unsigned int t;
+  unsigned int c;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned int _8;
+  unsigned int _10;
+  unsigned int _13;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int _19;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned int _27;
+  unsigned int _55;
+  unsigned int _63;
+  unsigned int _64;
+  unsigned int _79;
+  unsigned int _85;
+  unsigned int _125;
+  int _131;
+  unsigned int _134;
+  unsigned int _164;
+
+  <bb 2> [local count: 290261346]:
+  if (cl_66(D) < 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 3> [count: 0]:
+  __assert_rtn (&__func__, "bn_mul.c", 33, "cl >= 0");
+
+  <bb 4> [local count: 290261346]:
+  c_72 = bn_sub_words (r_68(D), a_69(D), b_70(D), cl_66(D));
+  if (dl_73(D) == 0)
+    goto <bb 42>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 191572487]:
+  _4 = (long unsigned int) cl_66(D);
+  _164 = (unsigned int) _4;
+  _5 = _164 w* 4;
+  r_74 = r_68(D) + _5;
+  if (dl_73(D) < 0)
+    goto <bb 6>; [41.00%]
+  else
+    goto <bb 7>; [59.00%]
+
+  <bb 6> [local count: 78544719]:
+  b_76 = b_70(D) + _5;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 113027768]:
+  a_75 = a_69(D) + _5;
+  if (c_72 != 0)
+    goto <bb 21>; [97.80%]
+  else
+    goto <bb 43>; [2.20%]
+
+  <bb 8> [local count: 744181368]:
+  # r_28 = PHI <r_74(6), r_122(20)>
+  # b_35 = PHI <b_76(6), b_121(20)>
+  # dl_36 = PHI <dl_73(D)(6), dl_120(20)>
+  # c_44 = PHI <c_72(6), c_48(20)>
+  t_109 = MEM[(const unsigned int *)b_35];
+  _125 = c_44 + t_109;
+  _8 = -_125;
+  MEM[(unsigned int *)r_28] = _8;
+  if (t_109 != 0)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 9> [local count: 372090684]:
+
+  <bb 10> [local count: 744181368]:
+  # c_45 = PHI <c_44(9), 1(8)>
+  if (dl_36 == -1)
+    goto <bb 42>; [2.75%]
+  else
+    goto <bb 11>; [97.25%]
+
+  <bb 11> [local count: 723716378]:
+  t_112 = MEM[(const unsigned int *)b_35 + 4B];
+  _85 = c_45 + t_112;
+  _10 = -_85;
+  MEM[(unsigned int *)r_28 + 4B] = _10;
+  if (t_112 != 0)
+    goto <bb 13>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 12> [local count: 361858189]:
+
+  <bb 13> [local count: 723716378]:
+  # c_46 = PHI <c_45(12), 1(11)>
+  if (dl_36 == -2)
+    goto <bb 42>; [2.75%]
+  else
+    goto <bb 14>; [97.25%]
+
+  <bb 14> [local count: 703814175]:
+  t_115 = MEM[(const unsigned int *)b_35 + 8B];
+  _64 = c_46 + t_115;
+  _13 = -_64;
+  MEM[(unsigned int *)r_28 + 8B] = _13;
+  if (t_115 != 0)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 15> [local count: 351907088]:
+
+  <bb 16> [local count: 703814175]:
+  # c_47 = PHI <c_46(15), 1(14)>
+  if (dl_36 == -3)
+    goto <bb 42>; [2.75%]
+  else
+    goto <bb 17>; [97.25%]
+
+  <bb 17> [local count: 684459283]:
+  t_118 = MEM[(const unsigned int *)b_35 + 12B];
+  _63 = c_47 + t_118;
+  _15 = -_63;
+  MEM[(unsigned int *)r_28 + 12B] = _15;
+  if (t_118 != 0)
+    goto <bb 19>; [50.00%]
+  else
+    goto <bb 18>; [50.00%]
+
+  <bb 18> [local count: 342229642]:
+
+  <bb 19> [local count: 684459283]:
+  # c_48 = PHI <c_47(18), 1(17)>
+  dl_120 = dl_36 + 4;
+  if (dl_120 == 0)
+    goto <bb 42>; [2.75%]
+  else
+    goto <bb 20>; [97.25%]
+
+  <bb 20> [local count: 665636651]:
+  b_121 = b_35 + 16;
+  r_122 = r_28 + 16;
+  goto <bb 8>; [100.00%]
+
+  <bb 21> [local count: 1050119504]:
+  # r_2 = PHI <r_90(35), r_74(7)>
+  # a_126 = PHI <a_89(35), a_75(7)>
+  # dl_124 = PHI <_131(35), dl_73(D)(7)>
+  # c_30 = PHI <c_51(35), c_72(7)>
+  t_77 = MEM[(const unsigned int *)a_126];
+  _16 = t_77 - c_30;
+  MEM[(unsigned int *)r_2] = _16;
+  if (t_77 != 0)
+    goto <bb 23>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 22> [local count: 525059752]:
+
+  <bb 23> [local count: 1050119504]:
+  # c_49 = PHI <c_30(22), 0(21)>
+  if (dl_124 == 1)
+    goto <bb 45>; [2.20%]
+  else
+    goto <bb 24>; [97.80%]
+
+  <bb 24> [local count: 1027016875]:
+  t_80 = MEM[(const unsigned int *)a_126 + 4B];
+  _17 = t_80 - c_49;
+  MEM[(unsigned int *)r_2 + 4B] = _17;
+  if (t_80 != 0)
+    goto <bb 26>; [50.00%]
+  else
+    goto <bb 25>; [50.00%]
+
+  <bb 25> [local count: 513508438]:
+
+  <bb 26> [local count: 1027016875]:
+  # c_50 = PHI <c_49(25), 0(24)>
+  if (dl_124 == 2)
+    goto <bb 45>; [2.20%]
+  else
+    goto <bb 27>; [97.80%]
+
+  <bb 27> [local count: 1004422503]:
+  t_83 = MEM[(const unsigned int *)a_126 + 8B];
+  _18 = t_83 - c_50;
+  MEM[(unsigned int *)r_2 + 8B] = _18;
+  if (t_83 != 0)
+    goto <bb 29>; [50.00%]
+  else
+    goto <bb 28>; [50.00%]
+
+  <bb 28> [local count: 502211252]:
+
+  <bb 29> [local count: 1004422503]:
+  # c_51 = PHI <c_50(28), 0(27)>
+  if (dl_124 == 3)
+    goto <bb 44>; [2.20%]
+  else
+    goto <bb 30>; [97.80%]
+
+  <bb 30> [local count: 982325208]:
+  t_86 = MEM[(const unsigned int *)a_126 + 12B];
+  _19 = t_86 - c_51;
+  MEM[(unsigned int *)r_2 + 12B] = _19;
+  _131 = dl_124 + -4;
+  if (t_86 != 0)
+    goto <bb 31>; [50.00%]
+  else
+    goto <bb 34>; [50.00%]
+
+  <bb 31> [local count: 491162604]:
+  if (_131 == 0)
+    goto <bb 32>; [2.20%]
+  else
+    goto <bb 33>; [97.80%]
+
+  <bb 32> [local count: 21957891]:
+  goto <bb 42>; [100.00%]
+
+  <bb 33> [local count: 480357027]:
+  a_34 = a_126 + 16;
+  r_31 = r_2 + 16;
+  goto <bb 43>; [100.00%]
+
+  <bb 34> [local count: 491162604]:
+  _134 = (unsigned int) dl_124;
+  if (_134 == 4)
+    goto <bb 44>; [2.20%]
+  else
+    goto <bb 35>; [97.80%]
+
+  <bb 35> [local count: 480357029]:
+  a_89 = a_126 + 16;
+  r_90 = r_2 + 16;
+  if (c_51 != 0)
+    goto <bb 21>; [99.44%]
+  else
+    goto <bb 36>; [0.56%]
+
+  <bb 36> [local count: 38667396]:
+  # r_143 = PHI <r_32(43), r_90(35)>
+  # a_142 = PHI <a_29(43), a_89(35)>
+  # dl_141 = PHI <dl_82(43), _131(35)>
+  _79 = *a_142;
+  *r_143 = _79;
+  if (dl_141 == 1)
+    goto <bb 41>; [2.75%]
+  else
+    goto <bb 37>; [97.25%]
+
+  <bb 37> [local count: 260361388]:
+  # r_135 = PHI <r_108(40), r_143(36)>
+  # a_132 = PHI <a_107(40), a_142(36)>
+  # dl_33 = PHI <dl_106(40), dl_141(36)>
+  _25 = MEM[(const unsigned int *)a_132 + 4B];
+  MEM[(unsigned int *)r_135 + 4B] = _25;
+  if (dl_33 == 2)
+    goto <bb 41>; [2.75%]
+  else
+    goto <bb 38>; [97.25%]
+
+  <bb 38> [local count: 253201449]:
+  _26 = MEM[(const unsigned int *)a_132 + 8B];
+  MEM[(unsigned int *)r_135 + 8B] = _26;
+  if (dl_33 == 3)
+    goto <bb 41>; [2.75%]
+  else
+    goto <bb 39>; [97.25%]
+
+  <bb 39> [local count: 246238408]:
+  _27 = MEM[(const unsigned int *)a_132 + 12B];
+  MEM[(unsigned int *)r_135 + 12B] = _27;
+  dl_106 = dl_33 + -4;
+  if (dl_106 == 0)
+    goto <bb 41>; [2.75%]
+  else
+    goto <bb 40>; [97.25%]
+
+  <bb 40> [local count: 239466851]:
+  a_107 = a_132 + 16;
+  r_108 = r_135 + 16;
+  _24 = MEM[(const unsigned int *)a_107];
+  MEM[(unsigned int *)r_108] = _24;
+  if (dl_106 == 1)
+    goto <bb 41>; [2.75%]
+  else
+    goto <bb 37>; [97.25%]
+
+  <bb 41> [local count: 21957891]:
+  goto <bb 32>; [100.00%]
+
+  <bb 42> [local count: 290261347]:
+  # _55 = PHI <c_72(4), c_104(45), c_46(13), c_45(10), c_47(16), c_48(19), 0(32)>
+  return _55;
+
+  <bb 43> [local count: 28256943]:
+  # dl_82 = PHI <_131(33), dl_73(D)(7)>
+  # r_32 = PHI <r_31(33), r_74(7)>
+  # a_29 = PHI <a_34(33), a_75(7)>
+  goto <bb 36>; [100.00%]
+
+  <bb 44> [local count: 22097295]:
+
+  <bb 45> [local count: 45708308]:
+  # c_104 = PHI <c_51(44), c_49(23), c_50(26)>
+  goto <bb 42>; [100.00%]
+
+}
+
+
+
+;; Function bn_mul_normal (bn_mul_normal, funcdef_no=176, decl_uid=11509, cgraph_uid=177, symbol_order=176)
+
+Removing basic block 3
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+void bn_mul_normal (unsigned int * r, unsigned int * a, int na, unsigned int * b, int nb)
+{
+  unsigned int * rr;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int * _5;
+  unsigned int _6;
+  unsigned int _7;
+  unsigned int * _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int * _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int * _14;
+  unsigned int _15;
+  unsigned int _16;
+  unsigned long _17;
+  unsigned long _36;
+  unsigned long _42;
+  unsigned long _58;
+
+  <bb 2> [local count: 153894921]:
+  if (na_27(D) < nb_28(D))
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 76947461]:
+
+  <bb 4> [local count: 153894921]:
+  # a_18 = PHI <a_29(D)(3), b_30(D)(2)>
+  # na_19 = PHI <na_27(D)(3), nb_28(D)(2)>
+  # b_20 = PHI <b_30(D)(3), a_29(D)(2)>
+  # nb_22 = PHI <nb_28(D)(3), na_27(D)(2)>
+  if (nb_22 <= 0)
+    goto <bb 5>; [26.36%]
+  else
+    goto <bb 6>; [73.64%]
+
+  <bb 5> [local count: 40566701]:
+  bn_mul_words (r_31(D), a_18, na_19, 0); [tail call]
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 113328220]:
+  _2 = na_19 w* 4;
+  rr_32 = r_31(D) + _2;
+  _3 = *b_20;
+  _4 = bn_mul_words (r_31(D), a_18, na_19, _3);
+  *rr_32 = _4;
+  if (nb_22 == 1)
+    goto <bb 11>; [2.75%]
+  else
+    goto <bb 7>; [97.25%]
+
+  <bb 7> [local count: 1044213921]:
+  # r_53 = PHI <_14(10), r_31(D)(6)>
+  # b_54 = PHI <b_49(10), b_20(6)>
+  # nb_55 = PHI <nb_45(10), nb_22(6)>
+  # rr_56 = PHI <rr_48(10), rr_32(6)>
+  _17 = (unsigned long) r_53;
+  _42 = _17 + 4;
+  _5 = (unsigned int *) _42;
+  _6 = MEM[(unsigned int *)b_54 + 4B];
+  _7 = bn_mul_add_words (_5, a_18, na_19, _6);
+  MEM[(unsigned int *)rr_56 + 4B] = _7;
+  if (nb_55 == 2)
+    goto <bb 11>; [2.75%]
+  else
+    goto <bb 8>; [97.25%]
+
+  <bb 8> [local count: 1015498034]:
+  _58 = _17 + 8;
+  _8 = (unsigned int *) _58;
+  _9 = MEM[(unsigned int *)b_54 + 8B];
+  _10 = bn_mul_add_words (_8, a_18, na_19, _9);
+  MEM[(unsigned int *)rr_56 + 8B] = _10;
+  if (nb_55 == 3)
+    goto <bb 11>; [2.75%]
+  else
+    goto <bb 9>; [97.25%]
+
+  <bb 9> [local count: 987571835]:
+  _36 = _17 + 12;
+  _11 = (unsigned int *) _36;
+  _12 = MEM[(unsigned int *)b_54 + 12B];
+  _13 = bn_mul_add_words (_11, a_18, na_19, _12);
+  MEM[(unsigned int *)rr_56 + 12B] = _13;
+  nb_45 = nb_55 + -4;
+  if (nb_45 == 0)
+    goto <bb 11>; [2.75%]
+  else
+    goto <bb 10>; [97.25%]
+
+  <bb 10> [local count: 960413606]:
+  _14 = r_53 + 16;
+  _15 = MEM[(unsigned int *)b_54 + 16B];
+  _16 = bn_mul_add_words (_14, a_18, na_19, _15);
+  MEM[(unsigned int *)rr_56 + 16B] = _16;
+  rr_48 = rr_56 + 16;
+  b_49 = b_54 + 16;
+  if (nb_45 == 1)
+    goto <bb 11>; [2.75%]
+  else
+    goto <bb 7>; [97.25%]
+
+  <bb 11> [local count: 113328220]:
+
+  <bb 12> [local count: 153894921]:
+  return;
+
+}
+
+
+
+;; Function bn_mul_recursive (bn_mul_recursive, funcdef_no=171, decl_uid=11545, cgraph_uid=172, symbol_order=171)
+
+Removing basic block 54
+Removing basic block 55
+Removing basic block 56
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+Removing basic block 60
+Removing basic block 61
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+void bn_mul_recursive (unsigned int * r, unsigned int * a, unsigned int * b, int n2, int dna, int dnb, unsigned int * t)
+{
+  unsigned int * p;
+  unsigned int lo;
+  unsigned int ln;
+  unsigned int neg;
+  int tnb;
+  int tna;
+  int c2;
+  int c1;
+  int n;
+  _Bool _1;
+  _Bool _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  int _6;
+  int _8;
+  int _9;
+  long unsigned int _11;
+  unsigned int * _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _17;
+  long unsigned int _18;
+  unsigned int * _19;
+  unsigned int * _20;
+  int _21;
+  int _22;
+  unsigned int * _23;
+  unsigned int * _24;
+  unsigned int * _25;
+  unsigned int * _26;
+  unsigned int * _33;
+  unsigned int * prephitmp_37;
+  unsigned int * _40;
+  _Bool _41;
+  _Bool _42;
+  unsigned int * _43;
+  unsigned int * _54;
+  unsigned int _58;
+  unsigned int _60;
+  unsigned int _62;
+  unsigned int * _63;
+  unsigned int _65;
+  int _66;
+  long unsigned int _67;
+  long unsigned int _68;
+  unsigned int c1.0_69;
+  int _101;
+  int _104;
+  int _107;
+  long unsigned int _114;
+  int _122;
+  int _125;
+  int _128;
+  unsigned int _178;
+  __complex__ unsigned int _179;
+  unsigned int _180;
+  long unsigned int _193;
+  unsigned int * prephitmp_195;
+  unsigned int * _208;
+  unsigned int * _209;
+  unsigned int _218;
+  unsigned int _219;
+  unsigned int _220;
+
+  <bb 2> [local count: 796426226]:
+  _1 = n2_83(D) == 8;
+  _2 = dna_85(D) == 0;
+  _3 = _1 & _2;
+  if (_3 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 3> [local count: 398213113]:
+  if (dnb_87(D) == 0)
+    goto <bb 4>; [20.24%]
+  else
+    goto <bb 6>; [79.76%]
+
+  <bb 4> [local count: 80598334]:
+  bn_mul_comba8 (r_90(D), a_91(D), b_92(D)); [tail call]
+  goto <bb 53>; [100.00%]
+
+  <bb 5> [local count: 398213113]:
+  if (n2_83(D) <= 15)
+    goto <bb 6>; [11.41%]
+  else
+    goto <bb 9>; [88.59%]
+
+  <bb 6> [local count: 243381486]:
+  _4 = n2_83(D) + dna_85(D);
+  _5 = n2_83(D) + dnb_87(D);
+  bn_mul_normal (r_90(D), a_91(D), _4, b_92(D), _5);
+  _6 = dna_85(D) + dnb_87(D);
+  if (_6 < 0)
+    goto <bb 8>; [25.50%]
+  else
+    goto <bb 7>; [74.50%]
+
+  <bb 7> [local count: 653765606]:
+  goto <bb 53>; [100.00%]
+
+  <bb 8> [local count: 62062280]:
+  _8 = _4 + n2_83(D);
+  _9 = _8 + dnb_87(D);
+  _11 = _9 w* 4;
+  _12 = r_90(D) + _11;
+  _13 = -_6;
+  _14 = (long unsigned int) _13;
+  _220 = (unsigned int) _14;
+  _15 = _220 w* 4;
+  __builtin_memset (_12, 0, _15); [tail call]
+  goto <bb 53>; [100.00%]
+
+  <bb 9> [local count: 472446407]:
+  n_84 = n2_83(D) >> 1;
+  tna_86 = n_84 + dna_85(D);
+  tnb_88 = n_84 + dnb_87(D);
+  _17 = (long unsigned int) n_84;
+  _218 = (unsigned int) _17;
+  _18 = _218 w* 4;
+  _19 = a_91(D) + _18;
+  _107 = -dna_85(D);
+  c1_95 = bn_cmp_part_words (a_91(D), _19, tna_86, _107);
+  _20 = b_92(D) + _18;
+  c2_97 = bn_cmp_part_words (_20, b_92(D), tnb_88, dnb_87(D));
+  _21 = c1_95 * 3;
+  _22 = _21 + c2_97;
+  _193 = (long unsigned int) n2_83(D);
+  _219 = (unsigned int) _193;
+  _114 = _219 w* 4;
+  _43 = t_98(D) + _114;
+  _42 = n_84 == 8;
+  _41 = _2 & _42;
+  if (_22 > 1)
+    goto <bb 14>; [47.22%]
+  else
+    goto <bb 10>; [52.78%]
+
+  <bb 10> [local count: 249346714]:
+  if (_22 >= -1)
+    goto <bb 17>; [10.53%]
+  else
+    goto <bb 11>; [89.47%]
+
+  <bb 11> [local count: 223099693]:
+  if (_22 == -3)
+    goto <bb 17>; [11.76%]
+  else
+    goto <bb 12>; [88.24%]
+
+  <bb 12> [local count: 196852672]:
+  if (_22 == -2)
+    goto <bb 24>; [40.00%]
+  else
+    goto <bb 13>; [60.00%]
+
+  <bb 13> [local count: 118111603]:
+  if (_22 == -4)
+    goto <bb 23>; [66.67%]
+  else
+    goto <bb 20>; [33.33%]
+
+  <bb 14> [local count: 223099693]:
+  if (_22 == 3)
+    goto <bb 17>; [11.76%]
+  else
+    goto <bb 15>; [88.24%]
+
+  <bb 15> [local count: 196852672]:
+  if (_22 == 4)
+    goto <bb 31>; [40.00%]
+  else
+    goto <bb 16>; [60.00%]
+
+  <bb 16> [local count: 118111603]:
+  if (_22 == 2)
+    goto <bb 28>; [66.67%]
+  else
+    goto <bb 20>; [33.33%]
+
+  <bb 17> [local count: 78741067]:
+  if (_41 != 0)
+    goto <bb 18>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 18> [local count: 39370534]:
+  if (dnb_87(D) == 0)
+    goto <bb 38>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 19> [local count: 177167400]:
+  p_172 = _43 + _114;
+  __builtin_memset (_43, 0, _114);
+  goto <bb 46>; [100.00%]
+
+  <bb 20> [local count: 78741067]:
+  if (_41 != 0)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 21> [local count: 39370534]:
+  if (dnb_87(D) == 0)
+    goto <bb 36>; [50.00%]
+  else
+    goto <bb 43>; [50.00%]
+
+  <bb 22> [local count: 39370534]:
+  p_145 = _43 + _114;
+  _209 = t_98(D) + _18;
+  goto <bb 45>; [100.00%]
+
+  <bb 23> [local count: 78741067]:
+  bn_sub_part_words (t_98(D), _19, a_91(D), tna_86, dna_85(D));
+  _23 = t_98(D) + _18;
+  _101 = -dnb_87(D);
+  bn_sub_part_words (_23, b_92(D), _20, tnb_88, _101);
+  if (_41 != 0)
+    goto <bb 34>; [50.00%]
+  else
+    goto <bb 35>; [50.00%]
+
+  <bb 24> [local count: 78741067]:
+  bn_sub_part_words (t_98(D), _19, a_91(D), tna_86, dna_85(D));
+  _24 = t_98(D) + _18;
+  bn_sub_part_words (_24, _20, b_92(D), tnb_88, dnb_87(D));
+  if (_41 != 0)
+    goto <bb 25>; [50.00%]
+  else
+    goto <bb 27>; [50.00%]
+
+  <bb 25> [local count: 39370534]:
+  if (dnb_87(D) == 0)
+    goto <bb 26>; [50.00%]
+  else
+    goto <bb 42>; [50.00%]
+
+  <bb 26> [local count: 39370534]:
+  goto <bb 37>; [100.00%]
+
+  <bb 27> [local count: 39370534]:
+  p_154 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 28> [local count: 78741067]:
+  bn_sub_part_words (t_98(D), a_91(D), _19, tna_86, _107);
+  _25 = t_98(D) + _18;
+  _104 = -dnb_87(D);
+  bn_sub_part_words (_25, b_92(D), _20, tnb_88, _104);
+  if (_41 != 0)
+    goto <bb 29>; [50.00%]
+  else
+    goto <bb 30>; [50.00%]
+
+  <bb 29> [local count: 39370534]:
+  if (dnb_87(D) == 0)
+    goto <bb 26>; [50.00%]
+  else
+    goto <bb 41>; [50.00%]
+
+  <bb 30> [local count: 39370534]:
+  p_163 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 31> [local count: 78741067]:
+  bn_sub_part_words (t_98(D), a_91(D), _19, tna_86, _107);
+  _26 = t_98(D) + _18;
+  bn_sub_part_words (_26, _20, b_92(D), tnb_88, dnb_87(D));
+  if (_41 != 0)
+    goto <bb 32>; [50.00%]
+  else
+    goto <bb 33>; [50.00%]
+
+  <bb 32> [local count: 39370534]:
+  if (dnb_87(D) == 0)
+    goto <bb 36>; [50.00%]
+  else
+    goto <bb 44>; [50.00%]
+
+  <bb 33> [local count: 39370534]:
+  p_181 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 34> [local count: 39370530]:
+  if (dnb_87(D) == 0)
+    goto <bb 36>; [50.00%]
+  else
+    goto <bb 40>; [50.00%]
+
+  <bb 35> [local count: 39370533]:
+  p_190 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 36> [local count: 59055799]:
+
+  <bb 37> [local count: 59055800]:
+  # neg_191 = PHI <1(26), 0(36)>
+  _33 = t_98(D) + 32;
+  bn_mul_comba8 (_43, t_98(D), _33);
+  goto <bb 39>; [100.00%]
+
+  <bb 38> [local count: 59055800]:
+  __builtin_memset (_43, 0, 64);
+
+  <bb 39> [local count: 118111600]:
+  # neg_192 = PHI <neg_191(37), 0(38)>
+  bn_mul_comba8 (r_90(D), a_91(D), b_92(D));
+  _40 = r_90(D) + _114;
+  bn_mul_comba8 (_40, _19, _20);
+  goto <bb 47>; [100.00%]
+
+  <bb 40> [local count: 19685265]:
+  p_164 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 41> [local count: 19685267]:
+  p_182 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 42> [local count: 19685267]:
+  p_207 = _43 + _114;
+  goto <bb 45>; [100.00%]
+
+  <bb 43> [local count: 19685267]:
+  p_214 = _43 + _114;
+  _208 = t_98(D) + 32;
+  goto <bb 45>; [100.00%]
+
+  <bb 44> [local count: 19685264]:
+  p_221 = _43 + _114;
+
+  <bb 45> [local count: 177167400]:
+  # neg_194 = PHI <0(44), 0(22), 1(27), 1(30), 0(33), 0(35), 0(40), 1(41), 1(42), 0(43)>
+  # p_203 = PHI <p_221(44), p_145(22), p_154(27), p_163(30), p_181(33), p_190(35), p_164(40), p_182(41), p_207(42), p_214(43)>
+  # prephitmp_195 = PHI <_26(44), _209(22), _24(27), _25(30), _26(33), _23(35), _23(40), _25(41), _24(42), _208(43)>
+  bn_mul_recursive (_43, t_98(D), prephitmp_195, n_84, 0, 0, p_203);
+
+  <bb 46> [local count: 354334800]:
+  # neg_196 = PHI <neg_194(45), 0(19)>
+  # p_205 = PHI <p_203(45), p_172(19)>
+  bn_mul_recursive (r_90(D), a_91(D), b_92(D), n_84, 0, 0, p_205);
+  _54 = r_90(D) + _114;
+  bn_mul_recursive (_54, _19, _20, n_84, dna_85(D), dnb_87(D), p_205);
+
+  <bb 47> [local count: 472446400]:
+  # neg_197 = PHI <neg_196(46), neg_192(39)>
+  # prephitmp_37 = PHI <_54(46), _40(39)>
+  _58 = bn_add_words (t_98(D), r_90(D), prephitmp_37, n2_83(D));
+  c1_120 = (int) _58;
+  if (neg_197 != 0)
+    goto <bb 48>; [50.00%]
+  else
+    goto <bb 49>; [50.00%]
+
+  <bb 48> [local count: 236223200]:
+  _60 = bn_sub_words (_43, t_98(D), _43, n2_83(D));
+  _125 = (int) _60;
+  c1_126 = c1_120 - _125;
+  goto <bb 50>; [100.00%]
+
+  <bb 49> [local count: 236223200]:
+  _62 = bn_add_words (_43, _43, t_98(D), n2_83(D));
+  _122 = (int) _62;
+  c1_123 = c1_120 + _122;
+
+  <bb 50> [local count: 472446400]:
+  # c1_70 = PHI <c1_126(48), c1_123(49)>
+  _63 = r_90(D) + _18;
+  _65 = bn_add_words (_63, _63, _43, n2_83(D));
+  _128 = (int) _65;
+  c1_129 = c1_70 + _128;
+  if (c1_129 != 0)
+    goto <bb 51>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 51> [local count: 236223200]:
+  _66 = n2_83(D) + n_84;
+  _67 = (long unsigned int) _66;
+  _178 = (unsigned int) _67;
+  _68 = _178 w* 4;
+  p_130 = r_90(D) + _68;
+  lo_131 = *p_130;
+  c1.0_69 = (unsigned int) c1_129;
+  _179 = .ADD_OVERFLOW (c1.0_69, lo_131);
+  ln_132 = REALPART_EXPR <_179>;
+  _180 = IMAGPART_EXPR <_179>;
+  *p_130 = ln_132;
+  if (_180 != 0)
+    goto <bb 52>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 52> [local count: 1073741824]:
+  # p_73 = PHI <p_130(51), p_134(52)>
+  p_134 = p_73 + 4;
+  lo_135 = MEM[(unsigned int *)p_134];
+  ln_136 = lo_135 + 1;
+  MEM[(unsigned int *)p_134] = ln_136;
+  if (ln_136 == 0)
+    goto <bb 52>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 53> [local count: 796426219]:
+  return;
+
+}
+
+
+
+;; Function bn_mul_part_recursive (bn_mul_part_recursive, funcdef_no=172, decl_uid=11553, cgraph_uid=173, symbol_order=172)
+
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+void bn_mul_part_recursive (unsigned int * r, unsigned int * a, unsigned int * b, int n, int tna, int tnb, unsigned int * t)
+{
+  unsigned int * p;
+  unsigned int lo;
+  unsigned int ln;
+  int neg;
+  int c2;
+  int c1;
+  int n2;
+  int j;
+  int i;
+  int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  unsigned int * _5;
+  int _6;
+  unsigned int * _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  unsigned int * _12;
+  int _13;
+  int _14;
+  unsigned int * _15;
+  unsigned int * _16;
+  int _17;
+  unsigned int * _18;
+  unsigned int * _20;
+  unsigned int * _21;
+  unsigned int * _22;
+  int _23;
+  int _24;
+  long unsigned int _26;
+  unsigned int * _27;
+  int _28;
+  int _29;
+  long unsigned int _31;
+  unsigned int _34;
+  unsigned int * _38;
+  int _40;
+  int _41;
+  int _42;
+  int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  unsigned int * _46;
+  int _47;
+  long unsigned int _49;
+  int _50;
+  int _52;
+  int _53;
+  int _54;
+  int _55;
+  long unsigned int _57;
+  unsigned int * _58;
+  int _59;
+  int _60;
+  long unsigned int _62;
+  unsigned int _65;
+  _Bool _66;
+  _Bool _67;
+  _Bool _68;
+  int _69;
+  int _70;
+  _Bool _71;
+  _Bool _72;
+  _Bool _73;
+  int _74;
+  int _75;
+  unsigned int _79;
+  unsigned int _81;
+  unsigned int _83;
+  unsigned int * _84;
+  unsigned int _86;
+  int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  unsigned int c1.2_90;
+  int _145;
+  int _148;
+  int _151;
+  unsigned int _162;
+  unsigned int _171;
+  long unsigned int _174;
+  long unsigned int _175;
+  unsigned int * _176;
+  unsigned int * _177;
+  unsigned int _186;
+  unsigned int _187;
+  __complex__ unsigned int _188;
+  unsigned int _189;
+
+  <bb 2> [local count: 715827873]:
+  if (n_101(D) <= 7)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 243381480]:
+  _1 = n_101(D) + tna_104(D);
+  _2 = n_101(D) + tnb_109(D);
+  bn_mul_normal (r_124(D), a_103(D), _1, b_108(D), _2); [tail call]
+  goto <bb 38>; [100.00%]
+
+  <bb 4> [local count: 472446394]:
+  _3 = (long unsigned int) n_101(D);
+  _186 = (unsigned int) _3;
+  _4 = _186 w* 4;
+  _5 = a_103(D) + _4;
+  _6 = n_101(D) - tna_104(D);
+  c1_107 = bn_cmp_part_words (a_103(D), _5, tna_104(D), _6);
+  _7 = b_108(D) + _4;
+  _8 = tnb_109(D) - n_101(D);
+  c2_111 = bn_cmp_part_words (_7, b_108(D), tnb_109(D), _8);
+  _9 = c1_107 * 3;
+  _10 = _9 + c2_111;
+  if (_10 > 2)
+    goto <bb 9>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 5> [local count: 330712474]:
+  if (_10 >= -1)
+    goto <bb 12>; [28.57%]
+  else
+    goto <bb 6>; [71.43%]
+
+  <bb 6> [local count: 236223196]:
+  if (_10 == -4)
+    goto <bb 10>; [40.00%]
+  else
+    goto <bb 7>; [60.00%]
+
+  <bb 7> [local count: 141733918]:
+  if (_10 < -4)
+    goto <bb 11>; [16.67%]
+  else
+    goto <bb 8>; [83.33%]
+
+  <bb 8> [local count: 118111597]:
+  _14 = tna_104(D) - n_101(D);
+  bn_sub_part_words (t_112(D), _5, a_103(D), tna_104(D), _14);
+  _15 = t_112(D) + _4;
+  bn_sub_part_words (_15, _7, b_108(D), tnb_109(D), _8);
+  goto <bb 14>; [100.00%]
+
+  <bb 9> [local count: 141733920]:
+  _65 = (unsigned int) _10;
+  _189 = _65 + 4294967293;
+  if (_189 > 1)
+    goto <bb 11>; [33.33%]
+  else
+    goto <bb 13>; [66.67%]
+
+  <bb 10> [local count: 94489280]:
+  _11 = tna_104(D) - n_101(D);
+  bn_sub_part_words (t_112(D), _5, a_103(D), tna_104(D), _11);
+  _12 = t_112(D) + _4;
+  _13 = n_101(D) - tnb_109(D);
+  bn_sub_part_words (_12, b_108(D), _7, tnb_109(D), _13);
+
+  <bb 11> [local count: 188978560]:
+  goto <bb 15>; [100.00%]
+
+  <bb 12> [local count: 94489280]:
+  bn_sub_part_words (t_112(D), a_103(D), _5, tna_104(D), _6);
+  _16 = t_112(D) + _4;
+  _17 = n_101(D) - tnb_109(D);
+  bn_sub_part_words (_16, b_108(D), _7, tnb_109(D), _17);
+  goto <bb 14>; [100.00%]
+
+  <bb 13> [local count: 94489280]:
+  bn_sub_part_words (t_112(D), a_103(D), _5, tna_104(D), _6);
+  _18 = t_112(D) + _4;
+  bn_sub_part_words (_18, _7, b_108(D), tnb_109(D), _8);
+  goto <bb 11>; [100.00%]
+
+  <bb 14> [local count: 94489280]:
+
+  <bb 15> [local count: 472446401]:
+  # neg_94 = PHI <0(11), 1(14)>
+  n2_102 = n_101(D) * 2;
+  _174 = (long unsigned int) n2_102;
+  _34 = (unsigned int) _174;
+  _175 = _34 w* 4;
+  _176 = t_112(D) + _175;
+  _177 = r_124(D) + _175;
+  if (n_101(D) == 8)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 17>; [66.00%]
+
+  <bb 16> [local count: 160631778]:
+  _20 = t_112(D) + 64;
+  _21 = t_112(D) + 32;
+  bn_mul_comba8 (_20, t_112(D), _21);
+  bn_mul_comba8 (r_124(D), a_103(D), b_108(D));
+  _22 = r_124(D) + 64;
+  bn_mul_normal (_22, _5, tna_104(D), _7, tnb_109(D));
+  _23 = tna_104(D) + 16;
+  _24 = _23 + tnb_109(D);
+  _26 = _24 w* 4;
+  _27 = r_124(D) + _26;
+  _28 = 16 - tna_104(D);
+  _29 = _28 - tnb_109(D);
+  _31 = _29 w* 4;
+  __builtin_memset (_27, 0, _31);
+  goto <bb 31>; [100.00%]
+
+  <bb 17> [local count: 311814623]:
+  p_122 = _176 + _175;
+  _38 = t_112(D) + _4;
+  bn_mul_recursive (_176, t_112(D), _38, n_101(D), 0, 0, p_122);
+  bn_mul_recursive (r_124(D), a_103(D), b_108(D), n_101(D), 0, 0, p_122);
+  i_126 = n_101(D) >> 1;
+  if (tna_104(D) > tnb_109(D))
+    goto <bb 18>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 18> [local count: 155907311]:
+  j_128 = tna_104(D) - i_126;
+  goto <bb 20>; [100.00%]
+
+  <bb 19> [local count: 155907311]:
+  j_127 = tnb_109(D) - i_126;
+
+  <bb 20> [local count: 311814623]:
+  # j_92 = PHI <j_128(18), j_127(19)>
+  if (j_92 == 0)
+    goto <bb 21>; [33.00%]
+  else
+    goto <bb 22>; [67.00%]
+
+  <bb 21> [local count: 102898825]:
+  _40 = tna_104(D) - i_126;
+  _41 = tnb_109(D) - i_126;
+  bn_mul_recursive (_177, _5, _7, i_126, _40, _41, p_122);
+  _42 = i_126 * 2;
+  _43 = _42 + n2_102;
+  _44 = (long unsigned int) _43;
+  _162 = (unsigned int) _44;
+  _45 = _162 w* 4;
+  _46 = r_124(D) + _45;
+  _47 = n2_102 - _42;
+  _49 = _47 w* 4;
+  __builtin_memset (_46, 0, _49);
+  goto <bb 31>; [100.00%]
+
+  <bb 22> [local count: 208915798]:
+  if (j_92 > 0)
+    goto <bb 23>; [59.00%]
+  else
+    goto <bb 24>; [41.00%]
+
+  <bb 23> [local count: 123260321]:
+  _52 = tna_104(D) - i_126;
+  _53 = tnb_109(D) - i_126;
+  bn_mul_part_recursive (_177, _5, _7, i_126, _52, _53, p_122);
+  _54 = n2_102 + tna_104(D);
+  _55 = _54 + tnb_109(D);
+  _57 = _55 w* 4;
+  _58 = r_124(D) + _57;
+  _59 = n2_102 - tna_104(D);
+  _60 = _59 - tnb_109(D);
+  _62 = _60 w* 4;
+  __builtin_memset (_58, 0, _62);
+  goto <bb 31>; [100.00%]
+
+  <bb 24> [local count: 85655476]:
+  __builtin_memset (_177, 0, _175);
+  _66 = tna_104(D) <= 15;
+  _67 = tnb_109(D) <= 15;
+  _68 = _66 & _67;
+  if (_68 != 0)
+    goto <bb 25>; [33.00%]
+  else
+    goto <bb 26>; [67.00%]
+
+  <bb 25> [local count: 28266307]:
+  bn_mul_normal (_177, _5, tna_104(D), _7, tnb_109(D));
+  goto <bb 31>; [100.00%]
+
+  <bb 26> [local count: 57389169]:
+  _50 = MAX_EXPR <tna_104(D), tnb_109(D)>;
+
+  <bb 27> [local count: 536472728]:
+  # i_91 = PHI <i_126(26), i_130(29)>
+  i_130 = i_91 / 2;
+  if (_50 > i_130)
+    goto <bb 28>; [5.50%]
+  else
+    goto <bb 29>; [94.50%]
+
+  <bb 28> [local count: 29506000]:
+  _69 = tna_104(D) - i_130;
+  _70 = tnb_109(D) - i_130;
+  bn_mul_part_recursive (_177, _5, _7, i_130, _69, _70, p_122);
+  goto <bb 31>; [100.00%]
+
+  <bb 29> [local count: 506966728]:
+  _71 = tna_104(D) == i_130;
+  _72 = tnb_109(D) == i_130;
+  _73 = _71 | _72;
+  if (_73 != 0)
+    goto <bb 30>; [5.50%]
+  else
+    goto <bb 27>; [94.50%]
+
+  <bb 30> [local count: 27883170]:
+  _74 = tna_104(D) - i_130;
+  _75 = tnb_109(D) - i_130;
+  bn_mul_recursive (_177, _5, _7, i_130, _74, _75, p_122);
+
+  <bb 31> [local count: 472446401]:
+  _79 = bn_add_words (t_112(D), r_124(D), _177, n2_102);
+  c1_143 = (int) _79;
+  if (neg_94 != 0)
+    goto <bb 32>; [50.00%]
+  else
+    goto <bb 33>; [50.00%]
+
+  <bb 32> [local count: 236223200]:
+  _81 = bn_sub_words (_176, t_112(D), _176, n2_102);
+  _148 = (int) _81;
+  c1_149 = c1_143 - _148;
+  goto <bb 34>; [100.00%]
+
+  <bb 33> [local count: 236223200]:
+  _83 = bn_add_words (_176, _176, t_112(D), n2_102);
+  _145 = (int) _83;
+  c1_146 = c1_143 + _145;
+
+  <bb 34> [local count: 472446401]:
+  # c1_93 = PHI <c1_149(32), c1_146(33)>
+  _84 = r_124(D) + _4;
+  _86 = bn_add_words (_84, _84, _176, n2_102);
+  _151 = (int) _86;
+  c1_152 = c1_93 + _151;
+  if (c1_152 != 0)
+    goto <bb 36>; [50.00%]
+  else
+    goto <bb 35>; [50.00%]
+
+  <bb 35> [local count: 472446401]:
+  goto <bb 38>; [100.00%]
+
+  <bb 36> [local count: 236223200]:
+  _87 = n_101(D) + n2_102;
+  _88 = (long unsigned int) _87;
+  _171 = (unsigned int) _88;
+  _89 = _171 w* 4;
+  p_153 = r_124(D) + _89;
+  lo_154 = *p_153;
+  c1.2_90 = (unsigned int) c1_152;
+  _188 = .ADD_OVERFLOW (c1.2_90, lo_154);
+  ln_155 = REALPART_EXPR <_188>;
+  _187 = IMAGPART_EXPR <_188>;
+  *p_153 = ln_155;
+  if (_187 != 0)
+    goto <bb 37>; [50.00%]
+  else
+    goto <bb 35>; [50.00%]
+
+  <bb 37> [local count: 1073741824]:
+  # p_95 = PHI <p_153(36), p_157(37)>
+  p_157 = p_95 + 4;
+  lo_158 = MEM[(unsigned int *)p_157];
+  ln_159 = lo_158 + 1;
+  MEM[(unsigned int *)p_157] = ln_159;
+  if (ln_159 == 0)
+    goto <bb 37>; [89.00%]
+  else
+    goto <bb 35>; [11.00%]
+
+  <bb 38> [local count: 715827881]:
+  return;
+
+}
+
+
+
+;; Function bn_mul_fixed_top (bn_mul_fixed_top, funcdef_no=175, decl_uid=11340, cgraph_uid=176, symbol_order=175)
+
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+Removing basic block 49
+int bn_mul_fixed_top (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, struct BN_CTX * ctx)
+{
+  static const char __func__[17] = "bn_mul_fixed_top";
+  int k;
+  int j;
+  struct BIGNUM * t;
+  int i;
+  struct BIGNUM * rr;
+  int bl;
+  int al;
+  int top;
+  int ret;
+  _Bool _1;
+  _Bool _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  _Bool _6;
+  struct BIGNUM * _7;
+  unsigned int * _8;
+  unsigned int * _9;
+  unsigned int * _10;
+  _Bool _11;
+  _Bool _12;
+  _Bool _13;
+  unsigned int i.4_14;
+  unsigned int _15;
+  unsigned int al.5_16;
+  unsigned int bl.6_17;
+  int _18;
+  int _22;
+  struct BIGNUM * _23;
+  struct BIGNUM * _24;
+  unsigned int * _25;
+  unsigned int * _26;
+  unsigned int * _27;
+  int _28;
+  int _29;
+  unsigned int * _30;
+  int _31;
+  struct BIGNUM * _32;
+  struct BIGNUM * _33;
+  unsigned int * _34;
+  unsigned int * _35;
+  unsigned int * _36;
+  int _37;
+  int _38;
+  unsigned int * _39;
+  struct BIGNUM * _40;
+  unsigned int * _41;
+  unsigned int * _42;
+  unsigned int * _43;
+  int _44;
+  int _45;
+  int _46;
+  struct BIGNUM * _48;
+  int _53;
+  int _100;
+  _Bool _104;
+  int _114;
+  _Bool _115;
+  _Bool _116;
+  _Bool _117;
+
+  <bb 2> [local count: 1073741822]:
+  al_64 = a_63(D)->top;
+  bl_66 = b_65(D)->top;
+  _1 = al_64 == 0;
+  _2 = bl_66 == 0;
+  _3 = _1 | _2;
+  if (_3 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072224]:
+  BN_zero_ex (r_70(D));
+  goto <bb 33>; [100.00%]
+
+  <bb 4> [local count: 708669599]:
+  top_67 = al_64 + bl_66;
+  BN_CTX_start (ctx_68(D));
+  _4 = a_63(D) == r_70(D);
+  _5 = b_65(D) == r_70(D);
+  _6 = _4 | _5;
+  if (_6 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 5> [local count: 233860966]:
+  rr_72 = BN_CTX_get (ctx_68(D));
+  if (rr_72 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 7>; [81.91%]
+
+  <bb 6> [local count: 336916380]:
+  goto <bb 32>; [100.00%]
+
+  <bb 7> [local count: 666364151]:
+  # rr_50 = PHI <rr_72(5), r_70(D)(4)>
+  i_73 = al_64 - bl_66;
+  if (i_73 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 8> [local count: 333182076]:
+  if (al_64 == 8)
+    goto <bb 10>; [20.24%]
+  else
+    goto <bb 9>; [79.76%]
+
+  <bb 9> [local count: 265746024]:
+  _117 = al_64 > 15;
+  _104 = bl_66 > 15;
+  _115 = _104 & _117;
+  if (_115 != 0)
+    goto <bb 16>; [67.00%]
+  else
+    goto <bb 28>; [33.00%]
+
+  <bb 10> [local count: 67436052]:
+  _7 = bn_wexpand (rr_50, 16);
+  if (_7 == 0B)
+    goto <bb 6>; [46.53%]
+  else
+    goto <bb 11>; [53.47%]
+
+  <bb 11> [local count: 36058057]:
+  rr_50->top = 16;
+  _8 = rr_50->d;
+  _9 = a_63(D)->d;
+  _10 = b_65(D)->d;
+  bn_mul_comba8 (_8, _9, _10);
+  goto <bb 30>; [100.00%]
+
+  <bb 12> [local count: 333182076]:
+  _11 = al_64 > 15;
+  _12 = bl_66 > 15;
+  _13 = _11 & _12;
+  if (_13 != 0)
+    goto <bb 13>; [67.00%]
+  else
+    goto <bb 28>; [33.00%]
+
+  <bb 13> [local count: 223231991]:
+  i.4_14 = (unsigned int) i_73;
+  _15 = i.4_14 + 1;
+  if (_15 <= 2)
+    goto <bb 14>; [10.12%]
+  else
+    goto <bb 28>; [89.88%]
+
+  <bb 14> [local count: 22591077]:
+  if (i_73 != -1)
+    goto <bb 16>; [19.29%]
+  else
+    goto <bb 15>; [80.71%]
+
+  <bb 15> [local count: 102567636]:
+  bl.6_17 = (unsigned int) bl_66;
+  j_80 = BN_num_bits_word (bl.6_17);
+  goto <bb 17>; [100.00%]
+
+  <bb 16> [local count: 98073278]:
+  al.5_16 = (unsigned int) al_64;
+  j_78 = BN_num_bits_word (al.5_16);
+
+  <bb 17> [local count: 118832967]:
+  # j_52 = PHI <j_78(16), j_80(15)>
+  _18 = j_52 + -1;
+  j_81 = 1 << _18;
+  _100 = MAX_EXPR <al_64, bl_66>;
+  if (j_81 > _100)
+    goto <bb 18>; [0.00%]
+  else
+    goto <bb 19>; [100.00%]
+
+  <bb 18> [count: 0]:
+  __assert_rtn (&__func__, "bn_mul.c", 577, "j <= al || j <= bl");
+
+  <bb 19> [local count: 200640914]:
+  k_82 = 2 << _18;
+  t_84 = BN_CTX_get (ctx_68(D));
+  if (t_84 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 20>; [81.91%]
+
+  <bb 20> [local count: 164344973]:
+  if (j_81 < _100)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 24>; [50.00%]
+
+  <bb 21> [local count: 82172486]:
+  _22 = k_82 * 4;
+  _23 = bn_wexpand (t_84, _22);
+  if (_23 == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 22>; [69.05%]
+
+  <bb 22> [local count: 56740102]:
+  _24 = bn_wexpand (rr_50, _22);
+  if (_24 == 0B)
+    goto <bb 6>; [46.53%]
+  else
+    goto <bb 23>; [53.47%]
+
+  <bb 23> [local count: 30338932]:
+  _25 = rr_50->d;
+  _26 = a_63(D)->d;
+  _27 = b_65(D)->d;
+  _28 = al_64 - j_81;
+  _29 = bl_66 - j_81;
+  _30 = t_84->d;
+  bn_mul_part_recursive (_25, _26, _27, j_81, _28, _29, _30);
+  goto <bb 27>; [100.00%]
+
+  <bb 24> [local count: 82172486]:
+  _31 = k_82 * 2;
+  _32 = bn_wexpand (t_84, _31);
+  if (_32 == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 25>; [69.05%]
+
+  <bb 25> [local count: 56740102]:
+  _33 = bn_wexpand (rr_50, _31);
+  if (_33 == 0B)
+    goto <bb 6>; [46.53%]
+  else
+    goto <bb 26>; [53.47%]
+
+  <bb 26> [local count: 30338932]:
+  _34 = rr_50->d;
+  _35 = a_63(D)->d;
+  _36 = b_65(D)->d;
+  _37 = al_64 - j_81;
+  _38 = bl_66 - j_81;
+  _39 = t_84->d;
+  bn_mul_recursive (_34, _35, _36, j_81, _37, _38, _39);
+
+  <bb 27> [local count: 60677865]:
+  rr_50->top = top_67;
+  goto <bb 30>; [100.00%]
+
+  <bb 28> [local count: 398287186]:
+  _40 = bn_wexpand (rr_50, top_67);
+  if (_40 == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 29>; [69.05%]
+
+  <bb 29> [local count: 275017301]:
+  rr_50->top = top_67;
+  _41 = rr_50->d;
+  _42 = a_63(D)->d;
+  _43 = b_65(D)->d;
+  bn_mul_normal (_41, _42, al_64, _43, bl_66);
+
+  <bb 30> [local count: 371753223]:
+end:
+  _44 = a_63(D)->neg;
+  _45 = b_65(D)->neg;
+  _46 = _44 ^ _45;
+  rr_50->neg = _46;
+  if (rr_50 != r_70(D))
+    goto <bb 31>; [53.47%]
+  else
+    goto <bb 32>; [46.53%]
+
+  <bb 31> [local count: 198776448]:
+  _48 = BN_copy (r_70(D), rr_50);
+  _116 = _48 != 0B;
+  _114 = (int) _116;
+
+  <bb 32> [local count: 708669601]:
+  # ret_49 = PHI <0(6), 1(30), _114(31)>
+err:
+  BN_CTX_end (ctx_68(D));
+
+  <bb 33> [local count: 1073741824]:
+  # _53 = PHI <1(3), ret_49(32)>
+  return _53;
+
+}
+
+
+
+;; Function BN_mul (BN_mul, funcdef_no=174, decl_uid=8696, cgraph_uid=175, symbol_order=174)
+
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+Removing basic block 49
+int BN_mul (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b, struct BN_CTX * ctx)
+{
+  int k;
+  int j;
+  struct BIGNUM * t;
+  int i;
+  struct BIGNUM * rr;
+  int bl;
+  int al;
+  int top;
+  int ret;
+  _Bool _11;
+  _Bool _12;
+  _Bool _13;
+  _Bool _15;
+  _Bool _16;
+  _Bool _17;
+  struct BIGNUM * _21;
+  unsigned int * _22;
+  unsigned int * _23;
+  unsigned int * _24;
+  _Bool _25;
+  _Bool _26;
+  _Bool _27;
+  unsigned int i.4_28;
+  unsigned int _29;
+  unsigned int al.5_30;
+  unsigned int bl.6_32;
+  int _35;
+  int _37;
+  int _43;
+  struct BIGNUM * _44;
+  struct BIGNUM * _45;
+  unsigned int * _46;
+  unsigned int * _47;
+  unsigned int * _48;
+  int _49;
+  int _50;
+  unsigned int * _51;
+  int _52;
+  struct BIGNUM * _53;
+  struct BIGNUM * _54;
+  unsigned int * _55;
+  unsigned int * _56;
+  unsigned int * _57;
+  int _58;
+  int _59;
+  unsigned int * _60;
+  struct BIGNUM * _61;
+  unsigned int * _62;
+  unsigned int * _63;
+  unsigned int * _64;
+  int _65;
+  int _66;
+  int _67;
+  struct BIGNUM * _68;
+  int _69;
+  _Bool _105;
+  int _115;
+  _Bool _116;
+  _Bool _117;
+  _Bool _118;
+
+  <bb 2> [local count: 1073741824]:
+  al_9 = a_3(D)->top;
+  bl_10 = b_4(D)->top;
+  _11 = al_9 == 0;
+  _12 = bl_10 == 0;
+  _13 = _11 | _12;
+  if (_13 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072225]:
+  BN_zero_ex (r_2(D));
+  goto <bb 33>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  top_14 = al_9 + bl_10;
+  BN_CTX_start (ctx_5(D));
+  _15 = r_2(D) == a_3(D);
+  _16 = r_2(D) == b_4(D);
+  _17 = _15 | _16;
+  if (_17 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 5> [local count: 233860966]:
+  rr_18 = BN_CTX_get (ctx_5(D));
+  if (rr_18 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 7>; [81.91%]
+
+  <bb 6> [local count: 336916380]:
+  goto <bb 32>; [100.00%]
+
+  <bb 7> [local count: 666364152]:
+  # rr_20 = PHI <r_2(D)(4), rr_18(5)>
+  i_19 = al_9 - bl_10;
+  if (i_19 == 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 8> [local count: 333182076]:
+  if (al_9 == 8)
+    goto <bb 10>; [20.24%]
+  else
+    goto <bb 9>; [79.76%]
+
+  <bb 9> [local count: 265746024]:
+  _117 = al_9 > 15;
+  _105 = bl_10 > 15;
+  _118 = _105 & _117;
+  if (_118 != 0)
+    goto <bb 16>; [67.00%]
+  else
+    goto <bb 28>; [33.00%]
+
+  <bb 10> [local count: 67436052]:
+  _21 = bn_wexpand (rr_20, 16);
+  if (_21 == 0B)
+    goto <bb 6>; [46.53%]
+  else
+    goto <bb 11>; [53.47%]
+
+  <bb 11> [local count: 36058057]:
+  rr_20->top = 16;
+  _22 = rr_20->d;
+  _23 = a_3(D)->d;
+  _24 = b_4(D)->d;
+  bn_mul_comba8 (_22, _23, _24);
+  goto <bb 30>; [100.00%]
+
+  <bb 12> [local count: 333182076]:
+  _25 = al_9 > 15;
+  _26 = bl_10 > 15;
+  _27 = _25 & _26;
+  if (_27 != 0)
+    goto <bb 13>; [67.00%]
+  else
+    goto <bb 28>; [33.00%]
+
+  <bb 13> [local count: 223231992]:
+  i.4_28 = (unsigned int) i_19;
+  _29 = i.4_28 + 1;
+  if (_29 <= 2)
+    goto <bb 14>; [10.12%]
+  else
+    goto <bb 28>; [89.88%]
+
+  <bb 14> [local count: 22591077]:
+  if (i_19 != -1)
+    goto <bb 16>; [19.29%]
+  else
+    goto <bb 15>; [80.71%]
+
+  <bb 15> [local count: 102567636]:
+  bl.6_32 = (unsigned int) bl_10;
+  j_33 = BN_num_bits_word (bl.6_32);
+  goto <bb 17>; [100.00%]
+
+  <bb 16> [local count: 98073278]:
+  al.5_30 = (unsigned int) al_9;
+  j_31 = BN_num_bits_word (al.5_30);
+
+  <bb 17> [local count: 118832967]:
+  # j_34 = PHI <j_31(16), j_33(15)>
+  _35 = j_34 + -1;
+  j_36 = 1 << _35;
+  _37 = MAX_EXPR <al_9, bl_10>;
+  if (j_36 > _37)
+    goto <bb 18>; [0.00%]
+  else
+    goto <bb 19>; [100.00%]
+
+  <bb 18> [count: 0]:
+  __assert_rtn (&__func__, "bn_mul.c", 577, "j <= al || j <= bl");
+
+  <bb 19> [local count: 200640914]:
+  k_41 = 2 << _35;
+  t_42 = BN_CTX_get (ctx_5(D));
+  if (t_42 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 20>; [81.91%]
+
+  <bb 20> [local count: 164344973]:
+  if (j_36 < _37)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 24>; [50.00%]
+
+  <bb 21> [local count: 82172486]:
+  _43 = k_41 * 4;
+  _44 = bn_wexpand (t_42, _43);
+  if (_44 == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 22>; [69.05%]
+
+  <bb 22> [local count: 56740102]:
+  _45 = bn_wexpand (rr_20, _43);
+  if (_45 == 0B)
+    goto <bb 6>; [46.53%]
+  else
+    goto <bb 23>; [53.47%]
+
+  <bb 23> [local count: 30338932]:
+  _46 = rr_20->d;
+  _47 = a_3(D)->d;
+  _48 = b_4(D)->d;
+  _49 = al_9 - j_36;
+  _50 = bl_10 - j_36;
+  _51 = t_42->d;
+  bn_mul_part_recursive (_46, _47, _48, j_36, _49, _50, _51);
+  goto <bb 27>; [100.00%]
+
+  <bb 24> [local count: 82172486]:
+  _52 = k_41 * 2;
+  _53 = bn_wexpand (t_42, _52);
+  if (_53 == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 25>; [69.05%]
+
+  <bb 25> [local count: 56740102]:
+  _54 = bn_wexpand (rr_20, _52);
+  if (_54 == 0B)
+    goto <bb 6>; [46.53%]
+  else
+    goto <bb 26>; [53.47%]
+
+  <bb 26> [local count: 30338932]:
+  _55 = rr_20->d;
+  _56 = a_3(D)->d;
+  _57 = b_4(D)->d;
+  _58 = al_9 - j_36;
+  _59 = bl_10 - j_36;
+  _60 = t_42->d;
+  bn_mul_recursive (_55, _56, _57, j_36, _58, _59, _60);
+
+  <bb 27> [local count: 60677865]:
+  rr_20->top = top_14;
+  goto <bb 30>; [100.00%]
+
+  <bb 28> [local count: 398287187]:
+  _61 = bn_wexpand (rr_20, top_14);
+  if (_61 == 0B)
+    goto <bb 6>; [30.95%]
+  else
+    goto <bb 29>; [69.05%]
+
+  <bb 29> [local count: 275017302]:
+  rr_20->top = top_14;
+  _62 = rr_20->d;
+  _63 = a_3(D)->d;
+  _64 = b_4(D)->d;
+  bn_mul_normal (_62, _63, al_9, _64, bl_10);
+
+  <bb 30> [local count: 371753224]:
+end:
+  _65 = a_3(D)->neg;
+  _66 = b_4(D)->neg;
+  _67 = _65 ^ _66;
+  rr_20->neg = _67;
+  if (r_2(D) != rr_20)
+    goto <bb 31>; [53.47%]
+  else
+    goto <bb 32>; [46.53%]
+
+  <bb 31> [local count: 198776448]:
+  _68 = BN_copy (r_2(D), rr_20);
+  _116 = _68 != 0B;
+  _115 = (int) _116;
+
+  <bb 32> [local count: 708669602]:
+  # ret_71 = PHI <0(6), _115(31), 1(30)>
+err:
+  BN_CTX_end (ctx_5(D));
+
+  <bb 33> [local count: 1073741826]:
+  # _69 = PHI <1(3), ret_71(32)>
+  bn_correct_top (r_2(D));
+  return _69;
+
+}
+
+
+
+;; Function bn_mul_low_normal (bn_mul_low_normal, funcdef_no=177, decl_uid=11563, cgraph_uid=178, symbol_order=177)
+
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+void bn_mul_low_normal (unsigned int * r, unsigned int * a, unsigned int * b, int n)
+{
+  unsigned int ivtmp.126;
+  unsigned int _1;
+  unsigned int * _2;
+  unsigned int _3;
+  unsigned int * _4;
+  unsigned int _5;
+  unsigned int * _6;
+  unsigned int _7;
+  unsigned int * _8;
+  unsigned int _9;
+  int _10;
+  unsigned long _30;
+  unsigned int _31;
+  unsigned int _32;
+  unsigned long _33;
+  unsigned int _41;
+  unsigned int _43;
+  unsigned int _44;
+  unsigned int _46;
+  int _47;
+  unsigned long _49;
+  unsigned int _51;
+  unsigned long _53;
+  unsigned int _57;
+
+  <bb 2> [local count: 113328220]:
+  _1 = *b_16(D);
+  bn_mul_words (r_17(D), a_18(D), n_19(D), _1);
+  if (n_19(D) <= 1)
+    goto <bb 8>; [2.75%]
+  else
+    goto <bb 3>; [97.25%]
+
+  <bb 3> [local count: 110211694]:
+  _10 = n_19(D) + -2;
+  ivtmp.126_12 = (unsigned int) _10;
+  _41 = (unsigned int) n_19(D);
+  _43 = _41 + 4294967294;
+  _44 = _43 & 4294967292;
+  _57 = _41 + 4294967292;
+  _46 = _57 - _44;
+  _47 = (int) _46;
+
+  <bb 4> [local count: 1044213920]:
+  # r_35 = PHI <_8(7), r_17(D)(3)>
+  # b_36 = PHI <b_29(7), b_16(D)(3)>
+  # n_37 = PHI <n_27(7), n_19(D)(3)>
+  # ivtmp.126_14 = PHI <ivtmp.126_13(7), ivtmp.126_12(3)>
+  _31 = (unsigned int) n_37;
+  _32 = _31 + 4294967295;
+  n_39 = (int) _32;
+  _33 = (unsigned long) r_35;
+  _30 = _33 + 4;
+  _2 = (unsigned int *) _30;
+  _3 = MEM[(unsigned int *)b_36 + 4B];
+  bn_mul_add_words (_2, a_18(D), n_39, _3);
+  n_23 = (int) ivtmp.126_14;
+  if (n_23 == 0)
+    goto <bb 8>; [2.75%]
+  else
+    goto <bb 5>; [97.25%]
+
+  <bb 5> [local count: 1015498034]:
+  _53 = _33 + 8;
+  _4 = (unsigned int *) _53;
+  _5 = MEM[(unsigned int *)b_36 + 8B];
+  bn_mul_add_words (_4, a_18(D), n_23, _5);
+  _51 = _31 + 4294967293;
+  n_25 = (int) _51;
+  if (n_25 == 0)
+    goto <bb 8>; [2.75%]
+  else
+    goto <bb 6>; [97.25%]
+
+  <bb 6> [local count: 987571835]:
+  _49 = _33 + 12;
+  _6 = (unsigned int *) _49;
+  _7 = MEM[(unsigned int *)b_36 + 12B];
+  bn_mul_add_words (_6, a_18(D), n_25, _7);
+  n_27 = n_37 + -4;
+  if (n_27 == 0)
+    goto <bb 8>; [2.75%]
+  else
+    goto <bb 7>; [97.25%]
+
+  <bb 7> [local count: 960413605]:
+  _8 = r_35 + 16;
+  _9 = MEM[(unsigned int *)b_36 + 16B];
+  bn_mul_add_words (_8, a_18(D), n_27, _9);
+  b_29 = b_36 + 16;
+  ivtmp.126_13 = ivtmp.126_14 + 4294967292;
+  if (n_27 == _47)
+    goto <bb 8>; [2.75%]
+  else
+    goto <bb 4>; [97.25%]
+
+  <bb 8> [local count: 113328220]:
+  return;
+
+}
+
+
+
+;; Function bn_mul_low_recursive (bn_mul_low_recursive, funcdef_no=173, decl_uid=11569, cgraph_uid=174, symbol_order=173)
+
+void bn_mul_low_recursive (unsigned int * r, unsigned int * a, unsigned int * b, int n2, unsigned int * t)
+{
+  int n;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned int * _6;
+  unsigned int _9;
+  unsigned int * _12;
+  long unsigned int _33;
+  unsigned int * _34;
+  unsigned int * _35;
+  unsigned int * _36;
+
+  <bb 2> [local count: 1073741824]:
+  n_17 = n2_16(D) / 2;
+  bn_mul_recursive (r_19(D), a_20(D), b_21(D), n_17, 0, 0, t_22(D));
+  _33 = n_17 w* 4;
+  _34 = b_21(D) + _33;
+  _35 = a_20(D) + _33;
+  _36 = r_19(D) + _33;
+  if (n2_16(D) > 63)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 536870912]:
+  _4 = (long unsigned int) n2_16(D);
+  _9 = (unsigned int) _4;
+  _5 = _9 w* 4;
+  _6 = t_22(D) + _5;
+  bn_mul_low_recursive (t_22(D), a_20(D), _34, n_17, _6);
+  bn_add_words (_36, _36, t_22(D), n_17);
+  bn_mul_low_recursive (t_22(D), _35, b_21(D), n_17, _6);
+  bn_add_words (_36, _36, t_22(D), n_17); [tail call]
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 536870912]:
+  bn_mul_low_normal (t_22(D), a_20(D), _34, n_17);
+  _12 = t_22(D) + _33;
+  bn_mul_low_normal (_12, _35, b_21(D), n_17);
+  bn_add_words (_36, _36, t_22(D), n_17);
+  bn_add_words (_36, _36, _12, n_17); [tail call]
+
+  <bb 5> [local count: 1073741824]:
+  return;
+
+}
+
+

@@ -1,0 +1,1589 @@
+
+;; Function int_bn_mod_inverse.part.0 (int_bn_mod_inverse.part.0, funcdef_no=219, decl_uid=12222, cgraph_uid=262, symbol_order=262)
+
+Removing basic block 121
+Removing basic block 122
+Removing basic block 123
+Removing basic block 124
+Removing basic block 125
+Removing basic block 126
+Removing basic block 127
+Removing basic block 128
+Removing basic block 129
+Removing basic block 130
+Removing basic block 131
+Removing basic block 132
+Removing basic block 133
+Removing basic block 134
+Removing basic block 135
+Removing basic block 136
+Removing basic block 137
+Removing basic block 138
+Removing basic block 139
+Removing basic block 140
+Removing basic block 141
+Removing basic block 142
+Removing basic block 143
+Removing basic block 144
+Removing basic block 145
+Removing basic block 146
+Removing basic block 147
+Removing basic block 148
+Removing basic block 149
+Removing basic block 150
+Removing basic block 151
+Removing basic block 152
+Removing basic block 153
+Removing basic block 154
+Removing basic block 155
+Removing basic block 156
+Removing basic block 157
+Removing basic block 158
+Removing basic block 159
+Removing basic block 160
+Removing basic block 161
+Removing basic block 162
+Removing basic block 163
+Removing basic block 164
+Removing basic block 165
+Removing basic block 166
+Removing basic block 167
+Removing basic block 168
+Removing basic block 169
+Removing basic block 170
+Removing basic block 171
+Removing basic block 172
+Removing basic block 173
+Removing basic block 174
+Removing basic block 175
+Removing basic block 176
+Removing basic block 177
+Removing basic block 178
+Removing basic block 179
+Removing basic block 180
+Removing basic block 181
+Removing basic block 182
+Removing basic block 183
+Removing basic block 184
+Removing basic block 185
+Removing basic block 186
+Removing basic block 187
+Removing basic block 188
+Removing basic block 189
+Removing basic block 190
+Removing basic block 191
+Removing basic block 192
+Removing basic block 193
+Removing basic block 194
+Removing basic block 195
+Removing basic block 196
+Removing basic block 197
+Removing basic block 198
+Removing basic block 199
+Removing basic block 200
+Removing basic block 201
+Removing basic block 202
+Removing basic block 203
+Removing basic block 204
+Removing basic block 205
+Removing basic block 206
+Removing basic block 207
+Removing basic block 208
+Removing basic block 209
+Removing basic block 210
+Removing basic block 211
+Removing basic block 212
+Removing basic block 213
+Removing basic block 214
+Removing basic block 215
+Removing basic block 216
+Removing basic block 217
+Removing basic block 218
+Removing basic block 219
+Removing basic block 220
+Removing basic block 221
+Removing basic block 222
+Removing basic block 223
+Removing basic block 224
+Removing basic block 225
+Removing basic block 226
+Removing basic block 227
+Removing basic block 228
+Removing basic block 229
+struct BIGNUM * int_bn_mod_inverse.part.0 (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * n, struct BN_CTX * ctx, int * pnoinv)
+{
+  struct BIGNUM * A;
+  struct BIGNUM * B;
+  struct BIGNUM * X;
+  struct BIGNUM * Y;
+  struct BIGNUM * M;
+  struct BIGNUM * D;
+  struct BIGNUM * T;
+  struct BIGNUM * R;
+  struct BIGNUM * ret;
+  int sign;
+  struct BIGNUM local_B;
+  struct BIGNUM local_A;
+  struct BIGNUM * A;
+  struct BIGNUM * B;
+  struct BIGNUM * X;
+  struct BIGNUM * Y;
+  struct BIGNUM * M;
+  struct BIGNUM * D;
+  struct BIGNUM * T;
+  struct BIGNUM * R;
+  struct BIGNUM * ret;
+  int sign;
+  int shift;
+  int _3;
+  int _5;
+  struct BIGNUM * _18;
+  struct BIGNUM * _19;
+  int _20;
+  int _21;
+  int _22;
+  int _23;
+  int _24;
+  int _27;
+  int _28;
+  int _29;
+  int _30;
+  int _31;
+  int _34;
+  int _35;
+  int _36;
+  int _37;
+  int _38;
+  int _39;
+  int _40;
+  int _41;
+  int _42;
+  int _43;
+  int _44;
+  int _46;
+  int _48;
+  int _49;
+  int _51;
+  int _52;
+  int _53;
+  int _54;
+  int _55;
+  int _56;
+  int _57;
+  int _58;
+  int _59;
+  int _60;
+  int _61;
+  int _62;
+  int _63;
+  int _64;
+  int _65;
+  int _66;
+  int _69;
+  int _70;
+  int _71;
+  int _72;
+  int _73;
+  int _74;
+  struct BIGNUM * _75;
+  unsigned int * _76;
+  unsigned int _77;
+  int _78;
+  int _79;
+  int _80;
+  int _83;
+  int _86;
+  int _88;
+  int _89;
+  int _90;
+  struct BIGNUM * _92;
+  int _93;
+  struct BIGNUM * _99;
+  int _101;
+  int _110;
+  int _209;
+  int _212;
+  int _213;
+  int _214;
+  int _218;
+  int _220;
+  int _222;
+  int _225;
+  int _226;
+  int _227;
+  int _228;
+  int _229;
+  struct BIGNUM * _231;
+  int _232;
+  int _295;
+  struct BIGNUM * _299;
+  struct BIGNUM * _307;
+  struct BIGNUM * _313;
+  struct BIGNUM * _319;
+
+  <bb 2> [local count: 527186286]:
+  *pnoinv_1(D) = 0;
+  _3 = BN_get_flags (a_2(D), 4);
+  if (_3 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 357111775]:
+  BN_CTX_start (ctx_7(D));
+  A_201 = BN_CTX_get (ctx_7(D));
+  B_202 = BN_CTX_get (ctx_7(D));
+  X_203 = BN_CTX_get (ctx_7(D));
+  D_204 = BN_CTX_get (ctx_7(D));
+  M_205 = BN_CTX_get (ctx_7(D));
+  Y_206 = BN_CTX_get (ctx_7(D));
+  T_207 = BN_CTX_get (ctx_7(D));
+  if (T_207 == 0B)
+    goto <bb 38>; [8.27%]
+  else
+    goto <bb 5>; [91.73%]
+
+  <bb 4> [local count: 347942947]:
+  _5 = BN_get_flags (n_4(D), 4);
+  if (_5 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 41>; [48.88%]
+
+  <bb 5> [local count: 327578632]:
+  if (in_6(D) == 0B)
+    goto <bb 9>; [30.00%]
+  else
+    goto <bb 6>; [70.00%]
+
+  <bb 6> [local count: 229305043]:
+  _101 = BN_set_word (X_203, 1);
+  if (_101 == 0)
+    goto <bb 7>; [29.93%]
+  else
+    goto <bb 117>; [70.07%]
+
+  <bb 7> [local count: 213881160]:
+
+  <bb 8> [local count: 117846886]:
+  goto <bb 40>; [100.00%]
+
+  <bb 9> [local count: 98273589]:
+  R_208 = BN_new ();
+  if (R_208 == 0B)
+    goto <bb 39>; [8.27%]
+  else
+    goto <bb 10>; [91.73%]
+
+  <bb 10> [local count: 90146363]:
+  _209 = BN_set_word (X_203, 1);
+  if (_209 == 0)
+    goto <bb 11>; [29.93%]
+  else
+    goto <bb 118>; [70.07%]
+
+  <bb 11> [local count: 9771712]:
+
+  <bb 12> [local count: 4415671]:
+  goto <bb 39>; [100.00%]
+
+  <bb 13> [local count: 53393845]:
+  _313 = BN_copy (A_201, n_4(D));
+  if (_313 == 0B)
+    goto <bb 12>; [8.27%]
+  else
+    goto <bb 15>; [91.73%]
+
+  <bb 14> [local count: 135817769]:
+  _299 = BN_copy (A_201, n_4(D));
+  if (_299 == 0B)
+    goto <bb 7>; [8.27%]
+  else
+    goto <bb 15>; [91.73%]
+
+  <bb 15> [local count: 173563813]:
+  # R_289 = PHI <in_6(D)(14), R_208(13)>
+  A_201->neg = 0;
+  _212 = B_202->neg;
+  if (_212 != 0)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 17>; [50.00%]
+
+  <bb 16> [local count: 137983232]:
+  bn_init (&local_B);
+  BN_with_flags (&local_B, B_202, 4);
+  _214 = BN_nnmod (B_202, &local_B, A_201, ctx_7(D));
+  if (_214 == 0)
+    goto <bb 18>; [17.38%]
+  else
+    goto <bb 19>; [82.62%]
+
+  <bb 17> [local count: 86781906]:
+  _213 = BN_ucmp (B_202, A_201);
+  if (_213 >= 0)
+    goto <bb 16>; [59.00%]
+  else
+    goto <bb 20>; [41.00%]
+
+  <bb 18> [local count: 23981486]:
+  local_B ={v} {CLOBBER(eos)};
+  goto <bb 36>; [100.00%]
+
+  <bb 19> [local count: 114001746]:
+  local_B ={v} {CLOBBER(eos)};
+
+  <bb 20> [local count: 149582327]:
+  goto <bb 26>; [100.00%]
+
+  <bb 21> [local count: 1378261730]:
+  bn_init (&local_A);
+  BN_with_flags (&local_A, A_215, 4);
+  _218 = BN_div (D_204, M_216, &local_A, B_217, ctx_7(D));
+  if (_218 == 0)
+    goto <bb 22>; [2.75%]
+  else
+    goto <bb 23>; [97.25%]
+
+  <bb 22> [local count: 37902203]:
+  local_A ={v} {CLOBBER(eos)};
+  goto <bb 36>; [100.00%]
+
+  <bb 23> [local count: 1340359527]:
+  local_A ={v} {CLOBBER(eos)};
+  _220 = BN_mul (A_215, D_204, X_219, ctx_7(D));
+  if (_220 == 0)
+    goto <bb 37>; [2.75%]
+  else
+    goto <bb 24>; [97.25%]
+
+  <bb 24> [local count: 1303499634]:
+  _222 = BN_add (A_215, A_215, Y_221);
+  if (_222 == 0)
+    goto <bb 37>; [2.75%]
+  else
+    goto <bb 25>; [97.25%]
+
+  <bb 25> [local count: 1267653390]:
+  sign_224 = -sign_223;
+
+  <bb 26> [local count: 1417235717]:
+  # A_215 = PHI <A_201(20), B_217(25)>
+  # B_217 = PHI <B_202(20), M_216(25)>
+  # X_219 = PHI <X_203(20), A_215(25)>
+  # Y_221 = PHI <Y_206(20), X_219(25)>
+  # M_216 = PHI <M_205(20), Y_221(25)>
+  # sign_223 = PHI <-1(20), sign_224(25)>
+  _225 = BN_is_zero (B_217);
+  if (_225 == 0)
+    goto <bb 21>; [97.25%]
+  else
+    goto <bb 27>; [2.75%]
+
+  <bb 27> [local count: 38973987]:
+  if (sign_223 == -1)
+    goto <bb 29>; [34.00%]
+  else
+    goto <bb 28>; [66.00%]
+
+  <bb 28> [local count: 36670936]:
+  _227 = BN_is_one (A_215);
+  if (_227 != 0)
+    goto <bb 30>; [82.62%]
+  else
+    goto <bb 34>; [17.38%]
+
+  <bb 29> [local count: 13251155]:
+  _226 = BN_sub (Y_221, n_4(D), Y_221);
+  if (_226 == 0)
+    goto <bb 36>; [17.38%]
+  else
+    goto <bb 28>; [82.62%]
+
+  <bb 30> [local count: 30297528]:
+  _228 = Y_221->neg;
+  if (_228 == 0)
+    goto <bb 31>; [50.00%]
+  else
+    goto <bb 33>; [50.00%]
+
+  <bb 31> [local count: 15148763]:
+  _229 = BN_ucmp (Y_221, n_4(D));
+  if (_229 < 0)
+    goto <bb 32>; [25.50%]
+  else
+    goto <bb 33>; [74.50%]
+
+  <bb 32> [local count: 3862934]:
+  _231 = BN_copy (R_289, Y_221);
+  if (_231 == 0B)
+    goto <bb 36>; [8.27%]
+  else
+    goto <bb 35>; [91.73%]
+
+  <bb 33> [local count: 26434593]:
+  _232 = BN_nnmod (R_289, Y_221, n_4(D), ctx_7(D));
+  if (_232 == 0)
+    goto <bb 36>; [17.38%]
+  else
+    goto <bb 35>; [82.62%]
+
+  <bb 34> [local count: 6373409]:
+  *pnoinv_1(D) = 1;
+  goto <bb 36>; [100.00%]
+
+  <bb 35> [local count: 25383730]:
+  *pnoinv_1(D) = 0;
+  goto <bb 40>; [100.00%]
+
+  <bb 36> [local count: 37571743]:
+
+  <bb 37> [local count: 72706137]:
+
+  <bb 38> [local count: 177713227]:
+  # R_237 = PHI <T_207(3), R_289(37)>
+err:
+  if (in_6(D) == 0B)
+    goto <bb 39>; [38.57%]
+  else
+    goto <bb 7>; [61.43%]
+
+  <bb 39> [local count: 117846886]:
+  # R_328 = PHI <R_237(38), R_208(9), R_208(12)>
+  BN_free (R_328);
+  goto <bb 8>; [100.00%]
+
+  <bb 40> [local count: 357111775]:
+  # ret_327 = PHI <0B(8), R_289(35)>
+  BN_CTX_end (ctx_7(D));
+  goto <bb 116>; [100.00%]
+
+  <bb 41> [local count: 170074511]:
+  BN_CTX_start (ctx_7(D));
+  A_9 = BN_CTX_get (ctx_7(D));
+  B_10 = BN_CTX_get (ctx_7(D));
+  X_11 = BN_CTX_get (ctx_7(D));
+  D_12 = BN_CTX_get (ctx_7(D));
+  M_13 = BN_CTX_get (ctx_7(D));
+  Y_14 = BN_CTX_get (ctx_7(D));
+  T_15 = BN_CTX_get (ctx_7(D));
+  if (T_15 == 0B)
+    goto <bb 110>; [18.09%]
+  else
+    goto <bb 42>; [81.91%]
+
+  <bb 42> [local count: 139308032]:
+  if (in_6(D) == 0B)
+    goto <bb 43>; [30.00%]
+  else
+    goto <bb 120>; [70.00%]
+
+  <bb 43> [local count: 41792409]:
+  R_16 = BN_new ();
+  if (R_16 == 0B)
+    goto <bb 113>; [18.09%]
+  else
+    goto <bb 119>; [81.91%]
+
+  <bb 44> [local count: 64398317]:
+  # R_94 = PHI <in_6(D)(120), R_16(119)>
+  BN_zero_ex (Y_14);
+  _18 = BN_copy (B_10, a_2(D));
+  if (_18 == 0B)
+    goto <bb 48>; [30.95%]
+  else
+    goto <bb 45>; [69.05%]
+
+  <bb 45> [local count: 44467038]:
+  _19 = BN_copy (A_9, n_4(D));
+  if (_19 == 0B)
+    goto <bb 48>; [18.09%]
+  else
+    goto <bb 46>; [81.91%]
+
+  <bb 46> [local count: 36422951]:
+  A_9->neg = 0;
+  _20 = B_10->neg;
+  if (_20 != 0)
+    goto <bb 47>; [50.00%]
+  else
+    goto <bb 49>; [50.00%]
+
+  <bb 47> [local count: 28956246]:
+  _22 = BN_nnmod (B_10, B_10, A_9, ctx_7(D));
+  if (_22 == 0)
+    goto <bb 48>; [34.00%]
+  else
+    goto <bb 50>; [66.00%]
+
+  <bb 48> [local count: 31092740]:
+  goto <bb 109>; [100.00%]
+
+  <bb 49> [local count: 18211475]:
+  _21 = BN_ucmp (B_10, A_9);
+  if (_21 >= 0)
+    goto <bb 47>; [59.00%]
+  else
+    goto <bb 50>; [41.00%]
+
+  <bb 50> [local count: 26577827]:
+  _23 = BN_is_odd (n_4(D));
+  if (_23 != 0)
+    goto <bb 52>; [33.00%]
+  else
+    goto <bb 51>; [67.00%]
+
+  <bb 51> [local count: 22192486]:
+  goto <bb 100>; [100.00%]
+
+  <bb 52> [local count: 8770683]:
+  _24 = BN_num_bits (n_4(D));
+  if (_24 <= 2048)
+    goto <bb 72>; [50.00%]
+  else
+    goto <bb 51>; [50.00%]
+
+  <bb 53> [local count: 55286172]:
+  shift_26 = shift_25 + 1;
+  _27 = BN_is_odd (X_11);
+  if (_27 != 0)
+    goto <bb 55>; [50.00%]
+  else
+    goto <bb 54>; [50.00%]
+
+  <bb 54> [local count: 54274435]:
+  _29 = BN_rshift1 (X_11, X_11);
+  if (_29 == 0)
+    goto <bb 109>; [3.66%]
+  else
+    goto <bb 56>; [96.34%]
+
+  <bb 55> [local count: 27643086]:
+  _28 = BN_uadd (X_11, X_11, n_4(D));
+  if (_28 == 0)
+    goto <bb 109>; [3.66%]
+  else
+    goto <bb 54>; [96.34%]
+
+  <bb 56> [local count: 57386519]:
+  # shift_25 = PHI <shift_26(54), _44(72)>
+  _30 = BN_is_bit_set (B_10, shift_25);
+  if (_30 == 0)
+    goto <bb 53>; [96.34%]
+  else
+    goto <bb 57>; [3.66%]
+
+  <bb 57> [local count: 2100347]:
+  if (shift_25 != 0)
+    goto <bb 58>; [33.00%]
+  else
+    goto <bb 62>; [67.00%]
+
+  <bb 58> [local count: 693114]:
+  _31 = BN_rshift (B_10, B_10, shift_25);
+  if (_31 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 62>; [98.00%]
+
+  <bb 59> [local count: 22624909]:
+  shift_33 = shift_32 + 1;
+  _34 = BN_is_odd (Y_14);
+  if (_34 != 0)
+    goto <bb 61>; [50.00%]
+  else
+    goto <bb 60>; [50.00%]
+
+  <bb 60> [local count: 22210874]:
+  _36 = BN_rshift1 (Y_14, Y_14);
+  if (_36 == 0)
+    goto <bb 109>; [3.66%]
+  else
+    goto <bb 63>; [96.34%]
+
+  <bb 61> [local count: 11312455]:
+  _35 = BN_uadd (Y_14, Y_14, n_4(D));
+  if (_35 == 0)
+    goto <bb 109>; [3.66%]
+  else
+    goto <bb 60>; [96.34%]
+
+  <bb 62> [local count: 2086484]:
+
+  <bb 63> [local count: 23484440]:
+  # shift_32 = PHI <_44(62), shift_33(60)>
+  _37 = BN_is_bit_set (A_9, shift_32);
+  if (_37 == 0)
+    goto <bb 59>; [96.34%]
+  else
+    goto <bb 64>; [3.66%]
+
+  <bb 64> [local count: 859531]:
+  if (shift_32 != 0)
+    goto <bb 66>; [50.00%]
+  else
+    goto <bb 65>; [50.00%]
+
+  <bb 65> [local count: 850936]:
+  _39 = BN_ucmp (B_10, A_9);
+  if (_39 >= 0)
+    goto <bb 67>; [59.00%]
+  else
+    goto <bb 70>; [41.00%]
+
+  <bb 66> [local count: 429765]:
+  _38 = BN_rshift (A_9, A_9, shift_32);
+  if (_38 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 65>; [98.00%]
+
+  <bb 67> [local count: 502052]:
+  _40 = BN_uadd (X_11, X_11, Y_14);
+  if (_40 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 68>; [98.00%]
+
+  <bb 68> [local count: 492011]:
+  _41 = BN_usub (B_10, B_10, A_9);
+  if (_41 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 69>; [98.00%]
+
+  <bb 69> [local count: 817239]:
+  goto <bb 72>; [100.00%]
+
+  <bb 70> [local count: 348883]:
+  _42 = BN_uadd (Y_14, Y_14, X_11);
+  if (_42 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 71>; [98.00%]
+
+  <bb 71> [local count: 341906]:
+  _43 = BN_usub (A_9, A_9, B_10);
+  if (_43 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 69>; [98.00%]
+
+  <bb 72> [local count: 5202580]:
+  _44 = BN_is_zero (B_10);
+  if (_44 == 0)
+    goto <bb 56>; [98.00%]
+  else
+    goto <bb 103>; [2.00%]
+
+  <bb 73> [local count: 248256224]:
+  _46 = BN_num_bits (A_45);
+  _48 = BN_num_bits (B_47);
+  if (_46 == _48)
+    goto <bb 74>; [34.00%]
+  else
+    goto <bb 77>; [66.00%]
+
+  <bb 74> [local count: 84407117]:
+  _49 = BN_set_word (D_12, 1);
+  if (_49 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 75>; [98.00%]
+
+  <bb 75> [local count: 82718975]:
+  _51 = BN_sub (M_50, A_45, B_47);
+  if (_51 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 76>; [98.00%]
+
+  <bb 76> [local count: 238498336]:
+  _66 = BN_is_one (D_12);
+  if (_66 != 0)
+    goto <bb 89>; [50.00%]
+  else
+    goto <bb 91>; [50.00%]
+
+  <bb 77> [local count: 163849107]:
+  _52 = BN_num_bits (A_45);
+  _53 = BN_num_bits (B_47);
+  _54 = _53 + 1;
+  if (_52 == _54)
+    goto <bb 78>; [34.00%]
+  else
+    goto <bb 88>; [66.00%]
+
+  <bb 78> [local count: 55708697]:
+  _55 = BN_lshift1 (T_15, B_47);
+  if (_55 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 79>; [98.00%]
+
+  <bb 79> [local count: 54594523]:
+  _56 = BN_ucmp (A_45, T_15);
+  if (_56 < 0)
+    goto <bb 80>; [41.00%]
+  else
+    goto <bb 82>; [59.00%]
+
+  <bb 80> [local count: 22383754]:
+  _57 = BN_set_word (D_12, 1);
+  if (_57 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 81>; [98.00%]
+
+  <bb 81> [local count: 21936079]:
+  _58 = BN_sub (M_50, A_45, B_47);
+  if (_58 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 76>; [98.00%]
+
+  <bb 82> [local count: 32210769]:
+  _59 = BN_sub (M_50, A_45, T_15);
+  if (_59 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 83>; [98.00%]
+
+  <bb 83> [local count: 31566553]:
+  _60 = BN_add (D_12, T_15, B_47);
+  if (_60 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 84>; [98.00%]
+
+  <bb 84> [local count: 30935222]:
+  _61 = BN_ucmp (A_45, D_12);
+  if (_61 < 0)
+    goto <bb 85>; [41.00%]
+  else
+    goto <bb 86>; [59.00%]
+
+  <bb 85> [local count: 12683441]:
+  _62 = BN_set_word (D_12, 2);
+  if (_62 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 76>; [98.00%]
+
+  <bb 86> [local count: 18251781]:
+  _63 = BN_set_word (D_12, 3);
+  if (_63 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 87>; [98.00%]
+
+  <bb 87> [local count: 17886745]:
+  _64 = BN_sub (M_50, M_50, B_47);
+  if (_64 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 76>; [98.00%]
+
+  <bb 88> [local count: 108140410]:
+  _65 = BN_div (D_12, M_50, A_45, B_47, ctx_7(D));
+  if (_65 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 76>; [98.00%]
+
+  <bb 89> [local count: 119249168]:
+  _69 = BN_add (A_45, X_67, Y_68);
+  if (_69 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 90>; [98.00%]
+
+  <bb 90> [local count: 231130193]:
+  sign_82 = -sign_81;
+  goto <bb 100>; [100.00%]
+
+  <bb 91> [local count: 119249168]:
+  _70 = BN_is_word (D_12, 2);
+  if (_70 != 0)
+    goto <bb 92>; [50.00%]
+  else
+    goto <bb 94>; [50.00%]
+
+  <bb 92> [local count: 59624584]:
+  _71 = BN_lshift1 (A_45, X_67);
+  if (_71 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 93>; [98.00%]
+
+  <bb 93> [local count: 116597968]:
+  _80 = BN_add (A_45, A_45, Y_68);
+  if (_80 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 90>; [98.00%]
+
+  <bb 94> [local count: 59624584]:
+  _72 = BN_is_word (D_12, 4);
+  if (_72 != 0)
+    goto <bb 95>; [33.00%]
+  else
+    goto <bb 96>; [67.00%]
+
+  <bb 95> [local count: 19676113]:
+  _73 = BN_lshift (A_45, X_67, 2);
+  if (_73 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 93>; [98.00%]
+
+  <bb 96> [local count: 39948471]:
+  _74 = D_12->top;
+  if (_74 == 1)
+    goto <bb 97>; [34.00%]
+  else
+    goto <bb 99>; [66.00%]
+
+  <bb 97> [local count: 13582480]:
+  _75 = BN_copy (A_45, X_67);
+  if (_75 == 0B)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 98>; [98.00%]
+
+  <bb 98> [local count: 13310831]:
+  _76 = D_12->d;
+  _77 = *_76;
+  _78 = BN_mul_word (A_45, _77);
+  if (_78 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 93>; [98.00%]
+
+  <bb 99> [local count: 26365991]:
+  _79 = BN_mul (A_45, D_12, X_67, ctx_7(D));
+  if (_79 == 0)
+    goto <bb 109>; [2.00%]
+  else
+    goto <bb 93>; [98.00%]
+
+  <bb 100> [local count: 253322679]:
+  # A_45 = PHI <A_9(51), B_47(90)>
+  # B_47 = PHI <B_10(51), M_50(90)>
+  # X_67 = PHI <X_11(51), A_45(90)>
+  # Y_68 = PHI <Y_14(51), X_67(90)>
+  # M_50 = PHI <M_13(51), Y_68(90)>
+  # sign_81 = PHI <-1(51), sign_82(90)>
+  _83 = BN_is_zero (B_47);
+  if (_83 == 0)
+    goto <bb 73>; [98.00%]
+  else
+    goto <bb 101>; [2.00%]
+
+  <bb 101> [local count: 5066454]:
+  if (sign_81 == -1)
+    goto <bb 103>; [32.64%]
+  else
+    goto <bb 102>; [67.36%]
+
+  <bb 102> [local count: 4572796]:
+  # Y_245 = PHI <Y_68(101), Y_246(103)>
+  # A_120 = PHI <A_45(101), A_244(103)>
+  _88 = BN_is_one (A_120);
+  if (_88 != 0)
+    goto <bb 104>; [66.00%]
+  else
+    goto <bb 108>; [34.00%]
+
+  <bb 103> [local count: 1757972]:
+  # Y_246 = PHI <Y_68(101), Y_14(72)>
+  # A_244 = PHI <A_45(101), A_9(72)>
+  _86 = BN_sub (Y_246, n_4(D), Y_246);
+  if (_86 == 0)
+    goto <bb 48>; [34.00%]
+  else
+    goto <bb 102>; [66.00%]
+
+  <bb 104> [local count: 3018045]:
+  _89 = Y_245->neg;
+  if (_89 == 0)
+    goto <bb 105>; [50.00%]
+  else
+    goto <bb 107>; [50.00%]
+
+  <bb 105> [local count: 1509023]:
+  _90 = BN_ucmp (Y_245, n_4(D));
+  if (_90 < 0)
+    goto <bb 106>; [25.50%]
+  else
+    goto <bb 107>; [74.50%]
+
+  <bb 106> [local count: 384801]:
+  _92 = BN_copy (R_94, Y_245);
+  if (_92 == 0B)
+    goto <bb 48>; [18.09%]
+  else
+    goto <bb 114>; [81.91%]
+
+  <bb 107> [local count: 2633245]:
+  _93 = BN_nnmod (R_94, Y_245, n_4(D), ctx_7(D));
+  if (_93 == 0)
+    goto <bb 48>; [34.00%]
+  else
+    goto <bb 114>; [66.00%]
+
+  <bb 108> [local count: 1554750]:
+  *pnoinv_1(D) = 1;
+  goto <bb 48>; [100.00%]
+
+  <bb 109> [local count: 21407323]:
+
+  <bb 110> [local count: 93111666]:
+  # R_98 = PHI <R_94(109), T_15(41)>
+err:
+  if (in_6(D) == 0B)
+    goto <bb 113>; [33.36%]
+  else
+    goto <bb 111>; [66.64%]
+
+  <bb 111> [local count: 111896792]:
+
+  <bb 112> [local count: 56124589]:
+  goto <bb 115>; [100.00%]
+
+  <bb 113> [local count: 56124589]:
+  # R_324 = PHI <R_98(110), R_16(43), R_16(119)>
+  BN_free (R_324);
+  goto <bb 112>; [100.00%]
+
+  <bb 114> [local count: 1737942]:
+
+  <bb 115> [local count: 170074512]:
+  # ret_323 = PHI <0B(112), R_94(114)>
+  BN_CTX_end (ctx_7(D));
+
+  <bb 116> [local count: 527186287]:
+  # _99 = PHI <ret_327(40), ret_323(115)>
+  return _99;
+
+  <bb 117> [local count: 160674044]:
+  BN_zero_ex (Y_206);
+  _319 = BN_copy (B_202, a_2(D));
+  if (_319 == 0B)
+    goto <bb 7>; [15.47%]
+  else
+    goto <bb 14>; [84.53%]
+
+  <bb 118> [local count: 63165557]:
+  BN_zero_ex (Y_206);
+  _307 = BN_copy (B_202, a_2(D));
+  if (_307 == 0B)
+    goto <bb 11>; [15.47%]
+  else
+    goto <bb 13>; [84.53%]
+
+  <bb 119> [local count: 34232162]:
+  _295 = BN_set_word (X_11, 1);
+  if (_295 == 0)
+    goto <bb 113>; [51.12%]
+  else
+    goto <bb 44>; [48.88%]
+
+  <bb 120> [local count: 97515623]:
+  _110 = BN_set_word (X_11, 1);
+  if (_110 == 0)
+    goto <bb 111>; [51.12%]
+  else
+    goto <bb 44>; [48.88%]
+
+}
+
+
+
+;; Function int_bn_mod_inverse (int_bn_mod_inverse, funcdef_no=215, decl_uid=11585, cgraph_uid=216, symbol_order=215)
+
+Removing basic block 7
+Removing basic block 8
+struct BIGNUM * int_bn_mod_inverse (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * n, struct BN_CTX * ctx, int * pnoinv)
+{
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _16;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = BN_abs_is_word (n_6(D), 1);
+  if (_1 != 0)
+    goto <bb 3>; [29.93%]
+  else
+    goto <bb 4>; [70.07%]
+
+  <bb 3> [local count: 546555537]:
+  *pnoinv_9(D) = 1;
+  goto <bb 6>; [100.00%]
+
+  <bb 4> [local count: 752370895]:
+  _2 = BN_is_zero (n_6(D));
+  if (_2 != 0)
+    goto <bb 3>; [29.93%]
+  else
+    goto <bb 5>; [70.07%]
+
+  <bb 5> [local count: 527186286]:
+  _16 = int_bn_mod_inverse.part.0 (in_12(D), a_10(D), n_6(D), ctx_11(D), pnoinv_9(D)); [tail call]
+
+  <bb 6> [local count: 1073741824]:
+  # _3 = PHI <0B(3), _16(5)>
+  return _3;
+
+}
+
+
+
+;; Function BN_mod_inverse (BN_mod_inverse, funcdef_no=216, decl_uid=8923, cgraph_uid=217, symbol_order=216)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+struct BIGNUM * BN_mod_inverse (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * n, struct BN_CTX * ctx)
+{
+  static const char __func__[15] = "BN_mod_inverse";
+  int noinv;
+  struct BN_CTX * new_ctx;
+  int noinv.0_1;
+  struct BIGNUM * _4;
+  struct BIGNUM * _18;
+  int _26;
+  int _27;
+  struct BIGNUM * _28;
+  struct BIGNUM * _42;
+
+  <bb 2> [local count: 1073741824]:
+  noinv = 0;
+  if (ctx_9(D) == 0B)
+    goto <bb 3>; [30.00%]
+  else
+    goto <bb 5>; [70.00%]
+
+  <bb 3> [local count: 322122544]:
+  new_ctx_11 = BN_CTX_new_ex (0B);
+  if (new_ctx_11 == 0B)
+    goto <bb 4>; [4.25%]
+  else
+    goto <bb 5>; [95.75%]
+
+  <bb 4> [local count: 13690207]:
+  ERR_new ();
+  ERR_set_debug ("bn_gcd.c", 526, &__func__);
+  ERR_set_error (3, 524291, 0B);
+  goto <bb 11>; [100.00%]
+
+  <bb 5> [local count: 1060051617]:
+  # ctx_2 = PHI <ctx_9(D)(2), new_ctx_11(3)>
+  # new_ctx_3 = PHI <0B(2), new_ctx_11(3)>
+  _26 = BN_abs_is_word (n_16(D), 1);
+  if (_26 != 0)
+    goto <bb 6>; [29.93%]
+  else
+    goto <bb 7>; [70.07%]
+
+  <bb 6> [local count: 539586955]:
+  goto <bb 9>; [100.00%]
+
+  <bb 7> [local count: 742778168]:
+  _27 = BN_is_zero (n_16(D));
+  if (_27 != 0)
+    goto <bb 6>; [29.93%]
+  else
+    goto <bb 8>; [70.07%]
+
+  <bb 8> [local count: 710234587]:
+  _28 = int_bn_mod_inverse.part.0 (in_14(D), a_15(D), n_16(D), ctx_2, &noinv);
+  noinv.0_1 = noinv;
+  if (noinv.0_1 != 0)
+    goto <bb 9>; [0.00%]
+  else
+    goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 349817032]:
+  # _18 = PHI <_28(8), 0B(6)>
+  ERR_new ();
+  ERR_set_debug ("bn_gcd.c", 533, &__func__);
+  ERR_set_error (3, 108, 0B);
+
+  <bb 10> [local count: 1060051617]:
+  # _42 = PHI <_28(8), _18(9)>
+  BN_CTX_free (new_ctx_3);
+
+  <bb 11> [local count: 1073741824]:
+  # _4 = PHI <new_ctx_11(4), _42(10)>
+  noinv ={v} {CLOBBER(eos)};
+  return _4;
+
+}
+
+
+
+;; Function BN_are_coprime (BN_are_coprime, funcdef_no=217, decl_uid=8918, cgraph_uid=218, symbol_order=217)
+
+Removing basic block 5
+int BN_are_coprime (struct BIGNUM * a, const struct BIGNUM * b, struct BN_CTX * ctx)
+{
+  struct BIGNUM * tmp;
+  int ret;
+  struct BIGNUM * _1;
+  _Bool _2;
+
+  <bb 2> [local count: 1073741824]:
+  BN_CTX_start (ctx_6(D));
+  tmp_9 = BN_CTX_get (ctx_6(D));
+  if (tmp_9 == 0B)
+    goto <bb 4>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418728]:
+  ERR_set_mark ();
+  BN_set_flags (a_11(D), 4);
+  _1 = BN_mod_inverse (tmp_9, a_11(D), b_13(D), ctx_6(D));
+  _2 = _1 != 0B;
+  ret_15 = (int) _2;
+  ERR_pop_to_mark ();
+
+  <bb 4> [local count: 1073741824]:
+  # ret_3 = PHI <0(2), ret_15(3)>
+end:
+  BN_CTX_end (ctx_6(D));
+  return ret_3;
+
+}
+
+
+
+;; Function BN_gcd (BN_gcd, funcdef_no=218, decl_uid=8910, cgraph_uid=219, symbol_order=218)
+
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+int BN_gcd (struct BIGNUM * r, const struct BIGNUM * in_a, const struct BIGNUM * in_b, struct BN_CTX * ctx)
+{
+  unsigned long ivtmp.47;
+  volatile unsigned int r;
+  volatile unsigned int r;
+  int ret;
+  int pow2_shifts;
+  int delta;
+  int glen;
+  int rlen;
+  int top;
+  int i;
+  unsigned int pow2_flag;
+  unsigned int pow2_numbits_temp;
+  unsigned int pow2_numbits;
+  struct BIGNUM * temp;
+  struct BIGNUM * g;
+  int _1;
+  struct BIGNUM * _2;
+  _Bool _3;
+  int _4;
+  struct BIGNUM * _5;
+  _Bool _6;
+  int _7;
+  int _8;
+  unsigned int * _9;
+  unsigned int * _12;
+  unsigned int _13;
+  unsigned int * _14;
+  unsigned int * _15;
+  unsigned int _16;
+  unsigned int pow2_shifts.1_17;
+  unsigned int _18;
+  int _20;
+  unsigned int pow2_shifts.2_21;
+  unsigned int _22;
+  int _23;
+  int _24;
+  int _25;
+  int _26;
+  int _27;
+  struct BIGNUM * _28;
+  struct BIGNUM * _29;
+  struct BIGNUM * _30;
+  unsigned int * _31;
+  unsigned int _32;
+  unsigned int _33;
+  unsigned int _34;
+  int _35;
+  int _36;
+  int _37;
+  unsigned int _38;
+  unsigned int _39;
+  unsigned int * _40;
+  unsigned int _41;
+  int _43;
+  int _44;
+  unsigned int _45;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned int _48;
+  int _49;
+  int _50;
+  int _51;
+  int _52;
+  int _53;
+  int _54;
+  int _55;
+  unsigned int * _56;
+  unsigned int _57;
+  int _58;
+  int _59;
+  unsigned int _60;
+  unsigned int _61;
+  unsigned int _62;
+  unsigned int _63;
+  unsigned int _64;
+  int _65;
+  int _66;
+  int _67;
+  int _79;
+  int _80;
+  _Bool _83;
+  unsigned int _103;
+  unsigned int _104;
+  unsigned int _145;
+  unsigned int _146;
+  unsigned int _147;
+  unsigned int _148;
+  unsigned int _149;
+  unsigned int _150;
+  unsigned int _151;
+  signed int a.4_152;
+  signed int _153;
+  unsigned int _154;
+  unsigned int _155;
+  unsigned int _156;
+  unsigned int _157;
+  signed int a.4_158;
+  signed int _159;
+  unsigned int _160;
+  int _172;
+  unsigned int _185;
+  unsigned int _228;
+  unsigned int _229;
+  unsigned int _230;
+  int _231;
+  long unsigned int _235;
+  unsigned long _236;
+  unsigned int _239;
+  unsigned int _240;
+  unsigned int prephitmp_241;
+  int _242;
+  int _243;
+  int prephitmp_244;
+  unsigned int ivtmp_260;
+  unsigned int ivtmp_261;
+  unsigned int _267;
+
+  <bb 2> [local count: 335286295]:
+  _1 = BN_is_zero (in_b_89(D));
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 113997342]:
+  _2 = BN_copy (r_100(D), in_a_91(D));
+  _3 = _2 != 0B;
+  ret_143 = (int) _3;
+  r_100(D)->neg = 0;
+  goto <bb 31>; [100.00%]
+
+  <bb 4> [local count: 221288954]:
+  _4 = BN_is_zero (in_a_91(D));
+  if (_4 != 0)
+    goto <bb 5>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 5> [local count: 75238245]:
+  _5 = BN_copy (r_100(D), in_b_89(D));
+  _6 = _5 != 0B;
+  ret_140 = (int) _6;
+  r_100(D)->neg = 0;
+  goto <bb 31>; [100.00%]
+
+  <bb 6> [local count: 146050709]:
+  BN_CTX_start (ctx_93(D));
+  temp_96 = BN_CTX_get (ctx_93(D));
+  g_98 = BN_CTX_get (ctx_93(D));
+  if (g_98 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 8>; [69.05%]
+
+  <bb 7> [local count: 145618098]:
+  goto <bb 30>; [100.00%]
+
+  <bb 8> [local count: 100848014]:
+  _7 = BN_lshift1 (g_98, in_b_89(D));
+  if (_7 == 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 9>; [48.88%]
+
+  <bb 9> [local count: 49294509]:
+  _8 = BN_lshift1 (r_100(D), in_a_91(D));
+  if (_8 == 0)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 10> [local count: 32534376]:
+  _172 = r_100(D)->dmax;
+  if (_172 > 0)
+    goto <bb 11>; [94.50%]
+  else
+    goto <bb 16>; [5.50%]
+
+  <bb 11> [local count: 30744985]:
+  _20 = g_98->dmax;
+  _236 = (unsigned long) _172;
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 271596273]:
+  _9 = r_100(D)->d;
+  _267 = (unsigned int) ivtmp.47_232;
+  _235 = _267 w* 4;
+  _12 = _9 + _235;
+  _13 = *_12;
+  _14 = g_98->d;
+  _15 = _14 + _235;
+  _16 = *_15;
+  pow2_numbits_temp_102 = _13 | _16;
+  _155 = ~pow2_flag_176;
+  _156 = pow2_flag_176 + 4294967295;
+  _157 = _155 & _156;
+  a.4_158 = (signed int) _157;
+  _159 = a.4_158 >> 31;
+  _160 = (unsigned int) _159;
+  _149 = ~pow2_numbits_temp_102;
+  _150 = pow2_numbits_temp_102 + 4294967295;
+  _151 = _149 & _150;
+  a.4_152 = (signed int) _151;
+  _153 = a.4_152 >> 31;
+  _154 = (unsigned int) _153;
+  pow2_flag_105 = _154 & pow2_flag_176;
+  pow2_shifts.1_17 = (unsigned int) pow2_shifts_182;
+  _18 = pow2_shifts.1_17 + pow2_flag_105;
+  pow2_shifts_106 = (int) _18;
+  r ={v} _160;
+  _104 ={v} r;
+  _103 = _104 & pow2_numbits_173;
+  _145 = ~_160;
+  r ={v} _145;
+  _146 ={v} r;
+  _147 = pow2_numbits_temp_102 & _146;
+  _148 = _103 | _147;
+  ivtmp.47_233 = ivtmp.47_232 + 1;
+  if (ivtmp.47_233 != _236)
+    goto <bb 14>; [94.50%]
+  else
+    goto <bb 13>; [5.50%]
+
+  <bb 13> [local count: 14937795]:
+  _239 = ~_148;
+  _242 = pow2_shifts_106 * 32;
+  goto <bb 16>; [100.00%]
+
+  <bb 14> [local count: 287403464]:
+  # pow2_numbits_173 = PHI <_148(12), 0(11)>
+  # pow2_flag_176 = PHI <pow2_flag_105(12), 1(11)>
+  # pow2_shifts_182 = PHI <pow2_shifts_106(12), _4(11)>
+  # ivtmp.47_232 = PHI <ivtmp.47_233(12), 0(11)>
+  i_234 = (int) ivtmp.47_232;
+  if (_20 > i_234)
+    goto <bb 12>; [94.50%]
+  else
+    goto <bb 15>; [5.50%]
+
+  <bb 15> [local count: 15807190]:
+  _240 = ~pow2_numbits_173;
+  _243 = pow2_shifts_182 * 32;
+
+  <bb 16> [local count: 32534376]:
+  # prephitmp_241 = PHI <_239(13), _240(15), 4294967295(10)>
+  # prephitmp_244 = PHI <_242(13), _243(15), _4(10)>
+
+  <bb 17> [local count: 1041207448]:
+  # pow2_numbits_175 = PHI <pow2_numbits_136(17), prephitmp_241(16)>
+  # pow2_flag_177 = PHI <pow2_flag_134(17), 1(16)>
+  # pow2_shifts_184 = PHI <pow2_shifts_135(17), prephitmp_244(16)>
+  # ivtmp_261 = PHI <ivtmp_260(17), 32(16)>
+  pow2_flag_134 = pow2_numbits_175 & pow2_flag_177;
+  pow2_shifts.2_21 = (unsigned int) pow2_shifts_184;
+  _22 = pow2_shifts.2_21 + pow2_flag_134;
+  pow2_shifts_135 = (int) _22;
+  pow2_numbits_136 = pow2_numbits_175 >> 1;
+  ivtmp_260 = ivtmp_261 + 4294967295;
+  if (ivtmp_260 != 0)
+    goto <bb 17>; [96.88%]
+  else
+    goto <bb 18>; [3.12%]
+
+  <bb 18> [local count: 32534376]:
+  _23 = BN_rshift (r_100(D), r_100(D), pow2_shifts_135);
+  if (_23 == 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 19>; [48.88%]
+
+  <bb 19> [local count: 15902803]:
+  _24 = BN_rshift (g_98, g_98, pow2_shifts_135);
+  if (_24 == 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 20>; [48.88%]
+
+  <bb 20> [local count: 7773290]:
+  _25 = r_100(D)->top;
+  _26 = g_98->top;
+  _27 = MAX_EXPR <_25, _26>;
+  top_113 = _27 + 1;
+  _28 = bn_wexpand (r_100(D), top_113);
+  if (_28 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 21>; [69.05%]
+
+  <bb 21> [local count: 5367457]:
+  _29 = bn_wexpand (g_98, top_113);
+  if (_29 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 22>; [69.05%]
+
+  <bb 22> [local count: 3706229]:
+  _30 = bn_wexpand (temp_96, top_113);
+  if (_30 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 23>; [69.05%]
+
+  <bb 23> [local count: 2559151]:
+  _31 = r_100(D)->d;
+  _32 = *_31;
+  _33 = ~_32;
+  _34 = _33 & 1;
+  BN_consttime_swap (_34, r_100(D), g_98, top_113);
+  rlen_119 = BN_num_bits (r_100(D));
+  glen_121 = BN_num_bits (g_98);
+  _35 = MAX_EXPR <rlen_119, glen_121>;
+  _36 = _35 * 3;
+  if (_36 >= -3)
+    goto <bb 25>; [96.34%]
+  else
+    goto <bb 24>; [3.66%]
+
+  <bb 24> [local count: 885048]:
+  r_100(D)->neg = 0;
+  _66 = BN_lshift (r_100(D), r_100(D), pow2_shifts_135);
+  if (_66 == 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 29>; [48.88%]
+
+  <bb 25> [local count: 2465486]:
+  _228 = (unsigned int) _35;
+  _229 = _228 * 3;
+  _230 = _229 + 4;
+  _231 = (int) _230;
+
+  <bb 26> [local count: 23296588]:
+  # i_179 = PHI <i_133(28), _4(25)>
+  # delta_181 = PHI <delta_129(28), 1(25)>
+  _37 = -delta_181;
+  _38 = (unsigned int) _37;
+  _39 = _38 >> 31;
+  _40 = g_98->d;
+  _41 = *_40;
+  _43 = g_98->top;
+  _44 = _43 + -1;
+  _45 = (unsigned int) _44;
+  _46 = _45 >> 31;
+  _47 = ~_46;
+  _185 = _41 & _47;
+  _48 = _39 & _185;
+  _49 = (int) _48;
+  _50 = _37 * _49;
+  _51 = _49 + -1;
+  _52 = _51 & delta_181;
+  delta_126 = _50 | _52;
+  _53 = r_100(D)->neg;
+  _54 = _49 ^ _53;
+  r_100(D)->neg = _54;
+  BN_consttime_swap (_48, r_100(D), g_98, top_113);
+  delta_129 = delta_126 + 1;
+  _55 = BN_add (temp_96, g_98, r_100(D));
+  if (_55 == 0)
+    goto <bb 7>; [3.66%]
+  else
+    goto <bb 27>; [96.34%]
+
+  <bb 27> [local count: 22443933]:
+  _56 = g_98->d;
+  _57 = *_56;
+  _58 = g_98->top;
+  _59 = _58 + -1;
+  _60 = (unsigned int) _59;
+  _61 = _60 >> 31;
+  _62 = ~_61;
+  _63 = _57 & _62;
+  _64 = _63 & 1;
+  BN_consttime_swap (_64, g_98, temp_96, top_113);
+  _65 = BN_rshift1 (g_98, g_98);
+  if (_65 == 0)
+    goto <bb 7>; [3.66%]
+  else
+    goto <bb 28>; [96.34%]
+
+  <bb 28> [local count: 21622485]:
+  i_133 = i_179 + 1;
+  if (i_133 != _231)
+    goto <bb 26>; [96.34%]
+  else
+    goto <bb 24>; [3.66%]
+
+  <bb 29> [local count: 432611]:
+  _67 = BN_rshift1 (r_100(D), r_100(D));
+  _83 = _67 != 0;
+  _80 = (int) _83;
+
+  <bb 30> [local count: 146050709]:
+  # ret_78 = PHI <_4(7), _80(29)>
+err:
+  BN_CTX_end (ctx_93(D));
+
+  <bb 31> [local count: 335286296]:
+  # _79 = PHI <ret_143(3), ret_140(5), ret_78(30)>
+  return _79;
+
+}
+
+

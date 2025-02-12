@@ -1,0 +1,2178 @@
+
+;; Function BN_nist_mod_192 (BN_nist_mod_192, funcdef_no=176, decl_uid=7644, cgraph_uid=177, symbol_order=191)
+
+Removing basic block 20
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+int BN_nist_mod_192 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  long unsigned int t_d[3];
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_192_sqr = {.d=&_nist_p_192_sqr, .top=6, .dmax=6, .neg=0, .flags=2};
+  long unsigned int c_d[3];
+  union 
+  {
+    long unsigned int bn[3];
+    unsigned int ui[6];
+  } buf;
+  register long unsigned int * a_d;
+  register long unsigned int * r_d;
+  int carry;
+  int i;
+  int top;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  unsigned int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  sizetype _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  int _17;
+  const long unsigned int[3] * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  sizetype _23;
+  int _25;
+  _Bool _26;
+  long unsigned int * iftmp.1_27;
+  _Bool _29;
+  _Bool _30;
+  unsigned int _33;
+  int _56;
+  int _62;
+  int _79;
+  _Bool prephitmp_104;
+  long unsigned int _106;
+  sizetype _111;
+  long unsigned int * _112;
+  unsigned int _113;
+  const long unsigned int * _114;
+  long unsigned int _115;
+  unsigned int _118;
+  sizetype _122;
+  sizetype _123;
+  long unsigned int _124;
+  int _129;
+  _Bool _130;
+  sizetype _131;
+  sizetype _132;
+  long unsigned int _133;
+  sizetype _135;
+  unsigned int _140;
+  unsigned int _141;
+  long unsigned int _142;
+  unsigned int _144;
+  unsigned int _150;
+  long unsigned int _151;
+  unsigned int _153;
+
+  <bb 2> [local count: 1073741824]:
+  top_38 = a_37(D)->top;
+  a_d_39 = a_37(D)->d;
+  _1 = BN_is_negative (a_37(D));
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 790840920]:
+  _79 = BN_nnmod (r_44(D), a_37(D), &ossl_bignum_nist_p_192, ctx_77(D)); [tail call]
+  goto <bb 23>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  _2 = BN_ucmp (a_37(D), &ossl_bignum_nist_p_192_sqr);
+  if (_2 >= 0)
+    goto <bb 3>; [60.08%]
+  else
+    goto <bb 5>; [39.92%]
+
+  <bb 5> [local count: 282900904]:
+  i_43 = BN_ucmp (&ossl_bignum_nist_p_192, a_37(D));
+  if (i_43 == 0)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 7>; [79.76%]
+
+  <bb 6> [local count: 57259143]:
+  BN_zero_ex (r_44(D));
+  goto <bb 22>; [100.00%]
+
+  <bb 7> [local count: 225641761]:
+  if (i_43 > 0)
+    goto <bb 8>; [42.57%]
+  else
+    goto <bb 10>; [57.43%]
+
+  <bb 8> [local count: 96055698]:
+  if (a_37(D) == r_44(D))
+    goto <bb 22>; [46.53%]
+  else
+    goto <bb 9>; [53.47%]
+
+  <bb 9> [local count: 51360982]:
+  _3 = BN_copy (r_44(D), a_37(D));
+  _26 = _3 != 0B;
+  _129 = (int) _26;
+  goto <bb 23>; [100.00%]
+
+  <bb 10> [local count: 129586063]:
+  if (a_37(D) != r_44(D))
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 13>; [46.53%]
+
+  <bb 11> [local count: 69289668]:
+  _4 = bn_wexpand (r_44(D), 3);
+  if (_4 == 0B)
+    goto <bb 23>; [18.09%]
+  else
+    goto <bb 12>; [81.91%]
+
+  <bb 12> [local count: 56755167]:
+  r_d_46 = r_44(D)->d;
+  _133 = MEM[(const long unsigned int *)a_d_39];
+  *r_d_46 = _133;
+  _142 = MEM[(const long unsigned int *)a_d_39 + 8B];
+  MEM[(long unsigned int *)r_d_46 + 8B] = _142;
+  _151 = MEM[(const long unsigned int *)a_d_39 + 16B];
+  MEM[(long unsigned int *)r_d_46 + 16B] = _151;
+
+  <bb 13> [local count: 117051562]:
+  # r_d_22 = PHI <r_d_46(12), a_d_39(10)>
+  if (top_38 > 3)
+    goto <bb 14>; [75.00%]
+  else
+    goto <bb 17>; [25.00%]
+
+  <bb 14> [local count: 87788672]:
+  _144 = (unsigned int) top_38;
+  _153 = _144 + 4294967293;
+  _132 = (sizetype) _153;
+  _141 = (unsigned int) _132;
+  _131 = _141 w* 8;
+  _114 = a_d_39 + 24;
+  __builtin_memcpy (&buf, _114, _131);
+  _150 = _144 + 4294967293;
+  if (_150 != 3)
+    goto <bb 15>; [66.67%]
+  else
+    goto <bb 16>; [33.33%]
+
+  <bb 15> [local count: 58525781]:
+  ii_103 = (int) _150;
+  goto <bb 17>; [100.00%]
+
+  <bb 16> [local count: 117051563]:
+  _10 = buf.bn[0];
+  t_d[0] = _10;
+  t_d[1] = _10;
+  t_d[2] = 0;
+  _11 = bn_add_words (r_d_22, r_d_22, &t_d, 3);
+  carry_51 = (int) _11;
+  t_d[0] = 0;
+  _12 = buf.bn[1];
+  t_d[1] = _12;
+  t_d[2] = _12;
+  _14 = bn_add_words (r_d_22, r_d_22, &t_d, 3);
+  _56 = (int) _14;
+  carry_57 = carry_51 + _56;
+  _15 = buf.bn[2];
+  t_d[0] = _15;
+  t_d[1] = _15;
+  t_d[2] = _15;
+  _16 = bn_add_words (r_d_22, r_d_22, &t_d, 3);
+  _62 = (int) _16;
+  carry_63 = carry_57 + _62;
+  t_d ={v} {CLOBBER(eos)};
+  if (carry_63 > 0)
+    goto <bb 18>; [41.48%]
+  else
+    goto <bb 19>; [58.52%]
+
+  <bb 17> [local count: 87788672]:
+  # ii_24 = PHI <ii_103(15), _1(13)>
+  _113 = (unsigned int) ii_24;
+  _118 = 3 - _113;
+  _23 = (sizetype) _118;
+  _140 = (unsigned int) _23;
+  _135 = _140 w* 8;
+  _13 = (sizetype) ii_24;
+  _33 = (unsigned int) _13;
+  _111 = _33 w* 8;
+  _112 = &buf + _111;
+  __builtin_memset (_112, 0, _135);
+  goto <bb 16>; [100.00%]
+
+  <bb 18> [local count: 48552988]:
+  _17 = carry_63 + -1;
+  _123 = (sizetype) _17;
+  _9 = (unsigned int) _123;
+  _122 = _9 w* 24;
+  _18 = &_nist_p_192 + _122;
+  _19 = bn_sub_words (r_d_22, r_d_22, _18, 3);
+  carry_66 = (int) _19;
+  _130 = carry_66 == 0;
+
+  <bb 19> [local count: 117051562]:
+  # prephitmp_104 = PHI <_130(18), 0(16)>
+  _20 = bn_sub_words (&c_d, r_d_22, &_nist_p_192[0], 3);
+  _29 = _20 == 0;
+  _30 = _29 | prephitmp_104;
+  if (_30 != 0)
+    goto <bb 21>; [75.00%]
+  else
+    goto <bb 20>; [25.00%]
+
+  <bb 20> [local count: 29262891]:
+
+  <bb 21> [local count: 117051562]:
+  # iftmp.1_27 = PHI <&c_d(19), r_d_22(20)>
+  _106 = MEM[(const long unsigned int *)iftmp.1_27];
+  *r_d_22 = _106;
+  _115 = MEM[(const long unsigned int *)iftmp.1_27 + 8B];
+  MEM[(long unsigned int *)r_d_22 + 8B] = _115;
+  _124 = MEM[(const long unsigned int *)iftmp.1_27 + 16B];
+  MEM[(long unsigned int *)r_d_22 + 16B] = _124;
+  r_44(D)->top = 3;
+  bn_correct_top (r_44(D));
+
+  <bb 22> [local count: 101953859]:
+
+  <bb 23> [local count: 1073741824]:
+  # _25 = PHI <_79(3), 1(22), _129(9), _1(11)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+  return _25;
+
+}
+
+
+
+;; Function BN_nist_mod_224 (BN_nist_mod_224, funcdef_no=177, decl_uid=7649, cgraph_uid=178, symbol_order=192)
+
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+int BN_nist_mod_224 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  long unsigned int t_d[4];
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_224_sqr = {.d=&_nist_p_224_sqr, .top=7, .dmax=7, .neg=0, .flags=2};
+  long unsigned int c_d[4];
+  long unsigned int * a_d;
+  long unsigned int * r_d;
+  int carry;
+  int i;
+  int top;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _8;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  long unsigned int _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  int _37;
+  const long unsigned int[4] * _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  unsigned int _41;
+  unsigned int _42;
+  int _43;
+  const long unsigned int[4] * _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _49;
+  int _52;
+  _Bool _53;
+  long unsigned int * iftmp.4_54;
+  _Bool _56;
+  sizetype _58;
+  _Bool _75;
+  unsigned int _101;
+  int _114;
+  sizetype _116;
+  long unsigned int _121;
+  long unsigned int _128;
+  int _139;
+  sizetype _140;
+  int _141;
+  sizetype _143;
+  long unsigned int _145;
+  unsigned int _147;
+  long unsigned int _149;
+  long unsigned int _163;
+  long unsigned int _174;
+  long unsigned int * _189;
+  sizetype _190;
+  sizetype _191;
+  sizetype _192;
+  sizetype _193;
+  unsigned int _195;
+  unsigned int _196;
+  _Bool _206;
+  _Bool prephitmp_208;
+  long unsigned int _218;
+  long unsigned int _228;
+  long unsigned int _239;
+  long unsigned int _250;
+
+  <bb 2> [local count: 1073741824]:
+  top_64 = a_63(D)->top;
+  a_d_65 = a_63(D)->d;
+  _1 = BN_is_negative (a_63(D));
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 790840920]:
+  _114 = BN_nnmod (r_70(D), a_63(D), &ossl_bignum_nist_p_224, ctx_112(D)); [tail call]
+  goto <bb 28>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  _2 = BN_ucmp (a_63(D), &ossl_bignum_nist_p_224_sqr);
+  if (_2 >= 0)
+    goto <bb 3>; [60.08%]
+  else
+    goto <bb 5>; [39.92%]
+
+  <bb 5> [local count: 282900904]:
+  i_69 = BN_ucmp (&ossl_bignum_nist_p_224, a_63(D));
+  if (i_69 == 0)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 7>; [79.76%]
+
+  <bb 6> [local count: 57259143]:
+  BN_zero_ex (r_70(D));
+  goto <bb 27>; [100.00%]
+
+  <bb 7> [local count: 225641761]:
+  if (i_69 > 0)
+    goto <bb 8>; [42.57%]
+  else
+    goto <bb 10>; [57.43%]
+
+  <bb 8> [local count: 96055698]:
+  if (a_63(D) == r_70(D))
+    goto <bb 27>; [46.53%]
+  else
+    goto <bb 9>; [53.47%]
+
+  <bb 9> [local count: 51360982]:
+  _3 = BN_copy (r_70(D), a_63(D));
+  _53 = _3 != 0B;
+  _139 = (int) _53;
+  goto <bb 28>; [100.00%]
+
+  <bb 10> [local count: 129586063]:
+  if (a_63(D) != r_70(D))
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 13>; [46.53%]
+
+  <bb 11> [local count: 69289668]:
+  _4 = bn_wexpand (r_70(D), 4);
+  if (_4 == 0B)
+    goto <bb 28>; [18.09%]
+  else
+    goto <bb 12>; [81.91%]
+
+  <bb 12> [local count: 56755167]:
+  r_d_72 = r_70(D)->d;
+  _228 = MEM[(const long unsigned int *)a_d_65];
+  *r_d_72 = _228;
+  _239 = MEM[(const long unsigned int *)a_d_65 + 8B];
+  MEM[(long unsigned int *)r_d_72 + 8B] = _239;
+  _250 = MEM[(const long unsigned int *)a_d_65 + 16B];
+  MEM[(long unsigned int *)r_d_72 + 16B] = _250;
+  _121 = MEM[(const long unsigned int *)a_d_65 + 24B];
+  MEM[(long unsigned int *)r_d_72 + 24B] = _121;
+
+  <bb 13> [local count: 117051562]:
+  # r_d_48 = PHI <r_d_72(12), a_d_65(10)>
+  _141 = top_64 + -3;
+  if (top_64 > 3)
+    goto <bb 14>; [80.00%]
+  else
+    goto <bb 19>; [20.00%]
+
+  <bb 14> [local count: 93641249]:
+  _145 = MEM[(const long unsigned int *)a_d_65 + 24B];
+  c_d[0] = _145;
+  if (_141 != 1)
+    goto <bb 15>; [75.00%]
+  else
+    goto <bb 19>; [25.00%]
+
+  <bb 15> [local count: 70230937]:
+  _49 = MEM[(const long unsigned int *)a_d_65 + 32B];
+  c_d[1] = _49;
+  if (_141 != 2)
+    goto <bb 16>; [75.00%]
+  else
+    goto <bb 19>; [25.00%]
+
+  <bb 16> [local count: 52673202]:
+  _218 = MEM[(const long unsigned int *)a_d_65 + 40B];
+  c_d[2] = _218;
+  if (_141 != 3)
+    goto <bb 17>; [75.00%]
+  else
+    goto <bb 19>; [25.00%]
+
+  <bb 17> [local count: 39504902]:
+  _8 = MEM[(const long unsigned int *)a_d_65 + 48B];
+  c_d[3] = _8;
+  if (_141 != 4)
+    goto <bb 19>; [40.74%]
+  else
+    goto <bb 18>; [59.26%]
+
+  <bb 18> [local count: 117051563]:
+  _10 = c_d[0];
+  _11 = _10 >> 32;
+  _12 = c_d[1];
+  _13 = _12 << 32;
+  _14 = _11 | _13;
+  _15 = _12 >> 32;
+  _16 = c_d[2];
+  _17 = _16 << 32;
+  _18 = _15 | _17;
+  _19 = _16 >> 32;
+  _20 = c_d[3];
+  _21 = _20 << 32;
+  _22 = _19 | _21;
+  _23 = _20 >> 32;
+  _24 = MEM[(long unsigned int *)r_d_48 + 24B];
+  _25 = _24 & 4294967295;
+  MEM[(long unsigned int *)r_d_48 + 24B] = _25;
+  t_d[0] = 0;
+  _26 = _14 << 32;
+  t_d[1] = _26;
+  _27 = _14 >> 32;
+  _28 = _18 << 32;
+  _29 = _27 | _28;
+  t_d[2] = _29;
+  _30 = _18 >> 32;
+  t_d[3] = _30;
+  bn_add_words (r_d_48, r_d_48, &t_d, 4);
+  t_d[0] = 0;
+  _31 = _22 << 32;
+  t_d[1] = _31;
+  _32 = _22 >> 32;
+  _33 = _20 & 18446744069414584320;
+  _34 = _32 | _33;
+  t_d[2] = _34;
+  t_d[3] = 0;
+  bn_add_words (r_d_48, r_d_48, &t_d, 4);
+  t_d[0] = _14;
+  t_d[1] = _18;
+  t_d[2] = _22;
+  t_d[3] = _23;
+  bn_sub_words (r_d_48, r_d_48, &t_d, 4);
+  t_d[0] = _22;
+  t_d[1] = _23;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = { 0, 0 };
+  bn_sub_words (r_d_48, r_d_48, &t_d, 4);
+  _35 = MEM[(long unsigned int *)r_d_48 + 24B];
+  _36 = _35 >> 32;
+  carry_96 = (int) _36;
+  t_d ={v} {CLOBBER(eos)};
+  if (carry_96 > 0)
+    goto <bb 20>; [41.48%]
+  else
+    goto <bb 21>; [58.52%]
+
+  <bb 19> [local count: 93641250]:
+  # ii_123 = PHI <_141(17), _1(13), _141(14), _141(16), _141(15)>
+  _196 = (unsigned int) ii_123;
+  _147 = 4 - _196;
+  _193 = (sizetype) _147;
+  _41 = (unsigned int) _193;
+  _192 = _41 w* 8;
+  _191 = (sizetype) ii_123;
+  _195 = (unsigned int) _191;
+  _190 = _195 w* 8;
+  _189 = &c_d + _190;
+  __builtin_memset (_189, 0, _192);
+  goto <bb 18>; [100.00%]
+
+  <bb 20> [local count: 48552988]:
+  _37 = carry_96 + -1;
+  _58 = (sizetype) _37;
+  _101 = (unsigned int) _58;
+  _140 = _101 w* 32;
+  _38 = &_nist_p_224 + _140;
+  bn_sub_words (r_d_48, r_d_48, _38, 4);
+  _39 = MEM[(long unsigned int *)r_d_48 + 24B];
+  _40 = _39 >> 32;
+  _206 = (_Bool) _40;
+  goto <bb 24>; [100.00%]
+
+  <bb 21> [local count: 68498574]:
+  if (carry_96 != 0)
+    goto <bb 22>; [33.00%]
+  else
+    goto <bb 23>; [67.00%]
+
+  <bb 22> [local count: 22604529]:
+  _43 = ~carry_96;
+  _116 = (sizetype) _43;
+  _42 = (unsigned int) _116;
+  _143 = _42 w* 32;
+  _44 = &_nist_p_224 + _143;
+  _45 = bn_add_words (r_d_48, r_d_48, _44, 4);
+  carry_99 = (int) _45;
+  if (carry_99 != 0)
+    goto <bb 23>; [50.00%]
+  else
+    goto <bb 29>; [50.00%]
+
+  <bb 23> [local count: 45894045]:
+
+  <bb 24> [local count: 105749297]:
+  # prephitmp_208 = PHI <_206(20), 0(23)>
+  _46 = bn_sub_words (&c_d, r_d_48, &_nist_p_224[0], 4);
+  _75 = _46 == 0;
+  _56 = _75 | prephitmp_208;
+  if (_56 != 0)
+    goto <bb 25>; [72.33%]
+  else
+    goto <bb 26>; [27.67%]
+
+  <bb 25> [local count: 11302265]:
+
+  <bb 26> [local count: 117051564]:
+  # iftmp.4_54 = PHI <&c_d(25), r_d_48(24)>
+  _149 = MEM[(const long unsigned int *)iftmp.4_54];
+  *r_d_48 = _149;
+  _174 = MEM[(const long unsigned int *)iftmp.4_54 + 8B];
+  MEM[(long unsigned int *)r_d_48 + 8B] = _174;
+  _163 = MEM[(const long unsigned int *)iftmp.4_54 + 16B];
+  MEM[(long unsigned int *)r_d_48 + 16B] = _163;
+  _128 = MEM[(const long unsigned int *)iftmp.4_54 + 24B];
+  MEM[(long unsigned int *)r_d_48 + 24B] = _128;
+  r_70(D)->top = 4;
+  bn_correct_top (r_70(D));
+
+  <bb 27> [local count: 101953859]:
+
+  <bb 28> [local count: 1073741824]:
+  # _52 = PHI <_114(3), 1(27), _139(9), _1(11)>
+  c_d ={v} {CLOBBER(eos)};
+  return _52;
+
+  <bb 29> [local count: 11302265]:
+  bn_add_words (&c_d, r_d_48, &_nist_p_224[0], 4);
+  goto <bb 25>; [100.00%]
+
+}
+
+
+
+;; Function BN_nist_mod_256 (BN_nist_mod_256, funcdef_no=178, decl_uid=7654, cgraph_uid=179, symbol_order=193)
+
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+int BN_nist_mod_256 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  register long unsigned int t;
+  long unsigned int t_d[4];
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_256_sqr = {.d=&_nist_p_256_sqr, .top=8, .dmax=8, .neg=0, .flags=2};
+  long unsigned int c_d[4];
+  union 
+  {
+    long unsigned int bn[4];
+    unsigned int ui[8];
+  } buf;
+  register long unsigned int * r_d;
+  register long unsigned int * a_d;
+  int carry;
+  int top;
+  int i;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  unsigned long _9;
+  unsigned long _10;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  _Bool _15;
+  long unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _21;
+  long unsigned int _22;
+  long unsigned int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  unsigned int _26;
+  unsigned int carry.8_27;
+  unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _30;
+  long unsigned int _31;
+  long unsigned int _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _35;
+  long unsigned int _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  long unsigned int _41;
+  long unsigned int _42;
+  long unsigned int _43;
+  long unsigned int _44;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  int _51;
+  const long unsigned int[4] * _52;
+  long unsigned int _53;
+  int _54;
+  const long unsigned int[4] * _55;
+  long unsigned int _56;
+  long unsigned int _57;
+  long unsigned int _61;
+  sizetype _63;
+  sizetype _64;
+  int _66;
+  long unsigned int * iftmp.10_68;
+  long unsigned int _69;
+  _Bool _70;
+  sizetype _72;
+  long unsigned int _73;
+  _Bool _89;
+  int _100;
+  int _107;
+  int _114;
+  int _121;
+  int _128;
+  int _135;
+  int _142;
+  unsigned int _161;
+  unsigned int _165;
+  int _168;
+  long unsigned int _176;
+  unsigned int _181;
+  unsigned int _182;
+  long unsigned int _183;
+  unsigned long _190;
+  int _191;
+  sizetype _192;
+  long unsigned int _194;
+  long unsigned int _196;
+  unsigned long _217;
+  long unsigned int _221;
+  long unsigned int _230;
+  unsigned int _231;
+  unsigned int _232;
+  long unsigned int _241;
+  long unsigned int * _244;
+  sizetype _245;
+  sizetype _246;
+  sizetype _247;
+  sizetype _248;
+  unsigned int _251;
+  const long unsigned int * _252;
+  sizetype _253;
+  sizetype _254;
+  unsigned int _257;
+  unsigned int _268;
+  _Bool _271;
+  _Bool prephitmp_273;
+  long unsigned int _284;
+  long unsigned int _295;
+  long unsigned int _306;
+  unsigned int _308;
+  unsigned int _309;
+
+  <bb 2> [local count: 1073741824]:
+  top_79 = a_78(D)->top;
+  a_d_80 = a_78(D)->d;
+  _1 = BN_is_negative (a_78(D));
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 790840920]:
+  _168 = BN_nnmod (r_85(D), a_78(D), &ossl_bignum_nist_p_256, ctx_166(D)); [tail call]
+  goto <bb 26>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  _2 = BN_ucmp (a_78(D), &ossl_bignum_nist_p_256_sqr);
+  if (_2 >= 0)
+    goto <bb 3>; [60.08%]
+  else
+    goto <bb 5>; [39.92%]
+
+  <bb 5> [local count: 282900904]:
+  i_84 = BN_ucmp (&ossl_bignum_nist_p_256, a_78(D));
+  if (i_84 == 0)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 7>; [79.76%]
+
+  <bb 6> [local count: 57259143]:
+  BN_zero_ex (r_85(D));
+  goto <bb 25>; [100.00%]
+
+  <bb 7> [local count: 225641761]:
+  if (i_84 > 0)
+    goto <bb 8>; [42.57%]
+  else
+    goto <bb 10>; [57.43%]
+
+  <bb 8> [local count: 96055698]:
+  if (a_78(D) == r_85(D))
+    goto <bb 25>; [46.53%]
+  else
+    goto <bb 9>; [53.47%]
+
+  <bb 9> [local count: 51360982]:
+  _3 = BN_copy (r_85(D), a_78(D));
+  _70 = _3 != 0B;
+  _191 = (int) _70;
+  goto <bb 26>; [100.00%]
+
+  <bb 10> [local count: 129586063]:
+  if (a_78(D) != r_85(D))
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 13>; [46.53%]
+
+  <bb 11> [local count: 69289668]:
+  _4 = bn_wexpand (r_85(D), 4);
+  if (_4 == 0B)
+    goto <bb 26>; [18.09%]
+  else
+    goto <bb 12>; [81.91%]
+
+  <bb 12> [local count: 56755167]:
+  r_d_87 = r_85(D)->d;
+  _284 = MEM[(const long unsigned int *)a_d_80];
+  *r_d_87 = _284;
+  _295 = MEM[(const long unsigned int *)a_d_80 + 8B];
+  MEM[(long unsigned int *)r_d_87 + 8B] = _295;
+  _306 = MEM[(const long unsigned int *)a_d_80 + 16B];
+  MEM[(long unsigned int *)r_d_87 + 16B] = _306;
+  _176 = MEM[(const long unsigned int *)a_d_80 + 24B];
+  MEM[(long unsigned int *)r_d_87 + 24B] = _176;
+
+  <bb 13> [local count: 117051562]:
+  # r_d_60 = PHI <r_d_87(12), a_d_80(10)>
+  if (top_79 > 4)
+    goto <bb 14>; [80.00%]
+  else
+    goto <bb 17>; [20.00%]
+
+  <bb 14> [local count: 93641249]:
+  _257 = (unsigned int) top_79;
+  _309 = _257 + 4294967292;
+  _254 = (sizetype) _309;
+  _182 = (unsigned int) _254;
+  _253 = _182 w* 8;
+  _252 = a_d_80 + 32;
+  __builtin_memcpy (&buf, _252, _253);
+  _268 = _257 + 4294967292;
+  if (_268 != 4)
+    goto <bb 15>; [75.00%]
+  else
+    goto <bb 16>; [25.00%]
+
+  <bb 15> [local count: 70230936]:
+  ii_210 = (int) _268;
+  goto <bb 17>; [100.00%]
+
+  <bb 16> [local count: 117051564]:
+  t_d[0] = 0;
+  _12 = buf.bn[1];
+  _13 = _12 & 18446744069414584320;
+  t_d[1] = _13;
+  _14 = buf.bn[2];
+  _16 = _14 & 18446744069414584320;
+  t_d[2] = _14;
+  _17 = buf.bn[3];
+  t_d[3] = _17;
+  c_d[0] = 0;
+  _18 = _14 << 32;
+  c_d[1] = _18;
+  _19 = _14 >> 32;
+  _20 = _17 << 32;
+  _21 = _19 | _20;
+  c_d[2] = _21;
+  _22 = _17 >> 32;
+  c_d[3] = _22;
+  _23 = bn_add_words (&t_d, &t_d, &c_d, 4);
+  t_222 = MEM[(long unsigned int *)&t_d];
+  _221 = t_222 << 1;
+  MEM[(long unsigned int *)&t_d] = _221;
+  _217 = t_222 >> 63;
+  t_198 = MEM[(long unsigned int *)&t_d + 8B];
+  _196 = t_198 << 1;
+  _194 = _196 | _217;
+  MEM[(long unsigned int *)&t_d + 8B] = _194;
+  _190 = t_198 >> 63;
+  t_74 = MEM[(long unsigned int *)&t_d + 16B];
+  _73 = t_74 << 1;
+  _61 = _73 | _190;
+  MEM[(long unsigned int *)&t_d + 16B] = _61;
+  _9 = t_74 >> 63;
+  t_153 = MEM[(long unsigned int *)&t_d + 24B];
+  _24 = t_153 << 1;
+  _25 = _9 | _24;
+  MEM[(long unsigned int *)&t_d + 24B] = _25;
+  _10 = t_153 >> 63;
+  _26 = (unsigned int) _10;
+  _165 = (unsigned int) _23;
+  carry.8_27 = _165 << 1;
+  _28 = _26 | carry.8_27;
+  carry_98 = (int) _28;
+  _29 = bn_add_words (r_d_60, r_d_60, &t_d, 4);
+  _100 = (int) _29;
+  carry_101 = carry_98 + _100;
+  _30 = buf.bn[0];
+  _31 = _30 & 4294967295;
+  _32 = _30 & 18446744069414584320;
+  t_d[0] = _30;
+  _33 = _12 & 4294967295;
+  t_d[1] = _33;
+  t_d[2] = 0;
+  t_d[3] = _17;
+  _34 = bn_add_words (r_d_60, r_d_60, &t_d, 4);
+  _107 = (int) _34;
+  carry_108 = carry_101 + _107;
+  _35 = _30 >> 32;
+  _36 = _12 << 32;
+  _37 = _35 | _36;
+  t_d[0] = _37;
+  _38 = _12 >> 32;
+  _39 = _16 | _38;
+  t_d[1] = _39;
+  t_d[2] = _17;
+  _40 = _30 << 32;
+  _41 = _19 | _40;
+  t_d[3] = _41;
+  _42 = bn_add_words (r_d_60, r_d_60, &t_d, 4);
+  _114 = (int) _42;
+  carry_115 = carry_108 + _114;
+  _43 = _18 | _38;
+  t_d[0] = _43;
+  t_d[1] = _19;
+  t_d[2] = 0;
+  _44 = _31 | _36;
+  t_d[3] = _44;
+  _45 = bn_sub_words (r_d_60, r_d_60, &t_d, 4);
+  _121 = (int) _45;
+  carry_122 = carry_115 - _121;
+  t_d[0] = _14;
+  t_d[1] = _17;
+  t_d[2] = 0;
+  _46 = _13 | _35;
+  t_d[3] = _46;
+  _47 = bn_sub_words (r_d_60, r_d_60, &t_d, 4);
+  _128 = (int) _47;
+  carry_129 = carry_122 - _128;
+  t_d[0] = _21;
+  _48 = _22 | _40;
+  t_d[1] = _48;
+  t_d[2] = _37;
+  t_d[3] = _18;
+  _49 = bn_sub_words (r_d_60, r_d_60, &t_d, 4);
+  _135 = (int) _49;
+  carry_136 = carry_129 - _135;
+  t_d[0] = _17;
+  t_d[1] = _32;
+  t_d[2] = _12;
+  t_d[3] = _16;
+  _50 = bn_sub_words (r_d_60, r_d_60, &t_d, 4);
+  _142 = (int) _50;
+  carry_143 = carry_136 - _142;
+  t_d ={v} {CLOBBER(eos)};
+  if (carry_143 > 0)
+    goto <bb 18>; [41.48%]
+  else
+    goto <bb 19>; [58.52%]
+
+  <bb 17> [local count: 93641250]:
+  # ii_178 = PHI <ii_210(15), _1(13)>
+  _251 = (unsigned int) ii_178;
+  _308 = 4 - _251;
+  _248 = (sizetype) _308;
+  _181 = (unsigned int) _248;
+  _247 = _181 w* 8;
+  _246 = (sizetype) ii_178;
+  _231 = (unsigned int) _246;
+  _245 = _231 w* 8;
+  _244 = &buf + _245;
+  __builtin_memset (_244, 0, _247);
+  goto <bb 16>; [100.00%]
+
+  <bb 18> [local count: 48552988]:
+  _51 = carry_143 + -1;
+  _64 = (sizetype) _51;
+  _161 = (unsigned int) _64;
+  _192 = _161 w* 32;
+  _52 = &_nist_p_256 + _192;
+  _53 = bn_sub_words (r_d_60, r_d_60, _52, 4);
+  carry_148 = (int) _53;
+  _271 = carry_148 == 0;
+  goto <bb 22>; [100.00%]
+
+  <bb 19> [local count: 68498574]:
+  if (carry_143 != 0)
+    goto <bb 20>; [33.00%]
+  else
+    goto <bb 21>; [67.00%]
+
+  <bb 20> [local count: 22604529]:
+  _54 = ~carry_143;
+  _63 = (sizetype) _54;
+  _232 = (unsigned int) _63;
+  _72 = _232 w* 32;
+  _55 = &_nist_p_256 + _72;
+  _56 = bn_add_words (r_d_60, r_d_60, _55, 4);
+  carry_146 = (int) _56;
+  if (carry_146 != 0)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 27>; [50.00%]
+
+  <bb 21> [local count: 45894045]:
+
+  <bb 22> [local count: 105749297]:
+  # prephitmp_273 = PHI <_271(18), 0(21)>
+  _57 = bn_sub_words (&c_d, r_d_60, &_nist_p_256[0], 4);
+  _15 = _57 == 0;
+  _89 = _15 | prephitmp_273;
+  if (_89 != 0)
+    goto <bb 23>; [72.33%]
+  else
+    goto <bb 24>; [27.67%]
+
+  <bb 23> [local count: 11302265]:
+
+  <bb 24> [local count: 117051564]:
+  # iftmp.10_68 = PHI <&c_d(23), r_d_60(22)>
+  _69 = MEM[(const long unsigned int *)iftmp.10_68];
+  *r_d_60 = _69;
+  _241 = MEM[(const long unsigned int *)iftmp.10_68 + 8B];
+  MEM[(long unsigned int *)r_d_60 + 8B] = _241;
+  _230 = MEM[(const long unsigned int *)iftmp.10_68 + 16B];
+  MEM[(long unsigned int *)r_d_60 + 16B] = _230;
+  _183 = MEM[(const long unsigned int *)iftmp.10_68 + 24B];
+  MEM[(long unsigned int *)r_d_60 + 24B] = _183;
+  r_85(D)->top = 4;
+  bn_correct_top (r_85(D));
+
+  <bb 25> [local count: 101953859]:
+
+  <bb 26> [local count: 1073741824]:
+  # _66 = PHI <_168(3), 1(25), _191(9), _1(11)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+  return _66;
+
+  <bb 27> [local count: 11302265]:
+  bn_add_words (&c_d, r_d_60, &_nist_p_256[0], 4);
+  goto <bb 23>; [100.00%]
+
+}
+
+
+
+;; Function BN_nist_mod_384 (BN_nist_mod_384, funcdef_no=179, decl_uid=7659, cgraph_uid=180, symbol_order=194)
+
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+Removing basic block 49
+Removing basic block 50
+Removing basic block 51
+Removing basic block 52
+Removing basic block 53
+Removing basic block 54
+int BN_nist_mod_384 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  vector(2) long unsigned int vect__67.124;
+  vector(2) long unsigned int vect__66.123;
+  vector(2) long unsigned int vect__64.117;
+  vector(2) long unsigned int vect__65.116;
+  vector(2) long unsigned int vect__65.115;
+  vector(2) long unsigned int vect__65.114;
+  vector(2) long unsigned int vect__63.113;
+  vector(2) long unsigned int vect__63.112;
+  vector(2) long unsigned int vect__63.111;
+  vector(2) long unsigned int vect__55.102;
+  vector(2) long unsigned int vect__25.95;
+  vector(2) long unsigned int vect__24.94;
+  vector(2) long unsigned int vect__27.93;
+  vector(2) long unsigned int vect__27.92;
+  vector(2) long unsigned int vect__27.91;
+  vector(2) long unsigned int vect__22.85;
+  vector(2) long unsigned int vect__21.84;
+  vector(2) long unsigned int vect__21.83;
+  vector(2) long unsigned int vect__21.82;
+  const vector(2) long unsigned int vect__245.72;
+  const vector(2) long unsigned int vect__252.67;
+  long unsigned int t_d[6];
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_384_sqr = {.d=&_nist_p_384_sqr, .top=12, .dmax=12, .neg=0, .flags=2};
+  long unsigned int c_d[6];
+  union 
+  {
+    long unsigned int bn[6];
+    unsigned int ui[12];
+  } buf;
+  register long unsigned int * a_d;
+  register long unsigned int * r_d;
+  int carry;
+  int top;
+  int i;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _8;
+  long unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  long unsigned int _15;
+  long unsigned int * _18;
+  long unsigned int _19;
+  long unsigned int _20;
+  long unsigned int _45;
+  long unsigned int _46;
+  long unsigned int _47;
+  long unsigned int _48;
+  long unsigned int _49;
+  long unsigned int _50;
+  long unsigned int _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  long unsigned int _54;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _60;
+  long unsigned int _61;
+  long unsigned int _62;
+  long unsigned int _87;
+  long unsigned int _88;
+  long unsigned int _89;
+  long unsigned int _90;
+  long unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  long unsigned int _94;
+  long unsigned int _95;
+  long unsigned int _96;
+  long unsigned int _97;
+  long unsigned int _98;
+  long unsigned int _99;
+  int _100;
+  const long unsigned int[6] * _101;
+  long unsigned int _102;
+  int _103;
+  const long unsigned int[6] * _104;
+  long unsigned int _105;
+  long unsigned int _106;
+  sizetype _112;
+  sizetype _113;
+  int _115;
+  _Bool _116;
+  long unsigned int * iftmp.15_117;
+  int _119;
+  sizetype _121;
+  _Bool _137;
+  int _146;
+  _Bool _148;
+  int _156;
+  int _165;
+  int _174;
+  int _183;
+  int _192;
+  int _201;
+  int _210;
+  long unsigned int * _225;
+  unsigned int _226;
+  long unsigned int * _227;
+  int _237;
+  long unsigned int _244;
+  long unsigned int _257;
+  unsigned int _260;
+  int _261;
+  sizetype _266;
+  long unsigned int _288;
+  unsigned int _290;
+  long unsigned int * _296;
+  sizetype _297;
+  sizetype _298;
+  sizetype _299;
+  sizetype _300;
+  unsigned int _303;
+  long unsigned int _313;
+  _Bool _320;
+  _Bool prephitmp_322;
+  unsigned int _345;
+  long unsigned int _347;
+  unsigned int _356;
+  long unsigned int _358;
+  long unsigned int _385;
+  unsigned long _389;
+  long unsigned int _396;
+  long unsigned int _398;
+  long unsigned int _408;
+  long unsigned int _417;
+  long unsigned int _426;
+  long unsigned int _435;
+  long unsigned int _444;
+  long unsigned int _454;
+  long unsigned int _465;
+  long unsigned int _476;
+  long unsigned int _487;
+  long unsigned int _498;
+
+  <bb 2> [local count: 1073741824]:
+  top_128 = a_127(D)->top;
+  a_d_129 = a_127(D)->d;
+  _1 = BN_is_negative (a_127(D));
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 790840920]:
+  _237 = BN_nnmod (r_134(D), a_127(D), &ossl_bignum_nist_p_384, ctx_235(D)); [tail call]
+  goto <bb 36>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  _2 = BN_ucmp (a_127(D), &ossl_bignum_nist_p_384_sqr);
+  if (_2 >= 0)
+    goto <bb 3>; [60.08%]
+  else
+    goto <bb 5>; [39.92%]
+
+  <bb 5> [local count: 282900904]:
+  i_133 = BN_ucmp (&ossl_bignum_nist_p_384, a_127(D));
+  if (i_133 == 0)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 7>; [79.76%]
+
+  <bb 6> [local count: 57259143]:
+  BN_zero_ex (r_134(D));
+  goto <bb 35>; [100.00%]
+
+  <bb 7> [local count: 225641761]:
+  if (i_133 > 0)
+    goto <bb 8>; [42.57%]
+  else
+    goto <bb 10>; [57.43%]
+
+  <bb 8> [local count: 96055698]:
+  if (a_127(D) == r_134(D))
+    goto <bb 35>; [46.53%]
+  else
+    goto <bb 9>; [53.47%]
+
+  <bb 9> [local count: 51360982]:
+  _3 = BN_copy (r_134(D), a_127(D));
+  _137 = _3 != 0B;
+  _119 = (int) _137;
+  goto <bb 36>; [100.00%]
+
+  <bb 10> [local count: 129586063]:
+  if (a_127(D) != r_134(D))
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 16>; [46.53%]
+
+  <bb 11> [local count: 69289668]:
+  _4 = bn_wexpand (r_134(D), 6);
+  if (_4 == 0B)
+    goto <bb 36>; [18.09%]
+  else
+    goto <bb 12>; [81.91%]
+
+  <bb 12> [local count: 56755167]:
+  r_d_136 = r_134(D)->d;
+  _225 = a_d_129 + 8;
+  if (r_d_136 != _225)
+    goto <bb 13>; [80.00%]
+  else
+    goto <bb 15>; [20.00%]
+
+  <bb 13> [local count: 45404134]:
+  vect__245.72_506 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_129];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_136] = vect__245.72_506;
+  vect__245.72_515 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_129 + 16B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_136 + 16B] = vect__245.72_515;
+  vect__245.72_332 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_129 + 32B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_136 + 32B] = vect__245.72_332;
+
+  <bb 14> [local count: 56755167]:
+  goto <bb 16>; [100.00%]
+
+  <bb 15> [local count: 11351033]:
+  _454 = MEM[(const long unsigned int *)a_d_129];
+  *r_d_136 = _454;
+  _465 = MEM[(const long unsigned int *)a_d_129 + 8B];
+  MEM[(long unsigned int *)r_d_136 + 8B] = _465;
+  _476 = MEM[(const long unsigned int *)a_d_129 + 16B];
+  MEM[(long unsigned int *)r_d_136 + 16B] = _476;
+  _487 = MEM[(const long unsigned int *)a_d_129 + 24B];
+  MEM[(long unsigned int *)r_d_136 + 24B] = _487;
+  _498 = MEM[(const long unsigned int *)a_d_129 + 32B];
+  MEM[(long unsigned int *)r_d_136 + 32B] = _498;
+  _313 = MEM[(const long unsigned int *)a_d_129 + 40B];
+  MEM[(long unsigned int *)r_d_136 + 40B] = _313;
+  goto <bb 14>; [100.00%]
+
+  <bb 16> [local count: 117051562]:
+  # r_d_109 = PHI <r_d_136(14), a_d_129(10)>
+  _261 = top_128 + -6;
+  if (top_128 > 6)
+    goto <bb 17>; [85.71%]
+  else
+    goto <bb 24>; [14.29%]
+
+  <bb 17> [local count: 100324893]:
+  _408 = MEM[(const long unsigned int *)a_d_129 + 48B];
+  buf.bn[0] = _408;
+  if (_261 != 1)
+    goto <bb 18>; [83.33%]
+  else
+    goto <bb 24>; [16.67%]
+
+  <bb 18> [local count: 83604078]:
+  _417 = MEM[(const long unsigned int *)a_d_129 + 56B];
+  buf.bn[1] = _417;
+  if (_261 != 2)
+    goto <bb 19>; [83.33%]
+  else
+    goto <bb 24>; [16.67%]
+
+  <bb 19> [local count: 69670064]:
+  _426 = MEM[(const long unsigned int *)a_d_129 + 64B];
+  buf.bn[2] = _426;
+  if (_261 != 3)
+    goto <bb 20>; [83.33%]
+  else
+    goto <bb 24>; [16.67%]
+
+  <bb 20> [local count: 58058389]:
+  _435 = MEM[(const long unsigned int *)a_d_129 + 72B];
+  buf.bn[3] = _435;
+  if (_261 != 4)
+    goto <bb 21>; [83.33%]
+  else
+    goto <bb 24>; [16.67%]
+
+  <bb 21> [local count: 48381990]:
+  _444 = MEM[(const long unsigned int *)a_d_129 + 80B];
+  buf.bn[4] = _444;
+  if (_261 != 5)
+    goto <bb 22>; [83.33%]
+  else
+    goto <bb 24>; [16.67%]
+
+  <bb 22> [local count: 40318326]:
+  _8 = MEM[(const long unsigned int *)a_d_129 + 88B];
+  buf.bn[5] = _8;
+  if (_261 != 6)
+    goto <bb 24>; [58.51%]
+  else
+    goto <bb 23>; [41.49%]
+
+  <bb 23> [local count: 117051563]:
+  _10 = buf.bn[4];
+  _11 = _10 >> 32;
+  _12 = buf.bn[5];
+  _13 = _12 << 32;
+  _14 = _11 | _13;
+  _15 = _12 >> 32;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = { 0, 0 };
+  _385 = _14 << 1;
+  MEM[(long unsigned int *)&t_d] = _385;
+  _389 = _14 >> 63;
+  _396 = _15 << 1;
+  _398 = _389 | _396;
+  MEM[(long unsigned int *)&t_d + 8B] = _398;
+  _18 = r_d_109 + 16;
+  _19 = bn_add_words (_18, _18, &t_d, 4);
+  carry_144 = (int) _19;
+  _20 = bn_add_words (r_d_109, r_d_109, &buf.bn, 6);
+  _146 = (int) _20;
+  carry_147 = carry_144 + _146;
+  vect__21.82_492 = MEM <vector(2) long unsigned int> [(union  *)&buf];
+  vect__21.83_491 = MEM <vector(2) long unsigned int> [(union  *)&buf + 16B];
+  vect__21.84_482 = MEM <vector(2) long unsigned int> [(union  *)&buf + 32B];
+  vect__22.85_481 = vect__21.84_482 >> 32;
+  vect__22.85_480 = vect__21.82_492 >> 32;
+  vect__22.85_336 = vect__21.83_491 >> 32;
+  vect__27.91_285 = VEC_PERM_EXPR <vect__21.84_482, vect__21.82_492, { 1, 2 }>;
+  vect__27.92_123 = VEC_PERM_EXPR <vect__21.82_492, vect__21.83_491, { 1, 2 }>;
+  vect__27.93_122 = VEC_PERM_EXPR <vect__21.83_491, vect__21.84_482, { 1, 2 }>;
+  vect__24.94_114 = vect__27.91_285 << 32;
+  vect__24.94_503 = vect__27.92_123 << 32;
+  vect__24.94_504 = vect__27.93_122 << 32;
+  vect__25.95_505 = vect__24.94_114 | vect__22.85_481;
+  vect__25.95_510 = vect__22.85_480 | vect__24.94_503;
+  vect__25.95_519 = vect__22.85_336 | vect__24.94_504;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d] = vect__25.95_505;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = vect__25.95_510;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 32B] = vect__25.95_519;
+  _45 = bn_add_words (r_d_109, r_d_109, &t_d, 6);
+  _156 = (int) _45;
+  carry_157 = carry_147 + _156;
+  _46 = buf.bn[5];
+  _47 = _46 & 18446744069414584320;
+  t_d[0] = _47;
+  _48 = buf.bn[4];
+  _49 = _48 << 32;
+  t_d[1] = _49;
+  _50 = buf.bn[0];
+  t_d[2] = _50;
+  _51 = buf.bn[1];
+  t_d[3] = _51;
+  _52 = buf.bn[2];
+  t_d[4] = _52;
+  _53 = buf.bn[3];
+  t_d[5] = _53;
+  _54 = bn_add_words (r_d_109, r_d_109, &t_d, 6);
+  _165 = (int) _54;
+  carry_166 = carry_157 + _165;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d] = { 0, 0 };
+  vect__55.102_451 = MEM <vector(2) long unsigned int> [(union  *)&buf + 32B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = vect__55.102_451;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 32B] = { 0, 0 };
+  _57 = bn_add_words (r_d_109, r_d_109, &t_d, 6);
+  _174 = (int) _57;
+  carry_175 = carry_166 + _174;
+  _58 = buf.bn[4];
+  _59 = _58 & 4294967295;
+  t_d[0] = _59;
+  _60 = _58 & 18446744069414584320;
+  t_d[1] = _60;
+  _61 = buf.bn[5];
+  t_d[2] = _61;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 24B] = { 0, 0 };
+  t_d[5] = 0;
+  _62 = bn_add_words (r_d_109, r_d_109, &t_d, 6);
+  _183 = (int) _62;
+  carry_184 = carry_175 + _183;
+  vect__63.111_457 = MEM <vector(2) long unsigned int> [(union  *)&buf];
+  vect__63.112_461 = MEM <vector(2) long unsigned int> [(union  *)&buf + 16B];
+  vect__63.113_462 = MEM <vector(2) long unsigned int> [(union  *)&buf + 32B];
+  vect__65.114_463 = VEC_PERM_EXPR <vect__63.113_462, vect__63.111_457, { 1, 2 }>;
+  vect__65.115_467 = VEC_PERM_EXPR <vect__63.111_457, vect__63.112_461, { 1, 2 }>;
+  vect__65.116_468 = VEC_PERM_EXPR <vect__63.112_461, vect__63.113_462, { 1, 2 }>;
+  vect__64.117_472 = vect__65.114_463 >> 32;
+  vect__64.117_473 = vect__65.115_467 >> 32;
+  vect__64.117_478 = vect__65.116_468 >> 32;
+  vect__66.123_489 = vect__63.111_457 << 32;
+  vect__66.123_490 = vect__63.112_461 << 32;
+  vect__66.123_494 = vect__63.113_462 << 32;
+  vect__67.124_495 = vect__64.117_472 | vect__66.123_489;
+  vect__67.124_500 = vect__64.117_473 | vect__66.123_490;
+  vect__67.124_501 = vect__64.117_478 | vect__66.123_494;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d] = vect__67.124_495;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = vect__67.124_500;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 32B] = vect__67.124_501;
+  _87 = bn_sub_words (r_d_109, r_d_109, &t_d, 6);
+  _192 = (int) _87;
+  carry_193 = carry_184 - _192;
+  _88 = buf.bn[4];
+  _89 = _88 << 32;
+  t_d[0] = _89;
+  _90 = _88 >> 32;
+  _91 = buf.bn[5];
+  _92 = _91 << 32;
+  _93 = _90 | _92;
+  t_d[1] = _93;
+  _94 = _91 >> 32;
+  t_d[2] = _94;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 24B] = { 0, 0 };
+  t_d[5] = 0;
+  _95 = bn_sub_words (r_d_109, r_d_109, &t_d, 6);
+  _201 = (int) _95;
+  carry_202 = carry_193 - _201;
+  t_d[0] = 0;
+  _96 = buf.bn[5];
+  _97 = _96 & 18446744069414584320;
+  t_d[1] = _97;
+  _98 = _96 >> 32;
+  t_d[2] = _98;
+  t_d[3] = 0;
+  t_d[4] = 0;
+  t_d[5] = 0;
+  _99 = bn_sub_words (r_d_109, r_d_109, &t_d, 6);
+  _210 = (int) _99;
+  carry_211 = carry_202 - _210;
+  t_d ={v} {CLOBBER(eos)};
+  if (carry_211 > 0)
+    goto <bb 25>; [41.48%]
+  else
+    goto <bb 26>; [58.52%]
+
+  <bb 24> [local count: 100324894]:
+  # ii_247 = PHI <_261(22), _1(16), _261(17), _261(21), _261(20), _261(19), _261(18)>
+  _303 = (unsigned int) ii_247;
+  _226 = 6 - _303;
+  _300 = (sizetype) _226;
+  _290 = (unsigned int) _300;
+  _299 = _290 w* 8;
+  _298 = (sizetype) ii_247;
+  _356 = (unsigned int) _298;
+  _297 = _356 w* 8;
+  _296 = &buf + _297;
+  __builtin_memset (_296, 0, _299);
+  goto <bb 23>; [100.00%]
+
+  <bb 25> [local count: 48552988]:
+  _100 = carry_211 + -1;
+  _113 = (sizetype) _100;
+  _260 = (unsigned int) _113;
+  _266 = _260 w* 48;
+  _101 = &_nist_p_384 + _266;
+  _102 = bn_sub_words (r_d_109, r_d_109, _101, 6);
+  carry_218 = (int) _102;
+  _320 = carry_218 == 0;
+  goto <bb 29>; [100.00%]
+
+  <bb 26> [local count: 68498574]:
+  if (carry_211 != 0)
+    goto <bb 27>; [33.00%]
+  else
+    goto <bb 28>; [67.00%]
+
+  <bb 27> [local count: 22604529]:
+  _103 = ~carry_211;
+  _112 = (sizetype) _103;
+  _345 = (unsigned int) _112;
+  _121 = _345 w* 48;
+  _104 = &_nist_p_384 + _121;
+  _105 = bn_add_words (r_d_109, r_d_109, _104, 6);
+  carry_214 = (int) _105;
+  if (carry_214 != 0)
+    goto <bb 28>; [50.00%]
+  else
+    goto <bb 37>; [50.00%]
+
+  <bb 28> [local count: 45894045]:
+
+  <bb 29> [local count: 105749297]:
+  # prephitmp_322 = PHI <_320(25), 0(28)>
+  _106 = bn_sub_words (&c_d, r_d_109, &_nist_p_384[0], 6);
+  _148 = _106 == 0;
+  _116 = _148 | prephitmp_322;
+  if (_116 != 0)
+    goto <bb 30>; [72.33%]
+  else
+    goto <bb 31>; [27.67%]
+
+  <bb 30> [local count: 11302265]:
+
+  <bb 31> [local count: 117051562]:
+  # iftmp.15_117 = PHI <&c_d(30), r_d_109(29)>
+  _227 = iftmp.15_117 + 8;
+  if (r_d_109 != _227)
+    goto <bb 32>; [80.00%]
+  else
+    goto <bb 33>; [20.00%]
+
+  <bb 32> [local count: 93641251]:
+  vect__252.67_366 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.15_117];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_109] = vect__252.67_366;
+  vect__252.67_375 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.15_117 + 16B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_109 + 16B] = vect__252.67_375;
+  vect__252.67_269 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.15_117 + 32B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_109 + 32B] = vect__252.67_269;
+  goto <bb 34>; [100.00%]
+
+  <bb 33> [local count: 23410312]:
+  _244 = MEM[(const long unsigned int *)iftmp.15_117];
+  MEM[(long unsigned int *)iftmp.15_117 + 8B] = _244;
+  MEM[(long unsigned int *)iftmp.15_117 + 16B] = _244;
+  _257 = MEM[(const long unsigned int *)iftmp.15_117 + 16B];
+  MEM[(long unsigned int *)r_d_109 + 16B] = _257;
+  _347 = MEM[(const long unsigned int *)iftmp.15_117 + 24B];
+  MEM[(long unsigned int *)iftmp.15_117 + 32B] = _347;
+  _358 = MEM[(const long unsigned int *)iftmp.15_117 + 32B];
+  MEM[(long unsigned int *)iftmp.15_117 + 40B] = _358;
+  _288 = MEM[(const long unsigned int *)iftmp.15_117 + 40B];
+  MEM[(long unsigned int *)iftmp.15_117 + 48B] = _288;
+
+  <bb 34> [local count: 117051562]:
+  r_134(D)->top = 6;
+  bn_correct_top (r_134(D));
+
+  <bb 35> [local count: 101953859]:
+
+  <bb 36> [local count: 1073741824]:
+  # _115 = PHI <_237(3), 1(35), _119(9), _1(11)>
+  buf ={v} {CLOBBER(eos)};
+  c_d ={v} {CLOBBER(eos)};
+  return _115;
+
+  <bb 37> [local count: 11302265]:
+  bn_add_words (&c_d, r_d_109, &_nist_p_384[0], 6);
+  goto <bb 30>; [100.00%]
+
+}
+
+
+
+;; Function BN_nist_mod_521 (BN_nist_mod_521, funcdef_no=180, decl_uid=7664, cgraph_uid=181, symbol_order=195)
+
+Removing basic block 34
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+Removing basic block 49
+Removing basic block 50
+Removing basic block 51
+Removing basic block 52
+Removing basic block 53
+Removing basic block 54
+Removing basic block 55
+Removing basic block 56
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+int BN_nist_mod_521 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * field, struct BN_CTX * ctx)
+{
+  vector(2) long unsigned int vect__306.178;
+  vector(2) long unsigned int vect__305.177;
+  vector(2) long unsigned int vect_tmp_304.176;
+  vector(2) long unsigned int vect_tmp_304.175;
+  vector(2) long unsigned int vect_tmp_304.174;
+  vector(2) long unsigned int vect_tmp_304.173;
+  vector(2) long unsigned int vect__302.170;
+  vector(2) long unsigned int vect_val_47.169;
+  vector(2) long unsigned int vect_val_47.168;
+  vector(2) long unsigned int vect_val_47.167;
+  vector(2) long unsigned int vect_val_47.166;
+  const vector(2) long unsigned int vect__72.157;
+  const vector(2) long unsigned int vect__8.150;
+  int tmp.147;
+  unsigned int niters_vector_mult_vf.146;
+  unsigned int niters.144;
+  const vector(2) long unsigned int vect__79.141;
+  int ii;
+  static const struct BIGNUM ossl_bignum_nist_p_521_sqr = {.d=&_nist_p_521_sqr, .top=17, .dmax=17, .neg=0, .flags=2};
+  long unsigned int t_d[9];
+  long unsigned int * a_d;
+  long unsigned int * r_d;
+  int i;
+  int top;
+  int _1;
+  int _2;
+  struct BIGNUM * _3;
+  struct BIGNUM * _4;
+  long unsigned int _14;
+  long unsigned int _16;
+  int _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  int _25;
+  _Bool _26;
+  long unsigned int * iftmp.17_27;
+  long unsigned int _29;
+  long unsigned int _33;
+  long unsigned int * _57;
+  long unsigned int _58;
+  int _65;
+  long unsigned int _73;
+  long unsigned int * _87;
+  sizetype _88;
+  sizetype _89;
+  sizetype _90;
+  int _91;
+  sizetype _92;
+  unsigned int _98;
+  unsigned int _106;
+  long unsigned int _130;
+  long unsigned int _135;
+  unsigned int _150;
+  unsigned int _151;
+  long unsigned int * _153;
+  long unsigned int _157;
+  long unsigned int _162;
+  long unsigned int _174;
+  long unsigned int * _196;
+  long unsigned int _204;
+  unsigned int _205;
+  long unsigned int _216;
+  unsigned int _217;
+  long unsigned int _234;
+  long unsigned int _245;
+  long unsigned int _256;
+  long unsigned int _267;
+  unsigned int _351;
+  long unsigned int _373;
+  long unsigned int _381;
+  long unsigned int _390;
+  long unsigned int _399;
+  long unsigned int _408;
+  long unsigned int _417;
+  long unsigned int _426;
+  long unsigned int _435;
+  long unsigned int _444;
+  long unsigned int _481;
+  long unsigned int _492;
+  long unsigned int _503;
+  long unsigned int _514;
+  long unsigned int _525;
+  long unsigned int _536;
+  long unsigned int _547;
+  long unsigned int _558;
+  long unsigned int _570;
+
+  <bb 2> [local count: 1073741824]:
+  top_38 = a_37(D)->top;
+  a_d_39 = a_37(D)->d;
+  _1 = BN_is_negative (a_37(D));
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 790840920]:
+  _65 = BN_nnmod (r_44(D), a_37(D), &ossl_bignum_nist_p_521, ctx_63(D)); [tail call]
+  goto <bb 40>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  _2 = BN_ucmp (a_37(D), &ossl_bignum_nist_p_521_sqr);
+  if (_2 >= 0)
+    goto <bb 3>; [60.08%]
+  else
+    goto <bb 5>; [39.92%]
+
+  <bb 5> [local count: 282900904]:
+  i_43 = BN_ucmp (&ossl_bignum_nist_p_521, a_37(D));
+  if (i_43 == 0)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 7>; [79.76%]
+
+  <bb 6> [local count: 57259143]:
+  BN_zero_ex (r_44(D));
+  goto <bb 39>; [100.00%]
+
+  <bb 7> [local count: 225641761]:
+  if (i_43 > 0)
+    goto <bb 8>; [42.57%]
+  else
+    goto <bb 10>; [57.43%]
+
+  <bb 8> [local count: 96055698]:
+  if (a_37(D) == r_44(D))
+    goto <bb 39>; [46.53%]
+  else
+    goto <bb 9>; [53.47%]
+
+  <bb 9> [local count: 51360982]:
+  _3 = BN_copy (r_44(D), a_37(D));
+  _26 = _3 != 0B;
+  _17 = (int) _26;
+  goto <bb 40>; [100.00%]
+
+  <bb 10> [local count: 129586063]:
+  if (a_37(D) != r_44(D))
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 16>; [46.53%]
+
+  <bb 11> [local count: 69289668]:
+  _4 = bn_wexpand (r_44(D), 9);
+  if (_4 == 0B)
+    goto <bb 40>; [18.09%]
+  else
+    goto <bb 12>; [81.91%]
+
+  <bb 12> [local count: 56755167]:
+  r_d_46 = r_44(D)->d;
+  _196 = a_d_39 + 8;
+  if (r_d_46 != _196)
+    goto <bb 13>; [80.00%]
+  else
+    goto <bb 14>; [20.00%]
+
+  <bb 13> [local count: 45404134]:
+  vect__72.157_566 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_46] = vect__72.157_566;
+  vect__72.157_575 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 16B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_46 + 16B] = vect__72.157_575;
+  vect__72.157_584 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 32B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_46 + 32B] = vect__72.157_584;
+  vect__72.157_225 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 48B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_46 + 48B] = vect__72.157_225;
+  _216 = MEM[(const long unsigned int *)a_d_39 + 64B];
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 11351033]:
+  _481 = MEM[(const long unsigned int *)a_d_39];
+  *r_d_46 = _481;
+  _492 = MEM[(const long unsigned int *)a_d_39 + 8B];
+  MEM[(long unsigned int *)r_d_46 + 8B] = _492;
+  _503 = MEM[(const long unsigned int *)a_d_39 + 16B];
+  MEM[(long unsigned int *)r_d_46 + 16B] = _503;
+  _514 = MEM[(const long unsigned int *)a_d_39 + 24B];
+  MEM[(long unsigned int *)r_d_46 + 24B] = _514;
+  _525 = MEM[(const long unsigned int *)a_d_39 + 32B];
+  MEM[(long unsigned int *)r_d_46 + 32B] = _525;
+  _536 = MEM[(const long unsigned int *)a_d_39 + 40B];
+  MEM[(long unsigned int *)r_d_46 + 40B] = _536;
+  _547 = MEM[(const long unsigned int *)a_d_39 + 48B];
+  MEM[(long unsigned int *)r_d_46 + 48B] = _547;
+  _558 = MEM[(const long unsigned int *)a_d_39 + 56B];
+  MEM[(long unsigned int *)r_d_46 + 56B] = _558;
+  _204 = MEM[(const long unsigned int *)a_d_39 + 64B];
+
+  <bb 15> [local count: 56755167]:
+  # _33 = PHI <_216(13), _204(14)>
+  MEM[(long unsigned int *)r_d_46 + 64B] = _33;
+
+  <bb 16> [local count: 117051562]:
+  # r_d_21 = PHI <r_d_46(15), a_d_39(10)>
+  _91 = top_38 + -8;
+  if (top_38 > 8)
+    goto <bb 17>; [89.00%]
+  else
+    goto <bb 32>; [11.00%]
+
+  <bb 17> [local count: 104175890]:
+  _150 = (unsigned int) top_38;
+  _151 = _150 + 4294967287;
+  if (_151 > 6)
+    goto <bb 18>; [89.44%]
+  else
+    goto <bb 21>; [10.56%]
+
+  <bb 18> [local count: 93177749]:
+  _153 = a_d_39 + 72;
+  if (&t_d != _153)
+    goto <bb 19>; [89.44%]
+  else
+    goto <bb 41>; [10.56%]
+
+  <bb 19> [local count: 83340712]:
+  niters.144_166 = _150 + 4294967288;
+  vect__8.150_451 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 64B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d] = vect__8.150_451;
+  vect__8.150_460 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 80B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = vect__8.150_460;
+  vect__8.150_469 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 96B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 32B] = vect__8.150_469;
+  vect__8.150_185 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)a_d_39 + 112B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 48B] = vect__8.150_185;
+  _351 = niters.144_166 & 1;
+  if (_351 == 0)
+    goto <bb 30>; [33.33%]
+  else
+    goto <bb 20>; [66.67%]
+
+  <bb 20> [local count: 55560474]:
+  _174 = MEM[(const long unsigned int *)a_d_39 + 128B];
+  niters_vector_mult_vf.146_180 = niters.144_166 & 4294967294;
+  tmp.147_181 = (int) niters_vector_mult_vf.146_180;
+  t_d[tmp.147_181] = _174;
+  goto <bb 30>; [100.00%]
+
+  <bb 21> [local count: 10998142]:
+  _381 = MEM[(const long unsigned int *)a_d_39 + 64B];
+  t_d[0] = _381;
+  if (_91 != 1)
+    goto <bb 22>; [78.95%]
+  else
+    goto <bb 32>; [21.05%]
+
+  <bb 22> [local count: 8683122]:
+  _390 = MEM[(const long unsigned int *)a_d_39 + 72B];
+  t_d[1] = _390;
+  if (_91 != 2)
+    goto <bb 23>; [76.30%]
+  else
+    goto <bb 32>; [23.70%]
+
+  <bb 23> [local count: 16462363]:
+  _399 = MEM[(const long unsigned int *)a_d_39 + 80B];
+  t_d[2] = _399;
+  if (_91 != 3)
+    goto <bb 24>; [88.89%]
+  else
+    goto <bb 32>; [11.11%]
+
+  <bb 24> [local count: 14633211]:
+  _408 = MEM[(const long unsigned int *)a_d_39 + 88B];
+  t_d[3] = _408;
+  if (_91 != 4)
+    goto <bb 25>; [88.89%]
+  else
+    goto <bb 32>; [11.11%]
+
+  <bb 25> [local count: 13007299]:
+  _417 = MEM[(const long unsigned int *)a_d_39 + 96B];
+  t_d[4] = _417;
+  if (_91 != 5)
+    goto <bb 26>; [88.89%]
+  else
+    goto <bb 32>; [11.11%]
+
+  <bb 26> [local count: 11562043]:
+  _426 = MEM[(const long unsigned int *)a_d_39 + 104B];
+  t_d[5] = _426;
+  if (_91 != 6)
+    goto <bb 27>; [88.89%]
+  else
+    goto <bb 32>; [11.11%]
+
+  <bb 27> [local count: 10277372]:
+  _435 = MEM[(const long unsigned int *)a_d_39 + 112B];
+  t_d[6] = _435;
+  if (_91 != 7)
+    goto <bb 28>; [88.89%]
+  else
+    goto <bb 32>; [11.11%]
+
+  <bb 28> [local count: 9135442]:
+  _444 = MEM[(const long unsigned int *)a_d_39 + 120B];
+  t_d[7] = _444;
+  if (_91 != 8)
+    goto <bb 29>; [88.89%]
+  else
+    goto <bb 32>; [11.11%]
+
+  <bb 29> [local count: 8120391]:
+  _162 = MEM[(const long unsigned int *)a_d_39 + 128B];
+  t_d[8] = _162;
+  goto <bb 31>; [100.00%]
+
+  <bb 30> [local count: 83340713]:
+
+  <bb 31> [local count: 91461107]:
+  if (_91 != 9)
+    goto <bb 32>; [85.92%]
+  else
+    goto <bb 33>; [14.08%]
+
+  <bb 32> [local count: 104175890]:
+  # ii_74 = PHI <_91(31), _1(16), _91(21), _91(28), _91(27), _91(26), _91(25), _91(24), _91(23), _91(22)>
+  _98 = (unsigned int) ii_74;
+  _106 = 9 - _98;
+  _92 = (sizetype) _106;
+  _205 = (unsigned int) _92;
+  _90 = _205 w* 8;
+  _89 = (sizetype) ii_74;
+  _217 = (unsigned int) _89;
+  _88 = _217 w* 8;
+  _87 = &t_d + _88;
+  __builtin_memset (_87, 0, _90);
+
+  <bb 33> [local count: 117051562]:
+  vect_val_47.166_229 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d];
+  vect_val_47.167_226 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B];
+  vect_val_47.168_223 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 32B];
+  vect_val_47.169_220 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 48B];
+  vect__302.170_211 = vect_val_47.166_229 >> 9;
+  vect__302.170_210 = vect_val_47.167_226 >> 9;
+  vect__302.170_209 = vect_val_47.168_223 >> 9;
+  vect__302.170_208 = vect_val_47.169_220 >> 9;
+  vect_tmp_304.173_108 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 8B];
+  vect_tmp_304.174_563 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 24B];
+  vect_tmp_304.175_564 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 40B];
+  vect_tmp_304.176_565 = MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 56B];
+  vect__305.177_579 = vect_tmp_304.173_108 << 55;
+  vect__305.177_588 = vect_tmp_304.174_563 << 55;
+  vect__305.177_230 = vect_tmp_304.175_564 << 55;
+  vect__305.177_212 = vect_tmp_304.176_565 << 55;
+  vect__306.178_213 = vect__302.170_211 | vect__305.177_579;
+  vect__306.178_218 = vect__302.170_210 | vect__305.177_588;
+  vect__306.178_219 = vect__302.170_209 | vect__305.177_230;
+  vect__306.178_474 = vect__302.170_208 | vect__305.177_212;
+  _570 = BIT_FIELD_REF <vect_tmp_304.176_565, 64, 64>;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d] = vect__306.178_213;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 16B] = vect__306.178_218;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 32B] = vect__306.178_219;
+  MEM <vector(2) long unsigned int> [(long unsigned int *)&t_d + 48B] = vect__306.178_474;
+  _14 = _570 >> 9;
+  t_d[8] = _14;
+  _16 = MEM[(long unsigned int *)r_d_21 + 64B];
+  _18 = _16 & 511;
+  MEM[(long unsigned int *)r_d_21 + 64B] = _18;
+  bn_add_words (r_d_21, r_d_21, &t_d, 9);
+  _19 = bn_sub_words (&t_d, r_d_21, &_nist_p_521, 9);
+  if (_19 == 0)
+    goto <bb 34>; [50.00%]
+  else
+    goto <bb 35>; [50.00%]
+
+  <bb 34> [local count: 58525781]:
+
+  <bb 35> [local count: 117051562]:
+  # iftmp.17_27 = PHI <&t_d(34), r_d_21(33)>
+  _57 = iftmp.17_27 + 8;
+  if (r_d_21 != _57)
+    goto <bb 36>; [80.00%]
+  else
+    goto <bb 37>; [20.00%]
+
+  <bb 36> [local count: 93641251]:
+  vect__79.141_275 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.17_27];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_21] = vect__79.141_275;
+  vect__79.141_284 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.17_27 + 16B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_21 + 16B] = vect__79.141_284;
+  vect__79.141_293 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.17_27 + 32B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_21 + 32B] = vect__79.141_293;
+  vect__79.141_139 = MEM <const vector(2) long unsigned int> [(const long unsigned int *)iftmp.17_27 + 48B];
+  MEM <vector(2) long unsigned int> [(long unsigned int *)r_d_21 + 48B] = vect__79.141_139;
+  _130 = MEM[(const long unsigned int *)iftmp.17_27 + 64B];
+  MEM[(long unsigned int *)r_d_21 + 64B] = _130;
+  goto <bb 38>; [100.00%]
+
+  <bb 37> [local count: 23410312]:
+  _73 = MEM[(const long unsigned int *)iftmp.17_27];
+  MEM[(long unsigned int *)iftmp.17_27 + 8B] = _73;
+  MEM[(long unsigned int *)iftmp.17_27 + 16B] = _73;
+  _135 = MEM[(const long unsigned int *)iftmp.17_27 + 16B];
+  MEM[(long unsigned int *)iftmp.17_27 + 24B] = _135;
+  _58 = MEM[(const long unsigned int *)iftmp.17_27 + 24B];
+  MEM[(long unsigned int *)iftmp.17_27 + 32B] = _58;
+  _234 = MEM[(const long unsigned int *)iftmp.17_27 + 32B];
+  MEM[(long unsigned int *)iftmp.17_27 + 40B] = _234;
+  _245 = MEM[(const long unsigned int *)iftmp.17_27 + 40B];
+  MEM[(long unsigned int *)iftmp.17_27 + 48B] = _245;
+  _256 = MEM[(const long unsigned int *)iftmp.17_27 + 48B];
+  MEM[(long unsigned int *)iftmp.17_27 + 56B] = _256;
+  _267 = MEM[(const long unsigned int *)iftmp.17_27 + 56B];
+  MEM[(long unsigned int *)iftmp.17_27 + 64B] = _267;
+  _29 = MEM[(const long unsigned int *)iftmp.17_27 + 64B];
+  MEM[(long unsigned int *)iftmp.17_27 + 72B] = _29;
+
+  <bb 38> [local count: 117051562]:
+  r_44(D)->top = 9;
+  bn_correct_top (r_44(D));
+
+  <bb 39> [local count: 101953859]:
+
+  <bb 40> [local count: 1073741824]:
+  # _25 = PHI <_65(3), 1(39), _17(9), _1(11)>
+  t_d ={v} {CLOBBER(eos)};
+  return _25;
+
+  <bb 41> [local count: 9837036]:
+  _373 = MEM[(const long unsigned int *)a_d_39 + 64B];
+  t_d[0] = _373;
+  _157 = MEM[(const long unsigned int *)a_d_39 + 72B];
+  t_d[1] = _157;
+  goto <bb 23>; [100.00%]
+
+}
+
+
+
+;; Function BN_get0_nist_prime_192 (BN_get0_nist_prime_192, funcdef_no=170, decl_uid=7666, cgraph_uid=171, symbol_order=185)
+
+__attribute__((returns_nonnull))
+const struct BIGNUM * BN_get0_nist_prime_192 ()
+{
+  <bb 2> [local count: 1073741824]:
+  return &ossl_bignum_nist_p_192;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_224 (BN_get0_nist_prime_224, funcdef_no=171, decl_uid=7668, cgraph_uid=172, symbol_order=186)
+
+__attribute__((returns_nonnull))
+const struct BIGNUM * BN_get0_nist_prime_224 ()
+{
+  <bb 2> [local count: 1073741824]:
+  return &ossl_bignum_nist_p_224;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_256 (BN_get0_nist_prime_256, funcdef_no=172, decl_uid=7670, cgraph_uid=173, symbol_order=187)
+
+__attribute__((returns_nonnull))
+const struct BIGNUM * BN_get0_nist_prime_256 ()
+{
+  <bb 2> [local count: 1073741824]:
+  return &ossl_bignum_nist_p_256;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_384 (BN_get0_nist_prime_384, funcdef_no=173, decl_uid=7672, cgraph_uid=174, symbol_order=188)
+
+__attribute__((returns_nonnull))
+const struct BIGNUM * BN_get0_nist_prime_384 ()
+{
+  <bb 2> [local count: 1073741824]:
+  return &ossl_bignum_nist_p_384;
+
+}
+
+
+
+;; Function BN_get0_nist_prime_521 (BN_get0_nist_prime_521, funcdef_no=174, decl_uid=7674, cgraph_uid=175, symbol_order=189)
+
+__attribute__((returns_nonnull))
+const struct BIGNUM * BN_get0_nist_prime_521 ()
+{
+  <bb 2> [local count: 1073741824]:
+  return &ossl_bignum_nist_p_521;
+
+}
+
+
+
+;; Function BN_nist_mod_func (BN_nist_mod_func, funcdef_no=181, decl_uid=7680, cgraph_uid=182, symbol_order=196)
+
+Removing basic block 7
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) BN_nist_mod_func (const struct BIGNUM * p)
+{
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int (*<Tc81>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *, struct BN_CTX *) _6;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = BN_ucmp (&ossl_bignum_nist_p_192, p_9(D));
+  if (_1 == 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 3>; [48.88%]
+
+  <bb 3> [local count: 524844999]:
+  _2 = BN_ucmp (&ossl_bignum_nist_p_224, p_9(D));
+  if (_2 == 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 4>; [48.88%]
+
+  <bb 4> [local count: 256544234]:
+  _3 = BN_ucmp (&ossl_bignum_nist_p_256, p_9(D));
+  if (_3 == 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 125398821]:
+  _4 = BN_ucmp (&ossl_bignum_nist_p_384, p_9(D));
+  if (_4 == 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 6>; [48.88%]
+
+  <bb 6> [local count: 61294943]:
+  _5 = BN_ucmp (&ossl_bignum_nist_p_521, p_9(D));
+  if (_5 == 0)
+    goto <bb 8>; [55.78%]
+  else
+    goto <bb 7>; [44.22%]
+
+  <bb 7> [local count: 27104624]:
+
+  <bb 8> [local count: 1073741824]:
+  # _6 = PHI <BN_nist_mod_192(2), BN_nist_mod_224(3), BN_nist_mod_256(4), BN_nist_mod_384(5), BN_nist_mod_521(6), 0B(7)>
+  return _6;
+
+}
+
+

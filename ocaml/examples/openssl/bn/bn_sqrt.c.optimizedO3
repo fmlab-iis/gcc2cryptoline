@@ -1,0 +1,818 @@
+
+;; Function BN_mod_sqrt (BN_mod_sqrt, funcdef_no=170, decl_uid=8928, cgraph_uid=171, symbol_order=170)
+
+Removing basic block 49
+Removing basic block 106
+Removing basic block 107
+Removing basic block 108
+Removing basic block 109
+Removing basic block 110
+Removing basic block 111
+Removing basic block 112
+Removing basic block 113
+Removing basic block 114
+Removing basic block 115
+Removing basic block 116
+Removing basic block 117
+Removing basic block 118
+Removing basic block 119
+Removing basic block 120
+Removing basic block 121
+Removing basic block 122
+Removing basic block 123
+Removing basic block 124
+Removing basic block 125
+Removing basic block 126
+Removing basic block 127
+Removing basic block 128
+Removing basic block 129
+Removing basic block 130
+Removing basic block 131
+Removing basic block 132
+Removing basic block 133
+Removing basic block 134
+Removing basic block 135
+Removing basic block 136
+Removing basic block 137
+Removing basic block 138
+Removing basic block 140
+Removing basic block 141
+Removing basic block 142
+Removing basic block 143
+Removing basic block 144
+Removing basic block 145
+Removing basic block 146
+Removing basic block 147
+Removing basic block 148
+Removing basic block 149
+Removing basic block 150
+Removing basic block 151
+Removing basic block 152
+Removing basic block 153
+Removing basic block 154
+Removing basic block 155
+Removing basic block 156
+Removing basic block 157
+Removing basic block 158
+Removing basic block 159
+Removing basic block 160
+Removing basic block 161
+Removing basic block 162
+Removing basic block 163
+Removing basic block 164
+Removing basic block 165
+Removing basic block 166
+Removing basic block 167
+Removing basic block 168
+Removing basic block 169
+Removing basic block 170
+Removing basic block 171
+Removing basic block 172
+Removing basic block 173
+Removing basic block 174
+Removing basic block 175
+Removing basic block 176
+Removing basic block 177
+Removing basic block 178
+Removing basic block 179
+Removing basic block 180
+Removing basic block 181
+struct BIGNUM * BN_mod_sqrt (struct BIGNUM * in, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[12] = "BN_mod_sqrt";
+  int j;
+  int i;
+  int e;
+  struct BIGNUM * y;
+  struct BIGNUM * x;
+  struct BIGNUM * t;
+  struct BIGNUM * q;
+  struct BIGNUM * b;
+  struct BIGNUM * A;
+  int r;
+  struct BIGNUM * ret;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  unsigned int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  unsigned int _10;
+  int _11;
+  int _13;
+  int _14;
+  int _15;
+  int _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  int _23;
+  int _24;
+  struct BIGNUM * _25;
+  struct BIGNUM * _26;
+  int _28;
+  int _29;
+  int _30;
+  int _31;
+  int _32;
+  int _33;
+  int _34;
+  int _36;
+  int _37;
+  int _38;
+  int _39;
+  int _40;
+  int _41;
+  int _42;
+  int _43;
+  int _44;
+  int _45;
+  int _46;
+  int _47;
+  int _48;
+  int _49;
+  int _50;
+  struct BIGNUM * _51;
+  int _52;
+  int _53;
+  int _54;
+  struct BIGNUM * _55;
+  int _56;
+  int _57;
+  int _58;
+  int _59;
+  int _60;
+  int _61;
+  int _62;
+  struct BIGNUM * _69;
+  int (*<T13aa>) (struct BIGNUM *, const struct BIGNUM *, const struct BIGNUM *) iftmp.1_70;
+  int _83;
+  unsigned int _86;
+  int _87;
+  int _88;
+  int _226;
+  unsigned int _229;
+  int _230;
+  int _240;
+  unsigned int _252;
+  unsigned int _253;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = BN_is_odd (p_92(D));
+  if (_1 == 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 3> [local count: 896574422]:
+  _3 = BN_abs_is_word (p_92(D), 2);
+  if (_3 != 0)
+    goto <bb 5>; [90.61%]
+  else
+    goto <bb 11>; [9.39%]
+
+  <bb 4> [local count: 536870911]:
+  _2 = BN_abs_is_word (p_92(D), 1);
+  if (_2 != 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 13>; [33.00%]
+
+  <bb 5> [local count: 812386081]:
+  if (in_90(D) == 0B)
+    goto <bb 6>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 6> [local count: 243715822]:
+  ret_199 = BN_new ();
+  if (ret_199 == 0B)
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 102>; [81.91%]
+
+  <bb 7> [local count: 249618778]:
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 568670260]:
+  _4 = BN_is_bit_set (a_95(D), 0);
+  _5 = (unsigned int) _4;
+  _6 = BN_set_word (in_90(D), _5);
+  if (_6 == 0)
+    goto <bb 7>; [29.00%]
+  else
+    goto <bb 9>; [71.00%]
+
+  <bb 9> [local count: 482219199]:
+  goto <bb 101>; [100.00%]
+
+  <bb 10> [local count: 119134575]:
+  BN_free (ret_199);
+  goto <bb 12>; [100.00%]
+
+  <bb 11> [local count: 84188341]:
+  ERR_new ();
+  ERR_set_debug ("bn_sqrt.c", 43, &__func__);
+  ERR_set_error (3, 112, 0B);
+
+  <bb 12> [local count: 391905198]:
+  goto <bb 101>; [100.00%]
+
+  <bb 13> [local count: 177167400]:
+  _7 = BN_is_zero (a_95(D));
+  if (_7 != 0)
+    goto <bb 14>; [67.00%]
+  else
+    goto <bb 15>; [33.00%]
+
+  <bb 14> [local count: 157873870]:
+  if (in_90(D) == 0B)
+    goto <bb 16>; [30.00%]
+  else
+    goto <bb 17>; [70.00%]
+
+  <bb 15> [local count: 58465242]:
+  _8 = BN_is_one (a_95(D));
+  if (_8 != 0)
+    goto <bb 14>; [67.00%]
+  else
+    goto <bb 19>; [33.00%]
+
+  <bb 16> [local count: 47362161]:
+  ret_189 = BN_new ();
+  if (ret_189 == 0B)
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 103>; [81.91%]
+
+  <bb 17> [local count: 110511710]:
+  _9 = BN_is_one (a_95(D));
+  _10 = (unsigned int) _9;
+  _11 = BN_set_word (in_90(D), _10);
+  if (_11 == 0)
+    goto <bb 7>; [29.00%]
+  else
+    goto <bb 9>; [71.00%]
+
+  <bb 18> [local count: 23151845]:
+  BN_free (ret_189);
+  goto <bb 12>; [100.00%]
+
+  <bb 19> [local count: 19293530]:
+  BN_CTX_start (ctx_98(D));
+  A_101 = BN_CTX_get (ctx_98(D));
+  b_103 = BN_CTX_get (ctx_98(D));
+  q_105 = BN_CTX_get (ctx_98(D));
+  t_107 = BN_CTX_get (ctx_98(D));
+  x_109 = BN_CTX_get (ctx_98(D));
+  y_111 = BN_CTX_get (ctx_98(D));
+  if (y_111 == 0B)
+    goto <bb 98>; [18.09%]
+  else
+    goto <bb 20>; [81.91%]
+
+  <bb 20> [local count: 15803330]:
+  if (in_90(D) == 0B)
+    goto <bb 21>; [30.00%]
+  else
+    goto <bb 104>; [70.00%]
+
+  <bb 21> [local count: 4740999]:
+  ret_113 = BN_new ();
+  if (ret_113 == 0B)
+    goto <bb 98>; [18.09%]
+  else
+    goto <bb 105>; [81.91%]
+
+  <bb 22> [local count: 9864151]:
+  # ret_247 = PHI <ret_113(105), in_90(D)(104)>
+  goto <bb 24>; [100.00%]
+
+  <bb 23> [local count: 79809949]:
+  e_187 = e_64 + 1;
+
+  <bb 24> [local count: 89674100]:
+  # e_64 = PHI <1(22), e_187(23)>
+  _13 = BN_is_bit_set (p_92(D), e_64);
+  if (_13 == 0)
+    goto <bb 23>; [89.00%]
+  else
+    goto <bb 25>; [11.00%]
+
+  <bb 25> [local count: 9864151]:
+  if (e_64 == 1)
+    goto <bb 26>; [20.24%]
+  else
+    goto <bb 30>; [79.76%]
+
+  <bb 26> [local count: 1996504]:
+  _14 = BN_rshift (q_105, p_92(D), 2);
+  if (_14 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 28>; [48.88%]
+
+  <bb 27> [local count: 8076887]:
+  goto <bb 95>; [100.00%]
+
+  <bb 28> [local count: 975891]:
+  q_105->neg = 0;
+  _15 = BN_add_word (q_105, 1);
+  if (_15 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 29>; [48.88%]
+
+  <bb 29> [local count: 477016]:
+  _16 = BN_mod_exp (ret_247, A_101, q_105, p_92(D), ctx_98(D));
+  if (_16 == 0)
+    goto <bb 27>; [50.00%]
+  else
+    goto <bb 92>; [50.00%]
+
+  <bb 30> [local count: 7867647]:
+  if (e_64 == 2)
+    goto <bb 31>; [34.00%]
+  else
+    goto <bb 40>; [66.00%]
+
+  <bb 31> [local count: 2675000]:
+  _17 = BN_mod_lshift1_quick (t_107, A_101, p_92(D));
+  if (_17 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 32>; [48.88%]
+
+  <bb 32> [local count: 1307540]:
+  _18 = BN_rshift (q_105, p_92(D), 3);
+  if (_18 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 33>; [48.88%]
+
+  <bb 33> [local count: 639126]:
+  q_105->neg = 0;
+  _19 = BN_mod_exp (b_103, t_107, q_105, p_92(D), ctx_98(D));
+  if (_19 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 34>; [48.88%]
+
+  <bb 34> [local count: 312405]:
+  _20 = BN_mod_sqr (y_111, b_103, p_92(D), ctx_98(D));
+  if (_20 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 35>; [48.88%]
+
+  <bb 35> [local count: 152703]:
+  _21 = BN_mod_mul (t_107, t_107, y_111, p_92(D), ctx_98(D));
+  if (_21 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 36>; [48.88%]
+
+  <bb 36> [local count: 74641]:
+  _22 = BN_sub_word (t_107, 1);
+  if (_22 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 37>; [48.88%]
+
+  <bb 37> [local count: 36485]:
+  _23 = BN_mod_mul (x_109, A_101, b_103, p_92(D), ctx_98(D));
+  if (_23 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 38>; [48.88%]
+
+  <bb 38> [local count: 17834]:
+  _24 = BN_mod_mul (x_109, x_109, t_107, p_92(D), ctx_98(D));
+  if (_24 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 39>; [48.88%]
+
+  <bb 39> [local count: 8717]:
+  _25 = BN_copy (ret_247, x_109);
+  if (_25 == 0B)
+    goto <bb 27>; [30.00%]
+  else
+    goto <bb 92>; [70.00%]
+
+  <bb 40> [local count: 5192647]:
+  _26 = BN_copy (q_105, p_92(D));
+  if (_26 == 0B)
+    goto <bb 27>; [18.09%]
+  else
+    goto <bb 41>; [81.91%]
+
+  <bb 41> [local count: 4253297]:
+  q_105->neg = 0;
+
+  <bb 42> [local count: 47703316]:
+  # i_66 = PHI <2(41), i_127(55)>
+  if (i_66 <= 21)
+    goto <bb 43>; [100.00%]
+  else
+    goto <bb 45>; [0.00%]
+
+  <bb 43> [local count: 47703316]:
+  _252 = (unsigned int) i_66;
+  _28 = BN_set_word (y_111, _252);
+  if (_28 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 44>; [98.00%]
+
+  <bb 44> [local count: 46749250]:
+  r_126 = BN_kronecker (y_111, q_105, ctx_98(D));
+  if (r_126 < -1)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 52>; [98.00%]
+
+  <bb 45> [local count: 0]:
+  _29 = BN_num_bits (p_92(D));
+  _30 = BN_priv_rand_ex (y_111, _29, 0, 0, 0, ctx_98(D));
+  if (_30 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 46>; [98.00%]
+
+  <bb 46> [local count: 0]:
+  _31 = BN_ucmp (y_111, p_92(D));
+  if (_31 >= 0)
+    goto <bb 48>; [74.50%]
+  else
+    goto <bb 47>; [25.50%]
+
+  <bb 47> [local count: 0]:
+  _34 = BN_is_zero (y_111);
+  if (_34 != 0)
+    goto <bb 51>; [33.00%]
+  else
+    goto <bb 44>; [67.00%]
+
+  <bb 48> [local count: 0]:
+  _32 = p_92(D)->neg;
+  if (_32 != 0)
+    goto <bb 49>; [50.00%]
+  else
+    goto <bb 50>; [50.00%]
+
+  <bb 49> [local count: 0]:
+
+  <bb 50> [local count: 0]:
+  # iftmp.1_70 = PHI <BN_add(49), BN_sub(48)>
+  _33 = iftmp.1_70 (y_111, y_111, p_92(D));
+  if (_33 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 47>; [98.00%]
+
+  <bb 51> [local count: 0]:
+  _253 = (unsigned int) i_66;
+  _36 = BN_set_word (y_111, _253);
+  if (_36 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 44>; [98.00%]
+
+  <bb 52> [local count: 45814264]:
+  if (r_126 == 0)
+    goto <bb 53>; [2.00%]
+  else
+    goto <bb 54>; [98.00%]
+
+  <bb 53> [local count: 916285]:
+  ERR_new ();
+  ERR_set_debug ("bn_sqrt.c", 203, &__func__);
+  ERR_set_error (3, 112, 0B);
+  goto <bb 95>; [100.00%]
+
+  <bb 54> [local count: 44897979]:
+  if (r_126 == 1)
+    goto <bb 55>; [98.00%]
+  else
+    goto <bb 56>; [2.00%]
+
+  <bb 55> [local count: 44000019]:
+  i_127 = i_66 + 1;
+  if (i_127 != 82)
+    goto <bb 42>; [98.75%]
+  else
+    goto <bb 57>; [1.25%]
+
+  <bb 56> [local count: 897960]:
+  if (r_126 != -1)
+    goto <bb 57>; [19.38%]
+  else
+    goto <bb 58>; [80.62%]
+
+  <bb 57> [local count: 723980]:
+  ERR_new ();
+  ERR_set_debug ("bn_sqrt.c", 215, &__func__);
+  ERR_set_error (3, 113, 0B);
+  goto <bb 95>; [100.00%]
+
+  <bb 58> [local count: 723980]:
+  _37 = BN_rshift (q_105, q_105, e_64);
+  if (_37 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 59>; [48.88%]
+
+  <bb 59> [local count: 353881]:
+  _38 = BN_mod_exp (y_111, y_111, q_105, p_92(D), ctx_98(D));
+  if (_38 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 60>; [48.88%]
+
+  <bb 60> [local count: 172977]:
+  _39 = BN_is_one (y_111);
+  if (_39 != 0)
+    goto <bb 61>; [34.00%]
+  else
+    goto <bb 62>; [66.00%]
+
+  <bb 61> [local count: 58812]:
+  ERR_new ();
+  ERR_set_debug ("bn_sqrt.c", 230, &__func__);
+  ERR_set_error (3, 112, 0B);
+  goto <bb 95>; [100.00%]
+
+  <bb 62> [local count: 114165]:
+  _40 = BN_rshift1 (t_107, q_105);
+  if (_40 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 63>; [48.88%]
+
+  <bb 63> [local count: 55804]:
+  _41 = BN_is_zero (t_107);
+  if (_41 != 0)
+    goto <bb 64>; [50.00%]
+  else
+    goto <bb 69>; [50.00%]
+
+  <bb 64> [local count: 27902]:
+  _42 = BN_nnmod (t_107, A_101, p_92(D), ctx_98(D));
+  if (_42 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 65>; [48.88%]
+
+  <bb 65> [local count: 13638]:
+  _43 = BN_is_zero (t_107);
+  if (_43 != 0)
+    goto <bb 66>; [34.00%]
+  else
+    goto <bb 68>; [66.00%]
+
+  <bb 66> [local count: 4637]:
+  BN_zero_ex (ret_247);
+
+  <bb 67> [local count: 56855]:
+  goto <bb 100>; [100.00%]
+
+  <bb 68> [local count: 9001]:
+  _44 = BN_set_word (x_109, 1);
+  if (_44 == 0)
+    goto <bb 27>; [34.00%]
+  else
+    goto <bb 72>; [66.00%]
+
+  <bb 69> [local count: 27902]:
+  _45 = BN_mod_exp (x_109, A_101, t_107, p_92(D), ctx_98(D));
+  if (_45 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 70>; [48.88%]
+
+  <bb 70> [local count: 13638]:
+  _46 = BN_is_zero (x_109);
+  if (_46 != 0)
+    goto <bb 71>; [20.24%]
+  else
+    goto <bb 72>; [79.76%]
+
+  <bb 71> [local count: 2760]:
+  BN_zero_ex (ret_247);
+  goto <bb 67>; [100.00%]
+
+  <bb 72> [local count: 16819]:
+  _47 = BN_mod_sqr (b_103, x_109, p_92(D), ctx_98(D));
+  if (_47 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 73>; [48.88%]
+
+  <bb 73> [local count: 8221]:
+  _48 = BN_mod_mul (b_103, b_103, A_101, p_92(D), ctx_98(D));
+  if (_48 == 0)
+    goto <bb 27>; [51.12%]
+  else
+    goto <bb 74>; [48.88%]
+
+  <bb 74> [local count: 4018]:
+  _49 = BN_mod_mul (x_109, x_109, A_101, p_92(D), ctx_98(D));
+  if (_49 == 0)
+    goto <bb 27>; [34.00%]
+  else
+    goto <bb 75>; [66.00%]
+
+  <bb 75> [local count: 3809]:
+  # e_65 = PHI <e_64(74), i_67(91)>
+  _50 = BN_is_one (b_103);
+  if (_50 != 0)
+    goto <bb 76>; [2.00%]
+  else
+    goto <bb 82>; [98.00%]
+
+  <bb 76> [local count: 76]:
+  _51 = BN_copy (ret_247, x_109);
+  if (_51 == 0B)
+    goto <bb 27>; [30.00%]
+  else
+    goto <bb 92>; [70.00%]
+
+  <bb 77> [local count: 45232]:
+  if (i_67 == 1)
+    goto <bb 78>; [22.47%]
+  else
+    goto <bb 80>; [77.53%]
+
+  <bb 78> [local count: 10164]:
+  _52 = BN_mod_sqr (t_107, b_103, p_92(D), ctx_98(D));
+  if (_52 == 0)
+    goto <bb 27>; [2.75%]
+  else
+    goto <bb 79>; [97.25%]
+
+  <bb 79> [local count: 43989]:
+  _54 = BN_is_one (t_107);
+  if (_54 != 0)
+    goto <bb 84>; [2.75%]
+  else
+    goto <bb 81>; [97.25%]
+
+  <bb 80> [local count: 35069]:
+  _53 = BN_mod_mul (t_107, t_107, t_107, p_92(D), ctx_98(D));
+  if (_53 == 0)
+    goto <bb 27>; [2.75%]
+  else
+    goto <bb 79>; [97.25%]
+
+  <bb 81> [local count: 42779]:
+  i_147 = i_67 + 1;
+
+  <bb 82> [local count: 46511]:
+  # i_67 = PHI <1(75), i_147(81)>
+  if (e_65 != i_67)
+    goto <bb 77>; [97.25%]
+  else
+    goto <bb 83>; [2.75%]
+
+  <bb 83> [local count: 1279]:
+  ERR_new ();
+  ERR_set_debug ("bn_sqrt.c", 322, &__func__);
+  ERR_set_error (3, 111, 0B);
+  goto <bb 95>; [100.00%]
+
+  <bb 84> [local count: 2439]:
+  _55 = BN_copy (t_107, y_111);
+  if (_55 == 0B)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 85>; [98.00%]
+
+  <bb 85> [local count: 2390]:
+  _56 = e_65 - i_67;
+  j_149 = _56 + -1;
+  goto <bb 88>; [100.00%]
+
+  <bb 86> [local count: 21115]:
+  _57 = BN_mod_sqr (t_107, t_107, p_92(D), ctx_98(D));
+  if (_57 == 0)
+    goto <bb 27>; [5.50%]
+  else
+    goto <bb 87>; [94.50%]
+
+  <bb 87> [local count: 19953]:
+  j_154 = j_68 + -1;
+
+  <bb 88> [local count: 22343]:
+  # j_68 = PHI <j_149(85), j_154(87)>
+  if (j_68 != 0)
+    goto <bb 86>; [94.50%]
+  else
+    goto <bb 89>; [5.50%]
+
+  <bb 89> [local count: 1229]:
+  _58 = BN_mod_mul (y_111, t_107, t_107, p_92(D), ctx_98(D));
+  if (_58 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 90>; [98.00%]
+
+  <bb 90> [local count: 1204]:
+  _59 = BN_mod_mul (x_109, x_109, t_107, p_92(D), ctx_98(D));
+  if (_59 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 91>; [98.00%]
+
+  <bb 91> [local count: 1180]:
+  _60 = BN_mod_mul (b_103, b_103, y_111, p_92(D), ctx_98(D));
+  if (_60 == 0)
+    goto <bb 27>; [2.00%]
+  else
+    goto <bb 75>; [98.00%]
+
+  <bb 92> [local count: 244663]:
+  _61 = BN_mod_sqr (x_109, ret_247, p_92(D), ctx_98(D));
+  if (_61 == 0)
+    goto <bb 27>; [67.00%]
+  else
+    goto <bb 93>; [33.00%]
+
+  <bb 93> [local count: 80739]:
+  _62 = BN_cmp (x_109, A_101);
+  if (_62 != 0)
+    goto <bb 94>; [33.00%]
+  else
+    goto <bb 67>; [67.00%]
+
+  <bb 94> [local count: 26644]:
+  ERR_new ();
+  ERR_set_debug ("bn_sqrt.c", 353, &__func__);
+  ERR_set_error (3, 111, 0B);
+
+  <bb 95> [local count: 9803887]:
+  if (in_90(D) != ret_247)
+    goto <bb 96>; [100.00%]
+  else
+    goto <bb 97>; [0.00%]
+
+  <bb 96> [local count: 38438537]:
+  # ret_246 = PHI <ret_247(95), ret_113(105)>
+  BN_clear_free (ret_246);
+  goto <bb 99>; [100.00%]
+
+  <bb 97> [local count: 1753590]:
+
+  <bb 98> [local count: 4347847]:
+
+  <bb 99> [local count: 38438537]:
+
+  <bb 100> [local count: 23743347]:
+  # ret_232 = PHI <0B(99), ret_247(67)>
+  BN_CTX_end (ctx_98(D));
+
+  <bb 101> [local count: 1073741824]:
+  # _69 = PHI <0B(12), in_90(D)(9), ret_189(103), ret_199(102), ret_232(100)>
+  return _69;
+
+  <bb 102> [local count: 199627630]:
+  _88 = BN_is_bit_set (a_95(D), 0);
+  _86 = (unsigned int) _88;
+  _83 = BN_set_word (ret_199, _86);
+  if (_83 == 0)
+    goto <bb 10>; [29.00%]
+  else
+    goto <bb 101>; [71.00%]
+
+  <bb 103> [local count: 38794346]:
+  _230 = BN_is_one (a_95(D));
+  _229 = (unsigned int) _230;
+  _226 = BN_set_word (ret_189, _229);
+  if (_226 == 0)
+    goto <bb 18>; [29.00%]
+  else
+    goto <bb 101>; [71.00%]
+
+  <bb 104> [local count: 11062331]:
+  _87 = BN_nnmod (A_101, a_95(D), p_92(D), ctx_98(D));
+  if (_87 == 0)
+    goto <bb 97>; [15.85%]
+  else
+    goto <bb 22>; [84.15%]
+
+  <bb 105> [local count: 3883352]:
+  _240 = BN_nnmod (A_101, a_95(D), p_92(D), ctx_98(D));
+  if (_240 == 0)
+    goto <bb 96>; [85.67%]
+  else
+    goto <bb 22>; [14.33%]
+
+}
+
+

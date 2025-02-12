@@ -1,0 +1,392 @@
+
+;; Function BN_uadd (BN_uadd, funcdef_no=172, decl_uid=8682, cgraph_uid=173, symbol_order=172)
+
+Removing basic block 3
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+int BN_uadd (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  sizetype ivtmp.16;
+  unsigned int t2;
+  unsigned int t1;
+  unsigned int carry;
+  unsigned int * rp;
+  const unsigned int * bp;
+  const unsigned int * ap;
+  int dif;
+  int _1;
+  int _2;
+  int _3;
+  struct BIGNUM * _4;
+  long unsigned int _6;
+  _Bool _7;
+  unsigned int _8;
+  int _9;
+  unsigned int _10;
+  unsigned int _11;
+  int _12;
+  sizetype _15;
+  sizetype _16;
+  sizetype _17;
+  sizetype _18;
+  int _19;
+  unsigned int _25;
+  unsigned int _26;
+  sizetype _48;
+  int prephitmp_50;
+  int prephitmp_51;
+  unsigned int _52;
+  unsigned int _61;
+  sizetype _63;
+
+  <bb 2> [local count: 171052281]:
+  _1 = a_23(D)->top;
+  _2 = b_24(D)->top;
+  if (_1 < _2)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 3>; [50.00%]
+
+  <bb 3> [local count: 85526141]:
+
+  <bb 4> [local count: 171052281]:
+  # a_13 = PHI <a_23(D)(3), b_24(D)(2)>
+  # b_14 = PHI <b_24(D)(3), a_23(D)(2)>
+  # prephitmp_50 = PHI <_1(3), _2(2)>
+  # prephitmp_51 = PHI <_2(3), _1(2)>
+  _3 = prephitmp_50 + 1;
+  _4 = bn_wexpand (r_28(D), _3);
+  if (_4 == 0B)
+    goto <bb 10>; [30.95%]
+  else
+    goto <bb 5>; [69.05%]
+
+  <bb 5> [local count: 118111600]:
+  dif_27 = prephitmp_50 - prephitmp_51;
+  r_28(D)->top = prephitmp_50;
+  ap_31 = a_13->d;
+  bp_32 = b_14->d;
+  rp_33 = r_28(D)->d;
+  carry_35 = bn_add_words (rp_33, ap_31, bp_32, prephitmp_51);
+  _6 = prephitmp_51 w* 4;
+  rp_36 = rp_33 + _6;
+  ap_37 = ap_31 + _6;
+  if (dif_27 != 0)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 6> [local count: 105119324]:
+  _26 = (unsigned int) dif_27;
+  _25 = _26 + 4294967295;
+  _15 = (sizetype) _25;
+  _16 = (sizetype) _26;
+  _61 = (unsigned int) _16;
+  _17 = _61 w* 4;
+
+  <bb 7> [local count: 955630223]:
+  # carry_57 = PHI <carry_47(7), carry_35(6)>
+  # ivtmp.16_67 = PHI <ivtmp.16_66(7), 0(6)>
+  t1_43 = MEM[(const unsigned int *)ap_37 + ivtmp.16_67 * 1];
+  t2_44 = t1_43 + carry_57;
+  MEM[(unsigned int *)rp_36 + ivtmp.16_67 * 1] = t2_44;
+  _7 = t2_44 == 0;
+  _8 = (unsigned int) _7;
+  carry_47 = _8 & carry_57;
+  ivtmp.16_66 = ivtmp.16_67 + 4;
+  if (_17 != ivtmp.16_66)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 105119324]:
+  _52 = (unsigned int) _15;
+  _48 = (sizetype) rp_36;
+  _63 = _48 + 4;
+  _18 = WIDEN_MULT_PLUS_EXPR <_52, 4, _63>;
+  rp_65 = (unsigned int *) _18;
+
+  <bb 9> [local count: 118111600]:
+  # rp_56 = PHI <rp_65(8), rp_36(5)>
+  # carry_58 = PHI <carry_47(8), carry_35(5)>
+  *rp_56 = carry_58;
+  _9 = r_28(D)->top;
+  _10 = (unsigned int) _9;
+  _11 = _10 + carry_58;
+  _12 = (int) _11;
+  r_28(D)->top = _12;
+  r_28(D)->neg = 0;
+
+  <bb 10> [local count: 171052281]:
+  # _19 = PHI <0(4), 1(9)>
+  return _19;
+
+}
+
+
+
+;; Function BN_usub (BN_usub, funcdef_no=173, decl_uid=8678, cgraph_uid=174, symbol_order=173)
+
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+int BN_usub (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  sizetype ivtmp.40;
+  static const char __func__[8] = "BN_usub";
+  const unsigned int * bp;
+  const unsigned int * ap;
+  unsigned int * rp;
+  unsigned int borrow;
+  unsigned int t2;
+  unsigned int t1;
+  int dif;
+  int min;
+  int max;
+  struct BIGNUM * _1;
+  long unsigned int _3;
+  unsigned int _5;
+  _Bool _6;
+  unsigned int _7;
+  unsigned int _8;
+  sizetype _9;
+  sizetype _11;
+  unsigned int _14;
+  int _15;
+  unsigned int _16;
+  sizetype _47;
+  sizetype _49;
+  unsigned int _51;
+  sizetype _62;
+  sizetype _63;
+
+  <bb 2> [local count: 225894001]:
+  max_20 = a_19(D)->top;
+  min_22 = b_21(D)->top;
+  dif_23 = max_20 - min_22;
+  if (dif_23 < 0)
+    goto <bb 3>; [26.36%]
+  else
+    goto <bb 4>; [73.64%]
+
+  <bb 3> [local count: 59545658]:
+  ERR_new ();
+  ERR_set_debug ("bn_add.c", 139, &__func__);
+  ERR_set_error (3, 100, 0B);
+  goto <bb 5>; [100.00%]
+
+  <bb 4> [local count: 166348342]:
+  _1 = bn_wexpand (r_24(D), max_20);
+  if (_1 == 0B)
+    goto <bb 5>; [30.95%]
+  else
+    goto <bb 6>; [69.05%]
+
+  <bb 5> [local count: 59545658]:
+  goto <bb 14>; [100.00%]
+
+  <bb 6> [local count: 114863530]:
+  ap_26 = a_19(D)->d;
+  bp_27 = b_21(D)->d;
+  rp_28 = r_24(D)->d;
+  borrow_30 = bn_sub_words (rp_28, ap_26, bp_27, min_22);
+  _3 = min_22 w* 4;
+  ap_31 = ap_26 + _3;
+  rp_32 = rp_28 + _3;
+  if (dif_23 != 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 7> [local count: 102228542]:
+  _51 = (unsigned int) dif_23;
+  _5 = _51 + 4294967295;
+  _47 = (sizetype) _5;
+  _62 = (sizetype) _51;
+  _16 = (unsigned int) _62;
+  _63 = _16 w* 4;
+
+  <bb 8> [local count: 929350385]:
+  # borrow_55 = PHI <borrow_43(8), borrow_30(7)>
+  # ivtmp.40_65 = PHI <ivtmp.40_64(8), 0(7)>
+  t1_39 = MEM[(const unsigned int *)ap_31 + ivtmp.40_65 * 1];
+  t2_40 = t1_39 - borrow_55;
+  MEM[(unsigned int *)rp_32 + ivtmp.40_65 * 1] = t2_40;
+  _6 = t1_39 == 0;
+  _7 = (unsigned int) _6;
+  borrow_43 = _7 & borrow_55;
+  ivtmp.40_64 = ivtmp.40_65 + 4;
+  if (_63 != ivtmp.40_64)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 102228542]:
+  _14 = (unsigned int) _47;
+  _11 = (sizetype) rp_32;
+  _49 = _11 + 4;
+  _9 = WIDEN_MULT_PLUS_EXPR <_14, 4, _49>;
+  rp_52 = (unsigned int *) _9;
+
+  <bb 10> [local count: 114863530]:
+  # rp_57 = PHI <rp_52(9), rp_32(6)>
+  if (max_20 != 0)
+    goto <bb 12>; [94.50%]
+  else
+    goto <bb 13>; [5.50%]
+
+  <bb 11> [local count: 958878294]:
+  max_34 = max_53 + -1;
+  if (max_34 != 0)
+    goto <bb 12>; [94.50%]
+  else
+    goto <bb 13>; [5.50%]
+
+  <bb 12> [local count: 1014686023]:
+  # max_53 = PHI <max_34(11), max_20(10)>
+  # rp_58 = PHI <rp_33(11), rp_57(10)>
+  rp_33 = rp_58 + 18446744073709551612;
+  _8 = MEM[(unsigned int *)rp_33];
+  if (_8 == 0)
+    goto <bb 11>; [94.50%]
+  else
+    goto <bb 13>; [5.50%]
+
+  <bb 13> [local count: 114863531]:
+  # max_4 = PHI <max_20(10), max_53(12), max_34(11)>
+  r_24(D)->top = max_4;
+  r_24(D)->neg = 0;
+
+  <bb 14> [local count: 225894002]:
+  # _15 = PHI <0(5), 1(13)>
+  return _15;
+
+}
+
+
+
+;; Function BN_add (BN_add, funcdef_no=170, decl_uid=8686, cgraph_uid=171, symbol_order=170)
+
+int BN_add (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  int cmp_res;
+  int r_neg;
+  int ret;
+  int _1;
+  int _2;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = a_7(D)->neg;
+  _2 = b_8(D)->neg;
+  if (_1 == _2)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072224]:
+  ret_20 = BN_uadd (r_11(D), a_7(D), b_8(D));
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 708669599]:
+  cmp_res_10 = BN_ucmp (a_7(D), b_8(D));
+  if (cmp_res_10 > 0)
+    goto <bb 5>; [41.48%]
+  else
+    goto <bb 6>; [58.52%]
+
+  <bb 5> [local count: 293956152]:
+  r_neg_16 = a_7(D)->neg;
+  ret_18 = BN_usub (r_11(D), a_7(D), b_8(D));
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 414713447]:
+  if (cmp_res_10 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 207356723]:
+  r_neg_13 = b_8(D)->neg;
+  ret_15 = BN_usub (r_11(D), b_8(D), a_7(D));
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 207356723]:
+  BN_zero_ex (r_11(D));
+
+  <bb 9> [local count: 1073741824]:
+  # ret_3 = PHI <ret_20(3), ret_18(5), ret_15(7), 1(8)>
+  # r_neg_4 = PHI <_1(3), r_neg_16(5), r_neg_13(7), cmp_res_10(8)>
+  r_11(D)->neg = r_neg_4;
+  return ret_3;
+
+}
+
+
+
+;; Function BN_sub (BN_sub, funcdef_no=171, decl_uid=8674, cgraph_uid=172, symbol_order=171)
+
+int BN_sub (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * b)
+{
+  int cmp_res;
+  int r_neg;
+  int ret;
+  int _1;
+  int _2;
+  int _3;
+  _Bool _4;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = a_9(D)->neg;
+  _2 = b_10(D)->neg;
+  if (_1 != _2)
+    goto <bb 3>; [66.00%]
+  else
+    goto <bb 4>; [34.00%]
+
+  <bb 3> [local count: 708669600]:
+  ret_22 = BN_uadd (r_13(D), a_9(D), b_10(D));
+  goto <bb 9>; [100.00%]
+
+  <bb 4> [local count: 365072224]:
+  cmp_res_12 = BN_ucmp (a_9(D), b_10(D));
+  if (cmp_res_12 > 0)
+    goto <bb 5>; [41.48%]
+  else
+    goto <bb 6>; [58.52%]
+
+  <bb 5> [local count: 151431960]:
+  r_neg_18 = a_9(D)->neg;
+  ret_20 = BN_usub (r_13(D), a_9(D), b_10(D));
+  goto <bb 9>; [100.00%]
+
+  <bb 6> [local count: 213640264]:
+  if (cmp_res_12 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 106820132]:
+  _3 = b_10(D)->neg;
+  _4 = _3 == 0;
+  r_neg_15 = (int) _4;
+  ret_17 = BN_usub (r_13(D), b_10(D), a_9(D));
+  goto <bb 9>; [100.00%]
+
+  <bb 8> [local count: 106820132]:
+  BN_zero_ex (r_13(D));
+
+  <bb 9> [local count: 1073741824]:
+  # ret_5 = PHI <ret_22(3), ret_20(5), ret_17(7), 1(8)>
+  # r_neg_6 = PHI <_1(3), r_neg_18(5), r_neg_15(7), cmp_res_12(8)>
+  r_13(D)->neg = r_neg_6;
+  return ret_5;
+
+}
+
+

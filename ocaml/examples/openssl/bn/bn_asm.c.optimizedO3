@@ -1,0 +1,6487 @@
+
+;; Function bn_mul_add_words (bn_mul_add_words, funcdef_no=170, decl_uid=11446, cgraph_uid=171, symbol_order=170)
+
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+unsigned int bn_mul_add_words (unsigned int * rp, const unsigned int * ap, int num, unsigned int w)
+{
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  static const char __func__[17] = "bn_mul_add_words";
+  unsigned int c1;
+  unsigned int _2;
+  long long unsigned int _3;
+  unsigned int _5;
+  long long unsigned int _6;
+  unsigned int _8;
+  long long unsigned int _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  unsigned int _14;
+  long long unsigned int _15;
+  unsigned int _17;
+  long long unsigned int _19;
+  unsigned int _20;
+  long long unsigned int _21;
+  unsigned int _22;
+  long long unsigned int _23;
+  unsigned int _25;
+  long long unsigned int _27;
+  unsigned int _28;
+  long long unsigned int _29;
+  unsigned int _30;
+  long long unsigned int _31;
+  unsigned int _33;
+  long long unsigned int _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  unsigned int _38;
+  unsigned int _39;
+  unsigned int _40;
+  long long unsigned int _41;
+  unsigned int _43;
+  unsigned int _47;
+  long long unsigned int _48;
+  unsigned int _54;
+  unsigned int _56;
+  unsigned int _57;
+  long long unsigned int _58;
+  unsigned int num.0_59;
+  unsigned int _69;
+  unsigned int _70;
+  long long unsigned int _71;
+  sizetype _83;
+  long long unsigned int _86;
+  unsigned int _88;
+  long long unsigned int _90;
+  long long unsigned int _91;
+  long long unsigned int _92;
+  unsigned int _94;
+  sizetype _99;
+  unsigned int _100;
+  unsigned int _103;
+  long long unsigned int _106;
+  unsigned int _107;
+  unsigned int _108;
+  unsigned int _114;
+  unsigned int _115;
+  unsigned int * _116;
+  unsigned int _117;
+  unsigned int _118;
+  unsigned int _119;
+  long long unsigned int _120;
+  sizetype _121;
+  unsigned int _122;
+  sizetype _123;
+  sizetype _124;
+  long long unsigned int _125;
+  sizetype _126;
+  sizetype _127;
+  sizetype _128;
+  sizetype _129;
+  long long unsigned int _130;
+  sizetype _131;
+  long long unsigned int _134;
+  unsigned int _135;
+  unsigned int _136;
+  unsigned int _137;
+  long long unsigned int _143;
+  long long unsigned int _146;
+  long long unsigned int _147;
+  long long unsigned int _148;
+  unsigned int _150;
+  long long unsigned int _152;
+  unsigned int _154;
+  unsigned int _155;
+  unsigned int _156;
+
+  <bb 2> [local count: 178956971]:
+  if (num_61(D) < 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 3> [count: 0]:
+  __assert_rtn (&__func__, "bn_asm.c", 22, "num >= 0");
+
+  <bb 4> [local count: 178956971]:
+  if (num_61(D) == 0)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 118111600]:
+  num.0_59 = (unsigned int) num_61(D);
+  _148 = (long long unsigned int) w_65(D);
+  if (num.0_59 > 3)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 6> [local count: 105119324]:
+  _135 = num.0_59 + 4294967292;
+  _136 = _135 >> 2;
+  _126 = (sizetype) _136;
+  _127 = _126 + 1;
+  _100 = (unsigned int) _127;
+  _128 = _100 w* 16;
+  _116 = rp_62(D) + _128;
+
+  <bb 7> [local count: 955630224]:
+  # rp_93 = PHI <rp_82(7), rp_62(D)(6)>
+  # ap_96 = PHI <ap_81(7), ap_63(D)(6)>
+  # c1_102 = PHI <c1_80(7), 0(6)>
+  _5 = MEM[(const unsigned int *)ap_96];
+  _6 = (long long unsigned int) _5;
+  _155 = (unsigned int) _6;
+  _154 = (unsigned int) _148;
+  _8 = MEM[(unsigned int *)rp_93];
+  _11 = (long long unsigned int) c1_102;
+  _58 = (long long unsigned int) _8;
+  _120 = WIDEN_MULT_PLUS_EXPR <_155, _154, _58>;
+  t_72 = _11 + _120;
+  _12 = (unsigned int) t_72;
+  MEM[(unsigned int *)rp_93] = _12;
+  _13 = t_72 >> 32;
+  _14 = MEM[(const unsigned int *)ap_96 + 4B];
+  _15 = (long long unsigned int) _14;
+  _107 = (unsigned int) _15;
+  _54 = (unsigned int) _148;
+  _17 = MEM[(unsigned int *)rp_93 + 4B];
+  _134 = (long long unsigned int) _17;
+  _19 = WIDEN_MULT_PLUS_EXPR <_107, _54, _134>;
+  t_74 = _13 + _19;
+  _20 = (unsigned int) t_74;
+  MEM[(unsigned int *)rp_93 + 4B] = _20;
+  _21 = t_74 >> 32;
+  _22 = MEM[(const unsigned int *)ap_96 + 8B];
+  _23 = (long long unsigned int) _22;
+  _119 = (unsigned int) _23;
+  _156 = (unsigned int) _148;
+  _25 = MEM[(unsigned int *)rp_93 + 8B];
+  _3 = (long long unsigned int) _25;
+  _27 = WIDEN_MULT_PLUS_EXPR <_119, _156, _3>;
+  t_76 = _21 + _27;
+  _28 = (unsigned int) t_76;
+  MEM[(unsigned int *)rp_93 + 8B] = _28;
+  _29 = t_76 >> 32;
+  _30 = MEM[(const unsigned int *)ap_96 + 12B];
+  _31 = (long long unsigned int) _30;
+  _118 = (unsigned int) _31;
+  _38 = (unsigned int) _148;
+  _33 = MEM[(unsigned int *)rp_93 + 12B];
+  _125 = (long long unsigned int) _33;
+  _35 = WIDEN_MULT_PLUS_EXPR <_118, _38, _125>;
+  t_78 = _29 + _35;
+  _36 = (unsigned int) t_78;
+  MEM[(unsigned int *)rp_93 + 12B] = _36;
+  _37 = t_78 >> 32;
+  c1_80 = (unsigned int) _37;
+  ap_81 = ap_96 + 16;
+  rp_82 = rp_93 + 16;
+  if (rp_82 != _116)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 105119324]:
+  _117 = _136 * 4294967292;
+  _114 = _117 + _135;
+  num_140 = (int) _114;
+  if (num_140 != 0)
+    goto <bb 9>; [71.91%]
+  else
+    goto <bb 16>; [28.09%]
+
+  <bb 9> [local count: 75591424]:
+  _56 = (unsigned int) _126;
+  _124 = _56 w* 16;
+  _123 = (sizetype) rp_62(D);
+  _83 = _123 + 16;
+  _121 = _83 + _124;
+  rp_144 = (unsigned int *) _121;
+  _131 = (sizetype) ap_63(D);
+  _99 = _131 + 16;
+  _129 = _99 + _124;
+  ap_145 = (const unsigned int *) _129;
+
+  <bb 10> [local count: 88583701]:
+  # rp_55 = PHI <rp_144(9), rp_62(D)(5)>
+  # ap_53 = PHI <ap_145(9), ap_63(D)(5)>
+  # num_51 = PHI <num_140(9), num_61(D)(5)>
+  # c1_49 = PHI <c1_80(9), 0(5)>
+  _108 = *ap_53;
+  _106 = (long long unsigned int) _108;
+  _70 = (unsigned int) _106;
+  _69 = (unsigned int) _148;
+  _94 = *rp_55;
+  _92 = (long long unsigned int) _94;
+  _91 = (long long unsigned int) c1_49;
+  _90 = _91 + _92;
+  t_89 = WIDEN_MULT_PLUS_EXPR <_70, _69, _90>;
+  _88 = (unsigned int) t_89;
+  *rp_55 = _88;
+  _86 = t_89 >> 32;
+  if (num_51 != 1)
+    goto <bb 12>; [66.67%]
+  else
+    goto <bb 11>; [33.33%]
+
+  <bb 11> [local count: 29527901]:
+  c1_85 = (unsigned int) _86;
+  goto <bb 15>; [100.00%]
+
+  <bb 12> [local count: 59055800]:
+  _2 = MEM[(const unsigned int *)ap_53 + 4B];
+  _143 = (long long unsigned int) _2;
+  _39 = (unsigned int) _143;
+  _103 = (unsigned int) _148;
+  _137 = MEM[(unsigned int *)rp_55 + 4B];
+  _71 = (long long unsigned int) _137;
+  _147 = WIDEN_MULT_PLUS_EXPR <_39, _103, _71>;
+  t_149 = _86 + _147;
+  _150 = (unsigned int) t_149;
+  MEM[(unsigned int *)rp_55 + 4B] = _150;
+  _152 = t_149 >> 32;
+  if (num_51 != 2)
+    goto <bb 14>; [66.67%]
+  else
+    goto <bb 13>; [33.33%]
+
+  <bb 13> [local count: 19685267]:
+  c1_153 = (unsigned int) _152;
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 39370534]:
+  _40 = MEM[(const unsigned int *)ap_53 + 8B];
+  _41 = (long long unsigned int) _40;
+  _115 = (unsigned int) _41;
+  _122 = (unsigned int) _148;
+  _43 = MEM[(unsigned int *)rp_55 + 8B];
+  _130 = (long long unsigned int) _43;
+  _146 = WIDEN_MULT_PLUS_EXPR <_115, _122, _130>;
+  t_66 = _146 + _152;
+  _47 = (unsigned int) t_66;
+  MEM[(unsigned int *)rp_55 + 8B] = _47;
+  _48 = t_66 >> 32;
+  c1_68 = (unsigned int) _48;
+
+  <bb 15> [local count: 88583700]:
+  # c1_138 = PHI <c1_68(14), c1_85(11), c1_153(13)>
+
+  <bb 16> [local count: 178956971]:
+  # _57 = PHI <0(4), c1_138(15), c1_80(8)>
+  return _57;
+
+}
+
+
+
+;; Function bn_mul_words (bn_mul_words, funcdef_no=171, decl_uid=11451, cgraph_uid=172, symbol_order=171)
+
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+unsigned int bn_mul_words (unsigned int * rp, const unsigned int * ap, int num, unsigned int w)
+{
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  static const char __func__[13] = "bn_mul_words";
+  unsigned int c1;
+  unsigned int _2;
+  unsigned int _5;
+  long long unsigned int _6;
+  unsigned int _9;
+  long long unsigned int _10;
+  unsigned int _11;
+  long long unsigned int _12;
+  unsigned int _14;
+  long long unsigned int _15;
+  unsigned int _16;
+  long long unsigned int _17;
+  unsigned int _19;
+  long long unsigned int _20;
+  unsigned int _21;
+  long long unsigned int _22;
+  unsigned int _24;
+  long long unsigned int _25;
+  long long unsigned int _26;
+  unsigned int _28;
+  long long unsigned int _29;
+  unsigned int _32;
+  long long unsigned int _33;
+  unsigned int _42;
+  unsigned int _43;
+  unsigned int num.1_44;
+  unsigned int * _56;
+  unsigned int _68;
+  unsigned int _70;
+  sizetype _71;
+  unsigned int _72;
+  unsigned int _73;
+  unsigned int _74;
+  sizetype _75;
+  sizetype _76;
+  unsigned int _77;
+  sizetype _79;
+  sizetype _82;
+  unsigned int _84;
+  unsigned int _85;
+  unsigned int _88;
+  unsigned int _91;
+  unsigned int _92;
+  sizetype _93;
+  sizetype _94;
+  unsigned int _95;
+  sizetype _96;
+  unsigned int _101;
+  unsigned int _107;
+  long long unsigned int _108;
+  sizetype _111;
+  sizetype _112;
+  long long unsigned int _113;
+  long long unsigned int _114;
+  long long unsigned int _116;
+  unsigned int _117;
+  unsigned int _118;
+  unsigned int _123;
+  unsigned int _124;
+  long long unsigned int _125;
+  unsigned int _129;
+  long long unsigned int _131;
+  unsigned int _133;
+  unsigned int _134;
+  unsigned int _135;
+
+  <bb 2> [local count: 178956971]:
+  if (num_46(D) < 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 3> [count: 0]:
+  __assert_rtn (&__func__, "bn_asm.c", 51, "num >= 0");
+
+  <bb 4> [local count: 178956971]:
+  if (num_46(D) == 0)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 118111600]:
+  num.1_44 = (unsigned int) num_46(D);
+  _113 = (long long unsigned int) w_50(D);
+  if (num.1_44 > 3)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 6> [local count: 105119324]:
+  _88 = num.1_44 + 4294967292;
+  _91 = _88 >> 2;
+  _93 = (sizetype) _91;
+  _71 = _93 + 1;
+  _73 = (unsigned int) _71;
+  _75 = _73 w* 16;
+  _56 = rp_47(D) + _75;
+
+  <bb 7> [local count: 955630224]:
+  # rp_78 = PHI <rp_67(7), rp_47(D)(6)>
+  # ap_81 = PHI <ap_66(7), ap_48(D)(6)>
+  # c1_87 = PHI <c1_65(7), 0(6)>
+  _5 = MEM[(const unsigned int *)ap_81];
+  _6 = (long long unsigned int) _5;
+  _133 = (unsigned int) _6;
+  _117 = (unsigned int) _113;
+  _116 = (long long unsigned int) c1_87;
+  t_57 = WIDEN_MULT_PLUS_EXPR <_133, _117, _116>;
+  _9 = (unsigned int) t_57;
+  MEM[(unsigned int *)rp_78] = _9;
+  _10 = t_57 >> 32;
+  _11 = MEM[(const unsigned int *)ap_81 + 4B];
+  _12 = (long long unsigned int) _11;
+  _92 = (unsigned int) _12;
+  _118 = (unsigned int) _113;
+  t_59 = WIDEN_MULT_PLUS_EXPR <_92, _118, _10>;
+  _14 = (unsigned int) t_59;
+  MEM[(unsigned int *)rp_78 + 4B] = _14;
+  _15 = t_59 >> 32;
+  _16 = MEM[(const unsigned int *)ap_81 + 8B];
+  _17 = (long long unsigned int) _16;
+  _101 = (unsigned int) _17;
+  _74 = (unsigned int) _113;
+  t_61 = WIDEN_MULT_PLUS_EXPR <_101, _74, _15>;
+  _19 = (unsigned int) t_61;
+  MEM[(unsigned int *)rp_78 + 8B] = _19;
+  _20 = t_61 >> 32;
+  _21 = MEM[(const unsigned int *)ap_81 + 12B];
+  _22 = (long long unsigned int) _21;
+  _135 = (unsigned int) _22;
+  _123 = (unsigned int) _113;
+  t_63 = WIDEN_MULT_PLUS_EXPR <_135, _123, _20>;
+  _24 = (unsigned int) t_63;
+  MEM[(unsigned int *)rp_78 + 12B] = _24;
+  _25 = t_63 >> 32;
+  c1_65 = (unsigned int) _25;
+  ap_66 = ap_81 + 16;
+  rp_67 = rp_78 + 16;
+  if (_56 != rp_67)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 105119324]:
+  _72 = _91 * 4294967292;
+  _43 = _72 + _88;
+  num_105 = (int) _43;
+  if (num_105 != 0)
+    goto <bb 9>; [71.91%]
+  else
+    goto <bb 16>; [28.09%]
+
+  <bb 9> [local count: 75591424]:
+  _134 = (unsigned int) _93;
+  _82 = _134 w* 16;
+  _79 = (sizetype) rp_47(D);
+  _112 = _79 + 16;
+  _76 = _82 + _112;
+  rp_109 = (unsigned int *) _76;
+  _96 = (sizetype) ap_48(D);
+  _111 = _96 + 16;
+  _94 = _82 + _111;
+  ap_110 = (const unsigned int *) _94;
+
+  <bb 10> [local count: 88583701]:
+  # rp_40 = PHI <rp_109(9), rp_47(D)(5)>
+  # ap_38 = PHI <ap_110(9), ap_48(D)(5)>
+  # num_36 = PHI <num_105(9), num_46(D)(5)>
+  # c1_34 = PHI <c1_65(9), 0(5)>
+  _2 = *ap_38;
+  _108 = (long long unsigned int) _2;
+  _95 = (unsigned int) _108;
+  _68 = (unsigned int) _113;
+  _26 = (long long unsigned int) c1_34;
+  t_4 = WIDEN_MULT_PLUS_EXPR <_95, _68, _26>;
+  _107 = (unsigned int) t_4;
+  *rp_40 = _107;
+  _114 = t_4 >> 32;
+  if (num_36 != 1)
+    goto <bb 12>; [66.67%]
+  else
+    goto <bb 11>; [33.33%]
+
+  <bb 11> [local count: 29527901]:
+  c1_115 = (unsigned int) _114;
+  goto <bb 15>; [100.00%]
+
+  <bb 12> [local count: 59055800]:
+  _124 = MEM[(const unsigned int *)ap_38 + 4B];
+  _125 = (long long unsigned int) _124;
+  _70 = (unsigned int) _113;
+  _77 = (unsigned int) _125;
+  t_128 = WIDEN_MULT_PLUS_EXPR <_70, _77, _114>;
+  _129 = (unsigned int) t_128;
+  MEM[(unsigned int *)rp_40 + 4B] = _129;
+  _131 = t_128 >> 32;
+  if (num_36 != 2)
+    goto <bb 14>; [66.67%]
+  else
+    goto <bb 13>; [33.33%]
+
+  <bb 13> [local count: 19685267]:
+  c1_132 = (unsigned int) _131;
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 39370534]:
+  _28 = MEM[(const unsigned int *)ap_38 + 8B];
+  _29 = (long long unsigned int) _28;
+  _84 = (unsigned int) _29;
+  _85 = (unsigned int) _113;
+  t_51 = WIDEN_MULT_PLUS_EXPR <_84, _85, _131>;
+  _32 = (unsigned int) t_51;
+  MEM[(unsigned int *)rp_40 + 8B] = _32;
+  _33 = t_51 >> 32;
+  c1_53 = (unsigned int) _33;
+
+  <bb 15> [local count: 88583700]:
+  # c1_103 = PHI <c1_53(14), c1_115(11), c1_132(13)>
+
+  <bb 16> [local count: 178956971]:
+  # _42 = PHI <0(4), c1_103(15), c1_65(8)>
+  return _42;
+
+}
+
+
+
+;; Function bn_sqr_words (bn_sqr_words, funcdef_no=172, decl_uid=11455, cgraph_uid=173, symbol_order=172)
+
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+void bn_sqr_words (unsigned int * r, const unsigned int * a, int n)
+{
+  unsigned long ivtmp.117;
+  unsigned long ivtmp.114;
+  vector(2) unsigned int vect__27.98;
+  vector(2) unsigned int vect__20.95;
+  vector(2) unsigned int vect__7.92;
+  vector(4) unsigned int vect__23.87;
+  vector(2) long long unsigned int vect__22.86;
+  vector(4) unsigned int vect__21.85;
+  vector(2) long long unsigned int vect_patt_99.84;
+  vector(4) unsigned int vect__18.83;
+  vector(2) long long unsigned int vect__17.82;
+  vector(4) unsigned int vect__16.81;
+  vector(2) long long unsigned int vect_patt_98.80;
+  vector(4) unsigned int vect__13.79;
+  vector(2) long long unsigned int vect__12.78;
+  vector(4) unsigned int vect__11.77;
+  vector(2) long long unsigned int vect_patt_97.76;
+  vector(4) unsigned int vect__8.75;
+  vector(2) long long unsigned int vect__7.74;
+  vector(4) unsigned int vect__6.73;
+  vector(2) long long unsigned int vect_patt_96.72;
+  const vector(4) unsigned int vect__4.71;
+  const vector(4) unsigned int vect__4.70;
+  const vector(4) unsigned int vect__4.69;
+  const vector(4) unsigned int vect__4.68;
+  const vector(4) unsigned int vect_array.67[4];
+  unsigned int[16] * vectp_a.65;
+  int tmp.64;
+  const unsigned int * tmp.63;
+  unsigned int * tmp.62;
+  unsigned int niters_vector_mult_vf.61;
+  unsigned int bnd.60;
+  static const char __func__[13] = "bn_sqr_words";
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  long long unsigned int powmult_6;
+  unsigned int _7;
+  long long unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _16;
+  unsigned int _17;
+  long long unsigned int _18;
+  long long unsigned int powmult_19;
+  unsigned int _20;
+  long long unsigned int _21;
+  unsigned int _22;
+  unsigned int _24;
+  unsigned int _25;
+  long long unsigned int _26;
+  unsigned int _27;
+  long long unsigned int _28;
+  unsigned int _29;
+  long long unsigned int _33;
+  unsigned int _36;
+  unsigned int n.2_37;
+  sizetype _43;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned long _48;
+  unsigned int _49;
+  long long unsigned int powmult_51;
+  sizetype _52;
+  long long unsigned int _53;
+  unsigned int _54;
+  sizetype _58;
+  unsigned int _61;
+  unsigned int _62;
+  unsigned int _63;
+  unsigned int _66;
+  sizetype _68;
+  unsigned int _69;
+  sizetype _70;
+  long long unsigned int powmult_78;
+  unsigned int _82;
+  vector(2) long long unsigned int _92;
+  unsigned int _93;
+  unsigned int _94;
+  unsigned int _95;
+  long long unsigned int powmult_97;
+  long long unsigned int _98;
+  unsigned int _99;
+  unsigned int _104;
+  unsigned int _105;
+  unsigned int _106;
+  unsigned int _107;
+  unsigned int _108;
+  unsigned int _109;
+  unsigned int _110;
+  sizetype _111;
+  sizetype _112;
+  const unsigned int * _113;
+  _Bool _114;
+  void * _115;
+  sizetype _120;
+  unsigned int * _121;
+  _Bool _122;
+  _Bool _123;
+  unsigned int _127;
+  unsigned int _129;
+  long long unsigned int _130;
+  long long unsigned int powmult_131;
+  unsigned int _132;
+  long long unsigned int _134;
+  unsigned int _135;
+  unsigned int _137;
+  long long unsigned int _138;
+  long long unsigned int powmult_139;
+  unsigned int _140;
+  long long unsigned int _142;
+  unsigned int _143;
+  unsigned int _145;
+  long long unsigned int _146;
+  long long unsigned int powmult_147;
+  unsigned int _148;
+  long long unsigned int _150;
+  unsigned int _151;
+  unsigned int _153;
+  long long unsigned int _154;
+  long long unsigned int powmult_155;
+  unsigned int _156;
+  long long unsigned int _158;
+  unsigned int _159;
+  unsigned int _163;
+  unsigned int _164;
+  sizetype _166;
+  unsigned int * _168;
+  sizetype _169;
+  vector(2) long long unsigned int _171;
+  unsigned int _173;
+  unsigned int _174;
+  long long unsigned int _175;
+  long long unsigned int powmult_176;
+  unsigned int _182;
+  long long unsigned int _183;
+  long long unsigned int powmult_184;
+  unsigned int _190;
+  long long unsigned int _191;
+  long long unsigned int powmult_192;
+  unsigned int _198;
+  long long unsigned int _199;
+  long long unsigned int powmult_200;
+  unsigned long _206;
+  unsigned int _207;
+  unsigned long _209;
+  sizetype _210;
+  unsigned int _211;
+  unsigned int _212;
+  unsigned int _213;
+  unsigned int _217;
+  sizetype _218;
+  sizetype _220;
+  sizetype _221;
+  int _223;
+  int _224;
+  unsigned int _226;
+  sizetype _255;
+  unsigned int _256;
+  vector(4) unsigned int vect_inter_high_257;
+  vector(4) unsigned int vect_inter_low_258;
+  vector(4) unsigned int vect_inter_high_259;
+  vector(4) unsigned int vect_inter_low_260;
+  vector(4) unsigned int vect_inter_high_261;
+  vector(4) unsigned int vect_inter_low_262;
+  vector(4) unsigned int vect_inter_high_263;
+  vector(4) unsigned int vect_inter_low_264;
+  vector(4) unsigned int vect_inter_high_265;
+  vector(4) unsigned int vect_inter_low_266;
+  vector(4) unsigned int vect_inter_high_267;
+  vector(4) unsigned int vect_inter_low_268;
+  vector(4) unsigned int vect_inter_high_269;
+  vector(4) unsigned int vect_inter_low_270;
+  vector(4) unsigned int vect_inter_high_271;
+  vector(4) unsigned int vect_inter_low_272;
+  vector(4) unsigned int vect_inter_high_273;
+  vector(4) unsigned int vect_inter_low_274;
+  vector(4) unsigned int vect_inter_high_275;
+  vector(4) unsigned int vect_inter_low_276;
+  vector(4) unsigned int vect_inter_high_277;
+  vector(4) unsigned int vect_inter_low_278;
+  vector(4) unsigned int vect_inter_high_279;
+  vector(4) unsigned int vect_inter_low_280;
+  unsigned int _282;
+  unsigned int _284;
+  unsigned int _286;
+  unsigned int _288;
+  unsigned int _294;
+  long long unsigned int _300;
+  long long unsigned int powmult_301;
+  unsigned int _307;
+  long long unsigned int _308;
+  long long unsigned int powmult_309;
+  unsigned int _315;
+  unsigned int _316;
+  unsigned int n.2_318;
+  vector(2) long long unsigned int _319;
+  unsigned int _321;
+  unsigned int _322;
+  unsigned int _323;
+  long long unsigned int _324;
+  long long unsigned int powmult_325;
+  unsigned int _331;
+  long long unsigned int _332;
+  long long unsigned int powmult_333;
+  unsigned int _339;
+  long long unsigned int _340;
+  long long unsigned int powmult_341;
+  unsigned int _347;
+  long long unsigned int _348;
+  long long unsigned int powmult_349;
+  unsigned int _355;
+  unsigned int _356;
+  unsigned int n.2_358;
+
+  <bb 2> [local count: 178956971]:
+  if (n_39(D) < 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 3> [count: 0]:
+  __assert_rtn (&__func__, "bn_asm.c", 77, "n >= 0");
+
+  <bb 4> [local count: 178956971]:
+  if (n_39(D) == 0)
+    goto <bb 23>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 118111600]:
+  n.2_37 = (unsigned int) n_39(D);
+  if (n.2_37 > 3)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 19>; [11.00%]
+
+  <bb 6> [local count: 105119324]:
+  _105 = n.2_37 + 4294967292;
+  if (_105 > 11)
+    goto <bb 7>; [89.44%]
+  else
+    goto <bb 14>; [10.56%]
+
+  <bb 7> [local count: 94021582]:
+  _109 = _105 >> 2;
+  _110 = _109 + 1;
+  _111 = (sizetype) _110;
+  _47 = (unsigned int) _111;
+  _112 = _47 w* 16;
+  _113 = a_41(D) + _112;
+  _114 = r_40(D) >= _113;
+  _46 = (unsigned int) _111;
+  _120 = _46 w* 32;
+  _121 = r_40(D) + _120;
+  _122 = a_41(D) >= _121;
+  _123 = _114 | _122;
+  if (_123 != 0)
+    goto <bb 8>; [89.44%]
+  else
+    goto <bb 14>; [10.56%]
+
+  <bb 8> [local count: 84095460]:
+  bnd.60_214 = _110 >> 2;
+  ivtmp.114_119 = (unsigned long) a_41(D);
+  ivtmp.117_116 = (unsigned long) r_40(D);
+  _209 = (unsigned long) bnd.60_214;
+  _4 = (unsigned int) _209;
+  _48 = (unsigned long) a_41(D);
+  _206 = WIDEN_MULT_PLUS_EXPR <_4, 64, _48>;
+
+  <bb 9> [local count: 764504183]:
+  # ivtmp.114_167 = PHI <ivtmp.114_124(9), ivtmp.114_119(8)>
+  # ivtmp.117_118 = PHI <ivtmp.117_117(9), ivtmp.117_116(8)>
+  vectp_a.65_225 = (unsigned int[16] *) ivtmp.114_167;
+  vect_array.67 = .LOAD_LANES (MEM <unsigned int[16]> [(const unsigned int *)vectp_a.65_225]);
+  vect__4.68_227 = vect_array.67[0];
+  vect__4.69_228 = vect_array.67[1];
+  vect__4.70_229 = vect_array.67[2];
+  vect__4.71_230 = vect_array.67[3];
+  vect_array.67 ={v} {CLOBBER};
+  vect_patt_96.72_231 = WIDEN_MULT_LO_EXPR <vect__4.68_227, vect__4.68_227>;
+  vect_patt_96.72_232 = WIDEN_MULT_HI_EXPR <vect__4.68_227, vect__4.68_227>;
+  vect__6.73_233 = VEC_PACK_TRUNC_EXPR <vect_patt_96.72_231, vect_patt_96.72_232>;
+  vect__7.74_234 = vect_patt_96.72_231 >> 32;
+  vect__7.74_235 = vect_patt_96.72_232 >> 32;
+  vect__8.75_236 = VEC_PACK_TRUNC_EXPR <vect__7.74_234, vect__7.74_235>;
+  vect_patt_97.76_237 = WIDEN_MULT_LO_EXPR <vect__4.69_228, vect__4.69_228>;
+  vect_patt_97.76_238 = WIDEN_MULT_HI_EXPR <vect__4.69_228, vect__4.69_228>;
+  vect__11.77_239 = VEC_PACK_TRUNC_EXPR <vect_patt_97.76_237, vect_patt_97.76_238>;
+  vect__12.78_240 = vect_patt_97.76_237 >> 32;
+  vect__12.78_241 = vect_patt_97.76_238 >> 32;
+  vect__13.79_242 = VEC_PACK_TRUNC_EXPR <vect__12.78_240, vect__12.78_241>;
+  vect_patt_98.80_243 = WIDEN_MULT_LO_EXPR <vect__4.70_229, vect__4.70_229>;
+  vect_patt_98.80_244 = WIDEN_MULT_HI_EXPR <vect__4.70_229, vect__4.70_229>;
+  vect__16.81_245 = VEC_PACK_TRUNC_EXPR <vect_patt_98.80_243, vect_patt_98.80_244>;
+  vect__17.82_246 = vect_patt_98.80_243 >> 32;
+  vect__17.82_247 = vect_patt_98.80_244 >> 32;
+  vect__18.83_248 = VEC_PACK_TRUNC_EXPR <vect__17.82_246, vect__17.82_247>;
+  vect_patt_99.84_249 = WIDEN_MULT_LO_EXPR <vect__4.71_230, vect__4.71_230>;
+  vect_patt_99.84_250 = WIDEN_MULT_HI_EXPR <vect__4.71_230, vect__4.71_230>;
+  vect__21.85_251 = VEC_PACK_TRUNC_EXPR <vect_patt_99.84_249, vect_patt_99.84_250>;
+  vect__22.86_252 = vect_patt_99.84_249 >> 32;
+  vect__22.86_253 = vect_patt_99.84_250 >> 32;
+  vect__23.87_254 = VEC_PACK_TRUNC_EXPR <vect__22.86_252, vect__22.86_253>;
+  vect_inter_high_257 = VEC_PERM_EXPR <vect__6.73_233, vect__16.81_245, { 0, 4, 1, 5 }>;
+  vect_inter_low_258 = VEC_PERM_EXPR <vect__6.73_233, vect__16.81_245, { 2, 6, 3, 7 }>;
+  vect_inter_high_259 = VEC_PERM_EXPR <vect__8.75_236, vect__18.83_248, { 0, 4, 1, 5 }>;
+  vect_inter_low_260 = VEC_PERM_EXPR <vect__8.75_236, vect__18.83_248, { 2, 6, 3, 7 }>;
+  vect_inter_high_261 = VEC_PERM_EXPR <vect__11.77_239, vect__21.85_251, { 0, 4, 1, 5 }>;
+  vect_inter_low_262 = VEC_PERM_EXPR <vect__11.77_239, vect__21.85_251, { 2, 6, 3, 7 }>;
+  vect_inter_high_263 = VEC_PERM_EXPR <vect__13.79_242, vect__23.87_254, { 0, 4, 1, 5 }>;
+  vect_inter_low_264 = VEC_PERM_EXPR <vect__13.79_242, vect__23.87_254, { 2, 6, 3, 7 }>;
+  vect_inter_high_265 = VEC_PERM_EXPR <vect_inter_high_257, vect_inter_high_261, { 0, 4, 1, 5 }>;
+  vect_inter_low_266 = VEC_PERM_EXPR <vect_inter_high_257, vect_inter_high_261, { 2, 6, 3, 7 }>;
+  vect_inter_high_267 = VEC_PERM_EXPR <vect_inter_low_258, vect_inter_low_262, { 0, 4, 1, 5 }>;
+  vect_inter_low_268 = VEC_PERM_EXPR <vect_inter_low_258, vect_inter_low_262, { 2, 6, 3, 7 }>;
+  vect_inter_high_269 = VEC_PERM_EXPR <vect_inter_high_259, vect_inter_high_263, { 0, 4, 1, 5 }>;
+  vect_inter_low_270 = VEC_PERM_EXPR <vect_inter_high_259, vect_inter_high_263, { 2, 6, 3, 7 }>;
+  vect_inter_high_271 = VEC_PERM_EXPR <vect_inter_low_260, vect_inter_low_264, { 0, 4, 1, 5 }>;
+  vect_inter_low_272 = VEC_PERM_EXPR <vect_inter_low_260, vect_inter_low_264, { 2, 6, 3, 7 }>;
+  vect_inter_high_273 = VEC_PERM_EXPR <vect_inter_high_265, vect_inter_high_269, { 0, 4, 1, 5 }>;
+  vect_inter_low_274 = VEC_PERM_EXPR <vect_inter_high_265, vect_inter_high_269, { 2, 6, 3, 7 }>;
+  vect_inter_high_275 = VEC_PERM_EXPR <vect_inter_low_266, vect_inter_low_270, { 0, 4, 1, 5 }>;
+  vect_inter_low_276 = VEC_PERM_EXPR <vect_inter_low_266, vect_inter_low_270, { 2, 6, 3, 7 }>;
+  vect_inter_high_277 = VEC_PERM_EXPR <vect_inter_high_267, vect_inter_high_271, { 0, 4, 1, 5 }>;
+  vect_inter_low_278 = VEC_PERM_EXPR <vect_inter_high_267, vect_inter_high_271, { 2, 6, 3, 7 }>;
+  vect_inter_high_279 = VEC_PERM_EXPR <vect_inter_low_268, vect_inter_low_272, { 0, 4, 1, 5 }>;
+  vect_inter_low_280 = VEC_PERM_EXPR <vect_inter_low_268, vect_inter_low_272, { 2, 6, 3, 7 }>;
+  _115 = (void *) ivtmp.117_118;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115] = vect_inter_high_273;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 16B] = vect_inter_low_274;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 32B] = vect_inter_high_275;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 48B] = vect_inter_low_276;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 64B] = vect_inter_high_277;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 80B] = vect_inter_low_278;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 96B] = vect_inter_high_279;
+  MEM <vector(4) unsigned int> [(unsigned int *)_115 + 112B] = vect_inter_low_280;
+  ivtmp.114_124 = ivtmp.114_167 + 64;
+  ivtmp.117_117 = ivtmp.117_118 + 128;
+  if (ivtmp.114_124 != _206)
+    goto <bb 9>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 10> [local count: 84095460]:
+  niters_vector_mult_vf.61_215 = _110 & 4294967292;
+  _223 = (int) niters_vector_mult_vf.61_215;
+  _224 = _223 * -4;
+  tmp.64_222 = n_39(D) + _224;
+  _220 = (sizetype) niters_vector_mult_vf.61_215;
+  _107 = (unsigned int) _220;
+  _221 = _107 w* 16;
+  tmp.63_219 = a_41(D) + _221;
+  _104 = (unsigned int) _220;
+  _218 = _104 w* 32;
+  tmp.62_216 = r_40(D) + _218;
+  _82 = _110 & 3;
+  if (_82 == 0)
+    goto <bb 16>; [25.00%]
+  else
+    goto <bb 11>; [75.00%]
+
+  <bb 11> [local count: 63071595]:
+  _99 = *tmp.63_219;
+  _98 = (long long unsigned int) _99;
+  _322 = (unsigned int) _98;
+  _63 = (unsigned int) _98;
+  powmult_97 = _322 w* _63;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216] = powmult_97;
+  _54 = MEM[(const unsigned int *)tmp.63_219 + 4B];
+  _53 = (long long unsigned int) _54;
+  _27 = (unsigned int) _53;
+  _29 = (unsigned int) _53;
+  powmult_51 = _27 w* _29;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 8B] = powmult_51;
+  _95 = MEM[(const unsigned int *)tmp.63_219 + 8B];
+  _300 = (long long unsigned int) _95;
+  _211 = (unsigned int) _300;
+  _93 = (unsigned int) _300;
+  powmult_301 = _211 w* _93;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 16B] = powmult_301;
+  _307 = MEM[(const unsigned int *)tmp.63_219 + 12B];
+  _308 = (long long unsigned int) _307;
+  _207 = (unsigned int) _308;
+  _108 = (unsigned int) _308;
+  powmult_309 = _207 w* _108;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 24B] = powmult_309;
+  n_317 = tmp.64_222 + -4;
+  n.2_318 = (unsigned int) n_317;
+  if (n.2_318 > 3)
+    goto <bb 12>; [66.67%]
+  else
+    goto <bb 16>; [33.33%]
+
+  <bb 12> [local count: 42047730]:
+  _323 = MEM[(const unsigned int *)tmp.63_219 + 16B];
+  _324 = (long long unsigned int) _323;
+  _106 = (unsigned int) _324;
+  _217 = (unsigned int) _324;
+  powmult_325 = _106 w* _217;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 32B] = powmult_325;
+  _331 = MEM[(const unsigned int *)tmp.63_219 + 20B];
+  _332 = (long long unsigned int) _331;
+  _7 = (unsigned int) _332;
+  _10 = (unsigned int) _332;
+  powmult_333 = _7 w* _10;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 40B] = powmult_333;
+  _339 = MEM[(const unsigned int *)tmp.63_219 + 24B];
+  _340 = (long long unsigned int) _339;
+  _13 = (unsigned int) _340;
+  _20 = (unsigned int) _340;
+  powmult_341 = _13 w* _20;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 48B] = powmult_341;
+  _347 = MEM[(const unsigned int *)tmp.63_219 + 28B];
+  _348 = (long long unsigned int) _347;
+  _22 = (unsigned int) _348;
+  _173 = (unsigned int) _348;
+  powmult_349 = _22 w* _173;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 56B] = powmult_349;
+  n_357 = tmp.64_222 + -8;
+  n.2_358 = (unsigned int) n_357;
+  if (n.2_358 > 3)
+    goto <bb 13>; [66.67%]
+  else
+    goto <bb 16>; [33.33%]
+
+  <bb 13> [local count: 28031820]:
+  _174 = MEM[(const unsigned int *)tmp.63_219 + 32B];
+  _175 = (long long unsigned int) _174;
+  _316 = (unsigned int) _175;
+  _356 = (unsigned int) _175;
+  powmult_176 = _316 w* _356;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 64B] = powmult_176;
+  _182 = MEM[(const unsigned int *)tmp.63_219 + 36B];
+  _183 = (long long unsigned int) _182;
+  _62 = (unsigned int) _183;
+  _61 = (unsigned int) _183;
+  powmult_184 = _62 w* _61;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 72B] = powmult_184;
+  _190 = MEM[(const unsigned int *)tmp.63_219 + 40B];
+  _191 = (long long unsigned int) _190;
+  _12 = (unsigned int) _191;
+  _11 = (unsigned int) _191;
+  powmult_192 = _12 w* _11;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 80B] = powmult_192;
+  _198 = MEM[(const unsigned int *)tmp.63_219 + 44B];
+  _199 = (long long unsigned int) _198;
+  _355 = (unsigned int) _199;
+  _315 = (unsigned int) _199;
+  powmult_200 = _355 w* _315;
+  MEM <unsigned long> [(unsigned int *)tmp.62_216 + 88B] = powmult_200;
+  goto <bb 16>; [100.00%]
+
+  <bb 14> [local count: 21023864]:
+  _24 = _105 >> 2;
+  _16 = _24 + 1;
+  _166 = (sizetype) _16;
+  _127 = (unsigned int) _166;
+  _169 = _127 w* 32;
+  _168 = r_40(D) + _169;
+
+  <bb 15> [local count: 191126041]:
+  # r_125 = PHI <r_40(D)(14), r_162(15)>
+  # a_126 = PHI <a_41(D)(14), a_161(15)>
+  _129 = MEM[(const unsigned int *)a_126];
+  _130 = (long long unsigned int) _129;
+  _212 = (unsigned int) _130;
+  _213 = (unsigned int) _130;
+  powmult_131 = _212 w* _213;
+  _132 = (unsigned int) powmult_131;
+  MEM[(unsigned int *)r_125] = _132;
+  _134 = powmult_131 >> 32;
+  _135 = (unsigned int) _134;
+  MEM[(unsigned int *)r_125 + 4B] = _135;
+  _137 = MEM[(const unsigned int *)a_126 + 4B];
+  _138 = (long long unsigned int) _137;
+  _294 = (unsigned int) _138;
+  _321 = (unsigned int) _138;
+  powmult_139 = _294 w* _321;
+  _140 = (unsigned int) powmult_139;
+  MEM[(unsigned int *)r_125 + 8B] = _140;
+  _142 = powmult_139 >> 32;
+  _143 = (unsigned int) _142;
+  MEM[(unsigned int *)r_125 + 12B] = _143;
+  _145 = MEM[(const unsigned int *)a_126 + 8B];
+  _146 = (long long unsigned int) _145;
+  _36 = (unsigned int) _146;
+  _66 = (unsigned int) _146;
+  powmult_147 = _36 w* _66;
+  _148 = (unsigned int) powmult_147;
+  MEM[(unsigned int *)r_125 + 16B] = _148;
+  _150 = powmult_147 >> 32;
+  _151 = (unsigned int) _150;
+  MEM[(unsigned int *)r_125 + 20B] = _151;
+  _153 = MEM[(const unsigned int *)a_126 + 12B];
+  _154 = (long long unsigned int) _153;
+  _49 = (unsigned int) _154;
+  _69 = (unsigned int) _154;
+  powmult_155 = _49 w* _69;
+  _156 = (unsigned int) powmult_155;
+  MEM[(unsigned int *)r_125 + 24B] = _156;
+  _158 = powmult_155 >> 32;
+  _159 = (unsigned int) _158;
+  MEM[(unsigned int *)r_125 + 28B] = _159;
+  a_161 = a_126 + 16;
+  r_162 = r_125 + 32;
+  if (r_162 != _168)
+    goto <bb 15>; [89.00%]
+  else
+    goto <bb 17>; [11.00%]
+
+  <bb 16> [local count: 84095460]:
+
+  <bb 17> [local count: 105119324]:
+  _3 = _105 >> 2;
+  _2 = _3 * 4294967292;
+  _94 = _2 + _105;
+  n_88 = (int) _94;
+  if (n_88 != 0)
+    goto <bb 18>; [71.91%]
+  else
+    goto <bb 23>; [28.09%]
+
+  <bb 18> [local count: 75591424]:
+  _58 = (sizetype) _3;
+  _52 = (sizetype) r_40(D);
+  _255 = _52 + 32;
+  _163 = (unsigned int) _58;
+  _43 = WIDEN_MULT_PLUS_EXPR <_163, 32, _255>;
+  r_89 = (unsigned int *) _43;
+  _70 = (sizetype) a_41(D);
+  _210 = _70 + 16;
+  _164 = (unsigned int) _58;
+  _68 = WIDEN_MULT_PLUS_EXPR <_164, 16, _210>;
+  a_90 = (const unsigned int *) _68;
+
+  <bb 19> [local count: 88583701]:
+  # r_34 = PHI <r_89(18), r_40(D)(5)>
+  # a_32 = PHI <a_90(18), a_41(D)(5)>
+  # n_30 = PHI <n_88(18), n_39(D)(5)>
+  _5 = *a_32;
+  _33 = (long long unsigned int) _5;
+  _286 = (unsigned int) _33;
+  _288 = (unsigned int) _33;
+  powmult_6 = _286 w* _288;
+  _9 = powmult_6 >> 32;
+  _319 = {powmult_6, _9};
+  vect__7.92_320 = (vector(2) unsigned int) _319;
+  MEM <vector(2) unsigned int> [(unsigned int *)r_34] = vect__7.92_320;
+  if (n_30 != 1)
+    goto <bb 20>; [66.67%]
+  else
+    goto <bb 22>; [33.33%]
+
+  <bb 20> [local count: 59055800]:
+  _17 = MEM[(const unsigned int *)a_32 + 4B];
+  _18 = (long long unsigned int) _17;
+  _282 = (unsigned int) _18;
+  _284 = (unsigned int) _18;
+  powmult_19 = _282 w* _284;
+  _21 = powmult_19 >> 32;
+  _171 = {powmult_19, _21};
+  vect__20.95_172 = (vector(2) unsigned int) _171;
+  MEM <vector(2) unsigned int> [(unsigned int *)r_34 + 8B] = vect__20.95_172;
+  if (n_30 != 2)
+    goto <bb 21>; [66.67%]
+  else
+    goto <bb 22>; [33.33%]
+
+  <bb 21> [local count: 39370534]:
+  _25 = MEM[(const unsigned int *)a_32 + 8B];
+  _26 = (long long unsigned int) _25;
+  _226 = (unsigned int) _26;
+  _256 = (unsigned int) _26;
+  powmult_78 = _226 w* _256;
+  _28 = powmult_78 >> 32;
+  _92 = {powmult_78, _28};
+  vect__27.98_67 = (vector(2) unsigned int) _92;
+  MEM <vector(2) unsigned int> [(unsigned int *)r_34 + 16B] = vect__27.98_67;
+
+  <bb 22> [local count: 88583700]:
+
+  <bb 23> [local count: 178956971]:
+  return;
+
+}
+
+
+
+;; Function bn_div_words (bn_div_words, funcdef_no=173, decl_uid=11459, cgraph_uid=174, symbol_order=173)
+
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+unsigned int bn_div_words (unsigned int h, unsigned int l, unsigned int d)
+{
+  static const char __func__[13] = "bn_div_words";
+  int i;
+  unsigned int tl;
+  unsigned int q;
+  unsigned int _4;
+  unsigned int _9;
+  unsigned int _11;
+  unsigned int _26;
+  unsigned int _29;
+
+  <bb 2> [local count: 92317961]:
+  if (d_13(D) == 0)
+    goto <bb 12>; [36.03%]
+  else
+    goto <bb 3>; [63.97%]
+
+  <bb 3> [local count: 59055800]:
+  i_16 = BN_num_bits_word (d_13(D));
+  if (i_16 != 32)
+    goto <bb 4>; [10.00%]
+  else
+    goto <bb 13>; [90.00%]
+
+  <bb 4> [local count: 5905580]:
+  _4 = 1 << i_16;
+  if (_4 < h_17(D))
+    goto <bb 5>; [0.00%]
+  else
+    goto <bb 6>; [100.00%]
+
+  <bb 5> [count: 0]:
+  __assert_rtn (&__func__, "bn_asm.c", 216, "(i == BN_BITS2) || (h <= (BN_ULONG)1 << i)");
+
+  <bb 6> [local count: 6496138]:
+  i_19 = 32 - i_16;
+  d_21 = d_13(D) << i_19;
+  if (d_21 == 0)
+    goto <bb 11>; [100.00%]
+  else
+    goto <bb 7>; [0.00%]
+
+  <bb 7> [local count: 0]:
+  _9 = -d_21;
+
+  <bb 8> [local count: 52559662]:
+  # tl_28 = PHI <_9(7), _26(13)>
+  # _29 = PHI <_9(7), _26(13)>
+  # d_30 = PHI <d_21(7), d_13(D)(13)>
+
+  <bb 9> [local count: 477815112]:
+  # tl_25 = PHI <tl_28(8), tl_27(9)>
+  tl_27 = tl_25 - d_30;
+  if (tl_27 == 0)
+    goto <bb 10>; [11.00%]
+  else
+    goto <bb 9>; [89.00%]
+
+  <bb 10> [local count: 477815112]:
+  # q_2 = PHI <q_23(10), 4294967295(9)>
+  # tl_6 = PHI <tl_24(10), _29(9)>
+  q_23 = q_2 + 4294967295;
+  tl_24 = tl_6 - d_30;
+  if (tl_24 == 0)
+    goto <bb 11>; [11.00%]
+  else
+    goto <bb 10>; [89.00%]
+
+  <bb 11> [local count: 59055800]:
+  # q_5 = PHI <q_23(10), 4294967295(6)>
+
+  <bb 12> [local count: 92317961]:
+  # _11 = PHI <4294967295(2), q_5(11)>
+  return _11;
+
+  <bb 13> [local count: 52559662]:
+  _26 = -d_13(D);
+  goto <bb 8>; [100.00%]
+
+}
+
+
+
+;; Function bn_add_words (bn_add_words, funcdef_no=174, decl_uid=11464, cgraph_uid=175, symbol_order=174)
+
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+unsigned int bn_add_words (unsigned int * r, const unsigned int * a, const unsigned int * b, int n)
+{
+  static const char __func__[13] = "bn_add_words";
+  long long unsigned int ll;
+  sizetype _1;
+  unsigned int _2;
+  unsigned int _4;
+  long long unsigned int _5;
+  unsigned int _6;
+  long long unsigned int _7;
+  long long unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  long long unsigned int _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  long long unsigned int _17;
+  unsigned int _18;
+  long long unsigned int _19;
+  long long unsigned int _20;
+  unsigned int _21;
+  unsigned int _22;
+  long long unsigned int _23;
+  unsigned int _24;
+  long long unsigned int _25;
+  long long unsigned int _26;
+  unsigned int _27;
+  unsigned int _29;
+  long long unsigned int _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _33;
+  unsigned int _34;
+  sizetype _38;
+  sizetype _40;
+  sizetype _44;
+  unsigned int _45;
+  sizetype _46;
+  unsigned int n.3_47;
+  unsigned int _54;
+  unsigned int * _60;
+  sizetype _61;
+  unsigned int _81;
+  unsigned int _82;
+  sizetype _84;
+  sizetype _86;
+  sizetype _98;
+  sizetype _99;
+  sizetype _106;
+  sizetype _120;
+  sizetype _121;
+  unsigned int _123;
+  unsigned int _130;
+  long long unsigned int _131;
+  unsigned int _132;
+  long long unsigned int _133;
+  long long unsigned int _134;
+  unsigned int _136;
+  unsigned int _148;
+  unsigned int _149;
+  long long unsigned int _150;
+  unsigned int _151;
+  long long unsigned int _152;
+  long long unsigned int _153;
+  unsigned int _155;
+  unsigned int _160;
+
+  <bb 2> [local count: 178956971]:
+  if (n_49(D) < 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 3> [count: 0]:
+  __assert_rtn (&__func__, "bn_asm.c", 277, "n >= 0");
+
+  <bb 4> [local count: 178956971]:
+  if (n_49(D) == 0)
+    goto <bb 15>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 118111600]:
+  n.3_47 = (unsigned int) n_49(D);
+  if (n.3_47 > 3)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 6> [local count: 105119324]:
+  _81 = n.3_47 + 4294967292;
+  _82 = _81 >> 2;
+  _1 = (sizetype) _82;
+  _38 = _1 + 1;
+  _160 = (unsigned int) _38;
+  _61 = _160 w* 16;
+  _60 = r_50(D) + _61;
+
+  <bb 7> [local count: 955630224]:
+  # r_89 = PHI <r_76(7), r_50(D)(6)>
+  # a_92 = PHI <a_74(7), a_51(D)(6)>
+  # b_95 = PHI <b_75(7), b_52(D)(6)>
+  # ll_101 = PHI <ll_73(7), 0(6)>
+  _4 = MEM[(const unsigned int *)a_92];
+  _5 = (long long unsigned int) _4;
+  _6 = MEM[(const unsigned int *)b_95];
+  _7 = (long long unsigned int) _6;
+  _8 = _5 + _7;
+  ll_62 = _8 + ll_101;
+  _9 = (unsigned int) ll_62;
+  MEM[(unsigned int *)r_89] = _9;
+  ll_64 = ll_62 >> 32;
+  _10 = MEM[(const unsigned int *)a_92 + 4B];
+  _11 = (long long unsigned int) _10;
+  _12 = MEM[(const unsigned int *)b_95 + 4B];
+  _13 = (long long unsigned int) _12;
+  _14 = _11 + _13;
+  ll_65 = _14 + ll_64;
+  _15 = (unsigned int) ll_65;
+  MEM[(unsigned int *)r_89 + 4B] = _15;
+  ll_67 = ll_65 >> 32;
+  _16 = MEM[(const unsigned int *)a_92 + 8B];
+  _17 = (long long unsigned int) _16;
+  _18 = MEM[(const unsigned int *)b_95 + 8B];
+  _19 = (long long unsigned int) _18;
+  _20 = _17 + _19;
+  ll_68 = _20 + ll_67;
+  _21 = (unsigned int) ll_68;
+  MEM[(unsigned int *)r_89 + 8B] = _21;
+  ll_70 = ll_68 >> 32;
+  _22 = MEM[(const unsigned int *)a_92 + 12B];
+  _23 = (long long unsigned int) _22;
+  _24 = MEM[(const unsigned int *)b_95 + 12B];
+  _25 = (long long unsigned int) _24;
+  _26 = _23 + _25;
+  ll_71 = _26 + ll_70;
+  _27 = (unsigned int) ll_71;
+  MEM[(unsigned int *)r_89 + 12B] = _27;
+  ll_73 = ll_71 >> 32;
+  a_74 = a_92 + 16;
+  b_75 = b_95 + 16;
+  r_76 = r_89 + 16;
+  if (_60 != r_76)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 105119324]:
+  _2 = _82 * 4294967292;
+  _123 = _2 + _81;
+  n_116 = (int) _123;
+  if (n_116 != 0)
+    goto <bb 9>; [71.91%]
+  else
+    goto <bb 14>; [28.09%]
+
+  <bb 9> [local count: 75591424]:
+  _148 = (unsigned int) _1;
+  _46 = _148 w* 16;
+  _44 = (sizetype) r_50(D);
+  _98 = _44 + 16;
+  _40 = _46 + _98;
+  r_117 = (unsigned int *) _40;
+  _86 = (sizetype) b_52(D);
+  _121 = _86 + 16;
+  _84 = _46 + _121;
+  b_118 = (const unsigned int *) _84;
+  _106 = (sizetype) a_51(D);
+  _120 = _106 + 16;
+  _99 = _46 + _120;
+  a_119 = (const unsigned int *) _99;
+
+  <bb 10> [local count: 88583701]:
+  # r_43 = PHI <r_117(9), r_50(D)(5)>
+  # a_41 = PHI <a_119(9), a_51(D)(5)>
+  # b_39 = PHI <b_118(9), b_52(D)(5)>
+  # n_37 = PHI <n_116(9), n_49(D)(5)>
+  # ll_35 = PHI <ll_73(9), 0(5)>
+  _130 = *a_41;
+  _131 = (long long unsigned int) _130;
+  _132 = *b_39;
+  _133 = (long long unsigned int) _132;
+  _134 = _131 + _133;
+  ll_135 = ll_35 + _134;
+  _136 = (unsigned int) ll_135;
+  *r_43 = _136;
+  ll_138 = ll_135 >> 32;
+  if (n_37 != 1)
+    goto <bb 11>; [66.67%]
+  else
+    goto <bb 13>; [33.33%]
+
+  <bb 11> [local count: 59055800]:
+  _149 = MEM[(const unsigned int *)a_41 + 4B];
+  _150 = (long long unsigned int) _149;
+  _151 = MEM[(const unsigned int *)b_39 + 4B];
+  _152 = (long long unsigned int) _151;
+  _153 = _150 + _152;
+  ll_154 = ll_138 + _153;
+  _155 = (unsigned int) ll_154;
+  MEM[(unsigned int *)r_43 + 4B] = _155;
+  ll_157 = ll_154 >> 32;
+  if (n_37 != 2)
+    goto <bb 12>; [66.67%]
+  else
+    goto <bb 13>; [33.33%]
+
+  <bb 12> [local count: 39370534]:
+  _29 = MEM[(const unsigned int *)a_41 + 8B];
+  _30 = (long long unsigned int) _29;
+  _31 = MEM[(const unsigned int *)b_39 + 8B];
+  _32 = (long long unsigned int) _31;
+  _33 = _30 + _32;
+  ll_55 = _33 + ll_157;
+  _34 = (unsigned int) ll_55;
+  MEM[(unsigned int *)r_43 + 8B] = _34;
+  ll_57 = ll_55 >> 32;
+
+  <bb 13> [local count: 88583700]:
+  # ll_114 = PHI <ll_57(12), ll_138(10), ll_157(11)>
+
+  <bb 14> [local count: 118111600]:
+  # ll_104 = PHI <ll_114(13), ll_73(8)>
+  _54 = (unsigned int) ll_104;
+
+  <bb 15> [local count: 178956971]:
+  # _45 = PHI <0(4), _54(14)>
+  return _45;
+
+}
+
+
+
+;; Function bn_sub_words (bn_sub_words, funcdef_no=175, decl_uid=11469, cgraph_uid=176, symbol_order=175)
+
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+unsigned int bn_sub_words (unsigned int * r, const unsigned int * a, const unsigned int * b, int n)
+{
+  int c;
+  unsigned int t2;
+  unsigned int t1;
+  int n;
+  const unsigned int * b;
+  const unsigned int * a;
+  unsigned int * r;
+  static const char __func__[13] = "bn_sub_words";
+  __complex__ unsigned int _2;
+  unsigned int c.9_5;
+  _Bool _7;
+  unsigned int _9;
+  __complex__ unsigned int _10;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int c.4_23;
+  _Bool _25;
+  _Bool _31;
+  int _32;
+  unsigned int c.5_35;
+  _Bool _37;
+  _Bool _41;
+  int _42;
+  unsigned int c.6_45;
+  _Bool _47;
+  _Bool _51;
+  int _52;
+  unsigned int c.7_55;
+  _Bool _57;
+  _Bool _61;
+  int _62;
+  __complex__ unsigned int _68;
+  unsigned int _69;
+  unsigned int _70;
+  unsigned int _72;
+  unsigned int c.9_73;
+  _Bool _75;
+  sizetype _80;
+  _Bool _81;
+  int _82;
+  unsigned int _87;
+  unsigned int _89;
+  sizetype _90;
+  sizetype _91;
+  unsigned int n.8_92;
+  unsigned int _98;
+  sizetype _106;
+  sizetype _107;
+  unsigned int _108;
+  sizetype _109;
+  sizetype _110;
+  sizetype _112;
+  unsigned int _113;
+  unsigned int _114;
+  sizetype _116;
+  unsigned int _117;
+  unsigned int _119;
+  sizetype _124;
+  __complex__ unsigned int _125;
+  sizetype _126;
+  __complex__ unsigned int _127;
+  unsigned int _128;
+  __complex__ unsigned int _129;
+  unsigned int _130;
+  __complex__ unsigned int _131;
+  sizetype _132;
+  sizetype _139;
+  _Bool _148;
+  int _149;
+  unsigned int _151;
+  __complex__ unsigned int _152;
+  unsigned int _153;
+  unsigned int _154;
+  unsigned int _155;
+  __complex__ unsigned int _156;
+  unsigned int _157;
+  __complex__ unsigned int _158;
+  const unsigned int * _159;
+  __complex__ unsigned int _160;
+  unsigned int c.9_162;
+  _Bool _164;
+  _Bool _169;
+  int _170;
+  __complex__ unsigned int _172;
+  unsigned int _173;
+  __complex__ unsigned int _174;
+  __complex__ unsigned int _175;
+
+  <bb 2> [local count: 178956971]:
+  if (n_14(D) < 0)
+    goto <bb 3>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 3> [count: 0]:
+  __assert_rtn (&__func__, "bn_asm.c", 377, "n >= 0");
+
+  <bb 4> [local count: 178956971]:
+  if (n_14(D) == 0)
+    goto <bb 15>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 5> [local count: 118111600]:
+  n.8_92 = (unsigned int) n_14(D);
+  if (n.8_92 > 3)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 6> [local count: 105119324]:
+  _114 = n.8_92 + 4294967292;
+  _113 = _114 >> 2;
+  _112 = (sizetype) _113;
+  _110 = _112 + 1;
+  _108 = (unsigned int) _110;
+  _109 = _108 w* 16;
+  _159 = a_16(D) + _109;
+
+  <bb 7> [local count: 955630224]:
+  # a_99 = PHI <a_64(7), a_16(D)(6)>
+  # c_101 = PHI <c_63(7), 0(6)>
+  # b_103 = PHI <b_65(7), b_17(D)(6)>
+  # r_105 = PHI <r_66(7), r_15(D)(6)>
+  t1_21 = MEM[(const unsigned int *)a_99];
+  c.4_23 = (unsigned int) c_101;
+  _174 = .SUB_OVERFLOW (t1_21, c.4_23);
+  t2_24 = REALPART_EXPR <_174>;
+  _173 = IMAGPART_EXPR <_174>;
+  _25 = _173 != 0;
+  c_26 = (int) _25;
+  t1_28 = MEM[(const unsigned int *)b_103];
+  _172 = .SUB_OVERFLOW (t2_24, t1_28);
+  t1_29 = REALPART_EXPR <_172>;
+  _153 = IMAGPART_EXPR <_172>;
+  MEM[(unsigned int *)r_105] = t1_29;
+  _31 = _153 != 0;
+  _32 = (int) _31;
+  c_33 = c_26 + _32;
+  t1_34 = MEM[(const unsigned int *)a_99 + 4B];
+  c.5_35 = (unsigned int) c_33;
+  _152 = .SUB_OVERFLOW (t1_34, c.5_35);
+  t2_36 = REALPART_EXPR <_152>;
+  _151 = IMAGPART_EXPR <_152>;
+  _37 = _151 != 0;
+  c_38 = (int) _37;
+  t1_39 = MEM[(const unsigned int *)b_103 + 4B];
+  _160 = .SUB_OVERFLOW (t2_36, t1_39);
+  t1_40 = REALPART_EXPR <_160>;
+  _154 = IMAGPART_EXPR <_160>;
+  MEM[(unsigned int *)r_105 + 4B] = t1_40;
+  _41 = _154 != 0;
+  _42 = (int) _41;
+  c_43 = c_38 + _42;
+  t1_44 = MEM[(const unsigned int *)a_99 + 8B];
+  c.6_45 = (unsigned int) c_43;
+  _2 = .SUB_OVERFLOW (t1_44, c.6_45);
+  t2_46 = REALPART_EXPR <_2>;
+  _72 = IMAGPART_EXPR <_2>;
+  _47 = _72 != 0;
+  c_48 = (int) _47;
+  t1_49 = MEM[(const unsigned int *)b_103 + 8B];
+  _175 = .SUB_OVERFLOW (t2_46, t1_49);
+  t1_50 = REALPART_EXPR <_175>;
+  _70 = IMAGPART_EXPR <_175>;
+  MEM[(unsigned int *)r_105 + 8B] = t1_50;
+  _51 = _70 != 0;
+  _52 = (int) _51;
+  c_53 = c_48 + _52;
+  t1_54 = MEM[(const unsigned int *)a_99 + 12B];
+  c.7_55 = (unsigned int) c_53;
+  _68 = .SUB_OVERFLOW (t1_54, c.7_55);
+  t2_56 = REALPART_EXPR <_68>;
+  _98 = IMAGPART_EXPR <_68>;
+  _57 = _98 != 0;
+  c_58 = (int) _57;
+  t1_59 = MEM[(const unsigned int *)b_103 + 12B];
+  _10 = .SUB_OVERFLOW (t2_56, t1_59);
+  t1_60 = REALPART_EXPR <_10>;
+  _87 = IMAGPART_EXPR <_10>;
+  MEM[(unsigned int *)r_105 + 12B] = t1_60;
+  _61 = _87 != 0;
+  _62 = (int) _61;
+  c_63 = c_58 + _62;
+  a_64 = a_99 + 16;
+  b_65 = b_103 + 16;
+  r_66 = r_105 + 16;
+  if (a_64 != _159)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 105119324]:
+  _13 = _113 * 4294967292;
+  _9 = _13 + _114;
+  n_133 = (int) _9;
+  if (n_133 != 0)
+    goto <bb 9>; [71.91%]
+  else
+    goto <bb 14>; [28.09%]
+
+  <bb 9> [local count: 75591424]:
+  _117 = (unsigned int) _112;
+  _91 = _117 w* 16;
+  _90 = (sizetype) r_15(D);
+  _107 = _90 + 16;
+  _80 = _91 + _107;
+  r_134 = (unsigned int *) _80;
+  _116 = (sizetype) b_17(D);
+  _139 = _116 + 16;
+  _106 = _91 + _139;
+  b_135 = (const unsigned int *) _106;
+  _126 = (sizetype) a_16(D);
+  _132 = _126 + 16;
+  _124 = _91 + _132;
+  a_138 = (const unsigned int *) _124;
+
+  <bb 10> [local count: 88583701]:
+  # a_22 = PHI <a_138(9), a_16(D)(5)>
+  # c_67 = PHI <c_63(9), 0(5)>
+  # b_27 = PHI <b_135(9), b_17(D)(5)>
+  # r_20 = PHI <r_134(9), r_15(D)(5)>
+  # n_30 = PHI <n_133(9), n_14(D)(5)>
+  t1_3 = *a_22;
+  c.9_5 = (unsigned int) c_67;
+  _129 = .SUB_OVERFLOW (t1_3, c.9_5);
+  t2_6 = REALPART_EXPR <_129>;
+  _130 = IMAGPART_EXPR <_129>;
+  _7 = _130 != 0;
+  c_144 = (int) _7;
+  t1_145 = *b_27;
+  _131 = .SUB_OVERFLOW (t2_6, t1_145);
+  t1_146 = REALPART_EXPR <_131>;
+  _119 = IMAGPART_EXPR <_131>;
+  *r_20 = t1_146;
+  _148 = _119 != 0;
+  _149 = (int) _148;
+  c_150 = c_144 + _149;
+  if (n_30 != 1)
+    goto <bb 11>; [66.67%]
+  else
+    goto <bb 13>; [33.33%]
+
+  <bb 11> [local count: 59055800]:
+  t1_161 = MEM[(const unsigned int *)a_22 + 4B];
+  c.9_162 = (unsigned int) c_150;
+  _156 = .SUB_OVERFLOW (t1_161, c.9_162);
+  t2_163 = REALPART_EXPR <_156>;
+  _155 = IMAGPART_EXPR <_156>;
+  _164 = _155 != 0;
+  c_165 = (int) _164;
+  t1_166 = MEM[(const unsigned int *)b_27 + 4B];
+  _127 = .SUB_OVERFLOW (t2_163, t1_166);
+  t1_167 = REALPART_EXPR <_127>;
+  _128 = IMAGPART_EXPR <_127>;
+  MEM[(unsigned int *)r_20 + 4B] = t1_167;
+  _169 = _128 != 0;
+  _170 = (int) _169;
+  c_171 = c_165 + _170;
+  if (n_30 != 2)
+    goto <bb 12>; [66.67%]
+  else
+    goto <bb 13>; [33.33%]
+
+  <bb 12> [local count: 39370534]:
+  t1_71 = MEM[(const unsigned int *)a_22 + 8B];
+  c.9_73 = (unsigned int) c_171;
+  _125 = .SUB_OVERFLOW (t1_71, c.9_73);
+  t2_74 = REALPART_EXPR <_125>;
+  _69 = IMAGPART_EXPR <_125>;
+  _75 = _69 != 0;
+  c_76 = (int) _75;
+  t1_78 = MEM[(const unsigned int *)b_27 + 8B];
+  _158 = .SUB_OVERFLOW (t2_74, t1_78);
+  t1_79 = REALPART_EXPR <_158>;
+  _157 = IMAGPART_EXPR <_158>;
+  MEM[(unsigned int *)r_20 + 8B] = t1_79;
+  _81 = _157 != 0;
+  _82 = (int) _81;
+  c_83 = c_76 + _82;
+
+  <bb 13> [local count: 88583700]:
+  # c_141 = PHI <c_83(12), c_150(10), c_171(11)>
+
+  <bb 14> [local count: 118111600]:
+  # c_111 = PHI <c_141(13), c_63(8)>
+  _89 = (unsigned int) c_111;
+
+  <bb 15> [local count: 178956971]:
+  # _12 = PHI <0(4), _89(14)>
+  return _12;
+
+}
+
+
+
+;; Function bn_mul_comba8 (bn_mul_comba8, funcdef_no=176, decl_uid=11513, cgraph_uid=177, symbol_order=176)
+
+void bn_mul_comba8 (unsigned int * r, unsigned int * a, unsigned int * b)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  long long unsigned int _7;
+  long long unsigned int _8;
+  unsigned int _9;
+  long long unsigned int _10;
+  unsigned int _11;
+  long long unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _15;
+  unsigned int _16;
+  long long unsigned int _17;
+  unsigned int _18;
+  long long unsigned int _19;
+  long long unsigned int _20;
+  _Bool _21;
+  unsigned int _22;
+  unsigned int _23;
+  long long unsigned int _24;
+  unsigned int _25;
+  long long unsigned int _26;
+  long long unsigned int _28;
+  _Bool _29;
+  unsigned int _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  unsigned int _33;
+  long long unsigned int _34;
+  long long unsigned int _35;
+  _Bool _36;
+  unsigned int _37;
+  unsigned int _38;
+  long long unsigned int _39;
+  unsigned int _40;
+  long long unsigned int _41;
+  long long unsigned int _42;
+  _Bool _43;
+  unsigned int _44;
+  unsigned int _45;
+  long long unsigned int _46;
+  unsigned int _47;
+  long long unsigned int _48;
+  long long unsigned int _50;
+  _Bool _51;
+  unsigned int _52;
+  unsigned int _53;
+  long long unsigned int _54;
+  unsigned int _55;
+  long long unsigned int _56;
+  long long unsigned int _57;
+  _Bool _58;
+  unsigned int _59;
+  unsigned int _60;
+  long long unsigned int _61;
+  unsigned int _62;
+  long long unsigned int _63;
+  long long unsigned int _64;
+  _Bool _65;
+  unsigned int _66;
+  unsigned int _67;
+  long long unsigned int _68;
+  unsigned int _69;
+  long long unsigned int _70;
+  long long unsigned int _71;
+  _Bool _72;
+  unsigned int _73;
+  unsigned int _74;
+  long long unsigned int _75;
+  unsigned int _76;
+  long long unsigned int _77;
+  long long unsigned int _79;
+  _Bool _80;
+  unsigned int _81;
+  unsigned int _82;
+  long long unsigned int _83;
+  unsigned int _84;
+  long long unsigned int _85;
+  long long unsigned int _86;
+  _Bool _87;
+  unsigned int _88;
+  unsigned int _89;
+  long long unsigned int _90;
+  unsigned int _91;
+  long long unsigned int _92;
+  long long unsigned int _93;
+  _Bool _94;
+  unsigned int _95;
+  unsigned int _96;
+  long long unsigned int _97;
+  unsigned int _98;
+  long long unsigned int _99;
+  long long unsigned int _100;
+  _Bool _101;
+  unsigned int _102;
+  unsigned int _103;
+  long long unsigned int _104;
+  unsigned int _105;
+  long long unsigned int _106;
+  long long unsigned int _107;
+  _Bool _108;
+  unsigned int _109;
+  unsigned int _110;
+  long long unsigned int _111;
+  unsigned int _112;
+  long long unsigned int _113;
+  long long unsigned int _115;
+  _Bool _116;
+  unsigned int _117;
+  unsigned int _118;
+  long long unsigned int _119;
+  unsigned int _120;
+  long long unsigned int _121;
+  long long unsigned int _122;
+  _Bool _123;
+  unsigned int _124;
+  unsigned int _125;
+  long long unsigned int _126;
+  unsigned int _127;
+  long long unsigned int _128;
+  long long unsigned int _129;
+  _Bool _130;
+  unsigned int _131;
+  unsigned int _132;
+  long long unsigned int _133;
+  unsigned int _134;
+  long long unsigned int _135;
+  long long unsigned int _136;
+  _Bool _137;
+  unsigned int _138;
+  unsigned int _139;
+  long long unsigned int _140;
+  unsigned int _141;
+  long long unsigned int _142;
+  long long unsigned int _143;
+  _Bool _144;
+  unsigned int _145;
+  unsigned int _146;
+  long long unsigned int _147;
+  unsigned int _148;
+  long long unsigned int _149;
+  long long unsigned int _150;
+  _Bool _151;
+  unsigned int _152;
+  unsigned int _153;
+  long long unsigned int _154;
+  unsigned int _155;
+  long long unsigned int _156;
+  long long unsigned int _158;
+  _Bool _159;
+  unsigned int _160;
+  unsigned int _161;
+  long long unsigned int _162;
+  unsigned int _163;
+  long long unsigned int _164;
+  long long unsigned int _165;
+  _Bool _166;
+  unsigned int _167;
+  unsigned int _168;
+  long long unsigned int _169;
+  unsigned int _170;
+  long long unsigned int _171;
+  long long unsigned int _172;
+  _Bool _173;
+  unsigned int _174;
+  unsigned int _175;
+  long long unsigned int _176;
+  unsigned int _177;
+  long long unsigned int _178;
+  long long unsigned int _179;
+  _Bool _180;
+  unsigned int _181;
+  unsigned int _182;
+  long long unsigned int _183;
+  unsigned int _184;
+  long long unsigned int _185;
+  long long unsigned int _186;
+  _Bool _187;
+  unsigned int _188;
+  unsigned int _189;
+  long long unsigned int _190;
+  unsigned int _191;
+  long long unsigned int _192;
+  long long unsigned int _193;
+  _Bool _194;
+  unsigned int _195;
+  unsigned int _196;
+  long long unsigned int _197;
+  unsigned int _198;
+  long long unsigned int _199;
+  long long unsigned int _200;
+  _Bool _201;
+  unsigned int _202;
+  unsigned int _203;
+  long long unsigned int _204;
+  unsigned int _205;
+  long long unsigned int _206;
+  long long unsigned int _208;
+  _Bool _209;
+  unsigned int _210;
+  unsigned int _211;
+  long long unsigned int _212;
+  unsigned int _213;
+  long long unsigned int _214;
+  long long unsigned int _215;
+  _Bool _216;
+  unsigned int _217;
+  unsigned int _218;
+  long long unsigned int _219;
+  unsigned int _220;
+  long long unsigned int _221;
+  long long unsigned int _222;
+  _Bool _223;
+  unsigned int _224;
+  unsigned int _225;
+  long long unsigned int _226;
+  unsigned int _227;
+  long long unsigned int _228;
+  long long unsigned int _229;
+  _Bool _230;
+  unsigned int _231;
+  unsigned int _232;
+  long long unsigned int _233;
+  unsigned int _234;
+  long long unsigned int _235;
+  long long unsigned int _236;
+  _Bool _237;
+  unsigned int _238;
+  unsigned int _239;
+  long long unsigned int _240;
+  unsigned int _241;
+  long long unsigned int _242;
+  long long unsigned int _243;
+  _Bool _244;
+  unsigned int _245;
+  unsigned int _246;
+  long long unsigned int _247;
+  unsigned int _248;
+  long long unsigned int _249;
+  long long unsigned int _250;
+  _Bool _251;
+  unsigned int _252;
+  unsigned int _253;
+  long long unsigned int _254;
+  unsigned int _255;
+  long long unsigned int _256;
+  long long unsigned int _257;
+  _Bool _258;
+  unsigned int _259;
+  unsigned int _260;
+  long long unsigned int _261;
+  unsigned int _262;
+  long long unsigned int _263;
+  long long unsigned int _265;
+  _Bool _266;
+  unsigned int _267;
+  unsigned int _268;
+  long long unsigned int _269;
+  unsigned int _270;
+  long long unsigned int _271;
+  long long unsigned int _272;
+  _Bool _273;
+  unsigned int _274;
+  unsigned int _275;
+  long long unsigned int _276;
+  unsigned int _277;
+  long long unsigned int _278;
+  long long unsigned int _279;
+  _Bool _280;
+  unsigned int _281;
+  unsigned int _282;
+  long long unsigned int _283;
+  unsigned int _284;
+  long long unsigned int _285;
+  long long unsigned int _286;
+  _Bool _287;
+  unsigned int _288;
+  unsigned int _289;
+  long long unsigned int _290;
+  unsigned int _291;
+  long long unsigned int _292;
+  long long unsigned int _293;
+  _Bool _294;
+  unsigned int _295;
+  unsigned int _296;
+  long long unsigned int _297;
+  unsigned int _298;
+  long long unsigned int _299;
+  long long unsigned int _300;
+  _Bool _301;
+  unsigned int _302;
+  unsigned int _303;
+  long long unsigned int _304;
+  unsigned int _305;
+  long long unsigned int _306;
+  long long unsigned int _307;
+  _Bool _308;
+  unsigned int _309;
+  unsigned int _310;
+  long long unsigned int _311;
+  unsigned int _312;
+  long long unsigned int _313;
+  long long unsigned int _315;
+  _Bool _316;
+  unsigned int _317;
+  unsigned int _318;
+  long long unsigned int _319;
+  unsigned int _320;
+  long long unsigned int _321;
+  long long unsigned int _322;
+  _Bool _323;
+  unsigned int _324;
+  unsigned int _325;
+  long long unsigned int _326;
+  unsigned int _327;
+  long long unsigned int _328;
+  long long unsigned int _329;
+  _Bool _330;
+  unsigned int _331;
+  unsigned int _332;
+  long long unsigned int _333;
+  unsigned int _334;
+  long long unsigned int _335;
+  long long unsigned int _336;
+  _Bool _337;
+  unsigned int _338;
+  unsigned int _339;
+  long long unsigned int _340;
+  unsigned int _341;
+  long long unsigned int _342;
+  long long unsigned int _343;
+  _Bool _344;
+  unsigned int _345;
+  unsigned int _346;
+  long long unsigned int _347;
+  unsigned int _348;
+  long long unsigned int _349;
+  long long unsigned int _350;
+  _Bool _351;
+  unsigned int _352;
+  unsigned int _353;
+  long long unsigned int _354;
+  unsigned int _355;
+  long long unsigned int _356;
+  long long unsigned int _358;
+  _Bool _359;
+  unsigned int _360;
+  unsigned int _361;
+  long long unsigned int _362;
+  unsigned int _363;
+  long long unsigned int _364;
+  long long unsigned int _365;
+  _Bool _366;
+  unsigned int _367;
+  unsigned int _368;
+  long long unsigned int _369;
+  unsigned int _370;
+  long long unsigned int _371;
+  long long unsigned int _372;
+  _Bool _373;
+  unsigned int _374;
+  unsigned int _375;
+  long long unsigned int _376;
+  unsigned int _377;
+  long long unsigned int _378;
+  long long unsigned int _379;
+  _Bool _380;
+  unsigned int _381;
+  unsigned int _382;
+  long long unsigned int _383;
+  unsigned int _384;
+  long long unsigned int _385;
+  long long unsigned int _386;
+  _Bool _387;
+  unsigned int _388;
+  unsigned int _389;
+  long long unsigned int _390;
+  unsigned int _391;
+  long long unsigned int _392;
+  long long unsigned int _394;
+  _Bool _395;
+  unsigned int _396;
+  unsigned int _397;
+  long long unsigned int _398;
+  unsigned int _399;
+  long long unsigned int _400;
+  long long unsigned int _401;
+  _Bool _402;
+  unsigned int _403;
+  unsigned int _404;
+  long long unsigned int _405;
+  unsigned int _406;
+  long long unsigned int _407;
+  long long unsigned int _408;
+  _Bool _409;
+  unsigned int _410;
+  unsigned int _411;
+  long long unsigned int _412;
+  unsigned int _413;
+  long long unsigned int _414;
+  long long unsigned int _415;
+  _Bool _416;
+  unsigned int _417;
+  unsigned int _418;
+  long long unsigned int _419;
+  unsigned int _420;
+  long long unsigned int _421;
+  long long unsigned int _423;
+  _Bool _424;
+  unsigned int _425;
+  unsigned int _426;
+  long long unsigned int _427;
+  unsigned int _428;
+  long long unsigned int _429;
+  long long unsigned int _430;
+  _Bool _431;
+  unsigned int _432;
+  unsigned int _433;
+  long long unsigned int _434;
+  unsigned int _435;
+  long long unsigned int _436;
+  long long unsigned int _437;
+  _Bool _438;
+  unsigned int _439;
+  unsigned int _440;
+  long long unsigned int _441;
+  unsigned int _442;
+  long long unsigned int _443;
+  long long unsigned int _445;
+  _Bool _446;
+  unsigned int _447;
+  unsigned int _448;
+  long long unsigned int _449;
+  unsigned int _450;
+  long long unsigned int _451;
+  long long unsigned int _452;
+  _Bool _453;
+  unsigned int _454;
+  unsigned int _455;
+  long long unsigned int _456;
+  unsigned int _457;
+  long long unsigned int _458;
+  long long unsigned int _460;
+  long long unsigned int _461;
+  long long unsigned int _462;
+  long long unsigned int _463;
+  long long unsigned int _468;
+  long long unsigned int _470;
+  long long unsigned int _471;
+  long long unsigned int _474;
+  long long unsigned int _478;
+  long long unsigned int _479;
+  long long unsigned int _486;
+  unsigned int _495;
+  unsigned int _501;
+  long long unsigned int _503;
+  unsigned int _512;
+  unsigned int _517;
+  unsigned int _523;
+  long long unsigned int _525;
+  unsigned int _534;
+  __complex__ unsigned int _539;
+  unsigned int _544;
+  unsigned int _550;
+  long long unsigned int _552;
+  unsigned int _561;
+  long long unsigned int _566;
+  __complex__ unsigned int _571;
+  unsigned int _576;
+  unsigned int _582;
+  long long unsigned int _584;
+  unsigned int _593;
+  __complex__ unsigned int _598;
+  unsigned int _603;
+  unsigned int _608;
+  unsigned int _613;
+  __complex__ unsigned int _619;
+  long long unsigned int _621;
+  unsigned int _630;
+  unsigned int _635;
+  unsigned int _640;
+  long long unsigned int _645;
+  unsigned int _650;
+  unsigned int _655;
+  __complex__ unsigned int _661;
+  long long unsigned int _663;
+  unsigned int _672;
+  unsigned int _677;
+  unsigned int _682;
+  __complex__ unsigned int _687;
+  unsigned int _692;
+  unsigned int _698;
+  long long unsigned int _700;
+  unsigned int _709;
+  __complex__ unsigned int _714;
+  unsigned int _719;
+  unsigned int _724;
+  unsigned int _730;
+  long long unsigned int _732;
+  long long unsigned int _741;
+  unsigned int _746;
+  unsigned int _751;
+  __complex__ unsigned int _757;
+  long long unsigned int _759;
+  unsigned int _768;
+  unsigned int _773;
+  unsigned int _779;
+  long long unsigned int _781;
+  __complex__ unsigned int _790;
+  unsigned int _796;
+  long long unsigned int _798;
+  long long unsigned int _810;
+  long long unsigned int _818;
+  long long unsigned int _819;
+  long long unsigned int _820;
+  long long unsigned int _821;
+  long long unsigned int _822;
+  long long unsigned int _823;
+  long long unsigned int _824;
+  long long unsigned int _825;
+  long long unsigned int _826;
+  long long unsigned int _827;
+  long long unsigned int _828;
+  long long unsigned int _829;
+  long long unsigned int _830;
+  long long unsigned int _831;
+  long long unsigned int _832;
+  long long unsigned int _833;
+  long long unsigned int _834;
+  long long unsigned int _835;
+  long long unsigned int _836;
+  long long unsigned int _837;
+  long long unsigned int _838;
+  long long unsigned int _839;
+  unsigned int _840;
+  __complex__ unsigned int _841;
+  unsigned int _842;
+  unsigned int _843;
+  unsigned int _844;
+  __complex__ unsigned int _845;
+  unsigned int _846;
+  unsigned int _847;
+  unsigned int _848;
+  __complex__ unsigned int _849;
+  unsigned int _850;
+  unsigned int _851;
+  unsigned int _852;
+  __complex__ unsigned int _853;
+  unsigned int _854;
+  unsigned int _855;
+  unsigned int _856;
+  __complex__ unsigned int _857;
+  unsigned int _858;
+  unsigned int _859;
+  long long unsigned int _860;
+  unsigned int _861;
+  unsigned int _862;
+  unsigned int _863;
+  __complex__ unsigned int _864;
+  unsigned int _865;
+  unsigned int _866;
+  unsigned int _867;
+  __complex__ unsigned int _868;
+  unsigned int _869;
+  unsigned int _870;
+  unsigned int _871;
+  __complex__ unsigned int _872;
+  unsigned int _873;
+  unsigned int _874;
+  unsigned int _875;
+  __complex__ unsigned int _876;
+  unsigned int _877;
+  unsigned int _878;
+  unsigned int _879;
+  __complex__ unsigned int _880;
+  unsigned int _881;
+  unsigned int _882;
+  unsigned int _883;
+  __complex__ unsigned int _884;
+  unsigned int _885;
+  unsigned int _886;
+  long long unsigned int _887;
+  unsigned int _888;
+  unsigned int _889;
+  unsigned int _890;
+  __complex__ unsigned int _891;
+  unsigned int _892;
+  unsigned int _893;
+  unsigned int _894;
+  __complex__ unsigned int _895;
+  unsigned int _896;
+  unsigned int _897;
+  unsigned int _898;
+  __complex__ unsigned int _899;
+  unsigned int _900;
+  unsigned int _901;
+  unsigned int _902;
+  __complex__ unsigned int _903;
+  unsigned int _904;
+  unsigned int _905;
+  unsigned int _906;
+  __complex__ unsigned int _907;
+  unsigned int _908;
+  unsigned int _909;
+  unsigned int _910;
+  __complex__ unsigned int _911;
+  unsigned int _912;
+  unsigned int _913;
+  unsigned int _914;
+  __complex__ unsigned int _915;
+  unsigned int _916;
+  unsigned int _917;
+  long long unsigned int _918;
+  unsigned int _919;
+  unsigned int _920;
+  unsigned int _921;
+  __complex__ unsigned int _922;
+  unsigned int _923;
+  unsigned int _924;
+  unsigned int _925;
+  __complex__ unsigned int _926;
+  unsigned int _927;
+  unsigned int _928;
+  unsigned int _929;
+  __complex__ unsigned int _930;
+  unsigned int _931;
+  unsigned int _932;
+  unsigned int _933;
+  __complex__ unsigned int _934;
+  unsigned int _935;
+  unsigned int _936;
+  unsigned int _937;
+  __complex__ unsigned int _938;
+  unsigned int _939;
+  unsigned int _940;
+  unsigned int _941;
+  __complex__ unsigned int _942;
+  unsigned int _943;
+  unsigned int _944;
+  long long unsigned int _945;
+  unsigned int _946;
+  unsigned int _947;
+  unsigned int _948;
+  __complex__ unsigned int _949;
+  unsigned int _950;
+  unsigned int _951;
+  unsigned int _952;
+  __complex__ unsigned int _953;
+  unsigned int _954;
+  unsigned int _955;
+  unsigned int _956;
+  __complex__ unsigned int _957;
+  unsigned int _958;
+  unsigned int _959;
+  unsigned int _960;
+  __complex__ unsigned int _961;
+  unsigned int _962;
+  unsigned int _963;
+  unsigned int _964;
+  __complex__ unsigned int _965;
+  unsigned int _966;
+  unsigned int _967;
+  long long unsigned int _968;
+  unsigned int _969;
+  unsigned int _970;
+  unsigned int _971;
+  __complex__ unsigned int _972;
+  unsigned int _973;
+  unsigned int _974;
+  unsigned int _975;
+  __complex__ unsigned int _976;
+  unsigned int _977;
+  unsigned int _978;
+  unsigned int _979;
+  unsigned int _980;
+  unsigned int _981;
+  unsigned int _982;
+  unsigned int _983;
+  unsigned int _984;
+  unsigned int _985;
+  unsigned int _986;
+  unsigned int _987;
+  unsigned int _988;
+  unsigned int _989;
+  unsigned int _990;
+  unsigned int _991;
+  unsigned int _992;
+  unsigned int _993;
+  unsigned int _994;
+  unsigned int _995;
+  unsigned int _996;
+  unsigned int _997;
+  unsigned int _998;
+  unsigned int _999;
+  unsigned int _1000;
+  unsigned int _1001;
+  unsigned int _1002;
+  unsigned int _1003;
+  unsigned int _1004;
+  unsigned int _1005;
+  unsigned int _1006;
+  unsigned int _1007;
+  unsigned int _1008;
+  unsigned int _1009;
+  unsigned int _1010;
+  unsigned int _1011;
+  unsigned int _1012;
+  unsigned int _1013;
+  unsigned int _1014;
+  unsigned int _1015;
+  unsigned int _1016;
+  unsigned int _1017;
+  unsigned int _1018;
+  unsigned int _1019;
+  unsigned int _1020;
+  unsigned int _1021;
+  unsigned int _1022;
+  unsigned int _1023;
+  unsigned int _1024;
+  unsigned int _1025;
+  unsigned int _1026;
+  unsigned int _1027;
+  long long unsigned int _1028;
+  unsigned int _1029;
+  unsigned int _1030;
+  __complex__ unsigned int _1031;
+  unsigned int _1032;
+  unsigned int _1033;
+  unsigned int _1034;
+  __complex__ unsigned int _1035;
+  unsigned int _1036;
+  unsigned int _1037;
+  unsigned int _1038;
+  __complex__ unsigned int _1039;
+  unsigned int _1040;
+  unsigned int _1041;
+  unsigned int _1042;
+  __complex__ unsigned int _1043;
+  unsigned int _1044;
+  unsigned int _1045;
+  unsigned int _1046;
+  long long unsigned int _1047;
+  unsigned int _1048;
+  unsigned int _1049;
+  __complex__ unsigned int _1050;
+  unsigned int _1051;
+  unsigned int _1052;
+  unsigned int _1053;
+  __complex__ unsigned int _1054;
+  unsigned int _1055;
+  unsigned int _1056;
+  unsigned int _1057;
+  __complex__ unsigned int _1058;
+  unsigned int _1059;
+  unsigned int _1060;
+  unsigned int _1061;
+  long long unsigned int _1062;
+  unsigned int _1063;
+  unsigned int _1064;
+  __complex__ unsigned int _1065;
+  unsigned int _1066;
+  unsigned int _1067;
+  unsigned int _1068;
+  __complex__ unsigned int _1069;
+  unsigned int _1070;
+  unsigned int _1071;
+  unsigned int _1072;
+  long long unsigned int _1073;
+  unsigned int _1074;
+  unsigned int _1075;
+  __complex__ unsigned int _1076;
+  unsigned int _1077;
+  unsigned int _1078;
+  unsigned int _1079;
+  long long unsigned int _1080;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = *a_465(D);
+  _2 = (long long unsigned int) _1;
+  _3 = *b_466(D);
+  _4 = (long long unsigned int) _3;
+  _495 = (unsigned int) _2;
+  _501 = (unsigned int) _4;
+  t_467 = _495 w* _501;
+  c1_469 = (unsigned int) t_467;
+  _6 = t_467 >> 32;
+  *r_472(D) = c1_469;
+  _9 = *a_465(D);
+  _10 = (long long unsigned int) _9;
+  _11 = MEM[(unsigned int *)b_466(D) + 4B];
+  _12 = (long long unsigned int) _11;
+  _512 = (unsigned int) _10;
+  _517 = (unsigned int) _12;
+  t_476 = WIDEN_MULT_PLUS_EXPR <_512, _517, _6>;
+  _13 = t_476 >> 32;
+  hi_477 = (unsigned int) _13;
+  _16 = MEM[(unsigned int *)a_465(D) + 4B];
+  _17 = (long long unsigned int) _16;
+  _18 = *b_466(D);
+  _19 = (long long unsigned int) _18;
+  _523 = (unsigned int) _17;
+  _534 = (unsigned int) _19;
+  _810 = t_476 & 4294967295;
+  t_481 = WIDEN_MULT_PLUS_EXPR <_523, _534, _810>;
+  c2_482 = (unsigned int) t_481;
+  _20 = t_481 >> 32;
+  hi_483 = (unsigned int) _20;
+  _539 = .ADD_OVERFLOW (hi_477, hi_483);
+  c3_484 = REALPART_EXPR <_539>;
+  _544 = IMAGPART_EXPR <_539>;
+  _21 = _544 != 0;
+  _22 = (unsigned int) _21;
+  MEM[(unsigned int *)r_472(D) + 4B] = c2_482;
+  _23 = MEM[(unsigned int *)a_465(D) + 8B];
+  _24 = (long long unsigned int) _23;
+  _25 = *b_466(D);
+  _26 = (long long unsigned int) _25;
+  _550 = (unsigned int) _24;
+  _561 = (unsigned int) _26;
+  _566 = (long long unsigned int) c3_484;
+  t_488 = WIDEN_MULT_PLUS_EXPR <_550, _561, _566>;
+  _28 = t_488 >> 32;
+  hi_489 = (unsigned int) _28;
+  _571 = .ADD_OVERFLOW (_22, hi_489);
+  c1_490 = REALPART_EXPR <_571>;
+  _576 = IMAGPART_EXPR <_571>;
+  _29 = _576 != 0;
+  _30 = (unsigned int) _29;
+  _31 = MEM[(unsigned int *)a_465(D) + 4B];
+  _32 = (long long unsigned int) _31;
+  _33 = MEM[(unsigned int *)b_466(D) + 4B];
+  _34 = (long long unsigned int) _33;
+  _582 = (unsigned int) _32;
+  _593 = (unsigned int) _34;
+  _798 = t_488 & 4294967295;
+  t_492 = WIDEN_MULT_PLUS_EXPR <_582, _593, _798>;
+  _35 = t_492 >> 32;
+  hi_493 = (unsigned int) _35;
+  _598 = .ADD_OVERFLOW (c1_490, hi_493);
+  c1_494 = REALPART_EXPR <_598>;
+  _603 = IMAGPART_EXPR <_598>;
+  _36 = _603 != 0;
+  _37 = (unsigned int) _36;
+  _980 = _30 + _37;
+  _38 = *a_465(D);
+  _39 = (long long unsigned int) _38;
+  _40 = MEM[(unsigned int *)b_466(D) + 8B];
+  _41 = (long long unsigned int) _40;
+  _608 = (unsigned int) _39;
+  _613 = (unsigned int) _41;
+  _781 = t_492 & 4294967295;
+  t_497 = WIDEN_MULT_PLUS_EXPR <_608, _613, _781>;
+  c3_498 = (unsigned int) t_497;
+  _42 = t_497 >> 32;
+  hi_499 = (unsigned int) _42;
+  _619 = .ADD_OVERFLOW (c1_494, hi_499);
+  c1_500 = REALPART_EXPR <_619>;
+  _630 = IMAGPART_EXPR <_619>;
+  _43 = _630 != 0;
+  _44 = (unsigned int) _43;
+  MEM[(unsigned int *)r_472(D) + 8B] = c3_498;
+  _45 = *a_465(D);
+  _46 = (long long unsigned int) _45;
+  _47 = MEM[(unsigned int *)b_466(D) + 12B];
+  _48 = (long long unsigned int) _47;
+  _635 = (unsigned int) _46;
+  _640 = (unsigned int) _48;
+  _645 = (long long unsigned int) c1_500;
+  t_505 = WIDEN_MULT_PLUS_EXPR <_635, _640, _645>;
+  _50 = t_505 >> 32;
+  hi_506 = (unsigned int) _50;
+  _979 = _44 + hi_506;
+  c2_507 = _979 + _980;
+  _51 = hi_506 > c2_507;
+  _52 = (unsigned int) _51;
+  _53 = MEM[(unsigned int *)a_465(D) + 4B];
+  _54 = (long long unsigned int) _53;
+  _55 = MEM[(unsigned int *)b_466(D) + 8B];
+  _56 = (long long unsigned int) _55;
+  _650 = (unsigned int) _54;
+  _655 = (unsigned int) _56;
+  _759 = t_505 & 4294967295;
+  t_509 = WIDEN_MULT_PLUS_EXPR <_650, _655, _759>;
+  _57 = t_509 >> 32;
+  hi_510 = (unsigned int) _57;
+  _661 = .ADD_OVERFLOW (c2_507, hi_510);
+  c2_511 = REALPART_EXPR <_661>;
+  _672 = IMAGPART_EXPR <_661>;
+  _58 = _672 != 0;
+  _59 = (unsigned int) _58;
+  _983 = _52 + _59;
+  _60 = MEM[(unsigned int *)a_465(D) + 8B];
+  _61 = (long long unsigned int) _60;
+  _62 = MEM[(unsigned int *)b_466(D) + 4B];
+  _63 = (long long unsigned int) _62;
+  _677 = (unsigned int) _61;
+  _682 = (unsigned int) _63;
+  _732 = t_509 & 4294967295;
+  t_514 = WIDEN_MULT_PLUS_EXPR <_677, _682, _732>;
+  _64 = t_514 >> 32;
+  hi_515 = (unsigned int) _64;
+  _687 = .ADD_OVERFLOW (c2_511, hi_515);
+  c2_516 = REALPART_EXPR <_687>;
+  _692 = IMAGPART_EXPR <_687>;
+  _65 = _692 != 0;
+  _66 = (unsigned int) _65;
+  _67 = MEM[(unsigned int *)a_465(D) + 12B];
+  _68 = (long long unsigned int) _67;
+  _69 = *b_466(D);
+  _70 = (long long unsigned int) _69;
+  _698 = (unsigned int) _68;
+  _709 = (unsigned int) _70;
+  _700 = t_514 & 4294967295;
+  t_519 = WIDEN_MULT_PLUS_EXPR <_698, _709, _700>;
+  c1_520 = (unsigned int) t_519;
+  _71 = t_519 >> 32;
+  hi_521 = (unsigned int) _71;
+  _714 = .ADD_OVERFLOW (c2_516, hi_521);
+  c2_522 = REALPART_EXPR <_714>;
+  _719 = IMAGPART_EXPR <_714>;
+  _72 = _719 != 0;
+  _73 = (unsigned int) _72;
+  _982 = _66 + _73;
+  MEM[(unsigned int *)r_472(D) + 12B] = c1_520;
+  _74 = MEM[(unsigned int *)a_465(D) + 16B];
+  _75 = (long long unsigned int) _74;
+  _76 = *b_466(D);
+  _77 = (long long unsigned int) _76;
+  _724 = (unsigned int) _75;
+  _730 = (unsigned int) _77;
+  _741 = (long long unsigned int) c2_522;
+  t_527 = WIDEN_MULT_PLUS_EXPR <_724, _730, _741>;
+  _79 = t_527 >> 32;
+  hi_528 = (unsigned int) _79;
+  _981 = hi_528 + _983;
+  c3_529 = _981 + _982;
+  _80 = hi_528 > c3_529;
+  _81 = (unsigned int) _80;
+  _82 = MEM[(unsigned int *)a_465(D) + 12B];
+  _83 = (long long unsigned int) _82;
+  _84 = MEM[(unsigned int *)b_466(D) + 4B];
+  _85 = (long long unsigned int) _84;
+  _746 = (unsigned int) _83;
+  _751 = (unsigned int) _85;
+  _663 = t_527 & 4294967295;
+  t_531 = WIDEN_MULT_PLUS_EXPR <_746, _751, _663>;
+  _86 = t_531 >> 32;
+  hi_532 = (unsigned int) _86;
+  _757 = .ADD_OVERFLOW (c3_529, hi_532);
+  c3_533 = REALPART_EXPR <_757>;
+  _768 = IMAGPART_EXPR <_757>;
+  _87 = _768 != 0;
+  _88 = (unsigned int) _87;
+  _987 = _81 + _88;
+  _89 = MEM[(unsigned int *)a_465(D) + 8B];
+  _90 = (long long unsigned int) _89;
+  _91 = MEM[(unsigned int *)b_466(D) + 8B];
+  _92 = (long long unsigned int) _91;
+  _773 = (unsigned int) _90;
+  _779 = (unsigned int) _92;
+  _621 = t_531 & 4294967295;
+  t_536 = WIDEN_MULT_PLUS_EXPR <_773, _779, _621>;
+  _93 = t_536 >> 32;
+  hi_537 = (unsigned int) _93;
+  _790 = .ADD_OVERFLOW (c3_533, hi_537);
+  c3_538 = REALPART_EXPR <_790>;
+  _796 = IMAGPART_EXPR <_790>;
+  _94 = _796 != 0;
+  _95 = (unsigned int) _94;
+  _96 = MEM[(unsigned int *)a_465(D) + 4B];
+  _97 = (long long unsigned int) _96;
+  _98 = MEM[(unsigned int *)b_466(D) + 12B];
+  _99 = (long long unsigned int) _98;
+  _978 = (unsigned int) _97;
+  _977 = (unsigned int) _99;
+  _584 = t_536 & 4294967295;
+  t_541 = WIDEN_MULT_PLUS_EXPR <_978, _977, _584>;
+  _100 = t_541 >> 32;
+  hi_542 = (unsigned int) _100;
+  _976 = .ADD_OVERFLOW (c3_538, hi_542);
+  c3_543 = REALPART_EXPR <_976>;
+  _975 = IMAGPART_EXPR <_976>;
+  _101 = _975 != 0;
+  _102 = (unsigned int) _101;
+  _986 = _95 + _102;
+  _103 = *a_465(D);
+  _104 = (long long unsigned int) _103;
+  _105 = MEM[(unsigned int *)b_466(D) + 16B];
+  _106 = (long long unsigned int) _105;
+  _974 = (unsigned int) _104;
+  _973 = (unsigned int) _106;
+  _552 = t_541 & 4294967295;
+  t_546 = WIDEN_MULT_PLUS_EXPR <_974, _973, _552>;
+  c2_547 = (unsigned int) t_546;
+  _107 = t_546 >> 32;
+  hi_548 = (unsigned int) _107;
+  _972 = .ADD_OVERFLOW (c3_543, hi_548);
+  c3_549 = REALPART_EXPR <_972>;
+  _971 = IMAGPART_EXPR <_972>;
+  _108 = _971 != 0;
+  _109 = (unsigned int) _108;
+  _985 = _109 + _987;
+  MEM[(unsigned int *)r_472(D) + 16B] = c2_547;
+  _110 = *a_465(D);
+  _111 = (long long unsigned int) _110;
+  _112 = MEM[(unsigned int *)b_466(D) + 20B];
+  _113 = (long long unsigned int) _112;
+  _970 = (unsigned int) _111;
+  _969 = (unsigned int) _113;
+  _968 = (long long unsigned int) c3_549;
+  t_554 = WIDEN_MULT_PLUS_EXPR <_970, _969, _968>;
+  _115 = t_554 >> 32;
+  hi_555 = (unsigned int) _115;
+  _984 = hi_555 + _986;
+  c1_556 = _984 + _985;
+  _116 = hi_555 > c1_556;
+  _117 = (unsigned int) _116;
+  _118 = MEM[(unsigned int *)a_465(D) + 4B];
+  _119 = (long long unsigned int) _118;
+  _120 = MEM[(unsigned int *)b_466(D) + 16B];
+  _121 = (long long unsigned int) _120;
+  _967 = (unsigned int) _119;
+  _966 = (unsigned int) _121;
+  _525 = t_554 & 4294967295;
+  t_558 = WIDEN_MULT_PLUS_EXPR <_967, _966, _525>;
+  _122 = t_558 >> 32;
+  hi_559 = (unsigned int) _122;
+  _965 = .ADD_OVERFLOW (c1_556, hi_559);
+  c1_560 = REALPART_EXPR <_965>;
+  _964 = IMAGPART_EXPR <_965>;
+  _123 = _964 != 0;
+  _124 = (unsigned int) _123;
+  _992 = _117 + _124;
+  _125 = MEM[(unsigned int *)a_465(D) + 8B];
+  _126 = (long long unsigned int) _125;
+  _127 = MEM[(unsigned int *)b_466(D) + 12B];
+  _128 = (long long unsigned int) _127;
+  _963 = (unsigned int) _126;
+  _962 = (unsigned int) _128;
+  _503 = t_558 & 4294967295;
+  t_563 = WIDEN_MULT_PLUS_EXPR <_963, _962, _503>;
+  _129 = t_563 >> 32;
+  hi_564 = (unsigned int) _129;
+  _961 = .ADD_OVERFLOW (c1_560, hi_564);
+  c1_565 = REALPART_EXPR <_961>;
+  _960 = IMAGPART_EXPR <_961>;
+  _130 = _960 != 0;
+  _131 = (unsigned int) _130;
+  _132 = MEM[(unsigned int *)a_465(D) + 12B];
+  _133 = (long long unsigned int) _132;
+  _134 = MEM[(unsigned int *)b_466(D) + 8B];
+  _135 = (long long unsigned int) _134;
+  _959 = (unsigned int) _133;
+  _958 = (unsigned int) _135;
+  _486 = t_563 & 4294967295;
+  t_568 = WIDEN_MULT_PLUS_EXPR <_959, _958, _486>;
+  _136 = t_568 >> 32;
+  hi_569 = (unsigned int) _136;
+  _957 = .ADD_OVERFLOW (c1_565, hi_569);
+  c1_570 = REALPART_EXPR <_957>;
+  _956 = IMAGPART_EXPR <_957>;
+  _137 = _956 != 0;
+  _138 = (unsigned int) _137;
+  _991 = _131 + _138;
+  _139 = MEM[(unsigned int *)a_465(D) + 16B];
+  _140 = (long long unsigned int) _139;
+  _141 = MEM[(unsigned int *)b_466(D) + 4B];
+  _142 = (long long unsigned int) _141;
+  _955 = (unsigned int) _140;
+  _954 = (unsigned int) _142;
+  _462 = t_568 & 4294967295;
+  t_573 = WIDEN_MULT_PLUS_EXPR <_955, _954, _462>;
+  _143 = t_573 >> 32;
+  hi_574 = (unsigned int) _143;
+  _953 = .ADD_OVERFLOW (c1_570, hi_574);
+  c1_575 = REALPART_EXPR <_953>;
+  _952 = IMAGPART_EXPR <_953>;
+  _144 = _952 != 0;
+  _145 = (unsigned int) _144;
+  _990 = _145 + _992;
+  _146 = MEM[(unsigned int *)a_465(D) + 20B];
+  _147 = (long long unsigned int) _146;
+  _148 = *b_466(D);
+  _149 = (long long unsigned int) _148;
+  _951 = (unsigned int) _147;
+  _950 = (unsigned int) _149;
+  _470 = t_573 & 4294967295;
+  t_578 = WIDEN_MULT_PLUS_EXPR <_951, _950, _470>;
+  c3_579 = (unsigned int) t_578;
+  _150 = t_578 >> 32;
+  hi_580 = (unsigned int) _150;
+  _949 = .ADD_OVERFLOW (c1_575, hi_580);
+  c1_581 = REALPART_EXPR <_949>;
+  _948 = IMAGPART_EXPR <_949>;
+  _151 = _948 != 0;
+  _152 = (unsigned int) _151;
+  _989 = _152 + _991;
+  MEM[(unsigned int *)r_472(D) + 20B] = c3_579;
+  _153 = MEM[(unsigned int *)a_465(D) + 24B];
+  _154 = (long long unsigned int) _153;
+  _155 = *b_466(D);
+  _156 = (long long unsigned int) _155;
+  _947 = (unsigned int) _154;
+  _946 = (unsigned int) _156;
+  _945 = (long long unsigned int) c1_581;
+  t_586 = WIDEN_MULT_PLUS_EXPR <_947, _946, _945>;
+  _158 = t_586 >> 32;
+  hi_587 = (unsigned int) _158;
+  _988 = hi_587 + _990;
+  c2_588 = _988 + _989;
+  _159 = hi_587 > c2_588;
+  _160 = (unsigned int) _159;
+  _161 = MEM[(unsigned int *)a_465(D) + 20B];
+  _162 = (long long unsigned int) _161;
+  _163 = MEM[(unsigned int *)b_466(D) + 4B];
+  _164 = (long long unsigned int) _163;
+  _944 = (unsigned int) _162;
+  _943 = (unsigned int) _164;
+  _463 = t_586 & 4294967295;
+  t_590 = WIDEN_MULT_PLUS_EXPR <_944, _943, _463>;
+  _165 = t_590 >> 32;
+  hi_591 = (unsigned int) _165;
+  _942 = .ADD_OVERFLOW (c2_588, hi_591);
+  c2_592 = REALPART_EXPR <_942>;
+  _941 = IMAGPART_EXPR <_942>;
+  _166 = _941 != 0;
+  _167 = (unsigned int) _166;
+  _998 = _160 + _167;
+  _168 = MEM[(unsigned int *)a_465(D) + 16B];
+  _169 = (long long unsigned int) _168;
+  _170 = MEM[(unsigned int *)b_466(D) + 8B];
+  _171 = (long long unsigned int) _170;
+  _940 = (unsigned int) _169;
+  _939 = (unsigned int) _171;
+  _7 = t_590 & 4294967295;
+  t_595 = WIDEN_MULT_PLUS_EXPR <_940, _939, _7>;
+  _172 = t_595 >> 32;
+  hi_596 = (unsigned int) _172;
+  _938 = .ADD_OVERFLOW (c2_592, hi_596);
+  c2_597 = REALPART_EXPR <_938>;
+  _937 = IMAGPART_EXPR <_938>;
+  _173 = _937 != 0;
+  _174 = (unsigned int) _173;
+  _175 = MEM[(unsigned int *)a_465(D) + 12B];
+  _176 = (long long unsigned int) _175;
+  _177 = MEM[(unsigned int *)b_466(D) + 12B];
+  _178 = (long long unsigned int) _177;
+  _936 = (unsigned int) _176;
+  _935 = (unsigned int) _178;
+  _8 = t_595 & 4294967295;
+  t_600 = WIDEN_MULT_PLUS_EXPR <_936, _935, _8>;
+  _179 = t_600 >> 32;
+  hi_601 = (unsigned int) _179;
+  _934 = .ADD_OVERFLOW (c2_597, hi_601);
+  c2_602 = REALPART_EXPR <_934>;
+  _933 = IMAGPART_EXPR <_934>;
+  _180 = _933 != 0;
+  _181 = (unsigned int) _180;
+  _997 = _174 + _181;
+  _182 = MEM[(unsigned int *)a_465(D) + 8B];
+  _183 = (long long unsigned int) _182;
+  _184 = MEM[(unsigned int *)b_466(D) + 16B];
+  _185 = (long long unsigned int) _184;
+  _932 = (unsigned int) _183;
+  _931 = (unsigned int) _185;
+  _471 = t_600 & 4294967295;
+  t_605 = WIDEN_MULT_PLUS_EXPR <_932, _931, _471>;
+  _186 = t_605 >> 32;
+  hi_606 = (unsigned int) _186;
+  _930 = .ADD_OVERFLOW (c2_602, hi_606);
+  c2_607 = REALPART_EXPR <_930>;
+  _929 = IMAGPART_EXPR <_930>;
+  _187 = _929 != 0;
+  _188 = (unsigned int) _187;
+  _996 = _188 + _998;
+  _189 = MEM[(unsigned int *)a_465(D) + 4B];
+  _190 = (long long unsigned int) _189;
+  _191 = MEM[(unsigned int *)b_466(D) + 20B];
+  _192 = (long long unsigned int) _191;
+  _928 = (unsigned int) _190;
+  _927 = (unsigned int) _192;
+  _478 = t_605 & 4294967295;
+  t_610 = WIDEN_MULT_PLUS_EXPR <_928, _927, _478>;
+  _193 = t_610 >> 32;
+  hi_611 = (unsigned int) _193;
+  _926 = .ADD_OVERFLOW (c2_607, hi_611);
+  c2_612 = REALPART_EXPR <_926>;
+  _925 = IMAGPART_EXPR <_926>;
+  _194 = _925 != 0;
+  _195 = (unsigned int) _194;
+  _995 = _195 + _997;
+  _196 = *a_465(D);
+  _197 = (long long unsigned int) _196;
+  _198 = MEM[(unsigned int *)b_466(D) + 24B];
+  _199 = (long long unsigned int) _198;
+  _924 = (unsigned int) _197;
+  _923 = (unsigned int) _199;
+  _474 = t_610 & 4294967295;
+  t_615 = WIDEN_MULT_PLUS_EXPR <_924, _923, _474>;
+  c1_616 = (unsigned int) t_615;
+  _200 = t_615 >> 32;
+  hi_617 = (unsigned int) _200;
+  _922 = .ADD_OVERFLOW (c2_612, hi_617);
+  c2_618 = REALPART_EXPR <_922>;
+  _921 = IMAGPART_EXPR <_922>;
+  _201 = _921 != 0;
+  _202 = (unsigned int) _201;
+  _994 = _202 + _996;
+  MEM[(unsigned int *)r_472(D) + 24B] = c1_616;
+  _203 = *a_465(D);
+  _204 = (long long unsigned int) _203;
+  _205 = MEM[(unsigned int *)b_466(D) + 28B];
+  _206 = (long long unsigned int) _205;
+  _920 = (unsigned int) _204;
+  _919 = (unsigned int) _206;
+  _918 = (long long unsigned int) c2_618;
+  t_623 = WIDEN_MULT_PLUS_EXPR <_920, _919, _918>;
+  _208 = t_623 >> 32;
+  hi_624 = (unsigned int) _208;
+  _993 = hi_624 + _995;
+  c3_625 = _993 + _994;
+  _209 = hi_624 > c3_625;
+  _210 = (unsigned int) _209;
+  _211 = MEM[(unsigned int *)a_465(D) + 4B];
+  _212 = (long long unsigned int) _211;
+  _213 = MEM[(unsigned int *)b_466(D) + 24B];
+  _214 = (long long unsigned int) _213;
+  _917 = (unsigned int) _212;
+  _916 = (unsigned int) _214;
+  _14 = t_623 & 4294967295;
+  t_627 = WIDEN_MULT_PLUS_EXPR <_917, _916, _14>;
+  _215 = t_627 >> 32;
+  hi_628 = (unsigned int) _215;
+  _915 = .ADD_OVERFLOW (c3_625, hi_628);
+  c3_629 = REALPART_EXPR <_915>;
+  _914 = IMAGPART_EXPR <_915>;
+  _216 = _914 != 0;
+  _217 = (unsigned int) _216;
+  _1005 = _210 + _217;
+  _218 = MEM[(unsigned int *)a_465(D) + 8B];
+  _219 = (long long unsigned int) _218;
+  _220 = MEM[(unsigned int *)b_466(D) + 20B];
+  _221 = (long long unsigned int) _220;
+  _913 = (unsigned int) _219;
+  _912 = (unsigned int) _221;
+  _15 = t_627 & 4294967295;
+  t_632 = WIDEN_MULT_PLUS_EXPR <_913, _912, _15>;
+  _222 = t_632 >> 32;
+  hi_633 = (unsigned int) _222;
+  _911 = .ADD_OVERFLOW (c3_629, hi_633);
+  c3_634 = REALPART_EXPR <_911>;
+  _910 = IMAGPART_EXPR <_911>;
+  _223 = _910 != 0;
+  _224 = (unsigned int) _223;
+  _225 = MEM[(unsigned int *)a_465(D) + 12B];
+  _226 = (long long unsigned int) _225;
+  _227 = MEM[(unsigned int *)b_466(D) + 16B];
+  _228 = (long long unsigned int) _227;
+  _909 = (unsigned int) _226;
+  _908 = (unsigned int) _228;
+  _479 = t_632 & 4294967295;
+  t_637 = WIDEN_MULT_PLUS_EXPR <_909, _908, _479>;
+  _229 = t_637 >> 32;
+  hi_638 = (unsigned int) _229;
+  _907 = .ADD_OVERFLOW (c3_634, hi_638);
+  c3_639 = REALPART_EXPR <_907>;
+  _906 = IMAGPART_EXPR <_907>;
+  _230 = _906 != 0;
+  _231 = (unsigned int) _230;
+  _1004 = _224 + _231;
+  _232 = MEM[(unsigned int *)a_465(D) + 16B];
+  _233 = (long long unsigned int) _232;
+  _234 = MEM[(unsigned int *)b_466(D) + 12B];
+  _235 = (long long unsigned int) _234;
+  _905 = (unsigned int) _233;
+  _904 = (unsigned int) _235;
+  _461 = t_637 & 4294967295;
+  t_642 = WIDEN_MULT_PLUS_EXPR <_905, _904, _461>;
+  _236 = t_642 >> 32;
+  hi_643 = (unsigned int) _236;
+  _903 = .ADD_OVERFLOW (c3_639, hi_643);
+  c3_644 = REALPART_EXPR <_903>;
+  _902 = IMAGPART_EXPR <_903>;
+  _237 = _902 != 0;
+  _238 = (unsigned int) _237;
+  _1003 = _238 + _1005;
+  _239 = MEM[(unsigned int *)a_465(D) + 20B];
+  _240 = (long long unsigned int) _239;
+  _241 = MEM[(unsigned int *)b_466(D) + 8B];
+  _242 = (long long unsigned int) _241;
+  _901 = (unsigned int) _240;
+  _900 = (unsigned int) _242;
+  _5 = t_642 & 4294967295;
+  t_647 = WIDEN_MULT_PLUS_EXPR <_901, _900, _5>;
+  _243 = t_647 >> 32;
+  hi_648 = (unsigned int) _243;
+  _899 = .ADD_OVERFLOW (c3_644, hi_648);
+  c3_649 = REALPART_EXPR <_899>;
+  _898 = IMAGPART_EXPR <_899>;
+  _244 = _898 != 0;
+  _245 = (unsigned int) _244;
+  _1002 = _245 + _1004;
+  _246 = MEM[(unsigned int *)a_465(D) + 24B];
+  _247 = (long long unsigned int) _246;
+  _248 = MEM[(unsigned int *)b_466(D) + 4B];
+  _249 = (long long unsigned int) _248;
+  _897 = (unsigned int) _247;
+  _896 = (unsigned int) _249;
+  _468 = t_647 & 4294967295;
+  t_652 = WIDEN_MULT_PLUS_EXPR <_897, _896, _468>;
+  _250 = t_652 >> 32;
+  hi_653 = (unsigned int) _250;
+  _895 = .ADD_OVERFLOW (c3_649, hi_653);
+  c3_654 = REALPART_EXPR <_895>;
+  _894 = IMAGPART_EXPR <_895>;
+  _251 = _894 != 0;
+  _252 = (unsigned int) _251;
+  _1001 = _252 + _1003;
+  _253 = MEM[(unsigned int *)a_465(D) + 28B];
+  _254 = (long long unsigned int) _253;
+  _255 = *b_466(D);
+  _256 = (long long unsigned int) _255;
+  _893 = (unsigned int) _254;
+  _892 = (unsigned int) _256;
+  _818 = t_652 & 4294967295;
+  t_657 = WIDEN_MULT_PLUS_EXPR <_893, _892, _818>;
+  c2_658 = (unsigned int) t_657;
+  _257 = t_657 >> 32;
+  hi_659 = (unsigned int) _257;
+  _891 = .ADD_OVERFLOW (c3_654, hi_659);
+  c3_660 = REALPART_EXPR <_891>;
+  _890 = IMAGPART_EXPR <_891>;
+  _258 = _890 != 0;
+  _259 = (unsigned int) _258;
+  _1000 = _259 + _1002;
+  MEM[(unsigned int *)r_472(D) + 28B] = c2_658;
+  _260 = MEM[(unsigned int *)a_465(D) + 28B];
+  _261 = (long long unsigned int) _260;
+  _262 = MEM[(unsigned int *)b_466(D) + 4B];
+  _263 = (long long unsigned int) _262;
+  _889 = (unsigned int) _261;
+  _888 = (unsigned int) _263;
+  _887 = (long long unsigned int) c3_660;
+  t_665 = WIDEN_MULT_PLUS_EXPR <_889, _888, _887>;
+  _265 = t_665 >> 32;
+  hi_666 = (unsigned int) _265;
+  _999 = hi_666 + _1001;
+  c1_667 = _999 + _1000;
+  _266 = hi_666 > c1_667;
+  _267 = (unsigned int) _266;
+  _268 = MEM[(unsigned int *)a_465(D) + 24B];
+  _269 = (long long unsigned int) _268;
+  _270 = MEM[(unsigned int *)b_466(D) + 8B];
+  _271 = (long long unsigned int) _270;
+  _886 = (unsigned int) _269;
+  _885 = (unsigned int) _271;
+  _819 = t_665 & 4294967295;
+  t_669 = WIDEN_MULT_PLUS_EXPR <_886, _885, _819>;
+  _272 = t_669 >> 32;
+  hi_670 = (unsigned int) _272;
+  _884 = .ADD_OVERFLOW (c1_667, hi_670);
+  c1_671 = REALPART_EXPR <_884>;
+  _883 = IMAGPART_EXPR <_884>;
+  _273 = _883 != 0;
+  _274 = (unsigned int) _273;
+  _1011 = _267 + _274;
+  _275 = MEM[(unsigned int *)a_465(D) + 20B];
+  _276 = (long long unsigned int) _275;
+  _277 = MEM[(unsigned int *)b_466(D) + 12B];
+  _278 = (long long unsigned int) _277;
+  _882 = (unsigned int) _276;
+  _881 = (unsigned int) _278;
+  _820 = t_669 & 4294967295;
+  t_674 = WIDEN_MULT_PLUS_EXPR <_882, _881, _820>;
+  _279 = t_674 >> 32;
+  hi_675 = (unsigned int) _279;
+  _880 = .ADD_OVERFLOW (c1_671, hi_675);
+  c1_676 = REALPART_EXPR <_880>;
+  _879 = IMAGPART_EXPR <_880>;
+  _280 = _879 != 0;
+  _281 = (unsigned int) _280;
+  _282 = MEM[(unsigned int *)a_465(D) + 16B];
+  _283 = (long long unsigned int) _282;
+  _284 = MEM[(unsigned int *)b_466(D) + 16B];
+  _285 = (long long unsigned int) _284;
+  _878 = (unsigned int) _283;
+  _877 = (unsigned int) _285;
+  _821 = t_674 & 4294967295;
+  t_679 = WIDEN_MULT_PLUS_EXPR <_878, _877, _821>;
+  _286 = t_679 >> 32;
+  hi_680 = (unsigned int) _286;
+  _876 = .ADD_OVERFLOW (c1_676, hi_680);
+  c1_681 = REALPART_EXPR <_876>;
+  _875 = IMAGPART_EXPR <_876>;
+  _287 = _875 != 0;
+  _288 = (unsigned int) _287;
+  _1010 = _281 + _288;
+  _289 = MEM[(unsigned int *)a_465(D) + 12B];
+  _290 = (long long unsigned int) _289;
+  _291 = MEM[(unsigned int *)b_466(D) + 20B];
+  _292 = (long long unsigned int) _291;
+  _874 = (unsigned int) _290;
+  _873 = (unsigned int) _292;
+  _822 = t_679 & 4294967295;
+  t_684 = WIDEN_MULT_PLUS_EXPR <_874, _873, _822>;
+  _293 = t_684 >> 32;
+  hi_685 = (unsigned int) _293;
+  _872 = .ADD_OVERFLOW (c1_681, hi_685);
+  c1_686 = REALPART_EXPR <_872>;
+  _871 = IMAGPART_EXPR <_872>;
+  _294 = _871 != 0;
+  _295 = (unsigned int) _294;
+  _1009 = _295 + _1011;
+  _296 = MEM[(unsigned int *)a_465(D) + 8B];
+  _297 = (long long unsigned int) _296;
+  _298 = MEM[(unsigned int *)b_466(D) + 24B];
+  _299 = (long long unsigned int) _298;
+  _870 = (unsigned int) _297;
+  _869 = (unsigned int) _299;
+  _823 = t_684 & 4294967295;
+  t_689 = WIDEN_MULT_PLUS_EXPR <_870, _869, _823>;
+  _300 = t_689 >> 32;
+  hi_690 = (unsigned int) _300;
+  _868 = .ADD_OVERFLOW (c1_686, hi_690);
+  c1_691 = REALPART_EXPR <_868>;
+  _867 = IMAGPART_EXPR <_868>;
+  _301 = _867 != 0;
+  _302 = (unsigned int) _301;
+  _1008 = _302 + _1010;
+  _303 = MEM[(unsigned int *)a_465(D) + 4B];
+  _304 = (long long unsigned int) _303;
+  _305 = MEM[(unsigned int *)b_466(D) + 28B];
+  _306 = (long long unsigned int) _305;
+  _866 = (unsigned int) _304;
+  _865 = (unsigned int) _306;
+  _824 = t_689 & 4294967295;
+  t_694 = WIDEN_MULT_PLUS_EXPR <_866, _865, _824>;
+  c3_695 = (unsigned int) t_694;
+  _307 = t_694 >> 32;
+  hi_696 = (unsigned int) _307;
+  _864 = .ADD_OVERFLOW (c1_691, hi_696);
+  c1_697 = REALPART_EXPR <_864>;
+  _863 = IMAGPART_EXPR <_864>;
+  _308 = _863 != 0;
+  _309 = (unsigned int) _308;
+  _1007 = _309 + _1009;
+  MEM[(unsigned int *)r_472(D) + 32B] = c3_695;
+  _310 = MEM[(unsigned int *)a_465(D) + 8B];
+  _311 = (long long unsigned int) _310;
+  _312 = MEM[(unsigned int *)b_466(D) + 28B];
+  _313 = (long long unsigned int) _312;
+  _862 = (unsigned int) _311;
+  _861 = (unsigned int) _313;
+  _860 = (long long unsigned int) c1_697;
+  t_702 = WIDEN_MULT_PLUS_EXPR <_862, _861, _860>;
+  _315 = t_702 >> 32;
+  hi_703 = (unsigned int) _315;
+  _1006 = hi_703 + _1008;
+  c2_704 = _1006 + _1007;
+  _316 = hi_703 > c2_704;
+  _317 = (unsigned int) _316;
+  _318 = MEM[(unsigned int *)a_465(D) + 12B];
+  _319 = (long long unsigned int) _318;
+  _320 = MEM[(unsigned int *)b_466(D) + 24B];
+  _321 = (long long unsigned int) _320;
+  _859 = (unsigned int) _319;
+  _858 = (unsigned int) _321;
+  _825 = t_702 & 4294967295;
+  t_706 = WIDEN_MULT_PLUS_EXPR <_859, _858, _825>;
+  _322 = t_706 >> 32;
+  hi_707 = (unsigned int) _322;
+  _857 = .ADD_OVERFLOW (c2_704, hi_707);
+  c2_708 = REALPART_EXPR <_857>;
+  _856 = IMAGPART_EXPR <_857>;
+  _323 = _856 != 0;
+  _324 = (unsigned int) _323;
+  _1016 = _317 + _324;
+  _325 = MEM[(unsigned int *)a_465(D) + 16B];
+  _326 = (long long unsigned int) _325;
+  _327 = MEM[(unsigned int *)b_466(D) + 20B];
+  _328 = (long long unsigned int) _327;
+  _855 = (unsigned int) _326;
+  _854 = (unsigned int) _328;
+  _826 = t_706 & 4294967295;
+  t_711 = WIDEN_MULT_PLUS_EXPR <_855, _854, _826>;
+  _329 = t_711 >> 32;
+  hi_712 = (unsigned int) _329;
+  _853 = .ADD_OVERFLOW (c2_708, hi_712);
+  c2_713 = REALPART_EXPR <_853>;
+  _852 = IMAGPART_EXPR <_853>;
+  _330 = _852 != 0;
+  _331 = (unsigned int) _330;
+  _332 = MEM[(unsigned int *)a_465(D) + 20B];
+  _333 = (long long unsigned int) _332;
+  _334 = MEM[(unsigned int *)b_466(D) + 16B];
+  _335 = (long long unsigned int) _334;
+  _851 = (unsigned int) _333;
+  _850 = (unsigned int) _335;
+  _827 = t_711 & 4294967295;
+  t_716 = WIDEN_MULT_PLUS_EXPR <_851, _850, _827>;
+  _336 = t_716 >> 32;
+  hi_717 = (unsigned int) _336;
+  _849 = .ADD_OVERFLOW (c2_713, hi_717);
+  c2_718 = REALPART_EXPR <_849>;
+  _848 = IMAGPART_EXPR <_849>;
+  _337 = _848 != 0;
+  _338 = (unsigned int) _337;
+  _1015 = _331 + _338;
+  _339 = MEM[(unsigned int *)a_465(D) + 24B];
+  _340 = (long long unsigned int) _339;
+  _341 = MEM[(unsigned int *)b_466(D) + 12B];
+  _342 = (long long unsigned int) _341;
+  _847 = (unsigned int) _340;
+  _846 = (unsigned int) _342;
+  _828 = t_716 & 4294967295;
+  t_721 = WIDEN_MULT_PLUS_EXPR <_847, _846, _828>;
+  _343 = t_721 >> 32;
+  hi_722 = (unsigned int) _343;
+  _845 = .ADD_OVERFLOW (c2_718, hi_722);
+  c2_723 = REALPART_EXPR <_845>;
+  _844 = IMAGPART_EXPR <_845>;
+  _344 = _844 != 0;
+  _345 = (unsigned int) _344;
+  _1014 = _345 + _1016;
+  _346 = MEM[(unsigned int *)a_465(D) + 28B];
+  _347 = (long long unsigned int) _346;
+  _348 = MEM[(unsigned int *)b_466(D) + 8B];
+  _349 = (long long unsigned int) _348;
+  _843 = (unsigned int) _347;
+  _842 = (unsigned int) _349;
+  _829 = t_721 & 4294967295;
+  t_726 = WIDEN_MULT_PLUS_EXPR <_843, _842, _829>;
+  c1_727 = (unsigned int) t_726;
+  _350 = t_726 >> 32;
+  hi_728 = (unsigned int) _350;
+  _841 = .ADD_OVERFLOW (c2_723, hi_728);
+  c2_729 = REALPART_EXPR <_841>;
+  _840 = IMAGPART_EXPR <_841>;
+  _351 = _840 != 0;
+  _352 = (unsigned int) _351;
+  _1013 = _352 + _1015;
+  MEM[(unsigned int *)r_472(D) + 36B] = c1_727;
+  _353 = MEM[(unsigned int *)a_465(D) + 28B];
+  _354 = (long long unsigned int) _353;
+  _355 = MEM[(unsigned int *)b_466(D) + 12B];
+  _356 = (long long unsigned int) _355;
+  _1026 = (unsigned int) _354;
+  _1027 = (unsigned int) _356;
+  _1028 = (long long unsigned int) c2_729;
+  t_734 = WIDEN_MULT_PLUS_EXPR <_1026, _1027, _1028>;
+  _358 = t_734 >> 32;
+  hi_735 = (unsigned int) _358;
+  _1012 = hi_735 + _1014;
+  c3_736 = _1012 + _1013;
+  _359 = hi_735 > c3_736;
+  _360 = (unsigned int) _359;
+  _361 = MEM[(unsigned int *)a_465(D) + 24B];
+  _362 = (long long unsigned int) _361;
+  _363 = MEM[(unsigned int *)b_466(D) + 16B];
+  _364 = (long long unsigned int) _363;
+  _1029 = (unsigned int) _362;
+  _1030 = (unsigned int) _364;
+  _830 = t_734 & 4294967295;
+  t_738 = WIDEN_MULT_PLUS_EXPR <_1029, _1030, _830>;
+  _365 = t_738 >> 32;
+  hi_739 = (unsigned int) _365;
+  _1031 = .ADD_OVERFLOW (c3_736, hi_739);
+  c3_740 = REALPART_EXPR <_1031>;
+  _1032 = IMAGPART_EXPR <_1031>;
+  _366 = _1032 != 0;
+  _367 = (unsigned int) _366;
+  _1020 = _360 + _367;
+  _368 = MEM[(unsigned int *)a_465(D) + 20B];
+  _369 = (long long unsigned int) _368;
+  _370 = MEM[(unsigned int *)b_466(D) + 20B];
+  _371 = (long long unsigned int) _370;
+  _1033 = (unsigned int) _369;
+  _1034 = (unsigned int) _371;
+  _831 = t_738 & 4294967295;
+  t_743 = WIDEN_MULT_PLUS_EXPR <_1033, _1034, _831>;
+  _372 = t_743 >> 32;
+  hi_744 = (unsigned int) _372;
+  _1035 = .ADD_OVERFLOW (c3_740, hi_744);
+  c3_745 = REALPART_EXPR <_1035>;
+  _1036 = IMAGPART_EXPR <_1035>;
+  _373 = _1036 != 0;
+  _374 = (unsigned int) _373;
+  _375 = MEM[(unsigned int *)a_465(D) + 16B];
+  _376 = (long long unsigned int) _375;
+  _377 = MEM[(unsigned int *)b_466(D) + 24B];
+  _378 = (long long unsigned int) _377;
+  _1037 = (unsigned int) _376;
+  _1038 = (unsigned int) _378;
+  _832 = t_743 & 4294967295;
+  t_748 = WIDEN_MULT_PLUS_EXPR <_1037, _1038, _832>;
+  _379 = t_748 >> 32;
+  hi_749 = (unsigned int) _379;
+  _1039 = .ADD_OVERFLOW (c3_745, hi_749);
+  c3_750 = REALPART_EXPR <_1039>;
+  _1040 = IMAGPART_EXPR <_1039>;
+  _380 = _1040 != 0;
+  _381 = (unsigned int) _380;
+  _1019 = _374 + _381;
+  _382 = MEM[(unsigned int *)a_465(D) + 12B];
+  _383 = (long long unsigned int) _382;
+  _384 = MEM[(unsigned int *)b_466(D) + 28B];
+  _385 = (long long unsigned int) _384;
+  _1041 = (unsigned int) _383;
+  _1042 = (unsigned int) _385;
+  _833 = t_748 & 4294967295;
+  t_753 = WIDEN_MULT_PLUS_EXPR <_1041, _1042, _833>;
+  c2_754 = (unsigned int) t_753;
+  _386 = t_753 >> 32;
+  hi_755 = (unsigned int) _386;
+  _1043 = .ADD_OVERFLOW (c3_750, hi_755);
+  c3_756 = REALPART_EXPR <_1043>;
+  _1044 = IMAGPART_EXPR <_1043>;
+  _387 = _1044 != 0;
+  _388 = (unsigned int) _387;
+  _1018 = _388 + _1020;
+  MEM[(unsigned int *)r_472(D) + 40B] = c2_754;
+  _389 = MEM[(unsigned int *)a_465(D) + 16B];
+  _390 = (long long unsigned int) _389;
+  _391 = MEM[(unsigned int *)b_466(D) + 28B];
+  _392 = (long long unsigned int) _391;
+  _1045 = (unsigned int) _390;
+  _1046 = (unsigned int) _392;
+  _1047 = (long long unsigned int) c3_756;
+  t_761 = WIDEN_MULT_PLUS_EXPR <_1045, _1046, _1047>;
+  _394 = t_761 >> 32;
+  hi_762 = (unsigned int) _394;
+  _1017 = hi_762 + _1019;
+  c1_763 = _1017 + _1018;
+  _395 = hi_762 > c1_763;
+  _396 = (unsigned int) _395;
+  _397 = MEM[(unsigned int *)a_465(D) + 20B];
+  _398 = (long long unsigned int) _397;
+  _399 = MEM[(unsigned int *)b_466(D) + 24B];
+  _400 = (long long unsigned int) _399;
+  _1048 = (unsigned int) _398;
+  _1049 = (unsigned int) _400;
+  _834 = t_761 & 4294967295;
+  t_765 = WIDEN_MULT_PLUS_EXPR <_1048, _1049, _834>;
+  _401 = t_765 >> 32;
+  hi_766 = (unsigned int) _401;
+  _1050 = .ADD_OVERFLOW (c1_763, hi_766);
+  c1_767 = REALPART_EXPR <_1050>;
+  _1051 = IMAGPART_EXPR <_1050>;
+  _402 = _1051 != 0;
+  _403 = (unsigned int) _402;
+  _1023 = _396 + _403;
+  _404 = MEM[(unsigned int *)a_465(D) + 24B];
+  _405 = (long long unsigned int) _404;
+  _406 = MEM[(unsigned int *)b_466(D) + 20B];
+  _407 = (long long unsigned int) _406;
+  _1052 = (unsigned int) _405;
+  _1053 = (unsigned int) _407;
+  _835 = t_765 & 4294967295;
+  t_770 = WIDEN_MULT_PLUS_EXPR <_1052, _1053, _835>;
+  _408 = t_770 >> 32;
+  hi_771 = (unsigned int) _408;
+  _1054 = .ADD_OVERFLOW (c1_767, hi_771);
+  c1_772 = REALPART_EXPR <_1054>;
+  _1055 = IMAGPART_EXPR <_1054>;
+  _409 = _1055 != 0;
+  _410 = (unsigned int) _409;
+  _411 = MEM[(unsigned int *)a_465(D) + 28B];
+  _412 = (long long unsigned int) _411;
+  _413 = MEM[(unsigned int *)b_466(D) + 16B];
+  _414 = (long long unsigned int) _413;
+  _1056 = (unsigned int) _412;
+  _1057 = (unsigned int) _414;
+  _836 = t_770 & 4294967295;
+  t_775 = WIDEN_MULT_PLUS_EXPR <_1056, _1057, _836>;
+  c3_776 = (unsigned int) t_775;
+  _415 = t_775 >> 32;
+  hi_777 = (unsigned int) _415;
+  _1058 = .ADD_OVERFLOW (c1_772, hi_777);
+  c1_778 = REALPART_EXPR <_1058>;
+  _1059 = IMAGPART_EXPR <_1058>;
+  _416 = _1059 != 0;
+  _417 = (unsigned int) _416;
+  _1022 = _410 + _417;
+  MEM[(unsigned int *)r_472(D) + 44B] = c3_776;
+  _418 = MEM[(unsigned int *)a_465(D) + 28B];
+  _419 = (long long unsigned int) _418;
+  _420 = MEM[(unsigned int *)b_466(D) + 20B];
+  _421 = (long long unsigned int) _420;
+  _1060 = (unsigned int) _419;
+  _1061 = (unsigned int) _421;
+  _1062 = (long long unsigned int) c1_778;
+  t_783 = WIDEN_MULT_PLUS_EXPR <_1060, _1061, _1062>;
+  _423 = t_783 >> 32;
+  hi_784 = (unsigned int) _423;
+  _1021 = hi_784 + _1023;
+  c2_785 = _1021 + _1022;
+  _424 = hi_784 > c2_785;
+  _425 = (unsigned int) _424;
+  _426 = MEM[(unsigned int *)a_465(D) + 24B];
+  _427 = (long long unsigned int) _426;
+  _428 = MEM[(unsigned int *)b_466(D) + 24B];
+  _429 = (long long unsigned int) _428;
+  _1063 = (unsigned int) _427;
+  _1064 = (unsigned int) _429;
+  _837 = t_783 & 4294967295;
+  t_787 = WIDEN_MULT_PLUS_EXPR <_1063, _1064, _837>;
+  _430 = t_787 >> 32;
+  hi_788 = (unsigned int) _430;
+  _1065 = .ADD_OVERFLOW (c2_785, hi_788);
+  c2_789 = REALPART_EXPR <_1065>;
+  _1066 = IMAGPART_EXPR <_1065>;
+  _431 = _1066 != 0;
+  _432 = (unsigned int) _431;
+  _1025 = _425 + _432;
+  _433 = MEM[(unsigned int *)a_465(D) + 20B];
+  _434 = (long long unsigned int) _433;
+  _435 = MEM[(unsigned int *)b_466(D) + 28B];
+  _436 = (long long unsigned int) _435;
+  _1067 = (unsigned int) _434;
+  _1068 = (unsigned int) _436;
+  _838 = t_787 & 4294967295;
+  t_792 = WIDEN_MULT_PLUS_EXPR <_1067, _1068, _838>;
+  c1_793 = (unsigned int) t_792;
+  _437 = t_792 >> 32;
+  hi_794 = (unsigned int) _437;
+  _1069 = .ADD_OVERFLOW (c2_789, hi_794);
+  c2_795 = REALPART_EXPR <_1069>;
+  _1070 = IMAGPART_EXPR <_1069>;
+  _438 = _1070 != 0;
+  _439 = (unsigned int) _438;
+  MEM[(unsigned int *)r_472(D) + 48B] = c1_793;
+  _440 = MEM[(unsigned int *)a_465(D) + 24B];
+  _441 = (long long unsigned int) _440;
+  _442 = MEM[(unsigned int *)b_466(D) + 28B];
+  _443 = (long long unsigned int) _442;
+  _1071 = (unsigned int) _441;
+  _1072 = (unsigned int) _443;
+  _1073 = (long long unsigned int) c2_795;
+  t_800 = WIDEN_MULT_PLUS_EXPR <_1071, _1072, _1073>;
+  _445 = t_800 >> 32;
+  hi_801 = (unsigned int) _445;
+  _1024 = _439 + hi_801;
+  c3_802 = _1024 + _1025;
+  _446 = hi_801 > c3_802;
+  _447 = (unsigned int) _446;
+  _448 = MEM[(unsigned int *)a_465(D) + 28B];
+  _449 = (long long unsigned int) _448;
+  _450 = MEM[(unsigned int *)b_466(D) + 24B];
+  _451 = (long long unsigned int) _450;
+  _1074 = (unsigned int) _449;
+  _1075 = (unsigned int) _451;
+  _839 = t_800 & 4294967295;
+  t_804 = WIDEN_MULT_PLUS_EXPR <_1074, _1075, _839>;
+  c2_805 = (unsigned int) t_804;
+  _452 = t_804 >> 32;
+  hi_806 = (unsigned int) _452;
+  _1076 = .ADD_OVERFLOW (c3_802, hi_806);
+  c3_807 = REALPART_EXPR <_1076>;
+  _1077 = IMAGPART_EXPR <_1076>;
+  _453 = _1077 != 0;
+  _454 = (unsigned int) _453;
+  c1_808 = _447 + _454;
+  MEM[(unsigned int *)r_472(D) + 52B] = c2_805;
+  _455 = MEM[(unsigned int *)a_465(D) + 28B];
+  _456 = (long long unsigned int) _455;
+  _457 = MEM[(unsigned int *)b_466(D) + 28B];
+  _458 = (long long unsigned int) _457;
+  _1078 = (unsigned int) _456;
+  _1079 = (unsigned int) _458;
+  _1080 = (long long unsigned int) c3_807;
+  t_812 = WIDEN_MULT_PLUS_EXPR <_1078, _1079, _1080>;
+  c3_813 = (unsigned int) t_812;
+  _460 = t_812 >> 32;
+  hi_814 = (unsigned int) _460;
+  c1_815 = c1_808 + hi_814;
+  MEM[(unsigned int *)r_472(D) + 56B] = c3_813;
+  MEM[(unsigned int *)r_472(D) + 60B] = c1_815;
+  return;
+
+}
+
+
+
+;; Function bn_mul_comba4 (bn_mul_comba4, funcdef_no=177, decl_uid=11517, cgraph_uid=178, symbol_order=177)
+
+void bn_mul_comba4 (unsigned int * r, unsigned int * a, unsigned int * b)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  unsigned int _7;
+  long long unsigned int _8;
+  unsigned int _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  unsigned int _12;
+  long long unsigned int _13;
+  unsigned int _14;
+  long long unsigned int _15;
+  long long unsigned int _16;
+  _Bool _17;
+  unsigned int _18;
+  unsigned int _19;
+  long long unsigned int _20;
+  unsigned int _21;
+  long long unsigned int _22;
+  long long unsigned int _24;
+  _Bool _25;
+  unsigned int _26;
+  unsigned int _27;
+  long long unsigned int _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  long long unsigned int _31;
+  _Bool _32;
+  unsigned int _33;
+  unsigned int _34;
+  long long unsigned int _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  long long unsigned int _38;
+  _Bool _39;
+  unsigned int _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  unsigned int _43;
+  long long unsigned int _44;
+  long long unsigned int _46;
+  _Bool _47;
+  unsigned int _48;
+  unsigned int _49;
+  long long unsigned int _50;
+  unsigned int _51;
+  long long unsigned int _52;
+  long long unsigned int _53;
+  _Bool _54;
+  unsigned int _55;
+  unsigned int _56;
+  long long unsigned int _57;
+  unsigned int _58;
+  long long unsigned int _59;
+  long long unsigned int _60;
+  _Bool _61;
+  unsigned int _62;
+  unsigned int _63;
+  long long unsigned int _64;
+  unsigned int _65;
+  long long unsigned int _66;
+  long long unsigned int _67;
+  _Bool _68;
+  unsigned int _69;
+  unsigned int _70;
+  long long unsigned int _71;
+  unsigned int _72;
+  long long unsigned int _73;
+  long long unsigned int _75;
+  _Bool _76;
+  unsigned int _77;
+  unsigned int _78;
+  long long unsigned int _79;
+  unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  _Bool _83;
+  unsigned int _84;
+  unsigned int _85;
+  long long unsigned int _86;
+  unsigned int _87;
+  long long unsigned int _88;
+  long long unsigned int _89;
+  _Bool _90;
+  unsigned int _91;
+  unsigned int _92;
+  long long unsigned int _93;
+  unsigned int _94;
+  long long unsigned int _95;
+  long long unsigned int _97;
+  _Bool _98;
+  unsigned int _99;
+  unsigned int _100;
+  long long unsigned int _101;
+  unsigned int _102;
+  long long unsigned int _103;
+  long long unsigned int _104;
+  _Bool _105;
+  unsigned int _106;
+  unsigned int _107;
+  long long unsigned int _108;
+  unsigned int _109;
+  long long unsigned int _110;
+  long long unsigned int _112;
+  long long unsigned int _113;
+  long long unsigned int _114;
+  long long unsigned int _120;
+  long long unsigned int _132;
+  unsigned int _141;
+  unsigned int _147;
+  long long unsigned int _149;
+  unsigned int _158;
+  unsigned int _163;
+  unsigned int _169;
+  long long unsigned int _171;
+  unsigned int _180;
+  __complex__ unsigned int _186;
+  long long unsigned int _188;
+  long long unsigned int _200;
+  __complex__ unsigned int _208;
+  unsigned int _209;
+  unsigned int _210;
+  long long unsigned int _211;
+  unsigned int _212;
+  unsigned int _213;
+  unsigned int _214;
+  __complex__ unsigned int _215;
+  unsigned int _216;
+  unsigned int _217;
+  unsigned int _218;
+  __complex__ unsigned int _219;
+  unsigned int _220;
+  unsigned int _221;
+  unsigned int _222;
+  __complex__ unsigned int _223;
+  unsigned int _224;
+  unsigned int _225;
+  long long unsigned int _226;
+  unsigned int _227;
+  unsigned int _228;
+  unsigned int _229;
+  __complex__ unsigned int _230;
+  unsigned int _231;
+  unsigned int _232;
+  unsigned int _233;
+  __complex__ unsigned int _234;
+  unsigned int _235;
+  unsigned int _236;
+  unsigned int _237;
+  __complex__ unsigned int _238;
+  long long unsigned int _239;
+  unsigned int _240;
+  unsigned int _241;
+  unsigned int _242;
+  unsigned int _243;
+  unsigned int _244;
+  unsigned int _245;
+  unsigned int _246;
+  unsigned int _247;
+  unsigned int _248;
+  unsigned int _249;
+  unsigned int _250;
+  unsigned int _251;
+  unsigned int _252;
+  __complex__ unsigned int _253;
+  unsigned int _254;
+  unsigned int _255;
+  unsigned int _256;
+  long long unsigned int _257;
+  unsigned int _258;
+  unsigned int _259;
+  __complex__ unsigned int _260;
+  unsigned int _261;
+  unsigned int _262;
+  unsigned int _263;
+  long long unsigned int _264;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = *a_116(D);
+  _2 = (long long unsigned int) _1;
+  _3 = *b_117(D);
+  _4 = (long long unsigned int) _3;
+  _141 = (unsigned int) _2;
+  _147 = (unsigned int) _4;
+  t_118 = _141 w* _147;
+  c1_119 = (unsigned int) t_118;
+  _5 = t_118 >> 32;
+  *r_121(D) = c1_119;
+  _7 = *a_116(D);
+  _8 = (long long unsigned int) _7;
+  _9 = MEM[(unsigned int *)b_117(D) + 4B];
+  _10 = (long long unsigned int) _9;
+  _158 = (unsigned int) _8;
+  _163 = (unsigned int) _10;
+  t_124 = WIDEN_MULT_PLUS_EXPR <_158, _163, _5>;
+  _11 = t_124 >> 32;
+  hi_125 = (unsigned int) _11;
+  _12 = MEM[(unsigned int *)a_116(D) + 4B];
+  _13 = (long long unsigned int) _12;
+  _14 = *b_117(D);
+  _15 = (long long unsigned int) _14;
+  _169 = (unsigned int) _13;
+  _180 = (unsigned int) _15;
+  _200 = t_124 & 4294967295;
+  t_127 = WIDEN_MULT_PLUS_EXPR <_169, _180, _200>;
+  c2_128 = (unsigned int) t_127;
+  _16 = t_127 >> 32;
+  hi_129 = (unsigned int) _16;
+  _186 = .ADD_OVERFLOW (hi_125, hi_129);
+  c3_130 = REALPART_EXPR <_186>;
+  _242 = IMAGPART_EXPR <_186>;
+  _17 = _242 != 0;
+  _18 = (unsigned int) _17;
+  MEM[(unsigned int *)r_121(D) + 4B] = c2_128;
+  _19 = MEM[(unsigned int *)a_116(D) + 8B];
+  _20 = (long long unsigned int) _19;
+  _21 = *b_117(D);
+  _22 = (long long unsigned int) _21;
+  _241 = (unsigned int) _20;
+  _240 = (unsigned int) _22;
+  _239 = (long long unsigned int) c3_130;
+  t_134 = WIDEN_MULT_PLUS_EXPR <_241, _240, _239>;
+  _24 = t_134 >> 32;
+  hi_135 = (unsigned int) _24;
+  _238 = .ADD_OVERFLOW (_18, hi_135);
+  c1_136 = REALPART_EXPR <_238>;
+  _237 = IMAGPART_EXPR <_238>;
+  _25 = _237 != 0;
+  _26 = (unsigned int) _25;
+  _27 = MEM[(unsigned int *)a_116(D) + 4B];
+  _28 = (long long unsigned int) _27;
+  _29 = MEM[(unsigned int *)b_117(D) + 4B];
+  _30 = (long long unsigned int) _29;
+  _236 = (unsigned int) _28;
+  _235 = (unsigned int) _30;
+  _188 = t_134 & 4294967295;
+  t_138 = WIDEN_MULT_PLUS_EXPR <_236, _235, _188>;
+  _31 = t_138 >> 32;
+  hi_139 = (unsigned int) _31;
+  _234 = .ADD_OVERFLOW (c1_136, hi_139);
+  c1_140 = REALPART_EXPR <_234>;
+  _233 = IMAGPART_EXPR <_234>;
+  _32 = _233 != 0;
+  _33 = (unsigned int) _32;
+  _244 = _26 + _33;
+  _34 = *a_116(D);
+  _35 = (long long unsigned int) _34;
+  _36 = MEM[(unsigned int *)b_117(D) + 8B];
+  _37 = (long long unsigned int) _36;
+  _232 = (unsigned int) _35;
+  _231 = (unsigned int) _37;
+  _171 = t_138 & 4294967295;
+  t_143 = WIDEN_MULT_PLUS_EXPR <_232, _231, _171>;
+  c3_144 = (unsigned int) t_143;
+  _38 = t_143 >> 32;
+  hi_145 = (unsigned int) _38;
+  _230 = .ADD_OVERFLOW (c1_140, hi_145);
+  c1_146 = REALPART_EXPR <_230>;
+  _229 = IMAGPART_EXPR <_230>;
+  _39 = _229 != 0;
+  _40 = (unsigned int) _39;
+  MEM[(unsigned int *)r_121(D) + 8B] = c3_144;
+  _41 = *a_116(D);
+  _42 = (long long unsigned int) _41;
+  _43 = MEM[(unsigned int *)b_117(D) + 12B];
+  _44 = (long long unsigned int) _43;
+  _228 = (unsigned int) _42;
+  _227 = (unsigned int) _44;
+  _226 = (long long unsigned int) c1_146;
+  t_151 = WIDEN_MULT_PLUS_EXPR <_228, _227, _226>;
+  _46 = t_151 >> 32;
+  hi_152 = (unsigned int) _46;
+  _243 = _40 + hi_152;
+  c2_153 = _243 + _244;
+  _47 = hi_152 > c2_153;
+  _48 = (unsigned int) _47;
+  _49 = MEM[(unsigned int *)a_116(D) + 4B];
+  _50 = (long long unsigned int) _49;
+  _51 = MEM[(unsigned int *)b_117(D) + 8B];
+  _52 = (long long unsigned int) _51;
+  _225 = (unsigned int) _50;
+  _224 = (unsigned int) _52;
+  _149 = t_151 & 4294967295;
+  t_155 = WIDEN_MULT_PLUS_EXPR <_225, _224, _149>;
+  _53 = t_155 >> 32;
+  hi_156 = (unsigned int) _53;
+  _223 = .ADD_OVERFLOW (c2_153, hi_156);
+  c2_157 = REALPART_EXPR <_223>;
+  _222 = IMAGPART_EXPR <_223>;
+  _54 = _222 != 0;
+  _55 = (unsigned int) _54;
+  _247 = _48 + _55;
+  _56 = MEM[(unsigned int *)a_116(D) + 8B];
+  _57 = (long long unsigned int) _56;
+  _58 = MEM[(unsigned int *)b_117(D) + 4B];
+  _59 = (long long unsigned int) _58;
+  _221 = (unsigned int) _57;
+  _220 = (unsigned int) _59;
+  _132 = t_155 & 4294967295;
+  t_160 = WIDEN_MULT_PLUS_EXPR <_221, _220, _132>;
+  _60 = t_160 >> 32;
+  hi_161 = (unsigned int) _60;
+  _219 = .ADD_OVERFLOW (c2_157, hi_161);
+  c2_162 = REALPART_EXPR <_219>;
+  _218 = IMAGPART_EXPR <_219>;
+  _61 = _218 != 0;
+  _62 = (unsigned int) _61;
+  _63 = MEM[(unsigned int *)a_116(D) + 12B];
+  _64 = (long long unsigned int) _63;
+  _65 = *b_117(D);
+  _66 = (long long unsigned int) _65;
+  _217 = (unsigned int) _64;
+  _216 = (unsigned int) _66;
+  _113 = t_160 & 4294967295;
+  t_165 = WIDEN_MULT_PLUS_EXPR <_217, _216, _113>;
+  c1_166 = (unsigned int) t_165;
+  _67 = t_165 >> 32;
+  hi_167 = (unsigned int) _67;
+  _215 = .ADD_OVERFLOW (c2_162, hi_167);
+  c2_168 = REALPART_EXPR <_215>;
+  _214 = IMAGPART_EXPR <_215>;
+  _68 = _214 != 0;
+  _69 = (unsigned int) _68;
+  _246 = _62 + _69;
+  MEM[(unsigned int *)r_121(D) + 12B] = c1_166;
+  _70 = MEM[(unsigned int *)a_116(D) + 12B];
+  _71 = (long long unsigned int) _70;
+  _72 = MEM[(unsigned int *)b_117(D) + 4B];
+  _73 = (long long unsigned int) _72;
+  _213 = (unsigned int) _71;
+  _212 = (unsigned int) _73;
+  _211 = (long long unsigned int) c2_168;
+  t_173 = WIDEN_MULT_PLUS_EXPR <_213, _212, _211>;
+  _75 = t_173 >> 32;
+  hi_174 = (unsigned int) _75;
+  _245 = hi_174 + _247;
+  c3_175 = _245 + _246;
+  _76 = hi_174 > c3_175;
+  _77 = (unsigned int) _76;
+  _78 = MEM[(unsigned int *)a_116(D) + 8B];
+  _79 = (long long unsigned int) _78;
+  _80 = MEM[(unsigned int *)b_117(D) + 8B];
+  _81 = (long long unsigned int) _80;
+  _210 = (unsigned int) _79;
+  _209 = (unsigned int) _81;
+  _120 = t_173 & 4294967295;
+  t_177 = WIDEN_MULT_PLUS_EXPR <_210, _209, _120>;
+  _82 = t_177 >> 32;
+  hi_178 = (unsigned int) _82;
+  _208 = .ADD_OVERFLOW (c3_175, hi_178);
+  c3_179 = REALPART_EXPR <_208>;
+  _250 = IMAGPART_EXPR <_208>;
+  _83 = _250 != 0;
+  _84 = (unsigned int) _83;
+  _249 = _77 + _84;
+  _85 = MEM[(unsigned int *)a_116(D) + 4B];
+  _86 = (long long unsigned int) _85;
+  _87 = MEM[(unsigned int *)b_117(D) + 12B];
+  _88 = (long long unsigned int) _87;
+  _251 = (unsigned int) _86;
+  _252 = (unsigned int) _88;
+  _114 = t_177 & 4294967295;
+  t_182 = WIDEN_MULT_PLUS_EXPR <_251, _252, _114>;
+  c2_183 = (unsigned int) t_182;
+  _89 = t_182 >> 32;
+  hi_184 = (unsigned int) _89;
+  _253 = .ADD_OVERFLOW (c3_179, hi_184);
+  c3_185 = REALPART_EXPR <_253>;
+  _254 = IMAGPART_EXPR <_253>;
+  _90 = _254 != 0;
+  _91 = (unsigned int) _90;
+  MEM[(unsigned int *)r_121(D) + 16B] = c2_183;
+  _92 = MEM[(unsigned int *)a_116(D) + 8B];
+  _93 = (long long unsigned int) _92;
+  _94 = MEM[(unsigned int *)b_117(D) + 12B];
+  _95 = (long long unsigned int) _94;
+  _255 = (unsigned int) _93;
+  _256 = (unsigned int) _95;
+  _257 = (long long unsigned int) c3_185;
+  t_190 = WIDEN_MULT_PLUS_EXPR <_255, _256, _257>;
+  _97 = t_190 >> 32;
+  hi_191 = (unsigned int) _97;
+  _248 = _91 + hi_191;
+  c1_192 = _248 + _249;
+  _98 = hi_191 > c1_192;
+  _99 = (unsigned int) _98;
+  _100 = MEM[(unsigned int *)a_116(D) + 12B];
+  _101 = (long long unsigned int) _100;
+  _102 = MEM[(unsigned int *)b_117(D) + 8B];
+  _103 = (long long unsigned int) _102;
+  _258 = (unsigned int) _101;
+  _259 = (unsigned int) _103;
+  _6 = t_190 & 4294967295;
+  t_194 = WIDEN_MULT_PLUS_EXPR <_258, _259, _6>;
+  c3_195 = (unsigned int) t_194;
+  _104 = t_194 >> 32;
+  hi_196 = (unsigned int) _104;
+  _260 = .ADD_OVERFLOW (c1_192, hi_196);
+  c1_197 = REALPART_EXPR <_260>;
+  _261 = IMAGPART_EXPR <_260>;
+  _105 = _261 != 0;
+  _106 = (unsigned int) _105;
+  c2_198 = _99 + _106;
+  MEM[(unsigned int *)r_121(D) + 20B] = c3_195;
+  _107 = MEM[(unsigned int *)a_116(D) + 12B];
+  _108 = (long long unsigned int) _107;
+  _109 = MEM[(unsigned int *)b_117(D) + 12B];
+  _110 = (long long unsigned int) _109;
+  _262 = (unsigned int) _108;
+  _263 = (unsigned int) _110;
+  _264 = (long long unsigned int) c1_197;
+  t_202 = WIDEN_MULT_PLUS_EXPR <_262, _263, _264>;
+  c1_203 = (unsigned int) t_202;
+  _112 = t_202 >> 32;
+  hi_204 = (unsigned int) _112;
+  c2_205 = c2_198 + hi_204;
+  MEM[(unsigned int *)r_121(D) + 24B] = c1_203;
+  MEM[(unsigned int *)r_121(D) + 28B] = c2_205;
+  return;
+
+}
+
+
+
+;; Function bn_sqr_comba8 (bn_sqr_comba8, funcdef_no=178, decl_uid=11525, cgraph_uid=179, symbol_order=178)
+
+void bn_sqr_comba8 (unsigned int * r, const unsigned int * a)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  long long unsigned int _3;
+  long long unsigned int _4;
+  long long unsigned int _5;
+  long long unsigned int _6;
+  unsigned int _7;
+  long long unsigned int _8;
+  unsigned int _9;
+  long long unsigned int _10;
+  long long unsigned int _11;
+  long long unsigned int _12;
+  long long unsigned int _13;
+  long long unsigned int _14;
+  _Bool _15;
+  unsigned int _16;
+  unsigned int _17;
+  long long unsigned int _18;
+  long long unsigned int _20;
+  _Bool _21;
+  unsigned int _22;
+  unsigned int _23;
+  long long unsigned int _24;
+  unsigned int _25;
+  long long unsigned int _26;
+  long long unsigned int _27;
+  _Bool _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  _Bool _31;
+  unsigned int _32;
+  unsigned int _33;
+  long long unsigned int _34;
+  unsigned int _35;
+  long long unsigned int _36;
+  long long unsigned int _37;
+  long long unsigned int _38;
+  _Bool _39;
+  unsigned int _40;
+  long long unsigned int _41;
+  _Bool _42;
+  unsigned int _43;
+  unsigned int _44;
+  long long unsigned int _45;
+  unsigned int _46;
+  long long unsigned int _47;
+  long long unsigned int _48;
+  _Bool _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  _Bool _52;
+  unsigned int _53;
+  unsigned int _54;
+  long long unsigned int _55;
+  long long unsigned int _57;
+  _Bool _58;
+  unsigned int _59;
+  unsigned int _60;
+  long long unsigned int _61;
+  unsigned int _62;
+  long long unsigned int _63;
+  long long unsigned int _64;
+  _Bool _65;
+  unsigned int _66;
+  long long unsigned int _67;
+  _Bool _68;
+  unsigned int _69;
+  unsigned int _70;
+  long long unsigned int _71;
+  unsigned int _72;
+  long long unsigned int _73;
+  long long unsigned int _74;
+  _Bool _75;
+  unsigned int _76;
+  long long unsigned int _77;
+  _Bool _78;
+  unsigned int _79;
+  unsigned int _80;
+  long long unsigned int _81;
+  unsigned int _82;
+  long long unsigned int _83;
+  long long unsigned int _84;
+  long long unsigned int _85;
+  _Bool _86;
+  unsigned int _87;
+  long long unsigned int _88;
+  _Bool _89;
+  unsigned int _90;
+  unsigned int _91;
+  long long unsigned int _92;
+  unsigned int _93;
+  long long unsigned int _94;
+  long long unsigned int _95;
+  _Bool _96;
+  unsigned int _97;
+  long long unsigned int _98;
+  _Bool _99;
+  unsigned int _100;
+  unsigned int _101;
+  long long unsigned int _102;
+  unsigned int _103;
+  long long unsigned int _104;
+  long long unsigned int _105;
+  _Bool _106;
+  unsigned int _107;
+  long long unsigned int _108;
+  _Bool _109;
+  unsigned int _110;
+  unsigned int _111;
+  long long unsigned int _112;
+  long long unsigned int _114;
+  _Bool _115;
+  unsigned int _116;
+  unsigned int _117;
+  long long unsigned int _118;
+  unsigned int _119;
+  long long unsigned int _120;
+  long long unsigned int _121;
+  _Bool _122;
+  unsigned int _123;
+  long long unsigned int _124;
+  _Bool _125;
+  unsigned int _126;
+  unsigned int _127;
+  long long unsigned int _128;
+  unsigned int _129;
+  long long unsigned int _130;
+  long long unsigned int _131;
+  _Bool _132;
+  unsigned int _133;
+  long long unsigned int _134;
+  _Bool _135;
+  unsigned int _136;
+  unsigned int _137;
+  long long unsigned int _138;
+  unsigned int _139;
+  long long unsigned int _140;
+  long long unsigned int _141;
+  _Bool _142;
+  unsigned int _143;
+  long long unsigned int _144;
+  _Bool _145;
+  unsigned int _146;
+  unsigned int _147;
+  long long unsigned int _148;
+  unsigned int _149;
+  long long unsigned int _150;
+  long long unsigned int _151;
+  long long unsigned int _152;
+  _Bool _153;
+  unsigned int _154;
+  long long unsigned int _155;
+  _Bool _156;
+  unsigned int _157;
+  unsigned int _158;
+  long long unsigned int _159;
+  unsigned int _160;
+  long long unsigned int _161;
+  long long unsigned int _162;
+  _Bool _163;
+  unsigned int _164;
+  long long unsigned int _165;
+  _Bool _166;
+  unsigned int _167;
+  unsigned int _168;
+  long long unsigned int _169;
+  unsigned int _170;
+  long long unsigned int _171;
+  long long unsigned int _172;
+  _Bool _173;
+  unsigned int _174;
+  long long unsigned int _175;
+  _Bool _176;
+  unsigned int _177;
+  unsigned int _178;
+  long long unsigned int _179;
+  unsigned int _180;
+  long long unsigned int _181;
+  long long unsigned int _182;
+  _Bool _183;
+  unsigned int _184;
+  long long unsigned int _185;
+  _Bool _186;
+  unsigned int _187;
+  unsigned int _188;
+  long long unsigned int _189;
+  long long unsigned int _191;
+  _Bool _192;
+  unsigned int _193;
+  unsigned int _194;
+  long long unsigned int _195;
+  unsigned int _196;
+  long long unsigned int _197;
+  long long unsigned int _198;
+  _Bool _199;
+  unsigned int _200;
+  long long unsigned int _201;
+  _Bool _202;
+  unsigned int _203;
+  unsigned int _204;
+  long long unsigned int _205;
+  unsigned int _206;
+  long long unsigned int _207;
+  long long unsigned int _208;
+  _Bool _209;
+  unsigned int _210;
+  long long unsigned int _211;
+  _Bool _212;
+  unsigned int _213;
+  unsigned int _214;
+  long long unsigned int _215;
+  unsigned int _216;
+  long long unsigned int _217;
+  long long unsigned int _218;
+  _Bool _219;
+  unsigned int _220;
+  long long unsigned int _221;
+  _Bool _222;
+  unsigned int _223;
+  unsigned int _224;
+  long long unsigned int _225;
+  unsigned int _226;
+  long long unsigned int _227;
+  long long unsigned int _228;
+  long long unsigned int _229;
+  _Bool _230;
+  unsigned int _231;
+  long long unsigned int _232;
+  _Bool _233;
+  unsigned int _234;
+  unsigned int _235;
+  long long unsigned int _236;
+  unsigned int _237;
+  long long unsigned int _238;
+  long long unsigned int _239;
+  _Bool _240;
+  unsigned int _241;
+  long long unsigned int _242;
+  _Bool _243;
+  unsigned int _244;
+  unsigned int _245;
+  long long unsigned int _246;
+  unsigned int _247;
+  long long unsigned int _248;
+  long long unsigned int _249;
+  _Bool _250;
+  unsigned int _251;
+  long long unsigned int _252;
+  _Bool _253;
+  unsigned int _254;
+  unsigned int _255;
+  long long unsigned int _256;
+  long long unsigned int _258;
+  _Bool _259;
+  unsigned int _260;
+  unsigned int _261;
+  long long unsigned int _262;
+  unsigned int _263;
+  long long unsigned int _264;
+  long long unsigned int _265;
+  _Bool _266;
+  unsigned int _267;
+  long long unsigned int _268;
+  _Bool _269;
+  unsigned int _270;
+  unsigned int _271;
+  long long unsigned int _272;
+  unsigned int _273;
+  long long unsigned int _274;
+  long long unsigned int _275;
+  _Bool _276;
+  unsigned int _277;
+  long long unsigned int _278;
+  _Bool _279;
+  unsigned int _280;
+  unsigned int _281;
+  long long unsigned int _282;
+  unsigned int _283;
+  long long unsigned int _284;
+  long long unsigned int _285;
+  long long unsigned int _286;
+  _Bool _287;
+  unsigned int _288;
+  long long unsigned int _289;
+  _Bool _290;
+  unsigned int _291;
+  unsigned int _292;
+  long long unsigned int _293;
+  unsigned int _294;
+  long long unsigned int _295;
+  long long unsigned int _296;
+  _Bool _297;
+  unsigned int _298;
+  long long unsigned int _299;
+  _Bool _300;
+  unsigned int _301;
+  unsigned int _302;
+  long long unsigned int _303;
+  long long unsigned int _305;
+  _Bool _306;
+  unsigned int _307;
+  unsigned int _308;
+  long long unsigned int _309;
+  unsigned int _310;
+  long long unsigned int _311;
+  long long unsigned int _312;
+  _Bool _313;
+  unsigned int _314;
+  long long unsigned int _315;
+  _Bool _316;
+  unsigned int _317;
+  unsigned int _318;
+  long long unsigned int _319;
+  unsigned int _320;
+  long long unsigned int _321;
+  long long unsigned int _322;
+  long long unsigned int _323;
+  _Bool _324;
+  unsigned int _325;
+  long long unsigned int _326;
+  _Bool _327;
+  unsigned int _328;
+  unsigned int _329;
+  long long unsigned int _330;
+  long long unsigned int _332;
+  long long unsigned int _333;
+  long long unsigned int _334;
+  long long unsigned int _335;
+  unsigned int _338;
+  long long unsigned int _339;
+  long long unsigned int _341;
+  long long unsigned int _342;
+  long long unsigned int _345;
+  long long unsigned int _349;
+  long long unsigned int _350;
+  long long unsigned int _356;
+  unsigned int _357;
+  unsigned int _365;
+  unsigned int _370;
+  long long unsigned int _372;
+  unsigned int _380;
+  unsigned int _385;
+  __complex__ unsigned int _390;
+  long long unsigned int _392;
+  __complex__ unsigned int _393;
+  unsigned int _401;
+  unsigned int _405;
+  unsigned int _410;
+  long long unsigned int _415;
+  long long unsigned int _417;
+  __complex__ unsigned int _425;
+  unsigned int _430;
+  unsigned int _434;
+  unsigned int _439;
+  __complex__ unsigned int _444;
+  long long unsigned int _446;
+  unsigned int _447;
+  unsigned int _455;
+  __complex__ unsigned int _459;
+  unsigned int _464;
+  unsigned int _468;
+  unsigned int _473;
+  __complex__ unsigned int _478;
+  long long unsigned int _480;
+  unsigned int _488;
+  unsigned int _493;
+  unsigned int _497;
+  __complex__ unsigned int _502;
+  unsigned int _506;
+  __complex__ unsigned int _511;
+  unsigned int _516;
+  long long unsigned int _518;
+  unsigned int _519;
+  unsigned int _527;
+  unsigned int _531;
+  long long unsigned int _536;
+  unsigned int _540;
+  unsigned int _545;
+  __complex__ unsigned int _550;
+  long long unsigned int _552;
+  unsigned int _560;
+  __complex__ unsigned int _565;
+  unsigned int _569;
+  unsigned int _574;
+  unsigned int _579;
+  long long unsigned int _581;
+  unsigned int _582;
+  __complex__ unsigned int _590;
+  unsigned int _594;
+  __complex__ unsigned int _599;
+  unsigned int _604;
+  long long unsigned int _606;
+  unsigned int _614;
+  unsigned int _619;
+  __complex__ unsigned int _624;
+  long long unsigned int _626;
+  __complex__ unsigned int _627;
+  unsigned int _635;
+  unsigned int _640;
+  long long unsigned int _642;
+  long long unsigned int _653;
+  unsigned int _654;
+  long long unsigned int _661;
+  long long unsigned int _662;
+  long long unsigned int _663;
+  long long unsigned int _664;
+  long long unsigned int _665;
+  long long unsigned int _666;
+  long long unsigned int _667;
+  long long unsigned int _668;
+  long long unsigned int _669;
+  long long unsigned int _670;
+  long long unsigned int _671;
+  long long unsigned int _672;
+  long long unsigned int _673;
+  long long unsigned int _674;
+  long long unsigned int _675;
+  long long unsigned int _676;
+  long long unsigned int _677;
+  long long unsigned int _678;
+  long long unsigned int _679;
+  long long unsigned int _680;
+  long long unsigned int _681;
+  long long unsigned int _682;
+  long long unsigned int powmult_690;
+  __complex__ unsigned int _691;
+  unsigned int _692;
+  unsigned int _693;
+  unsigned int _694;
+  __complex__ unsigned int _695;
+  unsigned int _696;
+  __complex__ unsigned int _697;
+  unsigned int _698;
+  unsigned int _699;
+  long long unsigned int _700;
+  unsigned int _701;
+  unsigned int _702;
+  unsigned int _703;
+  __complex__ unsigned int _704;
+  unsigned int _705;
+  __complex__ unsigned int _706;
+  unsigned int _707;
+  unsigned int _708;
+  unsigned int _709;
+  __complex__ unsigned int _710;
+  unsigned int _711;
+  __complex__ unsigned int _712;
+  unsigned int _713;
+  unsigned int _714;
+  unsigned int _715;
+  __complex__ unsigned int _716;
+  unsigned int _717;
+  unsigned int _718;
+  unsigned int _719;
+  __complex__ unsigned int _720;
+  unsigned int _721;
+  __complex__ unsigned int _722;
+  unsigned int _723;
+  unsigned int _724;
+  unsigned int _725;
+  __complex__ unsigned int _726;
+  unsigned int _727;
+  __complex__ unsigned int _728;
+  unsigned int _729;
+  unsigned int _730;
+  unsigned int _731;
+  __complex__ unsigned int _732;
+  unsigned int _733;
+  __complex__ unsigned int _734;
+  unsigned int _735;
+  unsigned int _736;
+  long long unsigned int _737;
+  unsigned int _738;
+  unsigned int _739;
+  unsigned int _740;
+  __complex__ unsigned int _741;
+  unsigned int _742;
+  __complex__ unsigned int _743;
+  unsigned int _744;
+  unsigned int _745;
+  unsigned int _746;
+  __complex__ unsigned int _747;
+  unsigned int _748;
+  __complex__ unsigned int _749;
+  unsigned int _750;
+  unsigned int _751;
+  unsigned int _752;
+  __complex__ unsigned int _753;
+  unsigned int _754;
+  __complex__ unsigned int _755;
+  unsigned int _756;
+  unsigned int _757;
+  unsigned int _758;
+  __complex__ unsigned int _759;
+  unsigned int _760;
+  unsigned int _761;
+  unsigned int _762;
+  __complex__ unsigned int _763;
+  unsigned int _764;
+  __complex__ unsigned int _765;
+  unsigned int _766;
+  unsigned int _767;
+  unsigned int _768;
+  __complex__ unsigned int _769;
+  unsigned int _770;
+  __complex__ unsigned int _771;
+  unsigned int _772;
+  unsigned int _773;
+  unsigned int _774;
+  __complex__ unsigned int _775;
+  unsigned int _776;
+  __complex__ unsigned int _777;
+  unsigned int _778;
+  unsigned int _779;
+  long long unsigned int _780;
+  unsigned int _781;
+  unsigned int _782;
+  unsigned int _783;
+  __complex__ unsigned int _784;
+  unsigned int _785;
+  __complex__ unsigned int _786;
+  unsigned int _787;
+  unsigned int _788;
+  unsigned int _789;
+  __complex__ unsigned int _790;
+  unsigned int _791;
+  __complex__ unsigned int _792;
+  unsigned int _793;
+  unsigned int _794;
+  unsigned int _795;
+  unsigned int _796;
+  unsigned int _797;
+  unsigned int _798;
+  unsigned int _799;
+  unsigned int _800;
+  unsigned int _801;
+  unsigned int _802;
+  unsigned int _803;
+  unsigned int _804;
+  unsigned int _805;
+  unsigned int _806;
+  unsigned int _807;
+  unsigned int _808;
+  unsigned int _809;
+  unsigned int _810;
+  unsigned int _811;
+  unsigned int _812;
+  unsigned int _813;
+  unsigned int _814;
+  unsigned int _815;
+  unsigned int _816;
+  unsigned int _817;
+  unsigned int _818;
+  unsigned int _819;
+  unsigned int _820;
+  unsigned int _821;
+  unsigned int _822;
+  unsigned int _823;
+  unsigned int _824;
+  unsigned int _825;
+  unsigned int _826;
+  unsigned int _827;
+  unsigned int _828;
+  unsigned int _829;
+  unsigned int _830;
+  unsigned int _831;
+  unsigned int _832;
+  unsigned int _833;
+  unsigned int _834;
+  unsigned int _835;
+  unsigned int _836;
+  unsigned int _837;
+  unsigned int _838;
+  unsigned int _839;
+  unsigned int _840;
+  unsigned int _841;
+  __complex__ unsigned int _842;
+  unsigned int _843;
+  __complex__ unsigned int _844;
+  unsigned int _845;
+  unsigned int _846;
+  unsigned int _847;
+  long long unsigned int _848;
+  unsigned int _849;
+  unsigned int _850;
+  __complex__ unsigned int _851;
+  unsigned int _852;
+  __complex__ unsigned int _853;
+  unsigned int _854;
+  unsigned int _855;
+  unsigned int _856;
+  __complex__ unsigned int _857;
+  unsigned int _858;
+  unsigned int _859;
+  unsigned int _860;
+  long long unsigned int _861;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = *a_337(D);
+  _2 = (long long unsigned int) _1;
+  _365 = (unsigned int) _2;
+  _370 = (unsigned int) _2;
+  powmult_690 = _365 w* _370;
+  c1_340 = (unsigned int) powmult_690;
+  _4 = powmult_690 >> 32;
+  *r_343(D) = c1_340;
+  _7 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _8 = (long long unsigned int) _7;
+  _9 = *a_337(D);
+  _10 = (long long unsigned int) _9;
+  _380 = (unsigned int) _8;
+  _385 = (unsigned int) _10;
+  t_346 = _380 w* _385;
+  tt_347 = _4 + t_346;
+  _11 = tt_347 >> 32;
+  hi_348 = (unsigned int) _11;
+  _653 = tt_347 & 4294967295;
+  t_351 = t_346 + _653;
+  c2_352 = (unsigned int) t_351;
+  _14 = t_351 >> 32;
+  hi_353 = (unsigned int) _14;
+  _390 = .ADD_OVERFLOW (hi_348, hi_353);
+  c3_354 = REALPART_EXPR <_390>;
+  _401 = IMAGPART_EXPR <_390>;
+  _15 = _401 != 0;
+  _16 = (unsigned int) _15;
+  MEM[(unsigned int *)r_343(D) + 4B] = c2_352;
+  _17 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _18 = (long long unsigned int) _17;
+  _405 = (unsigned int) _18;
+  _410 = (unsigned int) _18;
+  _415 = (long long unsigned int) c3_354;
+  t_358 = WIDEN_MULT_PLUS_EXPR <_405, _410, _415>;
+  _20 = t_358 >> 32;
+  hi_359 = (unsigned int) _20;
+  _425 = .ADD_OVERFLOW (_16, hi_359);
+  c1_360 = REALPART_EXPR <_425>;
+  _430 = IMAGPART_EXPR <_425>;
+  _21 = _430 != 0;
+  _22 = (unsigned int) _21;
+  _23 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _24 = (long long unsigned int) _23;
+  _25 = *a_337(D);
+  _26 = (long long unsigned int) _25;
+  _434 = (unsigned int) _24;
+  _439 = (unsigned int) _26;
+  t_361 = _434 w* _439;
+  _642 = t_358 & 4294967295;
+  tt_362 = t_361 + _642;
+  _27 = tt_362 >> 32;
+  hi_363 = (unsigned int) _27;
+  _444 = .ADD_OVERFLOW (c1_360, hi_363);
+  c1_364 = REALPART_EXPR <_444>;
+  _455 = IMAGPART_EXPR <_444>;
+  _28 = _455 != 0;
+  _29 = (unsigned int) _28;
+  _795 = _22 + _29;
+  _626 = tt_362 & 4294967295;
+  t_366 = t_361 + _626;
+  c3_367 = (unsigned int) t_366;
+  _30 = t_366 >> 32;
+  hi_368 = (unsigned int) _30;
+  _459 = .ADD_OVERFLOW (c1_364, hi_368);
+  c1_369 = REALPART_EXPR <_459>;
+  _464 = IMAGPART_EXPR <_459>;
+  _31 = _464 != 0;
+  _32 = (unsigned int) _31;
+  MEM[(unsigned int *)r_343(D) + 8B] = c3_367;
+  _33 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _34 = (long long unsigned int) _33;
+  _35 = *a_337(D);
+  _36 = (long long unsigned int) _35;
+  _468 = (unsigned int) _34;
+  _473 = (unsigned int) _36;
+  t_373 = _468 w* _473;
+  _37 = (long long unsigned int) c1_369;
+  tt_374 = _37 + t_373;
+  _38 = tt_374 >> 32;
+  hi_375 = (unsigned int) _38;
+  _794 = _32 + hi_375;
+  c2_376 = _794 + _795;
+  _39 = hi_375 > c2_376;
+  _40 = (unsigned int) _39;
+  _606 = tt_374 & 4294967295;
+  t_377 = t_373 + _606;
+  _41 = t_377 >> 32;
+  hi_378 = (unsigned int) _41;
+  _478 = .ADD_OVERFLOW (c2_376, hi_378);
+  c2_379 = REALPART_EXPR <_478>;
+  _488 = IMAGPART_EXPR <_478>;
+  _42 = _488 != 0;
+  _43 = (unsigned int) _42;
+  _798 = _40 + _43;
+  _44 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _45 = (long long unsigned int) _44;
+  _46 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _47 = (long long unsigned int) _46;
+  _493 = (unsigned int) _45;
+  _497 = (unsigned int) _47;
+  t_381 = _493 w* _497;
+  _581 = t_377 & 4294967295;
+  tt_382 = t_381 + _581;
+  _48 = tt_382 >> 32;
+  hi_383 = (unsigned int) _48;
+  _502 = .ADD_OVERFLOW (c2_379, hi_383);
+  c2_384 = REALPART_EXPR <_502>;
+  _506 = IMAGPART_EXPR <_502>;
+  _49 = _506 != 0;
+  _50 = (unsigned int) _49;
+  _552 = tt_382 & 4294967295;
+  t_386 = t_381 + _552;
+  c1_387 = (unsigned int) t_386;
+  _51 = t_386 >> 32;
+  hi_388 = (unsigned int) _51;
+  _511 = .ADD_OVERFLOW (c2_384, hi_388);
+  c2_389 = REALPART_EXPR <_511>;
+  _516 = IMAGPART_EXPR <_511>;
+  _52 = _516 != 0;
+  _53 = (unsigned int) _52;
+  _797 = _50 + _53;
+  MEM[(unsigned int *)r_343(D) + 12B] = c1_387;
+  _54 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _55 = (long long unsigned int) _54;
+  _527 = (unsigned int) _55;
+  _531 = (unsigned int) _55;
+  _536 = (long long unsigned int) c2_389;
+  t_394 = WIDEN_MULT_PLUS_EXPR <_527, _531, _536>;
+  _57 = t_394 >> 32;
+  hi_395 = (unsigned int) _57;
+  _796 = hi_395 + _798;
+  c3_396 = _796 + _797;
+  _58 = hi_395 > c3_396;
+  _59 = (unsigned int) _58;
+  _60 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _61 = (long long unsigned int) _60;
+  _62 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _63 = (long long unsigned int) _62;
+  _540 = (unsigned int) _61;
+  _545 = (unsigned int) _63;
+  t_397 = _540 w* _545;
+  _518 = t_394 & 4294967295;
+  tt_398 = t_397 + _518;
+  _64 = tt_398 >> 32;
+  hi_399 = (unsigned int) _64;
+  _550 = .ADD_OVERFLOW (c3_396, hi_399);
+  c3_400 = REALPART_EXPR <_550>;
+  _560 = IMAGPART_EXPR <_550>;
+  _65 = _560 != 0;
+  _66 = (unsigned int) _65;
+  _802 = _59 + _66;
+  _480 = tt_398 & 4294967295;
+  t_402 = t_397 + _480;
+  _67 = t_402 >> 32;
+  hi_403 = (unsigned int) _67;
+  _565 = .ADD_OVERFLOW (c3_400, hi_403);
+  c3_404 = REALPART_EXPR <_565>;
+  _569 = IMAGPART_EXPR <_565>;
+  _68 = _569 != 0;
+  _69 = (unsigned int) _68;
+  _70 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _71 = (long long unsigned int) _70;
+  _72 = *a_337(D);
+  _73 = (long long unsigned int) _72;
+  _574 = (unsigned int) _71;
+  _579 = (unsigned int) _73;
+  t_406 = _574 w* _579;
+  _446 = t_402 & 4294967295;
+  tt_407 = t_406 + _446;
+  _74 = tt_407 >> 32;
+  hi_408 = (unsigned int) _74;
+  _590 = .ADD_OVERFLOW (c3_404, hi_408);
+  c3_409 = REALPART_EXPR <_590>;
+  _594 = IMAGPART_EXPR <_590>;
+  _75 = _594 != 0;
+  _76 = (unsigned int) _75;
+  _801 = _69 + _76;
+  _417 = tt_407 & 4294967295;
+  t_411 = t_406 + _417;
+  c2_412 = (unsigned int) t_411;
+  _77 = t_411 >> 32;
+  hi_413 = (unsigned int) _77;
+  _599 = .ADD_OVERFLOW (c3_409, hi_413);
+  c3_414 = REALPART_EXPR <_599>;
+  _604 = IMAGPART_EXPR <_599>;
+  _78 = _604 != 0;
+  _79 = (unsigned int) _78;
+  _800 = _79 + _802;
+  MEM[(unsigned int *)r_343(D) + 16B] = c2_412;
+  _80 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _81 = (long long unsigned int) _80;
+  _82 = *a_337(D);
+  _83 = (long long unsigned int) _82;
+  _614 = (unsigned int) _81;
+  _619 = (unsigned int) _83;
+  t_418 = _614 w* _619;
+  _84 = (long long unsigned int) c3_414;
+  tt_419 = _84 + t_418;
+  _85 = tt_419 >> 32;
+  hi_420 = (unsigned int) _85;
+  _799 = hi_420 + _801;
+  c1_421 = _799 + _800;
+  _86 = hi_420 > c1_421;
+  _87 = (unsigned int) _86;
+  _392 = tt_419 & 4294967295;
+  t_422 = _392 + t_418;
+  _88 = t_422 >> 32;
+  hi_423 = (unsigned int) _88;
+  _624 = .ADD_OVERFLOW (c1_421, hi_423);
+  c1_424 = REALPART_EXPR <_624>;
+  _635 = IMAGPART_EXPR <_624>;
+  _89 = _635 != 0;
+  _90 = (unsigned int) _89;
+  _807 = _87 + _90;
+  _91 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _92 = (long long unsigned int) _91;
+  _93 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _94 = (long long unsigned int) _93;
+  _640 = (unsigned int) _92;
+  _793 = (unsigned int) _94;
+  t_426 = _640 w* _793;
+  _372 = t_422 & 4294967295;
+  tt_427 = _372 + t_426;
+  _95 = tt_427 >> 32;
+  hi_428 = (unsigned int) _95;
+  _792 = .ADD_OVERFLOW (c1_424, hi_428);
+  c1_429 = REALPART_EXPR <_792>;
+  _791 = IMAGPART_EXPR <_792>;
+  _96 = _791 != 0;
+  _97 = (unsigned int) _96;
+  _356 = tt_427 & 4294967295;
+  t_431 = _356 + t_426;
+  _98 = t_431 >> 32;
+  hi_432 = (unsigned int) _98;
+  _790 = .ADD_OVERFLOW (c1_429, hi_432);
+  c1_433 = REALPART_EXPR <_790>;
+  _789 = IMAGPART_EXPR <_790>;
+  _99 = _789 != 0;
+  _100 = (unsigned int) _99;
+  _806 = _97 + _100;
+  _101 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _102 = (long long unsigned int) _101;
+  _103 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _104 = (long long unsigned int) _103;
+  _788 = (unsigned int) _102;
+  _787 = (unsigned int) _104;
+  t_435 = _788 w* _787;
+  _334 = t_431 & 4294967295;
+  tt_436 = _334 + t_435;
+  _105 = tt_436 >> 32;
+  hi_437 = (unsigned int) _105;
+  _786 = .ADD_OVERFLOW (c1_433, hi_437);
+  c1_438 = REALPART_EXPR <_786>;
+  _785 = IMAGPART_EXPR <_786>;
+  _106 = _785 != 0;
+  _107 = (unsigned int) _106;
+  _805 = _107 + _807;
+  _341 = tt_436 & 4294967295;
+  t_440 = _341 + t_435;
+  c3_441 = (unsigned int) t_440;
+  _108 = t_440 >> 32;
+  hi_442 = (unsigned int) _108;
+  _784 = .ADD_OVERFLOW (c1_438, hi_442);
+  c1_443 = REALPART_EXPR <_784>;
+  _783 = IMAGPART_EXPR <_784>;
+  _109 = _783 != 0;
+  _110 = (unsigned int) _109;
+  _804 = _110 + _806;
+  MEM[(unsigned int *)r_343(D) + 20B] = c3_441;
+  _111 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _112 = (long long unsigned int) _111;
+  _782 = (unsigned int) _112;
+  _781 = (unsigned int) _112;
+  _780 = (long long unsigned int) c1_443;
+  t_448 = WIDEN_MULT_PLUS_EXPR <_782, _781, _780>;
+  _114 = t_448 >> 32;
+  hi_449 = (unsigned int) _114;
+  _803 = hi_449 + _805;
+  c2_450 = _803 + _804;
+  _115 = hi_449 > c2_450;
+  _116 = (unsigned int) _115;
+  _117 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _118 = (long long unsigned int) _117;
+  _119 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _120 = (long long unsigned int) _119;
+  _779 = (unsigned int) _118;
+  _778 = (unsigned int) _120;
+  t_451 = _779 w* _778;
+  _335 = t_448 & 4294967295;
+  tt_452 = _335 + t_451;
+  _121 = tt_452 >> 32;
+  hi_453 = (unsigned int) _121;
+  _777 = .ADD_OVERFLOW (c2_450, hi_453);
+  c2_454 = REALPART_EXPR <_777>;
+  _776 = IMAGPART_EXPR <_777>;
+  _122 = _776 != 0;
+  _123 = (unsigned int) _122;
+  _813 = _116 + _123;
+  _5 = tt_452 & 4294967295;
+  t_456 = _5 + t_451;
+  _124 = t_456 >> 32;
+  hi_457 = (unsigned int) _124;
+  _775 = .ADD_OVERFLOW (c2_454, hi_457);
+  c2_458 = REALPART_EXPR <_775>;
+  _774 = IMAGPART_EXPR <_775>;
+  _125 = _774 != 0;
+  _126 = (unsigned int) _125;
+  _127 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _128 = (long long unsigned int) _127;
+  _129 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _130 = (long long unsigned int) _129;
+  _773 = (unsigned int) _128;
+  _772 = (unsigned int) _130;
+  t_460 = _773 w* _772;
+  _6 = t_456 & 4294967295;
+  tt_461 = _6 + t_460;
+  _131 = tt_461 >> 32;
+  hi_462 = (unsigned int) _131;
+  _771 = .ADD_OVERFLOW (c2_458, hi_462);
+  c2_463 = REALPART_EXPR <_771>;
+  _770 = IMAGPART_EXPR <_771>;
+  _132 = _770 != 0;
+  _133 = (unsigned int) _132;
+  _812 = _126 + _133;
+  _342 = tt_461 & 4294967295;
+  t_465 = _342 + t_460;
+  _134 = t_465 >> 32;
+  hi_466 = (unsigned int) _134;
+  _769 = .ADD_OVERFLOW (c2_463, hi_466);
+  c2_467 = REALPART_EXPR <_769>;
+  _768 = IMAGPART_EXPR <_769>;
+  _135 = _768 != 0;
+  _136 = (unsigned int) _135;
+  _811 = _136 + _813;
+  _137 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _138 = (long long unsigned int) _137;
+  _139 = *a_337(D);
+  _140 = (long long unsigned int) _139;
+  _767 = (unsigned int) _138;
+  _766 = (unsigned int) _140;
+  t_469 = _767 w* _766;
+  _349 = t_465 & 4294967295;
+  tt_470 = _349 + t_469;
+  _141 = tt_470 >> 32;
+  hi_471 = (unsigned int) _141;
+  _765 = .ADD_OVERFLOW (c2_467, hi_471);
+  c2_472 = REALPART_EXPR <_765>;
+  _764 = IMAGPART_EXPR <_765>;
+  _142 = _764 != 0;
+  _143 = (unsigned int) _142;
+  _810 = _143 + _812;
+  _345 = tt_470 & 4294967295;
+  t_474 = _345 + t_469;
+  c1_475 = (unsigned int) t_474;
+  _144 = t_474 >> 32;
+  hi_476 = (unsigned int) _144;
+  _763 = .ADD_OVERFLOW (c2_472, hi_476);
+  c2_477 = REALPART_EXPR <_763>;
+  _762 = IMAGPART_EXPR <_763>;
+  _145 = _762 != 0;
+  _146 = (unsigned int) _145;
+  _809 = _146 + _811;
+  MEM[(unsigned int *)r_343(D) + 24B] = c1_475;
+  _147 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _148 = (long long unsigned int) _147;
+  _149 = *a_337(D);
+  _150 = (long long unsigned int) _149;
+  _761 = (unsigned int) _148;
+  _760 = (unsigned int) _150;
+  t_481 = _761 w* _760;
+  _151 = (long long unsigned int) c2_477;
+  tt_482 = _151 + t_481;
+  _152 = tt_482 >> 32;
+  hi_483 = (unsigned int) _152;
+  _808 = hi_483 + _810;
+  c3_484 = _808 + _809;
+  _153 = hi_483 > c3_484;
+  _154 = (unsigned int) _153;
+  _12 = tt_482 & 4294967295;
+  t_485 = _12 + t_481;
+  _155 = t_485 >> 32;
+  hi_486 = (unsigned int) _155;
+  _759 = .ADD_OVERFLOW (c3_484, hi_486);
+  c3_487 = REALPART_EXPR <_759>;
+  _758 = IMAGPART_EXPR <_759>;
+  _156 = _758 != 0;
+  _157 = (unsigned int) _156;
+  _820 = _154 + _157;
+  _158 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _159 = (long long unsigned int) _158;
+  _160 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _161 = (long long unsigned int) _160;
+  _757 = (unsigned int) _159;
+  _756 = (unsigned int) _161;
+  t_489 = _757 w* _756;
+  _13 = t_485 & 4294967295;
+  tt_490 = _13 + t_489;
+  _162 = tt_490 >> 32;
+  hi_491 = (unsigned int) _162;
+  _755 = .ADD_OVERFLOW (c3_487, hi_491);
+  c3_492 = REALPART_EXPR <_755>;
+  _754 = IMAGPART_EXPR <_755>;
+  _163 = _754 != 0;
+  _164 = (unsigned int) _163;
+  _350 = tt_490 & 4294967295;
+  t_494 = _350 + t_489;
+  _165 = t_494 >> 32;
+  hi_495 = (unsigned int) _165;
+  _753 = .ADD_OVERFLOW (c3_492, hi_495);
+  c3_496 = REALPART_EXPR <_753>;
+  _752 = IMAGPART_EXPR <_753>;
+  _166 = _752 != 0;
+  _167 = (unsigned int) _166;
+  _819 = _164 + _167;
+  _168 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _169 = (long long unsigned int) _168;
+  _170 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _171 = (long long unsigned int) _170;
+  _751 = (unsigned int) _169;
+  _750 = (unsigned int) _171;
+  t_498 = _751 w* _750;
+  _333 = t_494 & 4294967295;
+  tt_499 = _333 + t_498;
+  _172 = tt_499 >> 32;
+  hi_500 = (unsigned int) _172;
+  _749 = .ADD_OVERFLOW (c3_496, hi_500);
+  c3_501 = REALPART_EXPR <_749>;
+  _748 = IMAGPART_EXPR <_749>;
+  _173 = _748 != 0;
+  _174 = (unsigned int) _173;
+  _818 = _174 + _820;
+  _3 = tt_499 & 4294967295;
+  t_503 = _3 + t_498;
+  _175 = t_503 >> 32;
+  hi_504 = (unsigned int) _175;
+  _747 = .ADD_OVERFLOW (c3_501, hi_504);
+  c3_505 = REALPART_EXPR <_747>;
+  _746 = IMAGPART_EXPR <_747>;
+  _176 = _746 != 0;
+  _177 = (unsigned int) _176;
+  _817 = _177 + _819;
+  _178 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _179 = (long long unsigned int) _178;
+  _180 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _181 = (long long unsigned int) _180;
+  _745 = (unsigned int) _179;
+  _744 = (unsigned int) _181;
+  t_507 = _745 w* _744;
+  _339 = t_503 & 4294967295;
+  tt_508 = _339 + t_507;
+  _182 = tt_508 >> 32;
+  hi_509 = (unsigned int) _182;
+  _743 = .ADD_OVERFLOW (c3_505, hi_509);
+  c3_510 = REALPART_EXPR <_743>;
+  _742 = IMAGPART_EXPR <_743>;
+  _183 = _742 != 0;
+  _184 = (unsigned int) _183;
+  _816 = _184 + _818;
+  _661 = tt_508 & 4294967295;
+  t_512 = t_507 + _661;
+  c2_513 = (unsigned int) t_512;
+  _185 = t_512 >> 32;
+  hi_514 = (unsigned int) _185;
+  _741 = .ADD_OVERFLOW (c3_510, hi_514);
+  c3_515 = REALPART_EXPR <_741>;
+  _740 = IMAGPART_EXPR <_741>;
+  _186 = _740 != 0;
+  _187 = (unsigned int) _186;
+  _815 = _187 + _817;
+  MEM[(unsigned int *)r_343(D) + 28B] = c2_513;
+  _188 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _189 = (long long unsigned int) _188;
+  _739 = (unsigned int) _189;
+  _738 = (unsigned int) _189;
+  _737 = (long long unsigned int) c3_515;
+  t_520 = WIDEN_MULT_PLUS_EXPR <_739, _738, _737>;
+  _191 = t_520 >> 32;
+  hi_521 = (unsigned int) _191;
+  _814 = hi_521 + _816;
+  c1_522 = _814 + _815;
+  _192 = hi_521 > c1_522;
+  _193 = (unsigned int) _192;
+  _194 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _195 = (long long unsigned int) _194;
+  _196 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _197 = (long long unsigned int) _196;
+  _736 = (unsigned int) _195;
+  _735 = (unsigned int) _197;
+  t_523 = _736 w* _735;
+  _662 = t_520 & 4294967295;
+  tt_524 = t_523 + _662;
+  _198 = tt_524 >> 32;
+  hi_525 = (unsigned int) _198;
+  _734 = .ADD_OVERFLOW (c1_522, hi_525);
+  c1_526 = REALPART_EXPR <_734>;
+  _733 = IMAGPART_EXPR <_734>;
+  _199 = _733 != 0;
+  _200 = (unsigned int) _199;
+  _826 = _193 + _200;
+  _663 = tt_524 & 4294967295;
+  t_528 = t_523 + _663;
+  _201 = t_528 >> 32;
+  hi_529 = (unsigned int) _201;
+  _732 = .ADD_OVERFLOW (c1_526, hi_529);
+  c1_530 = REALPART_EXPR <_732>;
+  _731 = IMAGPART_EXPR <_732>;
+  _202 = _731 != 0;
+  _203 = (unsigned int) _202;
+  _204 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _205 = (long long unsigned int) _204;
+  _206 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _207 = (long long unsigned int) _206;
+  _730 = (unsigned int) _205;
+  _729 = (unsigned int) _207;
+  t_532 = _730 w* _729;
+  _664 = t_528 & 4294967295;
+  tt_533 = t_532 + _664;
+  _208 = tt_533 >> 32;
+  hi_534 = (unsigned int) _208;
+  _728 = .ADD_OVERFLOW (c1_530, hi_534);
+  c1_535 = REALPART_EXPR <_728>;
+  _727 = IMAGPART_EXPR <_728>;
+  _209 = _727 != 0;
+  _210 = (unsigned int) _209;
+  _825 = _203 + _210;
+  _665 = tt_533 & 4294967295;
+  t_537 = t_532 + _665;
+  _211 = t_537 >> 32;
+  hi_538 = (unsigned int) _211;
+  _726 = .ADD_OVERFLOW (c1_535, hi_538);
+  c1_539 = REALPART_EXPR <_726>;
+  _725 = IMAGPART_EXPR <_726>;
+  _212 = _725 != 0;
+  _213 = (unsigned int) _212;
+  _824 = _213 + _826;
+  _214 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _215 = (long long unsigned int) _214;
+  _216 = MEM[(const unsigned int *)a_337(D) + 4B];
+  _217 = (long long unsigned int) _216;
+  _724 = (unsigned int) _215;
+  _723 = (unsigned int) _217;
+  t_541 = _724 w* _723;
+  _666 = t_537 & 4294967295;
+  tt_542 = t_541 + _666;
+  _218 = tt_542 >> 32;
+  hi_543 = (unsigned int) _218;
+  _722 = .ADD_OVERFLOW (c1_539, hi_543);
+  c1_544 = REALPART_EXPR <_722>;
+  _721 = IMAGPART_EXPR <_722>;
+  _219 = _721 != 0;
+  _220 = (unsigned int) _219;
+  _823 = _220 + _825;
+  _667 = tt_542 & 4294967295;
+  t_546 = t_541 + _667;
+  c3_547 = (unsigned int) t_546;
+  _221 = t_546 >> 32;
+  hi_548 = (unsigned int) _221;
+  _720 = .ADD_OVERFLOW (c1_544, hi_548);
+  c1_549 = REALPART_EXPR <_720>;
+  _719 = IMAGPART_EXPR <_720>;
+  _222 = _719 != 0;
+  _223 = (unsigned int) _222;
+  _822 = _223 + _824;
+  MEM[(unsigned int *)r_343(D) + 32B] = c3_547;
+  _224 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _225 = (long long unsigned int) _224;
+  _226 = MEM[(const unsigned int *)a_337(D) + 8B];
+  _227 = (long long unsigned int) _226;
+  _718 = (unsigned int) _225;
+  _717 = (unsigned int) _227;
+  t_553 = _718 w* _717;
+  _228 = (long long unsigned int) c1_549;
+  tt_554 = _228 + t_553;
+  _229 = tt_554 >> 32;
+  hi_555 = (unsigned int) _229;
+  _821 = hi_555 + _823;
+  c2_556 = _821 + _822;
+  _230 = hi_555 > c2_556;
+  _231 = (unsigned int) _230;
+  _668 = tt_554 & 4294967295;
+  t_557 = t_553 + _668;
+  _232 = t_557 >> 32;
+  hi_558 = (unsigned int) _232;
+  _716 = .ADD_OVERFLOW (c2_556, hi_558);
+  c2_559 = REALPART_EXPR <_716>;
+  _715 = IMAGPART_EXPR <_716>;
+  _233 = _715 != 0;
+  _234 = (unsigned int) _233;
+  _831 = _231 + _234;
+  _235 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _236 = (long long unsigned int) _235;
+  _237 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _238 = (long long unsigned int) _237;
+  _714 = (unsigned int) _236;
+  _713 = (unsigned int) _238;
+  t_561 = _714 w* _713;
+  _669 = t_557 & 4294967295;
+  tt_562 = t_561 + _669;
+  _239 = tt_562 >> 32;
+  hi_563 = (unsigned int) _239;
+  _712 = .ADD_OVERFLOW (c2_559, hi_563);
+  c2_564 = REALPART_EXPR <_712>;
+  _711 = IMAGPART_EXPR <_712>;
+  _240 = _711 != 0;
+  _241 = (unsigned int) _240;
+  _670 = tt_562 & 4294967295;
+  t_566 = t_561 + _670;
+  _242 = t_566 >> 32;
+  hi_567 = (unsigned int) _242;
+  _710 = .ADD_OVERFLOW (c2_564, hi_567);
+  c2_568 = REALPART_EXPR <_710>;
+  _709 = IMAGPART_EXPR <_710>;
+  _243 = _709 != 0;
+  _244 = (unsigned int) _243;
+  _830 = _241 + _244;
+  _245 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _246 = (long long unsigned int) _245;
+  _247 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _248 = (long long unsigned int) _247;
+  _708 = (unsigned int) _246;
+  _707 = (unsigned int) _248;
+  t_570 = _708 w* _707;
+  _671 = t_566 & 4294967295;
+  tt_571 = t_570 + _671;
+  _249 = tt_571 >> 32;
+  hi_572 = (unsigned int) _249;
+  _706 = .ADD_OVERFLOW (c2_568, hi_572);
+  c2_573 = REALPART_EXPR <_706>;
+  _705 = IMAGPART_EXPR <_706>;
+  _250 = _705 != 0;
+  _251 = (unsigned int) _250;
+  _829 = _251 + _831;
+  _672 = tt_571 & 4294967295;
+  t_575 = t_570 + _672;
+  c1_576 = (unsigned int) t_575;
+  _252 = t_575 >> 32;
+  hi_577 = (unsigned int) _252;
+  _704 = .ADD_OVERFLOW (c2_573, hi_577);
+  c2_578 = REALPART_EXPR <_704>;
+  _703 = IMAGPART_EXPR <_704>;
+  _253 = _703 != 0;
+  _254 = (unsigned int) _253;
+  _828 = _254 + _830;
+  MEM[(unsigned int *)r_343(D) + 36B] = c1_576;
+  _255 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _256 = (long long unsigned int) _255;
+  _702 = (unsigned int) _256;
+  _701 = (unsigned int) _256;
+  _700 = (long long unsigned int) c2_578;
+  t_583 = WIDEN_MULT_PLUS_EXPR <_702, _701, _700>;
+  _258 = t_583 >> 32;
+  hi_584 = (unsigned int) _258;
+  _827 = hi_584 + _829;
+  c3_585 = _827 + _828;
+  _259 = hi_584 > c3_585;
+  _260 = (unsigned int) _259;
+  _261 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _262 = (long long unsigned int) _261;
+  _263 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _264 = (long long unsigned int) _263;
+  _699 = (unsigned int) _262;
+  _698 = (unsigned int) _264;
+  t_586 = _699 w* _698;
+  _673 = t_583 & 4294967295;
+  tt_587 = t_586 + _673;
+  _265 = tt_587 >> 32;
+  hi_588 = (unsigned int) _265;
+  _697 = .ADD_OVERFLOW (c3_585, hi_588);
+  c3_589 = REALPART_EXPR <_697>;
+  _696 = IMAGPART_EXPR <_697>;
+  _266 = _696 != 0;
+  _267 = (unsigned int) _266;
+  _835 = _260 + _267;
+  _674 = tt_587 & 4294967295;
+  t_591 = t_586 + _674;
+  _268 = t_591 >> 32;
+  hi_592 = (unsigned int) _268;
+  _695 = .ADD_OVERFLOW (c3_589, hi_592);
+  c3_593 = REALPART_EXPR <_695>;
+  _694 = IMAGPART_EXPR <_695>;
+  _269 = _694 != 0;
+  _270 = (unsigned int) _269;
+  _271 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _272 = (long long unsigned int) _271;
+  _273 = MEM[(const unsigned int *)a_337(D) + 12B];
+  _274 = (long long unsigned int) _273;
+  _693 = (unsigned int) _272;
+  _692 = (unsigned int) _274;
+  t_595 = _693 w* _692;
+  _675 = t_591 & 4294967295;
+  tt_596 = t_595 + _675;
+  _275 = tt_596 >> 32;
+  hi_597 = (unsigned int) _275;
+  _691 = .ADD_OVERFLOW (c3_593, hi_597);
+  c3_598 = REALPART_EXPR <_691>;
+  _654 = IMAGPART_EXPR <_691>;
+  _276 = _654 != 0;
+  _277 = (unsigned int) _276;
+  _834 = _270 + _277;
+  _676 = tt_596 & 4294967295;
+  t_600 = t_595 + _676;
+  c2_601 = (unsigned int) t_600;
+  _278 = t_600 >> 32;
+  hi_602 = (unsigned int) _278;
+  _627 = .ADD_OVERFLOW (c3_598, hi_602);
+  c3_603 = REALPART_EXPR <_627>;
+  _582 = IMAGPART_EXPR <_627>;
+  _279 = _582 != 0;
+  _280 = (unsigned int) _279;
+  _833 = _280 + _835;
+  MEM[(unsigned int *)r_343(D) + 40B] = c2_601;
+  _281 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _282 = (long long unsigned int) _281;
+  _283 = MEM[(const unsigned int *)a_337(D) + 16B];
+  _284 = (long long unsigned int) _283;
+  _519 = (unsigned int) _282;
+  _447 = (unsigned int) _284;
+  t_607 = _519 w* _447;
+  _285 = (long long unsigned int) c3_603;
+  tt_608 = _285 + t_607;
+  _286 = tt_608 >> 32;
+  hi_609 = (unsigned int) _286;
+  _832 = hi_609 + _834;
+  c1_610 = _832 + _833;
+  _287 = hi_609 > c1_610;
+  _288 = (unsigned int) _287;
+  _677 = tt_608 & 4294967295;
+  t_611 = t_607 + _677;
+  _289 = t_611 >> 32;
+  hi_612 = (unsigned int) _289;
+  _393 = .ADD_OVERFLOW (c1_610, hi_612);
+  c1_613 = REALPART_EXPR <_393>;
+  _357 = IMAGPART_EXPR <_393>;
+  _290 = _357 != 0;
+  _291 = (unsigned int) _290;
+  _838 = _288 + _291;
+  _292 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _293 = (long long unsigned int) _292;
+  _294 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _295 = (long long unsigned int) _294;
+  _338 = (unsigned int) _293;
+  _841 = (unsigned int) _295;
+  t_615 = _338 w* _841;
+  _678 = t_611 & 4294967295;
+  tt_616 = t_615 + _678;
+  _296 = tt_616 >> 32;
+  hi_617 = (unsigned int) _296;
+  _842 = .ADD_OVERFLOW (c1_613, hi_617);
+  c1_618 = REALPART_EXPR <_842>;
+  _843 = IMAGPART_EXPR <_842>;
+  _297 = _843 != 0;
+  _298 = (unsigned int) _297;
+  _679 = tt_616 & 4294967295;
+  t_620 = t_615 + _679;
+  c3_621 = (unsigned int) t_620;
+  _299 = t_620 >> 32;
+  hi_622 = (unsigned int) _299;
+  _844 = .ADD_OVERFLOW (c1_618, hi_622);
+  c1_623 = REALPART_EXPR <_844>;
+  _845 = IMAGPART_EXPR <_844>;
+  _300 = _845 != 0;
+  _301 = (unsigned int) _300;
+  _837 = _298 + _301;
+  MEM[(unsigned int *)r_343(D) + 44B] = c3_621;
+  _302 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _303 = (long long unsigned int) _302;
+  _846 = (unsigned int) _303;
+  _847 = (unsigned int) _303;
+  _848 = (long long unsigned int) c1_623;
+  t_628 = WIDEN_MULT_PLUS_EXPR <_846, _847, _848>;
+  _305 = t_628 >> 32;
+  hi_629 = (unsigned int) _305;
+  _836 = hi_629 + _838;
+  c2_630 = _836 + _837;
+  _306 = hi_629 > c2_630;
+  _307 = (unsigned int) _306;
+  _308 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _309 = (long long unsigned int) _308;
+  _310 = MEM[(const unsigned int *)a_337(D) + 20B];
+  _311 = (long long unsigned int) _310;
+  _849 = (unsigned int) _309;
+  _850 = (unsigned int) _311;
+  t_631 = _849 w* _850;
+  _680 = t_628 & 4294967295;
+  tt_632 = t_631 + _680;
+  _312 = tt_632 >> 32;
+  hi_633 = (unsigned int) _312;
+  _851 = .ADD_OVERFLOW (c2_630, hi_633);
+  c2_634 = REALPART_EXPR <_851>;
+  _852 = IMAGPART_EXPR <_851>;
+  _313 = _852 != 0;
+  _314 = (unsigned int) _313;
+  _840 = _307 + _314;
+  _681 = tt_632 & 4294967295;
+  t_636 = t_631 + _681;
+  c1_637 = (unsigned int) t_636;
+  _315 = t_636 >> 32;
+  hi_638 = (unsigned int) _315;
+  _853 = .ADD_OVERFLOW (c2_634, hi_638);
+  c2_639 = REALPART_EXPR <_853>;
+  _854 = IMAGPART_EXPR <_853>;
+  _316 = _854 != 0;
+  _317 = (unsigned int) _316;
+  MEM[(unsigned int *)r_343(D) + 48B] = c1_637;
+  _318 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _319 = (long long unsigned int) _318;
+  _320 = MEM[(const unsigned int *)a_337(D) + 24B];
+  _321 = (long long unsigned int) _320;
+  _855 = (unsigned int) _319;
+  _856 = (unsigned int) _321;
+  t_643 = _855 w* _856;
+  _322 = (long long unsigned int) c2_639;
+  tt_644 = _322 + t_643;
+  _323 = tt_644 >> 32;
+  hi_645 = (unsigned int) _323;
+  _839 = _317 + hi_645;
+  c3_646 = _839 + _840;
+  _324 = hi_645 > c3_646;
+  _325 = (unsigned int) _324;
+  _682 = tt_644 & 4294967295;
+  t_647 = t_643 + _682;
+  c2_648 = (unsigned int) t_647;
+  _326 = t_647 >> 32;
+  hi_649 = (unsigned int) _326;
+  _857 = .ADD_OVERFLOW (c3_646, hi_649);
+  c3_650 = REALPART_EXPR <_857>;
+  _858 = IMAGPART_EXPR <_857>;
+  _327 = _858 != 0;
+  _328 = (unsigned int) _327;
+  c1_651 = _325 + _328;
+  MEM[(unsigned int *)r_343(D) + 52B] = c2_648;
+  _329 = MEM[(const unsigned int *)a_337(D) + 28B];
+  _330 = (long long unsigned int) _329;
+  _859 = (unsigned int) _330;
+  _860 = (unsigned int) _330;
+  _861 = (long long unsigned int) c3_650;
+  t_655 = WIDEN_MULT_PLUS_EXPR <_859, _860, _861>;
+  c3_656 = (unsigned int) t_655;
+  _332 = t_655 >> 32;
+  hi_657 = (unsigned int) _332;
+  c1_658 = c1_651 + hi_657;
+  MEM[(unsigned int *)r_343(D) + 56B] = c3_656;
+  MEM[(unsigned int *)r_343(D) + 60B] = c1_658;
+  return;
+
+}
+
+
+
+;; Function bn_sqr_comba4 (bn_sqr_comba4, funcdef_no=179, decl_uid=11528, cgraph_uid=180, symbol_order=179)
+
+void bn_sqr_comba4 (unsigned int * r, const unsigned int * a)
+{
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int t;
+  unsigned int hi;
+  long long unsigned int tt;
+  long long unsigned int t;
+  unsigned int hi;
+  unsigned int c3;
+  unsigned int c2;
+  unsigned int c1;
+  unsigned int _1;
+  long long unsigned int _2;
+  long long unsigned int _3;
+  long long unsigned int _4;
+  unsigned int _5;
+  long long unsigned int _6;
+  unsigned int _7;
+  long long unsigned int _8;
+  long long unsigned int _9;
+  long long unsigned int _10;
+  _Bool _11;
+  unsigned int _12;
+  unsigned int _13;
+  long long unsigned int _14;
+  long long unsigned int _16;
+  _Bool _17;
+  unsigned int _18;
+  unsigned int _19;
+  long long unsigned int _20;
+  unsigned int _21;
+  long long unsigned int _22;
+  long long unsigned int _23;
+  _Bool _24;
+  unsigned int _25;
+  long long unsigned int _26;
+  _Bool _27;
+  unsigned int _28;
+  unsigned int _29;
+  long long unsigned int _30;
+  unsigned int _31;
+  long long unsigned int _32;
+  long long unsigned int _33;
+  long long unsigned int _34;
+  _Bool _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  _Bool _38;
+  unsigned int _39;
+  unsigned int _40;
+  long long unsigned int _41;
+  unsigned int _42;
+  long long unsigned int _43;
+  long long unsigned int _44;
+  _Bool _45;
+  unsigned int _46;
+  long long unsigned int _47;
+  _Bool _48;
+  unsigned int _49;
+  unsigned int _50;
+  long long unsigned int _51;
+  long long unsigned int _53;
+  _Bool _54;
+  unsigned int _55;
+  unsigned int _56;
+  long long unsigned int _57;
+  unsigned int _58;
+  long long unsigned int _59;
+  long long unsigned int _60;
+  _Bool _61;
+  unsigned int _62;
+  long long unsigned int _63;
+  _Bool _64;
+  unsigned int _65;
+  unsigned int _66;
+  long long unsigned int _67;
+  unsigned int _68;
+  long long unsigned int _69;
+  long long unsigned int _70;
+  long long unsigned int _71;
+  _Bool _72;
+  unsigned int _73;
+  long long unsigned int _74;
+  _Bool _75;
+  unsigned int _76;
+  unsigned int _77;
+  long long unsigned int _78;
+  long long unsigned int _80;
+  long long unsigned int _81;
+  long long unsigned int _82;
+  unsigned int _85;
+  long long unsigned int _87;
+  long long unsigned int _98;
+  __complex__ unsigned int _99;
+  unsigned int _107;
+  unsigned int _112;
+  long long unsigned int _114;
+  unsigned int _122;
+  unsigned int _127;
+  __complex__ unsigned int _132;
+  long long unsigned int _134;
+  unsigned int _135;
+  unsigned int _143;
+  unsigned int _148;
+  long long unsigned int _150;
+  long long unsigned int _161;
+  __complex__ unsigned int _162;
+  long long unsigned int powmult_172;
+  unsigned int _173;
+  unsigned int _174;
+  long long unsigned int _175;
+  unsigned int _176;
+  unsigned int _177;
+  unsigned int _178;
+  __complex__ unsigned int _179;
+  unsigned int _180;
+  __complex__ unsigned int _181;
+  unsigned int _182;
+  unsigned int _183;
+  unsigned int _184;
+  __complex__ unsigned int _185;
+  unsigned int _186;
+  unsigned int _187;
+  unsigned int _188;
+  __complex__ unsigned int _189;
+  unsigned int _190;
+  __complex__ unsigned int _191;
+  unsigned int _192;
+  unsigned int _193;
+  unsigned int _194;
+  __complex__ unsigned int _195;
+  long long unsigned int _196;
+  unsigned int _197;
+  unsigned int _198;
+  unsigned int _199;
+  unsigned int _200;
+  unsigned int _201;
+  unsigned int _202;
+  unsigned int _203;
+  unsigned int _204;
+  unsigned int _205;
+  unsigned int _206;
+  __complex__ unsigned int _207;
+  unsigned int _208;
+  unsigned int _209;
+  unsigned int _210;
+  long long unsigned int _211;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = *a_84(D);
+  _2 = (long long unsigned int) _1;
+  _107 = (unsigned int) _2;
+  _112 = (unsigned int) _2;
+  powmult_172 = _107 w* _112;
+  c1_86 = (unsigned int) powmult_172;
+  _3 = powmult_172 >> 32;
+  *r_88(D) = c1_86;
+  _5 = MEM[(const unsigned int *)a_84(D) + 4B];
+  _6 = (long long unsigned int) _5;
+  _7 = *a_84(D);
+  _8 = (long long unsigned int) _7;
+  _122 = (unsigned int) _6;
+  _127 = (unsigned int) _8;
+  t_90 = _122 w* _127;
+  tt_91 = _3 + t_90;
+  _9 = tt_91 >> 32;
+  hi_92 = (unsigned int) _9;
+  _161 = tt_91 & 4294967295;
+  t_93 = t_90 + _161;
+  c2_94 = (unsigned int) t_93;
+  _10 = t_93 >> 32;
+  hi_95 = (unsigned int) _10;
+  _132 = .ADD_OVERFLOW (hi_92, hi_95);
+  c3_96 = REALPART_EXPR <_132>;
+  _143 = IMAGPART_EXPR <_132>;
+  _11 = _143 != 0;
+  _12 = (unsigned int) _11;
+  MEM[(unsigned int *)r_88(D) + 4B] = c2_94;
+  _13 = MEM[(const unsigned int *)a_84(D) + 4B];
+  _14 = (long long unsigned int) _13;
+  _148 = (unsigned int) _14;
+  _197 = (unsigned int) _14;
+  _196 = (long long unsigned int) c3_96;
+  t_100 = WIDEN_MULT_PLUS_EXPR <_148, _197, _196>;
+  _16 = t_100 >> 32;
+  hi_101 = (unsigned int) _16;
+  _195 = .ADD_OVERFLOW (_12, hi_101);
+  c1_102 = REALPART_EXPR <_195>;
+  _194 = IMAGPART_EXPR <_195>;
+  _17 = _194 != 0;
+  _18 = (unsigned int) _17;
+  _19 = MEM[(const unsigned int *)a_84(D) + 8B];
+  _20 = (long long unsigned int) _19;
+  _21 = *a_84(D);
+  _22 = (long long unsigned int) _21;
+  _193 = (unsigned int) _20;
+  _192 = (unsigned int) _22;
+  t_103 = _193 w* _192;
+  _150 = t_100 & 4294967295;
+  tt_104 = t_103 + _150;
+  _23 = tt_104 >> 32;
+  hi_105 = (unsigned int) _23;
+  _191 = .ADD_OVERFLOW (c1_102, hi_105);
+  c1_106 = REALPART_EXPR <_191>;
+  _190 = IMAGPART_EXPR <_191>;
+  _24 = _190 != 0;
+  _25 = (unsigned int) _24;
+  _199 = _18 + _25;
+  _134 = tt_104 & 4294967295;
+  t_108 = t_103 + _134;
+  c3_109 = (unsigned int) t_108;
+  _26 = t_108 >> 32;
+  hi_110 = (unsigned int) _26;
+  _189 = .ADD_OVERFLOW (c1_106, hi_110);
+  c1_111 = REALPART_EXPR <_189>;
+  _188 = IMAGPART_EXPR <_189>;
+  _27 = _188 != 0;
+  _28 = (unsigned int) _27;
+  MEM[(unsigned int *)r_88(D) + 8B] = c3_109;
+  _29 = MEM[(const unsigned int *)a_84(D) + 12B];
+  _30 = (long long unsigned int) _29;
+  _31 = *a_84(D);
+  _32 = (long long unsigned int) _31;
+  _187 = (unsigned int) _30;
+  _186 = (unsigned int) _32;
+  t_115 = _187 w* _186;
+  _33 = (long long unsigned int) c1_111;
+  tt_116 = _33 + t_115;
+  _34 = tt_116 >> 32;
+  hi_117 = (unsigned int) _34;
+  _198 = _28 + hi_117;
+  c2_118 = _198 + _199;
+  _35 = hi_117 > c2_118;
+  _36 = (unsigned int) _35;
+  _114 = tt_116 & 4294967295;
+  t_119 = _114 + t_115;
+  _37 = t_119 >> 32;
+  hi_120 = (unsigned int) _37;
+  _185 = .ADD_OVERFLOW (c2_118, hi_120);
+  c2_121 = REALPART_EXPR <_185>;
+  _184 = IMAGPART_EXPR <_185>;
+  _38 = _184 != 0;
+  _39 = (unsigned int) _38;
+  _202 = _36 + _39;
+  _40 = MEM[(const unsigned int *)a_84(D) + 8B];
+  _41 = (long long unsigned int) _40;
+  _42 = MEM[(const unsigned int *)a_84(D) + 4B];
+  _43 = (long long unsigned int) _42;
+  _183 = (unsigned int) _41;
+  _182 = (unsigned int) _43;
+  t_123 = _183 w* _182;
+  _98 = t_119 & 4294967295;
+  tt_124 = _98 + t_123;
+  _44 = tt_124 >> 32;
+  hi_125 = (unsigned int) _44;
+  _181 = .ADD_OVERFLOW (c2_121, hi_125);
+  c2_126 = REALPART_EXPR <_181>;
+  _180 = IMAGPART_EXPR <_181>;
+  _45 = _180 != 0;
+  _46 = (unsigned int) _45;
+  _81 = tt_124 & 4294967295;
+  t_128 = _81 + t_123;
+  c1_129 = (unsigned int) t_128;
+  _47 = t_128 >> 32;
+  hi_130 = (unsigned int) _47;
+  _179 = .ADD_OVERFLOW (c2_126, hi_130);
+  c2_131 = REALPART_EXPR <_179>;
+  _178 = IMAGPART_EXPR <_179>;
+  _48 = _178 != 0;
+  _49 = (unsigned int) _48;
+  _201 = _46 + _49;
+  MEM[(unsigned int *)r_88(D) + 12B] = c1_129;
+  _50 = MEM[(const unsigned int *)a_84(D) + 8B];
+  _51 = (long long unsigned int) _50;
+  _177 = (unsigned int) _51;
+  _176 = (unsigned int) _51;
+  _175 = (long long unsigned int) c2_131;
+  t_136 = WIDEN_MULT_PLUS_EXPR <_177, _176, _175>;
+  _53 = t_136 >> 32;
+  hi_137 = (unsigned int) _53;
+  _200 = hi_137 + _202;
+  c3_138 = _200 + _201;
+  _54 = hi_137 > c3_138;
+  _55 = (unsigned int) _54;
+  _56 = MEM[(const unsigned int *)a_84(D) + 12B];
+  _57 = (long long unsigned int) _56;
+  _58 = MEM[(const unsigned int *)a_84(D) + 4B];
+  _59 = (long long unsigned int) _58;
+  _174 = (unsigned int) _57;
+  _173 = (unsigned int) _59;
+  t_139 = _174 w* _173;
+  _87 = t_136 & 4294967295;
+  tt_140 = _87 + t_139;
+  _60 = tt_140 >> 32;
+  hi_141 = (unsigned int) _60;
+  _162 = .ADD_OVERFLOW (c3_138, hi_141);
+  c3_142 = REALPART_EXPR <_162>;
+  _135 = IMAGPART_EXPR <_162>;
+  _61 = _135 != 0;
+  _62 = (unsigned int) _61;
+  _204 = _55 + _62;
+  _82 = tt_140 & 4294967295;
+  t_144 = _82 + t_139;
+  c2_145 = (unsigned int) t_144;
+  _63 = t_144 >> 32;
+  hi_146 = (unsigned int) _63;
+  _99 = .ADD_OVERFLOW (c3_142, hi_146);
+  c3_147 = REALPART_EXPR <_99>;
+  _85 = IMAGPART_EXPR <_99>;
+  _64 = _85 != 0;
+  _65 = (unsigned int) _64;
+  MEM[(unsigned int *)r_88(D) + 16B] = c2_145;
+  _66 = MEM[(const unsigned int *)a_84(D) + 12B];
+  _67 = (long long unsigned int) _66;
+  _68 = MEM[(const unsigned int *)a_84(D) + 8B];
+  _69 = (long long unsigned int) _68;
+  _205 = (unsigned int) _67;
+  _206 = (unsigned int) _69;
+  t_151 = _205 w* _206;
+  _70 = (long long unsigned int) c3_147;
+  tt_152 = _70 + t_151;
+  _71 = tt_152 >> 32;
+  hi_153 = (unsigned int) _71;
+  _203 = _65 + hi_153;
+  c1_154 = _203 + _204;
+  _72 = hi_153 > c1_154;
+  _73 = (unsigned int) _72;
+  _4 = tt_152 & 4294967295;
+  t_155 = _4 + t_151;
+  c3_156 = (unsigned int) t_155;
+  _74 = t_155 >> 32;
+  hi_157 = (unsigned int) _74;
+  _207 = .ADD_OVERFLOW (c1_154, hi_157);
+  c1_158 = REALPART_EXPR <_207>;
+  _208 = IMAGPART_EXPR <_207>;
+  _75 = _208 != 0;
+  _76 = (unsigned int) _75;
+  c2_159 = _73 + _76;
+  MEM[(unsigned int *)r_88(D) + 20B] = c3_156;
+  _77 = MEM[(const unsigned int *)a_84(D) + 12B];
+  _78 = (long long unsigned int) _77;
+  _209 = (unsigned int) _78;
+  _210 = (unsigned int) _78;
+  _211 = (long long unsigned int) c1_158;
+  t_163 = WIDEN_MULT_PLUS_EXPR <_209, _210, _211>;
+  c1_164 = (unsigned int) t_163;
+  _80 = t_163 >> 32;
+  hi_165 = (unsigned int) _80;
+  c2_166 = c2_159 + hi_165;
+  MEM[(unsigned int *)r_88(D) + 24B] = c1_164;
+  MEM[(unsigned int *)r_88(D) + 28B] = c2_166;
+  return;
+
+}
+
+
+
+;; Function bn_mul_mont (bn_mul_mont, funcdef_no=180, decl_uid=11582, cgraph_uid=181, symbol_order=180)
+
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+int bn_mul_mont (unsigned int * rp, const unsigned int * ap, const unsigned int * bp, const unsigned int * np, const unsigned int * n0p, int num)
+{
+  sizetype ivtmp.240;
+  sizetype ivtmp.229;
+  sizetype ivtmp.219;
+  sizetype ivtmp.215;
+  sizetype ivtmp.208;
+  unsigned long ivtmp.201;
+  long long unsigned int t;
+  long long unsigned int t;
+  long long unsigned int t;
+  int j;
+  int i;
+  unsigned int n0;
+  unsigned int * tp;
+  unsigned int ml;
+  unsigned int c1;
+  unsigned int c0;
+  int _1;
+  long unsigned int _3;
+  unsigned int _5;
+  unsigned int _6;
+  long long unsigned int _7;
+  unsigned int _8;
+  long long unsigned int _9;
+  unsigned int _12;
+  unsigned int _13;
+  long long unsigned int _14;
+  __complex__ unsigned int _15;
+  long unsigned int _16;
+  unsigned int * _17;
+  unsigned int _18;
+  sizetype _19;
+  unsigned int * _20;
+  unsigned long _21;
+  unsigned int _22;
+  unsigned int _23;
+  long long unsigned int _25;
+  unsigned int _28;
+  long long unsigned int _29;
+  unsigned int _32;
+  long long unsigned int _35;
+  unsigned int _36;
+  long long unsigned int _37;
+  unsigned int _38;
+  _Bool _39;
+  unsigned int _40;
+  unsigned int _41;
+  long long unsigned int _42;
+  long long unsigned int _43;
+  long long unsigned int _46;
+  long long unsigned int _47;
+  unsigned int _52;
+  long long unsigned int _53;
+  long long unsigned int _57;
+  long long unsigned int _58;
+  unsigned int _61;
+  unsigned int _64;
+  unsigned int _65;
+  unsigned int _66;
+  unsigned int _67;
+  const unsigned int * _68;
+  unsigned int _69;
+  volatile unsigned int * _72;
+  unsigned int * _76;
+  unsigned int _78;
+  __complex__ unsigned int _79;
+  _Bool _81;
+  unsigned int _84;
+  unsigned int _85;
+  unsigned int _87;
+  unsigned int _90;
+  unsigned long _91;
+  unsigned int _94;
+  unsigned int _118;
+  _Bool _145;
+  unsigned int _172;
+  long long unsigned int _181;
+  unsigned int _227;
+  unsigned int _228;
+  long long unsigned int _229;
+  unsigned int _230;
+  long long unsigned int _231;
+  long long unsigned int _232;
+  unsigned long _233;
+  unsigned long _236;
+  unsigned long _237;
+  long long unsigned int _242;
+  long long unsigned int _243;
+  __complex__ unsigned int _244;
+  sizetype _247;
+  unsigned int * _248;
+  unsigned int * _249;
+  unsigned int _251;
+  unsigned int _256;
+  sizetype _257;
+  unsigned int _268;
+  long long unsigned int _269;
+  long long unsigned int _270;
+  long long unsigned int _271;
+  long long unsigned int _272;
+  long long unsigned int _273;
+  const unsigned int * _274;
+  unsigned int _275;
+  unsigned int _276;
+  unsigned int _277;
+
+  <bb 2> [local count: 12992276]:
+  _1 = num_97(D) + 2;
+  _3 = _1 w* 4;
+  tp_100 = __builtin_alloca (_3);
+  n0_102 = *n0p_101(D);
+  ml_104 = *bp_103(D);
+  if (num_97(D) > 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 3> [local count: 11563126]:
+  _242 = (long long unsigned int) ml_104;
+  _257 = _3 + 18446744073709551608;
+
+  <bb 4> [local count: 105119324]:
+  # c0_162 = PHI <c0_143(4), 0(3)>
+  # ivtmp.240_254 = PHI <ivtmp.240_255(4), 0(3)>
+  _8 = MEM[(const unsigned int *)ap_130(D) + ivtmp.240_254 * 1];
+  _9 = (long long unsigned int) _8;
+  _85 = (unsigned int) _9;
+  _275 = (unsigned int) _242;
+  _270 = (long long unsigned int) c0_162;
+  t_141 = WIDEN_MULT_PLUS_EXPR <_85, _275, _270>;
+  _13 = (unsigned int) t_141;
+  MEM[(unsigned int *)tp_100 + ivtmp.240_254 * 1] = _13;
+  _14 = t_141 >> 32;
+  c0_143 = (unsigned int) _14;
+  ivtmp.240_255 = ivtmp.240_254 + 4;
+  if (ivtmp.240_255 != _257)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 12992276]:
+  # c0_163 = PHI <c0_143(4), 0(2)>
+  _16 = _3 + 18446744073709551608;
+  _17 = tp_100 + _16;
+  *_17 = c0_163;
+  _19 = _3 + 18446744073709551612;
+  _20 = tp_100 + _19;
+  *_20 = 0;
+  _41 = *np_109(D);
+  _42 = (long long unsigned int) _41;
+  _247 = _3 + 18446744073709551604;
+  _248 = tp_100 + _247;
+  c1_107 = *tp_100;
+  ml_108 = n0_102 * c1_107;
+  _43 = (long long unsigned int) ml_108;
+  _22 = (unsigned int) _42;
+  _23 = (unsigned int) _43;
+  _25 = (long long unsigned int) c1_107;
+  _46 = WIDEN_MULT_PLUS_EXPR <_22, _23, _25>;
+  _47 = _46 >> 32;
+  c0_111 = (unsigned int) _47;
+  if (num_97(D) > 1)
+    goto <bb 9>; [0.00%]
+  else
+    goto <bb 26>; [100.00%]
+
+  <bb 6> [local count: 105119324]:
+  ml_126 = MEM[(const unsigned int *)bp_103(D) + ivtmp.229_170 * 4];
+  _273 = (long long unsigned int) ml_126;
+
+  <bb 7> [local count: 850510900]:
+  # c0_164 = PHI <c0_133(7), 0(6)>
+  # ivtmp.215_240 = PHI <ivtmp.215_241(7), 0(6)>
+  _28 = MEM[(const unsigned int *)ap_130(D) + ivtmp.215_240 * 1];
+  _29 = (long long unsigned int) _28;
+  _230 = (unsigned int) _29;
+  _268 = (unsigned int) _273;
+  _32 = MEM[(unsigned int *)tp_100 + ivtmp.215_240 * 1];
+  _35 = (long long unsigned int) c0_164;
+  _243 = (long long unsigned int) _32;
+  _271 = WIDEN_MULT_PLUS_EXPR <_230, _268, _243>;
+  t_131 = _35 + _271;
+  _36 = (unsigned int) t_131;
+  MEM[(unsigned int *)tp_100 + ivtmp.215_240 * 1] = _36;
+  _37 = t_131 >> 32;
+  c0_133 = (unsigned int) _37;
+  ivtmp.215_241 = ivtmp.215_240 + 4;
+  if (_16 != ivtmp.215_241)
+    goto <bb 7>; [87.64%]
+  else
+    goto <bb 8>; [12.36%]
+
+  <bb 8> [local count: 105119324]:
+  _38 = *_17;
+  _15 = .ADD_OVERFLOW (_38, c0_133);
+  c1_127 = REALPART_EXPR <_15>;
+  _18 = IMAGPART_EXPR <_15>;
+  *_17 = c1_127;
+  _39 = _18 != 0;
+  _40 = (unsigned int) _39;
+  *_20 = _40;
+  ivtmp.229_252 = ivtmp.229_170 + 1;
+  c1_238 = *tp_100;
+  ml_239 = n0_102 * c1_238;
+  _231 = (long long unsigned int) ml_239;
+  _118 = (unsigned int) _42;
+  _228 = (unsigned int) _231;
+  _229 = (long long unsigned int) c1_238;
+  _232 = WIDEN_MULT_PLUS_EXPR <_118, _228, _229>;
+  _272 = _232 >> 32;
+  c0_267 = (unsigned int) _272;
+
+  <bb 9> [local count: 105119324]:
+  # _269 = PHI <_43(5), _231(8)>
+  # c0_169 = PHI <c0_111(5), c0_267(8)>
+  # ivtmp.229_170 = PHI <1(5), ivtmp.229_252(8)>
+
+  <bb 10> [local count: 955630224]:
+  # c0_166 = PHI <c0_138(10), c0_169(9)>
+  # ivtmp.219_245 = PHI <ivtmp.219_246(10), 1(9)>
+  c1_135 = MEM[(unsigned int *)tp_100 + ivtmp.219_245 * 4];
+  _52 = MEM[(const unsigned int *)np_109(D) + ivtmp.219_245 * 4];
+  _53 = (long long unsigned int) _52;
+  _5 = (unsigned int) _53;
+  _6 = (unsigned int) _269;
+  _57 = (long long unsigned int) c0_166;
+  _7 = (long long unsigned int) c1_135;
+  _181 = WIDEN_MULT_PLUS_EXPR <_5, _6, _7>;
+  t_136 = _57 + _181;
+  c1_137 = (unsigned int) t_136;
+  _58 = t_136 >> 32;
+  c0_138 = (unsigned int) _58;
+  _249 = tp_100 + 18446744073709551612;
+  MEM[(unsigned int *)_249 + ivtmp.219_245 * 4] = c1_137;
+  ivtmp.219_246 = ivtmp.219_245 + 1;
+  j_250 = (int) ivtmp.219_246;
+  if (num_97(D) > j_250)
+    goto <bb 10>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 105119324]:
+  _61 = *_17;
+  _79 = .ADD_OVERFLOW (_61, c0_138);
+  c1_112 = REALPART_EXPR <_79>;
+  _172 = IMAGPART_EXPR <_79>;
+  *_248 = c1_112;
+  _64 = *_20;
+  _145 = _172 != 0;
+  _65 = (unsigned int) _145;
+  _66 = _64 + _65;
+  *_17 = _66;
+  i_253 = (int) ivtmp.229_170;
+  if (num_97(D) > i_253)
+    goto <bb 6>; [100.00%]
+  else
+    goto <bb 12>; [0.00%]
+
+  <bb 12> [local count: 0]:
+  if (_66 != 0)
+    goto <bb 15>; [33.00%]
+  else
+    goto <bb 13>; [67.00%]
+
+  <bb 13> [local count: 0]:
+  _276 = *_248;
+  _274 = np_109(D) + _247;
+  _277 = *_274;
+  if (_276 >= _277)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 21>; [50.00%]
+
+  <bb 14> [local count: 8704825]:
+  _67 = *_248;
+  _68 = np_109(D) + _247;
+  _69 = *_68;
+  if (_67 >= _69)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 24>; [50.00%]
+
+  <bb 15> [local count: 4287451]:
+  bn_sub_words (rp_116(D), tp_100, np_109(D), num_97(D));
+  goto <bb 20>; [100.00%]
+
+  <bb 16> [local count: 5702310]:
+  c0_149 = bn_sub_words (rp_116(D), tp_100, np_109(D), num_97(D));
+  if (c0_149 == 0)
+    goto <bb 20>; [34.00%]
+  else
+    goto <bb 24>; [66.00%]
+
+  <bb 17> [local count: 5541350]:
+  ivtmp.201_226 = (unsigned long) tp_100;
+  _227 = (unsigned int) num_97(D);
+  _251 = _227 + 2;
+  _91 = (unsigned long) _251;
+  _12 = (unsigned int) _91;
+  _21 = (unsigned long) tp_100;
+  _233 = WIDEN_MULT_PLUS_EXPR <_12, 4, _21>;
+
+  <bb 18> [local count: 39454016]:
+  # ivtmp.201_224 = PHI <ivtmp.201_225(18), ivtmp.201_226(17)>
+  _72 = (volatile unsigned int *) ivtmp.201_224;
+  *_72 ={v} 0;
+  ivtmp.201_225 = ivtmp.201_224 + 4;
+  if (ivtmp.201_225 != _233)
+    goto <bb 18>; [89.00%]
+  else
+    goto <bb 19>; [11.00%]
+
+  <bb 19> [local count: 5024828]:
+  goto <bb 25>; [100.00%]
+
+  <bb 20> [local count: 6226236]:
+  if (num_97(D) >= -1)
+    goto <bb 17>; [89.00%]
+  else
+    goto <bb 19>; [11.00%]
+
+  <bb 21> [local count: 7223185]:
+
+  <bb 22> [local count: 65665308]:
+  # ivtmp.208_234 = PHI <ivtmp.208_235(22), 0(21)>
+  _236 = (unsigned long) tp_100;
+  _237 = ivtmp.208_234 + _236;
+  _76 = (unsigned int *) _237;
+  _78 = MEM[(unsigned int *)tp_100 + ivtmp.208_234 * 1];
+  MEM[(unsigned int *)rp_116(D) + ivtmp.208_234 * 1] = _78;
+  MEM[(volatile unsigned int *)_76] ={v} 0;
+  ivtmp.208_235 = ivtmp.208_234 + 4;
+  if (_16 != ivtmp.208_235)
+    goto <bb 22>; [89.00%]
+  else
+    goto <bb 23>; [11.00%]
+
+  <bb 23> [local count: 8115937]:
+  MEM[(volatile unsigned int *)_17] ={v} 0;
+  MEM[(volatile unsigned int *)_20] ={v} 0;
+  goto <bb 25>; [100.00%]
+
+  <bb 24> [local count: 8115938]:
+  if (num_97(D) > 0)
+    goto <bb 21>; [89.00%]
+  else
+    goto <bb 23>; [11.00%]
+
+  <bb 25> [local count: 12992276]:
+  return 1;
+
+  <bb 26> [local count: 12992276]:
+  _84 = *_17;
+  _244 = .ADD_OVERFLOW (_84, c0_111);
+  c1_150 = REALPART_EXPR <_244>;
+  _256 = IMAGPART_EXPR <_244>;
+  *_248 = c1_150;
+  _87 = *_20;
+  _81 = _256 != 0;
+  _94 = (unsigned int) _81;
+  _90 = _87 + _94;
+  *_17 = _90;
+  if (_90 != 0)
+    goto <bb 15>; [33.00%]
+  else
+    goto <bb 14>; [67.00%]
+
+}
+
+

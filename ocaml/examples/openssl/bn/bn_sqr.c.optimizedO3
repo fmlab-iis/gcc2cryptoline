@@ -1,0 +1,635 @@
+
+;; Function bn_sqr_normal (bn_sqr_normal, funcdef_no=172, decl_uid=11517, cgraph_uid=173, symbol_order=172)
+
+Removing basic block 7
+Removing basic block 8
+Removing basic block 9
+Removing basic block 10
+void bn_sqr_normal (unsigned int * r, const unsigned int * a, int n, unsigned int * tmp)
+{
+  unsigned long ivtmp.27;
+  unsigned int * rp;
+  const unsigned int * ap;
+  int max;
+  int j;
+  int i;
+  sizetype _3;
+  unsigned int * _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  unsigned int * _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _14;
+  void * _16;
+  unsigned int * _18;
+  sizetype _19;
+  unsigned int _20;
+
+  <bb 2> [local count: 118111600]:
+  max_24 = n_23(D) * 2;
+  _3 = WIDEN_MULT_PLUS_EXPR <max_24, 4, 18446744073709551612>;
+  _4 = r_26(D) + _3;
+  *_4 = 0;
+  *r_26(D) = 0;
+  j_31 = n_23(D) + -1;
+  if (j_31 > 0)
+    goto <bb 3>; [41.48%]
+  else
+    goto <bb 6>; [58.52%]
+
+  <bb 3> [local count: 48992692]:
+  rp_30 = r_26(D) + 4;
+  ap_32 = a_25(D) + 4;
+  _5 = *a_25(D);
+  _6 = (long unsigned int) j_31;
+  _20 = (unsigned int) _6;
+  _7 = _20 w* 4;
+  _8 = rp_30 + _7;
+  _9 = bn_mul_words (rp_30, ap_32, j_31, _5);
+  *_8 = _9;
+  rp_35 = r_26(D) + 12;
+  i_36 = n_23(D) + -2;
+  if (i_36 != 0)
+    goto <bb 4>; [97.00%]
+  else
+    goto <bb 6>; [3.00%]
+
+  <bb 4> [local count: 47524246]:
+  _19 = _7 + 8;
+  _18 = r_26(D) + _19;
+  ivtmp.27_47 = (unsigned long) _18;
+
+  <bb 5> [local count: 955630224]:
+  # i_52 = PHI <i_46(5), i_36(4)>
+  # ap_54 = PHI <ap_42(5), ap_32(4)>
+  # rp_55 = PHI <rp_45(5), rp_35(4)>
+  # ivtmp.27_51 = PHI <ivtmp.27_48(5), ivtmp.27_47(4)>
+  ap_42 = ap_54 + 4;
+  _10 = MEM[(const unsigned int *)ap_42 + -4B];
+  _14 = bn_mul_add_words (rp_55, ap_42, i_52, _10);
+  _16 = (void *) ivtmp.27_51;
+  MEM[(unsigned int *)_16] = _14;
+  rp_45 = rp_55 + 8;
+  i_46 = i_52 + -1;
+  ivtmp.27_48 = ivtmp.27_51 + 4;
+  if (i_46 != 0)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 6> [local count: 175706678]:
+  bn_add_words (r_26(D), r_26(D), r_26(D), max_24);
+  bn_sqr_words (tmp_38(D), a_25(D), n_23(D));
+  bn_add_words (r_26(D), r_26(D), tmp_38(D), max_24); [tail call]
+  return;
+
+}
+
+
+
+;; Function bn_sqr_recursive (bn_sqr_recursive, funcdef_no=173, decl_uid=11553, cgraph_uid=174, symbol_order=173)
+
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+void bn_sqr_recursive (unsigned int * r, const unsigned int * a, int n2, unsigned int * t)
+{
+  unsigned int * p;
+  unsigned int lo;
+  unsigned int ln;
+  int c1;
+  int n;
+  long unsigned int _1;
+  long unsigned int _2;
+  const unsigned int * _3;
+  unsigned int * _17;
+  unsigned int _18;
+  unsigned int _20;
+  unsigned int * _21;
+  unsigned int _22;
+  int _23;
+  long unsigned int _24;
+  long unsigned int _25;
+  unsigned int c1.2_26;
+  int _51;
+  int _54;
+  unsigned int _74;
+  unsigned int _79;
+  long unsigned int _87;
+  long unsigned int _88;
+  unsigned int * _89;
+  unsigned int _90;
+  __complex__ unsigned int _91;
+  unsigned int _92;
+  unsigned int * _93;
+
+  <bb 2> [local count: 915189734]:
+  if (n2_33(D) == 4)
+    goto <bb 3>; [11.56%]
+  else
+    goto <bb 4>; [88.44%]
+
+  <bb 3> [local count: 105795931]:
+  bn_sqr_comba4 (r_45(D), a_35(D)); [tail call]
+  goto <bb 18>; [100.00%]
+
+  <bb 4> [local count: 809393803]:
+  if (n2_33(D) == 8)
+    goto <bb 5>; [11.56%]
+  else
+    goto <bb 6>; [88.44%]
+
+  <bb 5> [local count: 93565922]:
+  bn_sqr_comba8 (r_45(D), a_35(D)); [tail call]
+  goto <bb 18>; [100.00%]
+
+  <bb 6> [local count: 715827882]:
+  if (n2_33(D) <= 15)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 7> [local count: 243381482]:
+  bn_sqr_normal (r_45(D), a_35(D), n2_33(D), t_39(D)); [tail call]
+  goto <bb 18>; [100.00%]
+
+  <bb 8> [local count: 472446400]:
+  n_34 = n2_33(D) >> 1;
+  _1 = (long unsigned int) n_34;
+  _79 = (unsigned int) _1;
+  _2 = _79 w* 4;
+  _3 = a_35(D) + _2;
+  c1_38 = bn_cmp_words (a_35(D), _3, n_34);
+  _87 = (long unsigned int) n2_33(D);
+  _74 = (unsigned int) _87;
+  _88 = _74 w* 4;
+  _89 = t_39(D) + _88;
+  _93 = _89 + _88;
+  if (c1_38 > 0)
+    goto <bb 9>; [41.48%]
+  else
+    goto <bb 10>; [58.52%]
+
+  <bb 9> [local count: 195970768]:
+  bn_sub_words (t_39(D), a_35(D), _3, n_34);
+  goto <bb 13>; [100.00%]
+
+  <bb 10> [local count: 276475632]:
+  if (c1_38 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 12>; [67.00%]
+
+  <bb 11> [local count: 91236958]:
+  bn_sub_words (t_39(D), _3, a_35(D), n_34);
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 236223200]:
+  __builtin_memset (_89, 0, _88);
+  goto <bb 14>; [100.00%]
+
+  <bb 13> [local count: 236223200]:
+  bn_sqr_recursive (_89, t_39(D), n_34, _93);
+
+  <bb 14> [local count: 472446400]:
+  bn_sqr_recursive (r_45(D), a_35(D), n_34, _93);
+  _17 = r_45(D) + _88;
+  bn_sqr_recursive (_17, _3, n_34, _93);
+  _18 = bn_add_words (t_39(D), r_45(D), _17, n2_33(D));
+  c1_49 = (int) _18;
+  _20 = bn_sub_words (_89, t_39(D), _89, n2_33(D));
+  _51 = (int) _20;
+  c1_52 = c1_49 - _51;
+  _21 = r_45(D) + _2;
+  _22 = bn_add_words (_21, _21, _89, n2_33(D));
+  _54 = (int) _22;
+  c1_55 = c1_52 + _54;
+  if (c1_55 != 0)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 15> [local count: 472446400]:
+  goto <bb 18>; [100.00%]
+
+  <bb 16> [local count: 236223200]:
+  _23 = n2_33(D) + n_34;
+  _24 = (long unsigned int) _23;
+  _90 = (unsigned int) _24;
+  _25 = _90 w* 4;
+  p_56 = r_45(D) + _25;
+  lo_57 = *p_56;
+  c1.2_26 = (unsigned int) c1_55;
+  _91 = .ADD_OVERFLOW (c1.2_26, lo_57);
+  ln_58 = REALPART_EXPR <_91>;
+  _92 = IMAGPART_EXPR <_91>;
+  *p_56 = ln_58;
+  if (_92 != 0)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 17> [local count: 1073741824]:
+  # p_28 = PHI <p_56(16), p_60(17)>
+  p_60 = p_28 + 4;
+  lo_61 = MEM[(unsigned int *)p_60];
+  ln_62 = lo_61 + 1;
+  MEM[(unsigned int *)p_60] = ln_62;
+  if (ln_62 == 0)
+    goto <bb 17>; [89.00%]
+  else
+    goto <bb 15>; [11.00%]
+
+  <bb 18> [local count: 915189736]:
+  return;
+
+}
+
+
+
+;; Function bn_sqr_fixed_top (bn_sqr_fixed_top, funcdef_no=171, decl_uid=11339, cgraph_uid=172, symbol_order=171)
+
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+int bn_sqr_fixed_top (struct BIGNUM * r, const struct BIGNUM * a, struct BN_CTX * ctx)
+{
+  int k;
+  int j;
+  unsigned int t[32];
+  struct BIGNUM * tmp;
+  int ret;
+  int al;
+  int max;
+  _Bool _1;
+  _Bool _2;
+  _Bool _3;
+  struct BIGNUM * _4;
+  unsigned int * _5;
+  unsigned int * _6;
+  unsigned int * _7;
+  unsigned int * _8;
+  unsigned int * _9;
+  unsigned int * _10;
+  unsigned int al.1_11;
+  int _12;
+  int _13;
+  struct BIGNUM * _14;
+  unsigned int * _15;
+  unsigned int * _16;
+  unsigned int * _17;
+  struct BIGNUM * _18;
+  unsigned int * _19;
+  unsigned int * _20;
+  unsigned int * _21;
+  struct BIGNUM * _23;
+  int _25;
+  struct BIGNUM * iftmp.0_26;
+  _Bool _29;
+  struct BIGNUM * iftmp.0_39;
+  int _62;
+
+  <bb 2> [local count: 1073741822]:
+  al_34 = a_33(D)->top;
+  if (al_34 <= 0)
+    goto <bb 3>; [42.09%]
+  else
+    goto <bb 4>; [57.91%]
+
+  <bb 3> [local count: 451937935]:
+  r_37(D)->top = 0;
+  r_37(D)->neg = 0;
+  goto <bb 23>; [100.00%]
+
+  <bb 4> [local count: 621803887]:
+  BN_CTX_start (ctx_35(D));
+  if (a_33(D) == r_37(D))
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 108380418]:
+  iftmp.0_39 = BN_CTX_get (ctx_35(D));
+
+  <bb 6> [local count: 621803888]:
+  # iftmp.0_26 = PHI <iftmp.0_39(5), r_37(D)(4)>
+  tmp_41 = BN_CTX_get (ctx_35(D));
+  _1 = iftmp.0_26 == 0B;
+  _2 = tmp_41 == 0B;
+  _3 = _1 | _2;
+  if (_3 != 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 8>; [48.88%]
+
+  <bb 7> [local count: 397357313]:
+  goto <bb 22>; [100.00%]
+
+  <bb 8> [local count: 303937739]:
+  max_42 = al_34 * 2;
+  _4 = bn_wexpand (iftmp.0_26, max_42);
+  if (_4 == 0B)
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 9>; [81.91%]
+
+  <bb 9> [local count: 248955402]:
+  if (al_34 == 4)
+    goto <bb 10>; [20.24%]
+  else
+    goto <bb 11>; [79.76%]
+
+  <bb 10> [local count: 50388573]:
+  _5 = iftmp.0_26->d;
+  _6 = a_33(D)->d;
+  bn_sqr_comba4 (_5, _6);
+  goto <bb 20>; [100.00%]
+
+  <bb 11> [local count: 198566829]:
+  if (al_34 == 8)
+    goto <bb 12>; [20.24%]
+  else
+    goto <bb 13>; [79.76%]
+
+  <bb 12> [local count: 40189926]:
+  _7 = iftmp.0_26->d;
+  _8 = a_33(D)->d;
+  bn_sqr_comba8 (_7, _8);
+  goto <bb 20>; [100.00%]
+
+  <bb 13> [local count: 158376903]:
+  if (al_34 <= 15)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 79188451]:
+  _9 = iftmp.0_26->d;
+  _10 = a_33(D)->d;
+  bn_sqr_normal (_9, _10, al_34, &t);
+  t ={v} {CLOBBER(eos)};
+  goto <bb 20>; [100.00%]
+
+  <bb 15> [local count: 79188451]:
+  al.1_11 = (unsigned int) al_34;
+  j_45 = BN_num_bits_word (al.1_11);
+  _12 = j_45 + -1;
+  j_46 = 1 << _12;
+  if (al_34 == j_46)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 18>; [66.00%]
+
+  <bb 16> [local count: 26924074]:
+  k_47 = 2 << _12;
+  _13 = k_47 * 2;
+  _14 = bn_wexpand (tmp_41, _13);
+  if (_14 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 17>; [69.05%]
+
+  <bb 17> [local count: 18591073]:
+  _15 = iftmp.0_26->d;
+  _16 = a_33(D)->d;
+  _17 = tmp_41->d;
+  bn_sqr_recursive (_15, _16, al_34, _17);
+  goto <bb 20>; [100.00%]
+
+  <bb 18> [local count: 52264378]:
+  _18 = bn_wexpand (tmp_41, max_42);
+  if (_18 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 19>; [69.05%]
+
+  <bb 19> [local count: 36088553]:
+  _19 = iftmp.0_26->d;
+  _20 = a_33(D)->d;
+  _21 = tmp_41->d;
+  bn_sqr_normal (_19, _20, al_34, _21);
+
+  <bb 20> [local count: 224446576]:
+  iftmp.0_26->neg = 0;
+  iftmp.0_26->top = max_42;
+  if (iftmp.0_26 != r_37(D))
+    goto <bb 21>; [53.47%]
+  else
+    goto <bb 22>; [46.53%]
+
+  <bb 21> [local count: 120011584]:
+  _23 = BN_copy (r_37(D), iftmp.0_26);
+  _29 = _23 != 0B;
+  _62 = (int) _29;
+
+  <bb 22> [local count: 621803889]:
+  # ret_24 = PHI <0(7), 1(20), _62(21)>
+err:
+  BN_CTX_end (ctx_35(D));
+
+  <bb 23> [local count: 1073741824]:
+  # _25 = PHI <1(3), ret_24(22)>
+  return _25;
+
+}
+
+
+
+;; Function BN_sqr (BN_sqr, funcdef_no=170, decl_uid=8695, cgraph_uid=171, symbol_order=170)
+
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+int BN_sqr (struct BIGNUM * r, const struct BIGNUM * a, struct BN_CTX * ctx)
+{
+  int k;
+  int j;
+  unsigned int t[32];
+  struct BIGNUM * tmp;
+  int ret;
+  int al;
+  int max;
+  struct BIGNUM * iftmp.0_9;
+  struct BIGNUM * iftmp.0_11;
+  _Bool _12;
+  _Bool _13;
+  _Bool _14;
+  struct BIGNUM * _16;
+  unsigned int * _17;
+  unsigned int * _18;
+  unsigned int * _19;
+  unsigned int * _20;
+  unsigned int * _21;
+  unsigned int * _22;
+  unsigned int al.1_23;
+  int _25;
+  int _28;
+  struct BIGNUM * _29;
+  unsigned int * _30;
+  unsigned int * _31;
+  unsigned int * _32;
+  struct BIGNUM * _33;
+  unsigned int * _34;
+  unsigned int * _35;
+  unsigned int * _36;
+  struct BIGNUM * _37;
+  int _38;
+  _Bool _43;
+  int _65;
+
+  <bb 2> [local count: 1073741824]:
+  al_8 = a_3(D)->top;
+  if (al_8 <= 0)
+    goto <bb 3>; [42.09%]
+  else
+    goto <bb 4>; [57.91%]
+
+  <bb 3> [local count: 451937936]:
+  r_2(D)->top = 0;
+  r_2(D)->neg = 0;
+  goto <bb 23>; [100.00%]
+
+  <bb 4> [local count: 621803888]:
+  BN_CTX_start (ctx_4(D));
+  if (r_2(D) == a_3(D))
+    goto <bb 5>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 5> [local count: 108380418]:
+  iftmp.0_9 = BN_CTX_get (ctx_4(D));
+
+  <bb 6> [local count: 621803889]:
+  # iftmp.0_11 = PHI <r_2(D)(4), iftmp.0_9(5)>
+  tmp_10 = BN_CTX_get (ctx_4(D));
+  _12 = iftmp.0_11 == 0B;
+  _13 = tmp_10 == 0B;
+  _14 = _12 | _13;
+  if (_14 != 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 8>; [48.88%]
+
+  <bb 7> [local count: 397357313]:
+  goto <bb 22>; [100.00%]
+
+  <bb 8> [local count: 303937740]:
+  max_15 = al_8 * 2;
+  _16 = bn_wexpand (iftmp.0_11, max_15);
+  if (_16 == 0B)
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 9>; [81.91%]
+
+  <bb 9> [local count: 248955402]:
+  if (al_8 == 4)
+    goto <bb 10>; [20.24%]
+  else
+    goto <bb 11>; [79.76%]
+
+  <bb 10> [local count: 50388573]:
+  _17 = iftmp.0_11->d;
+  _18 = a_3(D)->d;
+  bn_sqr_comba4 (_17, _18);
+  goto <bb 20>; [100.00%]
+
+  <bb 11> [local count: 198566829]:
+  if (al_8 == 8)
+    goto <bb 12>; [20.24%]
+  else
+    goto <bb 13>; [79.76%]
+
+  <bb 12> [local count: 40189926]:
+  _19 = iftmp.0_11->d;
+  _20 = a_3(D)->d;
+  bn_sqr_comba8 (_19, _20);
+  goto <bb 20>; [100.00%]
+
+  <bb 13> [local count: 158376903]:
+  if (al_8 <= 15)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 79188451]:
+  _21 = iftmp.0_11->d;
+  _22 = a_3(D)->d;
+  bn_sqr_normal (_21, _22, al_8, &t);
+  t ={v} {CLOBBER(eos)};
+  goto <bb 20>; [100.00%]
+
+  <bb 15> [local count: 79188451]:
+  al.1_23 = (unsigned int) al_8;
+  j_24 = BN_num_bits_word (al.1_23);
+  _25 = j_24 + -1;
+  j_26 = 1 << _25;
+  if (al_8 == j_26)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 18>; [66.00%]
+
+  <bb 16> [local count: 26924074]:
+  k_27 = 2 << _25;
+  _28 = k_27 * 2;
+  _29 = bn_wexpand (tmp_10, _28);
+  if (_29 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 17>; [69.05%]
+
+  <bb 17> [local count: 18591073]:
+  _30 = iftmp.0_11->d;
+  _31 = a_3(D)->d;
+  _32 = tmp_10->d;
+  bn_sqr_recursive (_30, _31, al_8, _32);
+  goto <bb 20>; [100.00%]
+
+  <bb 18> [local count: 52264378]:
+  _33 = bn_wexpand (tmp_10, max_15);
+  if (_33 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 19>; [69.05%]
+
+  <bb 19> [local count: 36088553]:
+  _34 = iftmp.0_11->d;
+  _35 = a_3(D)->d;
+  _36 = tmp_10->d;
+  bn_sqr_normal (_34, _35, al_8, _36);
+
+  <bb 20> [local count: 224446576]:
+  iftmp.0_11->neg = 0;
+  iftmp.0_11->top = max_15;
+  if (r_2(D) != iftmp.0_11)
+    goto <bb 21>; [53.47%]
+  else
+    goto <bb 22>; [46.53%]
+
+  <bb 21> [local count: 120011584]:
+  _37 = BN_copy (r_2(D), iftmp.0_11);
+  _43 = _37 != 0B;
+  _65 = (int) _43;
+
+  <bb 22> [local count: 621803890]:
+  # ret_39 = PHI <0(7), _65(21), 1(20)>
+err:
+  BN_CTX_end (ctx_4(D));
+
+  <bb 23> [local count: 1073741826]:
+  # _38 = PHI <1(3), ret_39(22)>
+  bn_correct_top (r_2(D));
+  return _38;
+
+}
+
+

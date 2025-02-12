@@ -1,0 +1,4902 @@
+
+;; Function MOD_EXP_CTIME_COPY_FROM_PREBUF (MOD_EXP_CTIME_COPY_FROM_PREBUF, funcdef_no=220, decl_uid=11990, cgraph_uid=221, symbol_order=220)
+
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+int MOD_EXP_CTIME_COPY_FROM_PREBUF (struct BIGNUM * b, int top, unsigned char * buf, int idx, int window)
+{
+  unsigned long ivtmp.77;
+  unsigned long ivtmp.66;
+  unsigned long ivtmp.53;
+  unsigned int acc;
+  unsigned int y3;
+  unsigned int y2;
+  unsigned int y1;
+  unsigned int y0;
+  int xstride;
+  unsigned int acc;
+  volatile unsigned int * table;
+  int width;
+  int j;
+  int i;
+  struct BIGNUM * _1;
+  int _2;
+  unsigned long _3;
+  volatile unsigned int * _4;
+  unsigned int _5;
+  signed int _6;
+  unsigned int _7;
+  unsigned int * _8;
+  signed int _9;
+  int _10;
+  signed int _11;
+  long unsigned int _12;
+  long unsigned int _13;
+  int _14;
+  int _15;
+  signed int _16;
+  signed int _17;
+  volatile unsigned int * _20;
+  unsigned int _21;
+  unsigned int _22;
+  volatile unsigned int * _26;
+  unsigned int _27;
+  unsigned int _28;
+  int _29;
+  int _30;
+  volatile unsigned int * _34;
+  unsigned int _35;
+  unsigned int _36;
+  int _38;
+  volatile unsigned int * _42;
+  unsigned int _43;
+  unsigned int _44;
+  unsigned int _45;
+  unsigned int _46;
+  unsigned int * _47;
+  long unsigned int _51;
+  long unsigned int _52;
+  unsigned int _53;
+  volatile unsigned int * _54;
+  signed int _55;
+  unsigned long _56;
+  unsigned int _57;
+  unsigned long _58;
+  unsigned long _59;
+  int _61;
+  unsigned int _62;
+  unsigned int _63;
+  unsigned int _64;
+  unsigned int _79;
+  unsigned int _83;
+  int _85;
+  signed int _86;
+  int _90;
+  unsigned int _91;
+  signed int _94;
+  signed int _95;
+  unsigned int _99;
+  unsigned long _101;
+  int _103;
+  unsigned int _104;
+  unsigned int _105;
+  int _106;
+  unsigned int _107;
+  unsigned int _108;
+  int _109;
+  unsigned int _110;
+  unsigned int _111;
+  unsigned int _112;
+  unsigned int _113;
+  unsigned int _114;
+  unsigned int _115;
+  int _116;
+  unsigned int _117;
+  unsigned int _118;
+  unsigned int _119;
+  unsigned int _120;
+  int _121;
+  signed int _122;
+  signed int _123;
+  int _124;
+  signed int _125;
+  signed int _126;
+  signed int _127;
+  signed int _128;
+  signed int _129;
+  signed int _130;
+  signed int _131;
+  signed int _132;
+  signed int _133;
+  unsigned int _135;
+  unsigned int _137;
+  int _138;
+  unsigned int _139;
+  volatile unsigned int * _140;
+  unsigned long _141;
+  unsigned int _142;
+  unsigned long _144;
+  int _146;
+  unsigned int _149;
+  unsigned int _151;
+  signed int _152;
+  unsigned long _154;
+  unsigned int _155;
+  unsigned long _156;
+  unsigned int _158;
+  unsigned int _159;
+  signed int _160;
+  signed int _161;
+  unsigned int _163;
+  unsigned long _164;
+  unsigned int _165;
+  int _166;
+  unsigned int _167;
+  volatile unsigned int * _168;
+  signed int _169;
+  unsigned long _170;
+  int _171;
+  unsigned long _172;
+  signed int _173;
+  unsigned int _175;
+  unsigned int _176;
+  signed int _177;
+  signed int _178;
+  unsigned int _179;
+  unsigned int _180;
+  unsigned int _181;
+  unsigned int _182;
+  int _183;
+  unsigned int _184;
+  volatile unsigned int * _185;
+  unsigned long _186;
+  int _189;
+  unsigned long _190;
+  unsigned long _191;
+  int _192;
+  unsigned int _193;
+  signed int _194;
+  signed int _195;
+  unsigned int _196;
+  unsigned int _197;
+  unsigned int _198;
+  unsigned int _199;
+  unsigned long _200;
+  signed int _201;
+  unsigned long _202;
+  unsigned long _203;
+  unsigned long _204;
+  unsigned long _205;
+  unsigned long _206;
+  unsigned int _207;
+  unsigned int _211;
+  unsigned int _212;
+  unsigned int _213;
+  unsigned int _214;
+  signed int _215;
+  signed int _216;
+  unsigned int _217;
+  unsigned int _218;
+  unsigned long _221;
+  void * _222;
+  volatile unsigned int * _225;
+  unsigned int _226;
+  int _227;
+  unsigned int _228;
+  unsigned long _229;
+  unsigned int _230;
+  unsigned int _231;
+  signed int _232;
+  signed int _233;
+  unsigned int _234;
+  unsigned int _235;
+  int _237;
+  unsigned long _238;
+  volatile unsigned int * _242;
+  unsigned int _243;
+  int _244;
+  unsigned int _245;
+  unsigned int _246;
+  unsigned int _247;
+  unsigned int _248;
+  signed int _249;
+  signed int _250;
+  unsigned int _251;
+  unsigned int _252;
+  void * _254;
+
+  <bb 2> [local count: 35644153]:
+  width_67 = 1 << window_66(D);
+  _1 = bn_wexpand (b_70(D), top_71(D));
+  if (_1 == 0B)
+    goto <bb 16>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 29196126]:
+  if (window_66(D) <= 3)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 4> [local count: 14598063]:
+  if (top_71(D) > 0)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 15>; [11.00%]
+
+  <bb 5> [local count: 12992276]:
+  _8 = b_70(D)->d;
+  _12 = (long unsigned int) width_67;
+  _181 = (unsigned int) _12;
+  _13 = _181 w* 4;
+  ivtmp.53_223 = (unsigned long) _8;
+  _221 = (unsigned long) top_71(D);
+  _179 = (unsigned int) _221;
+  _164 = (unsigned long) _8;
+  _56 = WIDEN_MULT_PLUS_EXPR <_179, 4, _164>;
+  _199 = (unsigned int) idx_74(D);
+  _198 = ~_199;
+  _197 = _199 + 4294967295;
+  _196 = _197 & _198;
+  _195 = (signed int) _196;
+  _194 = _195 >> 31;
+  _193 = (unsigned int) _194;
+  _57 ={v} MEM[(volatile unsigned int *)buf_68(D)];
+  _151 = _57 & _193;
+  goto <bb 8>; [100.00%]
+
+  <bb 6> [local count: 118111600]:
+  # acc_209 = PHI <acc_100(9), acc_174(8)>
+  _222 = (void *) ivtmp.53_143;
+  MEM[(unsigned int *)_222] = acc_209;
+  table_98 = table_37 + _13;
+  ivtmp.53_224 = ivtmp.53_143 + 4;
+  if (_56 != ivtmp.53_224)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 15>; [11.00%]
+
+  <bb 7> [local count: 105119324]:
+  _149 ={v} *table_98;
+  _155 = _149 & _193;
+
+  <bb 8> [local count: 103347650]:
+  # table_37 = PHI <buf_68(D)(5), table_98(7)>
+  # _142 = PHI <_151(5), _155(7)>
+  # ivtmp.53_143 = PHI <ivtmp.53_223(5), ivtmp.53_224(7)>
+  _59 = (unsigned long) table_37;
+  _141 = _59 + 4;
+  _185 = (volatile unsigned int *) _141;
+  _184 ={v} *_185;
+  _183 = idx_74(D) ^ 1;
+  _182 = (unsigned int) _183;
+  _189 = idx_74(D) ^ -2;
+  _180 = _182 + 4294967295;
+  _55 = (signed int) _180;
+  _178 = _55 & _189;
+  _177 = _178 >> 31;
+  _176 = (unsigned int) _177;
+  _175 = _176 & _184;
+  acc_174 = _142 | _175;
+  if (window_66(D) != 1)
+    goto <bb 9>; [87.50%]
+  else
+    goto <bb 6>; [12.50%]
+
+  <bb 9> [local count: 90429194]:
+  _154 = _59 + 8;
+  _168 = (volatile unsigned int *) _154;
+  _167 ={v} *_168;
+  _166 = idx_74(D) ^ 2;
+  _165 = (unsigned int) _166;
+  _2 = idx_74(D) ^ -3;
+  _163 = _165 + 4294967295;
+  _173 = (signed int) _163;
+  _161 = _2 & _173;
+  _160 = _161 >> 31;
+  _159 = (unsigned int) _160;
+  _158 = _159 & _167;
+  acc_157 = _158 | acc_174;
+  _156 = _59 + 12;
+  _140 = (volatile unsigned int *) _156;
+  _139 ={v} *_140;
+  _138 = idx_74(D) ^ 3;
+  _137 = (unsigned int) _138;
+  _171 = idx_74(D) ^ -4;
+  _135 = _137 + 4294967295;
+  _169 = (signed int) _135;
+  _133 = _169 & _171;
+  _132 = _133 >> 31;
+  _63 = (unsigned int) _132;
+  _62 = _63 & _139;
+  acc_60 = _62 | acc_157;
+  _170 = _59 + 16;
+  _54 = (volatile unsigned int *) _170;
+  _53 ={v} *_54;
+  _29 = idx_74(D) ^ 4;
+  _211 = (unsigned int) _29;
+  _237 = idx_74(D) ^ -5;
+  _213 = _211 + 4294967295;
+  _201 = (signed int) _213;
+  _215 = _201 & _237;
+  _216 = _215 >> 31;
+  _217 = (unsigned int) _216;
+  _218 = _53 & _217;
+  acc_219 = acc_60 | _218;
+  _172 = _59 + 20;
+  _225 = (volatile unsigned int *) _172;
+  _226 ={v} *_225;
+  _227 = idx_74(D) ^ 5;
+  _228 = (unsigned int) _227;
+  _192 = idx_74(D) ^ -6;
+  _230 = _228 + 4294967295;
+  _152 = (signed int) _230;
+  _232 = _152 & _192;
+  _233 = _232 >> 31;
+  _234 = (unsigned int) _233;
+  _235 = _226 & _234;
+  acc_236 = acc_219 | _235;
+  _186 = _59 + 24;
+  _242 = (volatile unsigned int *) _186;
+  _243 ={v} *_242;
+  _244 = idx_74(D) ^ 6;
+  _245 = (unsigned int) _244;
+  _146 = idx_74(D) ^ -7;
+  _247 = _245 + 4294967295;
+  _9 = (signed int) _247;
+  _249 = _9 & _146;
+  _250 = _249 >> 31;
+  _251 = (unsigned int) _250;
+  _252 = _243 & _251;
+  acc_253 = acc_236 | _252;
+  _58 = _59 + 28;
+  _4 = (volatile unsigned int *) _58;
+  _5 ={v} *_4;
+  _90 = idx_74(D) ^ 7;
+  _83 = (unsigned int) _90;
+  _10 = idx_74(D) ^ -8;
+  _79 = _83 + 4294967295;
+  _11 = (signed int) _79;
+  _130 = _10 & _11;
+  _131 = _130 >> 31;
+  _7 = (unsigned int) _131;
+  _99 = _5 & _7;
+  acc_100 = _99 | acc_253;
+  goto <bb 6>; [100.00%]
+
+  <bb 10> [local count: 14598063]:
+  _14 = window_66(D) + -2;
+  xstride_73 = 1 << _14;
+  i_75 = idx_74(D) >> _14;
+  _15 = xstride_73 + -1;
+  idx_76 = _15 & idx_74(D);
+  _112 = (unsigned int) i_75;
+  _113 = ~_112;
+  _114 = _112 + 4294967295;
+  _115 = _113 & _114;
+  _123 = (signed int) _115;
+  _122 = _123 >> 31;
+  y0_78 = (unsigned int) _122;
+  _109 = i_75 ^ 1;
+  _110 = (unsigned int) _109;
+  _121 = i_75 ^ -2;
+  _111 = _110 + 4294967295;
+  _95 = (signed int) _111;
+  _94 = _95 & _121;
+  _86 = _94 >> 31;
+  y1_80 = (unsigned int) _86;
+  _106 = i_75 ^ 2;
+  _107 = (unsigned int) _106;
+  _85 = i_75 ^ -3;
+  _108 = _107 + 4294967295;
+  _17 = (signed int) _108;
+  _16 = _17 & _85;
+  _6 = _16 >> 31;
+  y2_82 = (unsigned int) _6;
+  _103 = i_75 ^ 3;
+  _104 = (unsigned int) _103;
+  _124 = i_75 ^ -4;
+  _105 = _104 + 4294967295;
+  _125 = (signed int) _105;
+  _126 = _124 & _125;
+  _127 = _126 >> 31;
+  y3_84 = (unsigned int) _127;
+  if (top_71(D) > 0)
+    goto <bb 11>; [89.00%]
+  else
+    goto <bb 15>; [11.00%]
+
+  <bb 11> [local count: 12992276]:
+  _30 = 2 << _14;
+  _38 = 3 << _14;
+  _47 = b_70(D)->d;
+  _51 = (long unsigned int) width_67;
+  _246 = (unsigned int) _51;
+  _52 = _246 w* 4;
+  ivtmp.77_241 = (unsigned long) _47;
+  _144 = (unsigned long) top_71(D);
+  _248 = (unsigned int) _144;
+  _229 = (unsigned long) _47;
+  _3 = WIDEN_MULT_PLUS_EXPR <_248, 4, _229>;
+  _190 = (unsigned long) xstride_73;
+  _231 = (unsigned int) _190;
+  _191 = _231 w* 4;
+  _202 = (unsigned long) _30;
+  _212 = (unsigned int) _202;
+  _203 = _212 w* 4;
+  _205 = (unsigned long) _38;
+  _214 = (unsigned int) _205;
+  _206 = _214 w* 4;
+  goto <bb 14>; [100.00%]
+
+  <bb 12> [local count: 955630225]:
+  # j_145 = PHI <j_93(12), 0(14)>
+  # acc_150 = PHI <acc_92(12), 0(14)>
+  # ivtmp.66_187 = PHI <ivtmp.66_188(12), _101(14)>
+  _20 = (volatile unsigned int *) ivtmp.66_187;
+  _21 ={v} *_20;
+  _22 = _21 & y0_78;
+  _200 = ivtmp.66_187 + _191;
+  _26 = (volatile unsigned int *) _200;
+  _27 ={v} *_26;
+  _28 = _27 & y1_80;
+  _204 = ivtmp.66_187 + _203;
+  _34 = (volatile unsigned int *) _204;
+  _35 ={v} *_34;
+  _36 = _35 & y2_82;
+  _64 = _28 | _36;
+  _238 = ivtmp.66_187 + _206;
+  _42 = (volatile unsigned int *) _238;
+  _43 ={v} *_42;
+  _44 = _43 & y3_84;
+  _207 = _22 | _44;
+  _45 = _64 | _207;
+  _116 = idx_76 ^ j_145;
+  _117 = (unsigned int) _116;
+  _118 = ~_117;
+  _119 = _117 + 4294967295;
+  _120 = _118 & _119;
+  _128 = (signed int) _120;
+  _129 = _128 >> 31;
+  _46 = (unsigned int) _129;
+  _91 = _45 & _46;
+  acc_92 = _91 | acc_150;
+  j_93 = j_145 + 1;
+  ivtmp.66_188 = ivtmp.66_187 + 4;
+  if (xstride_73 != j_93)
+    goto <bb 12>; [87.64%]
+  else
+    goto <bb 13>; [12.36%]
+
+  <bb 13> [local count: 118111600]:
+  _254 = (void *) ivtmp.77_239;
+  MEM[(unsigned int *)_254] = acc_92;
+  table_89 = table_147 + _52;
+  ivtmp.77_240 = ivtmp.77_239 + 4;
+  if (_3 != ivtmp.77_240)
+    goto <bb 14>; [89.00%]
+  else
+    goto <bb 15>; [11.00%]
+
+  <bb 14> [local count: 118111600]:
+  # table_147 = PHI <table_89(13), buf_68(D)(11)>
+  # ivtmp.77_239 = PHI <ivtmp.77_240(13), ivtmp.77_241(11)>
+  _101 = (unsigned long) table_147;
+  goto <bb 12>; [100.00%]
+
+  <bb 15> [local count: 29196126]:
+  b_70(D)->top = top_71(D);
+
+  <bb 16> [local count: 35644153]:
+  # _61 = PHI <0(2), 1(15)>
+  return _61;
+
+}
+
+
+
+;; Function BN_mod_exp_recp.part.0 (BN_mod_exp_recp.part.0, funcdef_no=226, decl_uid=12660, cgraph_uid=276, symbol_order=281)
+
+Removing basic block 52
+Removing basic block 53
+Removing basic block 54
+Removing basic block 55
+Removing basic block 56
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+Removing basic block 60
+Removing basic block 61
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+Removing basic block 74
+Removing basic block 75
+Removing basic block 76
+Removing basic block 77
+Removing basic block 78
+Removing basic block 79
+Removing basic block 80
+Removing basic block 81
+Removing basic block 82
+Removing basic block 83
+Removing basic block 84
+Removing basic block 85
+Removing basic block 86
+Removing basic block 87
+Removing basic block 88
+Removing basic block 89
+Removing basic block 90
+Removing basic block 91
+Removing basic block 92
+Removing basic block 93
+Removing basic block 94
+int BN_mod_exp_recp.part.0 (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  unsigned long ivtmp.101;
+  unsigned int ivtmp.92;
+  int i;
+  int bits;
+  int ret;
+  int wstart;
+  int wend;
+  int start;
+  struct BIGNUM * aa;
+  struct BIGNUM * val[32];
+  struct BN_RECP_CTX recp;
+  struct BIGNUM * p_dup;
+  int wvalue;
+  int _4;
+  struct BIGNUM * _9;
+  int _10;
+  struct BIGNUM * _11;
+  int _12;
+  int _13;
+  int _15;
+  int _16;
+  int _17;
+  int iftmp.1_18;
+  int _20;
+  struct BIGNUM * _21;
+  struct BIGNUM * _24;
+  int _25;
+  struct BIGNUM * _29;
+  int _30;
+  int _33;
+  int _35;
+  int prephitmp_37;
+  int _38;
+  int _39;
+  int _41;
+  int iftmp.1_46;
+  int _47;
+  int _50;
+  struct BIGNUM * _51;
+  int _52;
+  int _53;
+  int _55;
+  unsigned int _126;
+  unsigned int _127;
+  int _128;
+  int _132;
+  unsigned int _136;
+  unsigned int _137;
+  unsigned int _138;
+  unsigned int _139;
+  void * _145;
+
+  <bb 2> [local count: 169319194]:
+  bits_2 = BN_num_bits (p_1(D));
+  if (bits_2 == 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 3> [local count: 57568527]:
+  _4 = BN_abs_is_word (m_3(D), 1);
+  if (_4 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 28784263]:
+  BN_zero_ex (r_5(D));
+  goto <bb 51>; [100.00%]
+
+  <bb 5> [local count: 28784263]:
+  ret_6 = BN_set_word (r_5(D), 1); [tail call]
+  goto <bb 51>; [100.00%]
+
+  <bb 6> [local count: 111750667]:
+  BN_RECP_CTX_init (&recp);
+  BN_CTX_start (ctx_7(D));
+  aa_8 = BN_CTX_get (ctx_7(D));
+  _9 = BN_CTX_get (ctx_7(D));
+  val[0] = _9;
+  if (_9 == 0B)
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 8>; [81.91%]
+
+  <bb 7> [local count: 102824418]:
+  goto <bb 50>; [100.00%]
+
+  <bb 8> [local count: 91534972]:
+  _10 = m_3(D)->neg;
+  if (_10 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 9> [local count: 45767486]:
+  _11 = BN_copy (aa_8, m_3(D));
+  if (_11 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 10>; [69.05%]
+
+  <bb 10> [local count: 31602449]:
+  aa_8->neg = 0;
+  _12 = BN_RECP_CTX_set (&recp, aa_8, ctx_7(D));
+  if (_12 <= 0)
+    goto <bb 7>; [26.36%]
+  else
+    goto <bb 11>; [73.64%]
+
+  <bb 11> [local count: 56975220]:
+  _15 = BN_nnmod (_9, a_14(D), m_3(D), ctx_7(D));
+  if (_15 == 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 13>; [48.88%]
+
+  <bb 12> [local count: 45767486]:
+  _13 = BN_RECP_CTX_set (&recp, m_3(D), ctx_7(D));
+  if (_13 <= 0)
+    goto <bb 7>; [26.36%]
+  else
+    goto <bb 11>; [73.64%]
+
+  <bb 13> [local count: 27849487]:
+  _16 = BN_is_zero (_9);
+  if (_16 != 0)
+    goto <bb 14>; [20.24%]
+  else
+    goto <bb 15>; [79.76%]
+
+  <bb 14> [local count: 5636736]:
+  BN_zero_ex (r_5(D));
+  goto <bb 49>; [100.00%]
+
+  <bb 15> [local count: 22212751]:
+  if (bits_2 <= 671)
+    goto <bb 16>; [67.00%]
+  else
+    goto <bb 19>; [33.00%]
+
+  <bb 16> [local count: 14882543]:
+  if (bits_2 <= 239)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 17> [local count: 7441272]:
+  if (bits_2 <= 79)
+    goto <bb 18>; [50.00%]
+  else
+    goto <bb 19>; [50.00%]
+
+  <bb 18> [local count: 3720636]:
+  if (bits_2 > 23)
+    goto <bb 19>; [50.00%]
+  else
+    goto <bb 24>; [50.00%]
+
+  <bb 19> [local count: 20352433]:
+  # iftmp.1_18 = PHI <6(15), 5(16), 4(17), 3(18)>
+  # prephitmp_37 = PHI <32(15), 16(16), 8(17), 4(18)>
+  _17 = BN_mod_mul_reciprocal (aa_8, _9, _9, &recp, ctx_7(D));
+  if (_17 == 0)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 20>; [66.00%]
+
+  <bb 20> [local count: 13432606]:
+  ivtmp.101_142 = (unsigned long) &MEM <struct BIGNUM *[32]> [(void *)&val + 8B];
+
+  <bb 21> [local count: 122280351]:
+  # i_114 = PHI <i_26(23), 1(20)>
+  # ivtmp.101_140 = PHI <ivtmp.101_141(23), ivtmp.101_142(20)>
+  _21 = BN_CTX_get (ctx_7(D));
+  _145 = (void *) ivtmp.101_140;
+  MEM[(struct BIGNUM * *)_145] = _21;
+  if (_21 == 0B)
+    goto <bb 7>; [3.66%]
+  else
+    goto <bb 22>; [96.34%]
+
+  <bb 22> [local count: 117804890]:
+  _24 = MEM[(struct BIGNUM * *)_145 + -8B];
+  _25 = BN_mod_mul_reciprocal (_21, _24, aa_8, &recp, ctx_7(D));
+  if (_25 == 0)
+    goto <bb 7>; [3.66%]
+  else
+    goto <bb 23>; [96.34%]
+
+  <bb 23> [local count: 113493231]:
+  i_26 = i_114 + 1;
+  ivtmp.101_141 = ivtmp.101_140 + 8;
+  if (i_26 < prephitmp_37)
+    goto <bb 21>; [95.91%]
+  else
+    goto <bb 24>; [4.09%]
+
+  <bb 24> [local count: 6505804]:
+  # iftmp.1_46 = PHI <1(18), iftmp.1_18(23)>
+  if (p_1(D) == r_5(D))
+    goto <bb 25>; [30.00%]
+  else
+    goto <bb 27>; [70.00%]
+
+  <bb 25> [local count: 1951741]:
+  p_dup_28 = BN_CTX_get (ctx_7(D));
+  if (p_dup_28 == 0B)
+    goto <bb 7>; [30.95%]
+  else
+    goto <bb 26>; [69.05%]
+
+  <bb 26> [local count: 1347677]:
+  _29 = BN_copy (p_dup_28, p_1(D));
+  if (_29 == 0B)
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 27>; [81.91%]
+
+  <bb 27> [local count: 5657945]:
+  # p_31 = PHI <p_1(D)(24), p_dup_28(26)>
+  _30 = BN_set_word (r_5(D), 1);
+  if (_30 == 0)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 28>; [66.00%]
+
+  <bb 28> [local count: 3734244]:
+  wstart_27 = bits_2 + -1;
+  goto <bb 31>; [100.00%]
+
+  <bb 29> [local count: 1372018]:
+  _20 = BN_is_bit_set (p_31, wstart_54);
+  if (_20 == 0)
+    goto <bb 35>; [73.00%]
+  else
+    goto <bb 30>; [27.00%]
+
+  <bb 30> [local count: 370445]:
+  if (iftmp.1_46 != 1)
+    goto <bb 38>; [94.50%]
+  else
+    goto <bb 45>; [5.50%]
+
+  <bb 31> [local count: 5339250]:
+  # wstart_32 = PHI <wstart_36(37), wstart_27(28)>
+  # start_34 = PHI <start_57(37), 1(28)>
+  _33 = BN_is_bit_set (p_31, wstart_32);
+  if (_33 == 0)
+    goto <bb 33>; [73.00%]
+  else
+    goto <bb 32>; [27.00%]
+
+  <bb 32> [local count: 1441597]:
+  if (iftmp.1_46 != 1)
+    goto <bb 38>; [94.50%]
+  else
+    goto <bb 43>; [5.50%]
+
+  <bb 33> [local count: 3897653]:
+  if (start_34 == 0)
+    goto <bb 35>; [15.78%]
+  else
+    goto <bb 34>; [84.22%]
+
+  <bb 34> [local count: 4863657]:
+  # wstart_40 = PHI <wstart_32(33), wstart_42(35)>
+  # start_57 = PHI <start_34(33), _16(35)>
+  if (wstart_40 == 0)
+    goto <bb 36>; [67.00%]
+  else
+    goto <bb 37>; [33.00%]
+
+  <bb 35> [local count: 1616744]:
+  # wstart_42 = PHI <wstart_32(33), wstart_54(29)>
+  _35 = BN_mod_mul_reciprocal (r_5(D), r_5(D), r_5(D), &recp, ctx_7(D));
+  if (_35 == 0)
+    goto <bb 7>; [2.20%]
+  else
+    goto <bb 34>; [97.80%]
+
+  <bb 36> [local count: 3289513]:
+  goto <bb 49>; [100.00%]
+
+  <bb 37> [local count: 1605007]:
+  wstart_36 = wstart_40 + -1;
+  goto <bb 31>; [100.00%]
+
+  <bb 38> [local count: 1712380]:
+  # wstart_63 = PHI <wstart_32(32), wstart_54(30)>
+  # start_23 = PHI <start_34(32), _16(30)>
+  _132 = wstart_63 + -1;
+  ivtmp.92_131 = (unsigned int) _132;
+  _137 = (unsigned int) wstart_63;
+  _138 = (unsigned int) iftmp.1_46;
+  _139 = _137 - _138;
+
+  <bb 39> [local count: 16007292]:
+  # wend_116 = PHI <wend_59(42), _16(38)>
+  # wvalue_118 = PHI <wvalue_60(42), 1(38)>
+  # ivtmp.92_129 = PHI <ivtmp.92_130(42), ivtmp.92_131(38)>
+  _38 = (int) ivtmp.92_129;
+  if (_38 < 0)
+    goto <bb 43>; [5.50%]
+  else
+    goto <bb 40>; [94.50%]
+
+  <bb 40> [local count: 15126891]:
+  _39 = BN_is_bit_set (p_31, _38);
+  if (_39 != 0)
+    goto <bb 41>; [50.00%]
+  else
+    goto <bb 42>; [50.00%]
+
+  <bb 41> [local count: 7563445]:
+  _136 = _137 - ivtmp.92_129;
+  i_115 = (int) _136;
+  _41 = i_115 - wend_116;
+  wvalue_43 = wvalue_118 << _41;
+  wvalue_44 = wvalue_43 | 1;
+
+  <bb 42> [local count: 15126891]:
+  # wend_59 = PHI <wend_116(40), i_115(41)>
+  # wvalue_60 = PHI <wvalue_118(40), wvalue_44(41)>
+  ivtmp.92_130 = ivtmp.92_129 + 4294967295;
+  if (ivtmp.92_130 != _139)
+    goto <bb 39>; [94.50%]
+  else
+    goto <bb 43>; [5.50%]
+
+  <bb 43> [local count: 1791668]:
+  # wend_117 = PHI <wend_116(39), wend_59(42), _16(32)>
+  # wvalue_119 = PHI <wvalue_118(39), wvalue_60(42), iftmp.1_46(32)>
+  # wstart_76 = PHI <wstart_63(39), wstart_63(42), wstart_32(32)>
+  # start_45 = PHI <start_23(39), start_23(42), start_34(32)>
+  if (start_45 == 0)
+    goto <bb 45>; [42.24%]
+  else
+    goto <bb 44>; [57.76%]
+
+  <bb 44> [local count: 1434438]:
+  # wstart_74 = PHI <wstart_76(43), wstart_73(47)>
+  # wend_147 = PHI <wend_117(43), wend_148(47)>
+  # wvalue_149 = PHI <wvalue_119(43), wvalue_150(47)>
+  _50 = wvalue_149 >> 1;
+  _51 = val[_50];
+  _52 = BN_mod_mul_reciprocal (r_5(D), r_5(D), _51, &recp, ctx_7(D));
+  if (_52 == 0)
+    goto <bb 7>; [2.20%]
+  else
+    goto <bb 48>; [97.80%]
+
+  <bb 45> [local count: 777185]:
+  # wstart_73 = PHI <wstart_76(43), wstart_54(30)>
+  # wend_148 = PHI <wend_117(43), _16(30)>
+  # wvalue_150 = PHI <wvalue_119(43), iftmp.1_46(30)>
+  _126 = (unsigned int) wend_148;
+  _127 = _126 + 1;
+  _128 = (int) _127;
+
+  <bb 46> [local count: 6865528]:
+  # i_120 = PHI <i_49(47), _16(45)>
+  _47 = BN_mod_mul_reciprocal (r_5(D), r_5(D), r_5(D), &recp, ctx_7(D));
+  if (_47 == 0)
+    goto <bb 7>; [5.50%]
+  else
+    goto <bb 47>; [94.50%]
+
+  <bb 47> [local count: 6487924]:
+  i_49 = i_120 + 1;
+  if (i_49 != _128)
+    goto <bb 46>; [93.84%]
+  else
+    goto <bb 44>; [6.16%]
+
+  <bb 48> [local count: 1402881]:
+  _53 = wend_147 + 1;
+  wstart_54 = wstart_74 - _53;
+  if (wstart_54 < 0)
+    goto <bb 36>; [2.20%]
+  else
+    goto <bb 29>; [97.80%]
+
+  <bb 49> [local count: 5636736]:
+
+  <bb 50> [local count: 111750667]:
+  # ret_61 = PHI <0(7), 1(49)>
+err:
+  BN_CTX_end (ctx_7(D));
+  BN_RECP_CTX_free (&recp);
+
+  <bb 51> [local count: 169319194]:
+  # _55 = PHI <ret_6(5), ret_61(50), 1(4)>
+  val ={v} {CLOBBER(eos)};
+  recp ={v} {CLOBBER(eos)};
+  return _55;
+
+}
+
+
+
+;; Function BN_exp (BN_exp, funcdef_no=214, decl_uid=8804, cgraph_uid=215, symbol_order=214)
+
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+int BN_exp (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, struct BN_CTX * ctx)
+{
+  static const char __func__[7] = "BN_exp";
+  struct BIGNUM * v;
+  int ret;
+  int bits;
+  int i;
+  int _1;
+  int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  _Bool _6;
+  _Bool _7;
+  _Bool _8;
+  struct BIGNUM * _9;
+  int _10;
+  struct BIGNUM * _11;
+  int _12;
+  int _13;
+  int _14;
+  int _15;
+  struct BIGNUM * _16;
+  int _19;
+  struct BIGNUM * iftmp.0_20;
+  struct BIGNUM * iftmp.0_37;
+  _Bool _38;
+  int _47;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = BN_get_flags (p_29(D), 4);
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 727344125]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 57, &__func__);
+  ERR_set_error (3, 786689, 0B);
+  goto <bb 21>; [100.00%]
+
+  <bb 4> [local count: 708669599]:
+  _2 = BN_get_flags (a_31(D), 4);
+  if (_2 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 346397698]:
+  BN_CTX_start (ctx_33(D));
+  _3 = a_31(D) == r_35(D);
+  _4 = p_29(D) == r_35(D);
+  _5 = _3 | _4;
+  if (_5 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 7>; [67.00%]
+
+  <bb 6> [local count: 114311240]:
+  iftmp.0_37 = BN_CTX_get (ctx_33(D));
+
+  <bb 7> [local count: 346397698]:
+  # iftmp.0_20 = PHI <iftmp.0_37(6), r_35(D)(5)>
+  v_40 = BN_CTX_get (ctx_33(D));
+  _6 = iftmp.0_20 == 0B;
+  _7 = v_40 == 0B;
+  _8 = _6 | _7;
+  if (_8 != 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 9>; [48.88%]
+
+  <bb 8> [local count: 308302379]:
+  goto <bb 20>; [100.00%]
+
+  <bb 9> [local count: 169319194]:
+  _9 = BN_copy (v_40, a_31(D));
+  if (_9 == 0B)
+    goto <bb 8>; [30.95%]
+  else
+    goto <bb 10>; [69.05%]
+
+  <bb 10> [local count: 116914903]:
+  bits_43 = BN_num_bits (p_29(D));
+  _10 = BN_is_odd (p_29(D));
+  if (_10 != 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 58457451]:
+  _11 = BN_copy (iftmp.0_20, a_31(D));
+  if (_11 == 0B)
+    goto <bb 8>; [18.09%]
+  else
+    goto <bb 18>; [81.91%]
+
+  <bb 12> [local count: 58457451]:
+  _12 = BN_set_word (iftmp.0_20, 1);
+  if (_12 == 0)
+    goto <bb 8>; [34.00%]
+  else
+    goto <bb 18>; [66.00%]
+
+  <bb 13> [local count: 1002760395]:
+  # i_60 = PHI <i_52(15), 1(18)>
+  _13 = BN_sqr (v_40, v_40, ctx_33(D));
+  if (_13 == 0)
+    goto <bb 8>; [3.66%]
+  else
+    goto <bb 14>; [96.34%]
+
+  <bb 14> [local count: 966059363]:
+  _14 = BN_is_bit_set (p_29(D), i_60);
+  if (_14 != 0)
+    goto <bb 16>; [33.00%]
+  else
+    goto <bb 15>; [67.00%]
+
+  <bb 15> [local count: 954391300]:
+  i_52 = i_60 + 1;
+  if (bits_43 != i_52)
+    goto <bb 13>; [96.34%]
+  else
+    goto <bb 17>; [3.66%]
+
+  <bb 16> [local count: 318799588]:
+  _15 = BN_mul (iftmp.0_20, iftmp.0_20, v_40, ctx_33(D));
+  if (_15 == 0)
+    goto <bb 8>; [3.66%]
+  else
+    goto <bb 15>; [96.34%]
+
+  <bb 17> [local count: 38095321]:
+  if (iftmp.0_20 != r_35(D))
+    goto <bb 19>; [53.47%]
+  else
+    goto <bb 20>; [46.53%]
+
+  <bb 18> [local count: 86464415]:
+  if (bits_43 > 1)
+    goto <bb 13>; [96.34%]
+  else
+    goto <bb 17>; [3.66%]
+
+  <bb 19> [local count: 20369568]:
+  _16 = BN_copy (r_35(D), iftmp.0_20);
+  _38 = _16 != 0B;
+  _47 = (int) _38;
+
+  <bb 20> [local count: 346397699]:
+  # ret_18 = PHI <_2(8), 1(17), _47(19)>
+err:
+  BN_CTX_end (ctx_33(D));
+
+  <bb 21> [local count: 1073741824]:
+  # _19 = PHI <0(3), ret_18(20)>
+  return _19;
+
+}
+
+
+
+;; Function BN_mod_exp_recp (BN_mod_exp_recp, funcdef_no=216, decl_uid=9130, cgraph_uid=217, symbol_order=216)
+
+Removing basic block 8
+Removing basic block 9
+Removing basic block 10
+int BN_mod_exp_recp (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  static const char __func__[16] = "BN_mod_exp_recp";
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _17;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = BN_get_flags (p_7(D), 4);
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 904422630]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 183, &__func__);
+  ERR_set_error (3, 786689, 0B);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 708669600]:
+  _2 = BN_get_flags (a_9(D), 4);
+  if (_2 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 346397698]:
+  _3 = BN_get_flags (m_11(D), 4);
+  if (_3 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 6>; [48.88%]
+
+  <bb 6> [local count: 169319194]:
+  _17 = BN_mod_exp_recp.part.0 (r_14(D), a_9(D), p_7(D), m_11(D), ctx_13(D)); [tail call]
+
+  <bb 7> [local count: 1073741824]:
+  # _4 = PHI <0(3), _17(6)>
+  return _4;
+
+}
+
+
+
+;; Function bn_mod_exp_mont_fixed_top (bn_mod_exp_mont_fixed_top, funcdef_no=221, decl_uid=11572, cgraph_uid=222, symbol_order=221)
+
+Removing basic block 24
+Removing basic block 150
+Removing basic block 151
+Removing basic block 152
+Removing basic block 153
+Removing basic block 154
+Removing basic block 155
+Removing basic block 156
+Removing basic block 157
+Removing basic block 158
+Removing basic block 159
+Removing basic block 161
+Removing basic block 162
+Removing basic block 163
+Removing basic block 164
+Removing basic block 165
+Removing basic block 166
+Removing basic block 167
+Removing basic block 168
+Removing basic block 169
+Removing basic block 170
+Removing basic block 171
+Removing basic block 172
+Removing basic block 173
+Removing basic block 174
+Removing basic block 175
+Removing basic block 176
+Removing basic block 177
+Removing basic block 178
+Removing basic block 179
+Removing basic block 180
+Removing basic block 181
+Removing basic block 182
+Removing basic block 183
+Removing basic block 184
+Removing basic block 185
+Removing basic block 186
+Removing basic block 187
+Removing basic block 188
+Removing basic block 189
+Removing basic block 190
+Removing basic block 191
+Removing basic block 192
+Removing basic block 193
+Removing basic block 194
+Removing basic block 195
+Removing basic block 196
+Removing basic block 197
+Removing basic block 198
+Removing basic block 199
+Removing basic block 200
+Removing basic block 201
+Removing basic block 202
+Removing basic block 203
+Removing basic block 204
+Removing basic block 205
+Removing basic block 206
+Removing basic block 207
+Removing basic block 208
+Removing basic block 209
+Removing basic block 210
+Removing basic block 211
+Removing basic block 212
+Removing basic block 213
+Removing basic block 214
+Removing basic block 215
+Removing basic block 216
+Removing basic block 217
+Removing basic block 218
+Removing basic block 219
+Removing basic block 220
+Removing basic block 221
+Removing basic block 222
+Removing basic block 223
+Removing basic block 224
+Removing basic block 225
+Removing basic block 226
+Removing basic block 227
+Removing basic block 228
+int bn_mod_exp_mont_fixed_top (struct BIGNUM * rr, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx, struct BN_MONT_CTX * in_mont)
+{
+  sizetype ivtmp.300;
+  sizetype ivtmp.288;
+  unsigned long ivtmp.279;
+  unsigned long ivtmp.276;
+  unsigned long ivtmp.272;
+  unsigned long ivtmp.271;
+  unsigned long ivtmp.254;
+  unsigned long ivtmp.251;
+  unsigned long ivtmp.245;
+  unsigned long ivtmp.244;
+  unsigned long ivtmp.227;
+  unsigned long ivtmp.224;
+  unsigned long ivtmp.218;
+  unsigned long ivtmp.217;
+  sizetype ivtmp.208;
+  unsigned long ivtmp.198;
+  unsigned long ivtmp.195;
+  unsigned long ivtmp.188;
+  unsigned long ivtmp.187;
+  vector(4) unsigned int vect__42.163;
+  vector(4) unsigned int vect__40.162;
+  unsigned int * vectp.161;
+  int tmp.159;
+  unsigned int niters_vector_mult_vf.158;
+  unsigned int bnd.157;
+  unsigned int niters.156;
+  int tmp.152;
+  unsigned int niters_vector_mult_vf.150;
+  unsigned int bnd.149;
+  int tmp.144;
+  unsigned int niters_vector_mult_vf.142;
+  unsigned int bnd.141;
+  int tmp.136;
+  unsigned int niters_vector_mult_vf.134;
+  unsigned int bnd.133;
+  int tmp.128;
+  unsigned int niters_vector_mult_vf.126;
+  unsigned int bnd.125;
+  unsigned int ret;
+  int wordpos;
+  int bitpos;
+  unsigned int ret;
+  int wordpos;
+  int bitpos;
+  int i;
+  int j;
+  int i;
+  int j;
+  int i;
+  int j;
+  int i;
+  int j;
+  struct BIGNUM * reduced;
+  static const char __func__[26] = "bn_mod_exp_mont_fixed_top";
+  struct BIGNUM am;
+  struct BIGNUM tmp;
+  unsigned char * powerbuf;
+  int powerbufLen;
+  unsigned char * powerbufFree;
+  struct BN_MONT_CTX * mont;
+  int top;
+  int window0;
+  int wmask;
+  int ret;
+  int bits;
+  int i;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  unsigned int _12;
+  unsigned int _13;
+  _Bool _16;
+  sizetype _17;
+  sizetype _18;
+  sizetype _19;
+  unsigned int _21;
+  unsigned int _22;
+  long unsigned int _23;
+  unsigned long _24;
+  long unsigned int _25;
+  long unsigned int _26;
+  unsigned char * _27;
+  long unsigned int _28;
+  unsigned int * _29;
+  unsigned int * _30;
+  sizetype _31;
+  unsigned int * _32;
+  unsigned int _33;
+  signed int _34;
+  unsigned int _35;
+  unsigned int _36;
+  unsigned int _37;
+  vector(4) unsigned int * _38;
+  long unsigned int _39;
+  long unsigned int _40;
+  unsigned int * _41;
+  long unsigned int _42;
+  const struct BIGNUM * _43;
+  int _44;
+  int _45;
+  int _46;
+  int _47;
+  int _48;
+  int _49;
+  int _50;
+  unsigned int _51;
+  int _52;
+  int _53;
+  long unsigned int _54;
+  int _55;
+  int _56;
+  int _57;
+  _Bool _58;
+  unsigned int _60;
+  unsigned int _65;
+  unsigned long _68;
+  long unsigned int _71;
+  unsigned int * _72;
+  int _73;
+  int iftmp.9_74;
+  long unsigned int _75;
+  long unsigned int _76;
+  long unsigned int powerbufFree.14_79;
+  long unsigned int _81;
+  unsigned int * _82;
+  unsigned int _84;
+  unsigned char * _109;
+  unsigned int * _115;
+  unsigned int _131;
+  long unsigned int _132;
+  int _140;
+  sizetype _141;
+  unsigned char * _147;
+  int _161;
+  int _167;
+  unsigned int * _168;
+  unsigned int _169;
+  unsigned long _175;
+  unsigned int _176;
+  unsigned int _177;
+  unsigned int * _178;
+  long unsigned int _179;
+  int _180;
+  int _181;
+  unsigned int * _182;
+  unsigned int _185;
+  sizetype _186;
+  unsigned int _187;
+  int _188;
+  long unsigned int _189;
+  long unsigned int _190;
+  unsigned int * _191;
+  long unsigned int _192;
+  unsigned int * _193;
+  int _194;
+  int _195;
+  unsigned int * _196;
+  unsigned int _198;
+  unsigned int _199;
+  unsigned int _200;
+  unsigned int _202;
+  long unsigned int _203;
+  unsigned int * _204;
+  long unsigned int _205;
+  unsigned int * _206;
+  unsigned int _207;
+  int _208;
+  int _209;
+  unsigned int * _210;
+  unsigned int _211;
+  sizetype _212;
+  vector(4) unsigned int * _213;
+  long unsigned int _214;
+  long unsigned int _216;
+  unsigned int * _217;
+  long unsigned int _218;
+  long unsigned int _219;
+  unsigned int _220;
+  unsigned int _223;
+  long unsigned int _224;
+  sizetype _225;
+  unsigned int * _228;
+  sizetype _229;
+  unsigned int _230;
+  int _234;
+  unsigned int * _235;
+  long unsigned int _236;
+  long unsigned int _237;
+  unsigned int * _238;
+  int _240;
+  unsigned int _243;
+  long unsigned int _244;
+  unsigned int * _245;
+  unsigned int _246;
+  int _247;
+  unsigned int _248;
+  int _253;
+  unsigned int * _254;
+  long unsigned int _255;
+  long unsigned int _256;
+  unsigned int * _257;
+  int _259;
+  unsigned int _262;
+  long unsigned int _263;
+  unsigned int * _264;
+  unsigned int _265;
+  int _266;
+  unsigned int _267;
+  unsigned int _269;
+  long unsigned int _271;
+  long unsigned int _276;
+  unsigned int _285;
+  int _289;
+  unsigned int _292;
+  unsigned int _302;
+  unsigned int _309;
+  unsigned int * _310;
+  long unsigned int _312;
+  long unsigned int _313;
+  unsigned long _315;
+  unsigned int * _316;
+  long unsigned int _317;
+  unsigned int _318;
+  unsigned int _320;
+  void * _321;
+  void * _323;
+  long unsigned int prephitmp_329;
+  long unsigned int _331;
+  unsigned int _333;
+  long unsigned int prephitmp_337;
+  unsigned int * _338;
+  int prephitmp_339;
+  unsigned int _346;
+  void * _352;
+  unsigned long _353;
+  _Bool _354;
+  _Bool _355;
+  unsigned int * _356;
+  sizetype _357;
+  sizetype _358;
+  void * _360;
+  sizetype _363;
+  _Bool _365;
+  unsigned int * _366;
+  unsigned int * _371;
+  sizetype _372;
+  sizetype _373;
+  long unsigned int powerbufFree.14_374;
+  long unsigned int _375;
+  long unsigned int _376;
+  long unsigned int _378;
+  sizetype _379;
+  unsigned long _385;
+  unsigned int _389;
+  unsigned int _390;
+  unsigned int * _391;
+  unsigned int _392;
+  long unsigned int _397;
+  long unsigned int _398;
+  unsigned int _399;
+  vector(4) unsigned int * _400;
+  unsigned long _401;
+  int _402;
+  int _403;
+  int _404;
+  unsigned int * _405;
+  int _406;
+  int _407;
+  int _408;
+  int prephitmp_409;
+  long unsigned int _410;
+  int _416;
+  int _417;
+  int _418;
+  sizetype _419;
+  int _420;
+  int _421;
+  int _422;
+  int prephitmp_423;
+  int _424;
+  long unsigned int _425;
+  _Bool _436;
+  unsigned int _437;
+  unsigned int _447;
+  unsigned long _453;
+  unsigned int _454;
+  int _455;
+  unsigned int _456;
+  long unsigned int _457;
+  unsigned int * _458;
+  long unsigned int _459;
+  long unsigned int _460;
+  unsigned int * _461;
+  unsigned int _462;
+  unsigned int _466;
+  unsigned int _471;
+  unsigned int _473;
+  int _474;
+  unsigned int _477;
+  unsigned long _478;
+  sizetype _479;
+  long unsigned int _480;
+  unsigned int * _483;
+  unsigned int _484;
+  unsigned int _485;
+  unsigned int _488;
+  unsigned int _491;
+  unsigned int _494;
+  long unsigned int _496;
+  unsigned int _503;
+  unsigned int * _504;
+  long unsigned int _505;
+  long unsigned int _506;
+  unsigned int _507;
+  unsigned int _511;
+  unsigned int _512;
+  unsigned int _513;
+  sizetype _515;
+  sizetype _516;
+  sizetype _517;
+  unsigned int * _518;
+  unsigned char * _519;
+  _Bool _520;
+  sizetype _521;
+  sizetype _526;
+  sizetype _527;
+  unsigned char * _528;
+  _Bool _529;
+  _Bool _530;
+  unsigned int _541;
+  int _549;
+  unsigned int _550;
+  long unsigned int _551;
+  unsigned int * _552;
+  long unsigned int _553;
+  long unsigned int _554;
+  unsigned int * _555;
+  unsigned int _556;
+  unsigned int _560;
+  unsigned int _562;
+  int _568;
+  unsigned int _571;
+  long unsigned int _574;
+  unsigned int _578;
+  unsigned int _579;
+  unsigned int _582;
+  unsigned int _585;
+  unsigned int _588;
+  long unsigned int _590;
+  long unsigned int _593;
+  unsigned int * _594;
+  long unsigned int _595;
+  long unsigned int _596;
+  unsigned int _597;
+  unsigned int * _598;
+  long unsigned int _599;
+  long unsigned int _600;
+  unsigned int * _601;
+  long unsigned int _602;
+  unsigned int _603;
+  unsigned int _604;
+  unsigned int _605;
+  unsigned int _606;
+  unsigned int _607;
+  sizetype _609;
+  sizetype _610;
+  sizetype _611;
+  unsigned int * _612;
+  _Bool _613;
+  sizetype _614;
+  unsigned int _618;
+  sizetype _619;
+  unsigned char * _620;
+  _Bool _621;
+  _Bool _622;
+  unsigned int _633;
+  vector(4) unsigned int * _641;
+  unsigned int _642;
+  long unsigned int _643;
+  unsigned int * _644;
+  long unsigned int _645;
+  long unsigned int _646;
+  unsigned int * _647;
+  unsigned int _648;
+  unsigned int _652;
+  unsigned int _653;
+  unsigned int * _654;
+  unsigned int _662;
+  long unsigned int _664;
+  unsigned long _667;
+  unsigned int _668;
+  unsigned int _669;
+  unsigned int _672;
+  unsigned int _675;
+  unsigned int _678;
+  long unsigned int _680;
+  unsigned int * _683;
+  long unsigned int _684;
+  unsigned int _689;
+  unsigned int _690;
+  int _691;
+  unsigned int _692;
+  sizetype _693;
+  unsigned char * _694;
+  unsigned int * _695;
+  ssizetype _696;
+  sizetype _697;
+  unsigned int _705;
+  unsigned int _707;
+  unsigned int _714;
+  unsigned int _715;
+  long unsigned int _716;
+  unsigned int * _717;
+  unsigned int _718;
+  unsigned int * _719;
+  unsigned int _720;
+  unsigned int _723;
+  long unsigned int _724;
+  int _728;
+  unsigned long _747;
+  unsigned int _748;
+  unsigned long _750;
+  sizetype _751;
+  unsigned int _752;
+  unsigned int _753;
+  sizetype _754;
+  unsigned long _755;
+  unsigned int _756;
+  unsigned long _757;
+  unsigned int _758;
+  void * _759;
+  void * _760;
+  unsigned int _761;
+  unsigned long _768;
+  unsigned int _769;
+  unsigned long _771;
+  void * _772;
+  void * _773;
+  unsigned int * _774;
+  long unsigned int _776;
+  long unsigned int _777;
+  unsigned long _783;
+  unsigned long _784;
+  unsigned long _786;
+  sizetype _787;
+  unsigned long _788;
+  unsigned int _789;
+  sizetype _790;
+  unsigned int _791;
+  unsigned int _792;
+  unsigned int _793;
+  unsigned int _794;
+  void * _795;
+  void * _796;
+  unsigned int _797;
+  unsigned long _804;
+  unsigned int _805;
+  unsigned long _807;
+  void * _808;
+  void * _809;
+  unsigned int * _810;
+  long unsigned int _812;
+  long unsigned int _813;
+  unsigned long _822;
+  unsigned int _825;
+  unsigned long _829;
+  unsigned int _832;
+  unsigned long _836;
+  unsigned long _839;
+  sizetype _840;
+  sizetype _843;
+  unsigned int _844;
+  void * _848;
+  void * _849;
+  unsigned long _856;
+  unsigned long _859;
+  void * _860;
+  void * _861;
+
+  <bb 2> [local count: 265776095]:
+  _1 = BN_is_odd (m_93(D));
+  if (_1 == 0)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 4>; [79.76%]
+
+  <bb 3> [local count: 53793081]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 627, &__func__);
+  ERR_set_error (3, 102, 0B);
+  goto <bb 150>; [100.00%]
+
+  <bb 4> [local count: 211983014]:
+  top_95 = m_93(D)->top;
+  if (top_95 > 2097151)
+    goto <bb 5>; [20.24%]
+  else
+    goto <bb 6>; [79.76%]
+
+  <bb 5> [local count: 42905362]:
+  _161 = BN_mod_exp_mont (rr_144(D), a_104(D), p_96(D), m_93(D), ctx_98(D), in_mont_100(D));
+  goto <bb 150>; [100.00%]
+
+  <bb 6> [local count: 169077652]:
+  _2 = p_96(D)->top;
+  if (_2 == 0)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 7> [local count: 57486402]:
+  _3 = BN_abs_is_word (m_93(D), 1);
+  if (_3 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 28743201]:
+  BN_zero_ex (rr_144(D));
+  goto <bb 150>; [100.00%]
+
+  <bb 9> [local count: 28743201]:
+  ret_158 = BN_set_word (rr_144(D), 1);
+  goto <bb 150>; [100.00%]
+
+  <bb 10> [local count: 111591250]:
+  BN_CTX_start (ctx_98(D));
+  if (in_mont_100(D) != 0B)
+    goto <bb 13>; [82.57%]
+  else
+    goto <bb 11>; [17.43%]
+
+  <bb 11> [local count: 19450355]:
+  mont_102 = BN_MONT_CTX_new ();
+  if (mont_102 == 0B)
+    goto <bb 143>; [30.95%]
+  else
+    goto <bb 12>; [69.05%]
+
+  <bb 12> [local count: 13430470]:
+  _4 = BN_MONT_CTX_set (mont_102, m_93(D), ctx_98(D));
+  if (_4 == 0)
+    goto <bb 142>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 13> [local count: 101005005]:
+  # mont_66 = PHI <in_mont_100(D)(10), mont_102(12)>
+  _5 = a_104(D)->neg;
+  if (_5 != 0)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 80298979]:
+  reduced_107 = BN_CTX_get (ctx_98(D));
+  if (reduced_107 == 0B)
+    goto <bb 16>; [30.95%]
+  else
+    goto <bb 19>; [69.05%]
+
+  <bb 15> [local count: 50502502]:
+  _6 = BN_ucmp (a_104(D), m_93(D));
+  if (_6 >= 0)
+    goto <bb 14>; [59.00%]
+  else
+    goto <bb 20>; [41.00%]
+
+  <bb 16> [local count: 24852534]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 18>; [17.43%]
+  else
+    goto <bb 17>; [82.57%]
+
+  <bb 17> [local count: 36092907]:
+  goto <bb 144>; [100.00%]
+
+  <bb 18> [local count: 4331797]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 144>; [100.00%]
+
+  <bb 19> [local count: 55446445]:
+  _7 = BN_nnmod (reduced_107, a_104(D), m_93(D), ctx_98(D));
+  if (_7 == 0)
+    goto <bb 140>; [34.00%]
+  else
+    goto <bb 20>; [66.00%]
+
+  <bb 20> [local count: 57300679]:
+  # a_59 = PHI <a_104(D)(15), reduced_107(19)>
+  bits_97 = _2 * 32;
+  if (bits_97 <= 937)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 25>; [50.00%]
+
+  <bb 21> [local count: 28650340]:
+  if (bits_97 <= 306)
+    goto <bb 22>; [50.00%]
+  else
+    goto <bb 25>; [50.00%]
+
+  <bb 22> [local count: 14325170]:
+  if (bits_97 <= 89)
+    goto <bb 23>; [50.00%]
+  else
+    goto <bb 25>; [50.00%]
+
+  <bb 23> [local count: 7162585]:
+  if (bits_97 > 22)
+    goto <bb 24>; [50.00%]
+  else
+    goto <bb 25>; [50.00%]
+
+  <bb 24> [local count: 3581293]:
+
+  <bb 25> [local count: 57300679]:
+  # iftmp.9_74 = PHI <5(21), 6(20), 4(22), 1(23), 3(24)>
+  # prephitmp_339 = PHI <32(21), 64(20), 16(22), 2(23), 8(24)>
+  # prephitmp_337 = PHI <32(21), 64(20), 16(22), 2(23), 8(24)>
+  _8 = top_95 << iftmp.9_74;
+  _9 = top_95 * 2;
+  _10 = MAX_EXPR <_9, prephitmp_339>;
+  _11 = _8 + _10;
+  _12 = (unsigned int) _11;
+  _13 = _12 * 4;
+  powerbufLen_110 = (int) _13;
+  _424 = powerbufLen_110 + 64;
+  _425 = (long unsigned int) _424;
+  if (powerbufLen_110 <= 3071)
+    goto <bb 26>; [67.00%]
+  else
+    goto <bb 27>; [33.00%]
+
+  <bb 26> [local count: 38391455]:
+  powerbufFree_114 = __builtin_alloca (_425);
+  powerbufFree.14_79 = (long unsigned int) powerbufFree_114;
+  _75 = powerbufFree.14_79 & 63;
+  _271 = 64 - _75;
+  powerbuf_270 = powerbufFree_114 + _271;
+  _54 = (long unsigned int) powerbufLen_110;
+  __builtin_memset (powerbuf_270, 0, _54);
+  goto <bb 29>; [100.00%]
+
+  <bb 27> [local count: 18909224]:
+  powerbufFree_112 = CRYPTO_malloc (_425, "bn_exp.c", 741);
+  if (powerbufFree_112 == 0B)
+    goto <bb 138>; [0.04%]
+  else
+    goto <bb 28>; [99.96%]
+
+  <bb 28> [local count: 18901660]:
+  powerbufFree.14_374 = (long unsigned int) powerbufFree_112;
+  _375 = powerbufFree.14_374 & 63;
+  _376 = 64 - _375;
+  powerbuf_377 = powerbufFree_112 + _376;
+  _378 = (long unsigned int) _13;
+  __builtin_memset (powerbuf_377, 0, _378);
+  _331 = (long unsigned int) _13;
+
+  <bb 29> [local count: 57293116]:
+  # powerbufFree_69 = PHI <powerbufFree_112(28), 0B(26)>
+  # powerbuf_387 = PHI <powerbuf_377(28), powerbuf_270(26)>
+  # prephitmp_329 = PHI <_331(28), _54(26)>
+  _23 = (long unsigned int) top_95;
+  _25 = _23 * prephitmp_337;
+  _26 = _25 * 4;
+  _27 = powerbuf_387 + _26;
+  tmp.d = _27;
+  _28 = top_95 w* 4;
+  _29 = _27 + _28;
+  am.d = _29;
+  am.top = 0;
+  tmp.top = 0;
+  am.dmax = top_95;
+  tmp.dmax = top_95;
+  MEM <unsigned long> [(int *)&am + 16B] = 8589934592;
+  MEM <unsigned long> [(int *)&tmp + 16B] = 8589934592;
+  _30 = m_93(D)->d;
+  _31 = _28 + 18446744073709551612;
+  _32 = _30 + _31;
+  _33 = *_32;
+  _34 = (signed int) _33;
+  if (_34 < 0)
+    goto <bb 30>; [58.52%]
+  else
+    goto <bb 44>; [41.48%]
+
+  <bb 30> [local count: 33527931]:
+  _35 = *_30;
+  _36 = -_35;
+  MEM[(unsigned int *)_27] = _36;
+  if (top_95 > 1)
+    goto <bb 32>; [89.00%]
+  else
+    goto <bb 31>; [11.00%]
+
+  <bb 31> [local count: 33527931]:
+  tmp.top = top_95;
+  goto <bb 50>; [100.00%]
+
+  <bb 32> [local count: 29839859]:
+  _689 = (unsigned int) top_95;
+  _690 = _689 + 4294967294;
+  if (_690 > 3)
+    goto <bb 33>; [89.44%]
+  else
+    goto <bb 42>; [10.56%]
+
+  <bb 33> [local count: 26689581]:
+  _693 = _26 + 4;
+  _694 = powerbuf_387 + _693;
+  _695 = _30 + 8;
+  _696 = _694 - _695;
+  _697 = (sizetype) _696;
+  if (_697 > 8)
+    goto <bb 34>; [89.44%]
+  else
+    goto <bb 42>; [10.56%]
+
+  <bb 34> [local count: 23871887]:
+  niters.156_711 = _689 + 4294967295;
+  bnd.157_725 = niters.156_711 >> 2;
+  vectp.161_729 = _30 + 4;
+  _225 = (sizetype) bnd.157_725;
+  _292 = (unsigned int) _225;
+  _212 = _292 w* 16;
+
+  <bb 35> [local count: 217017157]:
+  # ivtmp.300_548 = PHI <ivtmp.300_547(35), 0(34)>
+  vect__40.162_732 = MEM <vector(4) unsigned int> [(unsigned int *)vectp.161_729 + ivtmp.300_548 * 1];
+  vect__42.163_733 = ~vect__40.162_732;
+  MEM <vector(4) unsigned int> [(unsigned int *)_694 + ivtmp.300_548 * 1] = vect__42.163_733;
+  ivtmp.300_547 = ivtmp.300_548 + 16;
+  if (_212 != ivtmp.300_547)
+    goto <bb 35>; [89.00%]
+  else
+    goto <bb 38>; [11.00%]
+
+  <bb 36> [local count: 23871887]:
+
+  <bb 37> [local count: 29839859]:
+  goto <bb 31>; [100.00%]
+
+  <bb 38> [local count: 23871887]:
+  _320 = niters.156_711 & 3;
+  if (_320 == 0)
+    goto <bb 36>; [25.00%]
+  else
+    goto <bb 39>; [75.00%]
+
+  <bb 39> [local count: 17903915]:
+  niters_vector_mult_vf.158_726 = niters.156_711 & 4294967292;
+  _728 = (int) niters_vector_mult_vf.158_726;
+  tmp.159_727 = _728 + 1;
+  _506 = (long unsigned int) tmp.159_727;
+  _473 = (unsigned int) _506;
+  _505 = _473 w* 4;
+  _504 = _30 + _505;
+  _503 = *_504;
+  _228 = _27 + _505;
+  _60 = ~_503;
+  *_228 = _60;
+  i_62 = _728 + 2;
+  if (i_62 < top_95)
+    goto <bb 40>; [66.67%]
+  else
+    goto <bb 36>; [33.33%]
+
+  <bb 40> [local count: 11935943]:
+  _71 = _505 + 4;
+  _72 = _30 + _71;
+  _230 = *_72;
+  _391 = _27 + _71;
+  _392 = ~_230;
+  *_391 = _392;
+  i_394 = _728 + 3;
+  if (top_95 > i_394)
+    goto <bb 41>; [66.67%]
+  else
+    goto <bb 36>; [33.33%]
+
+  <bb 41> [local count: 7957295]:
+  _716 = _505 + 8;
+  _717 = _30 + _716;
+  _718 = *_717;
+  _719 = _27 + _716;
+  _720 = ~_718;
+  *_719 = _720;
+  goto <bb 36>; [100.00%]
+
+  <bb 42> [local count: 5967972]:
+  # ivtmp.288_659 = PHI <1(33), 1(32)>
+
+  <bb 43> [local count: 54254288]:
+  # ivtmp.288_15 = PHI <ivtmp.288_659(42), ivtmp.288_14(43)>
+  _705 = MEM[(unsigned int *)_30 + ivtmp.288_15 * 4];
+  _707 = ~_705;
+  MEM[(unsigned int *)_27 + ivtmp.288_15 * 4] = _707;
+  ivtmp.288_14 = ivtmp.288_15 + 1;
+  i_20 = (int) ivtmp.288_14;
+  if (i_20 < top_95)
+    goto <bb 43>; [89.00%]
+  else
+    goto <bb 37>; [11.00%]
+
+  <bb 44> [local count: 23765185]:
+  _43 = BN_value_one ();
+  _44 = bn_to_mont_fixed_top (&tmp, _43, mont_66, ctx_98(D));
+  if (_44 == 0)
+    goto <bb 45>; [34.00%]
+  else
+    goto <bb 50>; [66.00%]
+
+  <bb 45> [local count: 8080163]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 47>; [17.43%]
+  else
+    goto <bb 46>; [82.57%]
+
+  <bb 46> [local count: 46963208]:
+  goto <bb 147>; [100.00%]
+
+  <bb 47> [local count: 1408372]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 147>; [100.00%]
+
+  <bb 48> [local count: 214445]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 49>; [17.43%]
+  else
+    goto <bb 46>; [82.57%]
+
+  <bb 49> [local count: 37378]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 147>; [100.00%]
+
+  <bb 50> [local count: 49212953]:
+  _45 = bn_to_mont_fixed_top (&am, a_59, mont_66, ctx_98(D));
+  if (_45 == 0)
+    goto <bb 136>; [34.00%]
+  else
+    goto <bb 51>; [66.00%]
+
+  <bb 51> [local count: 32480549]:
+fallback:
+  _140 = tmp.top;
+  _167 = MIN_EXPR <top_95, _140>;
+  if (_167 > 0)
+    goto <bb 53>; [89.00%]
+  else
+    goto <bb 52>; [11.00%]
+
+  <bb 52> [local count: 32480549]:
+  _180 = am.top;
+  _181 = MIN_EXPR <top_95, _180>;
+  if (_181 > 0)
+    goto <bb 66>; [89.00%]
+  else
+    goto <bb 65>; [11.00%]
+
+  <bb 53> [local count: 28907689]:
+  _168 = tmp.d;
+  _605 = (unsigned int) _167;
+  _606 = _605 + 4294967295;
+  if (_606 > 9)
+    goto <bb 54>; [89.44%]
+  else
+    goto <bb 63>; [10.56%]
+
+  <bb 54> [local count: 25855823]:
+  _609 = (sizetype) _167;
+  _610 = _609 + 18446744073709551615;
+  _668 = (unsigned int) _610;
+  _611 = _668 w* 4;
+  _612 = _168 + _611;
+  _613 = powerbuf_387 > _612;
+  _614 = (sizetype) prephitmp_339;
+  _603 = (unsigned int) _611;
+  _642 = (unsigned int) _614;
+  _619 = _603 w* _642;
+  _620 = powerbuf_387 + _619;
+  _621 = _168 > _620;
+  _622 = _613 | _621;
+  if (_622 != 0)
+    goto <bb 55>; [89.44%]
+  else
+    goto <bb 63>; [10.56%]
+
+  <bb 55> [local count: 23126151]:
+  bnd.149_655 = _605 >> 2;
+  _662 = (unsigned int) _614;
+  _664 = _662 w* 16;
+  ivtmp.276_280 = (unsigned long) _168;
+  ivtmp.279_324 = (unsigned long) powerbuf_387;
+  _478 = (unsigned long) bnd.149_655;
+  _692 = (unsigned int) _478;
+  _68 = (unsigned long) _168;
+  _24 = WIDEN_MULT_PLUS_EXPR <_692, 16, _68>;
+  _715 = (unsigned int) _614;
+  _186 = _715 w* 8;
+  _607 = (unsigned int) _614;
+  _479 = _607 w* 12;
+
+  <bb 56> [local count: 210237736]:
+  # ivtmp.276_294 = PHI <ivtmp.276_277(56), ivtmp.276_280(55)>
+  # ivtmp.279_281 = PHI <ivtmp.279_284(56), ivtmp.279_324(55)>
+  _352 = (void *) ivtmp.276_294;
+  _38 = &MEM <vector(4) unsigned int> [(unsigned int *)_352];
+  _678 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_38], 32, 96>;
+  _675 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_38], 32, 64>;
+  _672 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_38], 32, 32>;
+  _669 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_38], 32, 0>;
+  _360 = (void *) ivtmp.279_281;
+  MEM[(unsigned int *)_360] = _669;
+  MEM[(unsigned int *)_360 + _614 * 4] = _672;
+  MEM[(unsigned int *)_360 + _186 * 1] = _675;
+  MEM[(unsigned int *)_360 + _479 * 1] = _678;
+  ivtmp.276_277 = ivtmp.276_294 + 16;
+  ivtmp.279_284 = ivtmp.279_281 + _664;
+  if (_24 != ivtmp.276_277)
+    goto <bb 56>; [89.00%]
+  else
+    goto <bb 59>; [11.00%]
+
+  <bb 57> [local count: 23126151]:
+
+  <bb 58> [local count: 28907688]:
+  goto <bb 52>; [100.00%]
+
+  <bb 59> [local count: 23126151]:
+  _549 = _167 & -4;
+  niters_vector_mult_vf.150_656 = (unsigned int) _549;
+  if (_605 == niters_vector_mult_vf.150_656)
+    goto <bb 57>; [25.00%]
+  else
+    goto <bb 60>; [75.00%]
+
+  <bb 60> [local count: 17344613]:
+  tmp.152_658 = prephitmp_339 * _549;
+  _596 = (long unsigned int) niters_vector_mult_vf.150_656;
+  _477 = (unsigned int) _596;
+  _595 = _477 w* 4;
+  _594 = _168 + _595;
+  _593 = (long unsigned int) tmp.152_658;
+  _571 = (unsigned int) _593;
+  _684 = _571 w* 4;
+  _683 = powerbuf_387 + _684;
+  _131 = *_594;
+  *_683 = _131;
+  i_687 = _549 + 1;
+  if (_167 > i_687)
+    goto <bb 61>; [66.67%]
+  else
+    goto <bb 57>; [33.33%]
+
+  <bb 61> [local count: 11563075]:
+  j_686 = prephitmp_339 + tmp.152_658;
+  _602 = _595 + 4;
+  _601 = _168 + _602;
+  _600 = (long unsigned int) j_686;
+  _285 = (unsigned int) _600;
+  _599 = _285 w* 4;
+  _598 = powerbuf_387 + _599;
+  _597 = *_601;
+  *_598 = _597;
+  i_510 = _549 + 2;
+  if (_167 > i_510)
+    goto <bb 62>; [66.67%]
+  else
+    goto <bb 57>; [33.33%]
+
+  <bb 62> [local count: 7708717]:
+  _643 = _595 + 8;
+  _644 = _168 + _643;
+  j_509 = prephitmp_339 + j_686;
+  _645 = (long unsigned int) j_509;
+  _200 = (unsigned int) _645;
+  _646 = _200 w* 4;
+  _647 = powerbuf_387 + _646;
+  _648 = *_644;
+  *_647 = _648;
+  goto <bb 57>; [100.00%]
+
+  <bb 63> [local count: 5781538]:
+  ivtmp.271_744 = (unsigned long) _168;
+  _398 = (long unsigned int) prephitmp_339;
+  _513 = (unsigned int) _398;
+  _397 = _513 w* 4;
+  ivtmp.272_396 = (unsigned long) powerbuf_387;
+  _175 = (unsigned long) _167;
+  _578 = (unsigned int) _175;
+  _401 = (unsigned long) _168;
+  _315 = WIDEN_MULT_PLUS_EXPR <_578, 4, _401>;
+
+  <bb 64> [local count: 52559433]:
+  # ivtmp.271_746 = PHI <ivtmp.271_744(63), ivtmp.271_745(64)>
+  # ivtmp.272_743 = PHI <ivtmp.272_396(63), ivtmp.272_742(64)>
+  _321 = (void *) ivtmp.271_746;
+  _633 = MEM[(unsigned int *)_321];
+  _323 = (void *) ivtmp.272_743;
+  MEM[(unsigned int *)_323] = _633;
+  ivtmp.271_745 = ivtmp.271_746 + 4;
+  ivtmp.272_742 = _397 + ivtmp.272_743;
+  if (_315 != ivtmp.271_745)
+    goto <bb 64>; [89.00%]
+  else
+    goto <bb 58>; [11.00%]
+
+  <bb 65> [local count: 32480549]:
+  if (iftmp.9_74 != 1)
+    goto <bb 79>; [66.00%]
+  else
+    goto <bb 78>; [34.00%]
+
+  <bb 66> [local count: 28907689]:
+  _182 = am.d;
+  _511 = (unsigned int) _181;
+  _512 = _511 + 4294967295;
+  if (_512 > 9)
+    goto <bb 67>; [89.44%]
+  else
+    goto <bb 76>; [10.56%]
+
+  <bb 67> [local count: 25855823]:
+  _515 = (sizetype) _181;
+  _516 = _515 + 18446744073709551615;
+  _243 = (unsigned int) _516;
+  _517 = _243 w* 4;
+  _518 = _182 + _517;
+  _519 = powerbuf_387 + 4;
+  _520 = _518 < _519;
+  _521 = (sizetype) prephitmp_339;
+  _262 = (unsigned int) _516;
+  _825 = (unsigned int) _521;
+  _526 = WIDEN_MULT_PLUS_EXPR <_262, _825, 1>;
+  _399 = (unsigned int) _526;
+  _527 = _399 w* 4;
+  _528 = powerbuf_387 + _527;
+  _529 = _182 > _528;
+  _530 = _520 | _529;
+  if (_530 != 0)
+    goto <bb 68>; [89.44%]
+  else
+    goto <bb 76>; [10.56%]
+
+  <bb 68> [local count: 23126151]:
+  bnd.141_563 = _511 >> 2;
+  _456 = (unsigned int) _521;
+  _574 = _456 w* 16;
+  ivtmp.251_765 = (unsigned long) _182;
+  ivtmp.254_762 = (unsigned long) _519;
+  _750 = (unsigned long) bnd.141_563;
+  _832 = (unsigned int) _750;
+  _385 = (unsigned long) _182;
+  _747 = WIDEN_MULT_PLUS_EXPR <_832, 16, _385>;
+  _177 = (unsigned int) _521;
+  _754 = _177 w* 8;
+  _318 = (unsigned int) _521;
+  _751 = _318 w* 12;
+
+  <bb 69> [local count: 210237736]:
+  # ivtmp.251_767 = PHI <ivtmp.251_766(69), ivtmp.251_765(68)>
+  # ivtmp.254_764 = PHI <ivtmp.254_763(69), ivtmp.254_762(68)>
+  _760 = (void *) ivtmp.251_767;
+  _400 = &MEM <vector(4) unsigned int> [(unsigned int *)_760];
+  _588 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_400], 32, 96>;
+  _585 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_400], 32, 64>;
+  _582 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_400], 32, 32>;
+  _579 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_400], 32, 0>;
+  _759 = (void *) ivtmp.254_764;
+  MEM[(unsigned int *)_759] = _579;
+  MEM[(unsigned int *)_759 + _521 * 4] = _582;
+  MEM[(unsigned int *)_759 + _754 * 1] = _585;
+  MEM[(unsigned int *)_759 + _751 * 1] = _588;
+  ivtmp.251_766 = ivtmp.251_767 + 16;
+  ivtmp.254_763 = _574 + ivtmp.254_764;
+  if (_747 != ivtmp.251_766)
+    goto <bb 69>; [89.00%]
+  else
+    goto <bb 72>; [11.00%]
+
+  <bb 70> [local count: 23126151]:
+
+  <bb 71> [local count: 28907688]:
+  goto <bb 65>; [100.00%]
+
+  <bb 72> [local count: 23126151]:
+  _455 = _181 & -4;
+  niters_vector_mult_vf.142_564 = (unsigned int) _455;
+  if (_511 == niters_vector_mult_vf.142_564)
+    goto <bb 70>; [25.00%]
+  else
+    goto <bb 73>; [75.00%]
+
+  <bb 73> [local count: 17344613]:
+  _568 = prephitmp_339 * _455;
+  tmp.144_566 = _568 + 1;
+  _214 = (long unsigned int) niters_vector_mult_vf.142_564;
+  _484 = (unsigned int) _214;
+  _216 = _484 w* 4;
+  _217 = _182 + _216;
+  _218 = (long unsigned int) tmp.144_566;
+  _202 = (unsigned int) _218;
+  _219 = _202 w* 4;
+  _115 = powerbuf_387 + _219;
+  _220 = *_217;
+  *_115 = _220;
+  i_300 = _455 + 1;
+  if (_181 > i_300)
+    goto <bb 74>; [66.67%]
+  else
+    goto <bb 70>; [33.33%]
+
+  <bb 74> [local count: 11563075]:
+  j_301 = prephitmp_339 + tmp.144_566;
+  _410 = _216 + 4;
+  _483 = _182 + _410;
+  _76 = (long unsigned int) j_301;
+  _21 = (unsigned int) _76;
+  _81 = _21 w* 4;
+  _82 = powerbuf_387 + _81;
+  _84 = *_483;
+  *_82 = _84;
+  i_502 = _455 + 2;
+  if (_181 > i_502)
+    goto <bb 75>; [66.67%]
+  else
+    goto <bb 70>; [33.33%]
+
+  <bb 75> [local count: 7708717]:
+  _551 = _216 + 8;
+  _552 = _182 + _551;
+  j_501 = j_301 + prephitmp_339;
+  _553 = (long unsigned int) j_501;
+  _550 = (unsigned int) _553;
+  _554 = _550 w* 4;
+  _555 = powerbuf_387 + _554;
+  _556 = *_552;
+  *_555 = _556;
+  goto <bb 70>; [100.00%]
+
+  <bb 76> [local count: 5781538]:
+  ivtmp.244_780 = (unsigned long) _182;
+  _777 = (long unsigned int) prephitmp_339;
+  _176 = (unsigned int) _777;
+  _776 = _176 w* 4;
+  _774 = powerbuf_387 + 4;
+  ivtmp.245_775 = (unsigned long) _774;
+  _771 = (unsigned long) _181;
+  _604 = (unsigned int) _771;
+  _667 = (unsigned long) _182;
+  _768 = WIDEN_MULT_PLUS_EXPR <_604, 4, _667>;
+
+  <bb 77> [local count: 52559433]:
+  # ivtmp.244_782 = PHI <ivtmp.244_780(76), ivtmp.244_781(77)>
+  # ivtmp.245_779 = PHI <ivtmp.245_775(76), ivtmp.245_778(77)>
+  _773 = (void *) ivtmp.244_782;
+  _541 = MEM[(unsigned int *)_773];
+  _772 = (void *) ivtmp.245_779;
+  MEM[(unsigned int *)_772] = _541;
+  ivtmp.244_781 = ivtmp.244_782 + 4;
+  ivtmp.245_778 = _776 + ivtmp.245_779;
+  if (_768 != ivtmp.244_781)
+    goto <bb 77>; [89.00%]
+  else
+    goto <bb 71>; [11.00%]
+
+  <bb 78> [local count: 18317694]:
+  _48 = bits_97 + -1;
+  _49 = _48 % iftmp.9_74;
+  window0_137 = _49 + 1;
+  bits_139 = bits_97 - window0_137;
+  if (bits_139 >= -31)
+    goto <bb 111>; [50.00%]
+  else
+    goto <bb 117>; [50.00%]
+
+  <bb 79> [local count: 21437162]:
+  _46 = bn_mul_mont_fixed_top (&tmp, &am, &am, mont_66, ctx_98(D));
+  if (_46 == 0)
+    goto <bb 80>; [34.00%]
+  else
+    goto <bb 82>; [66.00%]
+
+  <bb 80> [local count: 7288635]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 81>; [17.43%]
+  else
+    goto <bb 46>; [82.57%]
+
+  <bb 81> [local count: 1270409]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 147>; [100.00%]
+
+  <bb 82> [local count: 14148527]:
+  _194 = tmp.top;
+  _195 = MIN_EXPR <top_95, _194>;
+  if (_195 > 0)
+    goto <bb 84>; [89.00%]
+  else
+    goto <bb 83>; [11.00%]
+
+  <bb 83> [local count: 14148527]:
+  _363 = (sizetype) prephitmp_339;
+  _794 = (unsigned int) _363;
+  _276 = _794 w* 16;
+  _793 = (unsigned int) _363;
+  _224 = _793 w* 4;
+  _792 = (unsigned int) _363;
+  _843 = _792 w* 8;
+  _789 = (unsigned int) _363;
+  _840 = _789 w* 12;
+  goto <bb 96>; [100.00%]
+
+  <bb 84> [local count: 12592189]:
+  _196 = tmp.d;
+  _51 = (unsigned int) _195;
+  _22 = _51 + 4294967295;
+  if (_22 > 9)
+    goto <bb 85>; [89.44%]
+  else
+    goto <bb 94>; [10.56%]
+
+  <bb 85> [local count: 11262796]:
+  _19 = (sizetype) _195;
+  _18 = _19 + 18446744073709551615;
+  _652 = (unsigned int) _18;
+  _419 = _652 w* 4;
+  _405 = _196 + _419;
+  _109 = powerbuf_387 + 8;
+  _16 = _109 > _405;
+  _17 = (sizetype) prephitmp_339;
+  _560 = (unsigned int) _17;
+  _437 = (unsigned int) _18;
+  _141 = WIDEN_MULT_PLUS_EXPR <_560, _437, 2>;
+  _198 = (unsigned int) _141;
+  _229 = _198 w* 4;
+  _147 = powerbuf_387 + _229;
+  _58 = _147 < _196;
+  _436 = _16 | _58;
+  if (_436 != 0)
+    goto <bb 86>; [89.44%]
+  else
+    goto <bb 94>; [10.56%]
+
+  <bb 86> [local count: 10073751]:
+  bnd.133_469 = _51 >> 2;
+  _618 = (unsigned int) _17;
+  _480 = _618 w* 16;
+  ivtmp.224_801 = (unsigned long) _196;
+  ivtmp.227_798 = (unsigned long) _109;
+  _786 = (unsigned long) bnd.133_469;
+  _466 = (unsigned int) _786;
+  _353 = (unsigned long) _196;
+  _783 = WIDEN_MULT_PLUS_EXPR <_466, 16, _353>;
+  _302 = (unsigned int) _17;
+  _790 = _302 w* 8;
+  _269 = (unsigned int) _17;
+  _787 = _269 w* 12;
+
+  <bb 87> [local count: 91579557]:
+  # ivtmp.224_803 = PHI <ivtmp.224_802(87), ivtmp.224_801(86)>
+  # ivtmp.227_800 = PHI <ivtmp.227_799(87), ivtmp.227_798(86)>
+  _796 = (void *) ivtmp.224_803;
+  _213 = &MEM <vector(4) unsigned int> [(unsigned int *)_796];
+  _494 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_213], 32, 96>;
+  _491 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_213], 32, 64>;
+  _488 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_213], 32, 32>;
+  _485 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_213], 32, 0>;
+  _795 = (void *) ivtmp.227_800;
+  MEM[(unsigned int *)_795] = _485;
+  MEM[(unsigned int *)_795 + _17 * 4] = _488;
+  MEM[(unsigned int *)_795 + _790 * 1] = _491;
+  MEM[(unsigned int *)_795 + _787 * 1] = _494;
+  ivtmp.224_802 = ivtmp.224_803 + 16;
+  ivtmp.227_799 = _480 + ivtmp.227_800;
+  if (_783 != ivtmp.224_802)
+    goto <bb 87>; [89.00%]
+  else
+    goto <bb 90>; [11.00%]
+
+  <bb 88> [local count: 10073751]:
+
+  <bb 89> [local count: 12592189]:
+  goto <bb 83>; [100.00%]
+
+  <bb 90> [local count: 10073751]:
+  _188 = _195 & -4;
+  niters_vector_mult_vf.134_470 = (unsigned int) _188;
+  if (_51 == niters_vector_mult_vf.134_470)
+    goto <bb 88>; [25.00%]
+  else
+    goto <bb 91>; [75.00%]
+
+  <bb 91> [local count: 7555313]:
+  _474 = _188 * prephitmp_339;
+  tmp.136_472 = _474 + 2;
+  _189 = (long unsigned int) niters_vector_mult_vf.134_470;
+  _65 = (unsigned int) _189;
+  _190 = _65 w* 4;
+  _191 = _196 + _190;
+  _590 = (long unsigned int) tmp.136_472;
+  _507 = (unsigned int) _590;
+  _192 = _507 w* 4;
+  _193 = powerbuf_387 + _192;
+  _562 = *_191;
+  *_193 = _562;
+  i_306 = _188 + 1;
+  if (_195 > i_306)
+    goto <bb 92>; [66.67%]
+  else
+    goto <bb 88>; [33.33%]
+
+  <bb 92> [local count: 5036875]:
+  j_314 = prephitmp_339 + tmp.136_472;
+  _203 = _190 + 4;
+  _204 = _196 + _203;
+  _205 = (long unsigned int) j_314;
+  _714 = (unsigned int) _205;
+  _496 = _714 w* 4;
+  _206 = powerbuf_387 + _496;
+  _207 = *_204;
+  *_206 = _207;
+  i_467 = _188 + 2;
+  if (_195 > i_467)
+    goto <bb 93>; [66.67%]
+  else
+    goto <bb 88>; [33.33%]
+
+  <bb 93> [local count: 3357916]:
+  _457 = _190 + 8;
+  _458 = _196 + _457;
+  j_290 = j_314 + prephitmp_339;
+  _459 = (long unsigned int) j_290;
+  _723 = (unsigned int) _459;
+  _460 = _723 w* 4;
+  _461 = powerbuf_387 + _460;
+  _462 = *_458;
+  *_461 = _462;
+  goto <bb 88>; [100.00%]
+
+  <bb 94> [local count: 2518438]:
+  ivtmp.217_816 = (unsigned long) _196;
+  _813 = (long unsigned int) prephitmp_339;
+  _471 = (unsigned int) _813;
+  _812 = _471 w* 4;
+  _810 = powerbuf_387 + 8;
+  ivtmp.218_811 = (unsigned long) _810;
+  _807 = (unsigned long) _195;
+  _454 = (unsigned int) _807;
+  _453 = (unsigned long) _196;
+  _804 = WIDEN_MULT_PLUS_EXPR <_454, 4, _453>;
+
+  <bb 95> [local count: 22894888]:
+  # ivtmp.217_818 = PHI <ivtmp.217_816(94), ivtmp.217_817(95)>
+  # ivtmp.218_815 = PHI <ivtmp.218_811(94), ivtmp.218_814(95)>
+  _809 = (void *) ivtmp.217_818;
+  _447 = MEM[(unsigned int *)_809];
+  _808 = (void *) ivtmp.218_815;
+  MEM[(unsigned int *)_808] = _447;
+  ivtmp.217_817 = ivtmp.217_818 + 4;
+  ivtmp.218_814 = _812 + ivtmp.218_815;
+  if (_804 != ivtmp.217_817)
+    goto <bb 95>; [89.00%]
+  else
+    goto <bb 89>; [11.00%]
+
+  <bb 96> [local count: 124985820]:
+  # ivtmp.208_835 = PHI <ivtmp.208_834(98), 3(83)>
+  _47 = bn_mul_mont_fixed_top (&tmp, &am, &tmp, mont_66, ctx_98(D));
+  if (_47 == 0)
+    goto <bb 145>; [5.50%]
+  else
+    goto <bb 97>; [94.50%]
+
+  <bb 97> [local count: 118111600]:
+  _208 = tmp.top;
+  _209 = MIN_EXPR <top_95, _208>;
+  if (_209 > 0)
+    goto <bb 99>; [89.00%]
+  else
+    goto <bb 98>; [11.00%]
+
+  <bb 98> [local count: 118111600]:
+  ivtmp.208_834 = ivtmp.208_835 + 1;
+  i_833 = (int) ivtmp.208_834;
+  if (prephitmp_339 > i_833)
+    goto <bb 96>; [93.84%]
+  else
+    goto <bb 78>; [6.16%]
+
+  <bb 99> [local count: 105119324]:
+  _210 = tmp.d;
+  _390 = (unsigned int) _209;
+  _389 = _390 + 4294967295;
+  if (_389 > 9)
+    goto <bb 100>; [89.44%]
+  else
+    goto <bb 109>; [10.56%]
+
+  <bb 100> [local count: 94021582]:
+  _379 = (sizetype) _209;
+  _373 = _379 + 18446744073709551615;
+  _752 = (unsigned int) _373;
+  _372 = _752 w* 4;
+  _371 = _210 + _372;
+  _758 = (unsigned int) ivtmp.208_835;
+  _757 = (unsigned long) powerbuf_387;
+  _822 = WIDEN_MULT_PLUS_EXPR <_758, 4, _757>;
+  _366 = (unsigned int *) _822;
+  _365 = _366 > _371;
+  _756 = (unsigned int) _363;
+  _753 = (unsigned int) _373;
+  _358 = WIDEN_MULT_PLUS_EXPR <_756, _753, ivtmp.208_835>;
+  _769 = (unsigned int) _358;
+  _357 = _769 w* 4;
+  _356 = powerbuf_387 + _357;
+  _355 = _210 > _356;
+  _354 = _355 | _365;
+  if (_354 != 0)
+    goto <bb 101>; [89.44%]
+  else
+    goto <bb 109>; [10.56%]
+
+  <bb 101> [local count: 84095460]:
+  bnd.125_297 = _390 >> 2;
+  ivtmp.198_850 = (unsigned long) _210;
+  _839 = (unsigned long) bnd.125_297;
+  _748 = (unsigned int) _839;
+  _755 = (unsigned long) _210;
+  _836 = WIDEN_MULT_PLUS_EXPR <_748, 16, _755>;
+
+  <bb 102> [local count: 764504183]:
+  # ivtmp.195_855 = PHI <ivtmp.195_854(102), _822(101)>
+  # ivtmp.198_852 = PHI <ivtmp.198_851(102), ivtmp.198_850(101)>
+  _849 = (void *) ivtmp.198_852;
+  _641 = &MEM <vector(4) unsigned int> [(unsigned int *)_849];
+  _169 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_641], 32, 96>;
+  _187 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_641], 32, 64>;
+  _211 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_641], 32, 32>;
+  _223 = BIT_FIELD_REF <MEM <vector(4) unsigned int> [(unsigned int *)_641], 32, 0>;
+  _848 = (void *) ivtmp.195_855;
+  MEM[(unsigned int *)_848] = _223;
+  MEM[(unsigned int *)_848 + _363 * 4] = _211;
+  MEM[(unsigned int *)_848 + _843 * 1] = _187;
+  MEM[(unsigned int *)_848 + _840 * 1] = _169;
+  ivtmp.195_854 = _276 + ivtmp.195_855;
+  ivtmp.198_851 = ivtmp.198_852 + 16;
+  if (_836 != ivtmp.198_851)
+    goto <bb 102>; [89.00%]
+  else
+    goto <bb 105>; [11.00%]
+
+  <bb 103> [local count: 84095460]:
+
+  <bb 104> [local count: 105119324]:
+  goto <bb 98>; [100.00%]
+
+  <bb 105> [local count: 84095460]:
+  _691 = _209 & -4;
+  niters_vector_mult_vf.126_296 = (unsigned int) _691;
+  _289 = prephitmp_339 * _691;
+  i_307 = (int) ivtmp.208_835;
+  tmp.128_293 = _289 + i_307;
+  if (niters_vector_mult_vf.126_296 == _390)
+    goto <bb 103>; [25.00%]
+  else
+    goto <bb 106>; [75.00%]
+
+  <bb 106> [local count: 63071595]:
+  _39 = (long unsigned int) niters_vector_mult_vf.126_296;
+  _37 = (unsigned int) _39;
+  _40 = _37 w* 4;
+  _41 = _210 + _40;
+  _42 = (long unsigned int) tmp.128_293;
+  _761 = (unsigned int) _42;
+  _132 = _761 w* 4;
+  _338 = powerbuf_387 + _132;
+  _346 = *_41;
+  *_338 = _346;
+  i_171 = _691 + 1;
+  if (i_171 < _209)
+    goto <bb 107>; [66.67%]
+  else
+    goto <bb 103>; [33.33%]
+
+  <bb 107> [local count: 42047730]:
+  j_172 = tmp.128_293 + prephitmp_339;
+  _680 = _40 + 4;
+  _178 = _210 + _680;
+  _179 = (long unsigned int) j_172;
+  _185 = (unsigned int) _179;
+  _724 = _185 w* 4;
+  _654 = powerbuf_387 + _724;
+  _653 = *_178;
+  *_654 = _653;
+  i_330 = _691 + 2;
+  if (_209 > i_330)
+    goto <bb 108>; [66.67%]
+  else
+    goto <bb 103>; [33.33%]
+
+  <bb 108> [local count: 28031820]:
+  _317 = _40 + 8;
+  _316 = _210 + _317;
+  j_184 = j_172 + prephitmp_339;
+  _313 = (long unsigned int) j_184;
+  _199 = (unsigned int) _313;
+  _312 = _199 w* 4;
+  _310 = powerbuf_387 + _312;
+  _309 = *_316;
+  *_310 = _309;
+  goto <bb 103>; [100.00%]
+
+  <bb 109> [local count: 21023864]:
+  ivtmp.187_870 = (unsigned long) _210;
+  _797 = (unsigned int) ivtmp.208_835;
+  _784 = (unsigned long) powerbuf_387;
+  _829 = WIDEN_MULT_PLUS_EXPR <_797, 4, _784>;
+  _859 = (unsigned long) _209;
+  _791 = (unsigned int) _859;
+  _788 = (unsigned long) _210;
+  _856 = WIDEN_MULT_PLUS_EXPR <_791, 4, _788>;
+
+  <bb 110> [local count: 191126041]:
+  # ivtmp.187_872 = PHI <ivtmp.187_870(109), ivtmp.187_871(110)>
+  # ivtmp.188_869 = PHI <_829(109), ivtmp.188_868(110)>
+  _861 = (void *) ivtmp.187_872;
+  _333 = MEM[(unsigned int *)_861];
+  _860 = (void *) ivtmp.188_869;
+  MEM[(unsigned int *)_860] = _333;
+  ivtmp.187_871 = ivtmp.187_872 + 4;
+  ivtmp.188_868 = _224 + ivtmp.188_869;
+  if (_856 != ivtmp.187_871)
+    goto <bb 110>; [89.00%]
+  else
+    goto <bb 104>; [11.00%]
+
+  <bb 111> [local count: 9158847]:
+  wordpos_232 = bits_139 / 32;
+  _234 = p_96(D)->top;
+  if (wordpos_232 < _234)
+    goto <bb 112>; [50.00%]
+  else
+    goto <bb 117>; [50.00%]
+
+  <bb 112> [local count: 4579424]:
+  _50 = 1 << window0_137;
+  wmask_138 = _50 + -1;
+  _235 = p_96(D)->d;
+  _236 = (long unsigned int) wordpos_232;
+  _805 = (unsigned int) _236;
+  _237 = _805 w* 4;
+  _238 = _235 + _237;
+  ret_239 = *_238;
+  _240 = bits_139 & 31;
+  if (_240 != 0)
+    goto <bb 114>; [50.00%]
+  else
+    goto <bb 113>; [50.00%]
+
+  <bb 113> [local count: 2289712]:
+  _402 = (int) ret_239;
+  _406 = wmask_138 & _402;
+  goto <bb 117>; [100.00%]
+
+  <bb 114> [local count: 2289712]:
+  ret_241 = ret_239 >> _240;
+  wordpos_242 = wordpos_232 + 1;
+  if (_234 > wordpos_242)
+    goto <bb 116>; [50.00%]
+  else
+    goto <bb 115>; [50.00%]
+
+  <bb 115> [local count: 1144856]:
+  _403 = (int) ret_241;
+  _407 = wmask_138 & _403;
+  goto <bb 117>; [100.00%]
+
+  <bb 116> [local count: 1144856]:
+  _244 = _237 + 4;
+  _245 = _235 + _244;
+  _246 = *_245;
+  bitpos_233 = bits_139 % 32;
+  _247 = 32 - bitpos_233;
+  _248 = _246 << _247;
+  ret_249 = ret_241 | _248;
+  _404 = (int) ret_249;
+  _408 = wmask_138 & _404;
+
+  <bb 117> [local count: 18317694]:
+  # prephitmp_409 = PHI <0(111), _408(116), _406(113), _407(115), 0(78)>
+  _52 = MOD_EXP_CTIME_COPY_FROM_PREBUF (&tmp, top_95, powerbuf_387, prephitmp_409, iftmp.9_74);
+  if (_52 == 0)
+    goto <bb 118>; [34.00%]
+  else
+    goto <bb 120>; [66.00%]
+
+  <bb 118> [local count: 6228016]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 119>; [17.43%]
+  else
+    goto <bb 46>; [82.57%]
+
+  <bb 119> [local count: 1085543]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 147>; [100.00%]
+
+  <bb 120> [local count: 12089678]:
+  wmask_143 = prephitmp_339 + -1;
+  goto <bb 131>; [100.00%]
+
+  <bb 121> [local count: 197034744]:
+  # i_299 = PHI <i_151(122), 0(131)>
+  _53 = bn_mul_mont_fixed_top (&tmp, &tmp, &tmp, mont_66, ctx_98(D));
+  if (_53 == 0)
+    goto <bb 145>; [5.50%]
+  else
+    goto <bb 122>; [94.50%]
+
+  <bb 122> [local count: 186197833]:
+  i_151 = i_299 + 1;
+  if (iftmp.9_74 != i_151)
+    goto <bb 121>; [93.84%]
+  else
+    goto <bb 123>; [6.16%]
+
+  <bb 123> [local count: 11467631]:
+  bits_146 = bits_63 - i_151;
+  wordpos_251 = bits_146 / 32;
+  _253 = p_96(D)->top;
+  if (wordpos_251 < _253)
+    goto <bb 124>; [50.00%]
+  else
+    goto <bb 129>; [50.00%]
+
+  <bb 124> [local count: 2866908]:
+  _254 = p_96(D)->d;
+  _255 = (long unsigned int) wordpos_251;
+  _844 = (unsigned int) _255;
+  _256 = _844 w* 4;
+  _257 = _254 + _256;
+  ret_258 = *_257;
+  _259 = bits_146 & 31;
+  if (_259 != 0)
+    goto <bb 126>; [50.00%]
+  else
+    goto <bb 125>; [50.00%]
+
+  <bb 125> [local count: 1433454]:
+  _417 = (int) ret_258;
+  _421 = wmask_143 & _417;
+  goto <bb 129>; [100.00%]
+
+  <bb 126> [local count: 1433454]:
+  ret_260 = ret_258 >> _259;
+  wordpos_261 = wordpos_251 + 1;
+  if (_253 > wordpos_261)
+    goto <bb 128>; [50.00%]
+  else
+    goto <bb 127>; [50.00%]
+
+  <bb 127> [local count: 716727]:
+  _418 = (int) ret_260;
+  _422 = wmask_143 & _418;
+  goto <bb 129>; [100.00%]
+
+  <bb 128> [local count: 716727]:
+  _263 = _256 + 4;
+  _264 = _254 + _263;
+  _265 = *_264;
+  bitpos_252 = bits_146 % 32;
+  _266 = 32 - bitpos_252;
+  _267 = _265 << _266;
+  ret_268 = ret_260 | _267;
+  _416 = (int) ret_268;
+  _420 = wmask_143 & _416;
+
+  <bb 129> [local count: 11467631]:
+  # prephitmp_423 = PHI <_420(128), 0(123), _421(125), _422(127)>
+  _55 = MOD_EXP_CTIME_COPY_FROM_PREBUF (&am, top_95, powerbuf_387, prephitmp_423, i_151);
+  if (_55 == 0)
+    goto <bb 145>; [2.75%]
+  else
+    goto <bb 130>; [97.25%]
+
+  <bb 130> [local count: 11152271]:
+  _56 = bn_mul_mont_fixed_top (&tmp, &tmp, &am, mont_66, ctx_98(D));
+  if (_56 == 0)
+    goto <bb 145>; [2.75%]
+  else
+    goto <bb 131>; [97.25%]
+
+  <bb 131> [local count: 22935261]:
+  # bits_63 = PHI <bits_139(120), bits_146(130)>
+  if (bits_63 > 0)
+    goto <bb 121>; [97.25%]
+  else
+    goto <bb 132>; [2.75%]
+
+  <bb 132> [local count: 630720]:
+  _57 = bn_from_mont_fixed_top (rr_144(D), &tmp, mont_66, ctx_98(D));
+  if (_57 == 0)
+    goto <bb 48>; [34.00%]
+  else
+    goto <bb 133>; [66.00%]
+
+  <bb 133> [local count: 416275]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 134>; [17.43%]
+  else
+    goto <bb 135>; [82.57%]
+
+  <bb 134> [local count: 72557]:
+  BN_MONT_CTX_free (mont_66);
+
+  <bb 135> [local count: 343718]:
+  goto <bb 148>; [100.00%]
+
+  <bb 136> [local count: 16732404]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 137>; [17.43%]
+  else
+    goto <bb 46>; [82.57%]
+
+  <bb 137> [local count: 2916458]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 147>; [100.00%]
+
+  <bb 138> [local count: 7564]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 139>; [17.43%]
+  else
+    goto <bb 17>; [82.57%]
+
+  <bb 139> [local count: 1318]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 144>; [100.00%]
+
+  <bb 140> [local count: 18851791]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 141>; [17.43%]
+  else
+    goto <bb 17>; [82.57%]
+
+  <bb 141> [local count: 3285867]:
+  BN_MONT_CTX_free (mont_66);
+  goto <bb 144>; [100.00%]
+
+  <bb 142> [local count: 4566360]:
+  BN_MONT_CTX_free (mont_102);
+  goto <bb 144>; [100.00%]
+
+  <bb 143> [local count: 6019885]:
+  BN_MONT_CTX_free (0B);
+
+  <bb 144> [local count: 48278249]:
+  goto <bb 149>; [100.00%]
+
+  <bb 145> [local count: 18333178]:
+  if (in_mont_100(D) == 0B)
+    goto <bb 146>; [17.43%]
+  else
+    goto <bb 46>; [82.57%]
+
+  <bb 146> [local count: 3195473]:
+  BN_MONT_CTX_free (mont_66);
+
+  <bb 147> [local count: 53681368]:
+
+  <bb 148> [local count: 59667841]:
+  # ret_381 = PHI <0(147), _52(135)>
+  OPENSSL_cleanse (powerbuf_387, prephitmp_329);
+  CRYPTO_free (powerbufFree_69, "bn_exp.c", 1153);
+
+  <bb 149> [local count: 111591250]:
+  # ret_382 = PHI <0(144), ret_381(148)>
+  BN_CTX_end (ctx_98(D));
+
+  <bb 150> [local count: 265776096]:
+  # _73 = PHI <_1(3), _161(5), ret_158(9), ret_382(149), 1(8)>
+  tmp ={v} {CLOBBER(eos)};
+  am ={v} {CLOBBER(eos)};
+  return _73;
+
+}
+
+
+
+;; Function BN_mod_exp_mont (BN_mod_exp_mont, funcdef_no=217, decl_uid=8817, cgraph_uid=218, symbol_order=217)
+
+Removing basic block 75
+Removing basic block 76
+Removing basic block 77
+Removing basic block 78
+Removing basic block 79
+Removing basic block 80
+Removing basic block 81
+Removing basic block 82
+Removing basic block 83
+Removing basic block 84
+Removing basic block 85
+Removing basic block 86
+Removing basic block 87
+Removing basic block 88
+Removing basic block 89
+Removing basic block 90
+Removing basic block 91
+Removing basic block 92
+Removing basic block 93
+Removing basic block 94
+Removing basic block 95
+Removing basic block 96
+Removing basic block 97
+Removing basic block 98
+Removing basic block 99
+Removing basic block 100
+Removing basic block 101
+Removing basic block 102
+Removing basic block 103
+Removing basic block 104
+Removing basic block 105
+Removing basic block 106
+Removing basic block 107
+Removing basic block 108
+Removing basic block 109
+Removing basic block 110
+Removing basic block 111
+Removing basic block 112
+Removing basic block 113
+Removing basic block 114
+Removing basic block 115
+Removing basic block 116
+Removing basic block 117
+Removing basic block 118
+Removing basic block 119
+Removing basic block 120
+Removing basic block 121
+Removing basic block 122
+Removing basic block 123
+Removing basic block 124
+Removing basic block 125
+Removing basic block 126
+Removing basic block 127
+Removing basic block 128
+Removing basic block 129
+Removing basic block 130
+Removing basic block 131
+Removing basic block 132
+Removing basic block 133
+Removing basic block 134
+Removing basic block 135
+Removing basic block 136
+int BN_mod_exp_mont (struct BIGNUM * rr, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx, struct BN_MONT_CTX * in_mont)
+{
+  unsigned long ivtmp.361;
+  sizetype ivtmp.356;
+  sizetype ivtmp.337;
+  unsigned int ivtmp.332;
+  vector(4) unsigned int vect__39.320;
+  vector(4) unsigned int vect__37.319;
+  int tmp.316;
+  unsigned int niters_vector_mult_vf.315;
+  unsigned int bnd.314;
+  unsigned int niters.313;
+  int wvalue;
+  static const char __func__[16] = "BN_mod_exp_mont";
+  struct BN_MONT_CTX * mont;
+  struct BIGNUM * val[32];
+  const struct BIGNUM * aa;
+  struct BIGNUM * r;
+  struct BIGNUM * d;
+  int start;
+  int wend;
+  int wstart;
+  int ret;
+  int bits;
+  int j;
+  int i;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  struct BIGNUM * _7;
+  int _8;
+  int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _14;
+  struct BIGNUM * _16;
+  struct BIGNUM * _20;
+  int _21;
+  unsigned int * _22;
+  sizetype _25;
+  unsigned int * _26;
+  unsigned int _27;
+  signed int _28;
+  struct BIGNUM * _29;
+  unsigned int * _30;
+  unsigned int _31;
+  unsigned int * _32;
+  unsigned int _33;
+  long unsigned int _35;
+  long unsigned int _36;
+  unsigned int * _37;
+  unsigned int _38;
+  unsigned int * _39;
+  const struct BIGNUM * _41;
+  int _42;
+  int _43;
+  int _44;
+  int _45;
+  int _46;
+  int _47;
+  int _48;
+  int _49;
+  struct BIGNUM * _50;
+  int _51;
+  int _52;
+  int _53;
+  unsigned int _55;
+  sizetype _56;
+  ssizetype _57;
+  unsigned int * _62;
+  unsigned int * _68;
+  int _69;
+  unsigned int _71;
+  _Bool _72;
+  unsigned int _77;
+  unsigned int _79;
+  long unsigned int _83;
+  unsigned int _85;
+  unsigned int * _114;
+  unsigned int _130;
+  int iftmp.5_136;
+  int iftmp.5_141;
+  int _155;
+  int _156;
+  unsigned int _157;
+  int _173;
+  int _187;
+  int prephitmp_191;
+  unsigned int _202;
+  unsigned int _204;
+  unsigned int _206;
+  long unsigned int _213;
+  unsigned int * _214;
+  unsigned int _215;
+  unsigned int * _216;
+  unsigned int _217;
+  unsigned int _219;
+  int _225;
+  unsigned int * _237;
+  unsigned int _238;
+  int _241;
+  unsigned int _243;
+  unsigned int _244;
+  unsigned int _245;
+  unsigned int _246;
+  sizetype _252;
+  sizetype _254;
+  void * _259;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = BN_is_odd (m_90(D));
+  if (_1 == 0)
+    goto <bb 3>; [20.24%]
+  else
+    goto <bb 5>; [79.76%]
+
+  <bb 3> [local count: 217325344]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 328, &__func__);
+  ERR_set_error (3, 102, 0B);
+
+  <bb 4> [local count: 172291575]:
+  goto <bb 75>; [100.00%]
+
+  <bb 5> [local count: 856416478]:
+  _2 = m_90(D)->top;
+  if (_2 <= 2097151)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 6> [local count: 428208239]:
+  _3 = BN_get_flags (p_92(D), 4);
+  if (_3 != 0)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 7> [local count: 337033595]:
+  _155 = bn_mod_exp_mont_fixed_top (rr_97(D), a_94(D), p_92(D), m_90(D), ctx_98(D), in_mont_99(D));
+  if (_155 == 0)
+    goto <bb 4>; [51.12%]
+  else
+    goto <bb 10>; [48.88%]
+
+  <bb 8> [local count: 282617437]:
+  _4 = BN_get_flags (a_94(D), 4);
+  if (_4 != 0)
+    goto <bb 7>; [51.12%]
+  else
+    goto <bb 9>; [48.88%]
+
+  <bb 9> [local count: 138143402]:
+  _5 = BN_get_flags (m_90(D), 4);
+  if (_5 != 0)
+    goto <bb 7>; [34.00%]
+  else
+    goto <bb 12>; [66.00%]
+
+  <bb 10> [local count: 164742020]:
+  bn_correct_top (rr_97(D));
+
+  <bb 11> [local count: 88295091]:
+  goto <bb 75>; [100.00%]
+
+  <bb 12> [local count: 519382884]:
+  bits_101 = BN_num_bits (p_92(D));
+  if (bits_101 == 0)
+    goto <bb 13>; [34.00%]
+  else
+    goto <bb 16>; [66.00%]
+
+  <bb 13> [local count: 176590183]:
+  _6 = BN_abs_is_word (m_90(D), 1);
+  if (_6 != 0)
+    goto <bb 14>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 14> [local count: 88295091]:
+  BN_zero_ex (rr_97(D));
+  goto <bb 11>; [100.00%]
+
+  <bb 15> [local count: 88295091]:
+  ret_149 = BN_set_word (rr_97(D), 1); [tail call]
+  goto <bb 75>; [100.00%]
+
+  <bb 16> [local count: 342792702]:
+  BN_CTX_start (ctx_98(D));
+  d_104 = BN_CTX_get (ctx_98(D));
+  r_106 = BN_CTX_get (ctx_98(D));
+  _7 = BN_CTX_get (ctx_98(D));
+  val[0] = _7;
+  if (_7 == 0B)
+    goto <bb 72>; [18.09%]
+  else
+    goto <bb 17>; [81.91%]
+
+  <bb 17> [local count: 280781502]:
+  if (in_mont_99(D) != 0B)
+    goto <bb 20>; [82.57%]
+  else
+    goto <bb 18>; [17.43%]
+
+  <bb 18> [local count: 48940216]:
+  mont_110 = BN_MONT_CTX_new ();
+  if (mont_110 == 0B)
+    goto <bb 73>; [30.95%]
+  else
+    goto <bb 19>; [69.05%]
+
+  <bb 19> [local count: 33793219]:
+  _8 = BN_MONT_CTX_set (mont_110, m_90(D), ctx_98(D));
+  if (_8 == 0)
+    goto <bb 73>; [34.00%]
+  else
+    goto <bb 20>; [66.00%]
+
+  <bb 20> [local count: 254144810]:
+  # mont_65 = PHI <in_mont_99(D)(17), mont_110(19)>
+  _9 = a_94(D)->neg;
+  if (_9 != 0)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 21> [local count: 202045125]:
+  _11 = BN_nnmod (_7, a_94(D), m_90(D), ctx_98(D));
+  if (_11 == 0)
+    goto <bb 29>; [34.00%]
+  else
+    goto <bb 23>; [66.00%]
+
+  <bb 22> [local count: 127072405]:
+  _10 = BN_ucmp (a_94(D), m_90(D));
+  if (_10 >= 0)
+    goto <bb 21>; [59.00%]
+  else
+    goto <bb 23>; [41.00%]
+
+  <bb 23> [local count: 185449467]:
+  # aa_64 = PHI <_7(21), a_94(D)(22)>
+  _12 = bn_to_mont_fixed_top (_7, aa_64, mont_65, ctx_98(D));
+  if (_12 == 0)
+    goto <bb 29>; [34.00%]
+  else
+    goto <bb 24>; [66.00%]
+
+  <bb 24> [local count: 122396648]:
+  if (bits_101 <= 671)
+    goto <bb 25>; [67.00%]
+  else
+    goto <bb 28>; [33.00%]
+
+  <bb 25> [local count: 82005754]:
+  if (bits_101 <= 239)
+    goto <bb 26>; [50.00%]
+  else
+    goto <bb 28>; [50.00%]
+
+  <bb 26> [local count: 41002877]:
+  if (bits_101 <= 79)
+    goto <bb 27>; [50.00%]
+  else
+    goto <bb 28>; [50.00%]
+
+  <bb 27> [local count: 20501439]:
+  if (bits_101 > 23)
+    goto <bb 28>; [50.00%]
+  else
+    goto <bb 34>; [50.00%]
+
+  <bb 28> [local count: 112145928]:
+  # iftmp.5_141 = PHI <4(26), 3(27), 6(24), 5(25)>
+  # prephitmp_191 = PHI <8(26), 4(27), 32(24), 16(25)>
+  _14 = bn_mul_mont_fixed_top (d_104, _7, _7, mont_65, ctx_98(D));
+  if (_14 == 0)
+    goto <bb 29>; [34.00%]
+  else
+    goto <bb 30>; [66.00%]
+
+  <bb 29> [local count: 193113187]:
+  goto <bb 72>; [100.00%]
+
+  <bb 30> [local count: 74016312]:
+  ivtmp.361_257 = (unsigned long) &val;
+
+  <bb 31> [local count: 673788895]:
+  # i_172 = PHI <i_121(33), 1(30)>
+  # ivtmp.361_255 = PHI <ivtmp.361_256(33), ivtmp.361_257(30)>
+  _16 = BN_CTX_get (ctx_98(D));
+  _259 = (void *) ivtmp.361_255;
+  MEM[(struct BIGNUM * *)_259 + 8B] = _16;
+  if (_16 == 0B)
+    goto <bb 29>; [3.66%]
+  else
+    goto <bb 32>; [96.34%]
+
+  <bb 32> [local count: 649128221]:
+  _20 = MEM[(struct BIGNUM * *)_259];
+  _21 = bn_mul_mont_fixed_top (_16, _20, d_104, mont_65, ctx_98(D));
+  if (_21 == 0)
+    goto <bb 29>; [3.66%]
+  else
+    goto <bb 33>; [96.34%]
+
+  <bb 33> [local count: 625370128]:
+  i_121 = i_172 + 1;
+  ivtmp.361_256 = ivtmp.361_255 + 8;
+  if (i_121 < prephitmp_191)
+    goto <bb 31>; [95.91%]
+  else
+    goto <bb 34>; [4.09%]
+
+  <bb 34> [local count: 35848264]:
+  # iftmp.5_136 = PHI <1(27), iftmp.5_141(33)>
+  j_123 = m_90(D)->top;
+  _22 = m_90(D)->d;
+  _25 = WIDEN_MULT_PLUS_EXPR <j_123, 4, 18446744073709551612>;
+  _26 = _22 + _25;
+  _27 = *_26;
+  _28 = (signed int) _27;
+  if (_28 < 0)
+    goto <bb 35>; [41.00%]
+  else
+    goto <bb 50>; [59.00%]
+
+  <bb 35> [local count: 14697788]:
+  _29 = bn_wexpand (r_106, j_123);
+  if (_29 == 0B)
+    goto <bb 29>; [18.09%]
+  else
+    goto <bb 36>; [81.91%]
+
+  <bb 36> [local count: 12038958]:
+  _30 = m_90(D)->d;
+  _31 = *_30;
+  _32 = r_106->d;
+  _33 = -_31;
+  *_32 = _33;
+  if (j_123 > 1)
+    goto <bb 38>; [89.00%]
+  else
+    goto <bb 37>; [11.00%]
+
+  <bb 37> [local count: 12038958]:
+  r_106->top = j_123;
+  goto <bb 51>; [100.00%]
+
+  <bb 38> [local count: 10714673]:
+  _79 = (unsigned int) j_123;
+  _77 = _79 + 4294967294;
+  if (_77 > 3)
+    goto <bb 39>; [89.44%]
+  else
+    goto <bb 48>; [10.56%]
+
+  <bb 39> [local count: 9583495]:
+  _68 = _32 + 4;
+  _62 = _30 + 8;
+  _57 = _68 - _62;
+  _56 = (sizetype) _57;
+  if (_56 > 8)
+    goto <bb 40>; [89.44%]
+  else
+    goto <bb 48>; [10.56%]
+
+  <bb 40> [local count: 8571738]:
+  niters.313_208 = _79 + 4294967295;
+  bnd.314_222 = niters.313_208 >> 2;
+  _252 = (sizetype) bnd.314_222;
+  _206 = (unsigned int) _252;
+  _254 = WIDEN_MULT_PLUS_EXPR <_206, 16, 4>;
+
+  <bb 41> [local count: 77924894]:
+  # ivtmp.356_250 = PHI <ivtmp.356_251(41), 4(40)>
+  vect__37.319_229 = MEM <vector(4) unsigned int> [(unsigned int *)_30 + ivtmp.356_250 * 1];
+  vect__39.320_230 = ~vect__37.319_229;
+  MEM <vector(4) unsigned int> [(unsigned int *)_32 + ivtmp.356_250 * 1] = vect__39.320_230;
+  ivtmp.356_251 = ivtmp.356_250 + 16;
+  if (ivtmp.356_251 != _254)
+    goto <bb 41>; [89.00%]
+  else
+    goto <bb 44>; [11.00%]
+
+  <bb 42> [local count: 8571738]:
+
+  <bb 43> [local count: 10714673]:
+  goto <bb 37>; [100.00%]
+
+  <bb 44> [local count: 8571738]:
+  niters_vector_mult_vf.315_223 = niters.313_208 & 4294967292;
+  _225 = (int) niters_vector_mult_vf.315_223;
+  tmp.316_224 = _225 + 1;
+  _71 = niters.313_208 & 3;
+  if (_71 == 0)
+    goto <bb 42>; [25.00%]
+  else
+    goto <bb 45>; [75.00%]
+
+  <bb 45> [local count: 6428804]:
+  _35 = (long unsigned int) tmp.316_224;
+  _85 = (unsigned int) _35;
+  _36 = _85 w* 4;
+  _37 = _30 + _36;
+  _38 = *_37;
+  _39 = _32 + _36;
+  _130 = ~_38;
+  *_39 = _130;
+  i_158 = _225 + 2;
+  if (j_123 > i_158)
+    goto <bb 46>; [66.67%]
+  else
+    goto <bb 42>; [33.33%]
+
+  <bb 46> [local count: 4285869]:
+  _83 = _36 + 4;
+  _114 = _30 + _83;
+  _157 = *_114;
+  _237 = _32 + _83;
+  _238 = ~_157;
+  *_237 = _238;
+  i_240 = _225 + 3;
+  if (j_123 > i_240)
+    goto <bb 47>; [66.67%]
+  else
+    goto <bb 42>; [33.33%]
+
+  <bb 47> [local count: 2857246]:
+  _213 = _36 + 8;
+  _214 = _30 + _213;
+  _215 = *_214;
+  _216 = _32 + _213;
+  _217 = ~_215;
+  *_216 = _217;
+  goto <bb 42>; [100.00%]
+
+  <bb 48> [local count: 2142934]:
+  # ivtmp.337_23 = PHI <1(39), 1(38)>
+
+  <bb 49> [local count: 19481223]:
+  # ivtmp.337_247 = PHI <ivtmp.337_23(48), ivtmp.337_248(49)>
+  _202 = MEM[(unsigned int *)_30 + ivtmp.337_247 * 4];
+  _204 = ~_202;
+  MEM[(unsigned int *)_32 + ivtmp.337_247 * 4] = _204;
+  ivtmp.337_248 = ivtmp.337_247 + 1;
+  i_249 = (int) ivtmp.337_248;
+  if (j_123 > i_249)
+    goto <bb 49>; [89.00%]
+  else
+    goto <bb 43>; [11.00%]
+
+  <bb 50> [local count: 21150476]:
+  _41 = BN_value_one ();
+  _42 = bn_to_mont_fixed_top (r_106, _41, mont_65, ctx_98(D));
+  if (_42 == 0)
+    goto <bb 29>; [34.00%]
+  else
+    goto <bb 51>; [66.00%]
+
+  <bb 51> [local count: 25998272]:
+  wstart_122 = bits_101 + -1;
+  goto <bb 54>; [100.00%]
+
+  <bb 52> [local count: 9552156]:
+  _187 = BN_is_bit_set (p_92(D), wstart_140);
+  if (_187 == 0)
+    goto <bb 58>; [73.00%]
+  else
+    goto <bb 53>; [27.00%]
+
+  <bb 53> [local count: 2579082]:
+  if (iftmp.5_136 != 1)
+    goto <bb 61>; [94.50%]
+  else
+    goto <bb 68>; [5.50%]
+
+  <bb 54> [local count: 37172531]:
+  # wstart_60 = PHI <wstart_143(60), wstart_122(51)>
+  # start_63 = PHI <start_170(60), 1(51)>
+  _43 = BN_is_bit_set (p_92(D), wstart_60);
+  if (_43 == 0)
+    goto <bb 56>; [73.00%]
+  else
+    goto <bb 55>; [27.00%]
+
+  <bb 55> [local count: 10036584]:
+  if (iftmp.5_136 != 1)
+    goto <bb 61>; [94.50%]
+  else
+    goto <bb 66>; [5.50%]
+
+  <bb 56> [local count: 27135948]:
+  if (start_63 == 0)
+    goto <bb 58>; [15.78%]
+  else
+    goto <bb 57>; [84.22%]
+
+  <bb 57> [local count: 33861391]:
+  # wstart_189 = PHI <wstart_60(56), wstart_192(58)>
+  # start_170 = PHI <start_63(56), 0(58)>
+  if (wstart_189 == 0)
+    goto <bb 59>; [67.00%]
+  else
+    goto <bb 60>; [33.00%]
+
+  <bb 58> [local count: 11255977]:
+  # wstart_192 = PHI <wstart_60(56), wstart_140(52)>
+  _44 = bn_mul_mont_fixed_top (r_106, r_106, r_106, mont_65, ctx_98(D));
+  if (_44 == 0)
+    goto <bb 29>; [2.20%]
+  else
+    goto <bb 57>; [97.80%]
+
+  <bb 59> [local count: 22902006]:
+  _53 = BN_from_montgomery (rr_97(D), r_106, mont_65, ctx_98(D));
+  _72 = _53 != 0;
+  _156 = (int) _72;
+  goto <bb 72>; [100.00%]
+
+  <bb 60> [local count: 11174259]:
+  wstart_143 = wstart_189 + -1;
+  goto <bb 54>; [100.00%]
+
+  <bb 61> [local count: 11921804]:
+  # wstart_190 = PHI <wstart_60(55), wstart_140(53)>
+  # start_135 = PHI <start_63(55), 0(53)>
+  _173 = wstart_190 + -1;
+  ivtmp.332_231 = (unsigned int) _173;
+  _244 = (unsigned int) wstart_190;
+  _245 = (unsigned int) iftmp.5_136;
+  _246 = _244 - _245;
+
+  <bb 62> [local count: 111444770]:
+  # wend_176 = PHI <wend_61(65), 0(61)>
+  # wvalue_178 = PHI <wvalue_67(65), 1(61)>
+  # ivtmp.332_54 = PHI <ivtmp.332_209(65), ivtmp.332_231(61)>
+  _45 = (int) ivtmp.332_54;
+  if (_45 < 0)
+    goto <bb 66>; [5.50%]
+  else
+    goto <bb 63>; [94.50%]
+
+  <bb 63> [local count: 105315308]:
+  _46 = BN_is_bit_set (p_92(D), _45);
+  if (_46 != 0)
+    goto <bb 64>; [50.00%]
+  else
+    goto <bb 65>; [50.00%]
+
+  <bb 64> [local count: 52657654]:
+  _243 = _244 - ivtmp.332_54;
+  i_174 = (int) _243;
+  _47 = i_174 - wend_176;
+  wvalue_133 = wvalue_178 << _47;
+  wvalue_134 = wvalue_133 | 1;
+
+  <bb 65> [local count: 105315308]:
+  # wend_61 = PHI <wend_176(63), i_174(64)>
+  # wvalue_67 = PHI <wvalue_178(63), wvalue_134(64)>
+  ivtmp.332_209 = ivtmp.332_54 + 4294967295;
+  if (ivtmp.332_209 != _246)
+    goto <bb 62>; [94.50%]
+  else
+    goto <bb 66>; [5.50%]
+
+  <bb 66> [local count: 12473816]:
+  # wend_177 = PHI <wend_176(62), wend_61(65), 0(55)>
+  # wvalue_179 = PHI <wvalue_178(62), wvalue_67(65), iftmp.5_136(55)>
+  # wstart_15 = PHI <wstart_190(62), wstart_190(65), wstart_60(55)>
+  # start_203 = PHI <start_135(62), start_135(65), start_63(55)>
+  if (start_203 == 0)
+    goto <bb 68>; [42.24%]
+  else
+    goto <bb 67>; [57.76%]
+
+  <bb 67> [local count: 9986740]:
+  # wend_58 = PHI <wend_177(66), wend_18(70)>
+  # wvalue_171 = PHI <wvalue_179(66), wvalue_70(70)>
+  # wstart_19 = PHI <wstart_15(66), wstart_117(70)>
+  _49 = wvalue_171 >> 1;
+  _50 = val[_49];
+  _51 = bn_mul_mont_fixed_top (r_106, r_106, _50, mont_65, ctx_98(D));
+  if (_51 == 0)
+    goto <bb 29>; [2.20%]
+  else
+    goto <bb 71>; [97.80%]
+
+  <bb 68> [local count: 5410859]:
+  # wend_18 = PHI <wend_177(66), 0(53)>
+  # wvalue_70 = PHI <wvalue_179(66), iftmp.5_136(53)>
+  # wstart_117 = PHI <wstart_15(66), wstart_140(53)>
+  _55 = (unsigned int) wend_18;
+  _219 = _55 + 1;
+  _241 = (int) _219;
+
+  <bb 69> [local count: 47798663]:
+  # i_175 = PHI <i_138(70), 0(68)>
+  _48 = bn_mul_mont_fixed_top (r_106, r_106, r_106, mont_65, ctx_98(D));
+  if (_48 == 0)
+    goto <bb 29>; [5.50%]
+  else
+    goto <bb 70>; [94.50%]
+
+  <bb 70> [local count: 45169737]:
+  i_138 = i_175 + 1;
+  if (i_138 != _241)
+    goto <bb 69>; [93.84%]
+  else
+    goto <bb 67>; [6.16%]
+
+  <bb 71> [local count: 9767031]:
+  _52 = wend_58 + 1;
+  wstart_140 = wstart_19 - _52;
+  if (wstart_140 < 0)
+    goto <bb 59>; [2.20%]
+  else
+    goto <bb 52>; [97.80%]
+
+  <bb 72> [local count: 316156010]:
+  # ret_59 = PHI <0(16), _156(59), 0(29)>
+  # mont_66 = PHI <_7(16), mont_65(59), mont_65(29)>
+err:
+  if (in_mont_99(D) == 0B)
+    goto <bb 73>; [10.47%]
+  else
+    goto <bb 74>; [89.53%]
+
+  <bb 73> [local count: 59748768]:
+  # ret_162 = PHI <ret_59(72), 0(18), _8(19)>
+  # mont_164 = PHI <mont_66(72), mont_110(18), mont_110(19)>
+  BN_MONT_CTX_free (mont_164);
+
+  <bb 74> [local count: 342792702]:
+  # ret_163 = PHI <ret_59(72), ret_162(73)>
+  BN_CTX_end (ctx_98(D));
+
+  <bb 75> [local count: 1073741824]:
+  # _69 = PHI <0(4), 1(11), ret_149(15), ret_163(74)>
+  val ={v} {CLOBBER(eos)};
+  return _69;
+
+}
+
+
+
+;; Function BN_mod_exp_mont_consttime (BN_mod_exp_mont_consttime, funcdef_no=222, decl_uid=8824, cgraph_uid=223, symbol_order=222)
+
+Removing basic block 5
+int BN_mod_exp_mont_consttime (struct BIGNUM * rr, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx, struct BN_MONT_CTX * in_mont)
+{
+  int _1;
+  int _2;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = bn_mod_exp_mont_fixed_top (rr_5(D), a_6(D), p_7(D), m_8(D), ctx_9(D), in_mont_10(D));
+  if (_1 == 0)
+    goto <bb 4>; [51.12%]
+  else
+    goto <bb 3>; [48.88%]
+
+  <bb 3> [local count: 524845000]:
+  bn_correct_top (rr_5(D));
+
+  <bb 4> [local count: 1073741824]:
+  # _2 = PHI <_1(2), 1(3)>
+  return _2;
+
+}
+
+
+
+;; Function BN_mod_exp_mont_word (BN_mod_exp_mont_word, funcdef_no=223, decl_uid=8831, cgraph_uid=224, symbol_order=223)
+
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+Removing basic block 60
+Removing basic block 61
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+Removing basic block 74
+Removing basic block 75
+Removing basic block 76
+Removing basic block 77
+Removing basic block 78
+Removing basic block 79
+Removing basic block 80
+Removing basic block 81
+Removing basic block 82
+Removing basic block 83
+Removing basic block 84
+Removing basic block 85
+Removing basic block 86
+Removing basic block 87
+Removing basic block 88
+Removing basic block 89
+Removing basic block 90
+Removing basic block 91
+Removing basic block 92
+Removing basic block 93
+Removing basic block 94
+Removing basic block 95
+Removing basic block 96
+Removing basic block 97
+Removing basic block 98
+Removing basic block 99
+Removing basic block 100
+Removing basic block 101
+Removing basic block 102
+Removing basic block 103
+Removing basic block 104
+Removing basic block 105
+Removing basic block 106
+Removing basic block 107
+int BN_mod_exp_mont_word (struct BIGNUM * rr, unsigned int a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx, struct BN_MONT_CTX * in_mont)
+{
+  static const char __func__[21] = "BN_mod_exp_mont_word";
+  struct BIGNUM * t;
+  struct BIGNUM * r;
+  unsigned int next_w;
+  unsigned int w;
+  int r_is_one;
+  int ret;
+  int bits;
+  int b;
+  struct BN_MONT_CTX * mont;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  unsigned int * _5;
+  unsigned int _6;
+  int _7;
+  int _8;
+  unsigned int _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  int _15;
+  unsigned int _16;
+  int _17;
+  int _18;
+  int _19;
+  int _20;
+  int _21;
+  int _22;
+  int _23;
+  int _24;
+  int _25;
+  int _26;
+  unsigned int powmult_43;
+  int _46;
+  int _50;
+  _Bool _61;
+  unsigned int powmult_113;
+  int _136;
+  _Bool _137;
+  unsigned int _140;
+  unsigned int powmult_153;
+  unsigned int _154;
+
+  <bb 2> [local count: 754534589]:
+  _1 = BN_get_flags (p_67(D), 4);
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 511115698]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 1201, &__func__);
+  ERR_set_error (3, 786689, 0B);
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 497992826]:
+  _2 = BN_get_flags (m_69(D), 4);
+  if (_2 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 243418892]:
+  _3 = BN_is_odd (m_69(D));
+  if (_3 == 0)
+    goto <bb 6>; [20.24%]
+  else
+    goto <bb 8>; [79.76%]
+
+  <bb 6> [local count: 49267983]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 1209, &__func__);
+  ERR_set_error (3, 102, 0B);
+
+  <bb 7> [local count: 511115698]:
+  goto <bb 55>; [100.00%]
+
+  <bb 8> [local count: 194150908]:
+  _4 = m_69(D)->top;
+  if (_4 == 1)
+    goto <bb 9>; [34.00%]
+  else
+    goto <bb 10>; [66.00%]
+
+  <bb 9> [local count: 66011310]:
+  _5 = m_69(D)->d;
+  _6 = *_5;
+  a_73 = a_72(D) % _6;
+
+  <bb 10> [local count: 194150908]:
+  # a_27 = PHI <a_72(D)(8), a_73(9)>
+  bits_75 = BN_num_bits (p_67(D));
+  if (bits_75 == 0)
+    goto <bb 11>; [20.24%]
+  else
+    goto <bb 14>; [79.76%]
+
+  <bb 11> [local count: 39296144]:
+  _7 = BN_abs_is_word (m_69(D), 1);
+  if (_7 != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 12> [local count: 72298693]:
+  BN_zero_ex (rr_94(D));
+  goto <bb 55>; [100.00%]
+
+  <bb 13> [local count: 19648072]:
+  ret_123 = BN_set_word (rr_94(D), 1); [tail call]
+  goto <bb 55>; [100.00%]
+
+  <bb 14> [local count: 154854765]:
+  if (a_27 == 0)
+    goto <bb 12>; [34.00%]
+  else
+    goto <bb 15>; [66.00%]
+
+  <bb 15> [local count: 102204144]:
+  BN_CTX_start (ctx_76(D));
+  r_79 = BN_CTX_get (ctx_76(D));
+  t_81 = BN_CTX_get (ctx_76(D));
+  if (t_81 == 0B)
+    goto <bb 52>; [18.09%]
+  else
+    goto <bb 16>; [81.91%]
+
+  <bb 16> [local count: 83715414]:
+  if (in_mont_82(D) != 0B)
+    goto <bb 19>; [82.57%]
+  else
+    goto <bb 17>; [17.43%]
+
+  <bb 17> [local count: 14591597]:
+  mont_84 = BN_MONT_CTX_new ();
+  if (mont_84 == 0B)
+    goto <bb 53>; [30.95%]
+  else
+    goto <bb 18>; [69.05%]
+
+  <bb 18> [local count: 10075498]:
+  _8 = BN_MONT_CTX_set (mont_84, m_69(D), ctx_76(D));
+  if (_8 == 0)
+    goto <bb 53>; [34.00%]
+  else
+    goto <bb 19>; [66.00%]
+
+  <bb 19> [local count: 75773646]:
+  # mont_28 = PHI <in_mont_82(D)(16), mont_84(18)>
+  b_86 = bits_75 + -2;
+  if (b_86 >= 0)
+    goto <bb 20>; [98.00%]
+  else
+    goto <bb 41>; [2.00%]
+
+  <bb 20> [local count: 738200478]:
+  # b_37 = PHI <b_117(40), b_86(19)>
+  # r_is_one_31 = PHI <r_is_one_116(40), 1(19)>
+  # w_139 = PHI <w_35(40), a_27(19)>
+  # r_62 = PHI <r_103(40), r_79(19)>
+  # t_57 = PHI <t_93(40), t_81(19)>
+  powmult_113 = w_139 * w_139;
+  _9 = powmult_113 / w_139;
+  if (_9 != w_139)
+    goto <bb 21>; [66.00%]
+  else
+    goto <bb 27>; [34.00%]
+
+  <bb 21> [local count: 487212314]:
+  if (r_is_one_31 != 0)
+    goto <bb 22>; [71.27%]
+  else
+    goto <bb 25>; [28.73%]
+
+  <bb 22> [local count: 347248103]:
+  _10 = BN_set_word (r_62, w_139);
+  if (_10 == 0)
+    goto <bb 52>; [2.00%]
+  else
+    goto <bb 23>; [98.00%]
+
+  <bb 23> [local count: 340303140]:
+  _11 = BN_to_montgomery (r_62, r_62, mont_28, ctx_76(D));
+  if (_11 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 28>; [98.00%]
+
+  <bb 24> [local count: 39719943]:
+  goto <bb 52>; [100.00%]
+
+  <bb 25> [local count: 347248103]:
+  # b_157 = PHI <b_37(21), b_36(37), b_146(39)>
+  # t_163 = PHI <t_57(21), r_103(37), t_93(39)>
+  # r_165 = PHI <r_62(21), t_93(37), r_103(39)>
+  # w_166 = PHI <w_139(21), a_27(37), a_27(39)>
+  _12 = BN_mul_word (r_165, w_166);
+  if (_12 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 26>; [98.00%]
+
+  <bb 26> [local count: 340303140]:
+  _13 = BN_div (0B, t_163, r_165, m_69(D), ctx_76(D));
+  if (_13 == 0)
+    goto <bb 52>; [2.00%]
+  else
+    goto <bb 28>; [98.00%]
+
+  <bb 27> [local count: 250988165]:
+  if (r_is_one_31 == 0)
+    goto <bb 28>; [0.22%]
+  else
+    goto <bb 29>; [99.78%]
+
+  <bb 28> [local count: 679131003]:
+  # next_w_107 = PHI <powmult_113(27), 1(23), 1(26), powmult_153(39), powmult_43(37)>
+  # r_101 = PHI <r_62(27), r_62(23), t_163(26), r_103(39), t_93(37)>
+  # t_97 = PHI <t_57(27), t_57(23), r_165(26), t_93(39), r_103(37)>
+  # b_158 = PHI <b_37(27), b_37(23), b_157(26), b_146(39), b_36(37)>
+  _14 = BN_mod_mul_montgomery (r_101, r_101, r_101, mont_28, ctx_76(D));
+  if (_14 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 29>; [98.00%]
+
+  <bb 29> [local count: 1011182309]:
+  # r_is_one_116 = PHI <r_is_one_31(27), _2(28)>
+  # next_w_106 = PHI <powmult_113(27), next_w_107(28)>
+  # r_103 = PHI <r_62(27), r_101(28)>
+  # t_93 = PHI <t_57(27), t_97(28)>
+  # b_159 = PHI <b_37(27), b_158(28)>
+  _15 = BN_is_bit_set (p_67(D), b_159);
+  if (_15 != 0)
+    goto <bb 30>; [50.00%]
+  else
+    goto <bb 40>; [50.00%]
+
+  <bb 30> [local count: 505591155]:
+  next_w_110 = a_27 * next_w_106;
+  _16 = next_w_110 / a_27;
+  if (_16 != next_w_106)
+    goto <bb 31>; [66.00%]
+  else
+    goto <bb 40>; [34.00%]
+
+  <bb 31> [local count: 333690160]:
+  if (r_is_one_116 != 0)
+    goto <bb 32>; [50.00%]
+  else
+    goto <bb 34>; [50.00%]
+
+  <bb 32> [local count: 166845080]:
+  _17 = BN_set_word (r_103, next_w_106);
+  if (_17 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 33>; [98.00%]
+
+  <bb 33> [local count: 163508178]:
+  _18 = BN_to_montgomery (r_103, r_103, mont_28, ctx_76(D));
+  if (_18 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 38>; [98.00%]
+
+  <bb 34> [local count: 166845080]:
+  _19 = BN_mul_word (r_103, next_w_106);
+  if (_19 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 35>; [98.00%]
+
+  <bb 35> [local count: 163508178]:
+  _20 = BN_div (0B, t_93, r_103, m_69(D), ctx_76(D));
+  if (_20 == 0)
+    goto <bb 24>; [2.00%]
+  else
+    goto <bb 36>; [98.00%]
+
+  <bb 36> [local count: 160238014]:
+  b_36 = b_159 + -1;
+  if (b_36 != -1)
+    goto <bb 37>; [98.00%]
+  else
+    goto <bb 56>; [2.00%]
+
+  <bb 37> [local count: 157033253]:
+  powmult_43 = a_27 * a_27;
+  _140 = powmult_43 / a_27;
+  if (a_27 != _140)
+    goto <bb 25>; [66.00%]
+  else
+    goto <bb 28>; [34.00%]
+
+  <bb 38> [local count: 160238014]:
+  b_146 = b_159 + -1;
+  if (b_146 != -1)
+    goto <bb 39>; [98.00%]
+  else
+    goto <bb 56>; [2.00%]
+
+  <bb 39> [local count: 157033253]:
+  powmult_153 = a_27 * a_27;
+  _154 = powmult_153 / a_27;
+  if (a_27 != _154)
+    goto <bb 25>; [66.00%]
+  else
+    goto <bb 28>; [34.00%]
+
+  <bb 40> [local count: 677492150]:
+  # w_35 = PHI <next_w_106(29), next_w_110(30)>
+  b_117 = b_159 + -1;
+  if (b_117 != -1)
+    goto <bb 20>; [98.00%]
+  else
+    goto <bb 43>; [2.00%]
+
+  <bb 41> [local count: 1515473]:
+  if (a_27 != 1)
+    goto <bb 45>; [66.00%]
+  else
+    goto <bb 42>; [34.00%]
+
+  <bb 42> [local count: 3163931]:
+  _25 = BN_set_word (rr_94(D), 1);
+  _137 = _25 != 0;
+  _136 = (int) _137;
+  goto <bb 52>; [100.00%]
+
+  <bb 43> [local count: 13549845]:
+  if (w_35 != 1)
+    goto <bb 44>; [66.00%]
+  else
+    goto <bb 50>; [34.00%]
+
+  <bb 44> [local count: 8942898]:
+  if (r_is_one_116 != 0)
+    goto <bb 45>; [68.06%]
+  else
+    goto <bb 48>; [31.94%]
+
+  <bb 45> [local count: 7086697]:
+  # w_30 = PHI <w_35(44), a_27(41)>
+  # r_38 = PHI <r_103(44), r_79(41)>
+  _21 = BN_set_word (r_38, w_30);
+  if (_21 == 0)
+    goto <bb 46>; [51.12%]
+  else
+    goto <bb 47>; [48.88%]
+
+  <bb 46> [local count: 5978226]:
+  goto <bb 24>; [100.00%]
+
+  <bb 47> [local count: 3463978]:
+  _22 = BN_to_montgomery (r_38, r_38, mont_28, ctx_76(D));
+  if (_22 == 0)
+    goto <bb 46>; [34.00%]
+  else
+    goto <bb 51>; [66.00%]
+
+  <bb 48> [local count: 7086697]:
+  # w_173 = PHI <w_35(44), a_27(56)>
+  # r_174 = PHI <r_103(44), r_169(56)>
+  # t_176 = PHI <t_93(44), t_170(56)>
+  _23 = BN_mul_word (r_174, w_173);
+  if (_23 == 0)
+    goto <bb 46>; [51.12%]
+  else
+    goto <bb 49>; [48.88%]
+
+  <bb 49> [local count: 3463978]:
+  _24 = BN_div (0B, t_176, r_174, m_69(D), ctx_76(D));
+  if (_24 == 0)
+    goto <bb 46>; [34.00%]
+  else
+    goto <bb 51>; [66.00%]
+
+  <bb 50> [local count: 4606947]:
+  if (r_is_one_116 != 0)
+    goto <bb 42>; [57.49%]
+  else
+    goto <bb 51>; [42.51%]
+
+  <bb 51> [local count: 8709965]:
+  # r_102 = PHI <r_103(50), r_38(47), t_176(49), r_169(56)>
+  _26 = BN_from_montgomery (rr_94(D), r_102, mont_28, ctx_76(D));
+  _61 = _26 != 0;
+  _50 = (int) _61;
+
+  <bb 52> [local count: 94262379]:
+  # mont_29 = PHI <mont_28(22), mont_28(42), t_81(15), mont_28(26), mont_28(51), mont_28(24)>
+  # ret_32 = PHI <_10(22), _136(42), _2(15), _13(26), _50(51), _2(24)>
+err:
+  if (in_mont_82(D) == 0B)
+    goto <bb 53>; [10.47%]
+  else
+    goto <bb 54>; [89.53%]
+
+  <bb 53> [local count: 17814183]:
+  # mont_131 = PHI <mont_29(52), mont_84(18), mont_84(17)>
+  # ret_132 = PHI <ret_32(52), _8(18), _2(17)>
+  BN_MONT_CTX_free (mont_131);
+
+  <bb 54> [local count: 102204147]:
+  # ret_133 = PHI <ret_32(52), ret_132(53)>
+  BN_CTX_end (ctx_76(D));
+
+  <bb 55> [local count: 754534593]:
+  # _46 = PHI <0(7), ret_133(54), ret_123(13), 1(12)>
+  return _46;
+
+  <bb 56> [local count: 6409522]:
+  # r_169 = PHI <r_103(38), t_93(36)>
+  # t_170 = PHI <t_93(38), r_103(36)>
+  if (a_27 != 1)
+    goto <bb 48>; [66.00%]
+  else
+    goto <bb 51>; [34.00%]
+
+}
+
+
+
+;; Function BN_mod_exp (BN_mod_exp, funcdef_no=215, decl_uid=8810, cgraph_uid=216, symbol_order=215)
+
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+int BN_mod_exp (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  unsigned int A;
+  int ret;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int _6;
+  unsigned int * _7;
+  int _28;
+  int _29;
+  int _30;
+  int _31;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = BN_is_odd (m_12(D));
+  if (_1 != 0)
+    goto <bb 3>; [67.00%]
+  else
+    goto <bb 10>; [33.00%]
+
+  <bb 3> [local count: 719407024]:
+  _2 = a_15(D)->top;
+  if (_2 == 1)
+    goto <bb 4>; [51.12%]
+  else
+    goto <bb 9>; [48.88%]
+
+  <bb 4> [local count: 367760873]:
+  _3 = a_15(D)->neg;
+  if (_3 == 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 5> [local count: 121361087]:
+  _4 = BN_get_flags (p_16(D), 4);
+  if (_4 == 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 6> [local count: 40049159]:
+  _5 = BN_get_flags (a_15(D), 4);
+  if (_5 == 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 7> [local count: 13216222]:
+  _6 = BN_get_flags (m_12(D), 4);
+  if (_6 == 0)
+    goto <bb 8>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 8> [local count: 4361353]:
+  _7 = a_15(D)->d;
+  A_23 = *_7;
+  ret_25 = BN_mod_exp_mont_word (r_14(D), A_23, p_16(D), m_12(D), ctx_17(D), 0B); [tail call]
+  goto <bb 15>; [100.00%]
+
+  <bb 9> [local count: 715045672]:
+  ret_27 = BN_mod_exp_mont (r_14(D), a_15(D), p_16(D), m_12(D), ctx_17(D), 0B); [tail call]
+  goto <bb 15>; [100.00%]
+
+  <bb 10> [local count: 354334800]:
+  _28 = BN_get_flags (p_16(D), 4);
+  if (_28 != 0)
+    goto <bb 11>; [34.00%]
+  else
+    goto <bb 12>; [66.00%]
+
+  <bb 11> [local count: 298459466]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 183, &__func__);
+  ERR_set_error (3, 786689, 0B);
+  goto <bb 15>; [100.00%]
+
+  <bb 12> [local count: 233860967]:
+  _29 = BN_get_flags (a_15(D), 4);
+  if (_29 != 0)
+    goto <bb 11>; [51.12%]
+  else
+    goto <bb 13>; [48.88%]
+
+  <bb 13> [local count: 114311240]:
+  _30 = BN_get_flags (m_12(D), 4);
+  if (_30 != 0)
+    goto <bb 11>; [51.12%]
+  else
+    goto <bb 14>; [48.88%]
+
+  <bb 14> [local count: 55875334]:
+  _31 = BN_mod_exp_recp.part.0 (r_14(D), a_15(D), p_16(D), m_12(D), ctx_17(D)); [tail call]
+
+  <bb 15> [local count: 1073741824]:
+  # ret_8 = PHI <ret_27(9), _31(14), ret_25(8), _1(11)>
+  return ret_8;
+
+}
+
+
+
+;; Function BN_mod_exp_simple (BN_mod_exp_simple, funcdef_no=224, decl_uid=8846, cgraph_uid=225, symbol_order=224)
+
+Removing basic block 55
+Removing basic block 56
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+Removing basic block 60
+Removing basic block 61
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+Removing basic block 74
+Removing basic block 75
+Removing basic block 76
+Removing basic block 77
+Removing basic block 78
+Removing basic block 79
+Removing basic block 80
+Removing basic block 81
+Removing basic block 82
+Removing basic block 83
+Removing basic block 84
+Removing basic block 85
+Removing basic block 86
+Removing basic block 87
+Removing basic block 88
+Removing basic block 89
+Removing basic block 90
+Removing basic block 91
+Removing basic block 92
+Removing basic block 93
+Removing basic block 94
+Removing basic block 95
+int BN_mod_exp_simple (struct BIGNUM * r, const struct BIGNUM * a, const struct BIGNUM * p, const struct BIGNUM * m, struct BN_CTX * ctx)
+{
+  unsigned long ivtmp.401;
+  unsigned int ivtmp.394;
+  int wvalue;
+  struct BIGNUM * p_dup;
+  static const char __func__[18] = "BN_mod_exp_simple";
+  struct BIGNUM * val[32];
+  struct BIGNUM * d;
+  int start;
+  int wend;
+  int wstart;
+  int ret;
+  int bits;
+  int i;
+  int _1;
+  int _2;
+  int _3;
+  int _4;
+  struct BIGNUM * _5;
+  int _8;
+  int _10;
+  int _12;
+  struct BIGNUM * _14;
+  struct BIGNUM * _17;
+  int _18;
+  struct BIGNUM * _19;
+  int _20;
+  int _21;
+  int _22;
+  int _23;
+  int _24;
+  int _25;
+  int _26;
+  int _27;
+  struct BIGNUM * _28;
+  int _29;
+  int _30;
+  int prephitmp_33;
+  int _43;
+  int _78;
+  int iftmp.20_89;
+  int iftmp.20_93;
+  unsigned int _128;
+  unsigned int _129;
+  int _130;
+  int _134;
+  unsigned int _138;
+  unsigned int _139;
+  unsigned int _140;
+  unsigned int _141;
+  void * _146;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = BN_get_flags (p_60(D), 4);
+  if (_1 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 845119343]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 1333, &__func__);
+  ERR_set_error (3, 786689, 0B);
+  goto <bb 8>; [100.00%]
+
+  <bb 4> [local count: 708669599]:
+  _2 = BN_get_flags (a_62(D), 4);
+  if (_2 != 0)
+    goto <bb 3>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 346397698]:
+  _3 = BN_get_flags (m_64(D), 4);
+  if (_3 != 0)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 6>; [66.00%]
+
+  <bb 6> [local count: 228622479]:
+  if (m_64(D) == r_66(D))
+    goto <bb 7>; [18.09%]
+  else
+    goto <bb 9>; [81.91%]
+
+  <bb 7> [local count: 41357807]:
+  ERR_new ();
+  ERR_set_debug ("bn_exp.c", 1338, &__func__);
+  ERR_set_error (3, 524550, 0B);
+
+  <bb 8> [local count: 845119343]:
+  goto <bb 54>; [100.00%]
+
+  <bb 9> [local count: 187264673]:
+  bits_68 = BN_num_bits (p_60(D));
+  if (bits_68 == 0)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 10> [local count: 63669989]:
+  _4 = BN_abs_is_word (m_64(D), 1);
+  if (_4 != 0)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 31834995]:
+  BN_zero_ex (r_66(D));
+  goto <bb 54>; [100.00%]
+
+  <bb 12> [local count: 31834995]:
+  ret_105 = BN_set_word (r_66(D), 1); [tail call]
+  goto <bb 54>; [100.00%]
+
+  <bb 13> [local count: 123594683]:
+  BN_CTX_start (ctx_69(D));
+  d_72 = BN_CTX_get (ctx_69(D));
+  _5 = BN_CTX_get (ctx_69(D));
+  val[0] = _5;
+  if (_5 == 0B)
+    goto <bb 14>; [30.95%]
+  else
+    goto <bb 15>; [69.05%]
+
+  <bb 14> [local count: 110224219]:
+  goto <bb 53>; [100.00%]
+
+  <bb 15> [local count: 85342129]:
+  _8 = BN_nnmod (_5, a_62(D), m_64(D), ctx_69(D));
+  if (_8 == 0)
+    goto <bb 14>; [51.12%]
+  else
+    goto <bb 16>; [48.88%]
+
+  <bb 16> [local count: 41715232]:
+  _10 = BN_is_zero (_5);
+  if (_10 != 0)
+    goto <bb 17>; [20.24%]
+  else
+    goto <bb 18>; [79.76%]
+
+  <bb 17> [local count: 8443163]:
+  BN_zero_ex (r_66(D));
+  goto <bb 52>; [100.00%]
+
+  <bb 18> [local count: 33272069]:
+  if (bits_68 <= 671)
+    goto <bb 19>; [67.00%]
+  else
+    goto <bb 22>; [33.00%]
+
+  <bb 19> [local count: 22292286]:
+  if (bits_68 <= 239)
+    goto <bb 20>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 20> [local count: 11146143]:
+  if (bits_68 <= 79)
+    goto <bb 21>; [50.00%]
+  else
+    goto <bb 22>; [50.00%]
+
+  <bb 21> [local count: 5573072]:
+  if (bits_68 > 23)
+    goto <bb 22>; [50.00%]
+  else
+    goto <bb 27>; [50.00%]
+
+  <bb 22> [local count: 30485533]:
+  # iftmp.20_93 = PHI <4(20), 3(21), 6(18), 5(19)>
+  # prephitmp_33 = PHI <8(20), 4(21), 32(18), 16(19)>
+  _12 = BN_mod_mul (d_72, _5, _5, m_64(D), ctx_69(D));
+  if (_12 == 0)
+    goto <bb 14>; [34.00%]
+  else
+    goto <bb 23>; [66.00%]
+
+  <bb 23> [local count: 20120452]:
+  ivtmp.401_144 = (unsigned long) &val;
+
+  <bb 24> [local count: 183161477]:
+  # i_115 = PHI <i_82(26), 1(23)>
+  # ivtmp.401_142 = PHI <ivtmp.401_143(26), ivtmp.401_144(23)>
+  _14 = BN_CTX_get (ctx_69(D));
+  _146 = (void *) ivtmp.401_142;
+  MEM[(struct BIGNUM * *)_146 + 8B] = _14;
+  if (_14 == 0B)
+    goto <bb 14>; [3.66%]
+  else
+    goto <bb 25>; [96.34%]
+
+  <bb 25> [local count: 176457767]:
+  _17 = MEM[(struct BIGNUM * *)_146];
+  _18 = BN_mod_mul (_14, _17, d_72, m_64(D), ctx_69(D));
+  if (_18 == 0)
+    goto <bb 14>; [3.66%]
+  else
+    goto <bb 26>; [96.34%]
+
+  <bb 26> [local count: 169999413]:
+  i_82 = i_115 + 1;
+  ivtmp.401_143 = ivtmp.401_142 + 8;
+  if (prephitmp_33 > i_82)
+    goto <bb 24>; [95.91%]
+  else
+    goto <bb 27>; [4.09%]
+
+  <bb 27> [local count: 9744923]:
+  # iftmp.20_89 = PHI <1(21), iftmp.20_93(26)>
+  if (p_60(D) == r_66(D))
+    goto <bb 28>; [30.00%]
+  else
+    goto <bb 30>; [70.00%]
+
+  <bb 28> [local count: 2923477]:
+  p_dup_85 = BN_CTX_get (ctx_69(D));
+  if (p_dup_85 == 0B)
+    goto <bb 14>; [30.95%]
+  else
+    goto <bb 29>; [69.05%]
+
+  <bb 29> [local count: 2018661]:
+  _19 = BN_copy (p_dup_85, p_60(D));
+  if (_19 == 0B)
+    goto <bb 14>; [18.09%]
+  else
+    goto <bb 30>; [81.91%]
+
+  <bb 30> [local count: 8474931]:
+  # p_31 = PHI <p_60(D)(27), p_dup_85(29)>
+  _20 = BN_set_word (r_66(D), 1);
+  if (_20 == 0)
+    goto <bb 14>; [34.00%]
+  else
+    goto <bb 31>; [66.00%]
+
+  <bb 31> [local count: 5593454]:
+  wstart_83 = bits_68 + -1;
+  goto <bb 34>; [100.00%]
+
+  <bb 32> [local count: 2055119]:
+  _78 = BN_is_bit_set (p_31, wstart_98);
+  if (_78 == 0)
+    goto <bb 38>; [73.00%]
+  else
+    goto <bb 33>; [27.00%]
+
+  <bb 33> [local count: 554882]:
+  if (iftmp.20_89 != 1)
+    goto <bb 41>; [94.50%]
+  else
+    goto <bb 48>; [5.50%]
+
+  <bb 34> [local count: 7997565]:
+  # wstart_37 = PHI <wstart_100(40), wstart_83(31)>
+  # start_40 = PHI <start_56(40), 1(31)>
+  _21 = BN_is_bit_set (p_31, wstart_37);
+  if (_21 == 0)
+    goto <bb 36>; [73.00%]
+  else
+    goto <bb 35>; [27.00%]
+
+  <bb 35> [local count: 2159343]:
+  if (iftmp.20_89 != 1)
+    goto <bb 41>; [94.50%]
+  else
+    goto <bb 46>; [5.50%]
+
+  <bb 36> [local count: 5838222]:
+  if (start_40 == 0)
+    goto <bb 38>; [15.78%]
+  else
+    goto <bb 37>; [84.22%]
+
+  <bb 37> [local count: 7285183]:
+  # wstart_39 = PHI <wstart_37(36), wstart_7(38)>
+  # start_56 = PHI <start_40(36), _10(38)>
+  if (wstart_39 == 0)
+    goto <bb 39>; [67.00%]
+  else
+    goto <bb 40>; [33.00%]
+
+  <bb 38> [local count: 2421692]:
+  # wstart_7 = PHI <wstart_37(36), wstart_98(32)>
+  _22 = BN_mod_mul (r_66(D), r_66(D), r_66(D), m_64(D), ctx_69(D));
+  if (_22 == 0)
+    goto <bb 14>; [2.20%]
+  else
+    goto <bb 37>; [97.80%]
+
+  <bb 39> [local count: 4927302]:
+  goto <bb 52>; [100.00%]
+
+  <bb 40> [local count: 2404110]:
+  wstart_100 = wstart_39 + -1;
+  goto <bb 34>; [100.00%]
+
+  <bb 41> [local count: 2564943]:
+  # start_35 = PHI <start_40(35), _10(33)>
+  # wstart_53 = PHI <wstart_37(35), wstart_98(33)>
+  _134 = wstart_53 + -1;
+  ivtmp.394_133 = (unsigned int) _134;
+  _139 = (unsigned int) wstart_53;
+  _140 = (unsigned int) iftmp.20_89;
+  _141 = _139 - _140;
+
+  <bb 42> [local count: 23977027]:
+  # wend_118 = PHI <wend_38(45), _10(41)>
+  # wvalue_120 = PHI <wvalue_41(45), 1(41)>
+  # ivtmp.394_131 = PHI <ivtmp.394_132(45), ivtmp.394_133(41)>
+  _23 = (int) ivtmp.394_131;
+  if (_23 < 0)
+    goto <bb 46>; [5.50%]
+  else
+    goto <bb 43>; [94.50%]
+
+  <bb 43> [local count: 22658290]:
+  _24 = BN_is_bit_set (p_31, _23);
+  if (_24 != 0)
+    goto <bb 44>; [50.00%]
+  else
+    goto <bb 45>; [50.00%]
+
+  <bb 44> [local count: 11329145]:
+  _138 = _139 - ivtmp.394_131;
+  i_116 = (int) _138;
+  _25 = i_116 - wend_118;
+  wvalue_91 = wvalue_120 << _25;
+  wvalue_92 = wvalue_91 | 1;
+
+  <bb 45> [local count: 22658290]:
+  # wend_38 = PHI <wend_118(43), i_116(44)>
+  # wvalue_41 = PHI <wvalue_120(43), wvalue_92(44)>
+  ivtmp.394_132 = ivtmp.394_131 + 4294967295;
+  if (ivtmp.394_132 != _141)
+    goto <bb 42>; [94.50%]
+  else
+    goto <bb 46>; [5.50%]
+
+  <bb 46> [local count: 2683706]:
+  # wend_119 = PHI <wend_118(42), wend_38(45), _10(35)>
+  # wvalue_121 = PHI <wvalue_120(42), wvalue_41(45), iftmp.20_89(35)>
+  # start_6 = PHI <start_35(42), start_35(45), start_40(35)>
+  # wstart_16 = PHI <wstart_53(42), wstart_53(45), wstart_37(35)>
+  if (start_6 == 0)
+    goto <bb 48>; [42.24%]
+  else
+    goto <bb 47>; [57.76%]
+
+  <bb 47> [local count: 2148619]:
+  # wstart_94 = PHI <wstart_16(46), wstart_147(50)>
+  # wend_149 = PHI <wend_119(46), wend_150(50)>
+  # wvalue_151 = PHI <wvalue_121(46), wvalue_152(50)>
+  _27 = wvalue_151 >> 1;
+  _28 = val[_27];
+  _29 = BN_mod_mul (r_66(D), r_66(D), _28, m_64(D), ctx_69(D));
+  if (_29 == 0)
+    goto <bb 14>; [2.20%]
+  else
+    goto <bb 51>; [97.80%]
+
+  <bb 48> [local count: 1164131]:
+  # wstart_147 = PHI <wstart_16(46), wstart_98(33)>
+  # wend_150 = PHI <wend_119(46), _10(33)>
+  # wvalue_152 = PHI <wvalue_121(46), iftmp.20_89(33)>
+  _128 = (unsigned int) wend_150;
+  _129 = _128 + 1;
+  _130 = (int) _129;
+
+  <bb 49> [local count: 10283747]:
+  # i_117 = PHI <i_96(50), _10(48)>
+  _26 = BN_mod_mul (r_66(D), r_66(D), r_66(D), m_64(D), ctx_69(D));
+  if (_26 == 0)
+    goto <bb 14>; [5.50%]
+  else
+    goto <bb 50>; [94.50%]
+
+  <bb 50> [local count: 9718141]:
+  i_96 = i_117 + 1;
+  if (i_96 != _130)
+    goto <bb 49>; [93.84%]
+  else
+    goto <bb 47>; [6.16%]
+
+  <bb 51> [local count: 2101349]:
+  _30 = wend_149 + 1;
+  wstart_98 = wstart_94 - _30;
+  if (wstart_98 < 0)
+    goto <bb 39>; [2.20%]
+  else
+    goto <bb 32>; [97.80%]
+
+  <bb 52> [local count: 8443163]:
+
+  <bb 53> [local count: 123594684]:
+  # ret_36 = PHI <_3(14), 1(52)>
+err:
+  BN_CTX_end (ctx_69(D));
+
+  <bb 54> [local count: 1073741824]:
+  # _43 = PHI <0(8), ret_36(53), ret_105(12), 1(11)>
+  val ={v} {CLOBBER(eos)};
+  return _43;
+
+}
+
+
+
+;; Function BN_mod_exp_mont_consttime_x2 (BN_mod_exp_mont_consttime_x2, funcdef_no=225, decl_uid=8858, cgraph_uid=226, symbol_order=225)
+
+Removing basic block 7
+Removing basic block 8
+int BN_mod_exp_mont_consttime_x2 (struct BIGNUM * rr1, const struct BIGNUM * a1, const struct BIGNUM * p1, const struct BIGNUM * m1, struct BN_MONT_CTX * in_mont1, struct BIGNUM * rr2, const struct BIGNUM * a2, const struct BIGNUM * p2, const struct BIGNUM * m2, struct BN_MONT_CTX * in_mont2, struct BN_CTX * ctx)
+{
+  int _14;
+  int _16;
+  int _17;
+  int prephitmp_24;
+
+  <bb 2> [local count: 1073741824]:
+  _16 = bn_mod_exp_mont_fixed_top (rr1_2(D), a1_3(D), p1_4(D), m1_5(D), ctx_6(D), in_mont1_7(D));
+  if (_16 == 0)
+    goto <bb 4>; [51.12%]
+  else
+    goto <bb 3>; [48.88%]
+
+  <bb 3> [local count: 524845000]:
+  bn_correct_top (rr1_2(D));
+
+  <bb 4> [local count: 1073741824]:
+  # _17 = PHI <_16(2), 1(3)>
+  _14 = bn_mod_exp_mont_fixed_top (rr2_8(D), a2_9(D), p2_10(D), m2_11(D), ctx_6(D), in_mont2_12(D));
+  if (_14 == 0)
+    goto <bb 6>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 524845000]:
+  bn_correct_top (rr2_8(D));
+
+  <bb 6> [local count: 1073741824]:
+  # prephitmp_24 = PHI <_14(4), _17(5)>
+  return prephitmp_24;
+
+}
+
+

@@ -1,0 +1,237 @@
+
+;; Function BN_bn2mpi (BN_bn2mpi, funcdef_no=170, decl_uid=8670, cgraph_uid=171, symbol_order=170)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+int BN_bn2mpi (const struct BIGNUM * a, unsigned char * d)
+{
+  int ext;
+  int num;
+  int bits;
+  int _1;
+  int _2;
+  _Bool _3;
+  int _4;
+  int _5;
+  int _13;
+  sizetype _14;
+  unsigned char * _15;
+  int _16;
+  unsigned char _17;
+  unsigned char _18;
+  int _19;
+  int _21;
+  int _41;
+  int _42;
+  unsigned int _97;
+  unsigned int bswapsrc_98;
+
+  <bb 2> [local count: 1073741824]:
+  bits_28 = BN_num_bits (a_26(D));
+  _1 = bits_28 + 7;
+  num_29 = _1 / 8;
+  if (bits_28 > 0)
+    goto <bb 3>; [59.00%]
+  else
+    goto <bb 4>; [41.00%]
+
+  <bb 3> [local count: 633507680]:
+  _2 = bits_28 & 7;
+  _3 = _2 == 0;
+  ext_30 = (int) _3;
+
+  <bb 4> [local count: 1073741824]:
+  # ext_20 = PHI <0(2), ext_30(3)>
+  if (d_31(D) == 0B)
+    goto <bb 5>; [18.09%]
+  else
+    goto <bb 6>; [81.91%]
+
+  <bb 5> [local count: 194239896]:
+  _4 = num_29 + 4;
+  _42 = _4 + ext_20;
+  goto <bb 11>; [100.00%]
+
+  <bb 6> [local count: 879501928]:
+  _5 = ext_20 + num_29;
+  bswapsrc_98 = (unsigned int) _5;
+  _97 = __builtin_bswap32 (bswapsrc_98);
+  MEM <unsigned int> [(unsigned char *)d_31(D)] = _97;
+  if (ext_20 != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 7> [local count: 439750964]:
+  MEM[(unsigned char *)d_31(D) + 4B] = 0;
+
+  <bb 8> [local count: 879501928]:
+  _13 = ext_20 + 4;
+  _14 = (sizetype) _13;
+  _15 = d_31(D) + _14;
+  num_39 = BN_bn2bin (a_26(D), _15);
+  _16 = a_26(D)->neg;
+  if (_16 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 439750964]:
+  _17 = MEM[(unsigned char *)d_31(D) + 4B];
+  _18 = _17 | 128;
+  MEM[(unsigned char *)d_31(D) + 4B] = _18;
+
+  <bb 10> [local count: 879501928]:
+  _19 = num_39 + 4;
+  _41 = _19 + ext_20;
+
+  <bb 11> [local count: 1073741824]:
+  # _21 = PHI <_42(5), _41(10)>
+  return _21;
+
+}
+
+
+
+;; Function BN_mpi2bn (BN_mpi2bn, funcdef_no=171, decl_uid=8667, cgraph_uid=172, symbol_order=171)
+
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+struct BIGNUM * BN_mpi2bn (const unsigned char * d, int n, struct BIGNUM * ain)
+{
+  static const char __func__[10] = "BN_mpi2bn";
+  struct BIGNUM * a;
+  long int len;
+  unsigned char _1;
+  signed char _2;
+  _Bool _10;
+  long int _18;
+  long int _19;
+  unsigned char _20;
+  signed char _21;
+  int _22;
+  struct BIGNUM * _23;
+  int _24;
+  int _25;
+  struct BIGNUM * _27;
+  int _29;
+  unsigned int load_dst_53;
+  unsigned int bswapdst_54;
+
+  <bb 2> [local count: 1073741824]:
+  if (n_31(D) <= 3)
+    goto <bb 4>; [9.39%]
+  else
+    goto <bb 3>; [90.61%]
+
+  <bb 3> [local count: 972917464]:
+  _1 = *d_33(D);
+  _2 = (signed char) _1;
+  if (_2 < 0)
+    goto <bb 4>; [12.76%]
+  else
+    goto <bb 5>; [87.24%]
+
+  <bb 4> [local count: 224968628]:
+  ERR_new ();
+  ERR_set_debug ("bn_mpi.c", 49, &__func__);
+  ERR_set_error (3, 106, 0B);
+  goto <bb 7>; [100.00%]
+
+  <bb 5> [local count: 848773196]:
+  load_dst_53 = MEM <unsigned int> [(const unsigned char *)d_33(D)];
+  bswapdst_54 = __builtin_bswap32 (load_dst_53);
+  len_34 = (long int) bswapdst_54;
+  _18 = len_34 + 4;
+  _19 = (long int) n_31(D);
+  if (_18 != _19)
+    goto <bb 6>; [16.75%]
+  else
+    goto <bb 8>; [83.25%]
+
+  <bb 6> [local count: 142169508]:
+  ERR_new ();
+  ERR_set_debug ("bn_mpi.c", 55, &__func__);
+  ERR_set_error (3, 104, 0B);
+
+  <bb 7> [local count: 273165946]:
+  goto <bb 19>; [100.00%]
+
+  <bb 8> [local count: 706603688]:
+  if (ain_35(D) == 0B)
+    goto <bb 9>; [17.43%]
+  else
+    goto <bb 11>; [82.57%]
+
+  <bb 9> [local count: 123161023]:
+  a_37 = BN_new ();
+  if (a_37 == 0B)
+    goto <bb 10>; [8.27%]
+  else
+    goto <bb 11>; [91.73%]
+
+  <bb 10> [local count: 41571844]:
+  goto <bb 7>; [100.00%]
+
+  <bb 11> [local count: 696418271]:
+  # a_5 = PHI <a_37(9), ain_35(D)(8)>
+  if (len_34 == 0)
+    goto <bb 12>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 12> [local count: 236782215]:
+  a_5->neg = 0;
+  a_5->top = 0;
+  goto <bb 18>; [100.00%]
+
+  <bb 13> [local count: 459636057]:
+  d_38 = d_33(D) + 4;
+  _20 = MEM[(const unsigned char *)d_33(D) + 4B];
+  _21 = (signed char) _20;
+  _10 = _21 < 0;
+  _29 = (int) _10;
+  _22 = (int) bswapdst_54;
+  _23 = BN_bin2bn (d_38, _22, a_5);
+  if (_23 == 0B)
+    goto <bb 14>; [8.27%]
+  else
+    goto <bb 16>; [91.73%]
+
+  <bb 14> [local count: 38011902]:
+  if (ain_35(D) == 0B)
+    goto <bb 15>; [17.43%]
+  else
+    goto <bb 10>; [82.57%]
+
+  <bb 15> [local count: 6625474]:
+  BN_free (a_5);
+  goto <bb 7>; [100.00%]
+
+  <bb 16> [local count: 421624155]:
+  a_5->neg = _29;
+  if (_21 < 0)
+    goto <bb 17>; [33.00%]
+  else
+    goto <bb 18>; [67.00%]
+
+  <bb 17> [local count: 139135971]:
+  _24 = BN_num_bits (a_5);
+  _25 = _24 + -1;
+  BN_clear_bit (a_5, _25);
+
+  <bb 18> [local count: 519270400]:
+
+  <bb 19> [local count: 1073741824]:
+  # _27 = PHI <0B(7), a_5(18)>
+  return _27;
+
+}
+
+
