@@ -1,5 +1,5 @@
 (library
   (name        gimple)
   (public_name gcc2cryptoline.gimple)
-  (libraries zarith)
+  (libraries zarith parser)
 )
