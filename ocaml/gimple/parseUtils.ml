@@ -56,11 +56,11 @@ and from_operand (o : Syntax.operand_t) : operand_t =
 let from_cond (c : Syntax.cond_t) : cond_t =
   match c with
   | Eq (o0, o1) -> Eq (from_operand o0, from_operand o1)
-  | Neq (o0, o1) -> Eq (from_operand o0, from_operand o1)
-  | Gt (o0, o1) -> Eq (from_operand o0, from_operand o1)
-  | Ge (o0, o1) -> Eq (from_operand o0, from_operand o1)
-  | Lt (o0, o1) -> Eq (from_operand o0, from_operand o1)
-  | Le (o0, o1) -> Eq (from_operand o0, from_operand o1)
+  | Neq (o0, o1) -> Neq (from_operand o0, from_operand o1)
+  | Gt (o0, o1) -> Gt (from_operand o0, from_operand o1)
+  | Ge (o0, o1) -> Ge (from_operand o0, from_operand o1)
+  | Lt (o0, o1) -> Lt (from_operand o0, from_operand o1)
+  | Le (o0, o1) -> Le (from_operand o0, from_operand o1)
 
 let from_instr (i : Syntax.instr_t) : instr_t =
   match i with

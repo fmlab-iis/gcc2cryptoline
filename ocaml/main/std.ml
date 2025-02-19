@@ -15,6 +15,8 @@ let anon file =
                          string_of_int ((Parsing.symbol_start_pos()).pos_lnum) ^
                            ". " ^ msg))
     | Parsing.Parse_error -> Parser.Common.raise_parse_error lexbuf in
-  let _asts = List.rev (List.rev_map Gimple.parse_func parse_tree) in
+  let asts = List.rev (List.rev_map Gimple.parse_func parse_tree) in
+  (*
   List.iter (fun f -> print_endline (Parser.Common.string_of_func f)) parse_tree
-
+   *)
+  List.iter Gimple.print_function asts
