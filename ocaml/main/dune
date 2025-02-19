@@ -1,5 +1,5 @@
 (library
   (name        main)
-  (libraries   parser)
+  (libraries   parser gimple)
   (flags       (:standard -w -3))
 )

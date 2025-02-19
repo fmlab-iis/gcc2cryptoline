@@ -6,7 +6,7 @@ type access_t = string
 type attribute_t = access_t list
 
 (* labels *)
-type label_t = Lname of string | Lnum of Z.t
+type label_t = BB of Z.t | Name of string
   
 (* types *)
 (* short, int, long may depend on the architecture during compilation *)
@@ -54,6 +54,8 @@ type cond_t = | Eq of operand_t * operand_t | Neq of operand_t * operand_t
 (* Wmul is the wide multiplication *)
 (* the semantics of intrinsics is unclear *)
 type instr_t = Nop
+             | Comment of string
+             | Label of label_t
              | Asm of string * ((string * operand_t) list) *
                         ((string * operand_t) list) * string option
              | Assign of operand_t * type_t * operand_t
@@ -103,7 +105,7 @@ type instr_t = Nop
              | StoreLanes of operand_t * operand_t
 
 (* basic blocks *)
-type basic_block_t = { id : label_t; name : string; instrs : instr_t list }
+type basic_block_t = { id : label_t; instrs : instr_t list }
 
 (* function definitions *)
 type function_t = { attr : attribute_t; fty : type_t; fname : string;

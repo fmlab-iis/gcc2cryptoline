@@ -33,6 +33,7 @@ type cond_t = | Eq of operand_t * operand_t | Neq of operand_t * operand_t
 type label_t = BB of Z.t | Name of string
 
 type instr_t = Nop
+             | Comment of string
              | Label of label_t
              | Asm of string * ((string * operand_t) list) *
                         ((string * operand_t) list) * string option

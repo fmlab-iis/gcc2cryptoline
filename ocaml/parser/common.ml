@@ -93,7 +93,8 @@ let string_of_label l =
 
 let string_of_instr instr =
   match instr with
-  | Nop -> "nop"
+  | Nop -> ""
+  | Comment str -> "(* " ^ str ^ " *)"
   | Label l -> string_of_label l
   | Asm (asm, out_params, in_params, anno) ->
      let asm_header = "__asm__(\"" ^ asm ^ "\"" in

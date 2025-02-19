@@ -7,6 +7,13 @@
 
   open Syntax
 
+  let remove_comment_prefix str =
+    let rec comment_index str i =
+      let c = String.get str i in
+      if c = ';' || c = '#' || c = '/' then comment_index str (i + 1)
+      else i in
+    let start = comment_index str 0 in
+    String.trim (String.sub str start  (String.length str - start))
 %}
 
 %token <string> COMMENT
@@ -40,7 +47,7 @@
 %%
 
 gimple:
-  funcs EOF                               { $1 }
+| funcs EOF                               { $1 }
 ;
 
 label:
@@ -58,6 +65,7 @@ label:
 ;
 
 funcs:
+| COMMENT funcs                           { $2 }
 | REMOVING_BASIC_BLOCK NUM funcs          { $3 }
 | func funcs                              { $1::$2 }
 |                                         { [] }
@@ -210,6 +218,7 @@ instr_asm_args:
 ;
 
 instr:
+| COMMENT                                 { Comment (remove_comment_prefix $1) }
 | ASM LPAREN STRING RPAREN SEMICOLON
                                           { Asm ($3, [], [], None) }
 | ASM LPAREN STRING COLON instr_asm_args RPAREN SEMICOLON
