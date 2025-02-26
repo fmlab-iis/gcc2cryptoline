@@ -33,7 +33,7 @@ let from_var v =
 
 let rec from_offset (off : Syntax.offset_t) : offset_t =
   match off with
-  | Const i -> Const i | Var str -> Var str
+  | Const z -> Const z | Var str -> Var str
   | Add (off0, off1) -> Add (from_offset off0, from_offset off1)
   | Mul (off0, off1) -> Mul (from_offset off0, from_offset off1)
 
@@ -196,3 +196,201 @@ let from_function (f : Syntax.function_t) : function_t =
   let basic_blocks = decompose instrs [] in
   { attr = f.attr; fty = from_type f.fty; fname = f.fname;
     params = params; vars = vars; basic_blocks = basic_blocks }
+
+let eval_offset (off : offset_t) st : offset_t =
+  match off with
+  | Var v -> if Hashtbl.mem st v then Const (Hashtbl.find st v) else off
+  | Add (Const i0, Const i1) -> Const (Z.add i0 i1)
+  | Mul (Const i0, Const i1) -> Const (Z.add i0 i1)
+  | _ -> off
+
+let rec eval_loc loc st =
+  { lty = loc.lty; lop = eval_operand loc.lop st;
+    loffset = eval_offset loc.loffset st }
+and eval_operand (op : operand_t) st : operand_t =
+  match op with
+  | Var v -> if Hashtbl.mem st v then Const (Hashtbl.find st v)
+             else op
+  | Const _ | String _ -> op
+  | Neg (Const z) -> Const (Z.neg z)
+  | Neg _ -> op
+  | Ref op -> Ref (eval_operand op st)
+  | Deref op ->  Deref (eval_operand op st)
+  | Element (op0, op1) -> Element (eval_operand op0 st, eval_operand op1 st)
+  | Member (op0, op1) -> Member (eval_operand op0 st, eval_operand op1 st)
+  | Mem (ty, loc) -> Mem (ty, eval_loc loc st)
+  | Ops ops -> Ops (List.rev (List.rev_map (fun op -> eval_operand op st) ops))
+
+let parse_PHI str =
+  let splitted = List.rev
+                  (List.fold_left (fun ret w -> if w = "" then ret else w::ret)
+                     [] (String.split_on_char ' ' str)) in
+  let name_and_label rv' =
+    let rparenindex rv' =
+      let _ = assert (String.ends_with ~suffix:")>" rv' ||
+                        String.ends_with ~suffix:")," rv') in
+      String.rindex rv' '(' in
+    let rpindex' = rparenindex rv' in
+    let len' = String.length rv' in
+    let name = if String.get rv' 0 = '<' then
+                 String.sub rv' 1 (pred rpindex')
+               else
+                 String.sub rv' 0 rpindex' in
+    let labl =
+      int_of_string (String.sub rv' (succ rpindex') (len' - rpindex' - 3)) in
+    (name, labl) in
+  if List.mem "PHI" splitted then
+    match splitted with
+    | [lv; _; rv0'; rv1'] ->
+       let (rv0, labl0) = name_and_label rv0' in
+       let (rv1, labl1) = name_and_label rv1' in
+       Some (lv, (rv0, labl0, rv1, labl1))
+    | _ -> assert false
+  else
+    None 
+
+let _eval_instr instr st phis =
+  let update_store v z st =
+    if Hashtbl.mem st v then
+      Hashtbl.replace st v z else Hashtbl.add st v z in
+  let _eval_operand1 op op0 st =
+    let op' = eval_operand op st in
+    let op0' = eval_operand op0 st in
+    (op', op0') in
+  let eval_operand1_and_update op f op0 st =
+    let op' = eval_operand op st in
+    let op0' = eval_operand op0 st in
+    let _ = match op', op0' with
+      | Var v, Const z -> update_store v (f z) st
+      | _ -> () in
+    (op', op0') in
+  let eval_operand2 op op0 op1 st =
+    let op' = eval_operand op st in
+    let op0' = eval_operand op0 st in
+    let op1' = eval_operand op1 st in
+    (op', op0', op1') in
+  let eval_operand2_and_update op f op0 op1 st =
+    let op' = eval_operand op st in
+    let op0' = eval_operand op0 st in
+    let op1' = eval_operand op1 st in
+    let _ = match op', op0', op1' with
+      | Var v, Const z0, Const z1 -> update_store v (f z0 z1) st
+      | _ -> () in
+    (op', op0', op1') in
+    
+  match instr with
+  | Comment str ->
+     (match parse_PHI str with
+      | Some phi -> (instr, st, phi::phis)
+      | None -> (instr, st, phis))
+  | Assign (op, ty, op0) ->
+     let op', op0' = eval_operand1_and_update op (fun x -> x) op0 st in
+     (Assign (op', ty, op0'), st, phis)
+  | Label _ -> assert false
+  | Nop -> (instr, st, phis)
+  | Asm _ -> (instr, st, phis)
+  | VAssign (op, ty, op0) ->
+     let op', op0' = eval_operand1_and_update op (fun x -> x) op0 st in
+     (VAssign (op', ty, op0'), st, phis)
+  | Add (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.add op0 op1 st in
+     (Add (op', op0', op1'), st, phis)
+  | Sub (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.sub op0 op1 st in
+     (Sub (op', op0', op1'), st, phis)
+  | Mul (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.mul op0 op1 st in
+     (Mul (op', op0', op1'), st, phis)
+  | Div (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Div (op', op0', op1'), st, phis)
+  | Mod (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Mod (op', op0', op1'), st, phis)
+  | Wmul (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.mul op0 op1 st in
+     (Wmul (op', op0', op1'), st, phis)
+  | Gt (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Gt (op', op0', op1'), st, phis)
+  | Ge (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Ge (op', op0', op1'), st, phis)
+  | Lt (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Lt (op', op0', op1'), st, phis)
+  | Le (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Le (op', op0', op1'), st, phis)
+  | And (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.logand op0 op1 st in
+     (And (op', op0', op1'), st, phis)
+  | Or (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.logor op0 op1 st in
+     (Or (op', op0', op1'), st, phis)
+  | Xor (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.logxor op0 op1 st in
+     (Xor (op', op0', op1'), st, phis)
+  | Not (op, op0) ->
+     let op', op0' = eval_operand1_and_update op Z.lognot op0 st in
+     (Not (op', op0'), st, phis)
+  | Eq (op, op0, op1) ->
+     let op', op0', op1' =
+       let zeq2z z0 z1 = if Z.equal z0 z1 then Z.one else Z.zero in
+       eval_operand2_and_update op zeq2z op0 op1 st in
+     (Eq (op', op0', op1'), st, phis)
+  | Neq (op, op0, op1) ->
+     let op', op0', op1' =
+       let zneq2z z0 z1 = if not (Z.equal z0 z1) then Z.one else Z.zero in
+       eval_operand2_and_update op zneq2z op0 op1 st in
+     (Neq (op', op0', op1'), st, phis)
+  | Lshift (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Lshift (op', op0', op1'), st, phis)
+  | Rshift (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Rshift (op', op0', op1'), st, phis)
+  | Lrotate (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Lrotate (op', op0', op1'), st, phis)
+  | Rrotate (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Rrotate (op', op0', op1'), st, phis)
+  | _ -> assert false
+  (*
+             | Ite of operand_t * operand_t * operand_t * operand_t
+             | Min of operand_t * operand_t * operand_t
+             | Max of operand_t * operand_t * operand_t
+             | RealPart of operand_t * operand_t
+             | ImagPart of operand_t * operand_t
+             | Call of operand_t option * string * operand_t list
+             | CondBranch of cond_t * label_t * label_t
+             | Goto of label_t
+             | Return of operand_t option
+
+             | Wmullo of operand_t * operand_t * operand_t
+             | Wmulhi of operand_t * operand_t * operand_t
+             | Wmadd of operand_t * operand_t * operand_t * operand_t
+             | Wmsub of operand_t * operand_t * operand_t * operand_t
+             | VecUnpackLo of operand_t * operand_t
+             | VecUnpackHi of operand_t * operand_t
+             | DeferredInit of operand_t
+             | BitFieldRef of operand_t * operand_t * operand_t * operand_t
+             | VCondMask of operand_t * operand_t *operand_t * operand_t
+             | ViewConvertExpr of operand_t * type_t * operand_t
+             | VecPermExpr of operand_t * operand_t * operand_t * operand_t
+             | VecPackTruncExpr of operand_t * operand_t * operand_t
+             | StoreLanes of operand_t * operand_t
+   *)  
+
+let _unroll_basic_blocks f =
+  let _hash_bb =
+    let ret = Hashtbl.create 7 in
+    let _ = List.iter (fun bb -> Hashtbl.add ret bb.id bb.instrs)
+              f.basic_blocks in
+    ret in
+  let _hash_var =
+    let ret_var = Hashtbl.create 23 in
+    let _ = List.iter (fun v -> Hashtbl.add ret_var v.vname v.vty) f.vars in
+    ret_var in
+  f

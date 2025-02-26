@@ -55,7 +55,7 @@ let string_of_params params =
 
 let rec string_of_offset (off : offset_t) =
   match off with
-  | Const c -> string_of_int c
+  | Const z -> Z.to_string z
   | Var s -> s
   | Add (off0, off1) -> string_of_offset off0 ^ " + " ^ string_of_offset off1
   | Mul (off0, off1) -> string_of_offset off0 ^ " * " ^ string_of_offset off1

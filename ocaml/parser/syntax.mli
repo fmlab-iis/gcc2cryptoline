@@ -15,7 +15,7 @@ type param_t = { pty : type_t; pname : string }
 
 type var_t = { vty : type_t; vname : string }
 
-type offset_t = Const of int | Var of string
+type offset_t = Const of Z.t | Var of string
                 | Add of offset_t * offset_t | Mul of offset_t * offset_t
 
 type loc_t = { lty : type_t; lop : operand_t; loffset : offset_t }

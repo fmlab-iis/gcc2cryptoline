@@ -28,7 +28,7 @@ type param_t = { pty : type_t; pname : string }
 type var_t = { vty : type_t; vname : string }
 
 (* offsets for memory location *)
-type offset_t = Const of int | Var of string
+type offset_t = Const of Z.t | Var of string
                 | Add of offset_t * offset_t | Mul of offset_t * offset_t
 
 (* a memory location starts at `lop` with offset `loffset` *)

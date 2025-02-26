@@ -316,20 +316,20 @@ instr:
 
 loc:
   op                                      { { lty = Void; lop = $1;
-                                              loffset = Const 0 } }
+                                              loffset = Const Z.zero } }
 | LPAREN typ RPAREN op                    { { lty = $2; lop = $4;
-                                              loffset = Const 0 } }
+                                              loffset = Const Z.zero } }
 | LPAREN typ RPAREN op ADDOP BYTE         { { lty = $2; lop = $4;
-                                              loffset = Const $6 } }
+                                              loffset = Const (Z.of_int $6) } }
 | LPAREN typ RPAREN op ADDOP ID MULOP NUM { { lty = $2; lop = $4;
                                               loffset =
-                                                Mul (Var $6, Const (Z.to_int $8)) } }
+                                                Mul (Var $6, Const $8) } }
 | LPAREN typ RPAREN op ADDOP BYTE ADDOP ID MULOP NUM
                                           { { lty = $2; lop = $4;
                                               loffset =
-                                                Add (Const $6,
+                                                Add (Const (Z.of_int $6),
                                                      Mul (Var $8,
-                                                          Const (Z.to_int $10))) } }
+                                                          Const $10)) } }
 ;
 
 condition:
