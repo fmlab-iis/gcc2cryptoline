@@ -253,7 +253,7 @@ let _eval_instr instr st phis =
   let update_store v z st =
     if Hashtbl.mem st v then
       Hashtbl.replace st v z else Hashtbl.add st v z in
-  let _eval_operand1 op op0 st =
+  let eval_operand1 op op0 st =
     let op' = eval_operand op st in
     let op0' = eval_operand op0 st in
     (op', op0') in
@@ -277,6 +277,12 @@ let _eval_instr instr st phis =
       | Var v, Const z0, Const z1 -> update_store v (f z0 z1) st
       | _ -> () in
     (op', op0', op1') in
+  let eval_operand3 op op0 op1 op2 st =
+    let op' = eval_operand op st in
+    let op0' = eval_operand op0 st in
+    let op1' = eval_operand op1 st in
+    let op2' = eval_operand op2 st in
+    (op', op0', op1', op2') in
     
   match instr with
   | Comment str ->
@@ -356,32 +362,72 @@ let _eval_instr instr st phis =
   | Rrotate (op, op0, op1) ->
      let op', op0', op1' = eval_operand2 op op0 op1 st in
      (Rrotate (op', op0', op1'), st, phis)
-  | _ -> assert false
-  (*
-             | Ite of operand_t * operand_t * operand_t * operand_t
-             | Min of operand_t * operand_t * operand_t
-             | Max of operand_t * operand_t * operand_t
-             | RealPart of operand_t * operand_t
-             | ImagPart of operand_t * operand_t
-             | Call of operand_t option * string * operand_t list
-             | CondBranch of cond_t * label_t * label_t
-             | Goto of label_t
-             | Return of operand_t option
-
-             | Wmullo of operand_t * operand_t * operand_t
-             | Wmulhi of operand_t * operand_t * operand_t
-             | Wmadd of operand_t * operand_t * operand_t * operand_t
-             | Wmsub of operand_t * operand_t * operand_t * operand_t
-             | VecUnpackLo of operand_t * operand_t
-             | VecUnpackHi of operand_t * operand_t
-             | DeferredInit of operand_t
-             | BitFieldRef of operand_t * operand_t * operand_t * operand_t
-             | VCondMask of operand_t * operand_t *operand_t * operand_t
-             | ViewConvertExpr of operand_t * type_t * operand_t
-             | VecPermExpr of operand_t * operand_t * operand_t * operand_t
-             | VecPackTruncExpr of operand_t * operand_t * operand_t
-             | StoreLanes of operand_t * operand_t
-   *)  
+  | Ite (op, opc, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     let opc' = eval_operand opc st in
+     (Ite (op', opc', op0', op1'), st, phis)
+  | Min (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.min op0 op1 st in
+     (Min (op', op0', op1'), st, phis)
+  | Max (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2_and_update op Z.max op0 op1 st in
+     (Max (op', op0', op1'), st, phis)
+  | RealPart (op, op0) ->
+     let op', op0' = eval_operand1 op op0 st in
+     (RealPart (op', op0'), st, phis)
+  | ImagPart (op, op0) ->
+     let op', op0' = eval_operand1 op op0 st in
+     (ImagPart (op', op0'), st, phis)
+  | Call (oop, name, ops) ->
+     let oop' = match oop with None -> None
+                             | Some op -> Some (eval_operand op st) in
+     let ops' = List.rev (List.rev_map (fun op -> eval_operand op st) ops) in
+     (Call (oop', name, ops'), st, phis)
+  | CondBranch _ | Goto _ -> (instr, st, phis)
+  | Return oop ->
+     let oop' = match oop with None -> None
+                             | Some op -> Some (eval_operand op st) in
+     (Return oop', st, phis)
+  (* intrinsics *)
+  | Wmullo (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Wmullo (op', op0', op1'), st, phis)
+  | Wmulhi  (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (Wmulhi (op', op0', op1'), st, phis)
+  | Wmadd (op, op0, op1, op2) ->
+     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     (Wmadd (op', op0', op1', op2'), st, phis)
+  | Wmsub (op, op0, op1, op2) ->
+     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     (Wmsub (op', op0', op1', op2'), st, phis)
+  | VecUnpackLo (op, op0) ->
+     let op', op0' = eval_operand1 op op0 st in
+     (VecUnpackLo (op', op0'), st, phis)
+  | VecUnpackHi  (op, op0) ->
+     let op', op0' = eval_operand1 op op0 st in
+     (VecUnpackHi (op', op0'), st, phis)
+  | DeferredInit op ->
+     let op' = eval_operand op st in
+     (DeferredInit op', st, phis)
+  | BitFieldRef (op, op0, op1, op2) ->
+     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     (BitFieldRef (op', op0', op1', op2'), st, phis)
+  | VCondMask (op, op0, op1, op2) ->
+     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     (VCondMask (op', op0', op1', op2'), st, phis)
+  | ViewConvertExpr (op, ty, op0) ->
+     let op', op0' = eval_operand1 op op0 st in
+     (ViewConvertExpr (op', ty, op0'), st, phis)
+  | VecPermExpr (op, op0, op1, op2) ->
+     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     (VecPermExpr (op', op0', op1', op2'), st, phis)
+  | VecPackTruncExpr (op, op0, op1) ->
+     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     (VecPackTruncExpr (op', op0', op1'), st, phis)
+  | StoreLanes (op, op0) ->
+     let op', op0' = eval_operand1 op op0 st in
+     (StoreLanes (op', op0'), st, phis)
 
 let _unroll_basic_blocks f =
   let _hash_bb =
