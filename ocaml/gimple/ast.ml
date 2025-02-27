@@ -105,7 +105,8 @@ type instr_t = Nop
              | StoreLanes of operand_t * operand_t
 
 (* basic blocks *)
-type basic_block_t = { id : label_t; instrs : instr_t list }
+type phi_t = { op : operand_t; choice : (label_t * operand_t) list }
+type basic_block_t = { id : label_t; instrs : instr_t list; phi : phi_t list }
 
 (* function definitions *)
 type function_t = { attr : attribute_t; fty : type_t; fname : string;
