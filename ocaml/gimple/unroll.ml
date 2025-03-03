@@ -16,7 +16,19 @@ and eval_operand (op : operand_t) st : operand_t =
              else op
   | Const _ | String _ -> op
   | Neg (Const z) -> Const (Z.neg z)
-  | Neg _ -> op
+  | Neg op -> Neg (eval_operand op st)
+  | Ref op -> Ref (eval_operand op st)
+  | Deref op ->  Deref (eval_operand op st)
+  | Element (op0, op1) -> Element (eval_operand op0 st, eval_operand op1 st)
+  | Member (op0, op1) -> Member (eval_operand op0 st, eval_operand op1 st)
+  | Mem (ty, loc) -> Mem (ty, eval_loc loc st)
+  | Ops ops -> Ops (List.rev (List.rev_map (fun op -> eval_operand op st) ops))
+
+let eval_left_operand (op : operand_t) st : operand_t =
+  match op with
+  | Var _ | Const _ | String _ -> op
+  | Neg (Const z) -> Const (Z.neg z)
+  | Neg op -> Neg (eval_operand op st)
   | Ref op -> Ref (eval_operand op st)
   | Deref op ->  Deref (eval_operand op st)
   | Element (op0, op1) -> Element (eval_operand op0 st, eval_operand op1 st)
@@ -46,23 +58,23 @@ let eval_instr instr st =
     if Hashtbl.mem st v then
       Hashtbl.replace st v z else Hashtbl.add st v z in
   let eval_operand1 op op0 st =
-    let op' = eval_operand op st in
+    let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     (op', op0') in
   let eval_operand1_and_update op f op0 st =
-    let op' = eval_operand op st in
+    let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let _ = match op', op0' with
       | Var v, Const z -> update_store v (f z) st
       | _ -> () in
     (op', op0') in
   let eval_operand2 op op0 op1 st =
-    let op' = eval_operand op st in
+    let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     (op', op0', op1') in
   let eval_operand2_and_update op f op0 op1 st =
-    let op' = eval_operand op st in
+    let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     let _ = match op', op0', op1' with
@@ -70,7 +82,7 @@ let eval_instr instr st =
       | _ -> () in
     (op', op0', op1') in
   let eval_operand3 op op0 op1 op2 st =
-    let op' = eval_operand op st in
+    let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     let op2' = eval_operand op2 st in
@@ -216,41 +228,78 @@ let eval_instr instr st =
      let op', op0' = eval_operand1 op op0 st in
      (StoreLanes (op', op0'), st)
 
-  let rec expand_block hash_bb first current last_bb rev_ret st =
-    let rev_phi_ret = List.fold_left (fun r p ->
-                          if List.mem_assoc last_bb p.choice then
-                            let op0 = List.assoc last_bb p.choice in
-                            (Assign (p.op, Void, op0))::r
-                          else r) rev_ret current.phi in
-    let rev_phi_ret', st' = 
-      List.fold_left (fun (r, s) instr ->
-          let instr', s' = eval_instr instr s in (instr'::r, s'))
-        (rev_phi_ret, st) current.instrs in
-    match rev_phi_ret' with
-    | Goto labl::_ ->
-       let comment = Format.sprintf "@[// Basic Block: %s@]"
-                       (Utils.string_of_label labl) in
-       expand_block hash_bb first (Hashtbl.find hash_bb labl)
-         current.id (Comment comment::rev_phi_ret') st'
-    | CondBranch (c, labl0, labl1)::_ ->
-       (match eval_cond c st' with
-        | None ->
-           ({ id = first.id; instrs = List.rev rev_phi_ret';
-              phi = first.phi }, [labl0; labl1])
-        | Some b ->
-           let labl = if b then labl0 else labl1 in
-           let comment = Format.sprintf "@[// Basic Block: %s@]"
-                           (Utils.string_of_label labl) in
-           expand_block hash_bb first (Hashtbl.find hash_bb labl)
-             current.id (Comment comment::rev_phi_ret') st')
-    | _ -> ({ id = first.id; instrs = List.rev rev_phi_ret';
-              phi = first.phi }, [])
+let rec expand_block hash_bb first current last_bb rev_ret st_ =
+  let rev_phi_ret, st =
+    List.fold_left (fun (r, s) p ->
+        if List.mem_assoc last_bb p.choice then
+          let op0 = List.assoc last_bb p.choice in
+          let phi_instr = Assign (p.op, Void, op0) in
+          let _instr', s' = eval_instr phi_instr s in
+          (*
+            let _ = print_endline (Utils.string_of_instr instr') in
+           *)
+          (phi_instr::r, s')
+        else (r, s)) (rev_ret, st_) current.phi in
+  let rev_phi_ret', st' = 
+    List.fold_left (fun (r, s) instr ->
+        let instr', s' = eval_instr instr s in
+        (*
+          let _ = print_endline (Utils.string_of_instr instr') in
+         *)
+          (instr'::r, s'))
+      (rev_phi_ret, st) current.instrs in
+  match rev_phi_ret' with
+  | Goto labl as instr::instrs ->
+     let comment0 = Format.sprintf "@[ %s @]"
+                     (Utils.string_of_instr instr) in
+     let comment1 = Format.sprintf "@[ Basic Block: %s@]"
+                     (Utils.string_of_label labl) in
+     (*
+       let _ = print_endline comment in
+      *)
+     let next, _ = Hashtbl.find hash_bb labl in
+     expand_block hash_bb first next
+       current.id (Comment comment1::Comment comment0::instrs) st'
+  | CondBranch (c, labl0, labl1) as instr::instrs ->
+     (match eval_cond c st' with
+      | None ->
+         ({ id = first.id; instrs = List.rev rev_phi_ret';
+            phi = first.phi }, [labl0; labl1])
+      | Some b ->
+         let labl = if b then labl0 else labl1 in
+         let comment0 = Format.sprintf "@[ %s @]"
+                          (Utils.string_of_instr instr) in
+         let comment1 = Format.sprintf "@[ Basic Block: %s@]"
+                         (Utils.string_of_label labl) in
+         (*
+           let _ = print_endline comment in
+          *)
+         let next, _ = Hashtbl.find hash_bb labl in
+         expand_block hash_bb first next
+           current.id (Comment comment1::Comment comment0::instrs) st')
+  | _ ->
+     (* continue to next block *)
+     match snd (Hashtbl.find hash_bb current.id) with
+     | None -> ({ id = first.id; instrs = List.rev rev_phi_ret';
+                  phi = first.phi }, [])
+     | Some next ->
+        let comment = Format.sprintf "@[ Basic Block: %s@]"
+                        (Utils.string_of_label next.id) in
+        (*
+          let _ = print_endline comment in
+         *)
+        expand_block hash_bb first next current.id
+          (Comment comment::rev_phi_ret') st'
 
 let unroll_blocks f =
   let hash_bb =
     let ret = Hashtbl.create 7 in
-    let _ = List.iter (fun bb -> Hashtbl.add ret bb.id bb)
-              f.basic_blocks in
+    let _ =
+      let basic_blocks_next =
+        List.rev (None::(List.fold_left (fun ret b -> Some b::ret)
+                          [] (List.tl f.basic_blocks))) in
+      List.iter2 (fun bb nbb -> Hashtbl.add ret bb.id (bb, nbb))
+        f.basic_blocks basic_blocks_next in
     ret in
   let rec helper (rev_ret, rev_labls) labls =
     match labls with
@@ -259,7 +308,7 @@ let unroll_blocks f =
          helper (rev_ret, rev_labls) more_labls
        else
          let fake_last = BB (Z.neg Z.one) in
-         let first = Hashtbl.find hash_bb labl in
+         let first, _ = Hashtbl.find hash_bb labl in
          let block, todo = expand_block hash_bb first first fake_last
                              [] (Hashtbl.create 17) in
          let _ = assert (block.id = labl) in
