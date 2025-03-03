@@ -231,15 +231,14 @@ let eval_instr instr st =
 let rec expand_block hash_bb first current last_bb rev_ret st_ =
   let rev_phi_ret, st =
     List.fold_left (fun (r, s) p ->
-        if List.mem_assoc last_bb p.choice then
-          let op0 = List.assoc last_bb p.choice in
-          let phi_instr = Assign (p.op, Void, op0) in
-          let _instr', s' = eval_instr phi_instr s in
-          (*
-            let _ = print_endline (Utils.string_of_instr instr') in
-           *)
-          (phi_instr::r, s')
-        else (r, s)) (rev_ret, st_) current.phi in
+        let _ = assert (List.mem_assoc last_bb p.choice) in
+        let op0 = List.assoc last_bb p.choice in
+        let phi_instr = Assign (p.op, Void, op0) in
+        let _instr', s' = eval_instr phi_instr s in
+        (*
+          let _ = print_endline (Utils.string_of_instr instr') in
+         *)
+        (phi_instr::r, s')) (rev_ret, st_) current.phi in
   let rev_phi_ret', st' = 
     List.fold_left (fun (r, s) instr ->
         let instr', s' = eval_instr instr s in
@@ -255,7 +254,8 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
      let comment1 = Format.sprintf "@[ Basic Block: %s@]"
                      (Utils.string_of_label labl) in
      (*
-       let _ = print_endline comment in
+       let _ = print_endline comment0 in
+       let _ = print_endline comment1 in
       *)
      let next, _ = Hashtbl.find hash_bb labl in
      expand_block hash_bb first next
@@ -272,7 +272,8 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
          let comment1 = Format.sprintf "@[ Basic Block: %s@]"
                          (Utils.string_of_label labl) in
          (*
-           let _ = print_endline comment in
+           let _ = print_endline comment0 in
+           let _ = print_endline comment1 in
           *)
          let next, _ = Hashtbl.find hash_bb labl in
          expand_block hash_bb first next
