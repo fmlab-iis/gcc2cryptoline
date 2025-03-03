@@ -172,26 +172,23 @@ let parse_PHI str : phi_t option =
                   (List.fold_left (fun ret w -> if w = "" then ret else w::ret)
                      [] (String.split_on_char ' ' str)) in
   let name_and_label rv' =
-    let rparenindex rv' =
-      let _ = assert (String.ends_with ~suffix:")>" rv' ||
-                        String.ends_with ~suffix:")," rv') in
-      String.rindex rv' '(' in
-    let rpindex' = rparenindex rv' in
-    let len' = String.length rv' in
+    let rlpindex' = String.rindex rv' '(' in
+    let rrpindex' = String.rindex rv' ')' in
     let name = if String.get rv' 0 = '<' then
-                 String.sub rv' 1 (pred rpindex')
+                 String.sub rv' 1 (pred rlpindex')
                else
-                 String.sub rv' 0 rpindex' in
+                 String.sub rv' 0 rlpindex' in
     let labl =
-      int_of_string (String.sub rv' (succ rpindex') (len' - rpindex' - 3)) in
+      int_of_string (String.sub rv' (succ rlpindex')
+                       (rrpindex' - rlpindex' - 1)) in
     (name, Z.of_int labl) in
   if List.mem "PHI" splitted then
     match splitted with
-    | [lv; _; _; rv0'; rv1'] ->
-       let (rv0, labl0) = name_and_label rv0' in
-       let (rv1, labl1) = name_and_label rv1' in
-       Some { op = Var lv;
-              choice = [BB labl0, Var rv0;  BB labl1, Var rv1] }
+    | lv::"="::"PHI"::choices ->
+       let cs = List.fold_left (fun ret rv' ->
+                    let (name, labl) = name_and_label rv' in
+                    (BB labl, Var name)::ret) [] choices in
+       Some { op = Var lv; choice = cs }
     | _ -> assert false
   else
     None 
