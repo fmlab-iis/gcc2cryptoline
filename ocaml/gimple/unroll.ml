@@ -1,5 +1,7 @@
 open Ast
 
+let no_label = BB (Z.neg Z.one)
+
 let eval_offset (off : offset_t) st : offset_t =
   match off with
   | Var v -> if Hashtbl.mem st v then Const (Hashtbl.find st v) else off
@@ -308,7 +310,7 @@ let unroll_blocks f =
        if List.mem labl rev_labls then
          helper (rev_ret, rev_labls) more_labls
        else
-         let fake_last = BB (Z.neg Z.one) in
+         let fake_last = no_label in
          let first, _ = Hashtbl.find hash_bb labl in
          let block, todo = expand_block hash_bb first first fake_last
                              [] (Hashtbl.create 17) in
