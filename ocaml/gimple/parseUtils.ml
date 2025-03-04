@@ -171,23 +171,24 @@ let parse_PHI str : phi_t option =
   let splitted = List.rev
                   (List.fold_left (fun ret w -> if w = "" then ret else w::ret)
                      [] (String.split_on_char ' ' str)) in
-  let name_and_label rv' =
+  let operand_and_label rv' =
     let rlpindex' = String.rindex rv' '(' in
     let rrpindex' = String.rindex rv' ')' in
-    let name = if String.get rv' 0 = '<' then
+    let str = if String.get rv' 0 = '<' then
                  String.sub rv' 1 (pred rlpindex')
                else
                  String.sub rv' 0 rlpindex' in
+    let op = try Const (Z.of_string str) with Invalid_argument _ -> Var str in
     let labl =
       int_of_string (String.sub rv' (succ rlpindex')
                        (rrpindex' - rlpindex' - 1)) in
-    (name, Z.of_int labl) in
+    (op, Z.of_int labl) in
   if List.mem "PHI" splitted then
     match splitted with
     | lv::"="::"PHI"::choices ->
        let cs = List.fold_left (fun ret rv' ->
-                    let (name, labl) = name_and_label rv' in
-                    (BB labl, Var name)::ret) [] choices in
+                    let (op, labl) = operand_and_label rv' in
+                    (BB labl, op)::ret) [] choices in
        Some { op = Var lv; choice = cs }
     | _ -> assert false
   else
@@ -208,7 +209,7 @@ let build_basic_block l instrs : basic_block_t * instr_t list =
             | Some phi -> find_end is' (i::rev_ret) (phi::phis)
             | None -> find_end is' (i::rev_ret) phis)
         | _ -> find_end is' (i::rev_ret) phis)
-    | _ -> (mk_basic_block l rev_ret phis, []) in
+    | [] -> (mk_basic_block l rev_ret phis, []) in
   find_end instrs [] []
 
 let rec decompose instrs rev_ret =

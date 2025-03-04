@@ -2,12 +2,20 @@ open Ast
 
 let no_label = BB (Z.neg Z.one)
 
-let eval_offset (off : offset_t) st : offset_t =
+let rec eval_offset (off : offset_t) st : offset_t =
   match off with
+  | Const _ -> off
   | Var v -> if Hashtbl.mem st v then Const (Hashtbl.find st v) else off
-  | Add (Const i0, Const i1) -> Const (Z.add i0 i1)
-  | Mul (Const i0, Const i1) -> Const (Z.add i0 i1)
-  | _ -> off
+  | Add (o0, o1) ->
+     let o0', o1' = eval_offset o0 st, eval_offset o1 st in
+     (match o0', o1' with
+      | Const i0, Const i1 -> Const (Z.add i0 i1)
+      | _ -> Add (o0', o1'))
+  | Mul (o0, o1) ->
+     let o0', o1' = eval_offset o0 st, eval_offset o1 st in
+     (match o0', o1' with
+      | Const i0, Const i1 -> Const (Z.mul i0 i1)
+      | _ -> Mul (o0', o1'))
 
 let rec eval_loc loc st =
   { lty = loc.lty; lop = eval_operand loc.lop st;
@@ -245,11 +253,13 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
           let _ = assert (List.mem_assoc last_bb p.choice) in
           let op0 = List.assoc last_bb p.choice in
           let phi_instr = Assign (p.op, Void, op0) in
-          let _instr', s' = eval_instr phi_instr s in
+          let instr', s' = eval_instr phi_instr s in
+
           (*
           let _ = print_endline (Utils.string_of_instr instr') in
            *)
-          (phi_instr::r, s')) (rev_ret, st_) current.phi in
+          
+          (instr'::r, s')) (rev_ret, st_) current.phi in
   let rev_phi_ret', st' = 
     List.fold_left (fun (r, s) instr ->
         let instr', s' = eval_instr instr s in
