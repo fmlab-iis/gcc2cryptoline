@@ -194,6 +194,7 @@ let parse_PHI str : phi_t option =
     None 
 
 let build_basic_block l instrs : basic_block_t * instr_t list =
+  let _ = assert (match l with |  BB _ -> true | _ -> false) in
   let mk_basic_block l rev_instrs phis =
     { id = l; instrs = List.rev rev_instrs;
       phi =  phis } in
@@ -201,7 +202,7 @@ let build_basic_block l instrs : basic_block_t * instr_t list =
     match is with
     | i::is' ->
        (match i with
-        | Label _ -> (mk_basic_block l rev_ret phis, is)
+        | Label (BB _) -> (mk_basic_block l rev_ret phis, is)
         | Comment str ->
            (match parse_PHI str with
             | Some phi -> find_end is' (i::rev_ret) (phi::phis)
@@ -214,7 +215,7 @@ let rec decompose instrs rev_ret =
   match instrs with
   | i::is ->
      (match i with
-      | Label l ->
+      | Label ((BB _) as l) ->
          let (basic_block, is') = build_basic_block l is in
          decompose is' (basic_block::rev_ret)
       | _ -> assert false)

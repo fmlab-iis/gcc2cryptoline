@@ -64,7 +64,7 @@ let string_of_cond (cond : cond_t) =
 let string_of_label l =
   match l with
   | BB z -> "<bb " ^ Z.to_string z ^ ">"
-  | Name s -> "<ll " ^ s ^ ">"
+  | Name s -> s ^ ":"
 
 let string_of_instr instr =
   match instr with
@@ -208,7 +208,7 @@ let print_vars vars =
 
 let print_basic_block bb =
   Format.printf "@[Basic Block: %s@]@." (string_of_label bb.id);
-  List.iter (fun i -> Format.printf "\t@[%s@];@." (string_of_instr i)) bb.instrs
+  List.iter (fun i -> Format.printf "\t@[%s@]@." (string_of_instr i)) bb.instrs
 
 let print_function f =
   Format.printf "__attribute__((access (@[%s@])))@." (String.concat ", " f.attr);
