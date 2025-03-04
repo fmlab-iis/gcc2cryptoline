@@ -14,7 +14,7 @@ type label_t = BB of Z.t | Name of string
 (* Vector (n, t) denotes the vector type t of size n *)
 (* Array (n, t) denotes the array type t of size n *)
 type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
-              | Long | Ulong | Llong | Ullong | CharRefAll
+              | Long | Ulong | Llong | Ullong | Sizetype | CharRefAll
               | Sword of int | Uword of int | Bools of int | Ubools of int
               | Const of type_t | Pointer of type_t | Struct of string
               | Vector of Z.t * type_t | Array of Z.t * type_t

@@ -23,6 +23,7 @@
               "signed"                     , SIGNED;
               "unsigned"                   , UNSIGNED;
               "long"                       , LONG;
+              "sizetype"                   , SIZETYPE;
               "vector"                     , VECTOR;
               "MEM"                        , MEM;
               "MIN_EXPR"                   , MIN_EXPR;

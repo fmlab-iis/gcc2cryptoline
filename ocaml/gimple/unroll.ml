@@ -63,19 +63,48 @@ let eval_cond (c : cond_t) st =
       | Le _ -> Some (not (Z.gt z0 z1)))
   | _ -> None
 
-let eval_instr instr st =
-  let update_store v z st =
+let sign_nbits_of_type ty =
+  match ty with
+  | Char -> Some (true, 8) | Uchar -> Some (false, 8)
+  | Short -> Some (true, 16) | Ushort -> Some (false, 16)
+  | Int -> Some (true, 32) | Uint -> Some (false, 32)
+  | Long -> Some (true, 64) | Ulong -> Some (false, 64)
+  | Llong -> Some (true, 128) | Ullong -> Some (false, 128)
+  | Sizetype -> Some (true, 64)
+  | _ -> None
+
+(* cast z to type ty if possible, return z otherwise *)
+let cast_type ty z =
+  match sign_nbits_of_type ty with
+  | None -> z
+  | Some (sign, nbits) ->
+     let two = Z.succ Z.one in
+     let twonbits = Z.pow two nbits in
+     let mask = Z.sub twonbits Z.one in
+     let _ = assert (nbits = Z.numbits mask) in
+     let truncated_z = Z.logand z mask in
+     if sign && Z.gt truncated_z (Z.shift_right twonbits 1) then
+       Z.sub truncated_z twonbits
+     else
+       truncated_z
+
+let eval_instr vtypes instr st =
+  let update_store ty v z st =
+    let zz = cast_type ty z in
     if Hashtbl.mem st v then
-      Hashtbl.replace st v z else Hashtbl.add st v z in
+      Hashtbl.replace st v zz else Hashtbl.add st v zz in
   let eval_operand1 op op0 st =
     let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     (op', op0') in
-  let eval_operand1_and_update op f op0 st =
+  let eval_operand1_and_update vtypes op f op0 st =
     let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let _ = match op', op0' with
-      | Var v, Const z -> update_store v (f z) st
+      | Var v, Const z ->
+         let vty = try Hashtbl.find vtypes v
+                   with Not_found -> Void in
+         update_store vty v (f z) st
       | _ -> () in
     (op', op0') in
   let eval_operand2 op op0 op1 st =
@@ -83,12 +112,15 @@ let eval_instr instr st =
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     (op', op0', op1') in
-  let eval_operand2_and_update op f op0 op1 st =
+  let eval_operand2_and_update vtypes op f op0 op1 st =
     let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     let _ = match op', op0', op1' with
-      | Var v, Const z0, Const z1 -> update_store v (f z0 z1) st
+      | Var v, Const z0, Const z1 ->
+         let vty = try Hashtbl.find vtypes v
+                   with Not_found -> Void in
+         update_store vty v (f z0 z1) st
       | _ -> () in
     (op', op0', op1') in
   let eval_operand3 op op0 op1 op2 st =
@@ -101,30 +133,37 @@ let eval_instr instr st =
   match instr with
   | Comment _  | Nop | Asm _ -> (instr, st)
   | Assign (op, ty, op0) ->
-     let op', op0' = eval_operand1_and_update op (fun x -> x) op0 st in
+     let op', op0' =
+       eval_operand1_and_update vtypes op (fun x -> x) op0 st in
      (Assign (op', ty, op0'), st)
   | Label (BB _) -> assert false
   | Label (Name _) -> (instr, st)
   | VAssign (op, ty, op0) ->
-     let op', op0' = eval_operand1_and_update op (fun x -> x) op0 st in
+     let op', op0' =
+       eval_operand1_and_update vtypes op (fun x -> x) op0 st in
      (VAssign (op', ty, op0'), st)
   | Add (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.add op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.add op0 op1 st in
      (Add (op', op0', op1'), st)
   | Sub (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.sub op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.sub op0 op1 st in
      (Sub (op', op0', op1'), st)
   | Mul (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.mul op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.mul op0 op1 st in
      (Mul (op', op0', op1'), st)
   | Div (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2 op op0 op1 st in
      (Div (op', op0', op1'), st)
   | Mod (op, op0, op1) ->
      let op', op0', op1' = eval_operand2 op op0 op1 st in
      (Mod (op', op0', op1'), st)
   | Wmul (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.mul op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.mul op0 op1 st in
      (Wmul (op', op0', op1'), st)
   | Gt (op, op0, op1) ->
      let op', op0', op1' = eval_operand2 op op0 op1 st in
@@ -139,26 +178,30 @@ let eval_instr instr st =
      let op', op0', op1' = eval_operand2 op op0 op1 st in
      (Le (op', op0', op1'), st)
   | And (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.logand op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.logand op0 op1 st in
      (And (op', op0', op1'), st)
   | Or (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.logor op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.logor op0 op1 st in
      (Or (op', op0', op1'), st)
   | Xor (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.logxor op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.logxor op0 op1 st in
      (Xor (op', op0', op1'), st)
   | Not (op, op0) ->
-     let op', op0' = eval_operand1_and_update op Z.lognot op0 st in
+     let op', op0' =
+       eval_operand1_and_update vtypes op Z.lognot op0 st in
      (Not (op', op0'), st)
   | Eq (op, op0, op1) ->
      let op', op0', op1' =
        let zeq2z z0 z1 = if Z.equal z0 z1 then Z.one else Z.zero in
-       eval_operand2_and_update op zeq2z op0 op1 st in
+       eval_operand2_and_update vtypes op zeq2z op0 op1 st in
      (Eq (op', op0', op1'), st)
   | Neq (op, op0, op1) ->
      let op', op0', op1' =
        let zneq2z z0 z1 = if not (Z.equal z0 z1) then Z.one else Z.zero in
-       eval_operand2_and_update op zneq2z op0 op1 st in
+       eval_operand2_and_update vtypes op zneq2z op0 op1 st in
      (Neq (op', op0', op1'), st)
   | Lshift (op, op0, op1) ->
      let op', op0', op1' = eval_operand2 op op0 op1 st in
@@ -177,10 +220,12 @@ let eval_instr instr st =
      let opc' = eval_operand opc st in
      (Ite (op', opc', op0', op1'), st)
   | Min (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.min op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.min op0 op1 st in
      (Min (op', op0', op1'), st)
   | Max (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2_and_update op Z.max op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.max op0 op1 st in
      (Max (op', op0', op1'), st)
   | RealPart (op, op0) ->
      let op', op0' = eval_operand1 op op0 st in
@@ -239,7 +284,7 @@ let eval_instr instr st =
      let op', op0' = eval_operand1 op op0 st in
      (StoreLanes (op', op0'), st)
 
-let rec expand_block hash_bb first current last_bb rev_ret st_ =
+let rec expand_block vtypes hash_bb first current last_bb rev_ret st_ =
   let rev_phi_ret, st =
     if last_bb = no_label then
       (rev_ret, st_)
@@ -253,7 +298,7 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
           let _ = assert (List.mem_assoc last_bb p.choice) in
           let op0 = List.assoc last_bb p.choice in
           let phi_instr = Assign (p.op, Void, op0) in
-          let instr', s' = eval_instr phi_instr s in
+          let instr', s' = eval_instr vtypes phi_instr s in
 
           (*
           let _ = print_endline (Utils.string_of_instr instr') in
@@ -262,7 +307,7 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
           (instr'::r, s')) (rev_ret, st_) current.phi in
   let rev_phi_ret', st' = 
     List.fold_left (fun (r, s) instr ->
-        let instr', s' = eval_instr instr s in
+        let instr', s' = eval_instr vtypes instr s in
         (*
         let _ = print_endline (Utils.string_of_instr instr') in
          *)
@@ -279,7 +324,7 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
      let _ = print_endline comment1 in
       *)
      let next, _ = Hashtbl.find hash_bb labl in
-     expand_block hash_bb first next
+     expand_block vtypes hash_bb first next
        current.id (Comment comment1::Comment comment0::instrs) st'
   | CondBranch (c, labl0, labl1) as instr::instrs ->
      (match eval_cond c st' with
@@ -297,7 +342,7 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
          let _ = print_endline comment1 in
           *)
          let next, _ = Hashtbl.find hash_bb labl in
-         expand_block hash_bb first next
+         expand_block vtypes hash_bb first next
            current.id (Comment comment1::Comment comment0::instrs) st')
   | Return _::_ ->
      ({ id = first.id; instrs = List.rev rev_phi_ret';
@@ -313,7 +358,7 @@ let rec expand_block hash_bb first current last_bb rev_ret st_ =
         (*
         let _ = print_endline comment in
          *)
-        expand_block hash_bb first next current.id
+        expand_block vtypes hash_bb first next current.id
           (Comment comment::rev_phi_ret') st'
 
 let unroll_blocks f =
@@ -326,22 +371,26 @@ let unroll_blocks f =
       List.iter2 (fun bb nbb -> Hashtbl.add ret bb.id (bb, nbb))
         f.basic_blocks basic_blocks_next in
     ret in
-  let rec helper (rev_ret, rev_labls) labls =
+  let rec helper vtypes (rev_ret, rev_labls) labls =
     match labls with
     | labl::more_labls ->
        if List.mem labl rev_labls then
-         helper (rev_ret, rev_labls) more_labls
+         helper vtypes (rev_ret, rev_labls) more_labls
        else
          let fake_last = no_label in
          let first, _ = Hashtbl.find hash_bb labl in
-         let block, todo = expand_block hash_bb first first fake_last
+         let block, todo = expand_block vtypes hash_bb first first fake_last
                              [] (Hashtbl.create 17) in
          let _ = assert (block.id = labl) in
-         helper (block::rev_ret, labl::rev_labls)
+         helper vtypes (block::rev_ret, labl::rev_labls)
            (List.rev_append (List.rev more_labls) todo)
     | _ -> List.rev rev_ret in
+  let vtypes =
+    let ret = Hashtbl.create 17 in
+    let _ = List.iter (fun v -> Hashtbl.add ret v.vname v.vty) f.vars in
+    ret in
   let start = List.nth f.basic_blocks 0 in
   let _ = assert (start.phi = []) in
   { attr = f.attr; fty = f.fty; fname = f.fname;
     params = f.params; vars = f.vars;
-    basic_blocks = helper ([], []) [start.id] }
+    basic_blocks = helper vtypes ([], []) [start.id] }

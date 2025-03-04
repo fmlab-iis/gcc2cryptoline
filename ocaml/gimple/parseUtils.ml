@@ -14,6 +14,7 @@ let rec from_type (ty : Syntax.type_t) =
   | Int -> Int | Uint -> Uint
   | Long -> Long | Ulong -> Ulong
   | Llong -> Llong | Ullong -> Ullong
+  | Sizetype -> Sizetype
   | CharRefAll -> CharRefAll
   | Sword i -> Sword i | Uword i -> Uword i
   | Bools i -> Bools i | Ubools i -> Ubools i

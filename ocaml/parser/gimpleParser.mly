@@ -35,7 +35,7 @@
 
 /* Types */
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
-%token BOOLS UBOOLS STATIC VOLATILE REGISTER COMPLEX
+%token BOOLS UBOOLS STATIC VOLATILE REGISTER COMPLEX SIZETYPE
 /* Others */
 %token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO ASM
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT
@@ -141,6 +141,7 @@ ground_typ:
 | UINT                                    { Uword $1 }
 | SINT                                    { Sword $1 }
 | SINT UNSIGNED                           { Uword $1 }
+| SIZETYPE                                { Sizetype }
 | STRUCT ID                               { Struct $2 }
 | VECTOR LPAREN NUM RPAREN ground_typ     { Vector ($3, $5) }
 | CONST ground_typ                        { Const $2 }

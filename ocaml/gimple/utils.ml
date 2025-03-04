@@ -16,6 +16,7 @@ let rec string_of_type typ =
   | Ulong -> "unsigned long"
   | Llong -> "long long"
   | Ullong -> "unsigned long long"
+  | Sizetype -> "sizetype"
   | Bools w -> "<signed-boolean:" ^ string_of_int w ^ ">"
   | Ubools w -> "<unsigned-boolean:" ^ string_of_int w ^ ">"
   | Sword w -> "int" ^ string_of_int w
