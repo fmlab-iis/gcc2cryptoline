@@ -99,7 +99,8 @@ parameter:
 ;
 
 var_decls:
-  var_decl var_decls                      { $1::$2 }
+| COMMENT var_decls                       { $2 }
+| var_decl var_decls                      { $1::$2 }
 |                                         { [] }
 ;
 

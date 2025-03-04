@@ -43,23 +43,12 @@ let number = ['0'-'9']
 let bin = ['0' '1']
 let hex = ['0'-'9' 'a'-'f' 'A'-'F']
 let identity = '_'? (letter | '_' | '.' | '$' | number)* ("(D)")?
-let comment_line = (";;"([^ '\n' ]*))|('#'([^ '\n' ]*))|("//"([^ '\n' ]*))
+let comment_line = (";;"|'#'|"//")[^ '\n' ]*
 
-rule line_comment = parse
-    ("\r\n"|'\n'|'\r')             { Lexing.new_line lexbuf; token lexbuf }
-  | _                              { line_comment lexbuf }
-
-and
-
-token = parse
+rule token = parse
     [' ' '\t']                     { token lexbuf }
   | ("\r\n"|'\n'|'\r')             { Lexing.new_line lexbuf; token lexbuf }
   (* Others *)
-(*
-  | ";;"                           { line_comment lexbuf }
-  | "#"                            { line_comment lexbuf }
-  | "//"                           { line_comment lexbuf }
-*)
   | comment_line as str            { COMMENT str }
   (* Symbols *)
   | '('                            { LPAREN }
