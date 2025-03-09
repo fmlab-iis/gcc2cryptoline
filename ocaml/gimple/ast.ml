@@ -7,7 +7,7 @@ type attribute_t = access_t list
 
 (* labels *)
 type label_t = BB of Z.t | Name of string
-  
+
 (* types *)
 (* short, int, long may depend on the architecture during compilation *)
 (* word specifies bit width *)

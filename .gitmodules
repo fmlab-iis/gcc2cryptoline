@@ -1,0 +1,3 @@
+[submodule "ocaml/lib/cryptoline"]
+	path = ocaml/lib/cryptoline
+	url = https://github.com/fmlab-iis/cryptoline.git

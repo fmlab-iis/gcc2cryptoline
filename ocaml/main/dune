@@ -1,5 +1,5 @@
 (library
   (name        main)
-  (libraries   parser gimple)
+  (libraries   parser gimple convert cryptoline.ast)
   (flags       (:standard -w -3))
 )

@@ -1,4 +1,7 @@
 
+module GimpleAst = Ast
+module GimpleUtils = Utils
+
 let parse_func f = ParseUtils.from_function f
 
 let unroll_first_block = Unroll.unroll_first_block

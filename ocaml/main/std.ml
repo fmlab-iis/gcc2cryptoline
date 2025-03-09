@@ -1,4 +1,7 @@
 
+open Ast
+open Ast.Cryptoline
+
 let extract_func_name = ref None
 let no_branch = ref true
 let init_st = ref (Hashtbl.create 17)
@@ -39,7 +42,7 @@ let usage = "Usage: gcc2cryptoline OPTIONS FILE\n"
 let anon file =
   let lexbuf = Lexing.from_channel ~with_positions:true (open_in file) in
   let _ = Lexing.set_filename lexbuf file in
-  let parse_tree = 
+  let parse_tree =
     try
       Parser.GimpleParser.gimple Parser.GimpleLexer.token lexbuf
     with
@@ -56,4 +59,14 @@ let anon file =
   (*
   List.iter (fun f -> print_endline (Parser.Common.string_of_func f)) parse_tree
    *)
-  List.iter Gimple.print_function expanded_asts
+  let _ = print_endline ("\nGimple\n") in
+  let _ = List.iter Gimple.print_function expanded_asts in
+  let _ = print_endline ("\nCryptoLine\n") in
+  let specm = Convert.Std.convert expanded_asts in
+  let _ = SM.iter (
+              fun fn specs ->
+              List.iter (
+                fun s -> print_endline (Printf.sprintf "proc %s (...) =\n%s" fn (Cryptoline.string_of_spec s))
+                ) specs
+            ) specm in
+  ()
