@@ -1,5 +1,12 @@
 
-let args = []
+let extract_func_name = ref None
+
+let args = [
+    ("-f", Arg.String (fun s -> extract_func_name := Some s),
+     "<name>: Extract the specified procedure <name>.")
+  ]
+
+let args = List.sort Stdlib.compare args
 
 let usage = "Usage: gcc2cryptoline OPTIONS FILE\n"
 
@@ -16,7 +23,11 @@ let anon file =
                            ". " ^ msg))
     | Parsing.Parse_error -> Parser.Common.raise_parse_error lexbuf in
   let asts = List.rev_map Gimple.parse_func parse_tree in
-  let expanded_asts = List.rev_map Gimple.unroll_basic_blocks asts in
+  let init_st = Hashtbl.create 17 in
+  let expanded_asts = List.fold_left (fun ret f ->
+                          match Gimple.unroll_basic_blocks
+                                  !extract_func_name init_st f with
+                          | None -> ret | Some f -> f::ret) [] asts in
   (*
   List.iter (fun f -> print_endline (Parser.Common.string_of_func f)) parse_tree
    *)

@@ -361,7 +361,7 @@ let rec expand_block vtypes hash_bb first current last_bb rev_ret st_ =
         expand_block vtypes hash_bb first next current.id
           (Comment comment::rev_phi_ret') st'
 
-let unroll_blocks f =
+let unroll_blocks fnameopt init_st f =
   let hash_bb =
     let ret = Hashtbl.create 7 in
     let _ =
@@ -380,7 +380,7 @@ let unroll_blocks f =
          let fake_last = no_label in
          let first, _ = Hashtbl.find hash_bb labl in
          let block, todo = expand_block vtypes hash_bb first first fake_last
-                             [] (Hashtbl.create 17) in
+                             [] (Hashtbl.copy init_st) in
          let _ = assert (block.id = labl) in
          helper vtypes (block::rev_ret, labl::rev_labls)
            (List.rev_append (List.rev more_labls) todo)
@@ -391,6 +391,14 @@ let unroll_blocks f =
     ret in
   let start = List.nth f.basic_blocks 0 in
   let _ = assert (start.phi = []) in
-  { attr = f.attr; fty = f.fty; fname = f.fname;
-    params = f.params; vars = f.vars;
-    basic_blocks = helper vtypes ([], []) [start.id] }
+  match fnameopt with
+  | None -> Some { attr = f.attr; fty = f.fty; fname = f.fname;
+                   params = f.params; vars = f.vars;
+                   basic_blocks = helper vtypes ([], []) [start.id] }
+  | Some name ->
+     if name = f.fname then
+       Some { attr = f.attr; fty = f.fty; fname = f.fname;
+              params = f.params; vars = f.vars;
+              basic_blocks = helper vtypes ([], []) [start.id] }
+     else
+       None
