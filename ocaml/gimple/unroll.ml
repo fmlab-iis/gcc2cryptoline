@@ -285,6 +285,7 @@ let eval_instr vtypes instr st =
      (StoreLanes (op', op0'), st)
 
 let rec expand_block vtypes hash_bb first current last_bb rev_ret st_ =
+  (* add and evaluate PHI assignment by last basic block *)
   let rev_phi_ret, st =
     if last_bb = no_label then
       (rev_ret, st_)
@@ -305,6 +306,7 @@ let rec expand_block vtypes hash_bb first current last_bb rev_ret st_ =
            *)
           
           (instr'::r, s')) (rev_ret, st_) current.phi in
+  (* evaluate instructions in current basic block *)
   let rev_phi_ret', st' = 
     List.fold_left (fun (r, s) instr ->
         let instr', s' = eval_instr vtypes instr s in
@@ -313,6 +315,7 @@ let rec expand_block vtypes hash_bb first current last_bb rev_ret st_ =
          *)
           (instr'::r, s'))
       (rev_phi_ret, st) current.instrs in
+  (* evaluate the last instruction in the current basic block *)
   match rev_phi_ret' with
   | Goto labl as instr::instrs ->
      let comment0 = Format.sprintf "@[ %s @]"
@@ -371,20 +374,21 @@ let unroll_blocks fnameopt init_st f =
       List.iter2 (fun bb nbb -> Hashtbl.add ret bb.id (bb, nbb))
         f.basic_blocks basic_blocks_next in
     ret in
-  let rec helper vtypes (rev_ret, rev_labls) labls =
+  (* expand basic blocks in labls *)
+  let rec helper vtypes (rev_ret, rev_labls) labls st =
     match labls with
     | labl::more_labls ->
        if List.mem labl rev_labls then
-         helper vtypes (rev_ret, rev_labls) more_labls
+         helper vtypes (rev_ret, rev_labls) more_labls st
        else
          let fake_last = no_label in
          let first, _ = Hashtbl.find hash_bb labl in
          let block, todo = expand_block vtypes hash_bb first first fake_last
-                             [] (Hashtbl.copy init_st) in
+                                 [] st in
          let _ = assert (block.id = labl) in
          helper vtypes (block::rev_ret, labl::rev_labls)
-           (List.rev_append (List.rev more_labls) todo)
-    | _ -> List.rev rev_ret in
+           (List.rev_append (List.rev more_labls) todo) st
+    | [] -> List.rev rev_ret in
   let vtypes =
     let ret = Hashtbl.create 17 in
     let _ = List.iter (fun v -> Hashtbl.add ret v.vname v.vty) f.vars in
@@ -394,11 +398,13 @@ let unroll_blocks fnameopt init_st f =
   match fnameopt with
   | None -> Some { attr = f.attr; fty = f.fty; fname = f.fname;
                    params = f.params; vars = f.vars;
-                   basic_blocks = helper vtypes ([], []) [start.id] }
+                   basic_blocks = helper vtypes ([], []) [start.id]
+                                    (Hashtbl.copy init_st)}
   | Some name ->
      if name = f.fname then
        Some { attr = f.attr; fty = f.fty; fname = f.fname;
               params = f.params; vars = f.vars;
-              basic_blocks = helper vtypes ([], []) [start.id] }
+              basic_blocks = helper vtypes ([], []) [start.id]
+                               (Hashtbl.copy init_st) }
      else
        None
