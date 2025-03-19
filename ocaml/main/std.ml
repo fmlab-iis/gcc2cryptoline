@@ -1,5 +1,6 @@
 
 let extract_func_name = ref None
+let no_branch = ref true
 let init_st = ref (Hashtbl.create 17)
 
 let setup_init_st str =
@@ -25,6 +26,8 @@ let setup_init_st str =
 let args = [
     ("-f", Arg.String (fun s -> extract_func_name := Some s),
      "<name>: Extract the specified procedure <name>.");
+    ("-allow_branches", Arg.Unit (fun _ -> no_branch := false),
+     "Do not expand indeterminate conditional branches.");
     ("-set", Arg.String (fun init_str -> setup_init_st init_str),
      "<var0>:<value0>,<var1>:<value1>,...: Set vari to valuei.");
   ]
@@ -47,7 +50,7 @@ let anon file =
     | Parsing.Parse_error -> Parser.Common.raise_parse_error lexbuf in
   let asts = List.rev_map Gimple.parse_func parse_tree in
   let expanded_asts = List.fold_left (fun ret f ->
-                          match Gimple.unroll_basic_blocks
+                          match Gimple.unroll_first_block !no_branch
                                   !extract_func_name !init_st f with
                           | None -> ret | Some f -> f::ret) [] asts in
   (*

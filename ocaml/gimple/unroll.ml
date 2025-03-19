@@ -1,5 +1,7 @@
 open Ast
 
+type cond_result_t = Decided of bool | Undecided of cond_t
+
 let no_label = BB (Z.neg Z.one)
 
 let rec eval_offset (off : offset_t) st : offset_t =
@@ -55,13 +57,19 @@ let eval_cond (c : cond_t) st =
   match op0, op1 with
   | Const z0, Const z1 ->
      (match c with
-      | Eq _ -> Some (Z.equal z0 z1)
-      | Neq _ -> Some (not (Z.equal z0 z1))
-      | Gt _ -> Some (Z.gt z0 z1)
-      | Ge _ -> Some (not (Z.lt z0 z1))
-      | Lt _ -> Some (Z.lt z0 z1)
-      | Le _ -> Some (not (Z.gt z0 z1)))
-  | _ -> None
+      | Eq _ -> Decided (Z.equal z0 z1)
+      | Neq _ -> Decided (not (Z.equal z0 z1))
+      | Gt _ -> Decided (Z.gt z0 z1)
+      | Ge _ -> Decided (not (Z.lt z0 z1))
+      | Lt _ -> Decided (Z.lt z0 z1)
+      | Le _ -> Decided (not (Z.gt z0 z1)))
+  | _ -> match c with
+         | Eq _ -> Undecided (Eq (op0, op1))
+         | Neq _ -> Undecided (Neq (op0, op1))
+         | Gt _ -> Undecided (Gt (op0, op1))
+         | Ge _ -> Undecided (Ge (op0, op1))
+         | Lt _ -> Undecided (Lt (op0, op1))
+         | Le _ -> Undecided (Le (op0, op1))
 
 let sign_nbits_of_type ty =
   match ty with
@@ -284,87 +292,123 @@ let eval_instr vtypes instr st =
      let op', op0' = eval_operand1 op op0 st in
      (StoreLanes (op', op0'), st)
 
-let rec expand_block vtypes hash_bb first current last_bb rev_ret st_ =
-  (* add and evaluate PHI assignment by last basic block *)
-  let rev_phi_ret, st =
-    if last_bb = no_label then
-      (rev_ret, st_)
-    else
-      List.fold_left (fun (r, s) p ->
-          (*
-          let _ = Format.printf "@[%s -> %s@]@."
-                    (Utils.string_of_label current.id)
-                    (Utils.string_of_label last_bb) in
-           *)
-          let _ = assert (List.mem_assoc last_bb p.choice) in
-          let op0 = List.assoc last_bb p.choice in
-          let phi_instr = Assign (p.op, Void, op0) in
-          let instr', s' = eval_instr vtypes phi_instr s in
+let rec expand_block no_branch vtypes hash_bb todos rets =
+  match todos with
+  | [] -> rets
+  | (current, last_bb, current_st, rev_ret, first)::todos' ->
+     if not no_branch && List.exists (fun (f, _) -> f.id = first.id) rets then
+       expand_block no_branch vtypes hash_bb todos' rets
+     else
+       (* add and evaluate PHI assignment by last basic block *)
+       let rev_phi_ret, st =
+         if last_bb = no_label then
+           (rev_ret, current_st)
+         else
+           List.fold_left (fun (r, s) p ->
+               (*
+               let _ = Format.printf "@[%s -> %s@]@."
+                         (Utils.string_of_label current.id)
+                         (Utils.string_of_label last_bb) in
+                *)
+               let _ = assert (List.mem_assoc last_bb p.choice) in
+               let op0 = List.assoc last_bb p.choice in
+               let phi_instr = Assign (p.op, Void, op0) in
+               let instr', s' = eval_instr vtypes phi_instr s in
 
-          (*
-          let _ = print_endline (Utils.string_of_instr instr') in
-           *)
+               (*
+               let _ = print_endline (Utils.string_of_instr instr') in
+                *)
           
-          (instr'::r, s')) (rev_ret, st_) current.phi in
-  (* evaluate instructions in current basic block *)
-  let rev_phi_ret', st' = 
-    List.fold_left (fun (r, s) instr ->
-        let instr', s' = eval_instr vtypes instr s in
-        (*
-        let _ = print_endline (Utils.string_of_instr instr') in
-         *)
-          (instr'::r, s'))
-      (rev_phi_ret, st) current.instrs in
-  (* evaluate the last instruction in the current basic block *)
-  match rev_phi_ret' with
-  | Goto labl as instr::instrs ->
-     let comment0 = Format.sprintf "@[ %s @]"
-                     (Utils.string_of_instr instr) in
-     let comment1 = Format.sprintf "@[ Basic Block: %s@]"
-                     (Utils.string_of_label labl) in
-     (*
-     let _ = print_endline comment0 in
-     let _ = print_endline comment1 in
-      *)
-     let next, _ = Hashtbl.find hash_bb labl in
-     expand_block vtypes hash_bb first next
-       current.id (Comment comment1::Comment comment0::instrs) st'
-  | CondBranch (c, labl0, labl1) as instr::instrs ->
-     (match eval_cond c st' with
-      | None ->
-         ({ id = first.id; instrs = List.rev rev_phi_ret';
-            phi = first.phi }, [labl0; labl1])
-      | Some b ->
-         let labl = if b then labl0 else labl1 in
-         let comment0 = Format.sprintf "@[ %s @]"
-                          (Utils.string_of_instr instr) in
-         let comment1 = Format.sprintf "@[ Basic Block: %s@]"
-                         (Utils.string_of_label labl) in
-         (*
-         let _ = print_endline comment0 in
-         let _ = print_endline comment1 in
-          *)
-         let next, _ = Hashtbl.find hash_bb labl in
-         expand_block vtypes hash_bb first next
-           current.id (Comment comment1::Comment comment0::instrs) st')
-  | Return _::_ ->
-     ({ id = first.id; instrs = List.rev rev_phi_ret';
-        phi = first.phi }, [])
-  | _ ->
-     (* continue to next block *)
-     match snd (Hashtbl.find hash_bb current.id) with
-     | None -> ({ id = first.id; instrs = List.rev rev_phi_ret';
-                  phi = first.phi }, [])
-     | Some next ->
-        let comment = Format.sprintf "@[ Basic Block: %s@]"
-                        (Utils.string_of_label next.id) in
-        (*
-        let _ = print_endline comment in
-         *)
-        expand_block vtypes hash_bb first next current.id
-          (Comment comment::rev_phi_ret') st'
+               (instr'::r, s')) (rev_ret, current_st) current.phi in
+       (* evaluate instructions in current basic block *)
+       let rev_phi_ret', st' = 
+         List.fold_left (fun (r, s) instr ->
+             let instr', s' = eval_instr vtypes instr s in
+             (*
+             let _ = print_endline (Utils.string_of_instr instr') in
+              *)
+             (instr'::r, s'))
+           (rev_phi_ret, st) current.instrs in
+       (* evaluate the last instruction in the current basic block *)
+       match rev_phi_ret' with
+       | Goto labl as instr::instrs ->
+          let comment0 = Format.sprintf "@[ %s @]"
+                           (Utils.string_of_instr instr) in
+          let comment1 = Format.sprintf "@[ Basic Block: %s@]"
+                           (Utils.string_of_label labl) in
+          (*
+          let _ = print_endline comment0 in
+          let _ = print_endline comment1 in
+           *)
+          let next, _ = Hashtbl.find hash_bb labl in
+          let rev_ret' = Comment comment1::Comment comment0::instrs in
+          let cont = (next, current.id, st', rev_ret', first) in
+          expand_block no_branch vtypes hash_bb (cont::todos') rets
+       | CondBranch (c, labl0, labl1) as instr::instrs ->
+          (match eval_cond c st' with
+          | Undecided cond ->
+             let next0, _ = Hashtbl.find hash_bb labl0 in
+             let next1, _ = Hashtbl.find hash_bb labl1 in
+             if no_branch then
+               (* expand all indeterminate conditional branches *)
+               let comment = Comment (Format.sprintf "@[ %s @]"
+                                        (Utils.string_of_instr instr)) in
+               let rev_ret0' =
+                 let comment0 = Format.sprintf "@[ assume %s @]"
+                                  (Utils.string_of_cond cond) in
+                 Comment comment0::comment::instrs in
+               let rev_ret1' =
+                 let comment1 = Format.sprintf "@[ not %s @]"
+                                  (Utils.string_of_cond cond) in
+                 Comment comment1::comment::instrs in
+               let cont0 = (next0, current.id, st', rev_ret0', first) in
+               let cont1 =
+                 let st'' = Hashtbl.copy st' in
+                 (next1, current.id, st'', rev_ret1', first) in
+               expand_block no_branch vtypes hash_bb
+                 (cont0::cont1::todos') rets
+             else
+               (* initiate indeterminate conditional branches *)
+               let cont0 = (next0, current.id, st', [], next0) in
+               let cont1 =
+                 let st'' = Hashtbl.copy st' in
+                 (next1, current.id, st'', [], next1) in
+               expand_block no_branch vtypes hash_bb (cont0::cont1::todos')
+                 ((first, rev_phi_ret')::rets)
+          | Decided b ->
+             let labl = if b then labl0 else labl1 in
+             let comment0 = Format.sprintf "@[ %s @]"
+                              (Utils.string_of_instr instr) in
+             let comment1 = Format.sprintf "@[ Basic Block: %s@]"
+                              (Utils.string_of_label labl) in
+             (*
+             let _ = print_endline comment0 in
+             let _ = print_endline comment1 in
+              *)
+             let next, _ = Hashtbl.find hash_bb labl in
+             let rev_ret' = Comment comment1::Comment comment0::instrs in
+             let cont = (next, current.id, st', rev_ret', first) in
+             expand_block no_branch vtypes hash_bb (cont::todos') rets)
+       | Return _::_ ->
+          expand_block no_branch vtypes hash_bb todos'
+            ((first, rev_phi_ret')::rets)
+       | _ ->
+          (* continue to next block *)
+          match snd (Hashtbl.find hash_bb current.id) with
+          | None ->
+             expand_block no_branch vtypes hash_bb todos'
+               ((first, rev_phi_ret')::rets)
+          | Some next ->
+             let comment = Format.sprintf "@[ Basic Block: %s@]"
+                             (Utils.string_of_label next.id) in
+             let rev_ret' = Comment comment::rev_phi_ret' in
+             let cont = (next, current.id, st', rev_ret', first) in
+             (*
+             let _ = print_endline comment in
+              *)
+             expand_block no_branch vtypes hash_bb (cont::todos') rets
 
-let unroll_blocks fnameopt init_st f =
+let unroll_first_block no_branch fnameopt init_st f =
   let hash_bb =
     let ret = Hashtbl.create 7 in
     let _ =
@@ -374,21 +418,16 @@ let unroll_blocks fnameopt init_st f =
       List.iter2 (fun bb nbb -> Hashtbl.add ret bb.id (bb, nbb))
         f.basic_blocks basic_blocks_next in
     ret in
-  (* expand basic blocks in labls *)
-  let rec helper vtypes (rev_ret, rev_labls) labls st =
-    match labls with
-    | labl::more_labls ->
-       if List.mem labl rev_labls then
-         helper vtypes (rev_ret, rev_labls) more_labls st
-       else
-         let fake_last = no_label in
-         let first, _ = Hashtbl.find hash_bb labl in
-         let block, todo = expand_block vtypes hash_bb first first fake_last
-                                 [] st in
-         let _ = assert (block.id = labl) in
-         helper vtypes (block::rev_ret, labl::rev_labls)
-           (List.rev_append (List.rev more_labls) todo) st
-    | [] -> List.rev rev_ret in
+  (* expand the basic block with labl *)
+  let expand_top_block vtypes labl st =
+    let fake_last = no_label in
+    let first, _ = Hashtbl.find hash_bb labl in
+    let start = (first, fake_last, st, [], first) in
+    let block_rev_instss = expand_block no_branch vtypes hash_bb [start] [] in
+    List.fold_left (fun ret (first, rev_insts) ->
+        let block = { id = first.id; instrs = List.rev rev_insts;
+                      phi = first.phi } in
+        block::ret) [] block_rev_instss in
   let vtypes =
     let ret = Hashtbl.create 17 in
     let _ = List.iter (fun v -> Hashtbl.add ret v.vname v.vty) f.vars in
@@ -396,15 +435,22 @@ let unroll_blocks fnameopt init_st f =
   let start = List.nth f.basic_blocks 0 in
   let _ = assert (start.phi = []) in
   match fnameopt with
-  | None -> Some { attr = f.attr; fty = f.fty; fname = f.fname;
+  | None ->
+     let top_blocks =
+       expand_top_block vtypes start.id (Hashtbl.copy init_st) in
+     let _ = assert (not no_branch ||
+                       List.for_all (fun b -> b.id = start.id) top_blocks) in
+     Some { attr = f.attr; fty = f.fty; fname = f.fname;
                    params = f.params; vars = f.vars;
-                   basic_blocks = helper vtypes ([], []) [start.id]
-                                    (Hashtbl.copy init_st)}
+                   basic_blocks = top_blocks }
   | Some name ->
      if name = f.fname then
+       let top_blocks =
+         expand_top_block vtypes start.id (Hashtbl.copy init_st) in
+       let _ = assert (not no_branch ||
+                         List.for_all (fun b -> b.id = start.id) top_blocks) in
        Some { attr = f.attr; fty = f.fty; fname = f.fname;
               params = f.params; vars = f.vars;
-              basic_blocks = helper vtypes ([], []) [start.id]
-                               (Hashtbl.copy init_st) }
+              basic_blocks = top_blocks }
      else
        None
