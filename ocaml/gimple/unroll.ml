@@ -113,6 +113,7 @@ let eval_instr vtypes instr st =
          let vty = try Hashtbl.find vtypes v
                    with Not_found -> Void in
          update_store vty v (f z) st
+      | Var v, _ -> Hashtbl.remove st v
       | _ -> () in
     (op', op0') in
   let eval_operand2 op op0 op1 st =
@@ -129,6 +130,7 @@ let eval_instr vtypes instr st =
          let vty = try Hashtbl.find vtypes v
                    with Not_found -> Void in
          update_store vty v (f z0 z1) st
+      | Var v, _, _ -> Hashtbl.remove st v
       | _ -> () in
     (op', op0', op1') in
   let eval_operand3 op op0 op1 op2 st =
@@ -243,8 +245,10 @@ let eval_instr vtypes instr st =
      (ImagPart (op', op0'), st)
   | Call (oop, name, ops) ->
      let oop' = match oop with None -> None
-                             | Some op -> Some (eval_operand op st) in
+                             | Some op -> Some (eval_left_operand op st) in
      let ops' = List.rev (List.rev_map (fun op -> eval_operand op st) ops) in
+     let _ = match oop' with
+       | Some (Var v) -> Hashtbl.remove st v | _ -> () in
      (Call (oop', name, ops'), st)
   | CondBranch _ | Goto _ -> (instr, st)
   | Return oop ->
