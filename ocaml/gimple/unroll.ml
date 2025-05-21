@@ -20,7 +20,7 @@ let rec eval_offset (off : offset_t) st : offset_t =
       | _ -> Mul (o0', o1'))
 
 let rec eval_loc loc st =
-  { lty = loc.lty; lop = eval_operand loc.lop st;
+  { lty = loc.lty; lop = eval_left_operand loc.lop st;
     loffset = eval_offset loc.loffset st }
 and eval_operand (op : operand_t) st : operand_t =
   match op with
@@ -30,23 +30,28 @@ and eval_operand (op : operand_t) st : operand_t =
   | Neg (Const z) -> Const (Z.neg z)
   | Neg op -> Neg (eval_operand op st)
   | Ref op -> Ref (eval_operand op st)
-  | Deref op ->  Deref (eval_operand op st)
+  | Deref op ->  Deref (eval_left_operand op st)
   | Element (op0, op1) -> Element (eval_operand op0 st, eval_operand op1 st)
   | Member (op0, op1) -> Member (eval_operand op0 st, eval_operand op1 st)
   | Mem (ty, loc) -> Mem (ty, eval_loc loc st)
   | Ops ops -> Ops (List.rev (List.rev_map (fun op -> eval_operand op st) ops))
-
-let eval_left_operand (op : operand_t) st : operand_t =
+and eval_left_loc loc st =
+  { lty = loc.lty; lop = eval_left_operand loc.lop st;
+    loffset = eval_offset loc.loffset st }
+and eval_left_operand (op : operand_t) st : operand_t =
   match op with
   | Var _ | Const _ | String _ -> op
   | Neg (Const z) -> Const (Z.neg z)
-  | Neg op -> Neg (eval_operand op st)
-  | Ref op -> Ref (eval_operand op st)
-  | Deref op ->  Deref (eval_operand op st)
-  | Element (op0, op1) -> Element (eval_operand op0 st, eval_operand op1 st)
-  | Member (op0, op1) -> Member (eval_operand op0 st, eval_operand op1 st)
-  | Mem (ty, loc) -> Mem (ty, eval_loc loc st)
-  | Ops ops -> Ops (List.rev (List.rev_map (fun op -> eval_operand op st) ops))
+  | Neg op -> Neg (eval_left_operand op st)
+  | Ref op -> Ref (eval_left_operand op st)
+  | Deref op ->  Deref (eval_left_operand op st)
+  | Element (op0, op1) ->
+     Element (eval_left_operand op0 st, eval_operand op1 st)
+  | Member (op0, op1) ->
+     Member (eval_left_operand op0 st, eval_operand op1 st)
+  | Mem (ty, loc) -> Mem (ty, eval_left_loc loc st)
+  | Ops ops -> Ops (List.rev (List.rev_map
+                                (fun op -> eval_left_operand op st) ops))
 
 let eval_cond (c : cond_t) st =
   let op0, op1 =
@@ -78,7 +83,8 @@ let sign_nbits_of_type ty =
   | Int -> Some (true, 32) | Uint -> Some (false, 32)
   | Long -> Some (true, 64) | Ulong -> Some (false, 64)
   | Llong -> Some (true, 128) | Ullong -> Some (false, 128)
-  | Sizetype -> Some (true, 64)
+  | Sizetype -> Some (false, 64)
+  | Pointer _ -> Some (false, 64)
   | _ -> None
 
 (* cast z to type ty if possible, return z otherwise *)
@@ -99,15 +105,23 @@ let cast_type ty z =
 let eval_instr vtypes instr st =
   let update_store ty v z st =
     let zz = cast_type ty z in
+    (*
+      let _ = Format.printf "@[%s <- %s@]@." v (Z.to_string zz) in
+     *)
     if Hashtbl.mem st v then
       Hashtbl.replace st v zz else Hashtbl.add st v zz in
+  let print_op vtypes op value =
+    match op with
+    | Var v -> let vty = try Hashtbl.find vtypes v with Not_found -> Void in
+               (match vty with
+               | Pointer _ -> op | _ -> value)
+    | _ -> value in
   let eval_operand1 op op0 st =
     let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     (op', op0') in
   let eval_operand1_and_update vtypes op f op0 st =
-    let op' = eval_left_operand op st in
-    let op0' = eval_operand op0 st in
+    let op', op0' = eval_operand1 op op0 st in
     let _ = match op', op0' with
       | Var v, Const z ->
          let vty = try Hashtbl.find vtypes v
@@ -115,16 +129,15 @@ let eval_instr vtypes instr st =
          update_store vty v (f z) st
       | Var v, _ -> Hashtbl.remove st v
       | _ -> () in
-    (op', op0') in
+    let pop0' = print_op vtypes op0 op0' in
+    (op', pop0') in
   let eval_operand2 op op0 op1 st =
     let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     (op', op0', op1') in
   let eval_operand2_and_update vtypes op f op0 op1 st =
-    let op' = eval_left_operand op st in
-    let op0' = eval_operand op0 st in
-    let op1' = eval_operand op1 st in
+    let op', op0', op1' = eval_operand2 op op0 op1 st in
     let _ = match op', op0', op1' with
       | Var v, Const z0, Const z1 ->
          let vty = try Hashtbl.find vtypes v
@@ -132,14 +145,27 @@ let eval_instr vtypes instr st =
          update_store vty v (f z0 z1) st
       | Var v, _, _ -> Hashtbl.remove st v
       | _ -> () in
-    (op', op0', op1') in
+    let pop0' = print_op vtypes op0 op0' in
+    let pop1' = print_op vtypes op1 op1' in
+    (op', pop0', pop1') in
   let eval_operand3 op op0 op1 op2 st =
     let op' = eval_left_operand op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     let op2' = eval_operand op2 st in
     (op', op0', op1', op2') in
-    
+  let eval_operand3_and_update vtypes op f op0 op1 op2 st =
+    let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+    let _ = match op', op0', op1', op2' with
+      | Var v, Const z0, Const z1, Const z2 ->
+         let vty = try Hashtbl.find vtypes v with Not_found -> Void in
+         update_store vty v (f z0 z1 z2) st
+      | Var v, _, _, _ -> Hashtbl.remove st v
+      | _ -> () in
+    let pop0' = print_op vtypes op0 op0' in
+    let pop1' = print_op vtypes op1 op1' in
+    let pop2' = print_op vtypes op2 op2' in
+    (op', pop0', pop1', pop2') in
   match instr with
   | Comment _  | Nop | Asm _ -> (instr, st)
   | Assign (op, ty, op0) ->
@@ -247,8 +273,13 @@ let eval_instr vtypes instr st =
      let oop' = match oop with None -> None
                              | Some op -> Some (eval_left_operand op st) in
      let ops' = List.rev (List.rev_map (fun op -> eval_operand op st) ops) in
-     let _ = match oop' with
-       | Some (Var v) -> Hashtbl.remove st v | _ -> () in
+     let _ = match oop', name with
+       | Some (Var v), "__builtin_alloca" ->
+          let _ = if Hashtbl.mem vtypes v then ()
+                  else Hashtbl.add vtypes v (Pointer Void) in
+          update_store (Hashtbl.find vtypes v) v (Z.random_bits 64) st
+       | Some (Var v), _ -> Hashtbl.remove st v
+       | _ -> () in
      (Call (oop', name, ops'), st)
   | CondBranch _ | Goto _ -> (instr, st)
   | Return oop ->
@@ -263,7 +294,9 @@ let eval_instr vtypes instr st =
      let op', op0', op1' = eval_operand2 op op0 op1 st in
      (Wmulhi (op', op0', op1'), st)
   | Wmadd (op, op0, op1, op2) ->
-     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     let op', op0', op1', op2' =
+       eval_operand3_and_update vtypes op
+         (fun z0 z1 z2 -> Z.add (Z.mul z0 z1) z2) op0 op1 op2 st in
      (Wmadd (op', op0', op1', op2'), st)
   | Wmsub (op, op0, op1, op2) ->
      let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
