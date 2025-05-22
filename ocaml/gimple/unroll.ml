@@ -192,10 +192,11 @@ let eval_instr vtypes instr st =
      (Mul (op', op0', op1'), st)
   | Div (op, op0, op1) ->
      let op', op0', op1' =
-       eval_operand2 op op0 op1 st in
+       eval_operand2_and_update vtypes op Z.div op0 op1 st in
      (Div (op', op0', op1'), st)
   | Mod (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     let op', op0', op1' =
+       eval_operand2_and_update vtypes op Z.rem op0 op1 st in
      (Mod (op', op0', op1'), st)
   | Wmul (op, op0, op1) ->
      let op', op0', op1' =
@@ -240,10 +241,14 @@ let eval_instr vtypes instr st =
        eval_operand2_and_update vtypes op zneq2z op0 op1 st in
      (Neq (op', op0', op1'), st)
   | Lshift (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     let op', op0', op1' =
+       let f z0 z1 = Z.shift_left z0 (Z.to_int z1) in
+       eval_operand2_and_update vtypes op f op0 op1 st in
      (Lshift (op', op0', op1'), st)
   | Rshift (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 op op0 op1 st in
+     let op', op0', op1' =
+       let f z0 z1 = Z.shift_right z0 (Z.to_int z1) in
+       eval_operand2_and_update vtypes op f op0 op1 st in
      (Rshift (op', op0', op1'), st)
   | Lrotate (op, op0, op1) ->
      let op', op0', op1' = eval_operand2 op op0 op1 st in
@@ -361,9 +366,9 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
        let rev_phi_ret', st' = 
          List.fold_left (fun (r, s) instr ->
              let instr', s' = eval_instr vtypes instr s in
-             (*
+
              let _ = print_endline (Utils.string_of_instr instr') in
-              *)
+
              (instr'::r, s'))
            (rev_phi_ret, st) current.instrs in
        (* evaluate the last instruction in the current basic block *)
