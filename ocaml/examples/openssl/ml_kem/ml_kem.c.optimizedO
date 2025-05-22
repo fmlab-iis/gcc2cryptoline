@@ -1,0 +1,4694 @@
+
+;; Function reduce_once (reduce_once, funcdef_no=561, decl_uid=18236, cgraph_uid=562, symbol_order=570)
+
+uint16_t reduce_once (uint16_t x)
+{
+  const uint16_t subtracted;
+  signed short subtracted.42_1;
+  signed short _2;
+  signed short _3;
+  uint16_t _6;
+  short unsigned int _8;
+  signed short _9;
+  signed short _10;
+
+  <bb 2> [local count: 1073741824]:
+  subtracted_5 = x_4(D) + 62207;
+  subtracted.42_1 = (signed short) subtracted_5;
+  _2 = subtracted.42_1 >> 15;
+  _8 = x_4(D) ^ subtracted_5;
+  _9 = (signed short) _8;
+  _10 = _2 & _9;
+  _3 = subtracted.42_1 ^ _10;
+  _6 = (uint16_t) _3;
+  return _6;
+
+}
+
+
+
+;; Function reduce (reduce, funcdef_no=562, decl_uid=18241, cgraph_uid=563, symbol_order=571)
+
+uint16_t reduce (uint32_t x)
+{
+  uint32_t remainder;
+  uint32_t quotient;
+  uint64_t product;
+  long unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  short unsigned int _4;
+  uint16_t _10;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = (long unsigned int) x_5(D);
+  product_6 = _1 * 5039;
+  _2 = product_6 >> 24;
+  quotient_7 = (uint32_t) _2;
+  _3 = quotient_7 * 3329;
+  remainder_8 = x_5(D) - _3;
+  _4 = (short unsigned int) remainder_8;
+  _10 = reduce_once (_4);
+  return _10;
+
+}
+
+
+
+;; Function scalar_ntt (scalar_ntt, funcdef_no=564, decl_uid=18257, cgraph_uid=565, symbol_order=573)
+
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+void scalar_ntt (struct scalar * s)
+{
+  uint32_t zeta;
+  uint16_t odd;
+  uint16_t even;
+  uint16_t * pause;
+  uint16_t * peer;
+  uint16_t * curr;
+  int offset;
+  uint16_t * end;
+  const uint16_t * roots;
+  long unsigned int _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  unsigned int _5;
+  unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  sizetype _35;
+  sizetype _40;
+  sizetype _42;
+  _Bool _43;
+  sizetype _50;
+  sizetype _54;
+  unsigned long _56;
+  sizetype _57;
+  sizetype _59;
+  unsigned int ivtmp_60;
+  unsigned int ivtmp_61;
+
+  <bb 2> [local count: 1856596]:
+  end_22 = s_21(D) + 512;
+
+  <bb 3> [local count: 12992276]:
+  # roots_12 = PHI <&kNTTRoots(2), roots_26(7)>
+  # offset_14 = PHI <128(2), offset_34(7)>
+  # ivtmp_60 = PHI <7(2), ivtmp_61(7)>
+  curr_24 = &s_21(D)->c;
+  _1 = (long unsigned int) offset_14;
+  _2 = _1 * 2;
+
+  <bb 4> [local count: 118111600]:
+  # roots_13 = PHI <roots_12(3), roots_26(6)>
+  # curr_15 = PHI <curr_24(3), peer_36(6)>
+  pause_25 = curr_15 + _2;
+  roots_26 = roots_13 + 2;
+  _3 = MEM[(const uint16_t *)roots_26];
+  zeta_27 = (uint32_t) _3;
+
+  <bb 5> [local count: 1073741824]:
+  # curr_16 = PHI <curr_15(4), curr_32(5)>
+  # peer_17 = PHI <pause_25(4), peer_30(5)>
+  even_28 = MEM[(uint16_t *)curr_16];
+  _4 = MEM[(uint16_t *)peer_17];
+  _5 = (unsigned int) _4;
+  _6 = _5 * zeta_27;
+  odd_29 = reduce (_6);
+  _7 = even_28 - odd_29;
+  _8 = _7 + 3329;
+  peer_30 = peer_17 + 2;
+  _9 = reduce_once (_8);
+  MEM[(uint16_t *)peer_30 + -2B] = _9;
+  _10 = even_28 + odd_29;
+  curr_32 = curr_16 + 2;
+  _11 = reduce_once (_10);
+  MEM[(uint16_t *)curr_32 + -2B] = _11;
+  if (pause_25 > curr_32)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 6> [local count: 118111600]:
+  _40 = (sizetype) curr_15;
+  _54 = _40 + 1;
+  _42 = (sizetype) pause_25;
+  _43 = _42 >= _54;
+  _56 = _2 + 18446744073709551615;
+  _57 = _56 & 18446744073709551614;
+  _50 = _43 ? _57 : 0;
+  _35 = _42 + 2;
+  _59 = _35 + _50;
+  peer_36 = (uint16_t *) _59;
+  if (end_22 > peer_36)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 12992276]:
+  offset_34 = offset_14 >> 1;
+  ivtmp_61 = ivtmp_60 + 4294967295;
+  if (ivtmp_61 != 0)
+    goto <bb 3>; [85.71%]
+  else
+    goto <bb 8>; [14.29%]
+
+  <bb 8> [local count: 1856596]:
+  return;
+
+}
+
+
+
+;; Function scalar_inverse_ntt (scalar_inverse_ntt, funcdef_no=565, decl_uid=18278, cgraph_uid=566, symbol_order=574)
+
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+void scalar_inverse_ntt (struct scalar * s)
+{
+  uint16_t * curr;
+  uint16_t tmp;
+  uint32_t zeta;
+  uint16_t odd;
+  uint16_t even;
+  uint16_t * pause;
+  uint16_t * peer;
+  uint16_t * curr;
+  int offset;
+  uint16_t * end;
+  const uint16_t * roots;
+  long unsigned int _1;
+  long unsigned int _2;
+  short unsigned int _3;
+  int _4;
+  int _5;
+  int _6;
+  int _7;
+  unsigned int _8;
+  unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  short unsigned int _12;
+  short unsigned int _40;
+  int _41;
+  int _43;
+  unsigned int _44;
+  sizetype _49;
+  sizetype _52;
+  sizetype _54;
+  _Bool _55;
+  sizetype _62;
+  sizetype _66;
+  unsigned long _68;
+  sizetype _69;
+  sizetype _71;
+  unsigned int ivtmp_72;
+  unsigned int ivtmp_73;
+
+  <bb 2> [local count: 1856596]:
+  end_23 = s_22(D) + 512;
+
+  <bb 3> [local count: 12992276]:
+  # roots_13 = PHI <&kInverseNTTRoots(2), roots_27(7)>
+  # offset_15 = PHI <2(2), offset_35(7)>
+  # ivtmp_72 = PHI <7(2), ivtmp_73(7)>
+  curr_25 = &s_22(D)->c;
+  _1 = (long unsigned int) offset_15;
+  _2 = _1 * 2;
+
+  <bb 4> [local count: 118111600]:
+  # roots_14 = PHI <roots_13(3), roots_27(6)>
+  # curr_16 = PHI <curr_25(3), peer_42(6)>
+  pause_26 = curr_16 + _2;
+  roots_27 = roots_14 + 2;
+  _3 = MEM[(const uint16_t *)roots_27];
+  zeta_28 = (uint32_t) _3;
+
+  <bb 5> [local count: 1073741824]:
+  # curr_17 = PHI <curr_16(4), curr_33(5)>
+  # peer_18 = PHI <pause_26(4), peer_31(5)>
+  even_29 = MEM[(uint16_t *)curr_17];
+  odd_30 = MEM[(uint16_t *)peer_18];
+  _4 = (int) even_29;
+  _5 = (int) odd_30;
+  _6 = _4 - _5;
+  _7 = _6 + 3329;
+  _8 = (unsigned int) _7;
+  _9 = _8 * zeta_28;
+  peer_31 = peer_18 + 2;
+  _10 = reduce (_9);
+  MEM[(uint16_t *)peer_31 + -2B] = _10;
+  _11 = even_29 + odd_30;
+  curr_33 = curr_17 + 2;
+  _12 = reduce_once (_11);
+  MEM[(uint16_t *)curr_33 + -2B] = _12;
+  if (pause_26 > curr_33)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 6>; [11.00%]
+
+  <bb 6> [local count: 118111600]:
+  _52 = (sizetype) curr_16;
+  _66 = _52 + 1;
+  _54 = (sizetype) pause_26;
+  _55 = _54 >= _66;
+  _68 = _2 + 18446744073709551615;
+  _69 = _68 & 18446744073709551614;
+  _62 = _55 ? _69 : 0;
+  _49 = _54 + 2;
+  _71 = _49 + _62;
+  peer_42 = (uint16_t *) _71;
+  if (end_23 > peer_42)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 12992276]:
+  offset_35 = offset_15 << 1;
+  ivtmp_73 = ivtmp_72 + 4294967295;
+  if (ivtmp_73 != 0)
+    goto <bb 3>; [85.71%]
+  else
+    goto <bb 8>; [14.29%]
+
+  <bb 8> [local count: 185659639]:
+  # curr_39 = PHI <curr_25(7), curr_46(8)>
+  _40 = MEM[(uint16_t *)curr_39];
+  _41 = (int) _40;
+  _43 = _41 * 3303;
+  _44 = (unsigned int) _43;
+  tmp_45 = reduce (_44);
+  curr_46 = curr_39 + 2;
+  MEM[(uint16_t *)curr_46 + -2B] = tmp_45;
+  if (end_23 > curr_46)
+    goto <bb 8>; [99.00%]
+  else
+    goto <bb 9>; [1.00%]
+
+  <bb 9> [local count: 1856596]:
+  return;
+
+}
+
+
+
+;; Function scalar_add (scalar_add, funcdef_no=566, decl_uid=18300, cgraph_uid=567, symbol_order=575)
+
+Removing basic block 5
+void scalar_add (struct scalar * lhs, const struct scalar * rhs)
+{
+  sizetype ivtmp.230;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+
+  <bb 2> [local count: 10737416]:
+
+  <bb 3> [local count: 1063004408]:
+  # ivtmp.230_13 = PHI <ivtmp.230_12(3), 0(2)>
+  _1 = MEM[(short unsigned int *)lhs_8(D) + ivtmp.230_13 * 1];
+  _2 = MEM[(short unsigned int *)rhs_9(D) + ivtmp.230_13 * 1];
+  _3 = _1 + _2;
+  _4 = reduce_once (_3);
+  MEM[(short unsigned int *)lhs_8(D) + ivtmp.230_13 * 1] = _4;
+  ivtmp.230_12 = ivtmp.230_13 + 2;
+  if (ivtmp.230_12 != 512)
+    goto <bb 3>; [98.99%]
+  else
+    goto <bb 4>; [1.01%]
+
+  <bb 4> [local count: 10737416]:
+  return;
+
+}
+
+
+
+;; Function scalar_mult (scalar_mult, funcdef_no=568, decl_uid=18319, cgraph_uid=569, symbol_order=577)
+
+Removing basic block 5
+void scalar_mult (struct scalar * out, const struct scalar * lhs, const struct scalar * rhs)
+{
+  uint32_t zetapow;
+  uint32_t r1;
+  uint32_t l1;
+  uint32_t r0;
+  uint32_t l0;
+  const uint16_t * roots;
+  const uint16_t * rc;
+  const uint16_t * lc;
+  uint16_t * curr;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  short unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  unsigned int _11;
+  short unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  short unsigned int _16;
+
+  <bb 2> [local count: 10737416]:
+  curr_23 = &out_22(D)->c;
+  lc_26 = &lhs_25(D)->c;
+  rc_28 = &rhs_27(D)->c;
+
+  <bb 3> [local count: 1073741824]:
+  # curr_17 = PHI <curr_23(2), curr_39(3)>
+  # lc_18 = PHI <lc_26(2), lc_32(3)>
+  # rc_19 = PHI <rc_28(2), rc_34(3)>
+  # roots_20 = PHI <&kModRoots(2), roots_36(3)>
+  _1 = MEM[(const uint16_t *)lc_18];
+  l0_30 = (uint32_t) _1;
+  _2 = MEM[(const uint16_t *)rc_19];
+  r0_31 = (uint32_t) _2;
+  lc_32 = lc_18 + 4;
+  _3 = MEM[(const uint16_t *)lc_32 + -2B];
+  l1_33 = (uint32_t) _3;
+  rc_34 = rc_19 + 4;
+  _4 = MEM[(const uint16_t *)rc_34 + -2B];
+  r1_35 = (uint32_t) _4;
+  roots_36 = roots_20 + 2;
+  _5 = MEM[(const uint16_t *)roots_36 + -2B];
+  zetapow_37 = (uint32_t) _5;
+  _6 = l0_30 * r0_31;
+  _7 = l1_33 * r1_35;
+  _8 = reduce (_7);
+  _9 = (unsigned int) _8;
+  _10 = _9 * zetapow_37;
+  _11 = _6 + _10;
+  _12 = reduce (_11);
+  MEM[(uint16_t *)curr_17] = _12;
+  _13 = l0_30 * r1_35;
+  _14 = r0_31 * l1_33;
+  _15 = _13 + _14;
+  curr_39 = curr_17 + 4;
+  _16 = reduce (_15);
+  MEM[(uint16_t *)curr_39 + -2B] = _16;
+  if (roots_36 != &MEM <const uint16_t[128]> [(void *)&kModRoots + 256B])
+    goto <bb 3>; [99.00%]
+  else
+    goto <bb 4>; [1.00%]
+
+  <bb 4> [local count: 10737416]:
+  return;
+
+}
+
+
+
+;; Function scalar_decode (scalar_decode, funcdef_no=572, decl_uid=18385, cgraph_uid=573, symbol_order=581)
+
+Removing basic block 12
+Removing basic block 13
+void scalar_decode (struct scalar * out, const uint8_t * in, int bits)
+{
+  uint16_t element;
+  uint16_t mask;
+  uint16_t bitmask;
+  int todo;
+  int accum_bits;
+  uint64_t accum;
+  uint16_t * end;
+  uint16_t * curr;
+  int _1;
+  short unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  long unsigned int _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  int _11;
+  int _12;
+  int _13;
+  short unsigned int _14;
+  long unsigned int _15;
+  short unsigned int _16;
+  int _17;
+  int _18;
+  unsigned long _50;
+  const unsigned char * _51;
+  short unsigned int _56;
+
+  <bb 2> [local count: 118111600]:
+  curr_35 = &out_34(D)->c;
+  end_36 = out_34(D) + 512;
+  _1 = 1 << bits_38(D);
+  _2 = (short unsigned int) _1;
+  bitmask_39 = _2 + 65535;
+
+  <bb 3> [local count: 1073741823]:
+  # in_19 = PHI <in_40(D)(2), in_20(10)>
+  # curr_21 = PHI <curr_35(2), curr_22(10)>
+  # accum_bits_23 = PHI <0(2), accum_bits_25(10)>
+  # todo_26 = PHI <bits_38(D)(2), todo_27(10)>
+  # mask_28 = PHI <bitmask_39(2), mask_29(10)>
+  # element_30 = PHI <0(2), element_31(10)>
+  # accum_52 = PHI <0(2), accum_54(10)>
+  if (accum_bits_23 == 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 536870912]:
+  _50 = MEM <unsigned long> [(char * {ref-all})in_19];
+  _51 = in_19 + 8;
+
+  <bb 5> [local count: 1073741823]:
+  # in_20 = PHI <in_19(3), _51(4)>
+  # accum_bits_24 = PHI <accum_bits_23(3), 64(4)>
+  # accum_53 = PHI <accum_52(3), _50(4)>
+  _3 = todo_26 == bits_38(D);
+  _4 = accum_bits_24 >= bits_38(D);
+  _5 = _3 & _4;
+  if (_5 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 536870912]:
+  _6 = (short unsigned int) accum_53;
+  curr_47 = curr_21 + 2;
+  _7 = _6 & mask_28;
+  *curr_21 = _7;
+  _8 = accum_53 >> bits_38(D);
+  accum_bits_49 = accum_bits_24 - bits_38(D);
+  goto <bb 10>; [100.00%]
+
+  <bb 7> [local count: 536870912]:
+  if (accum_bits_24 >= todo_26)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 268435456]:
+  _9 = (short unsigned int) accum_53;
+  _10 = _9 & mask_28;
+  _11 = (int) _10;
+  _12 = bits_38(D) - todo_26;
+  _13 = _11 << _12;
+  curr_44 = curr_21 + 2;
+  _56 = (short unsigned int) _13;
+  _14 = element_30 | _56;
+  *curr_21 = _14;
+  _15 = accum_53 >> todo_26;
+  accum_bits_46 = accum_bits_24 - todo_26;
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 268435456]:
+  _16 = (short unsigned int) accum_53;
+  element_41 = _16 & mask_28;
+  todo_42 = todo_26 - accum_bits_24;
+  _17 = (int) bitmask_39;
+  _18 = _17 >> accum_bits_24;
+  mask_43 = (uint16_t) _18;
+
+  <bb 10> [local count: 1073741824]:
+  # curr_22 = PHI <curr_47(6), curr_44(8), curr_21(9)>
+  # accum_bits_25 = PHI <accum_bits_49(6), accum_bits_46(8), 0(9)>
+  # todo_27 = PHI <todo_26(6), bits_38(D)(8), todo_42(9)>
+  # mask_29 = PHI <mask_28(6), bitmask_39(8), mask_43(9)>
+  # element_31 = PHI <element_30(6), 0(8), element_41(9)>
+  # accum_54 = PHI <_8(6), _15(8), accum_53(9)>
+  if (curr_22 < end_36)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 118111600]:
+  return;
+
+}
+
+
+
+;; Function scalar_decode_12 (scalar_decode_12, funcdef_no=573, decl_uid=18400, cgraph_uid=574, symbol_order=582)
+
+Removing basic block 6
+Removing basic block 7
+Removing basic block 8
+__attribute__((access ("^1[384]", )))
+int scalar_decode_12 (struct scalar * out, const uint8_t * in)
+{
+  uint8_t b3;
+  uint8_t b2;
+  uint8_t b1;
+  uint16_t * c;
+  signed short _1;
+  signed short _2;
+  signed short _3;
+  signed short _4;
+  signed short _5;
+  short unsigned int _6;
+  _Bool _7;
+  unsigned char _8;
+  signed short _9;
+  signed short _10;
+  signed short _11;
+  signed short _12;
+  short unsigned int _13;
+  _Bool _14;
+  int _18;
+  _Bool _33;
+  const uint8_t * _37;
+
+  <bb 2> [local count: 69202658]:
+  c_22 = &out_21(D)->c;
+  _37 = in_23(D) + 384;
+
+  <bb 3> [local count: 1063004408]:
+  # in_38 = PHI <in_27(4), in_23(D)(2)>
+  # c_40 = PHI <c_30(4), c_22(2)>
+  b1_25 = MEM[(const uint8_t *)in_38];
+  b2_26 = MEM[(const uint8_t *)in_38 + 1B];
+  in_27 = in_38 + 3;
+  b3_28 = MEM[(const uint8_t *)in_27 + -1B];
+  _1 = (signed short) b1_25;
+  _2 = (signed short) b2_26;
+  _3 = _2 << 8;
+  _4 = _3 & 3840;
+  _5 = _1 | _4;
+  _6 = (short unsigned int) _5;
+  MEM[(uint16_t *)c_40] = _6;
+  _7 = _6 > 3328;
+  _8 = b2_26 >> 4;
+  _9 = (signed short) _8;
+  _10 = (signed short) b3_28;
+  _11 = _10 << 4;
+  _12 = _9 | _11;
+  c_30 = c_40 + 4;
+  _13 = (short unsigned int) _12;
+  MEM[(uint16_t *)c_30 + -2B] = _13;
+  _14 = _13 > 3328;
+  _33 = _7 | _14;
+  if (_33 != 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 4>; [94.50%]
+
+  <bb 4> [local count: 1004539166]:
+  if (in_27 != _37)
+    goto <bb 3>; [98.93%]
+  else
+    goto <bb 5>; [1.07%]
+
+  <bb 5> [local count: 69202658]:
+  # _18 = PHI <0(3), 1(4)>
+  return _18;
+
+}
+
+
+
+;; Function scalar_compress (scalar_compress, funcdef_no=577, decl_uid=18443, cgraph_uid=578, symbol_order=586)
+
+Removing basic block 5
+void scalar_compress (struct scalar * s, int bits)
+{
+  unsigned long ivtmp.274;
+  uint32_t shifted;
+  uint64_t product;
+  uint32_t quotient;
+  uint32_t remainder;
+  short unsigned int _1;
+  unsigned int _10;
+  long unsigned int _12;
+  long unsigned int _14;
+  unsigned int _16;
+  unsigned int _18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int _22;
+  unsigned int _24;
+  void * _25;
+  unsigned int _28;
+  unsigned int _29;
+  unsigned int _30;
+  unsigned int _31;
+  unsigned long _35;
+  int _37;
+  short unsigned int _38;
+  short unsigned int _39;
+  short unsigned int _40;
+  short unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+
+  <bb 2> [local count: 10737416]:
+  _37 = 1 << bits_7(D);
+  _38 = (short unsigned int) _37;
+  _39 = _38 + 65535;
+  ivtmp.274_2 = (unsigned long) s_6(D);
+  _35 = ivtmp.274_2 + 512;
+
+  <bb 3> [local count: 1063004408]:
+  # ivtmp.274_32 = PHI <ivtmp.274_44(3), ivtmp.274_2(2)>
+  _25 = (void *) ivtmp.274_32;
+  _1 = MEM[(short unsigned int *)_25];
+  _10 = (unsigned int) _1;
+  shifted_11 = _10 << bits_7(D);
+  _12 = (long unsigned int) shifted_11;
+  product_13 = _12 * 5039;
+  _14 = product_13 >> 24;
+  quotient_15 = (uint32_t) _14;
+  _16 = quotient_15 * 3329;
+  remainder_17 = shifted_11 - _16;
+  _18 = remainder_17 ^ 1664;
+  _19 = _16 - shifted_11;
+  _20 = _19 + 1664;
+  _21 = remainder_17 ^ _20;
+  _22 = _18 | _21;
+  _42 = _22 >> 31;
+  _28 = remainder_17 ^ 4993;
+  _29 = _19 + 4993;
+  _30 = remainder_17 ^ _29;
+  _31 = _28 | _30;
+  _43 = _31 >> 31;
+  _24 = _42 + _43;
+  quotient_36 = quotient_15 + _24;
+  _40 = (short unsigned int) quotient_36;
+  _41 = _39 & _40;
+  MEM[(short unsigned int *)_25] = _41;
+  ivtmp.274_44 = ivtmp.274_32 + 2;
+  if (_35 != ivtmp.274_44)
+    goto <bb 3>; [98.99%]
+  else
+    goto <bb 4>; [1.01%]
+
+  <bb 4> [local count: 10737416]:
+  return;
+
+}
+
+
+
+;; Function add_storage (add_storage, funcdef_no=601, decl_uid=18733, cgraph_uid=602, symbol_order=610)
+
+Removing basic block 6
+Removing basic block 7
+int add_storage (struct scalar * p, int private, struct ML_KEM_KEY * key)
+{
+  int rank;
+  const struct ML_KEM_VINFO * _1;
+  uint8_t[64] * _2;
+  uint8_t * _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  struct ossl_ml_kem_scalar_st * _6;
+  int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  struct ossl_ml_kem_scalar_st * _11;
+  int _12;
+
+  <bb 2> [local count: 1073741824]:
+  if (p_17(D) == 0B)
+    goto <bb 5>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418728]:
+  _1 = key_15(D)->vinfo;
+  rank_16 = _1->rank;
+  _2 = &key_15(D)->seedbuf;
+  __builtin_memset (_2, 0, 64);
+  key_15(D)->rho = _2;
+  _3 = key_15(D) + 140;
+  key_15(D)->pkhash = _3;
+  key_15(D)->z = 0B;
+  key_15(D)->d = 0B;
+  key_15(D)->t = p_17(D);
+  _4 = (long unsigned int) rank_16;
+  _5 = _4 * 512;
+  _6 = p_17(D) + _5;
+  key_15(D)->m = _6;
+  if (private_24(D) != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 370709364]:
+  _7 = rank_16 * rank_16;
+  _8 = (long unsigned int) _7;
+  _9 = _8 * 512;
+  _10 = _6 + _9;
+  key_15(D)->s = _10;
+  _11 = _10 + _5;
+  key_15(D)->z = _11;
+
+  <bb 5> [local count: 1073741824]:
+  # _12 = PHI <0(2), 1(4), 1(3)>
+  return _12;
+
+}
+
+
+
+;; Function single_keccak (single_keccak, funcdef_no=554, decl_uid=18171, cgraph_uid=555, symbol_order=563)
+
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+int single_keccak (uint8_t * out, size_t outlen, const uint8_t * in, size_t inlen, struct EVP_MD_CTX * mdctx)
+{
+  unsigned int sz;
+  unsigned int _1;
+  int _2;
+  const struct EVP_MD * _3;
+  int _4;
+  int _5;
+  unsigned int sz.13_6;
+  long unsigned int _7;
+  int _8;
+  int _23;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = (unsigned int) outlen_10(D);
+  sz = _1;
+  _2 = EVP_DigestUpdate (mdctx_13(D), in_14(D), inlen_15(D));
+  if (_2 == 0)
+    goto <bb 8>; [51.12%]
+  else
+    goto <bb 3>; [48.88%]
+
+  <bb 3> [local count: 524845000]:
+  _3 = EVP_MD_CTX_get0_md (mdctx_13(D));
+  _4 = EVP_MD_xof (_3);
+  if (_4 != 0)
+    goto <bb 4>; [34.00%]
+  else
+    goto <bb 5>; [66.00%]
+
+  <bb 4> [local count: 178447302]:
+  _23 = EVP_DigestFinalXOF (mdctx_13(D), out_19(D), outlen_10(D));
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 346397698]:
+  _5 = EVP_DigestFinal_ex (mdctx_13(D), out_19(D), &sz);
+  if (_5 != 0)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 6> [local count: 173198849]:
+  sz.13_6 = sz;
+  _7 = (long unsigned int) sz.13_6;
+  if (_7 != outlen_10(D))
+    goto <bb 7>; [0.04%]
+  else
+    goto <bb 8>; [99.96%]
+
+  <bb 7> [local count: 69279]:
+  OPENSSL_die ("Assertion failed: (size_t) sz == outlen", "ml_kem.c", 339);
+
+  <bb 8> [local count: 1073672544]:
+  # _8 = PHI <_2(2), _23(4), _5(5), 1(6)>
+  sz ={v} {CLOBBER(eos)};
+  return _8;
+
+}
+
+
+
+;; Function cbd_2 (cbd_2, funcdef_no=588, decl_uid=18572, cgraph_uid=589, symbol_order=597)
+
+Removing basic block 7
+Removing basic block 8
+Removing basic block 9
+Removing basic block 10
+__attribute__((access ("^1[33]", )))
+int cbd_2 (struct scalar * out, uint8_t * in, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t b;
+  uint16_t value;
+  uint8_t * r;
+  uint8_t randbuf[128];
+  uint16_t * curr;
+  short unsigned int _2;
+  unsigned char _3;
+  short unsigned int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  unsigned char _7;
+  short unsigned int _8;
+  signed short value.22_10;
+  signed short _11;
+  short unsigned int _12;
+  short unsigned int _13;
+  unsigned char _14;
+  short unsigned int _15;
+  unsigned char _16;
+  short unsigned int _17;
+  unsigned char _18;
+  short unsigned int _19;
+  unsigned char _20;
+  short unsigned int _21;
+  signed short value.24_23;
+  signed short _24;
+  short unsigned int _25;
+  unsigned char _26;
+  short unsigned int _27;
+  int _30;
+  unsigned char _36;
+  short unsigned int _44;
+  unsigned char _51;
+  unsigned char _52;
+  signed short _54;
+  unsigned char _55;
+  unsigned char _56;
+  unsigned char _57;
+  signed short _58;
+  struct EVP_MD * _59;
+  int _60;
+  int _61;
+  short unsigned int _63;
+  short unsigned int _68;
+  short unsigned int _72;
+
+  <bb 2> [local count: 16268812]:
+  _59 = key_40(D)->shake256_md;
+  _60 = EVP_DigestInit_ex (mdctx_39(D), _59, 0B);
+  if (_60 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 3> [local count: 5368708]:
+  _61 = single_keccak (&randbuf, 128, in_38(D), 33, mdctx_39(D));
+  if (_61 == 0)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 4> [local count: 5368708]:
+  curr_34 = &out_33(D)->c;
+
+  <bb 5> [local count: 1073741824]:
+  # curr_28 = PHI <curr_34(4), curr_49(5)>
+  # r_29 = PHI <&randbuf(4), r_42(5)>
+  r_42 = r_29 + 1;
+  b_43 = MEM[(uint8_t *)r_42 + -1B];
+  _52 = b_43 & 1;
+  _2 = (short unsigned int) _52;
+  _3 = b_43 >> 1;
+  _51 = _3 & 1;
+  _4 = (short unsigned int) _51;
+  _44 = _2 + _4;
+  _5 = b_43 >> 2;
+  _36 = _5 & 1;
+  _6 = (short unsigned int) _36;
+  _7 = b_43 >> 3;
+  _26 = _7 & 1;
+  _8 = (short unsigned int) _26;
+  _68 = _6 + _8;
+  value_45 = _44 - _68;
+  value.22_10 = (signed short) value_45;
+  _11 = value.22_10 >> 15;
+  _54 = _11 & 3329;
+  _12 = (short unsigned int) _54;
+  _13 = _12 + value_45;
+  MEM[(uint16_t *)curr_28] = _13;
+  _14 = b_43 >> 4;
+  _55 = _14 & 1;
+  _15 = (short unsigned int) _55;
+  _16 = b_43 >> 5;
+  _56 = _16 & 1;
+  _17 = (short unsigned int) _56;
+  _63 = _15 + _17;
+  _18 = b_43 >> 6;
+  _57 = _18 & 1;
+  _19 = (short unsigned int) _57;
+  _20 = b_43 >> 7;
+  _21 = (short unsigned int) _20;
+  _72 = _19 + _21;
+  value_48 = _63 - _72;
+  value.24_23 = (signed short) value_48;
+  _24 = value.24_23 >> 15;
+  _58 = _24 & 3329;
+  _25 = (short unsigned int) _58;
+  curr_49 = curr_28 + 4;
+  _27 = _25 + value_48;
+  MEM[(uint16_t *)curr_49 + -2B] = _27;
+  if (&MEM <uint8_t[128]> [(void *)&randbuf + 128B] != r_42)
+    goto <bb 5>; [99.00%]
+  else
+    goto <bb 6>; [1.00%]
+
+  <bb 6> [local count: 16268812]:
+  # _30 = PHI <_61(3), 1(5), _60(2)>
+  randbuf ={v} {CLOBBER(eos)};
+  return _30;
+
+}
+
+
+
+;; Function hash_g (hash_g, funcdef_no=558, decl_uid=18206, cgraph_uid=559, symbol_order=567)
+
+Removing basic block 5
+__attribute__((access ("^0[64]", )))
+int hash_g (uint8_t * out, const uint8_t * in, size_t len, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  struct EVP_MD * _1;
+  int _2;
+  int _3;
+  int iftmp.38_4;
+  _Bool _14;
+  int _15;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_7(D)->sha3_512_md;
+  _2 = EVP_DigestInit_ex (mdctx_8(D), _1, 0B);
+  if (_2 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 4>; [67.00%]
+
+  <bb 3> [local count: 354334800]:
+  _3 = single_keccak (out_10(D), 64, in_11(D), len_12(D), mdctx_8(D));
+  _14 = _3 != 0;
+  _15 = (int) _14;
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.38_4 = PHI <_15(3), _2(2)>
+  return iftmp.38_4;
+
+}
+
+
+
+;; Function gencbd_vector_ntt (gencbd_vector_ntt, funcdef_no=591, decl_uid=18622, cgraph_uid=592, symbol_order=600)
+
+Removing basic block 6
+Removing basic block 7
+Removing basic block 8
+__attribute__((access ("^3[32]", )))
+int gencbd_vector_ntt (struct scalar * out, int (*CBD_FUNC) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) cbd, uint8_t * counter, const uint8_t * seed, int rank, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t input[33];
+  unsigned char _1;
+  unsigned char _2;
+  int _3;
+  int _6;
+
+  <bb 2> [local count: 114863530]:
+  __builtin_memcpy (&input, seed_10(D), 32);
+
+  <bb 3> [local count: 1073741824]:
+  # out_4 = PHI <out_11(D)(2), out_20(4)>
+  # rank_5 = PHI <rank_12(D)(2), rank_22(4)>
+  _1 = *counter_13(D);
+  _2 = _1 + 1;
+  *counter_13(D) = _2;
+  input[32] = _1;
+  _3 = cbd_16(D) (out_4, &input, mdctx_17(D), key_18(D));
+  if (_3 == 0)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 4>; [94.50%]
+
+  <bb 4> [local count: 1014686025]:
+  out_20 = out_4 + 512;
+  scalar_ntt (out_4);
+  rank_22 = rank_5 + -1;
+  if (rank_22 > 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 5>; [5.50%]
+
+  <bb 5> [local count: 114863531]:
+  # _6 = PHI <_3(3), 1(4)>
+  input ={v} {CLOBBER(eos)};
+  return _6;
+
+}
+
+
+
+;; Function matrix_expand (matrix_expand, funcdef_no=587, decl_uid=18553, cgraph_uid=588, symbol_order=596)
+
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+int matrix_expand (struct EVP_MD_CTX * mdctx, struct ML_KEM_KEY * key)
+{
+  uint16_t * curr;
+  uint8_t buf[168];
+  uint8_t * in;
+  uint16_t d;
+  uint8_t b1;
+  uint8_t b2;
+  uint8_t b3;
+  int j;
+  int i;
+  int rank;
+  uint8_t input[34];
+  struct scalar * out;
+  const struct ML_KEM_VINFO * _1;
+  uint8_t * _2;
+  struct EVP_MD * _5;
+  int _6;
+  int _7;
+  int _13;
+  int _35;
+  short unsigned int _42;
+  short unsigned int _43;
+  short unsigned int _44;
+  short unsigned int _45;
+  short unsigned int _49;
+  short unsigned int _50;
+  unsigned char _51;
+  short unsigned int _52;
+  unsigned char _69;
+  unsigned long _79;
+  unsigned long _80;
+  unsigned char _81;
+
+  <bb 2> [local count: 87004971]:
+  out_20 = key_19(D)->m;
+  _1 = key_19(D)->vinfo;
+  rank_21 = _1->rank;
+  _2 = key_19(D)->rho;
+  __builtin_memcpy (&input, _2, 32);
+  if (rank_21 > 0)
+    goto <bb 16>; [97.25%]
+  else
+    goto <bb 17>; [2.75%]
+
+  <bb 3> [local count: 1044213921]:
+  # out_71 = PHI <out_28(14), out_73(16)>
+  # j_75 = PHI <j_30(14), 0(16)>
+  _81 = (unsigned char) i_74;
+  input[32] = _81;
+  _69 = (unsigned char) j_75;
+  input[33] = _69;
+  _5 = key_19(D)->shake128_md;
+  _6 = EVP_DigestInit_ex (mdctx_25(D), _5, 0B);
+  if (_6 == 0)
+    goto <bb 17>; [2.75%]
+  else
+    goto <bb 4>; [97.25%]
+
+  <bb 4> [local count: 1015498035]:
+  _7 = EVP_DigestUpdate (mdctx_25(D), &input, 34);
+  if (_7 == 0)
+    goto <bb 17>; [2.75%]
+  else
+    goto <bb 5>; [97.25%]
+
+  <bb 5> [local count: 987571836]:
+  out_28 = out_71 + 512;
+  _79 = (unsigned long) out_28;
+  _80 = _79 + 18446744073709551104;
+  curr_33 = (uint16_t *) _80;
+
+  <bb 6> [local count: 9231800666]:
+  # curr_57 = PHI <curr_33(5), curr_58(13)>
+  _35 = EVP_DigestSqueeze (mdctx_25(D), &buf, 168);
+  if (_35 == 0)
+    goto <bb 18>; [5.50%]
+  else
+    goto <bb 7>; [94.50%]
+
+  <bb 7> [local count: 98605669406]:
+  # curr_41 = PHI <curr_57(6), curr_58(12)>
+  # in_36 = PHI <&buf(6), in_39(12)>
+  b1_37 = MEM[(uint8_t *)in_36];
+  b2_38 = MEM[(uint8_t *)in_36 + 1B];
+  in_39 = in_36 + 3;
+  b3_40 = MEM[(uint8_t *)in_39 + -1B];
+  if (out_28 <= curr_41)
+    goto <bb 19>; [3.66%]
+  else
+    goto <bb 8>; [96.34%]
+
+  <bb 8> [local count: 94996701791]:
+  _42 = (short unsigned int) b2_38;
+  _43 = _42 << 8;
+  _44 = _43 & 3840;
+  _45 = (short unsigned int) b1_37;
+  d_46 = _44 + _45;
+  if (d_46 <= 3328)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 47498350896]:
+  curr_47 = curr_41 + 2;
+  *curr_41 = d_46;
+  if (out_28 <= curr_47)
+    goto <bb 19>; [7.32%]
+  else
+    goto <bb 10>; [92.68%]
+
+  <bb 10> [local count: 91519822425]:
+  # curr_8 = PHI <curr_47(9), curr_41(8)>
+  _49 = (short unsigned int) b3_40;
+  _50 = _49 << 4;
+  _51 = b2_38 >> 4;
+  _52 = (short unsigned int) _51;
+  d_53 = _50 + _52;
+  if (d_53 <= 3328)
+    goto <bb 11>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 11> [local count: 45759911212]:
+  curr_54 = curr_8 + 2;
+  *curr_8 = d_53;
+
+  <bb 12> [local count: 91519822425]:
+  # curr_58 = PHI <curr_8(10), curr_54(11)>
+  if (&MEM <uint8_t[168]> [(void *)&buf + 168B] != in_39)
+    goto <bb 7>; [98.21%]
+  else
+    goto <bb 13>; [1.79%]
+
+  <bb 13> [local count: 8244228827]:
+  if (out_28 > curr_58)
+    goto <bb 6>; [100.00%]
+  else
+    goto <bb 14>; [0.00%]
+
+  <bb 14> [local count: 960413607]:
+  buf ={v} {CLOBBER(eos)};
+  j_30 = j_75 + 1;
+  if (rank_21 != j_30)
+    goto <bb 3>; [96.93%]
+  else
+    goto <bb 15>; [3.07%]
+
+  <bb 15> [local count: 29527904]:
+  i_22 = i_74 + 1;
+  if (rank_21 != i_22)
+    goto <bb 16>; [97.25%]
+  else
+    goto <bb 17>; [2.75%]
+
+  <bb 16> [local count: 113328221]:
+  # out_73 = PHI <out_28(15), out_20(2)>
+  # i_74 = PHI <i_22(15), 0(2)>
+  goto <bb 3>; [100.00%]
+
+  <bb 17> [local count: 87004970]:
+  # _13 = PHI <_7(4), 1(15), _6(3), _35(18), 1(2)>
+  input ={v} {CLOBBER(eos)};
+  return _13;
+
+  <bb 18> [local count: 27158229]:
+  buf ={v} {CLOBBER(eos)};
+  goto <bb 17>; [100.00%]
+
+  <bb 19> [local count: 479822839]:
+  goto <bb 14>; [100.00%]
+
+}
+
+
+
+;; Function parse_pubkey (parse_pubkey, funcdef_no=596, decl_uid=18674, cgraph_uid=597, symbol_order=605)
+
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+int parse_pubkey (const uint8_t * in, struct EVP_MD_CTX * mdctx, struct ML_KEM_KEY * key)
+{
+  const uint8_t * in;
+  struct scalar * out;
+  const struct ML_KEM_VINFO * vinfo;
+  struct ossl_ml_kem_scalar_st * _1;
+  int _2;
+  uint8_t * _4;
+  long unsigned int _5;
+  const uint8_t * _6;
+  uint8_t * _7;
+  long unsigned int _8;
+  int _10;
+  int _11;
+  _Bool _21;
+  sizetype _23;
+  struct ossl_ml_kem_scalar_st * _25;
+  int _26;
+  struct EVP_MD * _31;
+  int _32;
+  int _33;
+  sizetype _35;
+  unsigned int _36;
+  int _39;
+
+  <bb 2> [local count: 1073741822]:
+  vinfo_15 = key_14(D)->vinfo;
+  _1 = key_14(D)->t;
+  _2 = vinfo_15->rank;
+  if (_2 > 0)
+    goto <bb 3>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 3> [local count: 1014686022]:
+  _36 = (unsigned int) _2;
+  _35 = (sizetype) _36;
+  _23 = _35 * 512;
+  _25 = _1 + _23;
+
+  <bb 4> [local count: 9485263262]:
+  # out_45 = PHI <out_24(5), _1(3)>
+  # in_46 = PHI <in_27(5), in_16(D)(3)>
+  out_24 = out_45 + 512;
+  _26 = scalar_decode_12 (out_45, in_46);
+  if (_26 == 0)
+    goto <bb 9>; [5.50%]
+  else
+    goto <bb 5>; [94.50%]
+
+  <bb 5> [local count: 8963573795]:
+  in_27 = in_46 + 384;
+  if (out_24 != _25)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 6>; [5.50%]
+
+  <bb 6> [local count: 524844999]:
+  _4 = key_14(D)->rho;
+  _5 = vinfo_15->vector_bytes;
+  _6 = in_16(D) + _5;
+  __builtin_memcpy (_4, _6, 32);
+  _7 = key_14(D)->pkhash;
+  _8 = vinfo_15->pubkey_bytes;
+  _31 = MEM[(const struct ML_KEM_KEY *)key_14(D)].sha3_256_md;
+  _32 = EVP_DigestInit_ex (mdctx_18(D), _31, 0B);
+  if (_32 != 0)
+    goto <bb 7>; [33.00%]
+  else
+    goto <bb 9>; [67.00%]
+
+  <bb 7> [local count: 173198849]:
+  _33 = single_keccak (_7, 32, in_16(D), _8, mdctx_18(D));
+  if (_33 != 0)
+    goto <bb 8>; [100.00%]
+  else
+    goto <bb 9>; [0.00%]
+
+  <bb 8> [local count: 173198849]:
+  _10 = matrix_expand (mdctx_18(D), key_14(D));
+  _21 = _10 != 0;
+  _39 = (int) _21;
+
+  <bb 9> [local count: 1073741824]:
+  # _11 = PHI <_26(4), _33(7), _39(8), _32(6)>
+  return _11;
+
+}
+
+
+
+;; Function scalar_encode (scalar_encode, funcdef_no=570, decl_uid=18156, cgraph_uid=571, symbol_order=579)
+
+Removing basic block 10
+void scalar_encode (uint8_t * out, const struct scalar * s, int bits)
+{
+  int used;
+  uint64_t element;
+  uint64_t accum;
+  const uint16_t * end;
+  const uint16_t * curr;
+  short unsigned int _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  unsigned char * _34;
+  unsigned char * _36;
+
+  <bb 2> [local count: 10737416]:
+  curr_19 = &s_18(D)->c;
+  end_20 = s_18(D) + 512;
+
+  <bb 3> [local count: 1073741822]:
+  # out_9 = PHI <out_21(D)(2), out_10(8)>
+  # curr_11 = PHI <curr_19(2), curr_23(8)>
+  # accum_12 = PHI <0(2), accum_13(8)>
+  # used_14 = PHI <0(2), used_15(8)>
+  curr_23 = curr_11 + 2;
+  _1 = MEM[(const uint16_t *)curr_23 + -2B];
+  element_24 = (uint64_t) _1;
+  _2 = used_14 + bits_25(D);
+  if (_2 <= 63)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 4> [local count: 536870911]:
+  _3 = element_24 << used_14;
+  accum_32 = _3 | accum_12;
+  goto <bb 8>; [100.00%]
+
+  <bb 5> [local count: 536870911]:
+  if (_2 > 64)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 6> [local count: 268435456]:
+  _4 = element_24 << used_14;
+  _5 = _4 | accum_12;
+  MEM <unsigned long> [(char * {ref-all})out_9] = _5;
+  _34 = out_9 + 8;
+  _6 = 64 - used_14;
+  accum_30 = element_24 >> _6;
+  used_31 = _2 + -64;
+  goto <bb 8>; [100.00%]
+
+  <bb 7> [local count: 268435456]:
+  _7 = element_24 << used_14;
+  _8 = _7 | accum_12;
+  MEM <unsigned long> [(char * {ref-all})out_9] = _8;
+  _36 = out_9 + 8;
+
+  <bb 8> [local count: 1073741824]:
+  # out_10 = PHI <out_9(4), _34(6), _36(7)>
+  # accum_13 = PHI <accum_32(4), accum_30(6), 0(7)>
+  # used_15 = PHI <_2(4), used_31(6), 0(7)>
+  if (end_20 != curr_23)
+    goto <bb 3>; [99.00%]
+  else
+    goto <bb 9>; [1.00%]
+
+  <bb 9> [local count: 10737416]:
+  return;
+
+}
+
+
+
+;; Function encode_pubkey (encode_pubkey, funcdef_no=594, decl_uid=18662, cgraph_uid=595, symbol_order=603)
+
+Removing basic block 6
+Removing basic block 7
+Removing basic block 8
+void encode_pubkey (uint8_t * out, const struct ML_KEM_KEY * key)
+{
+  const struct scalar * a;
+  uint8_t * out;
+  const struct ML_KEM_VINFO * vinfo;
+  const uint8_t * rho;
+  struct ossl_ml_kem_scalar_st * _1;
+  int _2;
+  long unsigned int _3;
+  uint8_t * _4;
+  sizetype _10;
+  sizetype _11;
+  struct ossl_ml_kem_scalar_st * _13;
+  unsigned int _19;
+
+  <bb 2> [local count: 1073741824]:
+  rho_7 = key_6(D)->rho;
+  vinfo_8 = key_6(D)->vinfo;
+  _1 = key_6(D)->t;
+  _2 = vinfo_8->rank;
+  if (_2 > 0)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 3> [local count: 955630224]:
+  _19 = (unsigned int) _2;
+  _10 = (sizetype) _19;
+  _11 = _10 * 512;
+  _13 = _1 + _11;
+
+  <bb 4> [local count: 8687547538]:
+  # a_24 = PHI <a_15(4), _1(3)>
+  # out_25 = PHI <out_18(4), out_9(D)(3)>
+  a_15 = a_24 + 512;
+  scalar_encode (out_25, a_24, 12);
+  out_18 = out_25 + 384;
+  if (_13 != a_15)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 5>; [11.00%]
+
+  <bb 5> [local count: 1073741824]:
+  _3 = vinfo_8->vector_bytes;
+  _4 = out_9(D) + _3;
+  __builtin_memcpy (_4, rho_7, 32);
+  return;
+
+}
+
+
+
+;; Function inner_product (inner_product, funcdef_no=584, decl_uid=18511, cgraph_uid=585, symbol_order=593)
+
+Removing basic block 8
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+void inner_product (struct scalar * out, const struct scalar * lhs, const struct scalar * rhs, int rank)
+{
+  uint16_t * curr;
+  const uint16_t * lc;
+  const uint16_t * rc;
+  const uint16_t * roots;
+  uint32_t l0;
+  uint32_t r0;
+  uint32_t l1;
+  uint32_t r1;
+  uint32_t zetapow;
+  unsigned int _3;
+  unsigned int _16;
+  unsigned int _17;
+  short unsigned int _20;
+  short unsigned int _23;
+  short unsigned int _26;
+  short unsigned int _29;
+  short unsigned int _35;
+  short unsigned int _37;
+  unsigned int _38;
+  unsigned int _39;
+  short unsigned int _40;
+  unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  unsigned int _45;
+  short unsigned int _46;
+  short unsigned int _47;
+  unsigned int _48;
+  unsigned int _49;
+  unsigned int _50;
+  unsigned int _51;
+  unsigned int _52;
+  short unsigned int _53;
+  sizetype _64;
+  sizetype _65;
+  const struct scalar * _66;
+
+  <bb 2> [local count: 118111600]:
+  scalar_mult (out_6(D), lhs_7(D), rhs_8(D));
+  if (rank_10(D) > 1)
+    goto <bb 3>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 3> [local count: 105119324]:
+  _17 = (unsigned int) rank_10(D);
+  _16 = _17 + 4294967295;
+  _64 = (sizetype) _16;
+  _65 = _64 * 512;
+  _66 = lhs_7(D) + _65;
+
+  <bb 4> [local count: 955630224]:
+  # lhs_59 = PHI <lhs_12(6), lhs_7(D)(3)>
+  # rhs_60 = PHI <rhs_13(6), rhs_8(D)(3)>
+  lhs_12 = lhs_59 + 512;
+  rhs_13 = rhs_60 + 512;
+  curr_15 = &out_6(D)->c;
+
+  <bb 5> [local count: 95563042336]:
+  # curr_31 = PHI <curr_15(4), curr_32(5)>
+  # lc_19 = PHI <lhs_12(4), lc_25(5)>
+  # rc_22 = PHI <rhs_13(4), rc_28(5)>
+  # roots_33 = PHI <&kModRoots(4), roots_34(5)>
+  _20 = MEM[(const uint16_t *)lc_19];
+  l0_21 = (uint32_t) _20;
+  _23 = MEM[(const uint16_t *)rc_22];
+  r0_24 = (uint32_t) _23;
+  lc_25 = lc_19 + 4;
+  _26 = MEM[(const uint16_t *)lc_25 + -2B];
+  l1_27 = (uint32_t) _26;
+  rc_28 = rc_22 + 4;
+  _29 = MEM[(const uint16_t *)rc_28 + -2B];
+  r1_30 = (uint32_t) _29;
+  curr_32 = curr_31 + 4;
+  roots_34 = roots_33 + 2;
+  _35 = MEM[(const uint16_t *)roots_34 + -2B];
+  zetapow_36 = (uint32_t) _35;
+  _37 = MEM[(uint16_t *)curr_32 + -4B];
+  _38 = (unsigned int) _37;
+  _39 = l1_27 * r1_30;
+  _40 = reduce (_39);
+  _41 = (unsigned int) _40;
+  _42 = zetapow_36 * _41;
+  _43 = l0_21 * r0_24;
+  _3 = _38 + _42;
+  _45 = _3 + _43;
+  _46 = reduce (_45);
+  MEM[(uint16_t *)curr_32 + -4B] = _46;
+  _47 = MEM[(uint16_t *)curr_32 + -2B];
+  _48 = (unsigned int) _47;
+  _49 = r0_24 * l1_27;
+  _50 = l0_21 * r1_30;
+  _51 = _49 + _50;
+  _52 = _48 + _51;
+  _53 = reduce (_52);
+  MEM[(uint16_t *)curr_32 + -2B] = _53;
+  if (roots_34 != &MEM <const uint16_t[128]> [(void *)&kModRoots + 256B])
+    goto <bb 5>; [99.00%]
+  else
+    goto <bb 6>; [1.00%]
+
+  <bb 6> [local count: 955630224]:
+  if (lhs_12 != _66)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 118111600]:
+  return;
+
+}
+
+
+
+;; Function encrypt_cpa (encrypt_cpa, funcdef_no=592, decl_uid=18634, cgraph_uid=593, symbol_order=601)
+
+Removing basic block 3
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+__attribute__((access ("^0[32]^1[32]^2[32]", )))
+int encrypt_cpa (uint8_t * out, const uint8_t * message, const uint8_t * r, struct scalar * tmp, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  unsigned long ivtmp.473;
+  unsigned long ivtmp.401;
+  uint16_t * curr;
+  uint8_t b;
+  int rank;
+  const struct scalar * rhs;
+  struct scalar * lhs;
+  int rank;
+  struct scalar * a;
+  int stride;
+  const struct scalar * a;
+  uint8_t * out;
+  uint16_t * curr;
+  const uint16_t * lc;
+  const uint16_t * rc;
+  const uint16_t * roots;
+  uint32_t l0;
+  uint32_t r0;
+  uint32_t l1;
+  uint32_t r1;
+  uint32_t zetapow;
+  const struct scalar * ar;
+  const struct scalar * m;
+  struct scalar * out;
+  uint8_t input[33];
+  int rank;
+  struct scalar * out;
+  int dv;
+  int du;
+  uint8_t counter;
+  uint8_t input[33];
+  struct scalar v;
+  struct scalar * u;
+  int rank;
+  const struct ML_KEM_VINFO * vinfo;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _4;
+  struct ossl_ml_kem_scalar_st * _5;
+  struct ossl_ml_kem_scalar_st * _6;
+  int _9;
+  long unsigned int _10;
+  uint8_t * _11;
+  int (*<T22ba>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.58_12;
+  int _13;
+  unsigned char _46;
+  unsigned char _47;
+  int _50;
+  short unsigned int _72;
+  short unsigned int _75;
+  short unsigned int _78;
+  short unsigned int _81;
+  short unsigned int _87;
+  short unsigned int _89;
+  unsigned int _90;
+  unsigned int _91;
+  short unsigned int _92;
+  unsigned int _93;
+  unsigned int _94;
+  unsigned int _95;
+  unsigned int _97;
+  short unsigned int _98;
+  short unsigned int _99;
+  unsigned int _100;
+  unsigned int _101;
+  unsigned int _102;
+  unsigned int _103;
+  unsigned int _104;
+  short unsigned int _105;
+  sizetype _110;
+  unsigned char _129;
+  short unsigned int _130;
+  short unsigned int _133;
+  short unsigned int _134;
+  short unsigned int _135;
+  short unsigned int _136;
+  unsigned char _138;
+  short unsigned int _139;
+  sizetype _140;
+  short unsigned int _141;
+  short unsigned int _142;
+  short unsigned int _143;
+  short unsigned int _144;
+  unsigned char _146;
+  short unsigned int _147;
+  short unsigned int _149;
+  short unsigned int _150;
+  short unsigned int _151;
+  short unsigned int _152;
+  unsigned char _154;
+  short unsigned int _155;
+  short unsigned int _157;
+  short unsigned int _158;
+  short unsigned int _159;
+  short unsigned int _160;
+  unsigned char _162;
+  short unsigned int _163;
+  sizetype _164;
+  short unsigned int _165;
+  short unsigned int _166;
+  short unsigned int _167;
+  short unsigned int _168;
+  unsigned char _170;
+  short unsigned int _171;
+  short unsigned int _173;
+  short unsigned int _174;
+  short unsigned int _175;
+  short unsigned int _176;
+  unsigned char _178;
+  short unsigned int _179;
+  sizetype _180;
+  short unsigned int _181;
+  short unsigned int _182;
+  short unsigned int _183;
+  short unsigned int _184;
+  short unsigned int _186;
+  short unsigned int _188;
+  short unsigned int _189;
+  short unsigned int _190;
+  short unsigned int _191;
+  unsigned int _195;
+  void * _234;
+  unsigned int _236;
+  sizetype _239;
+  sizetype _240;
+  struct scalar * _241;
+  sizetype _247;
+  unsigned int _248;
+  sizetype _249;
+  sizetype _250;
+  sizetype _251;
+  struct scalar * _252;
+  unsigned int _253;
+  sizetype _256;
+  sizetype _257;
+  struct scalar * _258;
+
+  <bb 2> [local count: 1073741824]:
+  vinfo_17 = key_16(D)->vinfo;
+  _1 = vinfo_17->evp_type;
+  if (_1 == 1454)
+    goto <bb 3>; [34.00%]
+  else
+    goto <bb 4>; [66.00%]
+
+  <bb 3> [local count: 365072224]:
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.58_12 = PHI <cbd_3(3), cbd_2(2)>
+  rank_18 = vinfo_17->rank;
+  counter = 0;
+  du_22 = vinfo_17->du;
+  dv_23 = vinfo_17->dv;
+  _4 = gencbd_vector_ntt (tmp_19(D), iftmp.58_12, &counter, r_24(D), rank_18, mdctx_25(D), key_16(D));
+  if (_4 == 0)
+    goto <bb 26>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 524845000]:
+  _2 = (long unsigned int) rank_18;
+  _3 = _2 * 512;
+  u_20 = tmp_19(D) + _3;
+  _5 = key_16(D)->t;
+  inner_product (&v, _5, tmp_19(D), rank_18);
+  scalar_inverse_ntt (&v);
+  _6 = key_16(D)->m;
+  if (rank_18 > 0)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 14>; [11.00%]
+
+  <bb 6> [local count: 467112050]:
+  _253 = (unsigned int) rank_18;
+  _256 = (sizetype) _253;
+  _257 = _256 * 512;
+  _258 = u_20 + _257;
+  _248 = _253 + 4294967294;
+  _249 = (sizetype) _248;
+  _250 = _249 + 1;
+  _251 = _250 * 512;
+  _252 = tmp_19(D) + _251;
+  _140 = (sizetype) _248;
+
+  <bb 7> [local count: 4246473159]:
+  # m_39 = PHI <m_34(13), _6(6)>
+  # out_31 = PHI <out_64(13), u_20(6)>
+  m_55 = m_39 + 512;
+  scalar_mult (out_31, m_39, tmp_19(D));
+  if (rank_18 > 1)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 13>; [11.00%]
+
+  <bb 8> [local count: 3779361114]:
+  ivtmp.473_245 = (unsigned long) m_55;
+
+  <bb 9> [local count: 34357828495]:
+  # ar_29 = PHI <ar_61(11), tmp_19(D)(8)>
+  # ivtmp.473_243 = PHI <ivtmp.473_244(11), ivtmp.473_245(8)>
+  ar_61 = ar_29 + 512;
+  lc_69 = (const uint16_t *) ivtmp.473_243;
+
+  <bb 10> [local count: 3435783566260]:
+  # curr_83 = PHI <out_31(9), curr_84(10)>
+  # lc_71 = PHI <lc_69(9), lc_77(10)>
+  # rc_74 = PHI <ar_61(9), rc_80(10)>
+  # roots_85 = PHI <&kModRoots(9), roots_86(10)>
+  _72 = MEM[(const uint16_t *)lc_71];
+  l0_73 = (uint32_t) _72;
+  _75 = MEM[(const uint16_t *)rc_74];
+  r0_76 = (uint32_t) _75;
+  lc_77 = lc_71 + 4;
+  _78 = MEM[(const uint16_t *)lc_77 + -2B];
+  l1_79 = (uint32_t) _78;
+  rc_80 = rc_74 + 4;
+  _81 = MEM[(const uint16_t *)rc_80 + -2B];
+  r1_82 = (uint32_t) _81;
+  curr_84 = curr_83 + 4;
+  roots_86 = roots_85 + 2;
+  _87 = MEM[(const uint16_t *)roots_86 + -2B];
+  zetapow_88 = (uint32_t) _87;
+  _89 = MEM[(uint16_t *)curr_84 + -4B];
+  _90 = (unsigned int) _89;
+  _91 = l1_79 * r1_82;
+  _92 = reduce (_91);
+  _93 = (unsigned int) _92;
+  _94 = zetapow_88 * _93;
+  _95 = l0_73 * r0_76;
+  _195 = _90 + _94;
+  _97 = _95 + _195;
+  _98 = reduce (_97);
+  MEM[(uint16_t *)curr_84 + -4B] = _98;
+  _99 = MEM[(uint16_t *)curr_84 + -2B];
+  _100 = (unsigned int) _99;
+  _101 = r0_76 * l1_79;
+  _102 = l0_73 * r1_82;
+  _103 = _101 + _102;
+  _104 = _100 + _103;
+  _105 = reduce (_104);
+  MEM[(uint16_t *)curr_84 + -2B] = _105;
+  if (roots_86 != &MEM <const uint16_t[128]> [(void *)&kModRoots + 256B])
+    goto <bb 10>; [99.00%]
+  else
+    goto <bb 11>; [1.00%]
+
+  <bb 11> [local count: 34357828495]:
+  ivtmp.473_244 = ivtmp.473_243 + 512;
+  if (ar_61 != _252)
+    goto <bb 9>; [89.00%]
+  else
+    goto <bb 12>; [11.00%]
+
+  <bb 12> [local count: 3779361114]:
+  _247 = _140 + 1;
+  _180 = _247 * 512;
+  _164 = _180 + ivtmp.473_245;
+  m_109 = (const struct scalar *) _164;
+
+  <bb 13> [local count: 4246473159]:
+  # m_34 = PHI <m_109(12), m_55(7)>
+  scalar_inverse_ntt (out_31);
+  out_64 = out_31 + 512;
+  if (out_64 != _258)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 14>; [11.00%]
+
+  <bb 14> [local count: 524845000]:
+  __builtin_memcpy (&input, r_24(D), 32);
+
+  <bb 15> [local count: 4906239845]:
+  # out_48 = PHI <tmp_19(D)(14), out_49(16)>
+  # rank_51 = PHI <rank_18(14), rank_52(16)>
+  _46 = counter;
+  _47 = _46 + 1;
+  counter = _47;
+  input[32] = _46;
+  out_49 = out_48 + 512;
+  _50 = cbd_2 (out_48, &input, mdctx_25(D), key_16(D));
+  if (_50 == 0)
+    goto <bb 28>; [5.50%]
+  else
+    goto <bb 16>; [94.50%]
+
+  <bb 16> [local count: 4636396660]:
+  rank_52 = rank_51 + -1;
+  if (rank_52 > 0)
+    goto <bb 15>; [94.50%]
+  else
+    goto <bb 27>; [5.50%]
+
+  <bb 17> [local count: 2332220322]:
+  # lhs_118 = PHI <u_20(27), lhs_119(17)>
+  # rhs_120 = PHI <tmp_19(D)(27), rhs_121(17)>
+  # rank_122 = PHI <rank_18(27), rank_123(17)>
+  lhs_119 = lhs_118 + 512;
+  rhs_121 = rhs_120 + 512;
+  scalar_add (lhs_118, rhs_120);
+  rank_123 = rank_122 + -1;
+  if (rank_123 > 0)
+    goto <bb 17>; [89.00%]
+  else
+    goto <bb 18>; [11.00%]
+
+  <bb 18> [local count: 2332220322]:
+  # a_114 = PHI <u_20(17), a_115(18)>
+  # rank_116 = PHI <rank_18(17), rank_117(18)>
+  a_115 = a_114 + 512;
+  scalar_compress (a_114, du_22);
+  rank_117 = rank_116 + -1;
+  if (rank_117 > 0)
+    goto <bb 18>; [89.00%]
+  else
+    goto <bb 19>; [11.00%]
+
+  <bb 19> [local count: 256544234]:
+  stride_106 = du_22 * 32;
+  if (rank_18 > 0)
+    goto <bb 20>; [89.00%]
+  else
+    goto <bb 22>; [11.00%]
+
+  <bb 20> [local count: 228324368]:
+  _236 = (unsigned int) rank_18;
+  _239 = (sizetype) _236;
+  _240 = _239 * 512;
+  _241 = u_20 + _240;
+
+  <bb 21> [local count: 2075676088]:
+  # a_223 = PHI <a_108(21), u_20(20)>
+  # out_224 = PHI <out_111(21), out_33(D)(20)>
+  a_108 = a_223 + 512;
+  scalar_encode (out_224, a_223, du_22);
+  _110 = (sizetype) stride_106;
+  out_111 = out_224 + _110;
+  if (a_108 != _241)
+    goto <bb 21>; [89.00%]
+  else
+    goto <bb 22>; [11.00%]
+
+  <bb 22> [local count: 256544234]:
+  __builtin_memcpy (&input, r_24(D), 32);
+  input[32] = _47;
+  _9 = cbd_2 (tmp_19(D), &input, mdctx_25(D), key_16(D));
+  if (_9 == 0)
+    goto <bb 26>; [51.12%]
+  else
+    goto <bb 23>; [48.88%]
+
+  <bb 23> [local count: 125398821]:
+  scalar_add (&v, tmp_19(D));
+  ivtmp.401_233 = (unsigned long) message_38(D);
+
+  <bb 24> [local count: 4006352000]:
+  # curr_132 = PHI <&v.c(23), curr_192(24)>
+  # ivtmp.401_187 = PHI <ivtmp.401_233(23), ivtmp.401_232(24)>
+  _234 = (void *) ivtmp.401_187;
+  b_128 = MEM[(const uint8_t *)_234];
+  _129 = b_128 & 1;
+  _130 = (short unsigned int) _129;
+  _133 = MEM[(uint16_t *)curr_132];
+  _134 = _130 * 1665;
+  _135 = _133 + _134;
+  _136 = reduce_once (_135);
+  MEM[(uint16_t *)curr_132] = _136;
+  b_137 = b_128 >> 1;
+  _138 = b_137 & 1;
+  _139 = (short unsigned int) _138;
+  _141 = MEM[(uint16_t *)curr_132 + 2B];
+  _142 = _139 * 1665;
+  _143 = _141 + _142;
+  _144 = reduce_once (_143);
+  MEM[(uint16_t *)curr_132 + 2B] = _144;
+  b_145 = b_128 >> 2;
+  _146 = b_145 & 1;
+  _147 = (short unsigned int) _146;
+  _149 = MEM[(uint16_t *)curr_132 + 4B];
+  _150 = _147 * 1665;
+  _151 = _149 + _150;
+  _152 = reduce_once (_151);
+  MEM[(uint16_t *)curr_132 + 4B] = _152;
+  b_153 = b_128 >> 3;
+  _154 = b_153 & 1;
+  _155 = (short unsigned int) _154;
+  _157 = MEM[(uint16_t *)curr_132 + 6B];
+  _158 = _155 * 1665;
+  _159 = _157 + _158;
+  _160 = reduce_once (_159);
+  MEM[(uint16_t *)curr_132 + 6B] = _160;
+  b_161 = b_128 >> 4;
+  _162 = b_161 & 1;
+  _163 = (short unsigned int) _162;
+  _165 = MEM[(uint16_t *)curr_132 + 8B];
+  _166 = _163 * 1665;
+  _167 = _165 + _166;
+  _168 = reduce_once (_167);
+  MEM[(uint16_t *)curr_132 + 8B] = _168;
+  b_169 = b_128 >> 5;
+  _170 = b_169 & 1;
+  _171 = (short unsigned int) _170;
+  _173 = MEM[(uint16_t *)curr_132 + 10B];
+  _174 = _171 * 1665;
+  _175 = _173 + _174;
+  _176 = reduce_once (_175);
+  MEM[(uint16_t *)curr_132 + 10B] = _176;
+  b_177 = b_128 >> 6;
+  _178 = b_177 & 1;
+  _179 = (short unsigned int) _178;
+  _181 = MEM[(uint16_t *)curr_132 + 12B];
+  _182 = _179 * 1665;
+  _183 = _181 + _182;
+  _184 = reduce_once (_183);
+  MEM[(uint16_t *)curr_132 + 12B] = _184;
+  b_185 = b_128 >> 7;
+  _186 = (short unsigned int) b_185;
+  _188 = MEM[(uint16_t *)curr_132 + 14B];
+  _189 = _186 * 1665;
+  _190 = _188 + _189;
+  _191 = reduce_once (_190);
+  MEM[(uint16_t *)curr_132 + 14B] = _191;
+  curr_192 = curr_132 + 16;
+  ivtmp.401_232 = ivtmp.401_187 + 1;
+  if (&MEM <struct scalar> [(void *)&v + 512B] != curr_192)
+    goto <bb 24>; [96.87%]
+  else
+    goto <bb 25>; [3.13%]
+
+  <bb 25> [local count: 125398821]:
+  scalar_compress (&v, dv_23);
+  _10 = vinfo_17->u_vector_bytes;
+  _11 = out_33(D) + _10;
+  scalar_encode (_11, &v, dv_23);
+
+  <bb 26> [local count: 1073741824]:
+  # _13 = PHI <_4(4), _50(28), _9(22), 1(25)>
+  v ={v} {CLOBBER(eos)};
+  input ={v} {CLOBBER(eos)};
+  counter ={v} {CLOBBER(eos)};
+  return _13;
+
+  <bb 27> [local count: 256544237]:
+  input ={v} {CLOBBER(eos)};
+  goto <bb 17>; [100.00%]
+
+  <bb 28> [local count: 268300768]:
+  input ={v} {CLOBBER(eos)};
+  goto <bb 26>; [100.00%]
+
+}
+
+
+
+;; Function encap (encap, funcdef_no=599, decl_uid=18704, cgraph_uid=600, symbol_order=608)
+
+Removing basic block 6
+Removing basic block 7
+__attribute__((access ("^1[32]^2[32]", )))
+int encap (uint8_t * ctext, uint8_t * secret, const uint8_t * entropy, struct scalar * tmp, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t Kr[64];
+  uint8_t input[64];
+  uint8_t * _1;
+  int _2;
+  int _3;
+  int iftmp.57_17;
+
+  <bb 2> [local count: 1073741822]:
+  __builtin_memcpy (&input, entropy_6(D), 32);
+  _1 = key_7(D)->pkhash;
+  __builtin_memcpy (&MEM <uint8_t[64]> [(void *)&input + 32B], _1, 32);
+  _2 = hash_g (&Kr, &input, 64, mdctx_8(D), key_7(D));
+  if (_2 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 3> [local count: 354334800]:
+  _3 = encrypt_cpa (ctext_10(D), entropy_6(D), &MEM <uint8_t[64]> [(void *)&Kr + 32B], tmp_11(D), mdctx_8(D), key_7(D));
+  if (_3 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 5>; [67.00%]
+
+  <bb 4> [local count: 116930483]:
+  __builtin_memcpy (secret_13(D), &Kr, 32);
+
+  <bb 5> [local count: 1073741824]:
+  # iftmp.57_17 = PHI <_3(3), 1(4), _2(2)>
+  OPENSSL_cleanse (&input, 64);
+  input ={v} {CLOBBER(eos)};
+  Kr ={v} {CLOBBER(eos)};
+  return iftmp.57_17;
+
+}
+
+
+
+;; Function decap (decap, funcdef_no=600, decl_uid=18716, cgraph_uid=601, symbol_order=609)
+
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+__attribute__((access ("^0[32]", )))
+int decap (uint8_t * secret, const uint8_t * ctext, uint8_t * tmp_ctext, struct scalar * tmp, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  unsigned long ivtmp.546;
+  unsigned long ivtmp.541;
+  unsigned long ivtmp.534;
+  unsigned long ivtmp.526;
+  unsigned long ivtmp.525;
+  unsigned long ivtmp.518;
+  sizetype ivtmp.501;
+  uint32_t product;
+  uint32_t power;
+  uint32_t remainder;
+  uint32_t lower;
+  uint32_t product;
+  uint32_t power;
+  uint32_t remainder;
+  uint32_t lower;
+  int stride;
+  const uint8_t * in;
+  struct scalar * out;
+  uint8_t out_byte;
+  uint8_t * out;
+  const struct ML_KEM_VINFO * vinfo;
+  struct scalar v;
+  struct scalar mask;
+  int rank;
+  int du;
+  int dv;
+  unsigned int r;
+  unsigned int r;
+  const struct ML_KEM_VINFO * vinfo;
+  const uint8_t * pkhash;
+  uint8_t Kr[64];
+  uint8_t failure_key[32];
+  uint8_t decrypted[64];
+  uint8_t * _1;
+  long unsigned int _2;
+  int _4;
+  int _5;
+  long unsigned int _6;
+  int _7;
+  unsigned char _8;
+  unsigned char _9;
+  int _13;
+  short unsigned int _15;
+  unsigned char _23;
+  unsigned char _39;
+  unsigned int _40;
+  unsigned int _41;
+  unsigned int _42;
+  unsigned int _43;
+  signed int a.93_44;
+  signed int _45;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned int _48;
+  unsigned int _50;
+  unsigned int _51;
+  unsigned int _53;
+  unsigned int _54;
+  unsigned char _55;
+  signed int _57;
+  struct EVP_MD * _59;
+  int _60;
+  int _61;
+  int _62;
+  int _63;
+  long unsigned int _69;
+  const uint8_t * _70;
+  struct ossl_ml_kem_scalar_st * _71;
+  short unsigned int _75;
+  short unsigned int _76;
+  unsigned char _79;
+  unsigned char _80;
+  short unsigned int _87;
+  short unsigned int _88;
+  unsigned char _89;
+  short unsigned int _90;
+  short unsigned int _91;
+  short unsigned int _94;
+  unsigned char _98;
+  uint8_t * _99;
+  sizetype _100;
+  short unsigned int _106;
+  unsigned int _109;
+  int _111;
+  unsigned int _113;
+  int _116;
+  unsigned int _117;
+  short unsigned int _118;
+  short unsigned int _119;
+  short unsigned int _120;
+  unsigned int _121;
+  int _123;
+  unsigned int _125;
+  int _128;
+  unsigned int _129;
+  short unsigned int _130;
+  short unsigned int _131;
+  short unsigned int _132;
+  unsigned char _133;
+  unsigned char _134;
+  short unsigned int _137;
+  unsigned char _143;
+  unsigned char _149;
+  short unsigned int _160;
+  short unsigned int _161;
+  short unsigned int _164;
+  void * _165;
+  unsigned char _166;
+  unsigned long _169;
+  void * _173;
+  short unsigned int _197;
+  short unsigned int _198;
+  unsigned char _201;
+  unsigned char _206;
+  short unsigned int _209;
+  short unsigned int _210;
+  unsigned char _213;
+  void * _217;
+  void * _219;
+  short unsigned int _221;
+  short unsigned int _222;
+  unsigned char _225;
+  unsigned char _227;
+  unsigned char _228;
+  short unsigned int _233;
+  short unsigned int _234;
+  unsigned char _237;
+  void * _239;
+  unsigned char _240;
+  unsigned char _241;
+  unsigned long _242;
+  short unsigned int _245;
+  short unsigned int _246;
+  unsigned char _249;
+  struct scalar * _254;
+  unsigned long _255;
+  unsigned int _256;
+  unsigned int _257;
+  unsigned long _258;
+  unsigned long _259;
+  unsigned long _260;
+  unsigned long _262;
+
+  <bb 2> [local count: 206317544]:
+  pkhash_19 = key_18(D)->pkhash;
+  vinfo_20 = key_18(D)->vinfo;
+  _1 = key_18(D)->z;
+  _2 = vinfo_20->ctext_bytes;
+  _59 = key_18(D)->shake256_md;
+  _60 = EVP_DigestInit_ex (mdctx_22(D), _59, 0B);
+  if (_60 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 24>; [67.00%]
+
+  <bb 3> [local count: 68084789]:
+  _61 = EVP_DigestUpdate (mdctx_22(D), _1, 32);
+  if (_61 != 0)
+    goto <bb 4>; [33.00%]
+  else
+    goto <bb 24>; [67.00%]
+
+  <bb 4> [local count: 22467980]:
+  _62 = EVP_DigestUpdate (mdctx_22(D), ctext_21(D), _2);
+  if (_62 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 24>; [67.00%]
+
+  <bb 5> [local count: 7414433]:
+  _63 = EVP_DigestFinalXOF (mdctx_22(D), &failure_key, 32);
+  if (_63 == 0)
+    goto <bb 23>; [0.00%]
+  else
+    goto <bb 6>; [100.00%]
+
+  <bb 6> [local count: 100848015]:
+  vinfo_65 = key_18(D)->vinfo;
+  rank_66 = vinfo_65->rank;
+  du_67 = vinfo_65->du;
+  dv_68 = vinfo_65->dv;
+  stride_97 = du_67 * 32;
+  if (rank_66 > 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 7> [local count: 89754733]:
+  _254 = tmp_24(D) + 512;
+  ivtmp.546_253 = (unsigned long) _254;
+  _256 = (unsigned int) rank_66;
+  _257 = _256 + 4294967295;
+  _258 = (unsigned long) _257;
+  _259 = _258 * 512;
+  _260 = (unsigned long) tmp_24(D);
+  _169 = _260 + 1024;
+  _262 = _169 + _259;
+
+  <bb 8> [local count: 815952126]:
+  # in_180 = PHI <in_101(10), ctext_21(D)(7)>
+  # ivtmp.546_186 = PHI <ivtmp.546_175(10), ivtmp.546_253(7)>
+  _255 = ivtmp.546_186 + 18446744073709551104;
+  out_179 = (struct scalar *) _255;
+  scalar_decode (out_179, in_180, du_67);
+  _111 = 1 << du_67;
+  power_112 = (uint32_t) _111;
+  _113 = power_112 + 4294967295;
+
+  <bb 9> [local count: 80779277496]:
+  # ivtmp.541_243 = PHI <ivtmp.541_251(9), _255(8)>
+  _173 = (void *) ivtmp.541_243;
+  _106 = MEM[(short unsigned int *)_173];
+  _109 = (unsigned int) _106;
+  product_110 = _109 * 3329;
+  remainder_114 = product_110 & _113;
+  lower_115 = product_110 >> du_67;
+  _116 = du_67 + -1;
+  _117 = remainder_114 >> _116;
+  _118 = (short unsigned int) _117;
+  _119 = (short unsigned int) lower_115;
+  _120 = _118 + _119;
+  MEM[(short unsigned int *)_173] = _120;
+  ivtmp.541_251 = ivtmp.541_243 + 2;
+  if (ivtmp.546_186 != ivtmp.541_251)
+    goto <bb 9>; [98.99%]
+  else
+    goto <bb 10>; [1.01%]
+
+  <bb 10> [local count: 815952126]:
+  scalar_ntt (out_179);
+  _100 = (sizetype) stride_97;
+  in_101 = in_180 + _100;
+  ivtmp.546_175 = ivtmp.546_186 + 512;
+  if (ivtmp.546_175 != _262)
+    goto <bb 8>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 11> [local count: 100848015]:
+  _69 = vinfo_65->u_vector_bytes;
+  _70 = ctext_21(D) + _69;
+  scalar_decode (&v, _70, dv_68);
+  _123 = 1 << dv_68;
+  power_124 = (uint32_t) _123;
+  _125 = power_124 + 4294967295;
+  ivtmp.534_231 = (unsigned long) &v;
+  _242 = ivtmp.534_231 + 512;
+
+  <bb 12> [local count: 9983955589]:
+  # ivtmp.534_229 = PHI <ivtmp.534_230(12), ivtmp.534_231(11)>
+  _239 = (void *) ivtmp.534_229;
+  _94 = MEM[(short unsigned int *)_239];
+  _121 = (unsigned int) _94;
+  product_122 = _121 * 3329;
+  remainder_126 = product_122 & _125;
+  lower_127 = product_122 >> dv_68;
+  _128 = dv_68 + -1;
+  _129 = remainder_126 >> _128;
+  _130 = (short unsigned int) _129;
+  _131 = (short unsigned int) lower_127;
+  _132 = _130 + _131;
+  MEM[(short unsigned int *)_239] = _132;
+  ivtmp.534_230 = ivtmp.534_229 + 2;
+  if (ivtmp.534_230 != _242)
+    goto <bb 12>; [98.99%]
+  else
+    goto <bb 13>; [1.01%]
+
+  <bb 13> [local count: 100848015]:
+  _71 = key_18(D)->s;
+  inner_product (&mask, _71, tmp_24(D), rank_66);
+  scalar_inverse_ntt (&mask);
+  ivtmp.526_216 = (unsigned long) &mask;
+
+  <bb 14> [local count: 9983955589]:
+  # ivtmp.525_204 = PHI <ivtmp.525_205(14), ivtmp.534_231(13)>
+  # ivtmp.526_207 = PHI <ivtmp.526_215(14), ivtmp.526_216(13)>
+  _217 = (void *) ivtmp.525_204;
+  _87 = MEM[(short unsigned int *)_217];
+  _219 = (void *) ivtmp.526_207;
+  _88 = MEM[(short unsigned int *)_219];
+  _15 = _87 + 3329;
+  _90 = _15 - _88;
+  _91 = reduce_once (_90);
+  MEM[(short unsigned int *)_217] = _91;
+  ivtmp.525_205 = ivtmp.525_204 + 2;
+  ivtmp.526_215 = ivtmp.526_207 + 2;
+  if (ivtmp.525_205 != _242)
+    goto <bb 14>; [98.99%]
+  else
+    goto <bb 15>; [1.01%]
+
+  <bb 15> [local count: 100848015]:
+  scalar_compress (&v, 1);
+
+  <bb 16> [local count: 3227469367]:
+  # out_176 = PHI <out_84(16), &decrypted(15)>
+  # ivtmp.518_138 = PHI <ivtmp.518_105(16), ivtmp.534_231(15)>
+  _165 = (void *) ivtmp.518_138;
+  _161 = MEM[(short unsigned int *)_165];
+  _137 = _161 & 1;
+  _98 = (unsigned char) _137;
+  _164 = MEM[(short unsigned int *)_165 + 2B];
+  _160 = _164 & 1;
+  _166 = (unsigned char) _160;
+  _23 = _166 << 1;
+  _197 = MEM[(short unsigned int *)_165 + 4B];
+  _198 = _197 & 1;
+  _241 = (unsigned char) _198;
+  _201 = _241 << 2;
+  _149 = _23 | _201;
+  _209 = MEM[(short unsigned int *)_165 + 6B];
+  _210 = _209 & 1;
+  _240 = (unsigned char) _210;
+  _213 = _240 << 3;
+  _221 = MEM[(short unsigned int *)_165 + 8B];
+  _222 = _221 & 1;
+  _206 = (unsigned char) _222;
+  _225 = _206 << 4;
+  _134 = _213 | _225;
+  _233 = MEM[(short unsigned int *)_165 + 10B];
+  _234 = _233 & 1;
+  _227 = (unsigned char) _234;
+  _237 = _227 << 5;
+  _143 = _134 | _237;
+  _80 = _98 | _143;
+  _245 = MEM[(short unsigned int *)_165 + 12B];
+  _246 = _245 & 1;
+  _228 = (unsigned char) _246;
+  _249 = _228 << 6;
+  _89 = _149 | _249;
+  _75 = MEM[(short unsigned int *)_165 + 14B];
+  _76 = _75 & 1;
+  _133 = (unsigned char) _76;
+  _79 = _133 << 7;
+  _39 = _79 | _89;
+  out_byte_81 = _39 | _80;
+  MEM[(uint8_t *)out_176] = out_byte_81;
+  out_84 = out_176 + 1;
+  ivtmp.518_105 = ivtmp.518_138 + 16;
+  if (&MEM <uint8_t[64]> [(void *)&decrypted + 32B] != out_84)
+    goto <bb 16>; [96.88%]
+  else
+    goto <bb 17>; [3.12%]
+
+  <bb 17> [local count: 100848015]:
+  v ={v} {CLOBBER(eos)};
+  mask ={v} {CLOBBER(eos)};
+  __builtin_memcpy (&MEM <uint8_t[64]> [(void *)&decrypted + 32B], pkhash_19, 32);
+  _4 = hash_g (&Kr, &decrypted, 64, mdctx_22(D), key_18(D));
+  if (_4 == 0)
+    goto <bb 19>; [34.00%]
+  else
+    goto <bb 18>; [66.00%]
+
+  <bb 18> [local count: 66559689]:
+  _5 = encrypt_cpa (tmp_ctext_27(D), &decrypted, &MEM <uint8_t[64]> [(void *)&Kr + 32B], tmp_24(D), mdctx_22(D), key_18(D));
+  if (_5 == 0)
+    goto <bb 19>; [51.12%]
+  else
+    goto <bb 20>; [48.88%]
+
+  <bb 19> [local count: 68313639]:
+  MEM <unsigned char[32]> [(char * {ref-all})secret_32(D)] = MEM <unsigned char[32]> [(char * {ref-all})&failure_key];
+  OPENSSL_cleanse (&decrypted, 32);
+  goto <bb 23>; [100.00%]
+
+  <bb 20> [local count: 32534376]:
+  _6 = vinfo_20->ctext_bytes;
+  _7 = CRYPTO_memcmp (ctext_21(D), tmp_ctext_27(D), _6);
+  _40 = (unsigned int) _7;
+  _41 = ~_40;
+  _42 = _40 + 4294967295;
+  _43 = _41 & _42;
+  a.93_44 = (signed int) _43;
+  _45 = a.93_44 >> 31;
+
+  <bb 21> [local count: 1041207448]:
+  # ivtmp.501_86 = PHI <ivtmp.501_159(21), 1(20)>
+  _8 = MEM[(unsigned char *)&Kr + -1B + ivtmp.501_86 * 1];
+  _9 = MEM[(unsigned char *)&failure_key + -1B + ivtmp.501_86 * 1];
+  _57 = _45 & 255;
+  _46 = (unsigned int) _57;
+  _47 = (unsigned int) _8;
+  _48 = (unsigned int) _9;
+  __asm__("" : "=r" r_49 : "0" _46);
+  _50 = _47 & r_49;
+  _51 = ~_46;
+  __asm__("" : "=r" r_52 : "0" _51);
+  _53 = _48 & r_52;
+  _54 = _50 | _53;
+  _55 = (unsigned char) _54;
+  _99 = secret_32(D) + 18446744073709551615;
+  MEM[(uint8_t *)_99 + ivtmp.501_86 * 1] = _55;
+  ivtmp.501_159 = ivtmp.501_86 + 1;
+  if (ivtmp.501_159 != 33)
+    goto <bb 21>; [96.88%]
+  else
+    goto <bb 22>; [3.12%]
+
+  <bb 22> [local count: 32534376]:
+  OPENSSL_cleanse (&decrypted, 32);
+  OPENSSL_cleanse (&Kr, 64);
+
+  <bb 23> [local count: 206317545]:
+  # _13 = PHI <_63(5), 1(19), 1(22), 0(24)>
+  decrypted ={v} {CLOBBER(eos)};
+  failure_key ={v} {CLOBBER(eos)};
+  Kr ={v} {CLOBBER(eos)};
+  return _13;
+
+  <bb 24> [local count: 105469529]:
+  goto <bb 23>; [100.00%]
+
+}
+
+
+
+;; Function cbd_3 (cbd_3, funcdef_no=589, decl_uid=18588, cgraph_uid=590, symbol_order=598)
+
+Removing basic block 7
+Removing basic block 8
+Removing basic block 9
+Removing basic block 10
+__attribute__((access ("^1[33]", )))
+int cbd_3 (struct scalar * out, uint8_t * in, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint16_t value;
+  uint8_t b3;
+  uint8_t b2;
+  uint8_t b1;
+  uint8_t * r;
+  uint8_t randbuf[192];
+  uint16_t * curr;
+  short unsigned int _2;
+  unsigned char _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  unsigned char _6;
+  short unsigned int _7;
+  unsigned char _8;
+  short unsigned int _9;
+  unsigned char _10;
+  short unsigned int _11;
+  short unsigned int _12;
+  unsigned char _13;
+  short unsigned int _14;
+  short unsigned int _15;
+  signed short value.30_16;
+  signed short _17;
+  short unsigned int _18;
+  short unsigned int _19;
+  unsigned char _20;
+  short unsigned int _21;
+  unsigned char _22;
+  short unsigned int _23;
+  short unsigned int _24;
+  short unsigned int _25;
+  unsigned char _26;
+  short unsigned int _27;
+  unsigned char _28;
+  short unsigned int _29;
+  short unsigned int _30;
+  unsigned char _31;
+  short unsigned int _32;
+  signed short value.32_34;
+  signed short _35;
+  short unsigned int _36;
+  unsigned char _37;
+  short unsigned int _38;
+  unsigned char _39;
+  short unsigned int _40;
+  unsigned char _41;
+  short unsigned int _42;
+  short unsigned int _43;
+  unsigned char _44;
+  short unsigned int _45;
+  unsigned char _46;
+  short unsigned int _47;
+  short unsigned int _48;
+  unsigned char _50;
+  short unsigned int _51;
+  signed short value.34_53;
+  signed short _54;
+  short unsigned int _55;
+  unsigned char _56;
+  short unsigned int _57;
+  unsigned char _58;
+  short unsigned int _59;
+  unsigned char _60;
+  short unsigned int _61;
+  unsigned char _63;
+  short unsigned int _64;
+  unsigned char _65;
+  short unsigned int _66;
+  unsigned char _67;
+  short unsigned int _68;
+  unsigned char _70;
+  short unsigned int _71;
+  signed short value.36_73;
+  signed short _74;
+  short unsigned int _75;
+  unsigned char _76;
+  short unsigned int _77;
+  int _80;
+  unsigned char _86;
+  short unsigned int _96;
+  short unsigned int _102;
+  unsigned char _109;
+  unsigned char _110;
+  signed short _112;
+  unsigned char _113;
+  unsigned char _114;
+  unsigned char _115;
+  unsigned char _116;
+  unsigned char _117;
+  signed short _118;
+  unsigned char _119;
+  unsigned char _120;
+  unsigned char _121;
+  unsigned char _122;
+  unsigned char _123;
+  signed short _124;
+  unsigned char _125;
+  unsigned char _126;
+  unsigned char _127;
+  unsigned char _128;
+  unsigned char _129;
+  signed short _130;
+  struct EVP_MD * _131;
+  int _132;
+  int _133;
+  short unsigned int _140;
+  short unsigned int _144;
+  short unsigned int _146;
+  short unsigned int _153;
+  short unsigned int _155;
+  short unsigned int _169;
+  short unsigned int _175;
+  short unsigned int _176;
+
+  <bb 2> [local count: 25379358]:
+  _131 = key_90(D)->shake256_md;
+  _132 = EVP_DigestInit_ex (mdctx_89(D), _131, 0B);
+  if (_132 != 0)
+    goto <bb 3>; [33.00%]
+  else
+    goto <bb 6>; [67.00%]
+
+  <bb 3> [local count: 8375188]:
+  _133 = single_keccak (&randbuf, 192, in_88(D), 33, mdctx_89(D));
+  if (_133 == 0)
+    goto <bb 6>; [0.00%]
+  else
+    goto <bb 4>; [100.00%]
+
+  <bb 4> [local count: 8375188]:
+  curr_84 = &out_83(D)->c;
+
+  <bb 5> [local count: 1073741824]:
+  # curr_78 = PHI <curr_84(4), curr_107(5)>
+  # r_79 = PHI <&randbuf(4), r_94(5)>
+  b1_92 = MEM[(uint8_t *)r_79];
+  b2_93 = MEM[(uint8_t *)r_79 + 1B];
+  r_94 = r_79 + 3;
+  b3_95 = MEM[(uint8_t *)r_94 + -1B];
+  _110 = b1_92 & 1;
+  _2 = (short unsigned int) _110;
+  _3 = b1_92 >> 1;
+  _109 = _3 & 1;
+  _4 = (short unsigned int) _109;
+  _6 = b1_92 >> 2;
+  _86 = _6 & 1;
+  _7 = (short unsigned int) _86;
+  _30 = _4 + _7;
+  _169 = _2 + _30;
+  _8 = b1_92 >> 3;
+  _76 = _8 & 1;
+  _9 = (short unsigned int) _76;
+  _10 = b1_92 >> 4;
+  _56 = _10 & 1;
+  _11 = (short unsigned int) _56;
+  _13 = b1_92 >> 5;
+  _37 = _13 & 1;
+  _14 = (short unsigned int) _37;
+  _146 = _9 + _11;
+  _102 = _14 + _146;
+  value_97 = _169 - _102;
+  value.30_16 = (signed short) value_97;
+  _17 = value.30_16 >> 15;
+  _112 = _17 & 3329;
+  _18 = (short unsigned int) _112;
+  _19 = _18 + value_97;
+  MEM[(uint16_t *)curr_78] = _19;
+  _20 = b1_92 >> 6;
+  _113 = _20 & 1;
+  _21 = (short unsigned int) _113;
+  _22 = b1_92 >> 7;
+  _23 = (short unsigned int) _22;
+  _114 = b2_93 & 1;
+  _25 = (short unsigned int) _114;
+  _140 = _23 + _25;
+  _24 = _21 + _140;
+  _26 = b2_93 >> 1;
+  _115 = _26 & 1;
+  _27 = (short unsigned int) _115;
+  _28 = b2_93 >> 2;
+  _116 = _28 & 1;
+  _29 = (short unsigned int) _116;
+  _31 = b2_93 >> 3;
+  _117 = _31 & 1;
+  _32 = (short unsigned int) _117;
+  _144 = _27 + _29;
+  _43 = _32 + _144;
+  value_100 = _24 - _43;
+  value.32_34 = (signed short) value_100;
+  _35 = value.32_34 >> 15;
+  _118 = _35 & 3329;
+  _36 = (short unsigned int) _118;
+  _38 = _36 + value_100;
+  MEM[(uint16_t *)curr_78 + 2B] = _38;
+  _39 = b2_93 >> 4;
+  _119 = _39 & 1;
+  _40 = (short unsigned int) _119;
+  _41 = b2_93 >> 5;
+  _120 = _41 & 1;
+  _42 = (short unsigned int) _120;
+  _12 = _40 + _42;
+  _44 = b2_93 >> 6;
+  _121 = _44 & 1;
+  _45 = (short unsigned int) _121;
+  _46 = b2_93 >> 7;
+  _47 = (short unsigned int) _46;
+  _122 = b3_95 & 1;
+  _48 = (short unsigned int) _122;
+  _50 = b3_95 >> 1;
+  _123 = _50 & 1;
+  _51 = (short unsigned int) _123;
+  _15 = _45 - _47;
+  _175 = _12 - _48;
+  _176 = _15 - _51;
+  value_103 = _175 + _176;
+  value.34_53 = (signed short) value_103;
+  _54 = value.34_53 >> 15;
+  _124 = _54 & 3329;
+  _55 = (short unsigned int) _124;
+  _57 = _55 + value_103;
+  MEM[(uint16_t *)curr_78 + 4B] = _57;
+  _58 = b3_95 >> 2;
+  _125 = _58 & 1;
+  _59 = (short unsigned int) _125;
+  _60 = b3_95 >> 3;
+  _126 = _60 & 1;
+  _61 = (short unsigned int) _126;
+  _153 = _59 + _61;
+  _63 = b3_95 >> 4;
+  _127 = _63 & 1;
+  _64 = (short unsigned int) _127;
+  _65 = b3_95 >> 5;
+  _128 = _65 & 1;
+  _66 = (short unsigned int) _128;
+  _67 = b3_95 >> 6;
+  _129 = _67 & 1;
+  _68 = (short unsigned int) _129;
+  _70 = b3_95 >> 7;
+  _71 = (short unsigned int) _70;
+  _155 = _64 - _71;
+  _5 = _153 - _66;
+  _96 = _155 - _68;
+  value_106 = _5 + _96;
+  value.36_73 = (signed short) value_106;
+  _74 = value.36_73 >> 15;
+  _130 = _74 & 3329;
+  _75 = (short unsigned int) _130;
+  curr_107 = curr_78 + 8;
+  _77 = _75 + value_106;
+  MEM[(uint16_t *)curr_107 + -2B] = _77;
+  if (&MEM <uint8_t[192]> [(void *)&randbuf + 192B] != r_94)
+    goto <bb 5>; [98.44%]
+  else
+    goto <bb 6>; [1.56%]
+
+  <bb 6> [local count: 25379358]:
+  # _80 = PHI <_133(3), 1(5), _132(2)>
+  randbuf ={v} {CLOBBER(eos)};
+  return _80;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_reset (ossl_ml_kem_key_reset, funcdef_no=602, decl_uid=16849, cgraph_uid=603, symbol_order=611)
+
+Removing basic block 7
+Removing basic block 8
+void ossl_ml_kem_key_reset (struct ML_KEM_KEY * key)
+{
+  struct ossl_ml_kem_scalar_st * _1;
+  struct ossl_ml_kem_scalar_st * _2;
+  const struct ML_KEM_VINFO * _3;
+  int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  struct ossl_ml_kem_scalar_st * _8;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_12(D)->t;
+  if (_1 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _2 = key_12(D)->s;
+  if (_2 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 470269680]:
+  _3 = key_12(D)->vinfo;
+  _4 = _3->rank;
+  _5 = (long unsigned int) _4;
+  _6 = _5 * 512;
+  _7 = _6 + 64;
+  OPENSSL_cleanse (_2, _7);
+
+  <bb 5> [local count: 879501928]:
+  _8 = key_12(D)->t;
+  CRYPTO_free (_8, "ml_kem.c", 1554);
+  key_12(D)->t = 0B;
+  key_12(D)->m = 0B;
+  key_12(D)->s = 0B;
+  key_12(D)->z = 0B;
+  key_12(D)->d = 0B;
+
+  <bb 6> [local count: 1073741824]:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_kem_get_vinfo (ossl_ml_kem_get_vinfo, funcdef_no=603, decl_uid=16824, cgraph_uid=604, symbol_order=612)
+
+Removing basic block 5
+Removing basic block 7
+Removing basic block 8
+const struct ML_KEM_VINFO * ossl_ml_kem_get_vinfo (int evp_type)
+{
+  const struct ML_KEM_VINFO * _1;
+
+  <bb 2> [local count: 1073741824]:
+  if (evp_type_2(D) == 1455)
+    goto <bb 6>; [25.00%]
+  else
+    goto <bb 3>; [75.00%]
+
+  <bb 3> [local count: 805306368]:
+  if (evp_type_2(D) == 1456)
+    goto <bb 6>; [33.33%]
+  else
+    goto <bb 4>; [66.67%]
+
+  <bb 4> [local count: 536870910]:
+  if (evp_type_2(D) == 1454)
+    goto <bb 6>; [50.00%]
+  else
+    goto <bb 5>; [50.00%]
+
+  <bb 5> [local count: 268435455]:
+
+  <bb 6> [local count: 1073741824]:
+  # _1 = PHI <&vinfo_map[0](4), &vinfo_map[1](2), &vinfo_map[2](3), 0B(5)>
+  return _1;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_dup (ossl_ml_kem_key_dup, funcdef_no=605, decl_uid=16854, cgraph_uid=606, symbol_order=614)
+
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+struct ML_KEM_KEY * ossl_ml_kem_key_dup (const struct ML_KEM_KEY * key, int selection)
+{
+  struct ML_KEM_KEY * ret;
+  int ok;
+  uint8_t * _1;
+  struct ossl_ml_kem_scalar_st * _2;
+  uint8_t * _3;
+  struct ossl_ml_kem_scalar_st * _4;
+  struct ossl_ml_kem_scalar_st * _5;
+  int _6;
+  const struct ML_KEM_VINFO * _7;
+  long unsigned int _8;
+  void * _9;
+  uint8_t[64] * _10;
+  uint8_t * _11;
+  const struct ML_KEM_VINFO * _12;
+  long unsigned int _13;
+  void * _14;
+  uint8_t * _15;
+  uint8_t * _16;
+  uint8_t * _17;
+  struct EVP_MD * _18;
+  struct EVP_MD * _19;
+  struct EVP_MD * _20;
+  struct EVP_MD * _21;
+  struct ML_KEM_KEY * _24;
+  int _57;
+  int _58;
+
+  <bb 2> [local count: 1073741820]:
+  _1 = key_29(D)->encoded_dk;
+  if (_1 != 0B)
+    goto <bb 18>; [32.93%]
+  else
+    goto <bb 3>; [67.07%]
+
+  <bb 3> [local count: 720158637]:
+  _2 = key_29(D)->s;
+  if (_2 == 0B)
+    goto <bb 4>; [46.53%]
+  else
+    goto <bb 5>; [53.47%]
+
+  <bb 4> [local count: 335089815]:
+  _3 = key_29(D)->d;
+  if (_3 != 0B)
+    goto <bb 18>; [32.93%]
+  else
+    goto <bb 5>; [67.07%]
+
+  <bb 5> [local count: 609813562]:
+  ret_31 = CRYPTO_memdup (key_29(D), 184, "ml_kem.c", 1624);
+  if (ret_31 == 0B)
+    goto <bb 18>; [8.27%]
+  else
+    goto <bb 6>; [91.73%]
+
+  <bb 6> [local count: 559381981]:
+  ret_31->pkhash = 0B;
+  ret_31->rho = 0B;
+  ret_31->z = 0B;
+  ret_31->d = 0B;
+  ret_31->t = 0B;
+  ret_31->m = 0B;
+  ret_31->s = 0B;
+  _4 = key_29(D)->t;
+  if (_4 == 0B)
+    goto <bb 17>; [17.43%]
+  else
+    goto <bb 7>; [82.57%]
+
+  <bb 7> [local count: 461881702]:
+  _5 = key_29(D)->s;
+  if (_5 == 0B)
+    goto <bb 8>; [30.00%]
+  else
+    goto <bb 9>; [70.00%]
+
+  <bb 8> [local count: 138564509]:
+  _57 = selection_39(D) & 2;
+  goto <bb 10>; [100.00%]
+
+  <bb 9> [local count: 323317194]:
+  _6 = selection_39(D) & 3;
+  if (_6 == 1)
+    goto <bb 13>; [35.71%]
+  else
+    goto <bb 10>; [64.29%]
+
+  <bb 10> [local count: 346411277]:
+  # _58 = PHI <_6(9), _57(8)>
+  if (_58 == 2)
+    goto <bb 12>; [33.33%]
+  else
+    goto <bb 11>; [66.67%]
+
+  <bb 11> [local count: 230940850]:
+  if (_58 == 0)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 16>; [50.00%]
+
+  <bb 12> [local count: 115470426]:
+  _7 = key_29(D)->vinfo;
+  _8 = _7->puballoc;
+  _9 = CRYPTO_memdup (_4, _8, "ml_kem.c", 1640);
+  ok_43 = add_storage (_9, 0, ret_31);
+  _10 = &ret_31->seedbuf;
+  ret_31->rho = _10;
+  _11 = ret_31 + 140;
+  ret_31->pkhash = _11;
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 115470426]:
+  _12 = key_29(D)->vinfo;
+  _13 = _12->prvalloc;
+  _14 = CRYPTO_memdup (_4, _13, "ml_kem.c", 1645);
+  ok_48 = add_storage (_14, 1, ret_31);
+  _15 = key_29(D)->d;
+  if (_15 != 0B)
+    goto <bb 14>; [70.00%]
+  else
+    goto <bb 15>; [30.00%]
+
+  <bb 14> [local count: 80829298]:
+  _16 = ret_31->z;
+  _17 = _16 + 32;
+  ret_31->d = _17;
+
+  <bb 15> [local count: 230940851]:
+  # ok_23 = PHI <ok_48(14), ok_48(13), ok_43(12)>
+  if (ok_23 == 0)
+    goto <bb 16>; [17.38%]
+  else
+    goto <bb 17>; [82.62%]
+
+  <bb 16> [local count: 155607946]:
+  CRYPTO_free (ret_31, "ml_kem.c", 1653);
+  goto <bb 18>; [100.00%]
+
+  <bb 17> [local count: 403774037]:
+  _18 = ret_31->shake128_md;
+  EVP_MD_up_ref (_18);
+  _19 = ret_31->shake256_md;
+  EVP_MD_up_ref (_19);
+  _20 = ret_31->sha3_256_md;
+  EVP_MD_up_ref (_20);
+  _21 = ret_31->sha3_512_md;
+  EVP_MD_up_ref (_21);
+
+  <bb 18> [local count: 1073741824]:
+  # _24 = PHI <_2(4), ret_31(5), _1(16), ret_31(17), 0B(2)>
+  return _24;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_free (ossl_ml_kem_key_free, funcdef_no=606, decl_uid=16851, cgraph_uid=607, symbol_order=615)
+
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+void ossl_ml_kem_key_free (struct ML_KEM_KEY * key)
+{
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+  struct EVP_MD * _3;
+  struct EVP_MD * _4;
+  uint8_t * _5;
+  struct ossl_ml_kem_scalar_st * _6;
+  uint8_t * _7;
+  uint8_t[64] * _8;
+  uint8_t * _9;
+  const struct ML_KEM_VINFO * _10;
+  long unsigned int _11;
+  uint8_t * _12;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_15(D) == 0B)
+    goto <bb 9>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418728]:
+  _1 = key_15(D)->shake128_md;
+  EVP_MD_free (_1);
+  _2 = key_15(D)->shake256_md;
+  EVP_MD_free (_2);
+  _3 = key_15(D)->sha3_256_md;
+  EVP_MD_free (_3);
+  _4 = key_15(D)->sha3_512_md;
+  EVP_MD_free (_4);
+  _5 = key_15(D)->encoded_dk;
+  if (_5 != 0B)
+    goto <bb 6>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 4> [local count: 344982135]:
+  _6 = key_15(D)->s;
+  if (_6 == 0B)
+    goto <bb 5>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 5> [local count: 103494640]:
+  _7 = key_15(D)->d;
+  if (_7 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 6> [local count: 468882841]:
+  _8 = &key_15(D)->seedbuf;
+  OPENSSL_cleanse (_8, 64);
+  _9 = key_15(D)->encoded_dk;
+  if (_9 != 0B)
+    goto <bb 7>; [53.47%]
+  else
+    goto <bb 8>; [46.53%]
+
+  <bb 7> [local count: 250711655]:
+  _10 = key_15(D)->vinfo;
+  _11 = _10->prvkey_bytes;
+  OPENSSL_cleanse (_9, _11);
+  _12 = key_15(D)->encoded_dk;
+  CRYPTO_free (_12, "ml_kem.c", 1679);
+
+  <bb 8> [local count: 741418728]:
+  ossl_ml_kem_key_reset (key_15(D));
+  CRYPTO_free (key_15(D), "ml_kem.c", 1683);
+
+  <bb 9> [local count: 1073741824]:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_new (ossl_ml_kem_key_new, funcdef_no=604, decl_uid=16847, cgraph_uid=605, symbol_order=613)
+
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+struct ML_KEM_KEY * ossl_ml_kem_key_new (struct OSSL_LIB_CTX * libctx, const char * properties, int evp_type)
+{
+  struct ML_KEM_KEY * key;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+  struct EVP_MD * _3;
+  struct EVP_MD * _4;
+  struct EVP_MD * _5;
+  struct EVP_MD * _6;
+  struct EVP_MD * _7;
+  struct ML_KEM_KEY * _8;
+  _Bool _37;
+  _Bool _38;
+  _Bool _39;
+
+  <bb 2> [local count: 1073741822]:
+  vinfo_12 = ossl_ml_kem_get_vinfo (evp_type_11(D));
+  if (vinfo_12 == 0B)
+    goto <bb 8>; [15.47%]
+  else
+    goto <bb 3>; [84.53%]
+
+  <bb 3> [local count: 907633958]:
+  key_14 = CRYPTO_malloc (184, "ml_kem.c", 1588);
+  if (key_14 == 0B)
+    goto <bb 8>; [15.47%]
+  else
+    goto <bb 4>; [84.53%]
+
+  <bb 4> [local count: 767222982]:
+  key_14->vinfo = vinfo_12;
+  key_14->libctx = libctx_16(D);
+  key_14->prov_flags = 13;
+  _1 = EVP_MD_fetch (libctx_16(D), "SHAKE128", properties_19(D));
+  key_14->shake128_md = _1;
+  _2 = EVP_MD_fetch (libctx_16(D), "SHAKE256", properties_19(D));
+  key_14->shake256_md = _2;
+  _3 = EVP_MD_fetch (libctx_16(D), "SHA3-256", properties_19(D));
+  key_14->sha3_256_md = _3;
+  _4 = EVP_MD_fetch (libctx_16(D), "SHA3-512", properties_19(D));
+  key_14->sha3_512_md = _4;
+  key_14->encoded_dk = 0B;
+  key_14->pkhash = 0B;
+  key_14->rho = 0B;
+  key_14->z = 0B;
+  key_14->d = 0B;
+  key_14->t = 0B;
+  key_14->m = 0B;
+  key_14->s = 0B;
+  _5 = key_14->shake128_md;
+  if (_5 != 0B)
+    goto <bb 5>; [92.06%]
+  else
+    goto <bb 7>; [7.94%]
+
+  <bb 5> [local count: 706305475]:
+  _6 = key_14->shake256_md;
+  if (_6 != 0B)
+    goto <bb 6>; [85.10%]
+  else
+    goto <bb 7>; [14.90%]
+
+  <bb 6> [local count: 601065962]:
+  _7 = key_14->sha3_256_md;
+  _37 = _4 != 0B;
+  _38 = _7 != 0B;
+  _39 = _37 & _38;
+  if (_39 != 0)
+    goto <bb 8>; [63.52%]
+  else
+    goto <bb 7>; [36.48%]
+
+  <bb 7> [local count: 385434058]:
+  ossl_ml_kem_key_free (key_14);
+
+  <bb 8> [local count: 1073741824]:
+  # _8 = PHI <vinfo_12(2), key_14(3), key_14(6), 0B(7)>
+  return _8;
+
+}
+
+
+
+;; Function ossl_ml_kem_encode_public_key (ossl_ml_kem_encode_public_key, funcdef_no=607, decl_uid=16874, cgraph_uid=608, symbol_order=616)
+
+Removing basic block 6
+Removing basic block 7
+int ossl_ml_kem_encode_public_key (uint8_t * out, size_t len, const struct ML_KEM_KEY * key)
+{
+  struct ossl_ml_kem_scalar_st * _1;
+  const struct ML_KEM_VINFO * _2;
+  long unsigned int _3;
+  int _4;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_7(D)->t;
+  if (_1 == 0B)
+    goto <bb 5>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _2 = key_7(D)->vinfo;
+  _3 = _2->pubkey_bytes;
+  if (_3 != len_8(D))
+    goto <bb 5>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 4> [local count: 290235635]:
+  encode_pubkey (out_9(D), key_7(D));
+
+  <bb 5> [local count: 1073741824]:
+  # _4 = PHI <0(3), 1(4), 0(2)>
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_kem_encode_private_key (ossl_ml_kem_encode_private_key, funcdef_no=608, decl_uid=16878, cgraph_uid=609, symbol_order=617)
+
+Removing basic block 9
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+int ossl_ml_kem_encode_private_key (uint8_t * out, size_t len, const struct ML_KEM_KEY * key)
+{
+  const struct scalar * a;
+  uint8_t * out;
+  uint8_t * out;
+  struct ossl_ml_kem_scalar_st * _1;
+  const struct ML_KEM_VINFO * _2;
+  long unsigned int _3;
+  int _4;
+  sizetype _12;
+  int _13;
+  long unsigned int _14;
+  long unsigned int _16;
+  uint8_t * _18;
+  sizetype _19;
+  uint8_t * _21;
+  uint8_t * _22;
+  unsigned int _29;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_7(D)->s;
+  if (_1 == 0B)
+    goto <bb 8>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _2 = key_7(D)->vinfo;
+  _3 = _2->prvkey_bytes;
+  if (_3 != len_8(D))
+    goto <bb 8>; [67.00%]
+  else
+    goto <bb 4>; [33.00%]
+
+  <bb 4> [local count: 290235635]:
+  _13 = _2->rank;
+  if (_13 > 0)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 5> [local count: 258309715]:
+  _29 = (unsigned int) _13;
+  _12 = (sizetype) _29;
+  _19 = _12 * 384;
+  _22 = out_9(D) + _19;
+
+  <bb 6> [local count: 2348270152]:
+  # a_27 = PHI <a_25(6), _1(5)>
+  # out_10 = PHI <out_28(6), out_9(D)(5)>
+  a_25 = a_27 + 512;
+  scalar_encode (out_10, a_27, 12);
+  out_28 = out_10 + 384;
+  if (_22 != out_28)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 290235635]:
+  _14 = _2->vector_bytes;
+  out_15 = out_9(D) + _14;
+  encode_pubkey (out_15, key_7(D));
+  _16 = _2->pubkey_bytes;
+  out_17 = out_15 + _16;
+  _18 = key_7(D)->pkhash;
+  __builtin_memcpy (out_17, _18, 32);
+  out_20 = out_17 + 32;
+  _21 = key_7(D)->z;
+  __builtin_memcpy (out_20, _21, 32);
+
+  <bb 8> [local count: 1073741824]:
+  # _4 = PHI <0(3), 1(7), 0(2)>
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_kem_encode_seed (ossl_ml_kem_encode_seed, funcdef_no=609, decl_uid=16882, cgraph_uid=610, symbol_order=618)
+
+Removing basic block 6
+Removing basic block 7
+int ossl_ml_kem_encode_seed (uint8_t * out, size_t len, const struct ML_KEM_KEY * key)
+{
+  uint8_t * _1;
+  uint8_t * _2;
+  int _3;
+  _Bool _10;
+  _Bool _11;
+  _Bool _14;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_5(D) == 0B)
+    goto <bb 5>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _1 = key_5(D)->d;
+  _11 = len_7(D) != 64;
+  _10 = _1 == 0B;
+  _14 = _10 | _11;
+  if (_14 != 0)
+    goto <bb 5>; [72.97%]
+  else
+    goto <bb 4>; [27.03%]
+
+  <bb 4> [local count: 237732008]:
+  __builtin_memcpy (out_8(D), _1, 32);
+  out_9 = out_8(D) + 32;
+  _2 = key_5(D)->z;
+  __builtin_memcpy (out_9, _2, 32);
+
+  <bb 5> [local count: 1073741824]:
+  # _3 = PHI <0(3), 1(4), 0(2)>
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_kem_set_seed (ossl_ml_kem_set_seed, funcdef_no=610, decl_uid=16866, cgraph_uid=611, symbol_order=619)
+
+Removing basic block 7
+Removing basic block 8
+Removing basic block 9
+struct ML_KEM_KEY * ossl_ml_kem_set_seed (const uint8_t * seed, size_t seedlen, struct ML_KEM_KEY * key)
+{
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  uint8_t[64] * _3;
+  uint8_t * _4;
+  _Bool _5;
+  struct ML_KEM_KEY * _6;
+  _Bool _15;
+  _Bool _16;
+
+  <bb 2> [local count: 1073741822]:
+  if (key_8(D) == 0B)
+    goto <bb 6>; [8.27%]
+  else
+    goto <bb 3>; [91.73%]
+
+  <bb 3> [local count: 984943374]:
+  _1 = key_8(D)->t;
+  if (_1 != 0B)
+    goto <bb 6>; [32.93%]
+  else
+    goto <bb 4>; [67.07%]
+
+  <bb 4> [local count: 660601520]:
+  _2 = key_8(D)->d;
+  _16 = seedlen_10(D) != 64;
+  _15 = _2 != 0B;
+  _5 = _15 | _16;
+  if (_5 != 0)
+    goto <bb 6>; [63.33%]
+  else
+    goto <bb 5>; [36.67%]
+
+  <bb 5> [local count: 242223876]:
+  _3 = &key_8(D)->seedbuf;
+  key_8(D)->z = _3;
+  _4 = key_8(D) + 140;
+  key_8(D)->d = _4;
+  __builtin_memcpy (_4, seed_13(D), 32);
+  seed_14 = seed_13(D) + 32;
+  __builtin_memcpy (_3, seed_14, 32);
+
+  <bb 6> [local count: 1073741824]:
+  # _6 = PHI <0B(3), key_8(D)(5), key_8(D)(2), _1(4)>
+  return _6;
+
+}
+
+
+
+;; Function ossl_ml_kem_parse_public_key (ossl_ml_kem_parse_public_key, funcdef_no=611, decl_uid=16858, cgraph_uid=612, symbol_order=620)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+int ossl_ml_kem_parse_public_key (const uint8_t * in, size_t len, struct ML_KEM_KEY * key)
+{
+  int ret;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD_CTX * mdctx;
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  void * _5;
+  int _6;
+  int _7;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_13(D) == 0B)
+    goto <bb 11>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _1 = key_13(D)->t;
+  if (_1 != 0B)
+    goto <bb 11>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 4> [local count: 399381824]:
+  _2 = key_13(D)->encoded_dk;
+  if (_2 != 0B)
+    goto <bb 11>; [54.59%]
+  else
+    goto <bb 5>; [45.41%]
+
+  <bb 5> [local count: 181359285]:
+  vinfo_15 = key_13(D)->vinfo;
+  _3 = vinfo_15->pubkey_bytes;
+  if (_3 != len_16(D))
+    goto <bb 11>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 6> [local count: 59848564]:
+  mdctx_18 = EVP_MD_CTX_new ();
+  if (mdctx_18 == 0B)
+    goto <bb 11>; [30.95%]
+  else
+    goto <bb 7>; [69.05%]
+
+  <bb 7> [local count: 41325433]:
+  _4 = vinfo_15->puballoc;
+  _5 = CRYPTO_malloc (_4, "ml_kem.c", 1765);
+  _6 = add_storage (_5, 0, key_13(D));
+  if (_6 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 8> [local count: 20662717]:
+  ret_23 = parse_pubkey (in_21(D), mdctx_18, key_13(D));
+  if (ret_23 == 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 10>; [50.00%]
+
+  <bb 9> [local count: 30994075]:
+  ossl_ml_kem_key_reset (key_13(D));
+
+  <bb 10> [local count: 41325433]:
+  # ret_12 = PHI <ret_23(8), 0(9)>
+  EVP_MD_CTX_free (mdctx_18);
+
+  <bb 11> [local count: 1073741824]:
+  # _7 = PHI <0(3), 0(6), ret_12(10), 0(2), 0(4), 0(5)>
+  return _7;
+
+}
+
+
+
+;; Function ossl_ml_kem_parse_private_key (ossl_ml_kem_parse_private_key, funcdef_no=612, decl_uid=16862, cgraph_uid=613, symbol_order=621)
+
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+int ossl_ml_kem_parse_private_key (const uint8_t * in, size_t len, struct ML_KEM_KEY * key)
+{
+  const uint8_t * in;
+  struct scalar * out;
+  const struct ML_KEM_VINFO * vinfo;
+  const uint8_t * in;
+  int ret;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD_CTX * mdctx;
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  void * _5;
+  int _6;
+  int _7;
+  struct ossl_ml_kem_scalar_st * _28;
+  int _29;
+  unsigned int _30;
+  long unsigned int _31;
+  int _33;
+  long unsigned int _34;
+  uint8_t * _36;
+  int _37;
+  uint8_t * _39;
+  const uint8_t * _41;
+  sizetype _44;
+  int _45;
+  sizetype _50;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_13(D) == 0B)
+    goto <bb 17>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _1 = key_13(D)->t;
+  if (_1 != 0B)
+    goto <bb 17>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 4> [local count: 399381824]:
+  _2 = key_13(D)->encoded_dk;
+  if (_2 != 0B)
+    goto <bb 17>; [54.59%]
+  else
+    goto <bb 5>; [45.41%]
+
+  <bb 5> [local count: 181359285]:
+  vinfo_15 = key_13(D)->vinfo;
+  _3 = vinfo_15->prvkey_bytes;
+  if (_3 != len_16(D))
+    goto <bb 17>; [67.00%]
+  else
+    goto <bb 6>; [33.00%]
+
+  <bb 6> [local count: 59848564]:
+  mdctx_18 = EVP_MD_CTX_new ();
+  if (mdctx_18 == 0B)
+    goto <bb 17>; [30.95%]
+  else
+    goto <bb 7>; [69.05%]
+
+  <bb 7> [local count: 41325433]:
+  _4 = vinfo_15->prvalloc;
+  _5 = CRYPTO_malloc (_4, "ml_kem.c", 1793);
+  _6 = add_storage (_5, 1, key_13(D));
+  if (_6 != 0)
+    goto <bb 8>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 8> [local count: 20662717]:
+  vinfo_27 = key_13(D)->vinfo;
+  _28 = key_13(D)->s;
+  _29 = vinfo_27->rank;
+  if (_29 > 0)
+    goto <bb 9>; [94.50%]
+  else
+    goto <bb 12>; [5.50%]
+
+  <bb 9> [local count: 19526268]:
+  _30 = (unsigned int) _29;
+  _44 = (sizetype) _30;
+  _50 = _44 * 384;
+  _41 = in_21(D) + _50;
+
+  <bb 10> [local count: 182531132]:
+  # out_23 = PHI <out_43(11), _28(9)>
+  # in_22 = PHI <in_46(11), in_21(D)(9)>
+  out_43 = out_23 + 512;
+  _45 = scalar_decode_12 (out_23, in_22);
+  if (_45 == 0)
+    goto <bb 18>; [5.50%]
+  else
+    goto <bb 11>; [94.50%]
+
+  <bb 11> [local count: 172491920]:
+  in_46 = in_22 + 384;
+  if (_41 != in_46)
+    goto <bb 10>; [94.50%]
+  else
+    goto <bb 12>; [5.50%]
+
+  <bb 12> [local count: 10099936]:
+  _31 = vinfo_27->vector_bytes;
+  in_32 = in_21(D) + _31;
+  _33 = parse_pubkey (in_32, mdctx_18, key_13(D));
+  if (_33 == 0)
+    goto <bb 18>; [34.00%]
+  else
+    goto <bb 13>; [66.00%]
+
+  <bb 13> [local count: 6665958]:
+  _34 = vinfo_27->pubkey_bytes;
+  in_35 = in_32 + _34;
+  _36 = key_13(D)->pkhash;
+  _37 = memcmp (_36, in_35, 32);
+  if (_37 != 0)
+    goto <bb 18>; [51.12%]
+  else
+    goto <bb 14>; [48.88%]
+
+  <bb 14> [local count: 3258320]:
+  in_38 = in_35 + 32;
+  _39 = key_13(D)->z;
+  __builtin_memcpy (_39, in_38, 32);
+  goto <bb 16>; [100.00%]
+
+  <bb 15> [local count: 30994075]:
+  ossl_ml_kem_key_reset (key_13(D));
+
+  <bb 16> [local count: 41325433]:
+  # ret_12 = PHI <1(14), 0(15)>
+  EVP_MD_CTX_free (mdctx_18);
+
+  <bb 17> [local count: 1073741824]:
+  # _7 = PHI <0(3), 0(6), ret_12(16), 0(2), 0(4), 0(5)>
+  return _7;
+
+  <bb 18> [local count: 10331358]:
+  goto <bb 15>; [100.00%]
+
+}
+
+
+
+;; Function ossl_ml_kem_genkey (ossl_ml_kem_genkey, funcdef_no=613, decl_uid=16870, cgraph_uid=614, symbol_order=622)
+
+Removing basic block 14
+Removing basic block 50
+Removing basic block 51
+Removing basic block 52
+Removing basic block 53
+Removing basic block 54
+Removing basic block 55
+Removing basic block 56
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+Removing basic block 61
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+Removing basic block 74
+Removing basic block 75
+Removing basic block 76
+Removing basic block 77
+Removing basic block 78
+Removing basic block 79
+Removing basic block 80
+int ossl_ml_kem_genkey (uint8_t * pubenc, size_t publen, struct ML_KEM_KEY * key)
+{
+  unsigned long ivtmp.671;
+  const struct ML_KEM_VINFO * vinfo;
+  const struct scalar * t;
+  const struct scalar * end;
+  unsigned int sz;
+  uint8_t buf[384];
+  uint16_t * curr;
+  const uint16_t * lc;
+  const uint16_t * rc;
+  const uint16_t * roots;
+  uint32_t l0;
+  uint32_t r0;
+  uint32_t l1;
+  uint32_t r1;
+  uint32_t zetapow;
+  uint16_t * curr;
+  uint16_t * end;
+  const uint16_t * lc;
+  const uint16_t * rc;
+  const uint16_t * roots;
+  uint32_t l0;
+  uint32_t r0;
+  uint32_t l1;
+  uint32_t r1;
+  uint32_t zetapow;
+  const struct scalar * mc;
+  const struct scalar * mr;
+  const struct scalar * ar;
+  struct scalar * out;
+  uint8_t hashed[64];
+  uint8_t augmented_seed[33];
+  const struct ML_KEM_VINFO * vinfo;
+  int rank;
+  uint8_t counter;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD_CTX * mdctx;
+  uint8_t seed[64];
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  long unsigned int _3;
+  uint8_t * _4;
+  int _5;
+  struct OSSL_LIB_CTX * _6;
+  int _7;
+  unsigned int _8;
+  int _9;
+  long unsigned int _10;
+  void * _11;
+  int _12;
+  sizetype _13;
+  int _14;
+  sizetype _16;
+  int _38;
+  unsigned char _40;
+  int _41;
+  uint8_t * _42;
+  int _44;
+  struct ossl_ml_kem_scalar_st * _45;
+  int (*<T22ba>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.20_46;
+  int _47;
+  struct ossl_ml_kem_scalar_st * _48;
+  int _49;
+  struct ossl_ml_kem_scalar_st * _50;
+  struct ossl_ml_kem_scalar_st * _51;
+  struct ossl_ml_kem_scalar_st * _52;
+  uint8_t * _53;
+  unsigned int _54;
+  uint8_t * _55;
+  long unsigned int _56;
+  uint8_t * _58;
+  unsigned int _60;
+  uint8_t * _61;
+  uint8_t * _62;
+  int _63;
+  int _64;
+  long unsigned int _70;
+  long unsigned int _71;
+  unsigned int _79;
+  short unsigned int _86;
+  short unsigned int _89;
+  short unsigned int _92;
+  short unsigned int _95;
+  short unsigned int _101;
+  short unsigned int _103;
+  unsigned int _104;
+  unsigned int _105;
+  short unsigned int _106;
+  unsigned int _107;
+  unsigned int _108;
+  unsigned int _109;
+  unsigned int _111;
+  short unsigned int _112;
+  short unsigned int _113;
+  unsigned int _114;
+  unsigned int _115;
+  unsigned int _116;
+  unsigned int _117;
+  unsigned int _118;
+  short unsigned int _119;
+  short unsigned int _125;
+  short unsigned int _128;
+  short unsigned int _131;
+  short unsigned int _134;
+  short unsigned int _140;
+  short unsigned int _142;
+  unsigned int _143;
+  unsigned int _144;
+  short unsigned int _145;
+  unsigned int _146;
+  unsigned int _147;
+  unsigned int _148;
+  unsigned int _150;
+  short unsigned int _151;
+  short unsigned int _152;
+  unsigned int _153;
+  unsigned int _154;
+  unsigned int _155;
+  unsigned int _156;
+  unsigned int _157;
+  short unsigned int _158;
+  int _161;
+  long unsigned int _162;
+  long unsigned int _163;
+  struct EVP_MD * _165;
+  int _166;
+  int _169;
+  uint8_t * _170;
+  int _171;
+  int _172;
+  unsigned int sz.56_173;
+  struct EVP_MD * _175;
+  int _176;
+  int _177;
+  unsigned int _182;
+  struct ossl_ml_kem_scalar_st * _233;
+  sizetype _234;
+  sizetype _237;
+  sizetype _238;
+  struct ossl_ml_kem_scalar_st * _239;
+
+  <bb 2> [local count: 1073741822]:
+  if (key_18(D) == 0B)
+    goto <bb 44>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501926]:
+  _1 = key_18(D)->t;
+  if (_1 != 0B)
+    goto <bb 44>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 4> [local count: 399381823]:
+  _2 = key_18(D)->encoded_dk;
+  if (_2 != 0B)
+    goto <bb 44>; [54.59%]
+  else
+    goto <bb 5>; [45.41%]
+
+  <bb 5> [local count: 181359285]:
+  vinfo_20 = key_18(D)->vinfo;
+  if (pubenc_21(D) != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 126951500]:
+  _3 = vinfo_20->pubkey_bytes;
+  if (_3 != publen_22(D))
+    goto <bb 44>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 117883535]:
+  _4 = key_18(D)->d;
+  if (_4 != 0B)
+    goto <bb 8>; [70.00%]
+  else
+    goto <bb 10>; [30.00%]
+
+  <bb 8> [local count: 82518475]:
+  _5 = ossl_ml_kem_encode_seed (&seed, 64, key_18(D));
+  if (_5 == 0)
+    goto <bb 44>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 9> [local count: 54462193]:
+  key_18(D)->z = 0B;
+  key_18(D)->d = 0B;
+  goto <bb 11>; [100.00%]
+
+  <bb 10> [local count: 35365060]:
+  _6 = key_18(D)->libctx;
+  _7 = vinfo_20->secbits;
+  _8 = (unsigned int) _7;
+  _9 = RAND_priv_bytes_ex (_6, &seed, 64, _8);
+  if (_9 <= 0)
+    goto <bb 44>; [26.36%]
+  else
+    goto <bb 11>; [73.64%]
+
+  <bb 11> [local count: 80505024]:
+  mdctx_28 = EVP_MD_CTX_new ();
+  if (mdctx_28 == 0B)
+    goto <bb 44>; [30.95%]
+  else
+    goto <bb 12>; [69.05%]
+
+  <bb 12> [local count: 55588719]:
+  _10 = vinfo_20->prvalloc;
+  _11 = CRYPTO_malloc (_10, "ml_kem.c", 1840);
+  _12 = add_storage (_11, 1, key_18(D));
+  if (_12 != 0)
+    goto <bb 13>; [33.00%]
+  else
+    goto <bb 45>; [67.00%]
+
+  <bb 13> [local count: 18344277]:
+  vinfo_37 = key_18(D)->vinfo;
+  _38 = vinfo_37->evp_type;
+  if (_38 == 1454)
+    goto <bb 14>; [34.00%]
+  else
+    goto <bb 15>; [66.00%]
+
+  <bb 14> [local count: 6237054]:
+
+  <bb 15> [local count: 18344277]:
+  # iftmp.20_46 = PHI <cbd_3(14), cbd_2(13)>
+  rank_39 = vinfo_37->rank;
+  counter = 0;
+  __builtin_memcpy (&augmented_seed, &seed, 32);
+  _40 = (unsigned char) rank_39;
+  augmented_seed[32] = _40;
+  _41 = hash_g (&hashed, &augmented_seed, 33, mdctx_28, key_18(D));
+  if (_41 == 0)
+    goto <bb 48>; [51.12%]
+  else
+    goto <bb 16>; [48.88%]
+
+  <bb 16> [local count: 8966683]:
+  _42 = key_18(D)->rho;
+  __builtin_memcpy (_42, &hashed, 32);
+  _44 = matrix_expand (mdctx_28, key_18(D));
+  if (_44 == 0)
+    goto <bb 48>; [51.12%]
+  else
+    goto <bb 17>; [48.88%]
+
+  <bb 17> [local count: 4382914]:
+  _45 = key_18(D)->s;
+  _47 = gencbd_vector_ntt (_45, iftmp.20_46, &counter, &MEM <uint8_t[64]> [(void *)&hashed + 32B], rank_39, mdctx_28, key_18(D));
+  if (_47 == 0)
+    goto <bb 48>; [51.12%]
+  else
+    goto <bb 18>; [48.88%]
+
+  <bb 18> [local count: 2142369]:
+  _48 = key_18(D)->t;
+  _49 = gencbd_vector_ntt (_48, iftmp.20_46, &counter, &MEM <uint8_t[64]> [(void *)&hashed + 32B], rank_39, mdctx_28, key_18(D));
+  if (_49 == 0)
+    goto <bb 48>; [51.12%]
+  else
+    goto <bb 19>; [48.88%]
+
+  <bb 19> [local count: 1047190]:
+  _50 = key_18(D)->t;
+  _51 = key_18(D)->m;
+  _52 = key_18(D)->s;
+  if (rank_39 > 0)
+    goto <bb 20>; [89.00%]
+  else
+    goto <bb 28>; [11.00%]
+
+  <bb 20> [local count: 931999]:
+  _70 = (long unsigned int) rank_39;
+  _71 = _70 * 512;
+  ivtmp.671_174 = (unsigned long) _51;
+  _182 = (unsigned int) rank_39;
+  _237 = (sizetype) _182;
+  _238 = _237 * 512;
+  _239 = _50 + _238;
+  _54 = _182 + 4294967294;
+  _16 = (sizetype) _54;
+  _13 = _16 + 1;
+  _234 = _13 * 512;
+  _233 = _52 + _234;
+
+  <bb 21> [local count: 8472719]:
+  # out_32 = PHI <end_82(27), _50(20)>
+  # ivtmp.671_187 = PHI <ivtmp.671_178(27), ivtmp.671_174(20)>
+  mc_225 = (const struct scalar *) ivtmp.671_187;
+  end_82 = out_32 + 512;
+  rc_84 = &MEM[(const struct scalar *)_52].c;
+
+  <bb 22> [local count: 847272077]:
+  # curr_97 = PHI <out_32(21), curr_98(22)>
+  # lc_85 = PHI <mc_225(21), lc_91(22)>
+  # rc_88 = PHI <rc_84(21), rc_94(22)>
+  # roots_99 = PHI <&kModRoots(21), roots_100(22)>
+  _86 = MEM[(const uint16_t *)lc_85];
+  l0_87 = (uint32_t) _86;
+  _89 = MEM[(const uint16_t *)rc_88];
+  r0_90 = (uint32_t) _89;
+  lc_91 = lc_85 + 4;
+  _92 = MEM[(const uint16_t *)lc_91 + -2B];
+  l1_93 = (uint32_t) _92;
+  rc_94 = rc_88 + 4;
+  _95 = MEM[(const uint16_t *)rc_94 + -2B];
+  r1_96 = (uint32_t) _95;
+  curr_98 = curr_97 + 4;
+  roots_100 = roots_99 + 2;
+  _101 = MEM[(const uint16_t *)roots_100 + -2B];
+  zetapow_102 = (uint32_t) _101;
+  _103 = MEM[(uint16_t *)curr_98 + -4B];
+  _104 = (unsigned int) _103;
+  _105 = l1_93 * r1_96;
+  _106 = reduce (_105);
+  _107 = (unsigned int) _106;
+  _108 = zetapow_102 * _107;
+  _109 = l0_87 * r0_90;
+  _79 = _104 + _108;
+  _111 = _79 + _109;
+  _112 = reduce (_111);
+  MEM[(uint16_t *)curr_98 + -4B] = _112;
+  _113 = MEM[(uint16_t *)curr_98 + -2B];
+  _114 = (unsigned int) _113;
+  _115 = r0_90 * l1_93;
+  _116 = l0_87 * r1_96;
+  _117 = _115 + _116;
+  _118 = _114 + _117;
+  _119 = reduce (_118);
+  MEM[(uint16_t *)curr_98 + -2B] = _119;
+  if (roots_100 != &MEM <const uint16_t[128]> [(void *)&kModRoots + 256B])
+    goto <bb 22>; [99.00%]
+  else
+    goto <bb 23>; [1.00%]
+
+  <bb 23> [local count: 8472719]:
+  if (rank_39 > 1)
+    goto <bb 24>; [89.00%]
+  else
+    goto <bb 27>; [11.00%]
+
+  <bb 24> [local count: 68552000]:
+  # mr_59 = PHI <mr_73(26), mc_225(23)>
+  # ar_31 = PHI <ar_75(26), _52(23)>
+  mr_73 = mr_59 + _71;
+  ar_75 = ar_31 + 512;
+
+  <bb 25> [local count: 6855201430]:
+  # curr_136 = PHI <out_32(24), curr_137(25)>
+  # lc_124 = PHI <mr_73(24), lc_130(25)>
+  # rc_127 = PHI <ar_75(24), rc_133(25)>
+  # roots_138 = PHI <&kModRoots(24), roots_139(25)>
+  _125 = MEM[(const uint16_t *)lc_124];
+  l0_126 = (uint32_t) _125;
+  _128 = MEM[(const uint16_t *)rc_127];
+  r0_129 = (uint32_t) _128;
+  lc_130 = lc_124 + 4;
+  _131 = MEM[(const uint16_t *)lc_130 + -2B];
+  l1_132 = (uint32_t) _131;
+  rc_133 = rc_127 + 4;
+  _134 = MEM[(const uint16_t *)rc_133 + -2B];
+  r1_135 = (uint32_t) _134;
+  curr_137 = curr_136 + 4;
+  roots_139 = roots_138 + 2;
+  _140 = MEM[(const uint16_t *)roots_139 + -2B];
+  zetapow_141 = (uint32_t) _140;
+  _142 = MEM[(uint16_t *)curr_137 + -4B];
+  _143 = (unsigned int) _142;
+  _144 = l1_132 * r1_135;
+  _145 = reduce (_144);
+  _146 = (unsigned int) _145;
+  _147 = zetapow_141 * _146;
+  _148 = l0_126 * r0_129;
+  _60 = _143 + _147;
+  _150 = _60 + _148;
+  _151 = reduce (_150);
+  MEM[(uint16_t *)curr_137 + -4B] = _151;
+  _152 = MEM[(uint16_t *)curr_137 + -2B];
+  _153 = (unsigned int) _152;
+  _154 = r0_129 * l1_132;
+  _155 = l0_126 * r1_135;
+  _156 = _154 + _155;
+  _157 = _153 + _156;
+  _158 = reduce (_157);
+  MEM[(uint16_t *)curr_137 + -2B] = _158;
+  if (roots_139 != &MEM <const uint16_t[128]> [(void *)&kModRoots + 256B])
+    goto <bb 25>; [99.00%]
+  else
+    goto <bb 26>; [1.00%]
+
+  <bb 26> [local count: 68552000]:
+  if (ar_75 != _233)
+    goto <bb 24>; [89.00%]
+  else
+    goto <bb 27>; [11.00%]
+
+  <bb 27> [local count: 8472719]:
+  ivtmp.671_178 = ivtmp.671_187 + 512;
+  if (end_82 != _239)
+    goto <bb 21>; [89.00%]
+  else
+    goto <bb 28>; [11.00%]
+
+  <bb 28> [local count: 1047190]:
+  if (pubenc_21(D) == 0B)
+    goto <bb 29>; [30.00%]
+  else
+    goto <bb 38>; [70.00%]
+
+  <bb 29> [local count: 314157]:
+  _53 = key_18(D)->pkhash;
+  vinfo_159 = key_18(D)->vinfo;
+  t_160 = key_18(D)->t;
+  _161 = vinfo_159->rank;
+  _165 = key_18(D)->sha3_256_md;
+  _166 = EVP_DigestInit_ex (mdctx_28, _165, 0B);
+  if (_166 == 0)
+    goto <bb 46>; [34.00%]
+  else
+    goto <bb 30>; [66.00%]
+
+  <bb 30> [local count: 207344]:
+  _162 = (long unsigned int) _161;
+  _163 = _162 * 512;
+  end_164 = t_160 + _163;
+
+  <bb 31> [local count: 1938244]:
+  # t_167 = PHI <t_160(30), t_168(33)>
+  t_168 = t_167 + 512;
+  scalar_encode (&buf, t_167, 12);
+  _169 = EVP_DigestUpdate (mdctx_28, &buf, 384);
+  if (_169 == 0)
+    goto <bb 32>; [5.50%]
+  else
+    goto <bb 33>; [94.50%]
+
+  <bb 32> [local count: 106603]:
+  buf ={v} {CLOBBER(eos)};
+  goto <bb 46>; [100.00%]
+
+  <bb 33> [local count: 1831640]:
+  buf ={v} {CLOBBER(eos)};
+  if (end_164 > t_168)
+    goto <bb 31>; [94.50%]
+  else
+    goto <bb 34>; [5.50%]
+
+  <bb 34> [local count: 100740]:
+  _170 = key_18(D)->rho;
+  _171 = EVP_DigestUpdate (mdctx_28, _170, 32);
+  if (_171 == 0)
+    goto <bb 46>; [51.12%]
+  else
+    goto <bb 35>; [48.88%]
+
+  <bb 35> [local count: 49242]:
+  _172 = EVP_DigestFinal_ex (mdctx_28, _53, &sz);
+  if (_172 != 0)
+    goto <bb 36>; [50.00%]
+  else
+    goto <bb 46>; [50.00%]
+
+  <bb 36> [local count: 24621]:
+  sz.56_173 = sz;
+  if (sz.56_173 != 32)
+    goto <bb 37>; [0.04%]
+  else
+    goto <bb 47>; [99.96%]
+
+  <bb 37> [local count: 10]:
+  OPENSSL_die ("Assertion failed: sz == ML_KEM_PKHASH_BYTES", "ml_kem.c", 389);
+
+  <bb 38> [local count: 733033]:
+  encode_pubkey (pubenc_21(D), key_18(D));
+  _55 = key_18(D)->pkhash;
+  _56 = vinfo_37->pubkey_bytes;
+  _175 = MEM[(const struct ML_KEM_KEY *)key_18(D)].sha3_256_md;
+  _176 = EVP_DigestInit_ex (mdctx_28, _175, 0B);
+  if (_176 != 0)
+    goto <bb 39>; [33.00%]
+  else
+    goto <bb 48>; [67.00%]
+
+  <bb 39> [local count: 241901]:
+  _177 = single_keccak (_55, 32, pubenc_21(D), _56, mdctx_28);
+  if (_177 == 0)
+    goto <bb 48>; [0.00%]
+  else
+    goto <bb 40>; [100.00%]
+
+  <bb 40> [local count: 691145]:
+  _58 = key_18(D)->z;
+  __builtin_memcpy (_58, &MEM <uint8_t[64]> [(void *)&seed + 32B], 32);
+  _61 = key_18(D)->z;
+  _62 = _61 + 32;
+  key_18(D)->d = _62;
+  _63 = key_18(D)->prov_flags;
+  _64 = _63 & 8;
+  if (_64 != 0)
+    goto <bb 41>; [50.00%]
+  else
+    goto <bb 42>; [50.00%]
+
+  <bb 41> [local count: 345573]:
+  __builtin_memcpy (_62, &seed, 32);
+  goto <bb 49>; [100.00%]
+
+  <bb 42> [local count: 345573]:
+  OPENSSL_cleanse (_62, 32);
+  key_18(D)->d = 0B;
+  goto <bb 49>; [100.00%]
+
+  <bb 43> [local count: 11251157]:
+  ossl_ml_kem_key_reset (key_18(D));
+
+  <bb 44> [local count: 1073741824]:
+  # _14 = PHI <0(3), 0(6), _5(8), 0(10), 0(11), 0(43), 1(49), 0(2), 0(4)>
+  seed ={v} {CLOBBER(eos)};
+  return _14;
+
+  <bb 45> [local count: 11251157]:
+  OPENSSL_cleanse (&seed, 64);
+  EVP_MD_CTX_free (mdctx_28);
+  goto <bb 43>; [100.00%]
+
+  <bb 46> [local count: 106813]:
+  sz ={v} {CLOBBER(eos)};
+  goto <bb 48>; [100.00%]
+
+  <bb 47> [local count: 24611]:
+  sz ={v} {CLOBBER(eos)};
+  goto <bb 40>; [100.00%]
+
+  <bb 48> [local count: 0]:
+  OPENSSL_cleanse (&augmented_seed, 32);
+  OPENSSL_cleanse (&MEM <uint8_t[64]> [(void *)&hashed + 32B], 32);
+  hashed ={v} {CLOBBER(eos)};
+  augmented_seed ={v} {CLOBBER(eos)};
+  counter ={v} {CLOBBER(eos)};
+  OPENSSL_cleanse (&seed, 64);
+  EVP_MD_CTX_free (mdctx_28);
+  goto <bb 43>; [100.00%]
+
+  <bb 49> [local count: 691146]:
+  OPENSSL_cleanse (&augmented_seed, 32);
+  OPENSSL_cleanse (&MEM <uint8_t[64]> [(void *)&hashed + 32B], 32);
+  hashed ={v} {CLOBBER(eos)};
+  augmented_seed ={v} {CLOBBER(eos)};
+  counter ={v} {CLOBBER(eos)};
+  OPENSSL_cleanse (&seed, 64);
+  EVP_MD_CTX_free (mdctx_28);
+  goto <bb 44>; [100.00%]
+
+}
+
+
+
+;; Function ossl_ml_kem_encap_seed (ossl_ml_kem_encap_seed, funcdef_no=614, decl_uid=16890, cgraph_uid=615, symbol_order=623)
+
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+int ossl_ml_kem_encap_seed (uint8_t * ctext, size_t clen, uint8_t * shared_secret, size_t slen, const uint8_t * entropy, size_t elen, const struct ML_KEM_KEY * key)
+{
+  struct scalar tmp[8];
+  struct scalar tmp[6];
+  struct scalar tmp[4];
+  int ret;
+  struct EVP_MD_CTX * mdctx;
+  const struct ML_KEM_VINFO * vinfo;
+  struct ossl_ml_kem_scalar_st * _1;
+  long unsigned int _2;
+  _Bool _3;
+  _Bool _4;
+  _Bool _5;
+  _Bool _6;
+  _Bool _7;
+  _Bool _8;
+  int _9;
+  int _11;
+
+  <bb 2> [local count: 1073741822]:
+  if (key_15(D) == 0B)
+    goto <bb 16>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501926]:
+  _1 = key_15(D)->t;
+  if (_1 == 0B)
+    goto <bb 16>; [18.09%]
+  else
+    goto <bb 4>; [81.91%]
+
+  <bb 4> [local count: 720400028]:
+  if (ctext_18(D) == 0B)
+    goto <bb 16>; [18.09%]
+  else
+    goto <bb 5>; [81.91%]
+
+  <bb 5> [local count: 590079663]:
+  vinfo_17 = key_15(D)->vinfo;
+  _2 = vinfo_17->ctext_bytes;
+  if (_2 != clen_19(D))
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 6> [local count: 295039832]:
+  _3 = shared_secret_20(D) == 0B;
+  _4 = slen_21(D) != 32;
+  _5 = _3 | _4;
+  if (_5 != 0)
+    goto <bb 16>; [34.00%]
+  else
+    goto <bb 7>; [66.00%]
+
+  <bb 7> [local count: 194726288]:
+  _6 = entropy_22(D) == 0B;
+  _7 = elen_23(D) != 32;
+  _8 = _6 | _7;
+  if (_8 != 0)
+    goto <bb 16>; [51.12%]
+  else
+    goto <bb 8>; [48.88%]
+
+  <bb 8> [local count: 95182209]:
+  mdctx_25 = EVP_MD_CTX_new ();
+  if (mdctx_25 == 0B)
+    goto <bb 16>; [18.09%]
+  else
+    goto <bb 9>; [81.91%]
+
+  <bb 9> [local count: 77963747]:
+  _9 = vinfo_17->evp_type;
+  if (_9 == 1455)
+    goto <bb 13>; [25.00%]
+  else
+    goto <bb 10>; [75.00%]
+
+  <bb 10> [local count: 58472810]:
+  if (_9 == 1456)
+    goto <bb 14>; [33.33%]
+  else
+    goto <bb 11>; [66.67%]
+
+  <bb 11> [local count: 38981873]:
+  if (_9 == 1454)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 15>; [50.00%]
+
+  <bb 12> [local count: 19490937]:
+  ret_35 = encap (ctext_18(D), shared_secret_20(D), entropy_22(D), &tmp, mdctx_25, key_15(D));
+  OPENSSL_cleanse (&tmp, 2048);
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 15>; [100.00%]
+
+  <bb 13> [local count: 19490937]:
+  ret_31 = encap (ctext_18(D), shared_secret_20(D), entropy_22(D), &tmp, mdctx_25, key_15(D));
+  OPENSSL_cleanse (&tmp, 3072);
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 19490937]:
+  ret_27 = encap (ctext_18(D), shared_secret_20(D), entropy_22(D), &tmp, mdctx_25, key_15(D));
+  OPENSSL_cleanse (&tmp, 4096);
+  tmp ={v} {CLOBBER(eos)};
+
+  <bb 15> [local count: 77963747]:
+  # ret_10 = PHI <0(11), ret_35(12), ret_31(13), ret_27(14)>
+  EVP_MD_CTX_free (mdctx_25);
+
+  <bb 16> [local count: 1073741824]:
+  # _11 = PHI <0(3), 0(5), ret_10(15), 0(2), 0(4), 0(8), 0(7), 0(6)>
+  return _11;
+
+}
+
+
+
+;; Function ossl_ml_kem_encap_rand (ossl_ml_kem_encap_rand, funcdef_no=615, decl_uid=16896, cgraph_uid=616, symbol_order=624)
+
+Removing basic block 6
+Removing basic block 7
+int ossl_ml_kem_encap_rand (uint8_t * ctext, size_t clen, uint8_t * shared_secret, size_t slen, const struct ML_KEM_KEY * key)
+{
+  uint8_t r[32];
+  struct OSSL_LIB_CTX * _1;
+  const struct ML_KEM_VINFO * _2;
+  int _3;
+  unsigned int _4;
+  int _5;
+  int _6;
+  int _16;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_8(D) == 0B)
+    goto <bb 5>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418728]:
+  _1 = key_8(D)->libctx;
+  _2 = key_8(D)->vinfo;
+  _3 = _2->secbits;
+  _4 = (unsigned int) _3;
+  _5 = RAND_bytes_ex (_1, &r, 32, _4);
+  if (_5 <= 0)
+    goto <bb 5>; [42.09%]
+  else
+    goto <bb 4>; [57.91%]
+
+  <bb 4> [local count: 429355584]:
+  _16 = ossl_ml_kem_encap_seed (ctext_11(D), clen_12(D), shared_secret_13(D), slen_14(D), &r, 32, key_8(D));
+
+  <bb 5> [local count: 1073741824]:
+  # _6 = PHI <0(2), 0(3), _16(4)>
+  r ={v} {CLOBBER(eos)};
+  return _6;
+
+}
+
+
+
+;; Function ossl_ml_kem_decap (ossl_ml_kem_decap, funcdef_no=616, decl_uid=16902, cgraph_uid=617, symbol_order=625)
+
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+int ossl_ml_kem_decap (uint8_t * shared_secret, size_t slen, const uint8_t * ctext, size_t clen, const struct ML_KEM_KEY * key)
+{
+  struct scalar tmp[8];
+  uint8_t cbuf[1568];
+  struct scalar tmp[6];
+  uint8_t cbuf[1088];
+  struct scalar tmp[4];
+  uint8_t cbuf[768];
+  int ret;
+  struct EVP_MD_CTX * mdctx;
+  const struct ML_KEM_VINFO * vinfo;
+  struct ossl_ml_kem_scalar_st * _1;
+  _Bool _2;
+  _Bool _3;
+  long unsigned int _5;
+  struct OSSL_LIB_CTX * _6;
+  int _7;
+  unsigned int _8;
+  int _9;
+  int _11;
+  _Bool _41;
+  _Bool _42;
+  _Bool _43;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = key_16(D)->s;
+  if (_1 == 0B)
+    goto <bb 14>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501926]:
+  vinfo_17 = key_16(D)->vinfo;
+  _2 = shared_secret_18(D) == 0B;
+  _3 = slen_19(D) != 32;
+  _41 = ctext_20(D) == 0B;
+  _43 = _3 | _41;
+  _42 = _2 | _43;
+  if (_42 != 0)
+    goto <bb 6>; [34.67%]
+  else
+    goto <bb 4>; [65.33%]
+
+  <bb 4> [local count: 574591063]:
+  _5 = vinfo_17->ctext_bytes;
+  if (_5 != clen_21(D))
+    goto <bb 6>; [67.00%]
+  else
+    goto <bb 5>; [33.00%]
+
+  <bb 5> [local count: 189615050]:
+  mdctx_23 = EVP_MD_CTX_new ();
+  if (mdctx_23 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 7>; [81.91%]
+
+  <bb 6> [local count: 724188240]:
+  _6 = key_16(D)->libctx;
+  _7 = vinfo_17->secbits;
+  _8 = (unsigned int) _7;
+  RAND_bytes_ex (_6, shared_secret_18(D), 32, _8);
+  goto <bb 14>; [100.00%]
+
+  <bb 7> [local count: 155313687]:
+  _9 = vinfo_17->evp_type;
+  if (_9 == 1455)
+    goto <bb 11>; [25.00%]
+  else
+    goto <bb 8>; [75.00%]
+
+  <bb 8> [local count: 116485265]:
+  if (_9 == 1456)
+    goto <bb 12>; [33.33%]
+  else
+    goto <bb 9>; [66.67%]
+
+  <bb 9> [local count: 77656843]:
+  if (_9 == 1454)
+    goto <bb 10>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+  <bb 10> [local count: 38828422]:
+  ret_35 = decap (shared_secret_18(D), ctext_20(D), &cbuf, &tmp, mdctx_23, key_16(D));
+  OPENSSL_cleanse (&tmp, 2048);
+  cbuf ={v} {CLOBBER(eos)};
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 13>; [100.00%]
+
+  <bb 11> [local count: 38828422]:
+  ret_30 = decap (shared_secret_18(D), ctext_20(D), &cbuf, &tmp, mdctx_23, key_16(D));
+  OPENSSL_cleanse (&tmp, 3072);
+  cbuf ={v} {CLOBBER(eos)};
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 13>; [100.00%]
+
+  <bb 12> [local count: 38828422]:
+  ret_25 = decap (shared_secret_18(D), ctext_20(D), &cbuf, &tmp, mdctx_23, key_16(D));
+  OPENSSL_cleanse (&tmp, 4096);
+  cbuf ={v} {CLOBBER(eos)};
+  tmp ={v} {CLOBBER(eos)};
+
+  <bb 13> [local count: 155313687]:
+  # ret_10 = PHI <0(9), ret_35(10), ret_30(11), ret_25(12)>
+  EVP_MD_CTX_free (mdctx_23);
+
+  <bb 14> [local count: 1073741824]:
+  # _11 = PHI <0(2), 0(6), ret_10(13)>
+  return _11;
+
+}
+
+
+
+;; Function ossl_ml_kem_pubkey_cmp (ossl_ml_kem_pubkey_cmp, funcdef_no=617, decl_uid=16905, cgraph_uid=618, symbol_order=626)
+
+Removing basic block 7
+Removing basic block 8
+int ossl_ml_kem_pubkey_cmp (const struct ML_KEM_KEY * key1, const struct ML_KEM_KEY * key2)
+{
+  struct ossl_ml_kem_scalar_st * _1;
+  struct ossl_ml_kem_scalar_st * _2;
+  uint8_t * _3;
+  uint8_t * _4;
+  int _5;
+  _Bool _6;
+  _Bool _7;
+  struct ossl_ml_kem_scalar_st * _8;
+  _Bool _9;
+  int _10;
+  int _14;
+  int _15;
+  _Bool _16;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = key1_12(D)->t;
+  if (_1 != 0B)
+    goto <bb 3>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 3> [local count: 751619279]:
+  _2 = key2_13(D)->t;
+  if (_2 != 0B)
+    goto <bb 4>; [54.59%]
+  else
+    goto <bb 5>; [45.41%]
+
+  <bb 4> [local count: 410308966]:
+  _3 = key1_12(D)->pkhash;
+  _4 = key2_13(D)->pkhash;
+  _5 = memcmp (_3, _4, 32);
+  _6 = _5 == 0;
+  _14 = (int) _6;
+  goto <bb 6>; [100.00%]
+
+  <bb 5> [local count: 663432857]:
+  _7 = _1 != 0B;
+  _8 = key2_13(D)->t;
+  _9 = _8 != 0B;
+  _16 = _7 ^ _9;
+  _15 = (int) _16;
+
+  <bb 6> [local count: 1073741824]:
+  # _10 = PHI <_14(4), _15(5)>
+  return _10;
+
+}
+
+

@@ -1,0 +1,5798 @@
+
+;; Function __uint64_identity (__uint64_identity, funcdef_no=5, decl_uid=4551, cgraph_uid=6, symbol_order=5)
+
+__uint64_t __uint64_identity (__uint64_t __x)
+{
+  __uint64_t D.18319;
+  __uint64_t _2;
+
+  <bb 2> :
+  _2 = __x_1(D);
+
+  <bb 3> :
+<L0>:
+  return _2;
+
+}
+
+
+
+;; Function OPENSSL_store_u64_le (OPENSSL_store_u64_le, funcdef_no=10, decl_uid=4961, cgraph_uid=11, symbol_order=10)
+
+__attribute__((unused))
+unsigned char * OPENSSL_store_u64_le (unsigned char * out, uint64_t val)
+{
+  unsigned long D.18316;
+  uint64_t t;
+  unsigned char * D.18315;
+  long unsigned int _1;
+  unsigned long _6;
+  unsigned char * _9;
+
+  <bb 2> :
+  _1 = __uint64_identity (val_3(D));
+  t = _1;
+  _6 = MEM <unsigned long> [(char * {ref-all})&t];
+  MEM <unsigned long> [(char * {ref-all})out_7(D)] = _6;
+  _9 = out_7(D) + 8;
+  t ={v} {CLOBBER(eos)};
+
+  <bb 3> :
+<L1>:
+  return _9;
+
+}
+
+
+
+;; Function OPENSSL_load_u64_le (OPENSSL_load_u64_le, funcdef_no=16, decl_uid=4991, cgraph_uid=17, symbol_order=16)
+
+__attribute__((unused))
+const unsigned char * OPENSSL_load_u64_le (uint64_t * val, const unsigned char * in)
+{
+  unsigned long D.18331;
+  uint64_t t;
+  const unsigned char * D.18330;
+  long unsigned int t.50_1;
+  long unsigned int _2;
+  unsigned long _5;
+  const unsigned char * _10;
+
+  <bb 2> :
+  _5 = MEM <unsigned long> [(char * {ref-all})in_4(D)];
+  MEM <unsigned long> [(char * {ref-all})&t] = _5;
+  t.50_1 = t;
+  _2 = __uint64_identity (t.50_1);
+  *val_8(D) = _2;
+  _10 = in_4(D) + 8;
+  t ={v} {CLOBBER(eos)};
+
+  <bb 3> :
+<L1>:
+  return _10;
+
+}
+
+
+
+;; Function ossl_assert_int (ossl_assert_int, funcdef_no=445, decl_uid=17146, cgraph_uid=446, symbol_order=445)
+
+int ossl_assert_int (int expr, const char * exprstr, const char * file, int line)
+{
+  int D.18244;
+  int _2;
+
+  <bb 2> :
+  if (expr_1(D) == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  OPENSSL_die (exprstr_4(D), file_5(D), line_6(D));
+
+  <bb 4> :
+  _2 = expr_1(D);
+
+  <bb 5> :
+<L2>:
+  return _2;
+
+}
+
+
+
+;; Function constant_time_msb (constant_time_msb, funcdef_no=449, decl_uid=17166, cgraph_uid=450, symbol_order=449)
+
+unsigned int constant_time_msb (unsigned int a)
+{
+  unsigned int D.18458;
+  signed int a.135_1;
+  signed int _2;
+  unsigned int _4;
+
+  <bb 2> :
+  a.135_1 = (signed int) a_3(D);
+  _2 = a.135_1 >> 31;
+  _4 = (unsigned int) _2;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function constant_time_msb_32 (constant_time_msb_32, funcdef_no=450, decl_uid=17168, cgraph_uid=451, symbol_order=450)
+
+uint32_t constant_time_msb_32 (uint32_t a)
+{
+  uint32_t D.18344;
+  signed int a.74_1;
+  signed int _2;
+  uint32_t _4;
+
+  <bb 2> :
+  a.74_1 = (signed int) a_3(D);
+  _2 = a.74_1 >> 31;
+  _4 = (uint32_t) _2;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function constant_time_lt_32 (constant_time_lt_32, funcdef_no=456, decl_uid=17179, cgraph_uid=457, symbol_order=456)
+
+uint32_t constant_time_lt_32 (uint32_t a, uint32_t b)
+{
+  uint32_t D.18342;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _10;
+
+  <bb 2> :
+  _1 = a_6(D) ^ b_7(D);
+  _2 = a_6(D) - b_7(D);
+  _3 = b_7(D) ^ _2;
+  _4 = _1 | _3;
+  _5 = a_6(D) ^ _4;
+  _10 = constant_time_msb_32 (_5);
+
+  <bb 3> :
+<L0>:
+  return _10;
+
+}
+
+
+
+;; Function constant_time_is_zero (constant_time_is_zero, funcdef_no=468, decl_uid=17190, cgraph_uid=469, symbol_order=468)
+
+unsigned int constant_time_is_zero (unsigned int a)
+{
+  unsigned int D.18456;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _7;
+
+  <bb 2> :
+  _1 = ~a_4(D);
+  _2 = a_4(D) + 4294967295;
+  _3 = _1 & _2;
+  _7 = constant_time_msb (_3);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function constant_time_eq (constant_time_eq, funcdef_no=473, decl_uid=17197, cgraph_uid=474, symbol_order=473)
+
+unsigned int constant_time_eq (unsigned int a, unsigned int b)
+{
+  unsigned int D.18454;
+  unsigned int _1;
+  unsigned int _6;
+
+  <bb 2> :
+  _1 = a_2(D) ^ b_3(D);
+  _6 = constant_time_is_zero (_1);
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
+
+;; Function constant_time_eq_8 (constant_time_eq_8, funcdef_no=475, decl_uid=17200, cgraph_uid=476, symbol_order=475)
+
+unsigned char constant_time_eq_8 (unsigned int a, unsigned int b)
+{
+  unsigned char D.18452;
+  unsigned int _1;
+  unsigned char _6;
+
+  <bb 2> :
+  _1 = constant_time_eq (a_3(D), b_4(D));
+  _6 = (unsigned char) _1;
+
+  <bb 3> :
+<L0>:
+  return _6;
+
+}
+
+
+
+;; Function constant_time_eq_int_8 (constant_time_eq_int_8, funcdef_no=478, decl_uid=17206, cgraph_uid=479, symbol_order=478)
+
+unsigned char constant_time_eq_int_8 (int a, int b)
+{
+  unsigned char D.18450;
+  unsigned int a.133_1;
+  unsigned int b.134_2;
+  unsigned char _7;
+
+  <bb 2> :
+  a.133_1 = (unsigned int) a_3(D);
+  b.134_2 = (unsigned int) b_4(D);
+  _7 = constant_time_eq_8 (a.133_1, b.134_2);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function value_barrier (value_barrier, funcdef_no=479, decl_uid=17338, cgraph_uid=480, symbol_order=479)
+
+unsigned int value_barrier (unsigned int a)
+{
+  unsigned int r;
+  unsigned int D.18464;
+  unsigned int _3;
+
+  <bb 2> :
+  __asm__("" : "=r" r_2 : "0" a_1(D));
+  _3 = r_2;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function constant_time_select (constant_time_select, funcdef_no=483, decl_uid=17210, cgraph_uid=484, symbol_order=483)
+
+unsigned int constant_time_select (unsigned int mask, unsigned int a, unsigned int b)
+{
+  unsigned int D.18462;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  unsigned int _12;
+
+  <bb 2> :
+  _1 = value_barrier (mask_7(D));
+  _2 = a_9(D) & _1;
+  _3 = ~mask_7(D);
+  _4 = value_barrier (_3);
+  _5 = b_11(D) & _4;
+  _12 = _2 | _5;
+
+  <bb 3> :
+<L0>:
+  return _12;
+
+}
+
+
+
+;; Function constant_time_select_8 (constant_time_select_8, funcdef_no=485, decl_uid=17214, cgraph_uid=486, symbol_order=485)
+
+unsigned char constant_time_select_8 (unsigned char mask, unsigned char a, unsigned char b)
+{
+  unsigned char D.18460;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned char _10;
+
+  <bb 2> :
+  _1 = (unsigned int) mask_5(D);
+  _2 = (unsigned int) a_6(D);
+  _3 = (unsigned int) b_7(D);
+  _4 = constant_time_select (_1, _2, _3);
+  _10 = (unsigned char) _4;
+
+  <bb 3> :
+<L0>:
+  return _10;
+
+}
+
+
+
+;; Function single_keccak (single_keccak, funcdef_no=494, decl_uid=17538, cgraph_uid=495, symbol_order=503)
+
+int single_keccak (uint8_t * out, size_t outlen, const uint8_t * in, size_t inlen, struct EVP_MD_CTX * mdctx)
+{
+  unsigned int sz;
+  int iftmp.0;
+  int D.18232;
+  unsigned int _1;
+  int _2;
+  const struct EVP_MD * _3;
+  int _4;
+  int _5;
+  unsigned int sz.1_6;
+  long unsigned int _7;
+  _Bool _8;
+  int _9;
+  int _10;
+  int _11;
+  int iftmp.0_12;
+  int iftmp.0_28;
+  int iftmp.0_29;
+  int _30;
+  int _32;
+  int _33;
+
+  <bb 2> :
+  _1 = (unsigned int) outlen_16(D);
+  sz = _1;
+  _2 = EVP_DigestUpdate (mdctx_19(D), in_20(D), inlen_21(D));
+  if (_2 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _33 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  _3 = EVP_MD_CTX_get0_md (mdctx_19(D));
+  _4 = EVP_MD_xof (_3);
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _32 = EVP_DigestFinalXOF (mdctx_19(D), out_25(D), outlen_16(D));
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 11>; [INV]
+
+  <bb 6> :
+  _5 = EVP_DigestFinal_ex (mdctx_19(D), out_25(D), &sz);
+  if (_5 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  sz.1_6 = sz;
+  _7 = (long unsigned int) sz.1_6;
+  _8 = outlen_16(D) == _7;
+  _9 = (int) _8;
+  _10 = ossl_assert_int (_9, "Assertion failed: (size_t) sz == outlen", "ml_kem.c", 339);
+  if (_10 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  iftmp.0_28 = 1;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  iftmp.0_29 = 0;
+
+  <bb 10> :
+  # iftmp.0_12 = PHI <iftmp.0_28(8), iftmp.0_29(9)>
+  _30 = iftmp.0_12;
+
+  <bb 11> :
+  # _11 = PHI <_33(3), _32(5), _30(10)>
+  sz ={v} {CLOBBER(eos)};
+
+  <bb 12> :
+<L9>:
+  return _11;
+
+}
+
+
+
+;; Function prf (prf, funcdef_no=495, decl_uid=17546, cgraph_uid=496, symbol_order=504)
+
+__attribute__((access ("^2[33]", )))
+int prf (uint8_t * out, size_t len, const uint8_t * in, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  int iftmp.2;
+  int D.18246;
+  struct EVP_MD * _1;
+  int _2;
+  int _3;
+  int iftmp.2_4;
+  int iftmp.2_15;
+  int iftmp.2_16;
+  int _17;
+
+  <bb 2> :
+  _1 = key_8(D)->shake256_md;
+  _2 = EVP_DigestInit_ex (mdctx_9(D), _1, 0B);
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _3 = single_keccak (out_11(D), len_12(D), in_13(D), 33, mdctx_9(D));
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.2_15 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.2_16 = 0;
+
+  <bb 6> :
+  # iftmp.2_4 = PHI <iftmp.2_15(4), iftmp.2_16(5)>
+  _17 = iftmp.2_4;
+
+  <bb 7> :
+<L4>:
+  return _17;
+
+}
+
+
+
+;; Function hash_h (hash_h, funcdef_no=496, decl_uid=17553, cgraph_uid=497, symbol_order=505)
+
+__attribute__((access ("^0[32]", )))
+int hash_h (uint8_t * out, const uint8_t * in, size_t len, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  int iftmp.3;
+  int D.18253;
+  struct EVP_MD * _1;
+  int _2;
+  int _3;
+  int iftmp.3_4;
+  int iftmp.3_15;
+  int iftmp.3_16;
+  int _17;
+
+  <bb 2> :
+  _1 = key_8(D)->sha3_256_md;
+  _2 = EVP_DigestInit_ex (mdctx_9(D), _1, 0B);
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _3 = single_keccak (out_11(D), 32, in_12(D), len_13(D), mdctx_9(D));
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.3_15 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.3_16 = 0;
+
+  <bb 6> :
+  # iftmp.3_4 = PHI <iftmp.3_15(4), iftmp.3_16(5)>
+  _17 = iftmp.3_4;
+
+  <bb 7> :
+<L4>:
+  return _17;
+
+}
+
+
+
+;; Function hash_h_pubkey (hash_h_pubkey, funcdef_no=497, decl_uid=17558, cgraph_uid=498, symbol_order=506)
+
+__attribute__((access ("^0[32]", )))
+int hash_h_pubkey (uint8_t * pkhash, struct EVP_MD_CTX * mdctx, struct ML_KEM_KEY * key)
+{
+  uint8_t buf[384];
+  unsigned int sz;
+  const struct scalar * end;
+  const struct scalar * t;
+  const struct ML_KEM_VINFO * vinfo;
+  int iftmp.5;
+  int D.18262;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  struct EVP_MD * _4;
+  int _5;
+  const struct scalar * t.4_6;
+  int _7;
+  uint8_t * _8;
+  int _9;
+  int _10;
+  unsigned int sz.6_11;
+  _Bool _12;
+  int _13;
+  int _14;
+  int _16;
+  int iftmp.5_17;
+  int iftmp.5_37;
+  int iftmp.5_38;
+  int _39;
+  int _40;
+  int _41;
+  int _43;
+
+  <bb 2> :
+  vinfo_24 = key_23(D)->vinfo;
+  t_25 = key_23(D)->t;
+  _1 = vinfo_24->rank;
+  _2 = (long unsigned int) _1;
+  _3 = _2 * 512;
+  end_26 = t_25 + _3;
+  _4 = key_23(D)->sha3_256_md;
+  _5 = EVP_DigestInit_ex (mdctx_27(D), _4, 0B);
+  if (_5 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _43 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 4> :
+  # t_15 = PHI <t_25(2), t_29(6)>
+  t.4_6 = t_15;
+  t_29 = t.4_6 + 512;
+  scalar_encode (&buf, t.4_6, 12);
+  _7 = EVP_DigestUpdate (mdctx_27(D), &buf, 384);
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _41 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  buf ={v} {CLOBBER(eos)};
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  buf ={v} {CLOBBER(eos)};
+  if (t_29 < end_26)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _8 = key_23(D)->rho;
+  _9 = EVP_DigestUpdate (mdctx_27(D), _8, 32);
+  if (_9 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _40 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 9> :
+  _10 = EVP_DigestFinal_ex (mdctx_27(D), pkhash_34(D), &sz);
+  if (_10 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  sz.6_11 = sz;
+  _12 = sz.6_11 == 32;
+  _13 = (int) _12;
+  _14 = ossl_assert_int (_13, "Assertion failed: sz == ML_KEM_PKHASH_BYTES", "ml_kem.c", 389);
+  if (_14 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.5_37 = 1;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  iftmp.5_38 = 0;
+
+  <bb 13> :
+  # iftmp.5_17 = PHI <iftmp.5_37(11), iftmp.5_38(12)>
+  _39 = iftmp.5_17;
+
+  <bb 14> :
+  # _16 = PHI <_43(3), _41(5), _40(8), _39(13)>
+  sz ={v} {CLOBBER(eos)};
+
+  <bb 15> :
+<L15>:
+  return _16;
+
+}
+
+
+
+;; Function hash_g (hash_g, funcdef_no=498, decl_uid=17573, cgraph_uid=499, symbol_order=507)
+
+__attribute__((access ("^0[64]", )))
+int hash_g (uint8_t * out, const uint8_t * in, size_t len, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  int iftmp.7;
+  int D.18276;
+  struct EVP_MD * _1;
+  int _2;
+  int _3;
+  int iftmp.7_4;
+  int iftmp.7_15;
+  int iftmp.7_16;
+  int _17;
+
+  <bb 2> :
+  _1 = key_8(D)->sha3_512_md;
+  _2 = EVP_DigestInit_ex (mdctx_9(D), _1, 0B);
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _3 = single_keccak (out_11(D), 64, in_12(D), len_13(D), mdctx_9(D));
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.7_15 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.7_16 = 0;
+
+  <bb 6> :
+  # iftmp.7_4 = PHI <iftmp.7_15(4), iftmp.7_16(5)>
+  _17 = iftmp.7_4;
+
+  <bb 7> :
+<L4>:
+  return _17;
+
+}
+
+
+
+;; Function kdf (kdf, funcdef_no=499, decl_uid=17581, cgraph_uid=500, symbol_order=508)
+
+__attribute__((access ("^0[32]^1[32]", )))
+int kdf (uint8_t * out, const uint8_t * z, const uint8_t * ctext, size_t len, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  int iftmp.8;
+  int D.18283;
+  struct EVP_MD * _1;
+  int _2;
+  int _3;
+  int _4;
+  int _5;
+  int iftmp.8_6;
+  int iftmp.8_20;
+  int iftmp.8_21;
+  int _22;
+
+  <bb 2> :
+  _1 = key_10(D)->shake256_md;
+  _2 = EVP_DigestInit_ex (mdctx_11(D), _1, 0B);
+  if (_2 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  _3 = EVP_DigestUpdate (mdctx_11(D), z_13(D), 32);
+  if (_3 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 4> :
+  _4 = EVP_DigestUpdate (mdctx_11(D), ctext_15(D), len_16(D));
+  if (_4 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _5 = EVP_DigestFinalXOF (mdctx_11(D), out_18(D), 32);
+  if (_5 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.8_20 = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.8_21 = 0;
+
+  <bb 8> :
+  # iftmp.8_6 = PHI <iftmp.8_20(6), iftmp.8_21(7)>
+  _22 = iftmp.8_6;
+
+  <bb 9> :
+<L6>:
+  return _22;
+
+}
+
+
+
+;; Function sample_scalar (sample_scalar, funcdef_no=500, decl_uid=17585, cgraph_uid=501, symbol_order=509)
+
+int sample_scalar (struct scalar * out, struct EVP_MD_CTX * mdctx)
+{
+  uint8_t b3;
+  uint8_t b2;
+  uint8_t b1;
+  uint16_t d;
+  uint8_t * endin;
+  uint8_t * in;
+  uint8_t buf[168];
+  uint16_t * endout;
+  uint16_t * curr;
+  int D.18294;
+  int _1;
+  uint8_t * in.9_2;
+  uint8_t * in.10_3;
+  uint8_t * in.11_4;
+  short unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  int _9;
+  int kPrime.12_10;
+  uint16_t * curr.13_11;
+  short unsigned int _12;
+  short unsigned int _13;
+  unsigned char _14;
+  short unsigned int _15;
+  int _16;
+  int kPrime.14_17;
+  uint16_t * curr.15_18;
+  int _25;
+  int _52;
+  int _53;
+
+  <bb 2> :
+  curr_33 = &out_32(D)->c;
+  endout_34 = curr_33 + 512;
+  endin_35 = &buf + 168;
+
+  <bb 3> :
+  # curr_19 = PHI <curr_33(2), curr_23(14)>
+  in_37 = &buf;
+  _1 = EVP_DigestSqueeze (mdctx_38(D), in_37, 168);
+  if (_1 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _53 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 16>; [INV]
+
+  <bb 5> :
+  # curr_20 = PHI <curr_19(3), curr_22(13)>
+  # in_24 = PHI <in_37(3), in_44(13)>
+  in.9_2 = in_24;
+  in_40 = in.9_2 + 1;
+  b1_41 = *in.9_2;
+  in.10_3 = in_40;
+  in_42 = in.10_3 + 1;
+  b2_43 = *in.10_3;
+  in.11_4 = in_42;
+  in_44 = in.11_4 + 1;
+  b3_45 = *in.11_4;
+  if (curr_20 >= endout_34)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  goto <bb 14>; [INV]
+
+  <bb 7> :
+  _5 = (short unsigned int) b2_43;
+  _6 = _5 << 8;
+  _7 = _6 & 3840;
+  _8 = (short unsigned int) b1_41;
+  d_46 = _7 + _8;
+  _9 = (int) d_46;
+  kPrime.12_10 = 3329;
+  if (_9 < kPrime.12_10)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  curr.13_11 = curr_20;
+  curr_47 = curr.13_11 + 2;
+  *curr.13_11 = d_46;
+
+  <bb 9> :
+  # curr_21 = PHI <curr_20(7), curr_47(8)>
+  if (curr_21 >= endout_34)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  goto <bb 14>; [INV]
+
+  <bb 11> :
+  _12 = (short unsigned int) b3_45;
+  _13 = _12 << 4;
+  _14 = b2_43 >> 4;
+  _15 = (short unsigned int) _14;
+  d_49 = _13 + _15;
+  _16 = (int) d_49;
+  kPrime.14_17 = 3329;
+  if (_16 < kPrime.14_17)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  curr.15_18 = curr_21;
+  curr_50 = curr.15_18 + 2;
+  *curr.15_18 = d_49;
+
+  <bb 13> :
+  # curr_22 = PHI <curr_21(11), curr_50(12)>
+  if (in_44 < endin_35)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  # curr_23 = PHI <curr_20(6), curr_21(10), curr_22(13)>
+  if (curr_23 < endout_34)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  _52 = 1;
+
+  <bb 16> :
+  # _25 = PHI <_53(4), _52(15)>
+  buf ={v} {CLOBBER(eos)};
+
+  <bb 17> :
+<L15>:
+  return _25;
+
+}
+
+
+
+;; Function reduce_once (reduce_once, funcdef_no=501, decl_uid=17603, cgraph_uid=502, symbol_order=510)
+
+uint16_t reduce_once (uint16_t x)
+{
+  uint16_t mask;
+  const uint16_t subtracted;
+  uint16_t D.18305;
+  int kPrime.16_1;
+  short unsigned int _2;
+  signed short subtracted.17_3;
+  signed short _4;
+  short unsigned int _5;
+  signed short _6;
+  signed short mask.18_7;
+  signed short _8;
+  signed short subtracted.19_9;
+  signed short _10;
+  signed short _11;
+  uint16_t _15;
+
+  <bb 2> :
+  kPrime.16_1 = 3329;
+  _2 = (short unsigned int) kPrime.16_1;
+  subtracted_13 = x_12(D) - _2;
+  subtracted.17_3 = (signed short) subtracted_13;
+  _4 = subtracted.17_3 >> 15;
+  mask_14 = (uint16_t) _4;
+  _5 = mask_14 & x_12(D);
+  _6 = (signed short) _5;
+  mask.18_7 = (signed short) mask_14;
+  _8 = ~mask.18_7;
+  subtracted.19_9 = (signed short) subtracted_13;
+  _10 = _8 & subtracted.19_9;
+  _11 = _6 | _10;
+  _15 = (uint16_t) _11;
+
+  <bb 3> :
+<L0>:
+  return _15;
+
+}
+
+
+
+;; Function reduce (reduce, funcdef_no=502, decl_uid=17608, cgraph_uid=503, symbol_order=511)
+
+uint16_t reduce (uint32_t x)
+{
+  uint32_t remainder;
+  uint32_t quotient;
+  uint64_t product;
+  uint16_t D.18307;
+  long unsigned int _1;
+  long unsigned int kBarrettMultiplier.20_2;
+  unsigned int kBarrettShift.21_3;
+  long unsigned int _4;
+  int kPrime.22_5;
+  unsigned int kPrime.23_6;
+  unsigned int _7;
+  short unsigned int _8;
+  uint16_t _15;
+
+  <bb 2> :
+  _1 = (long unsigned int) x_9(D);
+  kBarrettMultiplier.20_2 = 5039;
+  product_10 = _1 * kBarrettMultiplier.20_2;
+  kBarrettShift.21_3 = 24;
+  _4 = product_10 >> kBarrettShift.21_3;
+  quotient_11 = (uint32_t) _4;
+  kPrime.22_5 = 3329;
+  kPrime.23_6 = (unsigned int) kPrime.22_5;
+  _7 = quotient_11 * kPrime.23_6;
+  remainder_12 = x_9(D) - _7;
+  _8 = (short unsigned int) remainder_12;
+  _15 = reduce_once (_8);
+
+  <bb 3> :
+<L0>:
+  return _15;
+
+}
+
+
+
+;; Function scalar_mult_const (scalar_mult_const, funcdef_no=503, decl_uid=17615, cgraph_uid=504, symbol_order=512)
+
+void scalar_mult_const (struct scalar * s, uint16_t a)
+{
+  uint16_t tmp;
+  uint16_t * end;
+  uint16_t * curr;
+  short unsigned int _1;
+  int _2;
+  int _3;
+  int _4;
+  unsigned int _5;
+  uint16_t * curr.24_6;
+
+  <bb 2> :
+  curr_10 = &s_9(D)->c;
+  end_11 = curr_10 + 512;
+
+  <bb 3> :
+  # curr_7 = PHI <curr_10(2), curr_16(3)>
+  _1 = *curr_7;
+  _2 = (int) _1;
+  _3 = (int) a_13(D);
+  _4 = _2 * _3;
+  _5 = (unsigned int) _4;
+  tmp_15 = reduce (_5);
+  curr.24_6 = curr_7;
+  curr_16 = curr.24_6 + 2;
+  *curr.24_6 = tmp_15;
+  if (curr_16 < end_11)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function scalar_ntt (scalar_ntt, funcdef_no=504, decl_uid=17624, cgraph_uid=505, symbol_order=513)
+
+void scalar_ntt (struct scalar * s)
+{
+  uint32_t zeta;
+  uint16_t odd;
+  uint16_t even;
+  uint16_t * pause;
+  uint16_t * peer;
+  uint16_t * curr;
+  int offset;
+  uint16_t * end;
+  const uint16_t * roots;
+  uint16_t[256] * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  short unsigned int _5;
+  unsigned int _6;
+  unsigned int _7;
+  short unsigned int _8;
+  int kPrime.25_9;
+  short unsigned int _10;
+  short unsigned int _11;
+  uint16_t * peer.26_12;
+  short unsigned int _13;
+  short unsigned int _14;
+  uint16_t * curr.27_15;
+  short unsigned int _16;
+
+  <bb 2> :
+  roots_26 = &kNTTRoots;
+  _1 = &s_27(D)->c;
+  end_28 = _1 + 512;
+  offset_29 = 128;
+
+  <bb 3> :
+  # roots_17 = PHI <roots_26(2), roots_33(7)>
+  # offset_19 = PHI <offset_29(2), offset_46(7)>
+  curr_31 = &s_27(D)->c;
+
+  <bb 4> :
+  # roots_18 = PHI <roots_17(3), roots_33(6)>
+  # curr_20 = PHI <curr_31(3), curr_45(6)>
+  _2 = (long unsigned int) offset_19;
+  _3 = _2 * 2;
+  pause_32 = curr_20 + _3;
+  roots_33 = roots_18 + 2;
+  _4 = *roots_33;
+  zeta_34 = (uint32_t) _4;
+  peer_35 = pause_32;
+
+  <bb 5> :
+  # curr_21 = PHI <curr_20(4), curr_42(5)>
+  # peer_22 = PHI <peer_35(4), peer_39(5)>
+  even_36 = *curr_21;
+  _5 = *peer_22;
+  _6 = (unsigned int) _5;
+  _7 = zeta_34 * _6;
+  odd_38 = reduce (_7);
+  _8 = even_36 - odd_38;
+  kPrime.25_9 = 3329;
+  _10 = (short unsigned int) kPrime.25_9;
+  _11 = _8 + _10;
+  peer.26_12 = peer_22;
+  peer_39 = peer.26_12 + 2;
+  _13 = reduce_once (_11);
+  *peer.26_12 = _13;
+  _14 = odd_38 + even_36;
+  curr.27_15 = curr_21;
+  curr_42 = curr.27_15 + 2;
+  _16 = reduce_once (_14);
+  *curr.27_15 = _16;
+  if (curr_42 < pause_32)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  curr_45 = peer_39;
+  if (curr_45 < end_28)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  offset_46 = offset_19 >> 1;
+  if (offset_46 > 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
+
+;; Function scalar_inverse_ntt (scalar_inverse_ntt, funcdef_no=505, decl_uid=17645, cgraph_uid=506, symbol_order=514)
+
+void scalar_inverse_ntt (struct scalar * s)
+{
+  uint32_t zeta;
+  uint16_t odd;
+  uint16_t even;
+  uint16_t * pause;
+  uint16_t * peer;
+  uint16_t * curr;
+  int offset;
+  uint16_t * end;
+  const uint16_t * roots;
+  uint16_t[256] * _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  short unsigned int _4;
+  int _5;
+  int _6;
+  int _7;
+  int kPrime.28_8;
+  int _9;
+  unsigned int _10;
+  unsigned int _11;
+  uint16_t * peer.29_12;
+  short unsigned int _13;
+  short unsigned int _14;
+  uint16_t * curr.30_15;
+  short unsigned int _16;
+  short unsigned int kInverseDegree.31_17;
+
+  <bb 2> :
+  roots_27 = &kInverseNTTRoots;
+  _1 = &s_28(D)->c;
+  end_29 = _1 + 512;
+  offset_30 = 2;
+
+  <bb 3> :
+  # roots_18 = PHI <roots_27(2), roots_34(7)>
+  # offset_20 = PHI <offset_30(2), offset_46(7)>
+  curr_32 = &s_28(D)->c;
+
+  <bb 4> :
+  # roots_19 = PHI <roots_18(3), roots_34(6)>
+  # curr_21 = PHI <curr_32(3), curr_45(6)>
+  _2 = (long unsigned int) offset_20;
+  _3 = _2 * 2;
+  pause_33 = curr_21 + _3;
+  roots_34 = roots_19 + 2;
+  _4 = *roots_34;
+  zeta_35 = (uint32_t) _4;
+  peer_36 = pause_33;
+
+  <bb 5> :
+  # curr_22 = PHI <curr_21(4), curr_42(5)>
+  # peer_23 = PHI <peer_36(4), peer_39(5)>
+  even_37 = *curr_22;
+  odd_38 = *peer_23;
+  _5 = (int) even_37;
+  _6 = (int) odd_38;
+  _7 = _5 - _6;
+  kPrime.28_8 = 3329;
+  _9 = _7 + kPrime.28_8;
+  _10 = (unsigned int) _9;
+  _11 = zeta_35 * _10;
+  peer.29_12 = peer_23;
+  peer_39 = peer.29_12 + 2;
+  _13 = reduce (_11);
+  *peer.29_12 = _13;
+  _14 = odd_38 + even_37;
+  curr.30_15 = curr_22;
+  curr_42 = curr.30_15 + 2;
+  _16 = reduce_once (_14);
+  *curr.30_15 = _16;
+  if (curr_42 < pause_33)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  curr_45 = peer_39;
+  if (curr_45 < end_29)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  offset_46 = offset_20 << 1;
+  if (offset_46 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  kInverseDegree.31_17 = 3303;
+  scalar_mult_const (s_28(D), kInverseDegree.31_17);
+  return;
+
+}
+
+
+
+;; Function scalar_add (scalar_add, funcdef_no=506, decl_uid=17667, cgraph_uid=507, symbol_order=515)
+
+void scalar_add (struct scalar * lhs, const struct scalar * rhs)
+{
+  int i;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+
+  <bb 2> :
+  i_7 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = lhs_9(D)->c[i_5];
+  _2 = rhs_10(D)->c[i_5];
+  _3 = _1 + _2;
+  _4 = reduce_once (_3);
+  lhs_9(D)->c[i_5] = _4;
+  i_13 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_7(2), i_13(3)>
+  if (i_5 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function scalar_sub (scalar_sub, funcdef_no=507, decl_uid=17676, cgraph_uid=508, symbol_order=516)
+
+void scalar_sub (struct scalar * lhs, const struct scalar * rhs)
+{
+  int i;
+  short unsigned int _1;
+  short unsigned int _2;
+  short unsigned int _3;
+  int kPrime.32_4;
+  short unsigned int _5;
+  short unsigned int _6;
+  short unsigned int _7;
+
+  <bb 2> :
+  i_10 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = lhs_12(D)->c[i_8];
+  _2 = rhs_13(D)->c[i_8];
+  _3 = _1 - _2;
+  kPrime.32_4 = 3329;
+  _5 = (short unsigned int) kPrime.32_4;
+  _6 = _3 + _5;
+  _7 = reduce_once (_6);
+  lhs_12(D)->c[i_8] = _7;
+  i_16 = i_8 + 1;
+
+  <bb 4> :
+  # i_8 = PHI <i_10(2), i_16(3)>
+  if (i_8 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function scalar_mult (scalar_mult, funcdef_no=508, decl_uid=17686, cgraph_uid=509, symbol_order=517)
+
+void scalar_mult (struct scalar * out, const struct scalar * lhs, const struct scalar * rhs)
+{
+  uint32_t zetapow;
+  uint32_t r1;
+  uint32_t l1;
+  uint32_t r0;
+  uint32_t l0;
+  const uint16_t * roots;
+  const uint16_t * rc;
+  const uint16_t * lc;
+  uint16_t * end;
+  uint16_t * curr;
+  const uint16_t * lc.33_1;
+  short unsigned int _2;
+  const uint16_t * rc.34_3;
+  short unsigned int _4;
+  const uint16_t * lc.35_5;
+  short unsigned int _6;
+  const uint16_t * rc.36_7;
+  short unsigned int _8;
+  const uint16_t * roots.37_9;
+  short unsigned int _10;
+  unsigned int _11;
+  unsigned int _12;
+  short unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  unsigned int _16;
+  uint16_t * curr.38_17;
+  short unsigned int _18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  uint16_t * curr.39_22;
+  short unsigned int _23;
+
+  <bb 2> :
+  curr_30 = &out_29(D)->c;
+  end_31 = curr_30 + 512;
+  lc_33 = &lhs_32(D)->c;
+  rc_35 = &rhs_34(D)->c;
+  roots_36 = &kModRoots;
+
+  <bb 3> :
+  # curr_24 = PHI <curr_30(2), curr_52(3)>
+  # lc_25 = PHI <lc_33(2), lc_42(3)>
+  # rc_26 = PHI <rc_35(2), rc_44(3)>
+  # roots_27 = PHI <roots_36(2), roots_46(3)>
+  lc.33_1 = lc_25;
+  lc_38 = lc.33_1 + 2;
+  _2 = *lc.33_1;
+  l0_39 = (uint32_t) _2;
+  rc.34_3 = rc_26;
+  rc_40 = rc.34_3 + 2;
+  _4 = *rc.34_3;
+  r0_41 = (uint32_t) _4;
+  lc.35_5 = lc_38;
+  lc_42 = lc.35_5 + 2;
+  _6 = *lc.35_5;
+  l1_43 = (uint32_t) _6;
+  rc.36_7 = rc_40;
+  rc_44 = rc.36_7 + 2;
+  _8 = *rc.36_7;
+  r1_45 = (uint32_t) _8;
+  roots.37_9 = roots_27;
+  roots_46 = roots.37_9 + 2;
+  _10 = *roots.37_9;
+  zetapow_47 = (uint32_t) _10;
+  _11 = l0_39 * r0_41;
+  _12 = l1_43 * r1_45;
+  _13 = reduce (_12);
+  _14 = (unsigned int) _13;
+  _15 = zetapow_47 * _14;
+  _16 = _11 + _15;
+  curr.38_17 = curr_24;
+  curr_49 = curr.38_17 + 2;
+  _18 = reduce (_16);
+  *curr.38_17 = _18;
+  _19 = l0_39 * r1_45;
+  _20 = l1_43 * r0_41;
+  _21 = _19 + _20;
+  curr.39_22 = curr_49;
+  curr_52 = curr.39_22 + 2;
+  _23 = reduce (_21);
+  *curr.39_22 = _23;
+  if (curr_52 < end_31)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function scalar_mult_add (scalar_mult_add, funcdef_no=509, decl_uid=17704, cgraph_uid=510, symbol_order=518)
+
+void scalar_mult_add (struct scalar * out, const struct scalar * lhs, const struct scalar * rhs)
+{
+  uint32_t zetapow;
+  uint16_t * c1;
+  uint16_t * c0;
+  uint32_t r1;
+  uint32_t l1;
+  uint32_t r0;
+  uint32_t l0;
+  const uint16_t * roots;
+  const uint16_t * rc;
+  const uint16_t * lc;
+  uint16_t * end;
+  uint16_t * curr;
+  const uint16_t * lc.85_1;
+  short unsigned int _2;
+  const uint16_t * rc.86_3;
+  short unsigned int _4;
+  const uint16_t * lc.87_5;
+  short unsigned int _6;
+  const uint16_t * rc.88_7;
+  short unsigned int _8;
+  uint16_t * curr.89_9;
+  uint16_t * curr.90_10;
+  const uint16_t * roots.91_11;
+  short unsigned int _12;
+  short unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  short unsigned int _16;
+  unsigned int _17;
+  unsigned int _18;
+  unsigned int _19;
+  unsigned int _20;
+  unsigned int _21;
+  short unsigned int _22;
+  short unsigned int _23;
+  unsigned int _24;
+  unsigned int _25;
+  unsigned int _26;
+  unsigned int _27;
+  unsigned int _28;
+  short unsigned int _29;
+
+  <bb 2> :
+  curr_36 = &out_35(D)->c;
+  end_37 = curr_36 + 512;
+  lc_39 = &lhs_38(D)->c;
+  rc_41 = &rhs_40(D)->c;
+  roots_42 = &kModRoots;
+
+  <bb 3> :
+  # curr_30 = PHI <curr_36(2), curr_54(3)>
+  # lc_31 = PHI <lc_39(2), lc_48(3)>
+  # rc_32 = PHI <rc_41(2), rc_50(3)>
+  # roots_33 = PHI <roots_42(2), roots_56(3)>
+  lc.85_1 = lc_31;
+  lc_44 = lc.85_1 + 2;
+  _2 = *lc.85_1;
+  l0_45 = (uint32_t) _2;
+  rc.86_3 = rc_32;
+  rc_46 = rc.86_3 + 2;
+  _4 = *rc.86_3;
+  r0_47 = (uint32_t) _4;
+  lc.87_5 = lc_44;
+  lc_48 = lc.87_5 + 2;
+  _6 = *lc.87_5;
+  l1_49 = (uint32_t) _6;
+  rc.88_7 = rc_46;
+  rc_50 = rc.88_7 + 2;
+  _8 = *rc.88_7;
+  r1_51 = (uint32_t) _8;
+  curr.89_9 = curr_30;
+  curr_52 = curr.89_9 + 2;
+  c0_53 = curr.89_9;
+  curr.90_10 = curr_52;
+  curr_54 = curr.90_10 + 2;
+  c1_55 = curr.90_10;
+  roots.91_11 = roots_33;
+  roots_56 = roots.91_11 + 2;
+  _12 = *roots.91_11;
+  zetapow_57 = (uint32_t) _12;
+  _13 = *c0_53;
+  _14 = (unsigned int) _13;
+  _15 = l1_49 * r1_51;
+  _16 = reduce (_15);
+  _17 = (unsigned int) _16;
+  _18 = zetapow_57 * _17;
+  _19 = l0_45 * r0_47;
+  _20 = _18 + _19;
+  _21 = _14 + _20;
+  _22 = reduce (_21);
+  *c0_53 = _22;
+  _23 = *c1_55;
+  _24 = (unsigned int) _23;
+  _25 = l1_49 * r0_47;
+  _26 = l0_45 * r1_51;
+  _27 = _25 + _26;
+  _28 = _24 + _27;
+  _29 = reduce (_28);
+  *c1_55 = _29;
+  if (curr_54 < end_37)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function scalar_encode (scalar_encode, funcdef_no=510, decl_uid=17523, cgraph_uid=511, symbol_order=519)
+
+void scalar_encode (uint8_t * out, const struct scalar * s, int bits)
+{
+  int used;
+  uint64_t element;
+  uint64_t accum;
+  const uint16_t * end;
+  const uint16_t * curr;
+  const uint16_t * curr.40_1;
+  short unsigned int _2;
+  int _3;
+  long unsigned int _4;
+  int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  int _8;
+  int _9;
+  long unsigned int _10;
+  long unsigned int _11;
+
+  <bb 2> :
+  curr_22 = &s_21(D)->c;
+  end_23 = curr_22 + 512;
+  accum_24 = 0;
+  used_25 = 0;
+
+  <bb 3> :
+  # out_12 = PHI <out_26(D)(2), out_13(8)>
+  # curr_14 = PHI <curr_22(2), curr_28(8)>
+  # accum_15 = PHI <accum_24(2), accum_16(8)>
+  # used_17 = PHI <used_25(2), used_18(8)>
+  curr.40_1 = curr_14;
+  curr_28 = curr.40_1 + 2;
+  _2 = *curr.40_1;
+  element_29 = (uint64_t) _2;
+  _3 = used_17 + bits_30(D);
+  if (_3 <= 63)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _4 = element_29 << used_17;
+  accum_39 = accum_15 | _4;
+  used_40 = used_17 + bits_30(D);
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  _5 = used_17 + bits_30(D);
+  if (_5 > 64)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _6 = element_29 << used_17;
+  _7 = accum_15 | _6;
+  out_36 = OPENSSL_store_u64_le (out_12, _7);
+  _8 = 64 - used_17;
+  accum_37 = element_29 >> _8;
+  _9 = used_17 + bits_30(D);
+  used_38 = _9 + -64;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _10 = element_29 << used_17;
+  _11 = accum_15 | _10;
+  out_32 = OPENSSL_store_u64_le (out_12, _11);
+  accum_33 = 0;
+  used_34 = 0;
+
+  <bb 8> :
+  # out_13 = PHI <out_12(4), out_36(6), out_32(7)>
+  # accum_16 = PHI <accum_39(4), accum_37(6), accum_33(7)>
+  # used_18 = PHI <used_40(4), used_38(6), used_34(7)>
+  if (curr_28 < end_23)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  return;
+
+}
+
+
+
+;; Function scalar_encode_1 (scalar_encode_1, funcdef_no=511, decl_uid=17736, cgraph_uid=512, symbol_order=520)
+
+__attribute__((access ("^0[32]", )))
+void scalar_encode_1 (uint8_t * out, const struct scalar * s)
+{
+  uint8_t out_byte;
+  int j;
+  int i;
+  int _1;
+  short unsigned int _2;
+  int _3;
+  int _4;
+  int _5;
+  signed char _6;
+  signed char out_byte.41_7;
+  signed char _8;
+
+  <bb 2> :
+  i_14 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  out_byte_17 = 0;
+  j_18 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _1 = i_10 + j_11;
+  _2 = s_22(D)->c[_1];
+  _3 = (int) _2;
+  _4 = _3 & 1;
+  _5 = _4 << j_11;
+  _6 = (signed char) _5;
+  out_byte.41_7 = (signed char) out_byte_12;
+  _8 = _6 | out_byte.41_7;
+  out_byte_23 = (uint8_t) _8;
+  j_24 = j_11 + 1;
+
+  <bb 5> :
+  # j_11 = PHI <j_18(3), j_24(4)>
+  # out_byte_12 = PHI <out_byte_17(3), out_byte_23(4)>
+  if (j_11 <= 7)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  *out_9 = out_byte_12;
+  out_20 = out_9 + 1;
+  i_21 = i_10 + 8;
+
+  <bb 7> :
+  # out_9 = PHI <out_15(D)(2), out_20(6)>
+  # i_10 = PHI <i_14(2), i_21(6)>
+  if (i_10 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
+
+;; Function scalar_decode (scalar_decode, funcdef_no=512, decl_uid=17752, cgraph_uid=513, symbol_order=521)
+
+void scalar_decode (struct scalar * out, const uint8_t * in, int bits)
+{
+  uint16_t element;
+  uint16_t mask;
+  uint16_t bitmask;
+  int todo;
+  int accum_bits;
+  uint64_t accum;
+  uint16_t * end;
+  uint16_t * curr;
+  int _1;
+  short unsigned int _2;
+  long unsigned int accum.42_3;
+  short unsigned int _4;
+  uint16_t * curr.43_5;
+  short unsigned int _6;
+  long unsigned int accum.44_7;
+  long unsigned int _8;
+  long unsigned int accum.45_9;
+  short unsigned int _10;
+  short unsigned int _11;
+  int _12;
+  int _13;
+  int _14;
+  signed short _15;
+  signed short element.46_16;
+  signed short _17;
+  uint16_t * curr.47_18;
+  short unsigned int _19;
+  long unsigned int accum.48_20;
+  long unsigned int _21;
+  long unsigned int accum.49_22;
+  short unsigned int _23;
+  int _24;
+  int _25;
+
+  <bb 2> :
+  curr_43 = &out_42(D)->c;
+  end_44 = curr_43 + 512;
+  accum = 0;
+  accum_bits_47 = 0;
+  todo_49 = bits_48(D);
+  _1 = 1 << bits_48(D);
+  _2 = (short unsigned int) _1;
+  bitmask_50 = _2 + 65535;
+  mask_51 = bitmask_50;
+  element_52 = 0;
+
+  <bb 3> :
+  # in_26 = PHI <in_53(D)(2), in_27(11)>
+  # curr_28 = PHI <curr_43(2), curr_29(11)>
+  # accum_bits_30 = PHI <accum_bits_47(2), accum_bits_32(11)>
+  # todo_33 = PHI <todo_49(2), todo_34(11)>
+  # mask_35 = PHI <mask_51(2), mask_36(11)>
+  # element_37 = PHI <element_52(2), element_38(11)>
+  if (accum_bits_30 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  in_55 = OPENSSL_load_u64_le (&accum, in_26);
+  accum_bits_56 = 64;
+
+  <bb 5> :
+  # in_27 = PHI <in_26(3), in_55(4)>
+  # accum_bits_31 = PHI <accum_bits_30(3), accum_bits_56(4)>
+  if (todo_33 == bits_48(D))
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  if (accum_bits_31 >= bits_48(D))
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  accum.42_3 = accum;
+  _4 = (short unsigned int) accum.42_3;
+  curr.43_5 = curr_28;
+  curr_57 = curr.43_5 + 2;
+  _6 = mask_35 & _4;
+  *curr.43_5 = _6;
+  accum.44_7 = accum;
+  _8 = accum.44_7 >> bits_48(D);
+  accum = _8;
+  accum_bits_60 = accum_bits_31 - bits_48(D);
+  goto <bb 11>; [INV]
+
+  <bb 8> :
+  if (accum_bits_31 >= todo_33)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  accum.45_9 = accum;
+  _10 = (short unsigned int) accum.45_9;
+  _11 = mask_35 & _10;
+  _12 = (int) _11;
+  _13 = bits_48(D) - todo_33;
+  _14 = _12 << _13;
+  _15 = (signed short) _14;
+  element.46_16 = (signed short) element_37;
+  _17 = _15 | element.46_16;
+  curr.47_18 = curr_28;
+  curr_65 = curr.47_18 + 2;
+  _19 = (short unsigned int) _17;
+  *curr.47_18 = _19;
+  accum.48_20 = accum;
+  _21 = accum.48_20 >> todo_33;
+  accum = _21;
+  accum_bits_68 = accum_bits_31 - todo_33;
+  element_69 = 0;
+  todo_70 = bits_48(D);
+  mask_71 = bitmask_50;
+  goto <bb 11>; [INV]
+
+  <bb 10> :
+  accum.49_22 = accum;
+  _23 = (short unsigned int) accum.49_22;
+  element_61 = mask_35 & _23;
+  todo_62 = todo_33 - accum_bits_31;
+  _24 = (int) bitmask_50;
+  _25 = _24 >> accum_bits_31;
+  mask_63 = (uint16_t) _25;
+  accum_bits_64 = 0;
+
+  <bb 11> :
+  # curr_29 = PHI <curr_57(7), curr_65(9), curr_28(10)>
+  # accum_bits_32 = PHI <accum_bits_60(7), accum_bits_68(9), accum_bits_64(10)>
+  # todo_34 = PHI <todo_33(7), todo_70(9), todo_62(10)>
+  # mask_36 = PHI <mask_35(7), mask_71(9), mask_63(10)>
+  # element_38 = PHI <element_37(7), element_69(9), element_61(10)>
+  if (curr_29 < end_44)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  accum ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function scalar_decode_12 (scalar_decode_12, funcdef_no=513, decl_uid=17767, cgraph_uid=514, symbol_order=522)
+
+__attribute__((access ("^1[384]", )))
+int scalar_decode_12 (struct scalar * out, const uint8_t * in)
+{
+  int outOfRange2;
+  int outOfRange1;
+  uint8_t b3;
+  uint8_t b2;
+  uint8_t b1;
+  uint16_t * c;
+  int i;
+  int D.18336;
+  const uint8_t * in.51_1;
+  const uint8_t * in.52_2;
+  const uint8_t * in.53_3;
+  signed short _4;
+  signed short _5;
+  signed short _6;
+  signed short _7;
+  signed short _8;
+  uint16_t * c.54_9;
+  short unsigned int _10;
+  short unsigned int _11;
+  int _12;
+  int kPrime.55_13;
+  _Bool _14;
+  unsigned char _15;
+  signed short _16;
+  signed short _17;
+  signed short _18;
+  signed short _19;
+  uint16_t * c.56_20;
+  short unsigned int _21;
+  short unsigned int _22;
+  int _23;
+  int kPrime.57_24;
+  _Bool _25;
+  int _26;
+  int _30;
+  int _38;
+  int _52;
+
+  <bb 2> :
+  c_34 = &out_33(D)->c;
+  i_35 = 0;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  in.51_1 = in_27;
+  in_39 = in.51_1 + 1;
+  b1_40 = *in.51_1;
+  in.52_2 = in_39;
+  in_41 = in.52_2 + 1;
+  b2_42 = *in.52_2;
+  in.53_3 = in_41;
+  in_43 = in.53_3 + 1;
+  b3_44 = *in.53_3;
+  _4 = (signed short) b1_40;
+  _5 = (signed short) b2_42;
+  _6 = _5 << 8;
+  _7 = _6 & 3840;
+  _8 = _4 | _7;
+  c.54_9 = c_29;
+  c_45 = c.54_9 + 2;
+  _10 = (short unsigned int) _8;
+  *c.54_9 = _10;
+  _11 = *c.54_9;
+  _12 = (int) _11;
+  kPrime.55_13 = 3329;
+  _14 = _12 >= kPrime.55_13;
+  outOfRange1_47 = (int) _14;
+  _15 = b2_42 >> 4;
+  _16 = (signed short) _15;
+  _17 = (signed short) b3_44;
+  _18 = _17 << 4;
+  _19 = _16 | _18;
+  c.56_20 = c_45;
+  c_48 = c.56_20 + 2;
+  _21 = (short unsigned int) _19;
+  *c.56_20 = _21;
+  _22 = *c.56_20;
+  _23 = (int) _22;
+  kPrime.57_24 = 3329;
+  _25 = _23 >= kPrime.57_24;
+  outOfRange2_50 = (int) _25;
+  _26 = outOfRange1_47 | outOfRange2_50;
+  if (_26 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _52 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  i_51 = i_28 + 1;
+
+  <bb 6> :
+  # in_27 = PHI <in_36(D)(2), in_43(5)>
+  # i_28 = PHI <i_35(2), i_51(5)>
+  # c_29 = PHI <c_34(2), c_48(5)>
+  if (i_28 <= 127)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _38 = 1;
+
+  <bb 8> :
+  # _30 = PHI <_52(4), _38(7)>
+<L5>:
+  return _30;
+
+}
+
+
+
+;; Function scalar_decode_decompress_add (scalar_decode_decompress_add, funcdef_no=514, decl_uid=17782, cgraph_uid=515, symbol_order=523)
+
+__attribute__((access ("^1[32]", )))
+void scalar_decode_decompress_add (struct scalar * out, const uint8_t * in)
+{
+  uint8_t b;
+  uint16_t mask;
+  uint16_t * end;
+  uint16_t * curr;
+  const uint16_t half_q_plus_1;
+  const uint8_t * in.58_1;
+  short unsigned int _2;
+  short unsigned int _3;
+  short unsigned int _4;
+  short unsigned int half_q_plus_1.59_5;
+  short unsigned int _6;
+  short unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  short unsigned int _11;
+  short unsigned int half_q_plus_1.60_12;
+  short unsigned int _13;
+  short unsigned int _14;
+  short unsigned int _15;
+  short unsigned int _16;
+  short unsigned int _17;
+  short unsigned int _18;
+  short unsigned int half_q_plus_1.61_19;
+  short unsigned int _20;
+  short unsigned int _21;
+  short unsigned int _22;
+  short unsigned int _23;
+  short unsigned int _24;
+  short unsigned int _25;
+  short unsigned int half_q_plus_1.62_26;
+  short unsigned int _27;
+  short unsigned int _28;
+  short unsigned int _29;
+  short unsigned int _30;
+  short unsigned int _31;
+  short unsigned int _32;
+  short unsigned int half_q_plus_1.63_33;
+  short unsigned int _34;
+  short unsigned int _35;
+  short unsigned int _36;
+  short unsigned int _37;
+  short unsigned int _38;
+  short unsigned int _39;
+  short unsigned int half_q_plus_1.64_40;
+  short unsigned int _41;
+  short unsigned int _42;
+  short unsigned int _43;
+  short unsigned int _44;
+  short unsigned int _45;
+  short unsigned int _46;
+  short unsigned int half_q_plus_1.65_47;
+  short unsigned int _48;
+  short unsigned int _49;
+  short unsigned int _50;
+  short unsigned int _51;
+  short unsigned int _52;
+  short unsigned int _53;
+  short unsigned int half_q_plus_1.66_54;
+  short unsigned int _55;
+  short unsigned int _56;
+  short unsigned int _57;
+
+  <bb 2> :
+  half_q_plus_1 = 1665;
+  curr_62 = &out_61(D)->c;
+  end_63 = curr_62 + 512;
+
+  <bb 3> :
+  # in_58 = PHI <in_64(D)(2), in_66(3)>
+  # curr_59 = PHI <curr_62(2), curr_106(3)>
+  in.58_1 = in_58;
+  in_66 = in.58_1 + 1;
+  b_67 = *in.58_1;
+  _2 = (short unsigned int) b_67;
+  _3 = _2 & 1;
+  mask_68 = -_3;
+  _4 = *curr_59;
+  half_q_plus_1.59_5 = half_q_plus_1;
+  _6 = mask_68 & half_q_plus_1.59_5;
+  _7 = _4 + _6;
+  _8 = reduce_once (_7);
+  *curr_59 = _8;
+  curr_71 = curr_59 + 2;
+  b_72 = b_67 >> 1;
+  _9 = (short unsigned int) b_72;
+  _10 = _9 & 1;
+  mask_73 = -_10;
+  _11 = *curr_71;
+  half_q_plus_1.60_12 = half_q_plus_1;
+  _13 = mask_73 & half_q_plus_1.60_12;
+  _14 = _11 + _13;
+  _15 = reduce_once (_14);
+  *curr_71 = _15;
+  curr_76 = curr_71 + 2;
+  b_77 = b_72 >> 1;
+  _16 = (short unsigned int) b_77;
+  _17 = _16 & 1;
+  mask_78 = -_17;
+  _18 = *curr_76;
+  half_q_plus_1.61_19 = half_q_plus_1;
+  _20 = mask_78 & half_q_plus_1.61_19;
+  _21 = _18 + _20;
+  _22 = reduce_once (_21);
+  *curr_76 = _22;
+  curr_81 = curr_76 + 2;
+  b_82 = b_77 >> 1;
+  _23 = (short unsigned int) b_82;
+  _24 = _23 & 1;
+  mask_83 = -_24;
+  _25 = *curr_81;
+  half_q_plus_1.62_26 = half_q_plus_1;
+  _27 = mask_83 & half_q_plus_1.62_26;
+  _28 = _25 + _27;
+  _29 = reduce_once (_28);
+  *curr_81 = _29;
+  curr_86 = curr_81 + 2;
+  b_87 = b_82 >> 1;
+  _30 = (short unsigned int) b_87;
+  _31 = _30 & 1;
+  mask_88 = -_31;
+  _32 = *curr_86;
+  half_q_plus_1.63_33 = half_q_plus_1;
+  _34 = mask_88 & half_q_plus_1.63_33;
+  _35 = _32 + _34;
+  _36 = reduce_once (_35);
+  *curr_86 = _36;
+  curr_91 = curr_86 + 2;
+  b_92 = b_87 >> 1;
+  _37 = (short unsigned int) b_92;
+  _38 = _37 & 1;
+  mask_93 = -_38;
+  _39 = *curr_91;
+  half_q_plus_1.64_40 = half_q_plus_1;
+  _41 = mask_93 & half_q_plus_1.64_40;
+  _42 = _39 + _41;
+  _43 = reduce_once (_42);
+  *curr_91 = _43;
+  curr_96 = curr_91 + 2;
+  b_97 = b_92 >> 1;
+  _44 = (short unsigned int) b_97;
+  _45 = _44 & 1;
+  mask_98 = -_45;
+  _46 = *curr_96;
+  half_q_plus_1.65_47 = half_q_plus_1;
+  _48 = mask_98 & half_q_plus_1.65_47;
+  _49 = _46 + _48;
+  _50 = reduce_once (_49);
+  *curr_96 = _50;
+  curr_101 = curr_96 + 2;
+  b_102 = b_97 >> 1;
+  _51 = (short unsigned int) b_102;
+  _52 = _51 & 1;
+  mask_103 = -_52;
+  _53 = *curr_101;
+  half_q_plus_1.66_54 = half_q_plus_1;
+  _55 = mask_103 & half_q_plus_1.66_54;
+  _56 = _53 + _55;
+  _57 = reduce_once (_56);
+  *curr_101 = _57;
+  curr_106 = curr_101 + 2;
+  b_107 = b_102 >> 1;
+  if (curr_106 < end_63)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function compress (compress, funcdef_no=515, decl_uid=17794, cgraph_uid=516, symbol_order=524)
+
+uint16_t compress (uint16_t x, int bits)
+{
+  uint32_t remainder;
+  uint32_t quotient;
+  uint64_t product;
+  uint32_t shifted;
+  uint16_t D.18340;
+  unsigned int D.18339;
+  unsigned int D.18338;
+  unsigned int _1;
+  long unsigned int _2;
+  long unsigned int kBarrettMultiplier.67_3;
+  unsigned int kBarrettShift.68_4;
+  long unsigned int _5;
+  int kPrime.69_6;
+  unsigned int kPrime.70_7;
+  unsigned int _8;
+  short unsigned int kHalfPrime.71_9;
+  unsigned int _10;
+  unsigned int _11;
+  short unsigned int kHalfPrime.72_12;
+  int _13;
+  int kPrime.73_14;
+  int _15;
+  unsigned int _16;
+  unsigned int _17;
+  int _18;
+  short unsigned int _19;
+  short unsigned int _20;
+  short unsigned int _21;
+  unsigned int _30;
+  unsigned int _33;
+  uint16_t _35;
+
+  <bb 2> :
+  _1 = (unsigned int) x_22(D);
+  shifted_24 = _1 << bits_23(D);
+  _2 = (long unsigned int) shifted_24;
+  kBarrettMultiplier.67_3 = 5039;
+  product_25 = _2 * kBarrettMultiplier.67_3;
+  kBarrettShift.68_4 = 24;
+  _5 = product_25 >> kBarrettShift.68_4;
+  quotient_26 = (uint32_t) _5;
+  kPrime.69_6 = 3329;
+  kPrime.70_7 = (unsigned int) kPrime.69_6;
+  _8 = quotient_26 * kPrime.70_7;
+  remainder_27 = shifted_24 - _8;
+  kHalfPrime.71_9 = 1664;
+  _10 = (unsigned int) kHalfPrime.71_9;
+  _11 = constant_time_lt_32 (_10, remainder_27);
+  _30 = _11 & 1;
+  quotient_31 = _30 + quotient_26;
+  kHalfPrime.72_12 = 1664;
+  _13 = (int) kHalfPrime.72_12;
+  kPrime.73_14 = 3329;
+  _15 = _13 + kPrime.73_14;
+  _16 = (unsigned int) _15;
+  _17 = constant_time_lt_32 (_16, remainder_27);
+  _33 = _17 & 1;
+  quotient_34 = _33 + quotient_31;
+  _18 = 1 << bits_23(D);
+  _19 = (short unsigned int) _18;
+  _20 = _19 + 65535;
+  _21 = (short unsigned int) quotient_34;
+  _35 = _20 & _21;
+
+  <bb 3> :
+<L0>:
+  return _35;
+
+}
+
+
+
+;; Function decompress (decompress, funcdef_no=516, decl_uid=17802, cgraph_uid=517, symbol_order=525)
+
+uint16_t decompress (uint16_t x, int bits)
+{
+  uint32_t lower;
+  uint32_t remainder;
+  uint32_t power;
+  uint32_t product;
+  uint16_t D.18346;
+  unsigned int _1;
+  int kPrime.75_2;
+  unsigned int kPrime.76_3;
+  int _4;
+  unsigned int _5;
+  int _6;
+  unsigned int _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  uint16_t _16;
+
+  <bb 2> :
+  _1 = (unsigned int) x_10(D);
+  kPrime.75_2 = 3329;
+  kPrime.76_3 = (unsigned int) kPrime.75_2;
+  product_11 = _1 * kPrime.76_3;
+  _4 = 1 << bits_12(D);
+  power_13 = (uint32_t) _4;
+  _5 = power_13 + 4294967295;
+  remainder_14 = product_11 & _5;
+  lower_15 = product_11 >> bits_12(D);
+  _6 = bits_12(D) + -1;
+  _7 = remainder_14 >> _6;
+  _8 = (short unsigned int) _7;
+  _9 = (short unsigned int) lower_15;
+  _16 = _8 + _9;
+
+  <bb 3> :
+<L0>:
+  return _16;
+
+}
+
+
+
+;; Function scalar_compress (scalar_compress, funcdef_no=517, decl_uid=17810, cgraph_uid=518, symbol_order=526)
+
+void scalar_compress (struct scalar * s, int bits)
+{
+  int i;
+  short unsigned int _1;
+  short unsigned int _2;
+
+  <bb 2> :
+  i_5 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = s_7(D)->c[i_3];
+  _2 = compress (_1, bits_8(D));
+  s_7(D)->c[i_3] = _2;
+  i_11 = i_3 + 1;
+
+  <bb 4> :
+  # i_3 = PHI <i_5(2), i_11(3)>
+  if (i_3 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function scalar_decompress (scalar_decompress, funcdef_no=518, decl_uid=17819, cgraph_uid=519, symbol_order=527)
+
+void scalar_decompress (struct scalar * s, int bits)
+{
+  int i;
+  short unsigned int _1;
+  short unsigned int _2;
+
+  <bb 2> :
+  i_5 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = s_7(D)->c[i_3];
+  _2 = decompress (_1, bits_8(D));
+  s_7(D)->c[i_3] = _2;
+  i_11 = i_3 + 1;
+
+  <bb 4> :
+  # i_3 = PHI <i_5(2), i_11(3)>
+  if (i_3 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_add (vector_add, funcdef_no=519, decl_uid=17829, cgraph_uid=520, symbol_order=528)
+
+void vector_add (struct scalar * lhs, const struct scalar * rhs, int rank)
+{
+  struct scalar * lhs.77_1;
+  const struct scalar * rhs.78_2;
+
+  <bb 2> :
+
+  <bb 3> :
+  # lhs_3 = PHI <lhs_7(D)(2), lhs_11(3)>
+  # rhs_4 = PHI <rhs_8(D)(2), rhs_12(3)>
+  # rank_5 = PHI <rank_9(D)(2), rank_14(3)>
+  lhs.77_1 = lhs_3;
+  lhs_11 = lhs.77_1 + 512;
+  rhs.78_2 = rhs_4;
+  rhs_12 = rhs.78_2 + 512;
+  scalar_add (lhs.77_1, rhs.78_2);
+  rank_14 = rank_5 + -1;
+  if (rank_14 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function vector_encode (vector_encode, funcdef_no=520, decl_uid=17838, cgraph_uid=521, symbol_order=529)
+
+void vector_encode (uint8_t * out, const struct scalar * a, int bits, int rank)
+{
+  int stride;
+  const struct scalar * a.79_1;
+  sizetype _2;
+  int rank.80_3;
+
+  <bb 2> :
+  stride_9 = bits_8(D) * 32;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  a.79_1 = a_5;
+  a_15 = a.79_1 + 512;
+  scalar_encode (out_4, a.79_1, bits_8(D));
+  _2 = (sizetype) stride_9;
+  out_17 = out_4 + _2;
+
+  <bb 4> :
+  # out_4 = PHI <out_10(D)(2), out_17(3)>
+  # a_5 = PHI <a_11(D)(2), a_15(3)>
+  # rank_6 = PHI <rank_12(D)(2), rank_14(3)>
+  rank.80_3 = rank_6;
+  rank_14 = rank.80_3 + -1;
+  if (rank.80_3 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_decode_decompress_ntt (vector_decode_decompress_ntt, funcdef_no=521, decl_uid=17849, cgraph_uid=522, symbol_order=530)
+
+void vector_decode_decompress_ntt (struct scalar * out, const uint8_t * in, int bits, int rank)
+{
+  int stride;
+  sizetype _1;
+  int rank.81_2;
+
+  <bb 2> :
+  stride_8 = bits_7(D) * 32;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  scalar_decode (out_3, in_4, bits_7(D));
+  scalar_decompress (out_3, bits_7(D));
+  scalar_ntt (out_3);
+  _1 = (sizetype) stride_8;
+  in_17 = in_4 + _1;
+  out_18 = out_3 + 512;
+
+  <bb 4> :
+  # out_3 = PHI <out_9(D)(2), out_18(3)>
+  # in_4 = PHI <in_10(D)(2), in_17(3)>
+  # rank_5 = PHI <rank_11(D)(2), rank_13(3)>
+  rank.81_2 = rank_5;
+  rank_13 = rank.81_2 + -1;
+  if (rank.81_2 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_decode_12 (vector_decode_12, funcdef_no=522, decl_uid=17859, cgraph_uid=523, symbol_order=531)
+
+__attribute__((access ("^1[384]", )))
+int vector_decode_12 (struct scalar * out, const uint8_t * in, int rank)
+{
+  int stride;
+  int D.18350;
+  struct scalar * out.82_1;
+  int _2;
+  sizetype _3;
+  int rank.83_4;
+  int _8;
+  int _17;
+  int _21;
+
+  <bb 2> :
+  stride_11 = 384;
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  out.82_1 = out_5;
+  out_18 = out.82_1 + 512;
+  _2 = scalar_decode_12 (out.82_1, in_6);
+  if (_2 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _21 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  _3 = (sizetype) stride_11;
+  in_20 = in_6 + _3;
+
+  <bb 6> :
+  # out_5 = PHI <out_12(D)(2), out_18(5)>
+  # in_6 = PHI <in_13(D)(2), in_20(5)>
+  # rank_7 = PHI <rank_14(D)(2), rank_16(5)>
+  rank.83_4 = rank_7;
+  rank_16 = rank.83_4 + -1;
+  if (rank.83_4 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _17 = 1;
+
+  <bb 8> :
+  # _8 = PHI <_21(4), _17(7)>
+<L5>:
+  return _8;
+
+}
+
+
+
+;; Function vector_compress (vector_compress, funcdef_no=523, decl_uid=17869, cgraph_uid=524, symbol_order=532)
+
+void vector_compress (struct scalar * a, int bits, int rank)
+{
+  struct scalar * a.84_1;
+
+  <bb 2> :
+
+  <bb 3> :
+  # a_2 = PHI <a_5(D)(2), a_8(3)>
+  # rank_3 = PHI <rank_6(D)(2), rank_11(3)>
+  a.84_1 = a_2;
+  a_8 = a.84_1 + 512;
+  scalar_compress (a.84_1, bits_9(D));
+  rank_11 = rank_3 + -1;
+  if (rank_11 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function inner_product (inner_product, funcdef_no=524, decl_uid=17878, cgraph_uid=525, symbol_order=533)
+
+void inner_product (struct scalar * out, const struct scalar * lhs, const struct scalar * rhs, int rank)
+{
+  <bb 2> :
+  scalar_mult (out_6(D), lhs_7(D), rhs_8(D));
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  lhs_12 = lhs_1 + 512;
+  rhs_13 = rhs_2 + 512;
+  scalar_mult_add (out_6(D), lhs_12, rhs_13);
+
+  <bb 4> :
+  # lhs_1 = PHI <lhs_7(D)(2), lhs_12(3)>
+  # rhs_2 = PHI <rhs_8(D)(2), rhs_13(3)>
+  # rank_3 = PHI <rank_10(D)(2), rank_11(3)>
+  rank_11 = rank_3 + -1;
+  if (rank_11 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function matrix_mult_intt (matrix_mult_intt, funcdef_no=525, decl_uid=17887, cgraph_uid=526, symbol_order=534)
+
+void matrix_mult_intt (struct scalar * out, const struct scalar * m, const struct scalar * a, int rank)
+{
+  int j;
+  int i;
+  const struct scalar * ar;
+  const struct scalar * m.92_1;
+  const struct scalar * m.93_2;
+  int i.94_3;
+
+  <bb 2> :
+  i_13 = rank_12(D);
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  m.92_1 = m_6;
+  m_18 = m.92_1 + 512;
+  ar_20 = a_19(D);
+  scalar_mult (out_4, m.92_1, ar_20);
+  j_22 = rank_12(D) + -1;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  m.93_2 = m_5;
+  m_25 = m.93_2 + 512;
+  ar_26 = ar_7 + 512;
+  scalar_mult_add (out_4, m.93_2, ar_26);
+  j_28 = j_9 + -1;
+
+  <bb 5> :
+  # m_5 = PHI <m_18(3), m_25(4)>
+  # ar_7 = PHI <ar_20(3), ar_26(4)>
+  # j_9 = PHI <j_22(3), j_28(4)>
+  if (j_9 > 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  scalar_inverse_ntt (out_4);
+  out_24 = out_4 + 512;
+
+  <bb 7> :
+  # out_4 = PHI <out_14(D)(2), out_24(6)>
+  # m_6 = PHI <m_15(D)(2), m_5(6)>
+  # i_8 = PHI <i_13(2), i_17(6)>
+  i.94_3 = i_8;
+  i_17 = i.94_3 + -1;
+  if (i.94_3 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
+
+;; Function matrix_mult_transpose_add (matrix_mult_transpose_add, funcdef_no=526, decl_uid=17904, cgraph_uid=527, symbol_order=535)
+
+void matrix_mult_transpose_add (struct scalar * out, const struct scalar * m, const struct scalar * a, int rank)
+{
+  int j;
+  int i;
+  const struct scalar * ar;
+  const struct scalar * mr;
+  const struct scalar * mc;
+  const struct scalar * mc.95_1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int i.96_4;
+
+  <bb 2> :
+  mc_14 = m_13(D);
+  i_16 = rank_15(D);
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  mc.95_1 = mc_6;
+  mc_20 = mc.95_1 + 512;
+  mr_21 = mc.95_1;
+  ar_23 = a_22(D);
+  scalar_mult_add (out_5, mr_21, ar_23);
+  j_25 = rank_15(D);
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = (long unsigned int) rank_15(D);
+  _3 = _2 * 512;
+  mr_28 = mr_7 + _3;
+  ar_29 = ar_8 + 512;
+  scalar_mult_add (out_5, mr_28, ar_29);
+
+  <bb 5> :
+  # mr_7 = PHI <mr_21(3), mr_28(4)>
+  # ar_8 = PHI <ar_23(3), ar_29(4)>
+  # j_10 = PHI <j_25(3), j_26(4)>
+  j_26 = j_10 + -1;
+  if (j_26 > 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  out_27 = out_5 + 512;
+
+  <bb 7> :
+  # out_5 = PHI <out_17(D)(2), out_27(6)>
+  # mc_6 = PHI <mc_14(2), mc_20(6)>
+  # i_9 = PHI <i_16(2), i_19(6)>
+  i.96_4 = i_9;
+  i_19 = i.96_4 + -1;
+  if (i.96_4 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
+
+;; Function matrix_expand (matrix_expand, funcdef_no=527, decl_uid=17920, cgraph_uid=528, symbol_order=536)
+
+int matrix_expand (struct EVP_MD_CTX * mdctx, struct ML_KEM_KEY * key)
+{
+  int j;
+  int i;
+  int rank;
+  uint8_t input[34];
+  struct scalar * out;
+  int D.18356;
+  const struct ML_KEM_VINFO * _1;
+  uint8_t * _2;
+  unsigned char _3;
+  unsigned char _4;
+  struct EVP_MD * _5;
+  int _6;
+  int _7;
+  struct scalar * out.97_8;
+  int _9;
+  int _14;
+  int _25;
+  int _36;
+
+  <bb 2> :
+  out_21 = key_20(D)->m;
+  _1 = key_20(D)->vinfo;
+  rank_22 = _1->rank;
+  _2 = key_20(D)->rho;
+  memcpy (&input, _2, 32);
+  i_24 = 0;
+  goto <bb 11>; [INV]
+
+  <bb 3> :
+  j_26 = 0;
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  _3 = (unsigned char) i_12;
+  input[32] = _3;
+  _4 = (unsigned char) j_13;
+  input[33] = _4;
+  _5 = key_20(D)->shake128_md;
+  _6 = EVP_DigestInit_ex (mdctx_30(D), _5, 0B);
+  if (_6 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _7 = EVP_DigestUpdate (mdctx_30(D), &input, 34);
+  if (_7 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  out.97_8 = out_10;
+  out_33 = out.97_8 + 512;
+  _9 = sample_scalar (out.97_8, mdctx_30(D));
+  if (_9 == 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _36 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 8> :
+  j_35 = j_13 + 1;
+
+  <bb 9> :
+  # out_10 = PHI <out_11(3), out_33(8)>
+  # j_13 = PHI <j_26(3), j_35(8)>
+  if (j_13 < rank_22)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  i_27 = i_12 + 1;
+
+  <bb 11> :
+  # out_11 = PHI <out_21(2), out_10(10)>
+  # i_12 = PHI <i_24(2), i_27(10)>
+  if (i_12 < rank_22)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  _25 = 1;
+
+  <bb 13> :
+  # _14 = PHI <_36(7), _25(12)>
+  input ={v} {CLOBBER(eos)};
+
+  <bb 14> :
+<L11>:
+  return _14;
+
+}
+
+
+
+;; Function cbd_2 (cbd_2, funcdef_no=528, decl_uid=17939, cgraph_uid=529, symbol_order=537)
+
+__attribute__((access ("^1[33]", )))
+int cbd_2 (struct scalar * out, uint8_t * in, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t b;
+  uint16_t mask;
+  uint16_t value;
+  uint8_t * r;
+  uint8_t randbuf[128];
+  uint16_t * end;
+  uint16_t * curr;
+  int D.18361;
+  int _1;
+  uint8_t * r.98_2;
+  short unsigned int _3;
+  short unsigned int _4;
+  unsigned char _5;
+  short unsigned int _6;
+  short unsigned int _7;
+  unsigned char _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  unsigned char _11;
+  short unsigned int _12;
+  short unsigned int _13;
+  short unsigned int _14;
+  signed short value.99_15;
+  signed short _16;
+  int kPrime.100_17;
+  signed short _18;
+  signed short mask.101_19;
+  signed short _20;
+  short unsigned int _21;
+  uint16_t * curr.102_22;
+  short unsigned int _23;
+  unsigned char _24;
+  short unsigned int _25;
+  short unsigned int _26;
+  unsigned char _27;
+  short unsigned int _28;
+  short unsigned int _29;
+  unsigned char _30;
+  short unsigned int _31;
+  short unsigned int _32;
+  unsigned char _33;
+  short unsigned int _34;
+  short unsigned int _35;
+  short unsigned int _36;
+  signed short value.103_37;
+  signed short _38;
+  int kPrime.104_39;
+  signed short _40;
+  signed short mask.105_41;
+  signed short _42;
+  short unsigned int _43;
+  uint16_t * curr.106_44;
+  short unsigned int _45;
+  int _48;
+  int _72;
+  int _73;
+
+  <bb 2> :
+  curr_52 = &out_51(D)->c;
+  end_53 = curr_52 + 512;
+  r_54 = &randbuf;
+  _1 = prf (&randbuf, 128, in_56(D), mdctx_57(D), key_58(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _73 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # curr_46 = PHI <curr_52(2), curr_70(4)>
+  # r_47 = PHI <r_54(2), r_60(4)>
+  r.98_2 = r_47;
+  r_60 = r.98_2 + 1;
+  b_61 = *r.98_2;
+  _3 = (short unsigned int) b_61;
+  _4 = _3 & 1;
+  _5 = b_61 >> 1;
+  _6 = (short unsigned int) _5;
+  _7 = _6 & 1;
+  value_62 = _4 + _7;
+  _8 = b_61 >> 2;
+  _9 = (short unsigned int) _8;
+  _10 = _9 & 1;
+  _11 = b_61 >> 3;
+  _12 = (short unsigned int) _11;
+  _13 = _12 & 1;
+  _14 = _10 + _13;
+  value_63 = value_62 - _14;
+  value.99_15 = (signed short) value_63;
+  _16 = value.99_15 >> 15;
+  mask_64 = (uint16_t) _16;
+  kPrime.100_17 = 3329;
+  _18 = (signed short) kPrime.100_17;
+  mask.101_19 = (signed short) mask_64;
+  _20 = _18 & mask.101_19;
+  _21 = (short unsigned int) _20;
+  curr.102_22 = curr_46;
+  curr_65 = curr.102_22 + 2;
+  _23 = value_63 + _21;
+  *curr.102_22 = _23;
+  _24 = b_61 >> 4;
+  _25 = (short unsigned int) _24;
+  _26 = _25 & 1;
+  _27 = b_61 >> 5;
+  _28 = (short unsigned int) _27;
+  _29 = _28 & 1;
+  value_67 = _26 + _29;
+  _30 = b_61 >> 6;
+  _31 = (short unsigned int) _30;
+  _32 = _31 & 1;
+  _33 = b_61 >> 7;
+  _34 = (short unsigned int) _33;
+  _35 = _34 & 1;
+  _36 = _32 + _35;
+  value_68 = value_67 - _36;
+  value.103_37 = (signed short) value_68;
+  _38 = value.103_37 >> 15;
+  mask_69 = (uint16_t) _38;
+  kPrime.104_39 = 3329;
+  _40 = (signed short) kPrime.104_39;
+  mask.105_41 = (signed short) mask_69;
+  _42 = _40 & mask.105_41;
+  _43 = (short unsigned int) _42;
+  curr.106_44 = curr_65;
+  curr_70 = curr.106_44 + 2;
+  _45 = value_68 + _43;
+  *curr.106_44 = _45;
+  if (curr_70 < end_53)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _72 = 1;
+
+  <bb 6> :
+  # _48 = PHI <_73(3), _72(5)>
+  randbuf ={v} {CLOBBER(eos)};
+
+  <bb 7> :
+<L5>:
+  return _48;
+
+}
+
+
+
+;; Function cbd_3 (cbd_3, funcdef_no=529, decl_uid=17955, cgraph_uid=530, symbol_order=538)
+
+__attribute__((access ("^1[33]", )))
+int cbd_3 (struct scalar * out, uint8_t * in, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint16_t mask;
+  uint16_t value;
+  uint8_t b3;
+  uint8_t b2;
+  uint8_t b1;
+  uint8_t * r;
+  uint8_t randbuf[192];
+  uint16_t * end;
+  uint16_t * curr;
+  int D.18366;
+  int _1;
+  uint8_t * r.107_2;
+  uint8_t * r.108_3;
+  uint8_t * r.109_4;
+  short unsigned int _5;
+  short unsigned int _6;
+  unsigned char _7;
+  short unsigned int _8;
+  short unsigned int _9;
+  short unsigned int _10;
+  unsigned char _11;
+  short unsigned int _12;
+  short unsigned int _13;
+  unsigned char _14;
+  short unsigned int _15;
+  short unsigned int _16;
+  unsigned char _17;
+  short unsigned int _18;
+  short unsigned int _19;
+  short unsigned int _20;
+  unsigned char _21;
+  short unsigned int _22;
+  short unsigned int _23;
+  short unsigned int _24;
+  signed short value.110_25;
+  signed short _26;
+  int kPrime.111_27;
+  signed short _28;
+  signed short mask.112_29;
+  signed short _30;
+  short unsigned int _31;
+  uint16_t * curr.113_32;
+  short unsigned int _33;
+  unsigned char _34;
+  short unsigned int _35;
+  short unsigned int _36;
+  unsigned char _37;
+  short unsigned int _38;
+  short unsigned int _39;
+  short unsigned int _40;
+  short unsigned int _41;
+  short unsigned int _42;
+  unsigned char _43;
+  short unsigned int _44;
+  short unsigned int _45;
+  unsigned char _46;
+  short unsigned int _47;
+  short unsigned int _48;
+  short unsigned int _49;
+  unsigned char _50;
+  short unsigned int _51;
+  short unsigned int _52;
+  short unsigned int _53;
+  signed short value.114_54;
+  signed short _55;
+  int kPrime.115_56;
+  signed short _57;
+  signed short mask.116_58;
+  signed short _59;
+  short unsigned int _60;
+  uint16_t * curr.117_61;
+  short unsigned int _62;
+  unsigned char _63;
+  short unsigned int _64;
+  short unsigned int _65;
+  unsigned char _66;
+  short unsigned int _67;
+  short unsigned int _68;
+  short unsigned int _69;
+  unsigned char _70;
+  short unsigned int _71;
+  short unsigned int _72;
+  unsigned char _73;
+  short unsigned int _74;
+  short unsigned int _75;
+  short unsigned int _76;
+  short unsigned int _77;
+  short unsigned int _78;
+  unsigned char _79;
+  short unsigned int _80;
+  short unsigned int _81;
+  short unsigned int _82;
+  signed short value.118_83;
+  signed short _84;
+  int kPrime.119_85;
+  signed short _86;
+  signed short mask.120_87;
+  signed short _88;
+  short unsigned int _89;
+  uint16_t * curr.121_90;
+  short unsigned int _91;
+  unsigned char _92;
+  short unsigned int _93;
+  short unsigned int _94;
+  unsigned char _95;
+  short unsigned int _96;
+  short unsigned int _97;
+  short unsigned int _98;
+  unsigned char _99;
+  short unsigned int _100;
+  short unsigned int _101;
+  unsigned char _102;
+  short unsigned int _103;
+  short unsigned int _104;
+  unsigned char _105;
+  short unsigned int _106;
+  short unsigned int _107;
+  short unsigned int _108;
+  unsigned char _109;
+  short unsigned int _110;
+  short unsigned int _111;
+  short unsigned int _112;
+  signed short value.122_113;
+  signed short _114;
+  int kPrime.123_115;
+  signed short _116;
+  signed short mask.124_117;
+  signed short _118;
+  short unsigned int _119;
+  uint16_t * curr.125_120;
+  short unsigned int _121;
+  int _124;
+  int _162;
+  int _163;
+
+  <bb 2> :
+  curr_128 = &out_127(D)->c;
+  end_129 = curr_128 + 512;
+  r_130 = &randbuf;
+  _1 = prf (&randbuf, 192, in_132(D), mdctx_133(D), key_134(D));
+  if (_1 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _163 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 4> :
+  # curr_122 = PHI <curr_128(2), curr_160(4)>
+  # r_123 = PHI <r_130(2), r_140(4)>
+  r.107_2 = r_123;
+  r_136 = r.107_2 + 1;
+  b1_137 = *r.107_2;
+  r.108_3 = r_136;
+  r_138 = r.108_3 + 1;
+  b2_139 = *r.108_3;
+  r.109_4 = r_138;
+  r_140 = r.109_4 + 1;
+  b3_141 = *r.109_4;
+  _5 = (short unsigned int) b1_137;
+  _6 = _5 & 1;
+  _7 = b1_137 >> 1;
+  _8 = (short unsigned int) _7;
+  _9 = _8 & 1;
+  _10 = _6 + _9;
+  _11 = b1_137 >> 2;
+  _12 = (short unsigned int) _11;
+  _13 = _12 & 1;
+  value_142 = _10 + _13;
+  _14 = b1_137 >> 3;
+  _15 = (short unsigned int) _14;
+  _16 = _15 & 1;
+  _17 = b1_137 >> 4;
+  _18 = (short unsigned int) _17;
+  _19 = _18 & 1;
+  _20 = _16 + _19;
+  _21 = b1_137 >> 5;
+  _22 = (short unsigned int) _21;
+  _23 = _22 & 1;
+  _24 = _20 + _23;
+  value_143 = value_142 - _24;
+  value.110_25 = (signed short) value_143;
+  _26 = value.110_25 >> 15;
+  mask_144 = (uint16_t) _26;
+  kPrime.111_27 = 3329;
+  _28 = (signed short) kPrime.111_27;
+  mask.112_29 = (signed short) mask_144;
+  _30 = _28 & mask.112_29;
+  _31 = (short unsigned int) _30;
+  curr.113_32 = curr_122;
+  curr_145 = curr.113_32 + 2;
+  _33 = value_143 + _31;
+  *curr.113_32 = _33;
+  _34 = b1_137 >> 6;
+  _35 = (short unsigned int) _34;
+  _36 = _35 & 1;
+  _37 = b1_137 >> 7;
+  _38 = (short unsigned int) _37;
+  _39 = _38 & 1;
+  _40 = _36 + _39;
+  _41 = (short unsigned int) b2_139;
+  _42 = _41 & 1;
+  value_147 = _40 + _42;
+  _43 = b2_139 >> 1;
+  _44 = (short unsigned int) _43;
+  _45 = _44 & 1;
+  _46 = b2_139 >> 2;
+  _47 = (short unsigned int) _46;
+  _48 = _47 & 1;
+  _49 = _45 + _48;
+  _50 = b2_139 >> 3;
+  _51 = (short unsigned int) _50;
+  _52 = _51 & 1;
+  _53 = _49 + _52;
+  value_148 = value_147 - _53;
+  value.114_54 = (signed short) value_148;
+  _55 = value.114_54 >> 15;
+  mask_149 = (uint16_t) _55;
+  kPrime.115_56 = 3329;
+  _57 = (signed short) kPrime.115_56;
+  mask.116_58 = (signed short) mask_149;
+  _59 = _57 & mask.116_58;
+  _60 = (short unsigned int) _59;
+  curr.117_61 = curr_145;
+  curr_150 = curr.117_61 + 2;
+  _62 = value_148 + _60;
+  *curr.117_61 = _62;
+  _63 = b2_139 >> 4;
+  _64 = (short unsigned int) _63;
+  _65 = _64 & 1;
+  _66 = b2_139 >> 5;
+  _67 = (short unsigned int) _66;
+  _68 = _67 & 1;
+  _69 = _65 + _68;
+  _70 = b2_139 >> 6;
+  _71 = (short unsigned int) _70;
+  _72 = _71 & 1;
+  value_152 = _69 + _72;
+  _73 = b2_139 >> 7;
+  _74 = (short unsigned int) _73;
+  _75 = _74 & 1;
+  _76 = (short unsigned int) b3_141;
+  _77 = _76 & 1;
+  _78 = _75 + _77;
+  _79 = b3_141 >> 1;
+  _80 = (short unsigned int) _79;
+  _81 = _80 & 1;
+  _82 = _78 + _81;
+  value_153 = value_152 - _82;
+  value.118_83 = (signed short) value_153;
+  _84 = value.118_83 >> 15;
+  mask_154 = (uint16_t) _84;
+  kPrime.119_85 = 3329;
+  _86 = (signed short) kPrime.119_85;
+  mask.120_87 = (signed short) mask_154;
+  _88 = _86 & mask.120_87;
+  _89 = (short unsigned int) _88;
+  curr.121_90 = curr_150;
+  curr_155 = curr.121_90 + 2;
+  _91 = value_153 + _89;
+  *curr.121_90 = _91;
+  _92 = b3_141 >> 2;
+  _93 = (short unsigned int) _92;
+  _94 = _93 & 1;
+  _95 = b3_141 >> 3;
+  _96 = (short unsigned int) _95;
+  _97 = _96 & 1;
+  _98 = _94 + _97;
+  _99 = b3_141 >> 4;
+  _100 = (short unsigned int) _99;
+  _101 = _100 & 1;
+  value_157 = _98 + _101;
+  _102 = b3_141 >> 5;
+  _103 = (short unsigned int) _102;
+  _104 = _103 & 1;
+  _105 = b3_141 >> 6;
+  _106 = (short unsigned int) _105;
+  _107 = _106 & 1;
+  _108 = _104 + _107;
+  _109 = b3_141 >> 7;
+  _110 = (short unsigned int) _109;
+  _111 = _110 & 1;
+  _112 = _108 + _111;
+  value_158 = value_157 - _112;
+  value.122_113 = (signed short) value_158;
+  _114 = value.122_113 >> 15;
+  mask_159 = (uint16_t) _114;
+  kPrime.123_115 = 3329;
+  _116 = (signed short) kPrime.123_115;
+  mask.124_117 = (signed short) mask_159;
+  _118 = _116 & mask.124_117;
+  _119 = (short unsigned int) _118;
+  curr.125_120 = curr_155;
+  curr_160 = curr.125_120 + 2;
+  _121 = value_158 + _119;
+  *curr.125_120 = _121;
+  if (curr_160 < end_129)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _162 = 1;
+
+  <bb 6> :
+  # _124 = PHI <_163(3), _162(5)>
+  randbuf ={v} {CLOBBER(eos)};
+
+  <bb 7> :
+<L5>:
+  return _124;
+
+}
+
+
+
+;; Function gencbd_vector (gencbd_vector, funcdef_no=530, decl_uid=17976, cgraph_uid=531, symbol_order=539)
+
+__attribute__((access ("^3[32]", )))
+int gencbd_vector (struct scalar * out, int (*CBD_FUNC) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) cbd, uint8_t * counter, const uint8_t * seed, int rank, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t input[33];
+  int D.18371;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  struct scalar * out.126_4;
+  int _5;
+  int _8;
+  int _24;
+  int _25;
+
+  <bb 2> :
+  memcpy (&input, seed_11(D), 32);
+
+  <bb 3> :
+  # out_6 = PHI <out_13(D)(2), out_18(5)>
+  # rank_7 = PHI <rank_14(D)(2), rank_23(5)>
+  _1 = *counter_15(D);
+  _2 = _1;
+  _3 = _2 + 1;
+  *counter_15(D) = _3;
+  input[32] = _2;
+  out.126_4 = out_6;
+  out_18 = out.126_4 + 512;
+  _5 = cbd_19(D) (out.126_4, &input, mdctx_20(D), key_21(D));
+  if (_5 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _25 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  rank_23 = rank_7 + -1;
+  if (rank_23 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _24 = 1;
+
+  <bb 7> :
+  # _8 = PHI <_25(4), _24(6)>
+  input ={v} {CLOBBER(eos)};
+
+  <bb 8> :
+<L5>:
+  return _8;
+
+}
+
+
+
+;; Function gencbd_vector_ntt (gencbd_vector_ntt, funcdef_no=531, decl_uid=17989, cgraph_uid=532, symbol_order=540)
+
+__attribute__((access ("^3[32]", )))
+int gencbd_vector_ntt (struct scalar * out, int (*CBD_FUNC) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) cbd, uint8_t * counter, const uint8_t * seed, int rank, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t input[33];
+  int D.18376;
+  unsigned char _1;
+  unsigned char _2;
+  unsigned char _3;
+  int _4;
+  struct scalar * out.127_5;
+  int _8;
+  int _26;
+  int _27;
+
+  <bb 2> :
+  memcpy (&input, seed_12(D), 32);
+
+  <bb 3> :
+  # out_6 = PHI <out_14(D)(2), out_23(5)>
+  # rank_7 = PHI <rank_15(D)(2), rank_25(5)>
+  _1 = *counter_16(D);
+  _2 = _1;
+  _3 = _2 + 1;
+  *counter_16(D) = _3;
+  input[32] = _2;
+  _4 = cbd_19(D) (out_6, &input, mdctx_20(D), key_21(D));
+  if (_4 == 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _27 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  out.127_5 = out_6;
+  out_23 = out.127_5 + 512;
+  scalar_ntt (out.127_5);
+  rank_25 = rank_7 + -1;
+  if (rank_25 > 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _26 = 1;
+
+  <bb 7> :
+  # _8 = PHI <_27(4), _26(6)>
+  input ={v} {CLOBBER(eos)};
+
+  <bb 8> :
+<L5>:
+  return _8;
+
+}
+
+
+
+;; Function encrypt_cpa (encrypt_cpa, funcdef_no=532, decl_uid=18001, cgraph_uid=533, symbol_order=541)
+
+__attribute__((access ("^0[32]^1[32]^2[32]", )))
+int encrypt_cpa (uint8_t * out, const uint8_t * message, const uint8_t * r, struct scalar * tmp, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  int dv;
+  int du;
+  uint8_t counter;
+  uint8_t input[33];
+  struct scalar v;
+  struct scalar * u;
+  struct scalar * e2;
+  struct scalar * e1;
+  struct scalar * y;
+  int rank;
+  int (*CBD_FUNC) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) cbd_1;
+  const struct ML_KEM_VINFO * vinfo;
+  int D.18385;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.128;
+  int _1;
+  long unsigned int _2;
+  long unsigned int _3;
+  int _4;
+  struct ossl_ml_kem_scalar_st * _5;
+  struct ossl_ml_kem_scalar_st * _6;
+  int _7;
+  unsigned char counter.129_8;
+  int _9;
+  long unsigned int _10;
+  uint8_t * _11;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.128_12;
+  int _13;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.128_18;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.128_19;
+  int _49;
+  int _50;
+  int _51;
+  int _52;
+
+  <bb 2> :
+  vinfo_17 = key_16(D)->vinfo;
+  _1 = vinfo_17->evp_type;
+  if (_1 == 1454)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.128_19 = cbd_3;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.128_18 = cbd_2;
+
+  <bb 5> :
+  # iftmp.128_12 = PHI <iftmp.128_19(3), iftmp.128_18(4)>
+  cbd_1_20 = iftmp.128_12;
+  rank_21 = vinfo_17->rank;
+  y_23 = tmp_22(D);
+  e1_24 = y_23;
+  e2_25 = y_23;
+  _2 = (long unsigned int) rank_21;
+  _3 = _2 * 512;
+  u_26 = tmp_22(D) + _3;
+  counter = 0;
+  du_28 = vinfo_17->du;
+  dv_29 = vinfo_17->dv;
+  _4 = gencbd_vector_ntt (y_23, cbd_1_20, &counter, r_30(D), rank_21, mdctx_31(D), key_16(D));
+  if (_4 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _52 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 7> :
+  _5 = key_16(D)->t;
+  inner_product (&v, _5, y_23, rank_21);
+  scalar_inverse_ntt (&v);
+  _6 = key_16(D)->m;
+  matrix_mult_intt (u_26, _6, y_23, rank_21);
+  _7 = gencbd_vector (e1_24, cbd_2, &counter, r_30(D), rank_21, mdctx_31(D), key_16(D));
+  if (_7 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _51 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 9> :
+  vector_add (u_26, e1_24, rank_21);
+  vector_compress (u_26, du_28, rank_21);
+  vector_encode (out_39(D), u_26, du_28, rank_21);
+  memcpy (&input, r_30(D), 32);
+  counter.129_8 = counter;
+  input[32] = counter.129_8;
+  _9 = cbd_2 (e2_25, &input, mdctx_31(D), key_16(D));
+  if (_9 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _50 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  scalar_add (&v, e2_25);
+  scalar_decode_decompress_add (&v, message_45(D));
+  scalar_compress (&v, dv_29);
+  _10 = vinfo_17->u_vector_bytes;
+  _11 = out_39(D) + _10;
+  scalar_encode (_11, &v, dv_29);
+  _49 = 1;
+
+  <bb 12> :
+  # _13 = PHI <_52(6), _51(8), _50(10), _49(11)>
+  v ={v} {CLOBBER(eos)};
+  input ={v} {CLOBBER(eos)};
+  counter ={v} {CLOBBER(eos)};
+
+  <bb 13> :
+<L10>:
+  return _13;
+
+}
+
+
+
+;; Function decrypt_cpa (decrypt_cpa, funcdef_no=533, decl_uid=18019, cgraph_uid=534, symbol_order=542)
+
+__attribute__((access ("^0[32]", )))
+void decrypt_cpa (uint8_t * out, const uint8_t * ctext, struct scalar * u, const struct ML_KEM_KEY * key)
+{
+  int dv;
+  int du;
+  int rank;
+  struct scalar mask;
+  struct scalar v;
+  const struct ML_KEM_VINFO * vinfo;
+  long unsigned int _1;
+  const uint8_t * _2;
+  struct ossl_ml_kem_scalar_st * _3;
+
+  <bb 2> :
+  vinfo_6 = key_5(D)->vinfo;
+  rank_7 = vinfo_6->rank;
+  du_8 = vinfo_6->du;
+  dv_9 = vinfo_6->dv;
+  vector_decode_decompress_ntt (u_10(D), ctext_11(D), du_8, rank_7);
+  _1 = vinfo_6->u_vector_bytes;
+  _2 = ctext_11(D) + _1;
+  scalar_decode (&v, _2, dv_9);
+  scalar_decompress (&v, dv_9);
+  _3 = key_5(D)->s;
+  inner_product (&mask, _3, u_10(D), rank_7);
+  scalar_inverse_ntt (&mask);
+  scalar_sub (&v, &mask);
+  scalar_compress (&v, 1);
+  scalar_encode_1 (out_19(D), &v);
+  v ={v} {CLOBBER(eos)};
+  mask ={v} {CLOBBER(eos)};
+  return;
+
+}
+
+
+
+;; Function encode_pubkey (encode_pubkey, funcdef_no=534, decl_uid=18029, cgraph_uid=535, symbol_order=543)
+
+void encode_pubkey (uint8_t * out, const struct ML_KEM_KEY * key)
+{
+  const struct ML_KEM_VINFO * vinfo;
+  const uint8_t * rho;
+  struct ossl_ml_kem_scalar_st * _1;
+  int _2;
+  long unsigned int _3;
+  uint8_t * _4;
+
+  <bb 2> :
+  rho_7 = key_6(D)->rho;
+  vinfo_8 = key_6(D)->vinfo;
+  _1 = key_6(D)->t;
+  _2 = vinfo_8->rank;
+  vector_encode (out_9(D), _1, 12, _2);
+  _3 = vinfo_8->vector_bytes;
+  _4 = out_9(D) + _3;
+  memcpy (_4, rho_7, 32);
+  return;
+
+}
+
+
+
+;; Function encode_prvkey (encode_prvkey, funcdef_no=535, decl_uid=18035, cgraph_uid=536, symbol_order=544)
+
+void encode_prvkey (uint8_t * out, const struct ML_KEM_KEY * key)
+{
+  const struct ML_KEM_VINFO * vinfo;
+  struct ossl_ml_kem_scalar_st * _1;
+  int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  uint8_t * _5;
+  uint8_t * _6;
+
+  <bb 2> :
+  vinfo_9 = key_8(D)->vinfo;
+  _1 = key_8(D)->s;
+  _2 = vinfo_9->rank;
+  vector_encode (out_10(D), _1, 12, _2);
+  _3 = vinfo_9->vector_bytes;
+  out_12 = out_10(D) + _3;
+  encode_pubkey (out_12, key_8(D));
+  _4 = vinfo_9->pubkey_bytes;
+  out_14 = out_12 + _4;
+  _5 = key_8(D)->pkhash;
+  memcpy (out_14, _5, 32);
+  out_16 = out_14 + 32;
+  _6 = key_8(D)->z;
+  memcpy (out_16, _6, 32);
+  return;
+
+}
+
+
+
+;; Function parse_pubkey (parse_pubkey, funcdef_no=536, decl_uid=18041, cgraph_uid=537, symbol_order=545)
+
+int parse_pubkey (const uint8_t * in, struct EVP_MD_CTX * mdctx, struct ML_KEM_KEY * key)
+{
+  const struct ML_KEM_VINFO * vinfo;
+  int iftmp.130;
+  int D.18394;
+  struct ossl_ml_kem_scalar_st * _1;
+  int _2;
+  int _3;
+  uint8_t * _4;
+  long unsigned int _5;
+  const uint8_t * _6;
+  uint8_t * _7;
+  long unsigned int _8;
+  int _9;
+  int _10;
+  int _11;
+  int iftmp.130_12;
+  int iftmp.130_25;
+  int iftmp.130_26;
+  int _27;
+  int _28;
+
+  <bb 2> :
+  vinfo_18 = key_17(D)->vinfo;
+  _1 = key_17(D)->t;
+  _2 = vinfo_18->rank;
+  _3 = vector_decode_12 (_1, in_19(D), _2);
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _28 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  _4 = key_17(D)->rho;
+  _5 = vinfo_18->vector_bytes;
+  _6 = in_19(D) + _5;
+  memcpy (_4, _6, 32);
+  _7 = key_17(D)->pkhash;
+  _8 = vinfo_18->pubkey_bytes;
+  _9 = hash_h (_7, in_19(D), _8, mdctx_22(D), key_17(D));
+  if (_9 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 5> :
+  _10 = matrix_expand (mdctx_22(D), key_17(D));
+  if (_10 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.130_25 = 1;
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  iftmp.130_26 = 0;
+
+  <bb 8> :
+  # iftmp.130_12 = PHI <iftmp.130_25(6), iftmp.130_26(7)>
+  _27 = iftmp.130_12;
+
+  <bb 9> :
+  # _11 = PHI <_28(3), _27(8)>
+<L6>:
+  return _11;
+
+}
+
+
+
+;; Function parse_prvkey (parse_prvkey, funcdef_no=537, decl_uid=18047, cgraph_uid=538, symbol_order=546)
+
+int parse_prvkey (const uint8_t * in, struct EVP_MD_CTX * mdctx, struct ML_KEM_KEY * key)
+{
+  const struct ML_KEM_VINFO * vinfo;
+  int D.18403;
+  struct ossl_ml_kem_scalar_st * _1;
+  int _2;
+  int _3;
+  long unsigned int _4;
+  int _5;
+  long unsigned int _6;
+  uint8_t * _7;
+  int _8;
+  uint8_t * _9;
+  int _10;
+  int _23;
+  int _24;
+  int _25;
+  int _26;
+
+  <bb 2> :
+  vinfo_14 = key_13(D)->vinfo;
+  _1 = key_13(D)->s;
+  _2 = vinfo_14->rank;
+  _3 = vector_decode_12 (_1, in_15(D), _2);
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _26 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 4> :
+  _4 = vinfo_14->vector_bytes;
+  in_17 = in_15(D) + _4;
+  _5 = parse_pubkey (in_17, mdctx_18(D), key_13(D));
+  if (_5 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _25 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 6> :
+  _6 = vinfo_14->pubkey_bytes;
+  in_20 = in_17 + _6;
+  _7 = key_13(D)->pkhash;
+  _8 = memcmp (_7, in_20, 32);
+  if (_8 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _24 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  in_21 = in_20 + 32;
+  _9 = key_13(D)->z;
+  memcpy (_9, in_21, 32);
+  _23 = 1;
+
+  <bb 9> :
+  # _10 = PHI <_26(3), _25(5), _24(7), _23(8)>
+<L6>:
+  return _10;
+
+}
+
+
+
+;; Function genkey (genkey, funcdef_no=538, decl_uid=18054, cgraph_uid=539, symbol_order=547)
+
+__attribute__((access ("^0[64]", )))
+int genkey (const uint8_t * seed, struct EVP_MD_CTX * mdctx, uint8_t * pubenc, struct ML_KEM_KEY * key)
+{
+  int ret;
+  uint8_t counter;
+  int rank;
+  int (*CBD_FUNC) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) cbd_1;
+  const struct ML_KEM_VINFO * vinfo;
+  uint8_t augmented_seed[33];
+  const uint8_t * const sigma;
+  uint8_t hashed[64];
+  int D.18429;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.131;
+  int _1;
+  unsigned char _2;
+  int _3;
+  uint8_t * _4;
+  int _5;
+  struct ossl_ml_kem_scalar_st * _6;
+  int _7;
+  struct ossl_ml_kem_scalar_st * _8;
+  int _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  struct ossl_ml_kem_scalar_st * _11;
+  struct ossl_ml_kem_scalar_st * _12;
+  uint8_t * _13;
+  int _14;
+  uint8_t * _15;
+  long unsigned int _16;
+  int _17;
+  uint8_t * _18;
+  const uint8_t * _19;
+  uint8_t * _20;
+  uint8_t * _21;
+  int _22;
+  int _23;
+  uint8_t * _24;
+  uint8_t * _25;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.131_27;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.131_36;
+  int (*<T2110>) (struct scalar *, uint8_t *, struct EVP_MD_CTX *, const struct ML_KEM_KEY *) iftmp.131_37;
+  int _64;
+
+  <bb 2> :
+  sigma_32 = &hashed + 32;
+  vinfo_35 = key_34(D)->vinfo;
+  _1 = vinfo_35->evp_type;
+  if (_1 == 1454)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.131_37 = cbd_3;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.131_36 = cbd_2;
+
+  <bb 5> :
+  # iftmp.131_27 = PHI <iftmp.131_37(3), iftmp.131_36(4)>
+  cbd_1_38 = iftmp.131_27;
+  rank_39 = vinfo_35->rank;
+  counter = 0;
+  ret_41 = 0;
+  memcpy (&augmented_seed, seed_42(D), 32);
+  _2 = (unsigned char) rank_39;
+  augmented_seed[32] = _2;
+  _3 = hash_g (&hashed, &augmented_seed, 33, mdctx_45(D), key_34(D));
+  if (_3 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  // predicted unlikely by goto predictor.
+  goto <bb 20>; [INV]
+
+  <bb 7> :
+  _4 = key_34(D)->rho;
+  memcpy (_4, &hashed, 32);
+  _5 = matrix_expand (mdctx_45(D), key_34(D));
+  if (_5 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  _6 = key_34(D)->s;
+  _7 = gencbd_vector_ntt (_6, cbd_1_38, &counter, sigma_32, rank_39, mdctx_45(D), key_34(D));
+  if (_7 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _8 = key_34(D)->t;
+  _9 = gencbd_vector_ntt (_8, cbd_1_38, &counter, sigma_32, rank_39, mdctx_45(D), key_34(D));
+  if (_9 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  // predicted unlikely by goto predictor.
+  goto <bb 20>; [INV]
+
+  <bb 11> :
+  _10 = key_34(D)->t;
+  _11 = key_34(D)->m;
+  _12 = key_34(D)->s;
+  matrix_mult_transpose_add (_10, _11, _12, rank_39);
+  if (pubenc_52(D) == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  _13 = key_34(D)->pkhash;
+  _14 = hash_h_pubkey (_13, mdctx_45(D), key_34(D));
+  if (_14 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 13> :
+  // predicted unlikely by goto predictor.
+  goto <bb 20>; [INV]
+
+  <bb 14> :
+  encode_pubkey (pubenc_52(D), key_34(D));
+  _15 = key_34(D)->pkhash;
+  _16 = vinfo_35->pubkey_bytes;
+  _17 = hash_h (_15, pubenc_52(D), _16, mdctx_45(D), key_34(D));
+  if (_17 == 0)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 15> :
+  // predicted unlikely by goto predictor.
+  goto <bb 20>; [INV]
+
+  <bb 16> :
+  _18 = key_34(D)->z;
+  _19 = seed_42(D) + 32;
+  memcpy (_18, _19, 32);
+  _20 = key_34(D)->z;
+  _21 = _20 + 32;
+  key_34(D)->d = _21;
+  _22 = key_34(D)->prov_flags;
+  _23 = _22 & 8;
+  if (_23 != 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 17> :
+  _24 = key_34(D)->d;
+  memcpy (_24, seed_42(D), 32);
+  goto <bb 19>; [INV]
+
+  <bb 18> :
+  _25 = key_34(D)->d;
+  OPENSSL_cleanse (_25, 32);
+  key_34(D)->d = 0B;
+
+  <bb 19> :
+  ret_61 = 1;
+
+  <bb 20> :
+  # ret_26 = PHI <ret_41(6), ret_41(10), ret_41(13), ret_41(15), ret_61(19)>
+end:
+  OPENSSL_cleanse (&augmented_seed, 32);
+  OPENSSL_cleanse (sigma_32, 32);
+  _64 = ret_26;
+  hashed ={v} {CLOBBER(eos)};
+  augmented_seed ={v} {CLOBBER(eos)};
+  counter ={v} {CLOBBER(eos)};
+
+  <bb 21> :
+<L21>:
+  return _64;
+
+}
+
+
+
+;; Function encap (encap, funcdef_no=539, decl_uid=18071, cgraph_uid=540, symbol_order=548)
+
+__attribute__((access ("^1[32]^2[32]", )))
+int encap (uint8_t * ctext, uint8_t * secret, const uint8_t * entropy, struct scalar * tmp, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  int ret;
+  uint8_t * r;
+  uint8_t Kr[64];
+  uint8_t input[64];
+  int D.18439;
+  int iftmp.132;
+  void * _1;
+  uint8_t * _2;
+  int _3;
+  int _4;
+  int iftmp.132_5;
+  int iftmp.132_20;
+  int iftmp.132_21;
+  int _26;
+
+  <bb 2> :
+  r_9 = &Kr + 32;
+  memcpy (&input, entropy_11(D), 32);
+  _1 = &input + 32;
+  _2 = key_13(D)->pkhash;
+  memcpy (_1, _2, 32);
+  _3 = hash_g (&Kr, &input, 64, mdctx_15(D), key_13(D));
+  if (_3 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _4 = encrypt_cpa (ctext_17(D), entropy_11(D), r_9, tmp_18(D), mdctx_15(D), key_13(D));
+  if (_4 != 0)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.132_20 = 1;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.132_21 = 0;
+
+  <bb 6> :
+  # iftmp.132_5 = PHI <iftmp.132_20(4), iftmp.132_21(5)>
+  ret_22 = iftmp.132_5;
+  if (ret_22 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  memcpy (secret_23(D), &Kr, 32);
+
+  <bb 8> :
+  OPENSSL_cleanse (&input, 64);
+  _26 = ret_22;
+  input ={v} {CLOBBER(eos)};
+  Kr ={v} {CLOBBER(eos)};
+
+  <bb 9> :
+<L7>:
+  return _26;
+
+}
+
+
+
+;; Function decap (decap, funcdef_no=540, decl_uid=18083, cgraph_uid=541, symbol_order=549)
+
+__attribute__((access ("^0[32]", )))
+int decap (uint8_t * secret, const uint8_t * ctext, uint8_t * tmp_ctext, struct scalar * tmp, struct EVP_MD_CTX * mdctx, const struct ML_KEM_KEY * key)
+{
+  uint8_t mask;
+  int i;
+  const struct ML_KEM_VINFO * vinfo;
+  const uint8_t * pkhash;
+  uint8_t * r;
+  uint8_t Kr[64];
+  uint8_t failure_key[32];
+  uint8_t decrypted[64];
+  int D.18444;
+  uint8_t * _1;
+  long unsigned int _2;
+  int _3;
+  void * _4;
+  int _5;
+  int _6;
+  long unsigned int _7;
+  int _8;
+  unsigned char _9;
+  unsigned char _10;
+  sizetype _11;
+  uint8_t * _12;
+  unsigned char _13;
+  int _15;
+  int _39;
+  int _46;
+  int _47;
+
+  <bb 2> :
+  r_19 = &Kr + 32;
+  pkhash_22 = key_21(D)->pkhash;
+  vinfo_23 = key_21(D)->vinfo;
+  _1 = key_21(D)->z;
+  _2 = vinfo_23->ctext_bytes;
+  _3 = kdf (&failure_key, _1, ctext_24(D), _2, mdctx_25(D), key_21(D));
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _47 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 11>; [INV]
+
+  <bb 4> :
+  decrypt_cpa (&decrypted, ctext_24(D), tmp_27(D), key_21(D));
+  _4 = &decrypted + 32;
+  memcpy (_4, pkhash_22, 32);
+  _5 = hash_g (&Kr, &decrypted, 64, mdctx_25(D), key_21(D));
+  if (_5 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _6 = encrypt_cpa (tmp_ctext_31(D), &decrypted, r_19, tmp_27(D), mdctx_25(D), key_21(D));
+  if (_6 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  MEM <unsigned char[32]> [(char * {ref-all})secret_40(D)] = MEM <unsigned char[32]> [(char * {ref-all})&failure_key];
+  OPENSSL_cleanse (&decrypted, 32);
+  _46 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 11>; [INV]
+
+  <bb 7> :
+  _7 = vinfo_23->ctext_bytes;
+  _8 = CRYPTO_memcmp (ctext_24(D), tmp_ctext_31(D), _7);
+  mask_35 = constant_time_eq_int_8 (0, _8);
+  i_36 = 0;
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _9 = Kr[i_14];
+  _10 = failure_key[i_14];
+  _11 = (sizetype) i_14;
+  _12 = secret_40(D) + _11;
+  _13 = constant_time_select_8 (mask_35, _9, _10);
+  *_12 = _13;
+  i_43 = i_14 + 1;
+
+  <bb 9> :
+  # i_14 = PHI <i_36(7), i_43(8)>
+  if (i_14 <= 31)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  OPENSSL_cleanse (&decrypted, 32);
+  OPENSSL_cleanse (&Kr, 64);
+  _39 = 1;
+
+  <bb 11> :
+  # _15 = PHI <_47(3), _46(6), _39(10)>
+  decrypted ={v} {CLOBBER(eos)};
+  failure_key ={v} {CLOBBER(eos)};
+  Kr ={v} {CLOBBER(eos)};
+
+  <bb 12> :
+<L9>:
+  return _15;
+
+}
+
+
+
+;; Function add_storage (add_storage, funcdef_no=541, decl_uid=18100, cgraph_uid=542, symbol_order=550)
+
+int add_storage (struct scalar * p, int private, struct ML_KEM_KEY * key)
+{
+  int rank;
+  int D.18468;
+  const struct ML_KEM_VINFO * _1;
+  uint8_t[64] * _2;
+  uint8_t[64] * _3;
+  uint8_t[64] * _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  struct ossl_ml_kem_scalar_st * _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  struct ossl_ml_kem_scalar_st * _11;
+  int _12;
+  long unsigned int _13;
+  long unsigned int _14;
+  struct ossl_ml_kem_scalar_st * _15;
+  struct ossl_ml_kem_scalar_st * _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  struct ossl_ml_kem_scalar_st * _19;
+  int _20;
+  int _37;
+  int _38;
+
+  <bb 2> :
+  _1 = key_24(D)->vinfo;
+  rank_25 = _1->rank;
+  if (p_26(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _38 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _2 = &key_24(D)->seedbuf;
+  memset (_2, 0, 64);
+  _3 = &key_24(D)->seedbuf;
+  key_24(D)->rho = _3;
+  _4 = &key_24(D)->seedbuf;
+  _5 = _4 + 32;
+  key_24(D)->pkhash = _5;
+  key_24(D)->z = 0B;
+  _6 = key_24(D)->z;
+  key_24(D)->d = _6;
+  key_24(D)->t = p_26(D);
+  _7 = key_24(D)->t;
+  _8 = (long unsigned int) rank_25;
+  _9 = _8 * 512;
+  _10 = _7 + _9;
+  key_24(D)->m = _10;
+  if (private_34(D) != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _11 = key_24(D)->m;
+  _12 = rank_25 * rank_25;
+  _13 = (long unsigned int) _12;
+  _14 = _13 * 512;
+  _15 = _11 + _14;
+  key_24(D)->s = _15;
+  _16 = key_24(D)->s;
+  _17 = (long unsigned int) rank_25;
+  _18 = _17 * 512;
+  _19 = _16 + _18;
+  key_24(D)->z = _19;
+
+  <bb 6> :
+  _37 = 1;
+
+  <bb 7> :
+  # _20 = PHI <_38(3), _37(6)>
+<L4>:
+  return _20;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_reset (ossl_ml_kem_key_reset, funcdef_no=542, decl_uid=16438, cgraph_uid=543, symbol_order=551)
+
+void ossl_ml_kem_key_reset (struct ML_KEM_KEY * key)
+{
+  struct ossl_ml_kem_scalar_st * _1;
+  struct ossl_ml_kem_scalar_st * _2;
+  struct ossl_ml_kem_scalar_st * _3;
+  const struct ML_KEM_VINFO * _4;
+  int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct ossl_ml_kem_scalar_st * _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  struct ossl_ml_kem_scalar_st * _11;
+  struct ossl_ml_kem_scalar_st * _12;
+  uint8_t * _13;
+
+  <bb 2> :
+  _1 = key_17(D)->t;
+  if (_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _2 = key_17(D)->s;
+  if (_2 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _3 = key_17(D)->s;
+  _4 = key_17(D)->vinfo;
+  _5 = _4->rank;
+  _6 = (long unsigned int) _5;
+  _7 = _6 * 512;
+  _8 = _7 + 64;
+  OPENSSL_cleanse (_3, _8);
+
+  <bb 6> :
+  _9 = key_17(D)->t;
+  CRYPTO_free (_9, "ml_kem.c", 1554);
+  key_17(D)->t = 0B;
+  _10 = key_17(D)->t;
+  key_17(D)->m = _10;
+  _11 = key_17(D)->m;
+  key_17(D)->s = _11;
+  _12 = key_17(D)->s;
+  key_17(D)->z = _12;
+  _13 = key_17(D)->z;
+  key_17(D)->d = _13;
+
+  <bb 7> :
+<L4>:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_kem_get_vinfo (ossl_ml_kem_get_vinfo, funcdef_no=543, decl_uid=16413, cgraph_uid=544, symbol_order=552)
+
+const struct ML_KEM_VINFO * ossl_ml_kem_get_vinfo (int evp_type)
+{
+  const struct ML_KEM_VINFO * D.18477;
+  const struct ML_KEM_VINFO * _1;
+  const struct ML_KEM_VINFO * _3;
+  const struct ML_KEM_VINFO * _4;
+  const struct ML_KEM_VINFO * _5;
+  const struct ML_KEM_VINFO * _6;
+
+  <bb 2> :
+  if (evp_type_2(D) == 1456)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  if (evp_type_2(D) > 1456)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (evp_type_2(D) == 1454)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (evp_type_2(D) == 1455)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  _5 = &vinfo_map[0];
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+  _4 = &vinfo_map[1];
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  _3 = &vinfo_map[2];
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _6 = 0B;
+
+  <bb 10> :
+  # _1 = PHI <_5(6), _4(7), _3(8), _6(9)>
+<L4>:
+  return _1;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_new (ossl_ml_kem_key_new, funcdef_no=544, decl_uid=16436, cgraph_uid=545, symbol_order=553)
+
+struct ML_KEM_KEY * ossl_ml_kem_key_new (struct OSSL_LIB_CTX * libctx, const char * properties, int evp_type)
+{
+  struct ML_KEM_KEY * key;
+  const struct ML_KEM_VINFO * vinfo;
+  struct ML_KEM_KEY * D.18482;
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+  struct EVP_MD * _3;
+  struct EVP_MD * _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  uint8_t * _7;
+  uint8_t * _8;
+  struct ossl_ml_kem_scalar_st * _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  struct EVP_MD * _11;
+  struct EVP_MD * _12;
+  struct EVP_MD * _13;
+  struct EVP_MD * _14;
+  struct ML_KEM_KEY * _15;
+  struct ML_KEM_KEY * _44;
+  struct ML_KEM_KEY * _46;
+  struct ML_KEM_KEY * _47;
+  struct ML_KEM_KEY * _48;
+
+  <bb 2> :
+  vinfo_20 = ossl_ml_kem_get_vinfo (evp_type_18(D));
+  if (vinfo_20 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _48 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 4> :
+  key_22 = CRYPTO_malloc (184, "ml_kem.c", 1588);
+  if (key_22 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _47 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 6> :
+  key_22->vinfo = vinfo_20;
+  key_22->libctx = libctx_24(D);
+  key_22->prov_flags = 13;
+  _1 = EVP_MD_fetch (libctx_24(D), "SHAKE128", properties_27(D));
+  key_22->shake128_md = _1;
+  _2 = EVP_MD_fetch (libctx_24(D), "SHAKE256", properties_27(D));
+  key_22->shake256_md = _2;
+  _3 = EVP_MD_fetch (libctx_24(D), "SHA3-256", properties_27(D));
+  key_22->sha3_256_md = _3;
+  _4 = EVP_MD_fetch (libctx_24(D), "SHA3-512", properties_27(D));
+  key_22->sha3_512_md = _4;
+  key_22->encoded_dk = 0B;
+  _5 = key_22->encoded_dk;
+  key_22->pkhash = _5;
+  _6 = key_22->pkhash;
+  key_22->rho = _6;
+  _7 = key_22->rho;
+  key_22->z = _7;
+  _8 = key_22->z;
+  key_22->d = _8;
+  key_22->t = 0B;
+  _9 = key_22->t;
+  key_22->m = _9;
+  _10 = key_22->m;
+  key_22->s = _10;
+  _11 = key_22->shake128_md;
+  if (_11 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  _12 = key_22->shake256_md;
+  if (_12 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  _13 = key_22->sha3_256_md;
+  if (_13 != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  _14 = key_22->sha3_512_md;
+  if (_14 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _44 = key_22;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  ossl_ml_kem_key_free (key_22);
+  _46 = 0B;
+
+  <bb 12> :
+  # _15 = PHI <_48(3), _47(5), _44(10), _46(11)>
+<L12>:
+  return _15;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_dup (ossl_ml_kem_key_dup, funcdef_no=545, decl_uid=16443, cgraph_uid=546, symbol_order=554)
+
+struct ML_KEM_KEY * ossl_ml_kem_key_dup (const struct ML_KEM_KEY * key, int selection)
+{
+  struct ML_KEM_KEY * ret;
+  int ok;
+  struct ML_KEM_KEY * D.18498;
+  uint8_t * _1;
+  struct ossl_ml_kem_scalar_st * _2;
+  uint8_t * _3;
+  uint8_t * _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  struct ossl_ml_kem_scalar_st * _7;
+  struct ossl_ml_kem_scalar_st * _8;
+  struct ossl_ml_kem_scalar_st * _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  int _11;
+  struct ossl_ml_kem_scalar_st * _12;
+  const struct ML_KEM_VINFO * _13;
+  long unsigned int _14;
+  void * _15;
+  uint8_t[64] * _16;
+  uint8_t * _17;
+  uint8_t * _18;
+  struct ossl_ml_kem_scalar_st * _19;
+  const struct ML_KEM_VINFO * _20;
+  long unsigned int _21;
+  void * _22;
+  uint8_t * _23;
+  uint8_t * _24;
+  uint8_t * _25;
+  struct EVP_MD * _26;
+  struct EVP_MD * _27;
+  struct EVP_MD * _28;
+  struct EVP_MD * _29;
+  struct ML_KEM_KEY * _32;
+  struct ML_KEM_KEY * _66;
+  struct ML_KEM_KEY * _68;
+  struct ML_KEM_KEY * _69;
+  struct ML_KEM_KEY * _70;
+
+  <bb 2> :
+  ok_37 = 0;
+  _1 = key_39(D)->encoded_dk;
+  if (_1 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = key_39(D)->s;
+  if (_2 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _3 = key_39(D)->d;
+  if (_3 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _70 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 25>; [INV]
+
+  <bb 6> :
+  if (key_39(D) == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  ret_41 = CRYPTO_memdup (key_39(D), 184, "ml_kem.c", 1624);
+  if (ret_41 == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _69 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 25>; [INV]
+
+  <bb 9> :
+  ret_41->pkhash = 0B;
+  _4 = ret_41->pkhash;
+  ret_41->rho = _4;
+  _5 = ret_41->rho;
+  ret_41->z = _5;
+  _6 = ret_41->z;
+  ret_41->d = _6;
+  ret_41->t = 0B;
+  _7 = ret_41->t;
+  ret_41->m = _7;
+  _8 = ret_41->m;
+  ret_41->s = _8;
+  _9 = key_39(D)->t;
+  if (_9 == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  selection_51 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 11> :
+  _10 = key_39(D)->s;
+  if (_10 == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  selection_50 = selection_49(D) & -2;
+
+  <bb 13> :
+  # selection_30 = PHI <selection_51(10), selection_49(D)(11), selection_50(12)>
+  _11 = selection_30 & 3;
+  if (_11 == 2)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  if (_11 > 2)
+    goto <bb 22>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  if (_11 == 0)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  if (_11 == 1)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 17> :
+  ok_61 = 1;
+  goto <bb 22>; [INV]
+
+  <bb 18> :
+  _12 = key_39(D)->t;
+  _13 = key_39(D)->vinfo;
+  _14 = _13->puballoc;
+  _15 = CRYPTO_memdup (_12, _14, "ml_kem.c", 1640);
+  ok_54 = add_storage (_15, 0, ret_41);
+  _16 = &ret_41->seedbuf;
+  ret_41->rho = _16;
+  _17 = ret_41->rho;
+  _18 = _17 + 32;
+  ret_41->pkhash = _18;
+  goto <bb 22>; [INV]
+
+  <bb 19> :
+  _19 = key_39(D)->t;
+  _20 = key_39(D)->vinfo;
+  _21 = _20->prvalloc;
+  _22 = CRYPTO_memdup (_19, _21, "ml_kem.c", 1645);
+  ok_59 = add_storage (_22, 1, ret_41);
+  _23 = key_39(D)->d;
+  if (_23 != 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  _24 = ret_41->z;
+  _25 = _24 + 32;
+  ret_41->d = _25;
+
+  <bb 21> :
+
+  <bb 22> :
+  # ok_31 = PHI <ok_37(16), ok_61(17), ok_54(18), ok_59(21), ok_37(14)>
+  if (ok_31 == 0)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 24>; [INV]
+
+  <bb 23> :
+  CRYPTO_free (ret_41, "ml_kem.c", 1653);
+  _68 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 25>; [INV]
+
+  <bb 24> :
+  _26 = ret_41->shake128_md;
+  EVP_MD_up_ref (_26);
+  _27 = ret_41->shake256_md;
+  EVP_MD_up_ref (_27);
+  _28 = ret_41->sha3_256_md;
+  EVP_MD_up_ref (_28);
+  _29 = ret_41->sha3_512_md;
+  EVP_MD_up_ref (_29);
+  _66 = ret_41;
+
+  <bb 25> :
+  # _32 = PHI <_70(5), _69(8), _68(23), _66(24)>
+<L21>:
+  return _32;
+
+}
+
+
+
+;; Function ossl_ml_kem_key_free (ossl_ml_kem_key_free, funcdef_no=546, decl_uid=16440, cgraph_uid=547, symbol_order=555)
+
+void ossl_ml_kem_key_free (struct ML_KEM_KEY * key)
+{
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+  struct EVP_MD * _3;
+  struct EVP_MD * _4;
+  uint8_t * _5;
+  struct ossl_ml_kem_scalar_st * _6;
+  uint8_t * _7;
+  uint8_t[64] * _8;
+  uint8_t * _9;
+  uint8_t * _10;
+  const struct ML_KEM_VINFO * _11;
+  long unsigned int _12;
+  uint8_t * _13;
+
+  <bb 2> :
+  if (key_16(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  _1 = key_16(D)->shake128_md;
+  EVP_MD_free (_1);
+  _2 = key_16(D)->shake256_md;
+  EVP_MD_free (_2);
+  _3 = key_16(D)->sha3_256_md;
+  EVP_MD_free (_3);
+  _4 = key_16(D)->sha3_512_md;
+  EVP_MD_free (_4);
+  _5 = key_16(D)->encoded_dk;
+  if (_5 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _6 = key_16(D)->s;
+  if (_6 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 6> :
+  _7 = key_16(D)->d;
+  if (_7 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  _8 = &key_16(D)->seedbuf;
+  OPENSSL_cleanse (_8, 64);
+  _9 = key_16(D)->encoded_dk;
+  if (_9 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _10 = key_16(D)->encoded_dk;
+  _11 = key_16(D)->vinfo;
+  _12 = _11->prvkey_bytes;
+  OPENSSL_cleanse (_10, _12);
+  _13 = key_16(D)->encoded_dk;
+  CRYPTO_free (_13, "ml_kem.c", 1679);
+
+  <bb 9> :
+  ossl_ml_kem_key_reset (key_16(D));
+  CRYPTO_free (key_16(D), "ml_kem.c", 1683);
+
+  <bb 10> :
+<L8>:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_kem_encode_public_key (ossl_ml_kem_encode_public_key, funcdef_no=547, decl_uid=16463, cgraph_uid=548, symbol_order=556)
+
+int ossl_ml_kem_encode_public_key (uint8_t * out, size_t len, const struct ML_KEM_KEY * key)
+{
+  int D.18525;
+  struct ossl_ml_kem_scalar_st * _1;
+  const struct ML_KEM_VINFO * _2;
+  long unsigned int _3;
+  int _4;
+  int _11;
+  int _12;
+
+  <bb 2> :
+  _1 = key_7(D)->t;
+  if (_1 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = key_7(D)->vinfo;
+  _3 = _2->pubkey_bytes;
+  if (len_8(D) != _3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _12 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  encode_pubkey (out_9(D), key_7(D));
+  _11 = 1;
+
+  <bb 6> :
+  # _4 = PHI <_12(4), _11(5)>
+<L3>:
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_kem_encode_private_key (ossl_ml_kem_encode_private_key, funcdef_no=548, decl_uid=16467, cgraph_uid=549, symbol_order=557)
+
+int ossl_ml_kem_encode_private_key (uint8_t * out, size_t len, const struct ML_KEM_KEY * key)
+{
+  int D.18530;
+  struct ossl_ml_kem_scalar_st * _1;
+  const struct ML_KEM_VINFO * _2;
+  long unsigned int _3;
+  int _4;
+  int _11;
+  int _12;
+
+  <bb 2> :
+  _1 = key_7(D)->s;
+  if (_1 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _2 = key_7(D)->vinfo;
+  _3 = _2->prvkey_bytes;
+  if (len_8(D) != _3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _12 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  encode_prvkey (out_9(D), key_7(D));
+  _11 = 1;
+
+  <bb 6> :
+  # _4 = PHI <_12(4), _11(5)>
+<L3>:
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_kem_encode_seed (ossl_ml_kem_encode_seed, funcdef_no=549, decl_uid=16471, cgraph_uid=550, symbol_order=558)
+
+int ossl_ml_kem_encode_seed (uint8_t * out, size_t len, const struct ML_KEM_KEY * key)
+{
+  int D.18536;
+  uint8_t * _1;
+  uint8_t * _2;
+  uint8_t * _3;
+  int _4;
+  int _13;
+  int _14;
+
+  <bb 2> :
+  if (key_6(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_6(D)->d;
+  if (_1 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  if (len_8(D) != 64)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _14 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _2 = key_6(D)->d;
+  memcpy (out_9(D), _2, 32);
+  out_11 = out_9(D) + 32;
+  _3 = key_6(D)->z;
+  memcpy (out_11, _3, 32);
+  _13 = 1;
+
+  <bb 7> :
+  # _4 = PHI <_14(5), _13(6)>
+<L4>:
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_kem_set_seed (ossl_ml_kem_set_seed, funcdef_no=550, decl_uid=16455, cgraph_uid=551, symbol_order=559)
+
+struct ML_KEM_KEY * ossl_ml_kem_set_seed (const uint8_t * seed, size_t seedlen, struct ML_KEM_KEY * key)
+{
+  struct ML_KEM_KEY * D.18543;
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  uint8_t[64] * _3;
+  uint8_t * _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  uint8_t * _7;
+  struct ML_KEM_KEY * _8;
+  struct ML_KEM_KEY * _19;
+  struct ML_KEM_KEY * _20;
+
+  <bb 2> :
+  if (key_10(D) == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_10(D)->t;
+  if (_1 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = key_10(D)->d;
+  if (_2 != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (seedlen_12(D) != 64)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _20 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 7> :
+  _3 = &key_10(D)->seedbuf;
+  key_10(D)->z = _3;
+  _4 = key_10(D)->z;
+  _5 = _4 + 32;
+  key_10(D)->d = _5;
+  _6 = key_10(D)->d;
+  memcpy (_6, seed_15(D), 32);
+  seed_17 = seed_15(D) + 32;
+  _7 = key_10(D)->z;
+  memcpy (_7, seed_17, 32);
+  _19 = key_10(D);
+
+  <bb 8> :
+  # _8 = PHI <_20(6), _19(7)>
+<L5>:
+  return _8;
+
+}
+
+
+
+;; Function ossl_ml_kem_parse_public_key (ossl_ml_kem_parse_public_key, funcdef_no=551, decl_uid=16447, cgraph_uid=552, symbol_order=560)
+
+int ossl_ml_kem_parse_public_key (const uint8_t * in, size_t len, struct ML_KEM_KEY * key)
+{
+  int ret;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD_CTX * mdctx;
+  int D.18549;
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  void * _5;
+  int _6;
+  int _8;
+  int _28;
+  int _29;
+  int _30;
+
+  <bb 2> :
+  mdctx_13 = 0B;
+  ret_14 = 0;
+  if (key_15(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_15(D)->t;
+  if (_1 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = key_15(D)->encoded_dk;
+  if (_2 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _30 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  vinfo_17 = key_15(D)->vinfo;
+  _3 = vinfo_17->pubkey_bytes;
+  if (len_18(D) != _3)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  mdctx_20 = EVP_MD_CTX_new ();
+  if (mdctx_20 == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _29 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 9> :
+  _4 = vinfo_17->puballoc;
+  _5 = CRYPTO_malloc (_4, "ml_kem.c", 1765);
+  _6 = add_storage (_5, 0, key_15(D));
+  if (_6 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  ret_25 = parse_pubkey (in_23(D), mdctx_20, key_15(D));
+
+  <bb 11> :
+  # ret_7 = PHI <ret_14(9), ret_25(10)>
+  if (ret_7 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  ossl_ml_kem_key_reset (key_15(D));
+
+  <bb 13> :
+  EVP_MD_CTX_free (mdctx_20);
+  _28 = ret_7;
+
+  <bb 14> :
+  # _8 = PHI <_30(5), _29(8), _28(13)>
+<L11>:
+  return _8;
+
+}
+
+
+
+;; Function ossl_ml_kem_parse_private_key (ossl_ml_kem_parse_private_key, funcdef_no=552, decl_uid=16451, cgraph_uid=553, symbol_order=561)
+
+int ossl_ml_kem_parse_private_key (const uint8_t * in, size_t len, struct ML_KEM_KEY * key)
+{
+  int ret;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD_CTX * mdctx;
+  int D.18562;
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  void * _5;
+  int _6;
+  int _8;
+  int _28;
+  int _29;
+  int _30;
+
+  <bb 2> :
+  mdctx_13 = 0B;
+  ret_14 = 0;
+  if (key_15(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_15(D)->t;
+  if (_1 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = key_15(D)->encoded_dk;
+  if (_2 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _30 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 6> :
+  vinfo_17 = key_15(D)->vinfo;
+  _3 = vinfo_17->prvkey_bytes;
+  if (len_18(D) != _3)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  mdctx_20 = EVP_MD_CTX_new ();
+  if (mdctx_20 == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _29 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 9> :
+  _4 = vinfo_17->prvalloc;
+  _5 = CRYPTO_malloc (_4, "ml_kem.c", 1793);
+  _6 = add_storage (_5, 1, key_15(D));
+  if (_6 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  ret_25 = parse_prvkey (in_23(D), mdctx_20, key_15(D));
+
+  <bb 11> :
+  # ret_7 = PHI <ret_14(9), ret_25(10)>
+  if (ret_7 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  ossl_ml_kem_key_reset (key_15(D));
+
+  <bb 13> :
+  EVP_MD_CTX_free (mdctx_20);
+  _28 = ret_7;
+
+  <bb 14> :
+  # _8 = PHI <_30(5), _29(8), _28(13)>
+<L11>:
+  return _8;
+
+}
+
+
+
+;; Function ossl_ml_kem_genkey (ossl_ml_kem_genkey, funcdef_no=553, decl_uid=16459, cgraph_uid=554, symbol_order=562)
+
+int ossl_ml_kem_genkey (uint8_t * pubenc, size_t publen, struct ML_KEM_KEY * key)
+{
+  int ret;
+  const struct ML_KEM_VINFO * vinfo;
+  struct EVP_MD_CTX * mdctx;
+  uint8_t seed[64];
+  int D.18575;
+  struct ossl_ml_kem_scalar_st * _1;
+  uint8_t * _2;
+  long unsigned int _3;
+  uint8_t * _4;
+  int _5;
+  uint8_t * _6;
+  struct OSSL_LIB_CTX * _7;
+  const struct ML_KEM_VINFO * _8;
+  int _9;
+  unsigned int _10;
+  int _11;
+  long unsigned int _12;
+  void * _13;
+  int _14;
+  int _16;
+  int _27;
+  int _29;
+  int _33;
+  int _42;
+  int _44;
+  int _45;
+  int _46;
+
+  <bb 2> :
+  mdctx_20 = 0B;
+  ret_21 = 0;
+  if (key_22(D) == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_22(D)->t;
+  if (_1 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = key_22(D)->encoded_dk;
+  if (_2 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _46 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 6> :
+  vinfo_24 = key_22(D)->vinfo;
+  if (pubenc_25(D) != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 7> :
+  _3 = vinfo_24->pubkey_bytes;
+  if (publen_26(D) != _3)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  _27 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 9> :
+  _4 = key_22(D)->d;
+  if (_4 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 10> :
+  _5 = ossl_ml_kem_encode_seed (&seed, 64, key_22(D));
+  if (_5 == 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  _33 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 12> :
+  key_22(D)->z = 0B;
+  _6 = key_22(D)->z;
+  key_22(D)->d = _6;
+  goto <bb 15>; [INV]
+
+  <bb 13> :
+  _7 = key_22(D)->libctx;
+  _8 = key_22(D)->vinfo;
+  _9 = _8->secbits;
+  _10 = (unsigned int) _9;
+  _11 = RAND_priv_bytes_ex (_7, &seed, 64, _10);
+  if (_11 <= 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  _29 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 15> :
+  mdctx_35 = EVP_MD_CTX_new ();
+  if (mdctx_35 == 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  _45 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 17> :
+  _12 = vinfo_24->prvalloc;
+  _13 = CRYPTO_malloc (_12, "ml_kem.c", 1840);
+  _14 = add_storage (_13, 1, key_22(D));
+  if (_14 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 18> :
+  ret_39 = genkey (&seed, mdctx_35, pubenc_25(D), key_22(D));
+
+  <bb 19> :
+  # ret_15 = PHI <ret_21(17), ret_39(18)>
+  OPENSSL_cleanse (&seed, 64);
+  EVP_MD_CTX_free (mdctx_35);
+  if (ret_15 == 0)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 21>; [INV]
+
+  <bb 20> :
+  ossl_ml_kem_key_reset (key_22(D));
+  _44 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 22>; [INV]
+
+  <bb 21> :
+  _42 = 1;
+
+  <bb 22> :
+  # _16 = PHI <_46(5), _27(8), _33(11), _29(14), _45(16), _44(20), _42(21)>
+  seed ={v} {CLOBBER(eos)};
+
+  <bb 23> :
+<L22>:
+  return _16;
+
+}
+
+
+
+;; Function ossl_ml_kem_encap_seed (ossl_ml_kem_encap_seed, funcdef_no=554, decl_uid=16479, cgraph_uid=555, symbol_order=563)
+
+int ossl_ml_kem_encap_seed (uint8_t * ctext, size_t clen, uint8_t * shared_secret, size_t slen, const uint8_t * entropy, size_t elen, const struct ML_KEM_KEY * key)
+{
+  struct scalar tmp[8];
+  struct scalar tmp[6];
+  struct scalar tmp[4];
+  int ret;
+  struct EVP_MD_CTX * mdctx;
+  const struct ML_KEM_VINFO * vinfo;
+  int D.18598;
+  struct ossl_ml_kem_scalar_st * _1;
+  long unsigned int _2;
+  int _3;
+  int _5;
+  int _34;
+  int _35;
+  int _36;
+
+  <bb 2> :
+  ret_9 = 0;
+  if (key_10(D) == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_10(D)->t;
+  if (_1 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _36 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 5> :
+  vinfo_12 = key_10(D)->vinfo;
+  if (ctext_13(D) == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _2 = vinfo_12->ctext_bytes;
+  if (clen_14(D) != _2)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (shared_secret_15(D) == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  if (slen_16(D) != 32)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  if (entropy_17(D) == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 10> :
+  if (elen_18(D) != 32)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  mdctx_20 = EVP_MD_CTX_new ();
+  if (mdctx_20 == 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 12> :
+  _35 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 24>; [INV]
+
+  <bb 13> :
+  _3 = vinfo_12->evp_type;
+  if (_3 == 1456)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  if (_3 > 1456)
+    goto <bb 23>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 15> :
+  if (_3 == 1454)
+    goto <bb 17>; [INV]
+  else
+    goto <bb 16>; [INV]
+
+  <bb 16> :
+  if (_3 == 1455)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 17> :
+  ret_30 = encap (ctext_13(D), shared_secret_15(D), entropy_17(D), &tmp, mdctx_20, key_10(D));
+  OPENSSL_cleanse (&tmp, 2048);
+
+  <bb 18> :
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 23>; [INV]
+
+  <bb 19> :
+  ret_26 = encap (ctext_13(D), shared_secret_15(D), entropy_17(D), &tmp, mdctx_20, key_10(D));
+  OPENSSL_cleanse (&tmp, 3072);
+
+  <bb 20> :
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 23>; [INV]
+
+  <bb 21> :
+  ret_22 = encap (ctext_13(D), shared_secret_15(D), entropy_17(D), &tmp, mdctx_20, key_10(D));
+  OPENSSL_cleanse (&tmp, 4096);
+
+  <bb 22> :
+  tmp ={v} {CLOBBER(eos)};
+
+  <bb 23> :
+  # ret_4 = PHI <ret_9(16), ret_30(18), ret_26(20), ret_22(22), ret_9(14)>
+  EVP_MD_CTX_free (mdctx_20);
+  _34 = ret_4;
+
+  <bb 24> :
+  # _5 = PHI <_36(4), _35(12), _34(23)>
+<L19>:
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_kem_encap_rand (ossl_ml_kem_encap_rand, funcdef_no=555, decl_uid=16485, cgraph_uid=556, symbol_order=564)
+
+int ossl_ml_kem_encap_rand (uint8_t * ctext, size_t clen, uint8_t * shared_secret, size_t slen, const struct ML_KEM_KEY * key)
+{
+  uint8_t r[32];
+  int D.18614;
+  struct OSSL_LIB_CTX * _1;
+  const struct ML_KEM_VINFO * _2;
+  int _3;
+  unsigned int _4;
+  int _5;
+  int _6;
+  int _16;
+  int _17;
+  int _18;
+
+  <bb 2> :
+  if (key_8(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _18 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _1 = key_8(D)->libctx;
+  _2 = key_8(D)->vinfo;
+  _3 = _2->secbits;
+  _4 = (unsigned int) _3;
+  _5 = RAND_bytes_ex (_1, &r, 32, _4);
+  if (_5 <= 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _17 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _16 = ossl_ml_kem_encap_seed (ctext_11(D), clen_12(D), shared_secret_13(D), slen_14(D), &r, 32, key_8(D));
+
+  <bb 7> :
+  # _6 = PHI <_18(3), _17(5), _16(6)>
+  r ={v} {CLOBBER(eos)};
+
+  <bb 8> :
+<L5>:
+  return _6;
+
+}
+
+
+
+;; Function ossl_ml_kem_decap (ossl_ml_kem_decap, funcdef_no=556, decl_uid=16491, cgraph_uid=557, symbol_order=565)
+
+int ossl_ml_kem_decap (uint8_t * shared_secret, size_t slen, const uint8_t * ctext, size_t clen, const struct ML_KEM_KEY * key)
+{
+  struct scalar tmp[8];
+  uint8_t cbuf[1568];
+  struct scalar tmp[6];
+  uint8_t cbuf[1088];
+  struct scalar tmp[4];
+  uint8_t cbuf[768];
+  int ret;
+  struct EVP_MD_CTX * mdctx;
+  const struct ML_KEM_VINFO * vinfo;
+  int D.18621;
+  struct ossl_ml_kem_scalar_st * _1;
+  long unsigned int _2;
+  struct OSSL_LIB_CTX * _3;
+  int _4;
+  unsigned int _5;
+  int _6;
+  int _8;
+  int _38;
+  int _40;
+  int _41;
+
+  <bb 2> :
+  ret_12 = 0;
+  _1 = key_14(D)->s;
+  if (_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _41 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 21>; [INV]
+
+  <bb 4> :
+  vinfo_15 = key_14(D)->vinfo;
+  if (shared_secret_16(D) == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (slen_17(D) != 32)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  if (ctext_18(D) == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _2 = vinfo_15->ctext_bytes;
+  if (clen_19(D) != _2)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  mdctx_21 = EVP_MD_CTX_new ();
+  if (mdctx_21 == 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _3 = key_14(D)->libctx;
+  _4 = vinfo_15->secbits;
+  _5 = (unsigned int) _4;
+  RAND_bytes_ex (_3, shared_secret_16(D), 32, _5);
+  _40 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 21>; [INV]
+
+  <bb 10> :
+  _6 = vinfo_15->evp_type;
+  if (_6 == 1456)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  if (_6 > 1456)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 12> :
+  if (_6 == 1454)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 13>; [INV]
+
+  <bb 13> :
+  if (_6 == 1455)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 14> :
+  ret_33 = decap (shared_secret_16(D), ctext_18(D), &cbuf, &tmp, mdctx_21, key_14(D));
+  OPENSSL_cleanse (&tmp, 2048);
+
+  <bb 15> :
+  cbuf ={v} {CLOBBER(eos)};
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 20>; [INV]
+
+  <bb 16> :
+  ret_28 = decap (shared_secret_16(D), ctext_18(D), &cbuf, &tmp, mdctx_21, key_14(D));
+  OPENSSL_cleanse (&tmp, 3072);
+
+  <bb 17> :
+  cbuf ={v} {CLOBBER(eos)};
+  tmp ={v} {CLOBBER(eos)};
+  goto <bb 20>; [INV]
+
+  <bb 18> :
+  ret_23 = decap (shared_secret_16(D), ctext_18(D), &cbuf, &tmp, mdctx_21, key_14(D));
+  OPENSSL_cleanse (&tmp, 4096);
+
+  <bb 19> :
+  cbuf ={v} {CLOBBER(eos)};
+  tmp ={v} {CLOBBER(eos)};
+
+  <bb 20> :
+  # ret_7 = PHI <ret_12(13), ret_33(15), ret_28(17), ret_23(19), ret_12(11)>
+  EVP_MD_CTX_free (mdctx_21);
+  _38 = ret_7;
+
+  <bb 21> :
+  # _8 = PHI <_41(3), _40(9), _38(20)>
+<L16>:
+  return _8;
+
+}
+
+
+
+;; Function ossl_ml_kem_pubkey_cmp (ossl_ml_kem_pubkey_cmp, funcdef_no=557, decl_uid=16494, cgraph_uid=558, symbol_order=566)
+
+int ossl_ml_kem_pubkey_cmp (const struct ML_KEM_KEY * key1, const struct ML_KEM_KEY * key2)
+{
+  int D.18637;
+  struct ossl_ml_kem_scalar_st * _1;
+  struct ossl_ml_kem_scalar_st * _2;
+  uint8_t * _3;
+  uint8_t * _4;
+  int _5;
+  _Bool _6;
+  struct ossl_ml_kem_scalar_st * _7;
+  _Bool _8;
+  int _9;
+  struct ossl_ml_kem_scalar_st * _10;
+  _Bool _11;
+  int _12;
+  int _13;
+  int _17;
+  int _18;
+
+  <bb 2> :
+  _1 = key1_15(D)->t;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 3> :
+  _2 = key2_16(D)->t;
+  if (_2 != 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _3 = key1_15(D)->pkhash;
+  _4 = key2_16(D)->pkhash;
+  _5 = memcmp (_3, _4, 32);
+  _6 = _5 == 0;
+  _17 = (int) _6;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  _7 = key1_15(D)->t;
+  _8 = _7 != 0B;
+  _9 = (int) _8;
+  _10 = key2_16(D)->t;
+  _11 = _10 != 0B;
+  _12 = (int) _11;
+  _18 = _9 ^ _12;
+
+  <bb 6> :
+  # _13 = PHI <_17(4), _18(5)>
+<L4>:
+  return _13;
+
+}
+
+
