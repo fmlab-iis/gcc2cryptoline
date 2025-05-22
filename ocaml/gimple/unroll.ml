@@ -304,7 +304,9 @@ let eval_instr vtypes instr st =
          (fun z0 z1 z2 -> Z.add (Z.mul z0 z1) z2) op0 op1 op2 st in
      (Wmadd (op', op0', op1', op2'), st)
   | Wmsub (op, op0, op1, op2) ->
-     let op', op0', op1', op2' = eval_operand3 op op0 op1 op2 st in
+     let op', op0', op1', op2' =
+       eval_operand3_and_update vtypes op
+         (fun z0 z1 z2 -> Z.sub (Z.mul z0 z1) z2) op0 op1 op2 st in
      (Wmsub (op', op0', op1', op2'), st)
   | VecUnpackLo (op, op0) ->
      let op', op0' = eval_operand1 op op0 st in
@@ -366,9 +368,9 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
        let rev_phi_ret', st' = 
          List.fold_left (fun (r, s) instr ->
              let instr', s' = eval_instr vtypes instr s in
-
+             (*
              let _ = print_endline (Utils.string_of_instr instr') in
-
+              *)
              (instr'::r, s'))
            (rev_phi_ret, st) current.instrs in
        (* evaluate the last instruction in the current basic block *)
