@@ -147,7 +147,7 @@ let string_of_instr instr =
                                 " else" ^
                                 " goto " ^ (string_of_label l1)
   | Goto l -> "goto " ^ string_of_label l
-  | Return op -> "return" ^ (match op with
+  | Return op -> "return " ^ (match op with
                              | None -> ""
                              | Some p -> string_of_operand p)
   | Wmullo (l, r0, r1) -> string_of_operand l ^
