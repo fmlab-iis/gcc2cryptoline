@@ -1,0 +1,446 @@
+
+;; Function constant_time_msb_32 (constant_time_msb_32, funcdef_no=25, decl_uid=5823, cgraph_uid=26, symbol_order=25)
+
+uint32_t constant_time_msb_32 (uint32_t a)
+{
+  uint32_t D.8858;
+  signed int a.0_1;
+  signed int _2;
+  uint32_t _4;
+
+  <bb 2> :
+  a.0_1 = (signed int) a_3(D);
+  _2 = a.0_1 >> 31;
+  _4 = (uint32_t) _2;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function constant_time_lt_32 (constant_time_lt_32, funcdef_no=31, decl_uid=5834, cgraph_uid=32, symbol_order=31)
+
+uint32_t constant_time_lt_32 (uint32_t a, uint32_t b)
+{
+  uint32_t D.8856;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _10;
+
+  <bb 2> :
+  _1 = a_6(D) ^ b_7(D);
+  _2 = a_6(D) - b_7(D);
+  _3 = b_7(D) ^ _2;
+  _4 = _1 | _3;
+  _5 = a_6(D) ^ _4;
+  _10 = constant_time_msb_32 (_5);
+
+  <bb 3> :
+<L0>:
+  return _10;
+
+}
+
+
+
+;; Function value_barrier_32 (value_barrier_32, funcdef_no=49, decl_uid=5974, cgraph_uid=50, symbol_order=49)
+
+uint32_t value_barrier_32 (uint32_t a)
+{
+  uint32_t r;
+  uint32_t D.8862;
+  uint32_t _3;
+
+  <bb 2> :
+  __asm__("" : "=r" r_2 : "0" a_1(D));
+  _3 = r_2;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function constant_time_select_32 (constant_time_select_32, funcdef_no=57, decl_uid=5873, cgraph_uid=58, symbol_order=57)
+
+uint32_t constant_time_select_32 (uint32_t mask, uint32_t a, uint32_t b)
+{
+  uint32_t D.8860;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _12;
+
+  <bb 2> :
+  _1 = value_barrier_32 (mask_7(D));
+  _2 = a_9(D) & _1;
+  _3 = ~mask_7(D);
+  _4 = value_barrier_32 (_3);
+  _5 = b_11(D) & _4;
+  _12 = _2 | _5;
+
+  <bb 3> :
+<L0>:
+  return _12;
+
+}
+
+
+
+;; Function reduce_once (reduce_once, funcdef_no=108, decl_uid=8636, cgraph_uid=109, symbol_order=108)
+
+__attribute__((unused))
+uint32_t reduce_once (uint32_t x)
+{
+  uint32_t D.8854;
+  unsigned int _1;
+  unsigned int _2;
+  uint32_t _7;
+
+  <bb 2> :
+  _1 = constant_time_lt_32 (x_4(D), 8380417);
+  _2 = x_4(D) + 4286586879;
+  _7 = constant_time_select_32 (_1, x_4(D), _2);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function mod_sub (mod_sub, funcdef_no=109, decl_uid=8640, cgraph_uid=110, symbol_order=109)
+
+__attribute__((unused))
+uint32_t mod_sub (uint32_t a, uint32_t b)
+{
+  uint32_t D.8864;
+  unsigned int _1;
+  unsigned int _2;
+  uint32_t _7;
+
+  <bb 2> :
+  _1 = a_3(D) - b_4(D);
+  _2 = _1 + 8380417;
+  _7 = reduce_once (_2);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function reduce_montgomery (reduce_montgomery, funcdef_no=128, decl_uid=8785, cgraph_uid=129, symbol_order=129)
+
+uint32_t reduce_montgomery (uint64_t a)
+{
+  uint32_t c;
+  uint64_t b;
+  uint64_t t;
+  uint32_t D.8852;
+  unsigned int _1;
+  unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  uint32_t _11;
+
+  <bb 2> :
+  _1 = (unsigned int) a_5(D);
+  _2 = _1 * 4236238847;
+  t_6 = (uint64_t) _2;
+  _3 = t_6 * 8380417;
+  b_7 = a_5(D) + _3;
+  _4 = b_7 >> 32;
+  c_8 = (uint32_t) _4;
+  _11 = reduce_once (c_8);
+
+  <bb 3> :
+<L0>:
+  return _11;
+
+}
+
+
+
+;; Function ossl_ml_dsa_poly_ntt_mult (ossl_ml_dsa_poly_ntt_mult, funcdef_no=129, decl_uid=8578, cgraph_uid=130, symbol_order=130)
+
+void ossl_ml_dsa_poly_ntt_mult (const struct POLY * lhs, const struct POLY * rhs, struct POLY * out)
+{
+  int i;
+  unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned int _6;
+
+  <bb 2> :
+  i_9 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = lhs_11(D)->coeff[i_7];
+  _2 = (long unsigned int) _1;
+  _3 = rhs_12(D)->coeff[i_7];
+  _4 = (long unsigned int) _3;
+  _5 = _2 * _4;
+  _6 = reduce_montgomery (_5);
+  out_14(D)->coeff[i_7] = _6;
+  i_16 = i_7 + 1;
+
+  <bb 4> :
+  # i_7 = PHI <i_9(2), i_16(3)>
+  if (i_7 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_poly_ntt (ossl_ml_dsa_poly_ntt, funcdef_no=130, decl_uid=8572, cgraph_uid=131, symbol_order=131)
+
+void ossl_ml_dsa_poly_ntt (struct POLY * p)
+{
+  uint32_t t_odd;
+  uint32_t w_even;
+  const uint32_t z_step_root;
+  int offset;
+  int step;
+  int k;
+  int j;
+  int i;
+  int _1;
+  long unsigned int _2;
+  int _3;
+  unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  unsigned int _8;
+  int _9;
+  unsigned int _10;
+  int _11;
+  int _12;
+
+  <bb 2> :
+  offset_21 = 256;
+  step_22 = 1;
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  k_24 = 0;
+  offset_25 = offset_17 >> 1;
+  i_26 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  _1 = step_16 + i_13;
+  z_step_root_28 = zetas_montgomery[_1];
+  j_29 = k_15;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  w_even_33 = p_32(D)->coeff[j_14];
+  _2 = (long unsigned int) z_step_root_28;
+  _3 = j_14 + offset_25;
+  _4 = p_32(D)->coeff[_3];
+  _5 = (long unsigned int) _4;
+  _6 = _2 * _5;
+  t_odd_35 = reduce_montgomery (_6);
+  _7 = w_even_33 + t_odd_35;
+  _8 = reduce_once (_7);
+  p_32(D)->coeff[j_14] = _8;
+  _9 = j_14 + offset_25;
+  _10 = mod_sub (w_even_33, t_odd_35);
+  p_32(D)->coeff[_9] = _10;
+  j_40 = j_14 + 1;
+
+  <bb 6> :
+  # j_14 = PHI <j_29(4), j_40(5)>
+  _11 = k_15 + offset_25;
+  if (j_14 < _11)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _12 = offset_25 * 2;
+  k_30 = k_15 + _12;
+  i_31 = i_13 + 1;
+
+  <bb 8> :
+  # i_13 = PHI <i_26(3), i_31(7)>
+  # k_15 = PHI <k_24(3), k_30(7)>
+  if (i_13 < step_16)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  step_27 = step_16 << 1;
+
+  <bb 10> :
+  # step_16 = PHI <step_22(2), step_27(9)>
+  # offset_17 = PHI <offset_21(2), offset_25(9)>
+  if (step_16 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_poly_ntt_inverse (ossl_ml_dsa_poly_ntt_inverse, funcdef_no=131, decl_uid=8574, cgraph_uid=132, symbol_order=132)
+
+void ossl_ml_dsa_poly_ntt_inverse (struct POLY * p)
+{
+  uint32_t odd;
+  uint32_t even;
+  const uint32_t step_root;
+  static const uint32_t inverse_degree_montgomery = 41978;
+  int step;
+  int offset;
+  int k;
+  int j;
+  int i;
+  int _1;
+  int _2;
+  int _3;
+  unsigned int _4;
+  int _5;
+  unsigned int _6;
+  unsigned int _7;
+  long unsigned int _8;
+  unsigned int _9;
+  unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  int _13;
+  unsigned int _14;
+  int _15;
+  int _16;
+  unsigned int _17;
+  long unsigned int _18;
+  unsigned int inverse_degree_montgomery.1_19;
+  long unsigned int _20;
+  long unsigned int _21;
+  unsigned int _22;
+
+  <bb 2> :
+  step_33 = 256;
+  offset_34 = 1;
+  goto <bb 10>; [INV]
+
+  <bb 3> :
+  step_41 = step_28 >> 1;
+  k_42 = 0;
+  i_43 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  _1 = step_41 + -1;
+  _2 = _1 - i_23;
+  _3 = step_41 + _2;
+  _4 = zetas_montgomery[_3];
+  step_root_45 = 8380417 - _4;
+  j_46 = k_26;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  even_49 = p_37(D)->coeff[j_25];
+  _5 = j_25 + offset_27;
+  odd_50 = p_37(D)->coeff[_5];
+  _6 = odd_50 + even_49;
+  _7 = reduce_once (_6);
+  p_37(D)->coeff[j_25] = _7;
+  _8 = (long unsigned int) step_root_45;
+  _9 = even_49 - odd_50;
+  _10 = _9 + 8380417;
+  _11 = (long unsigned int) _10;
+  _12 = _8 * _11;
+  _13 = j_25 + offset_27;
+  _14 = reduce_montgomery (_12);
+  p_37(D)->coeff[_13] = _14;
+  j_55 = j_25 + 1;
+
+  <bb 6> :
+  # j_25 = PHI <j_46(4), j_55(5)>
+  _15 = k_26 + offset_27;
+  if (j_25 < _15)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  _16 = offset_27 * 2;
+  k_47 = k_26 + _16;
+  i_48 = i_23 + 1;
+
+  <bb 8> :
+  # i_23 = PHI <i_43(3), i_48(7)>
+  # k_26 = PHI <k_42(3), k_47(7)>
+  if (i_23 < step_41)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  offset_44 = offset_27 << 1;
+
+  <bb 10> :
+  # offset_27 = PHI <offset_34(2), offset_44(9)>
+  # step_28 = PHI <step_33(2), step_41(9)>
+  if (offset_27 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 11> :
+  i_36 = 0;
+  goto <bb 13>; [INV]
+
+  <bb 12> :
+  _17 = p_37(D)->coeff[i_24];
+  _18 = (long unsigned int) _17;
+  inverse_degree_montgomery.1_19 = inverse_degree_montgomery;
+  _20 = (long unsigned int) inverse_degree_montgomery.1_19;
+  _21 = _18 * _20;
+  _22 = reduce_montgomery (_21);
+  p_37(D)->coeff[i_24] = _22;
+  i_40 = i_24 + 1;
+
+  <bb 13> :
+  # i_24 = PHI <i_36(11), i_40(12)>
+  if (i_24 <= 255)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 14> :
+  return;
+
+}
+
+

@@ -1,0 +1,489 @@
+
+;; Function reduce_montgomery (reduce_montgomery, funcdef_no=176, decl_uid=9196, cgraph_uid=177, symbol_order=177)
+
+uint32_t reduce_montgomery (uint64_t a)
+{
+  uint32_t r;
+  uint32_t r;
+  uint32_t c;
+  uint64_t b;
+  uint64_t t;
+  unsigned int _1;
+  unsigned int _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  unsigned int _11;
+  unsigned int _12;
+  unsigned int _13;
+  unsigned int _14;
+  unsigned int _15;
+  signed int a.0_16;
+  signed int _17;
+  unsigned int _18;
+  unsigned int _20;
+  unsigned int _21;
+  unsigned int _23;
+  unsigned int _24;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = (unsigned int) a_5(D);
+  _2 = _1 * 4236238847;
+  t_6 = (uint64_t) _2;
+  _3 = t_6 * 8380417;
+  b_7 = _3 + a_5(D);
+  _4 = b_7 >> 32;
+  c_8 = (uint32_t) _4;
+  _11 = c_8 ^ 8380417;
+  _12 = c_8 + 4286586879;
+  _13 = _12 ^ 8380417;
+  _14 = _11 | _13;
+  _15 = c_8 ^ _14;
+  a.0_16 = (signed int) _15;
+  _17 = a.0_16 >> 31;
+  _18 = (unsigned int) _17;
+  __asm__("" : "=r" r_19 : "0" _18);
+  _20 = c_8 & r_19;
+  _21 = ~_18;
+  __asm__("" : "=r" r_22 : "0" _21);
+  _23 = _12 & r_22;
+  _24 = _20 | _23;
+  return _24;
+
+}
+
+
+
+;; Function ossl_ml_dsa_poly_ntt_mult (ossl_ml_dsa_poly_ntt_mult, funcdef_no=177, decl_uid=8989, cgraph_uid=178, symbol_order=178)
+
+Removing basic block 5
+void ossl_ml_dsa_poly_ntt_mult (const struct POLY * lhs, const struct POLY * rhs, struct POLY * out)
+{
+  sizetype ivtmp.23;
+  unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  long unsigned int _4;
+  long unsigned int _5;
+  unsigned int _6;
+
+  <bb 2> [local count: 10737416]:
+
+  <bb 3> [local count: 1063004408]:
+  # ivtmp.23_16 = PHI <ivtmp.23_15(3), 0(2)>
+  _1 = MEM[(unsigned int *)lhs_10(D) + ivtmp.23_16 * 1];
+  _2 = (long unsigned int) _1;
+  _3 = MEM[(unsigned int *)rhs_11(D) + ivtmp.23_16 * 1];
+  _4 = (long unsigned int) _3;
+  _5 = _2 * _4;
+  _6 = reduce_montgomery (_5);
+  MEM[(unsigned int *)out_12(D) + ivtmp.23_16 * 1] = _6;
+  ivtmp.23_15 = ivtmp.23_16 + 4;
+  if (ivtmp.23_15 != 1024)
+    goto <bb 3>; [98.99%]
+  else
+    goto <bb 4>; [1.01%]
+
+  <bb 4> [local count: 10737416]:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_poly_ntt (ossl_ml_dsa_poly_ntt, funcdef_no=178, decl_uid=8983, cgraph_uid=179, symbol_order=179)
+
+Removing basic block 10
+Removing basic block 11
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+void ossl_ml_dsa_poly_ntt (struct POLY * p)
+{
+  sizetype ivtmp.47;
+  sizetype ivtmp.46;
+  sizetype ivtmp.45;
+  unsigned long ivtmp.43;
+  sizetype ivtmp.32;
+  uint32_t r;
+  uint32_t r;
+  uint32_t r;
+  uint32_t r;
+  uint32_t t_odd;
+  uint32_t w_even;
+  const uint32_t z_step_root;
+  int offset;
+  int step;
+  int j;
+  long unsigned int _2;
+  unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  unsigned int _7;
+  int _10;
+  unsigned int ivtmp_14;
+  unsigned int ivtmp_15;
+  struct POLY * _27;
+  unsigned int _29;
+  unsigned int _31;
+  unsigned int _34;
+  unsigned int _36;
+  unsigned int _37;
+  unsigned int _38;
+  signed int a.0_39;
+  signed int _40;
+  unsigned int _41;
+  unsigned int _43;
+  unsigned int _44;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned int _48;
+  unsigned int _49;
+  unsigned int _50;
+  unsigned int _51;
+  unsigned int _52;
+  signed int a.0_53;
+  signed int _54;
+  unsigned int _55;
+  unsigned int _57;
+  unsigned int _58;
+  unsigned int _60;
+  unsigned int _61;
+  sizetype _65;
+  sizetype _87;
+  sizetype _88;
+  const uint32_t[256] * _89;
+  sizetype _92;
+  sizetype _96;
+  sizetype _100;
+  sizetype _102;
+  void * _103;
+  unsigned long _105;
+  unsigned long _106;
+  unsigned long _107;
+  unsigned int _108;
+  unsigned int _110;
+  unsigned int _111;
+  int _112;
+
+  <bb 2> [local count: 1824553]:
+
+  <bb 3> [local count: 14598063]:
+  # step_71 = PHI <step_21(8), 1(2)>
+  # offset_72 = PHI <offset_20(8), 256(2)>
+  # ivtmp_15 = PHI <ivtmp_14(8), 8(2)>
+  offset_20 = offset_72 >> 1;
+  if (step_71 > 0)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 4> [local count: 12992276]:
+  _10 = offset_20 * 2;
+  _87 = (sizetype) step_71;
+  _88 = _87 * 4;
+  _89 = &zetas_montgomery + _88;
+  ivtmp.43_86 = (unsigned long) _89;
+  _92 = (sizetype) _10;
+  _96 = _92 * 18446744073709551612;
+  _100 = _92 * 4;
+  _102 = (sizetype) offset_20;
+  ivtmp.47_101 = _102 * 4;
+  _105 = _87 * 8;
+  _106 = (unsigned long) &zetas_montgomery;
+  _107 = _105 + _106;
+
+  <bb 5> [local count: 118111600]:
+  # ivtmp.43_84 = PHI <ivtmp.43_85(7), ivtmp.43_86(4)>
+  # ivtmp.45_90 = PHI <ivtmp.45_91(7), 0(4)>
+  # ivtmp.46_93 = PHI <ivtmp.46_94(7), 0(4)>
+  # ivtmp.47_97 = PHI <ivtmp.47_98(7), ivtmp.47_101(4)>
+  _108 = (unsigned int) ivtmp.45_90;
+  _103 = (void *) ivtmp.43_84;
+  z_step_root_22 = MEM[(unsigned int *)_103];
+  if (offset_20 > 0)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 6> [local count: 955630225]:
+  # ivtmp.32_17 = PHI <ivtmp.32_13(6), ivtmp.45_90(5)>
+  w_even_26 = MEM[(unsigned int *)p_25(D) + ivtmp.32_17 * 4];
+  _2 = (long unsigned int) z_step_root_22;
+  _65 = ivtmp.46_93 + ivtmp.47_97;
+  _27 = p_25(D) + _65;
+  _4 = MEM[(unsigned int *)_27 + ivtmp.32_17 * 4];
+  _5 = (long unsigned int) _4;
+  _6 = _2 * _5;
+  t_odd_28 = reduce_montgomery (_6);
+  _7 = w_even_26 + t_odd_28;
+  _48 = _7 ^ 8380417;
+  _49 = _7 + 4286586879;
+  _50 = _49 ^ 8380417;
+  _51 = _48 | _50;
+  _52 = _7 ^ _51;
+  a.0_53 = (signed int) _52;
+  _54 = a.0_53 >> 31;
+  _55 = (unsigned int) _54;
+  __asm__("" : "=r" r_56 : "0" _55);
+  _57 = _7 & r_56;
+  _58 = ~_55;
+  __asm__("" : "=r" r_59 : "0" _58);
+  _60 = _49 & r_59;
+  _61 = _57 | _60;
+  MEM[(unsigned int *)p_25(D) + ivtmp.32_17 * 4] = _61;
+  _31 = w_even_26 - t_odd_28;
+  _29 = _31 + 8380417;
+  _34 = _29 ^ 8380417;
+  _36 = _31 ^ 8380417;
+  _37 = _34 | _36;
+  _38 = _29 ^ _37;
+  a.0_39 = (signed int) _38;
+  _40 = a.0_39 >> 31;
+  _41 = (unsigned int) _40;
+  __asm__("" : "=r" r_42 : "0" _41);
+  _43 = _29 & r_42;
+  _44 = ~_41;
+  __asm__("" : "=r" r_45 : "0" _44);
+  _46 = _31 & r_45;
+  _47 = _43 | _46;
+  MEM[(unsigned int *)_27 + ivtmp.32_17 * 4] = _47;
+  ivtmp.32_13 = ivtmp.32_17 + 1;
+  j_83 = (int) ivtmp.32_13;
+  _110 = (unsigned int) offset_20;
+  _111 = _108 + _110;
+  _112 = (int) _111;
+  if (j_83 < _112)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 118111600]:
+  ivtmp.43_85 = ivtmp.43_84 + 4;
+  ivtmp.45_91 = ivtmp.45_90 + _92;
+  ivtmp.46_94 = ivtmp.46_93 + _96;
+  ivtmp.47_98 = ivtmp.47_97 + _100;
+  if (ivtmp.43_85 != _107)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 14598063]:
+  step_21 = step_71 << 1;
+  ivtmp_14 = ivtmp_15 + 4294967295;
+  if (ivtmp_14 != 0)
+    goto <bb 3>; [87.50%]
+  else
+    goto <bb 9>; [12.50%]
+
+  <bb 9> [local count: 1824553]:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_poly_ntt_inverse (ossl_ml_dsa_poly_ntt_inverse, funcdef_no=179, decl_uid=8985, cgraph_uid=180, symbol_order=180)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+void ossl_ml_dsa_poly_ntt_inverse (struct POLY * p)
+{
+  sizetype ivtmp.85;
+  sizetype ivtmp.84;
+  sizetype ivtmp.83;
+  unsigned long ivtmp.81;
+  sizetype ivtmp.70;
+  unsigned long ivtmp.66;
+  uint32_t r;
+  uint32_t r;
+  uint32_t odd;
+  uint32_t even;
+  const uint32_t step_root;
+  int step;
+  int offset;
+  int j;
+  unsigned int _4;
+  unsigned int _6;
+  long unsigned int _8;
+  unsigned int _10;
+  long unsigned int _11;
+  long unsigned int _12;
+  unsigned int _13;
+  int _15;
+  unsigned int _16;
+  long unsigned int _17;
+  long unsigned int _18;
+  unsigned int _19;
+  void * _20;
+  unsigned int ivtmp_25;
+  unsigned int ivtmp_28;
+  unsigned int _44;
+  unsigned int _45;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned int _48;
+  signed int a.0_49;
+  signed int _50;
+  unsigned int _51;
+  unsigned int _53;
+  unsigned int _54;
+  unsigned int _56;
+  unsigned int _57;
+  unsigned long _66;
+  unsigned int _81;
+  sizetype _82;
+  struct POLY * _83;
+  int _95;
+  int _96;
+  sizetype _97;
+  sizetype _98;
+  const uint32_t[256] * _99;
+  sizetype _102;
+  sizetype _106;
+  sizetype _108;
+  sizetype _112;
+  void * _113;
+  unsigned long _115;
+  unsigned long _116;
+  unsigned long _117;
+  unsigned long _118;
+  unsigned int _119;
+  unsigned int _121;
+  unsigned int _122;
+  int _123;
+
+  <bb 2> [local count: 1824553]:
+
+  <bb 3> [local count: 14598063]:
+  # offset_72 = PHI <offset_35(8), 1(2)>
+  # step_73 = PHI <step_34(8), 256(2)>
+  # ivtmp_28 = PHI <ivtmp_25(8), 8(2)>
+  step_34 = step_73 >> 1;
+  if (step_34 > 0)
+    goto <bb 4>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 4> [local count: 12992276]:
+  _15 = offset_72 * 2;
+  _95 = step_34 + -1;
+  _96 = step_34 + _95;
+  _97 = (sizetype) _96;
+  _98 = _97 * 4;
+  _99 = &zetas_montgomery + _98;
+  ivtmp.81_94 = (unsigned long) _99;
+  _102 = (sizetype) _15;
+  _106 = _102 * 4;
+  _108 = (sizetype) offset_72;
+  ivtmp.84_107 = _108 * 4;
+  _112 = _102 * 18446744073709551612;
+  _115 = (unsigned long) _95;
+  _116 = _115 * 4;
+  _117 = (unsigned long) &zetas_montgomery;
+  _118 = _116 + _117;
+
+  <bb 5> [local count: 118111600]:
+  # ivtmp.81_92 = PHI <ivtmp.81_93(7), ivtmp.81_94(4)>
+  # ivtmp.83_100 = PHI <ivtmp.83_101(7), 0(4)>
+  # ivtmp.84_103 = PHI <ivtmp.84_104(7), ivtmp.84_107(4)>
+  # ivtmp.85_109 = PHI <ivtmp.85_110(7), 0(4)>
+  _119 = (unsigned int) ivtmp.83_100;
+  _113 = (void *) ivtmp.81_92;
+  _4 = MEM[(unsigned int *)_113];
+  step_root_36 = 8380417 - _4;
+  if (offset_72 > 0)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 6> [local count: 955630225]:
+  # ivtmp.70_64 = PHI <ivtmp.70_61(6), ivtmp.83_100(5)>
+  even_39 = MEM[(unsigned int *)p_31(D) + ivtmp.70_64 * 4];
+  _82 = ivtmp.84_103 + ivtmp.85_109;
+  _83 = p_31(D) + _82;
+  odd_40 = MEM[(unsigned int *)_83 + ivtmp.70_64 * 4];
+  _6 = even_39 + odd_40;
+  _44 = _6 ^ 8380417;
+  _45 = _6 + 4286586879;
+  _46 = _45 ^ 8380417;
+  _47 = _44 | _46;
+  _48 = _6 ^ _47;
+  a.0_49 = (signed int) _48;
+  _50 = a.0_49 >> 31;
+  _51 = (unsigned int) _50;
+  __asm__("" : "=r" r_52 : "0" _51);
+  _53 = _6 & r_52;
+  _54 = ~_51;
+  __asm__("" : "=r" r_55 : "0" _54);
+  _56 = _45 & r_55;
+  _57 = _53 | _56;
+  MEM[(unsigned int *)p_31(D) + ivtmp.70_64 * 4] = _57;
+  _8 = (long unsigned int) step_root_36;
+  _81 = even_39 + 8380417;
+  _10 = _81 - odd_40;
+  _11 = (long unsigned int) _10;
+  _12 = _8 * _11;
+  _13 = reduce_montgomery (_12);
+  MEM[(unsigned int *)_83 + ivtmp.70_64 * 4] = _13;
+  ivtmp.70_61 = ivtmp.70_64 + 1;
+  j_91 = (int) ivtmp.70_61;
+  _121 = (unsigned int) offset_72;
+  _122 = _119 + _121;
+  _123 = (int) _122;
+  if (j_91 < _123)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 7>; [11.00%]
+
+  <bb 7> [local count: 118111600]:
+  ivtmp.81_93 = ivtmp.81_92 + 18446744073709551612;
+  ivtmp.83_101 = ivtmp.83_100 + _102;
+  ivtmp.84_104 = ivtmp.84_103 + _106;
+  ivtmp.85_110 = ivtmp.85_109 + _112;
+  if (ivtmp.81_93 != _118)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 14598063]:
+  offset_35 = offset_72 << 1;
+  ivtmp_25 = ivtmp_28 + 4294967295;
+  if (ivtmp_25 != 0)
+    goto <bb 3>; [87.50%]
+  else
+    goto <bb 9>; [12.50%]
+
+  <bb 9> [local count: 1824553]:
+  ivtmp.66_23 = (unsigned long) p_31(D);
+  _66 = ivtmp.66_23 + 1024;
+
+  <bb 10> [local count: 180630748]:
+  # ivtmp.66_24 = PHI <ivtmp.66_27(10), ivtmp.66_23(9)>
+  _20 = (void *) ivtmp.66_24;
+  _16 = MEM[(unsigned int *)_20];
+  _17 = (long unsigned int) _16;
+  _18 = _17 * 41978;
+  _19 = reduce_montgomery (_18);
+  MEM[(unsigned int *)_20] = _19;
+  ivtmp.66_27 = ivtmp.66_24 + 4;
+  if (ivtmp.66_27 != _66)
+    goto <bb 10>; [98.99%]
+  else
+    goto <bb 11>; [1.01%]
+
+  <bb 11> [local count: 1824553]:
+  return;
+
+}
+
+

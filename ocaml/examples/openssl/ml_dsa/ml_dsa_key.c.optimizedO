@@ -1,0 +1,2128 @@
+
+;; Function public_from_private (public_from_private, funcdef_no=570, decl_uid=17452, cgraph_uid=571, symbol_order=570)
+
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+int public_from_private (const struct ML_DSA_KEY * key, struct EVP_MD_CTX * md_ctx, struct VECTOR * t1, struct VECTOR * t0)
+{
+  sizetype ivtmp.87;
+  sizetype ivtmp.73;
+  uint32_t r;
+  uint32_t r;
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  size_t i;
+  size_t i;
+  size_t i;
+  size_t i;
+  struct VECTOR t;
+  struct VECTOR s1_ntt;
+  struct MATRIX a_ntt;
+  struct POLY * polys;
+  uint32_t l;
+  uint32_t k;
+  const struct ML_DSA_PARAMS * params;
+  long unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct POLY * _9;
+  long unsigned int _10;
+  struct POLY * _11;
+  struct EVP_MD * _12;
+  const uint8_t[32] * _13;
+  int _16;
+  unsigned long _27;
+  long unsigned int _30;
+  long unsigned int _33;
+  long unsigned int _34;
+  long unsigned int _36;
+  int _40;
+  long unsigned int _49;
+  struct POLY * _51;
+  long unsigned int _52;
+  long unsigned int _53;
+  struct POLY * _55;
+  const struct POLY * _58;
+  struct POLY * _59;
+  struct POLY * _60;
+  struct POLY * _61;
+  struct POLY * _62;
+  long unsigned int _64;
+  struct POLY * _65;
+  const struct POLY * _68;
+  struct POLY * _69;
+  const struct POLY * _70;
+  long unsigned int _74;
+  struct POLY * _75;
+  long unsigned int _76;
+  struct POLY * _78;
+  long unsigned int _80;
+  struct POLY * _81;
+  long unsigned int _82;
+  struct POLY * _84;
+  long unsigned int _86;
+  long unsigned int _87;
+  long unsigned int _88;
+  struct POLY * _89;
+  struct POLY * _90;
+  long unsigned int _91;
+  unsigned long _93;
+  unsigned int _94;
+  unsigned int _95;
+  unsigned int _96;
+  unsigned int _99;
+  unsigned int _100;
+  unsigned int _101;
+  unsigned int _102;
+  unsigned int _103;
+  signed int a.1_104;
+  signed int _105;
+  unsigned int _106;
+  unsigned int _108;
+  unsigned int _109;
+  unsigned int _111;
+  unsigned int _112;
+  unsigned int _114;
+  uint32_t * _118;
+  uint32_t * _120;
+  unsigned long _125;
+  unsigned long _127;
+  long unsigned int _137;
+
+  <bb 2> [local count: 1073741824]:
+  params_21 = key_20(D)->params;
+  _1 = params_21->k;
+  k_22 = (uint32_t) _1;
+  _2 = params_21->l;
+  l_23 = (uint32_t) _2;
+  _3 = k_22 + l_23;
+  _4 = k_22 * l_23;
+  _5 = _3 + _4;
+  _6 = (long unsigned int) _5;
+  _7 = _6 * 1024;
+  polys_25 = CRYPTO_malloc (_7, "ml_dsa_key.c", 321);
+  if (polys_25 == 0B)
+    goto <bb 21>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418728]:
+  _49 = _1 & 4294967295;
+  t.poly = polys_25;
+  t.num_poly = _49;
+  _8 = _49 * 1024;
+  _9 = polys_25 + _8;
+  _36 = _2 & 4294967295;
+  s1_ntt.poly = _9;
+  s1_ntt.num_poly = _36;
+  _10 = _36 * 1024;
+  _11 = _9 + _10;
+  a_ntt.k = _49;
+  a_ntt.l = _36;
+  a_ntt.m_poly = _11;
+  _12 = key_20(D)->shake128_md;
+  _13 = &key_20(D)->rho;
+  _40 = ossl_ml_dsa_matrix_expand_A (md_ctx_26(D), _12, _13, &a_ntt);
+  if (_40 == 0)
+    goto <bb 20>; [51.12%]
+  else
+    goto <bb 4>; [48.88%]
+
+  <bb 4> [local count: 362405472]:
+  _87 = s1_ntt.num_poly;
+  _88 = MEM[(const struct VECTOR *)key_20(D) + 240B].num_poly;
+  if (_87 == _88)
+    goto <bb 6>; [99.96%]
+  else
+    goto <bb 5>; [0.04%]
+
+  <bb 5> [local count: 144962]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 6> [local count: 362260510]:
+  _89 = s1_ntt.poly;
+  _90 = MEM[(const struct VECTOR *)key_20(D) + 240B].poly;
+  _91 = _88 * 1024;
+  __builtin_memcpy (_89, _90, _91);
+  _137 = s1_ntt.num_poly;
+  if (_137 != 0)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 7> [local count: 2932334708]:
+  # i_141 = PHI <i_85(7), 0(6)>
+  _81 = s1_ntt.poly;
+  _33 = i_141 * 1024;
+  _84 = _81 + _33;
+  ossl_ml_dsa_poly_ntt (_84);
+  i_85 = i_141 + 1;
+  _86 = s1_ntt.num_poly;
+  if (i_85 < _86)
+    goto <bb 7>; [89.00%]
+  else
+    goto <bb 8>; [11.00%]
+
+  <bb 8> [local count: 362405472]:
+  ossl_ml_dsa_matrix_mult_vector (&a_ntt, &s1_ntt, &t);
+  _30 = t.num_poly;
+  if (_30 != 0)
+    goto <bb 9>; [89.00%]
+  else
+    goto <bb 22>; [11.00%]
+
+  <bb 9> [local count: 2932189746]:
+  # i_140 = PHI <i_79(9), 0(8)>
+  _75 = t.poly;
+  _34 = i_140 * 1024;
+  _78 = _75 + _34;
+  ossl_ml_dsa_poly_ntt_inverse (_78);
+  i_79 = i_140 + 1;
+  _80 = t.num_poly;
+  if (i_79 < _80)
+    goto <bb 9>; [89.00%]
+  else
+    goto <bb 10>; [11.00%]
+
+  <bb 10> [local count: 322540870]:
+  if (_80 != 0)
+    goto <bb 11>; [100.00%]
+  else
+    goto <bb 22>; [0.00%]
+
+  <bb 11> [local count: 2932189746]:
+  # i_139 = PHI <i_73(13), 0(10)>
+  _65 = t.poly;
+  _82 = i_139 * 1024;
+  _68 = _65 + _82;
+  _69 = MEM[(const struct VECTOR *)key_20(D) + 224B].poly;
+  _70 = _69 + _82;
+
+  <bb 12> [local count: 290286846024]:
+  # ivtmp.87_29 = PHI <ivtmp.87_126(12), 0(11)>
+  _94 = MEM[(unsigned int *)_68 + ivtmp.87_29 * 1];
+  _95 = MEM[(unsigned int *)_70 + ivtmp.87_29 * 1];
+  _96 = _94 + _95;
+  _99 = _96 ^ 8380417;
+  _100 = _96 + 4286586879;
+  _101 = _100 ^ 8380417;
+  _102 = _99 | _101;
+  _103 = _96 ^ _102;
+  a.1_104 = (signed int) _103;
+  _105 = a.1_104 >> 31;
+  _106 = (unsigned int) _105;
+  __asm__("" : "=r" r_107 : "0" _106);
+  _108 = _96 & r_107;
+  _109 = ~_106;
+  __asm__("" : "=r" r_110 : "0" _109);
+  _111 = _100 & r_110;
+  _112 = _108 | _111;
+  MEM[(unsigned int *)_68 + ivtmp.87_29 * 1] = _112;
+  ivtmp.87_126 = ivtmp.87_29 + 4;
+  if (ivtmp.87_126 != 1024)
+    goto <bb 12>; [98.99%]
+  else
+    goto <bb 13>; [1.01%]
+
+  <bb 13> [local count: 2932189746]:
+  i_73 = i_139 + 1;
+  _74 = t.num_poly;
+  if (i_73 < _74)
+    goto <bb 11>; [89.00%]
+  else
+    goto <bb 14>; [11.00%]
+
+  <bb 14> [local count: 322540870]:
+  if (_74 != 0)
+    goto <bb 15>; [100.00%]
+  else
+    goto <bb 18>; [0.00%]
+
+  <bb 15> [local count: 2932189746]:
+  # i_138 = PHI <i_63(17), 0(14)>
+  _55 = t.poly;
+  _76 = i_138 * 1024;
+  _58 = _55 + _76;
+  _59 = t1_31(D)->poly;
+  _60 = _59 + _76;
+  _61 = t0_32(D)->poly;
+  _62 = _61 + _76;
+
+  <bb 16> [local count: 290286846024]:
+  # ivtmp.73_124 = PHI <ivtmp.73_66(16), 0(15)>
+  _114 = MEM[(unsigned int *)_58 + ivtmp.73_124 * 1];
+  _127 = (unsigned long) _60;
+  _93 = ivtmp.73_124 + _127;
+  _118 = (uint32_t *) _93;
+  _27 = (unsigned long) _62;
+  _125 = _27 + ivtmp.73_124;
+  _120 = (uint32_t *) _125;
+  ossl_ml_dsa_key_compress_power2_round (_114, _118, _120);
+  ivtmp.73_66 = ivtmp.73_124 + 4;
+  if (ivtmp.73_66 != 1024)
+    goto <bb 16>; [98.99%]
+  else
+    goto <bb 17>; [1.01%]
+
+  <bb 17> [local count: 2932189746]:
+  i_63 = i_138 + 1;
+  _64 = t.num_poly;
+  if (i_63 < _64)
+    goto <bb 15>; [89.00%]
+  else
+    goto <bb 18>; [11.00%]
+
+  <bb 18> [local count: 362405472]:
+  _51 = s1_ntt.poly;
+  if (_51 != 0B)
+    goto <bb 19>; [53.47%]
+  else
+    goto <bb 20>; [46.53%]
+
+  <bb 19> [local count: 193778205]:
+  _52 = s1_ntt.num_poly;
+  _53 = _52 * 1024;
+  __builtin_memset (_51, 0, _53);
+
+  <bb 20> [local count: 741418728]:
+err:
+  CRYPTO_free (polys_25, "ml_dsa_key.c", 347);
+
+  <bb 21> [local count: 1073741824]:
+  # _16 = PHI <0(2), 1(20)>
+  a_ntt ={v} {CLOBBER(eos)};
+  s1_ntt ={v} {CLOBBER(eos)};
+  t ={v} {CLOBBER(eos)};
+  return _16;
+
+  <bb 22> [local count: 39864602]:
+  goto <bb 18>; [100.00%]
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_params (ossl_ml_dsa_key_params, funcdef_no=558, decl_uid=15306, cgraph_uid=559, symbol_order=558)
+
+const struct ML_DSA_PARAMS * ossl_ml_dsa_key_params (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * _3;
+
+  <bb 2> [local count: 1073741824]:
+  _3 = key_2(D)->params;
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_seed (ossl_ml_dsa_key_get_seed, funcdef_no=559, decl_uid=15342, cgraph_uid=560, symbol_order=559)
+
+const uint8_t * ossl_ml_dsa_key_get_seed (const struct ML_DSA_KEY * key)
+{
+  const uint8_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  _3 = key_2(D)->seed;
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_prov_flags (ossl_ml_dsa_key_get_prov_flags, funcdef_no=560, decl_uid=15344, cgraph_uid=561, symbol_order=560)
+
+int ossl_ml_dsa_key_get_prov_flags (const struct ML_DSA_KEY * key)
+{
+  int _3;
+
+  <bb 2> [local count: 1073741824]:
+  _3 = key_2(D)->prov_flags;
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_set_prekey (ossl_ml_dsa_set_prekey, funcdef_no=561, decl_uid=15352, cgraph_uid=562, symbol_order=561)
+
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+int ossl_ml_dsa_set_prekey (struct ML_DSA_KEY * key, int flags_set, int flags_clr, const uint8_t * seed, size_t seed_len, const uint8_t * sk, size_t sk_len)
+{
+  uint8_t * _1;
+  uint8_t * _2;
+  const struct ML_DSA_PARAMS * _3;
+  long unsigned int _4;
+  _Bool _5;
+  _Bool _6;
+  _Bool _7;
+  uint8_t * _8;
+  void * _9;
+  void * _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  uint8_t * _15;
+  uint8_t * _16;
+  int _17;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_21(D) == 0B)
+    goto <bb 15>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  _1 = key_21(D)->pub_encoding;
+  if (_1 != 0B)
+    goto <bb 15>; [54.59%]
+  else
+    goto <bb 4>; [45.41%]
+
+  <bb 4> [local count: 399381824]:
+  _2 = key_21(D)->priv_encoding;
+  if (_2 != 0B)
+    goto <bb 15>; [54.59%]
+  else
+    goto <bb 5>; [45.41%]
+
+  <bb 5> [local count: 181359285]:
+  if (sk_23(D) != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 7>; [30.00%]
+
+  <bb 6> [local count: 126951500]:
+  _3 = key_21(D)->params;
+  _4 = _3->sk_len;
+  if (_4 != sk_len_24(D))
+    goto <bb 15>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 117883535]:
+  _5 = seed_25(D) != 0B;
+  _6 = seed_len_26(D) != 32;
+  _7 = _5 & _6;
+  if (_7 != 0)
+    goto <bb 15>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 8> [local count: 77803133]:
+  _8 = key_21(D)->seed;
+  if (_8 != 0B)
+    goto <bb 15>; [54.59%]
+  else
+    goto <bb 9>; [45.41%]
+
+  <bb 9> [local count: 35330403]:
+  if (sk_23(D) != 0B)
+    goto <bb 10>; [53.47%]
+  else
+    goto <bb 11>; [46.53%]
+
+  <bb 10> [local count: 18891166]:
+  _9 = CRYPTO_memdup (sk_23(D), sk_len_24(D), "ml_dsa_key.c", 52);
+  key_21(D)->priv_encoding = _9;
+  if (_9 == 0B)
+    goto <bb 14>; [18.09%]
+  else
+    goto <bb 11>; [81.91%]
+
+  <bb 11> [local count: 31912991]:
+  if (seed_25(D) != 0B)
+    goto <bb 12>; [53.47%]
+  else
+    goto <bb 13>; [46.53%]
+
+  <bb 12> [local count: 17063876]:
+  _10 = CRYPTO_memdup (seed_25(D), seed_len_26(D), "ml_dsa_key.c", 55);
+  key_21(D)->seed = _10;
+  if (_10 == 0B)
+    goto <bb 14>; [18.09%]
+  else
+    goto <bb 13>; [81.91%]
+
+  <bb 13> [local count: 28826135]:
+  _11 = key_21(D)->prov_flags;
+  _12 = _11 | flags_set_31(D);
+  _13 = ~flags_clr_32(D);
+  _14 = _12 & _13;
+  key_21(D)->prov_flags = _14;
+  goto <bb 15>; [100.00%]
+
+  <bb 14> [local count: 6504267]:
+  _15 = key_21(D)->priv_encoding;
+  CRYPTO_free (_15, "ml_dsa_key.c", 63);
+  _16 = key_21(D)->seed;
+  CRYPTO_free (_16, "ml_dsa_key.c", 64);
+  key_21(D)->seed = 0B;
+  key_21(D)->priv_encoding = 0B;
+
+  <bb 15> [local count: 1073741823]:
+  # _17 = PHI <0(3), 0(14), 1(13), 0(2), 0(8), 0(7), 0(6), 0(4)>
+  return _17;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_pub_alloc (ossl_ml_dsa_key_pub_alloc, funcdef_no=563, decl_uid=15314, cgraph_uid=564, symbol_order=563)
+
+Removing basic block 6
+Removing basic block 7
+int ossl_ml_dsa_key_pub_alloc (struct ML_DSA_KEY * key)
+{
+  struct POLY * _1;
+  const struct ML_DSA_PARAMS * _3;
+  long unsigned int _4;
+  int _5;
+  long unsigned int _11;
+  void * _12;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_8(D)->t1.poly;
+  if (_1 != 0B)
+    goto <bb 5>; [70.93%]
+  else
+    goto <bb 3>; [29.07%]
+
+  <bb 3> [local count: 312136752]:
+  _3 = key_8(D)->params;
+  _4 = _3->k;
+  _11 = _4 * 1024;
+  _12 = CRYPTO_malloc (_11, "ml_dsa_vector.h", 36);
+  MEM[(struct VECTOR *)key_8(D) + 192B].poly = _12;
+  if (_12 == 0B)
+    goto <bb 5>; [18.09%]
+  else
+    goto <bb 4>; [81.91%]
+
+  <bb 4> [local count: 255671214]:
+  MEM[(struct VECTOR *)key_8(D) + 192B].num_poly = _4;
+
+  <bb 5> [local count: 1073741824]:
+  # _5 = PHI <0(2), 1(4), 0(3)>
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_priv_alloc (ossl_ml_dsa_key_priv_alloc, funcdef_no=564, decl_uid=15316, cgraph_uid=565, symbol_order=564)
+
+Removing basic block 6
+Removing basic block 7
+int ossl_ml_dsa_key_priv_alloc (struct ML_DSA_KEY * key)
+{
+  size_t l;
+  size_t k;
+  const struct ML_DSA_PARAMS * _1;
+  struct POLY * _2;
+  long unsigned int _4;
+  long unsigned int _5;
+  long unsigned int _7;
+  struct POLY * _8;
+  sizetype _9;
+  sizetype _10;
+  struct POLY * _11;
+  int _12;
+  long unsigned int _25;
+  void * _26;
+
+  <bb 2> [local count: 1073741824]:
+  _2 = key_15(D)->s1.poly;
+  if (_2 != 0B)
+    goto <bb 5>; [70.93%]
+  else
+    goto <bb 3>; [29.07%]
+
+  <bb 3> [local count: 312136752]:
+  _1 = key_15(D)->params;
+  k_16 = _1->k;
+  l_17 = _1->l;
+  _4 = k_16 * 2;
+  _5 = _4 + l_17;
+  _25 = _5 * 1024;
+  _26 = CRYPTO_malloc (_25, "ml_dsa_vector.h", 36);
+  MEM[(struct VECTOR *)key_15(D) + 240B].poly = _26;
+  if (_26 == 0B)
+    goto <bb 5>; [18.09%]
+  else
+    goto <bb 4>; [81.91%]
+
+  <bb 4> [local count: 255671214]:
+  key_15(D)->s1.num_poly = l_17;
+  _7 = l_17 * 1024;
+  _8 = _26 + _7;
+  MEM[(struct VECTOR *)key_15(D) + 224B].poly = _8;
+  MEM[(struct VECTOR *)key_15(D) + 224B].num_poly = k_16;
+  _9 = _5 - k_16;
+  _10 = _9 * 1024;
+  _11 = _26 + _10;
+  MEM[(struct VECTOR *)key_15(D) + 208B].poly = _11;
+  MEM[(struct VECTOR *)key_15(D) + 208B].num_poly = k_16;
+
+  <bb 5> [local count: 1073741824]:
+  # _12 = PHI <0(2), 0(3), 1(4)>
+  return _12;
+
+}
+
+
+
+;; Function keygen_internal (keygen_internal, funcdef_no=573, decl_uid=17479, cgraph_uid=574, symbol_order=573)
+
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+int keygen_internal (struct ML_DSA_KEY * out)
+{
+  struct EVP_MD_CTX * md_ctx;
+  const struct ML_DSA_PARAMS * params;
+  uint8_t expanded_seed[128];
+  uint8_t augmented_seed[34];
+  int ret;
+  uint8_t * _1;
+  int _2;
+  int _3;
+  uint8_t * _4;
+  long unsigned int _5;
+  unsigned char _6;
+  long unsigned int _7;
+  unsigned char _8;
+  struct EVP_MD * _9;
+  uint8_t[32] * _11;
+  uint8_t[32] * _12;
+  struct EVP_MD * _13;
+  int _14;
+  struct VECTOR * _15;
+  struct VECTOR * _16;
+  struct VECTOR * _17;
+  struct VECTOR * _18;
+  int _19;
+  int _20;
+  struct EVP_MD * _21;
+  uint8_t * _22;
+  const struct ML_DSA_PARAMS * _23;
+  long unsigned int _24;
+  uint8_t[64] * _25;
+  int _27;
+  uint8_t * _28;
+  int _29;
+  int _30;
+  int _58;
+  _Bool _59;
+  int _60;
+  int _65;
+  int _66;
+  int _67;
+  int _69;
+  int _70;
+  int _71;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = out_38(D)->seed;
+  if (_1 == 0B)
+    goto <bb 19>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418727]:
+  params_39 = out_38(D)->params;
+  md_ctx_41 = EVP_MD_CTX_new ();
+  if (md_ctx_41 == 0B)
+    goto <bb 16>; [30.95%]
+  else
+    goto <bb 4>; [69.05%]
+
+  <bb 4> [local count: 511949630]:
+  _2 = ossl_ml_dsa_key_pub_alloc (out_38(D));
+  if (_2 == 0)
+    goto <bb 16>; [51.12%]
+  else
+    goto <bb 5>; [48.88%]
+
+  <bb 5> [local count: 250240977]:
+  _3 = ossl_ml_dsa_key_priv_alloc (out_38(D));
+  if (_3 == 0)
+    goto <bb 16>; [51.12%]
+  else
+    goto <bb 6>; [48.88%]
+
+  <bb 6> [local count: 122317789]:
+  _4 = out_38(D)->seed;
+  __builtin_memcpy (&augmented_seed, _4, 32);
+  _5 = params_39->k;
+  _6 = (unsigned char) _5;
+  augmented_seed[32] = _6;
+  _7 = params_39->l;
+  _8 = (unsigned char) _7;
+  augmented_seed[33] = _8;
+  _9 = out_38(D)->shake256_md;
+  _65 = EVP_DigestInit_ex2 (md_ctx_41, _9, 0B);
+  if (_65 == 1)
+    goto <bb 7>; [20.24%]
+  else
+    goto <bb 21>; [79.76%]
+
+  <bb 7> [local count: 24757120]:
+  _66 = EVP_DigestUpdate (md_ctx_41, &augmented_seed, 34);
+  if (_66 == 1)
+    goto <bb 8>; [20.24%]
+  else
+    goto <bb 21>; [79.76%]
+
+  <bb 8> [local count: 5010841]:
+  _67 = EVP_DigestSqueeze (md_ctx_41, &expanded_seed, 128);
+  if (_67 != 1)
+    goto <bb 16>; [0.00%]
+  else
+    goto <bb 9>; [100.00%]
+
+  <bb 9> [local count: 59788935]:
+  _11 = &out_38(D)->rho;
+  __builtin_memcpy (_11, &expanded_seed, 32);
+  _12 = &out_38(D)->K;
+  __builtin_memcpy (_12, &MEM <uint8_t[128]> [(void *)&expanded_seed + 96B], 32);
+  _13 = out_38(D)->shake256_md;
+  _14 = params_39->eta;
+  _15 = &out_38(D)->s1;
+  _16 = &out_38(D)->s2;
+  _60 = ossl_ml_dsa_vector_expand_S (md_ctx_41, _13, _14, &MEM <uint8_t[128]> [(void *)&expanded_seed + 32B], _15, _16);
+  if (_60 != 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 10> [local count: 19730348]:
+  _17 = &out_38(D)->t1;
+  _18 = &out_38(D)->t0;
+  _19 = public_from_private (out_38(D), md_ctx_41, _17, _18);
+  if (_19 != 0)
+    goto <bb 11>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 11> [local count: 6511015]:
+  _20 = ossl_ml_dsa_pk_encode (out_38(D));
+  if (_20 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 12> [local count: 2148635]:
+  _21 = out_38(D)->shake256_md;
+  _22 = out_38(D)->pub_encoding;
+  _23 = out_38(D)->params;
+  _24 = _23->pk_len;
+  _69 = EVP_DigestInit_ex2 (md_ctx_41, _21, 0B);
+  if (_69 == 1)
+    goto <bb 13>; [20.24%]
+  else
+    goto <bb 20>; [79.76%]
+
+  <bb 13> [local count: 434884]:
+  _70 = EVP_DigestUpdate (md_ctx_41, _22, _24);
+  if (_70 == 1)
+    goto <bb 14>; [20.24%]
+  else
+    goto <bb 20>; [79.76%]
+
+  <bb 14> [local count: 88020]:
+  _25 = &out_38(D)->tr;
+  _71 = EVP_DigestSqueeze (md_ctx_41, _25, 64);
+  if (_71 == 1)
+    goto <bb 15>; [100.00%]
+  else
+    goto <bb 16>; [0.00%]
+
+  <bb 15> [local count: 709050]:
+  _27 = ossl_ml_dsa_sk_encode (out_38(D));
+  _59 = _27 != 0;
+  _58 = (int) _59;
+
+  <bb 16> [local count: 751619280]:
+  # ret_31 = PHI <0(3), 0(8), _19(10), _58(15), _60(9), _2(4), 0(21), _20(11), _3(5), 0(20), 0(14)>
+  # md_ctx_33 = PHI <md_ctx_41(3), md_ctx_41(8), md_ctx_41(10), md_ctx_41(15), md_ctx_41(9), md_ctx_41(4), md_ctx_41(21), md_ctx_41(11), md_ctx_41(5), md_ctx_41(20), md_ctx_41(14)>
+err:
+  _28 = out_38(D)->seed;
+  if (_28 != 0B)
+    goto <bb 17>; [100.00%]
+  else
+    goto <bb 19>; [0.00%]
+
+  <bb 17> [local count: 751619280]:
+  _29 = out_38(D)->prov_flags;
+  _30 = _29 & 2;
+  if (_30 == 0)
+    goto <bb 18>; [33.00%]
+  else
+    goto <bb 19>; [67.00%]
+
+  <bb 18> [local count: 248034361]:
+  CRYPTO_clear_free (_28, 32, "ml_dsa_key.c", 448);
+  out_38(D)->seed = 0B;
+
+  <bb 19> [local count: 1073741824]:
+  # ret_91 = PHI <ret_31(16), ret_31(17), ret_31(18), 0(2)>
+  # md_ctx_92 = PHI <md_ctx_33(16), md_ctx_33(17), md_ctx_33(18), _1(2)>
+  EVP_MD_CTX_free (md_ctx_92);
+  OPENSSL_cleanse (&augmented_seed, 34);
+  OPENSSL_cleanse (&expanded_seed, 128);
+  augmented_seed ={v} {CLOBBER(eos)};
+  expanded_seed ={v} {CLOBBER(eos)};
+  return ret_91;
+
+  <bb 20> [local count: 1439585]:
+  goto <bb 16>; [100.00%]
+
+  <bb 21> [local count: 62528854]:
+  goto <bb 16>; [100.00%]
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_reset (ossl_ml_dsa_key_reset, funcdef_no=566, decl_uid=15312, cgraph_uid=567, symbol_order=566)
+
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+void ossl_ml_dsa_key_reset (struct ML_DSA_KEY * key)
+{
+  struct POLY * _1;
+  uint8_t[32] * _6;
+  uint8_t * _7;
+  uint8_t * _8;
+  const struct ML_DSA_PARAMS * _9;
+  long unsigned int _10;
+  uint8_t * _11;
+  struct POLY * _31;
+  struct POLY * _32;
+  long unsigned int _33;
+  long unsigned int _34;
+  struct POLY * _36;
+  long unsigned int _37;
+  long unsigned int _38;
+  long unsigned int _41;
+  long unsigned int _42;
+  struct POLY * _44;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_16(D)->s1.poly;
+  if (_1 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 8>; [46.53%]
+
+  <bb 3> [local count: 574129752]:
+  _41 = MEM[(struct VECTOR *)key_16(D) + 240B].num_poly;
+  _42 = _41 * 1024;
+  __builtin_memset (_1, 0, _42);
+  _36 = MEM[(struct VECTOR *)key_16(D) + 224B].poly;
+  if (_36 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 5>; [46.53%]
+
+  <bb 4> [local count: 306987178]:
+  _37 = MEM[(struct VECTOR *)key_16(D) + 224B].num_poly;
+  _38 = _37 * 1024;
+  __builtin_memset (_36, 0, _38);
+
+  <bb 5> [local count: 574129752]:
+  _32 = MEM[(struct VECTOR *)key_16(D) + 208B].poly;
+  if (_32 != 0B)
+    goto <bb 6>; [53.47%]
+  else
+    goto <bb 7>; [46.53%]
+
+  <bb 6> [local count: 306987178]:
+  _33 = MEM[(struct VECTOR *)key_16(D) + 208B].num_poly;
+  _34 = _33 * 1024;
+  __builtin_memset (_32, 0, _34);
+
+  <bb 7> [local count: 574129752]:
+  _31 = MEM[(struct VECTOR *)key_16(D) + 240B].poly;
+  CRYPTO_free (_31, "ml_dsa_vector.h", 46);
+  MEM[(struct VECTOR *)key_16(D) + 240B].poly = 0B;
+  MEM[(struct VECTOR *)key_16(D) + 240B].num_poly = 0;
+  key_16(D)->s2.poly = 0B;
+  key_16(D)->t0.poly = 0B;
+
+  <bb 8> [local count: 1073741824]:
+  _44 = MEM[(struct VECTOR *)key_16(D) + 192B].poly;
+  CRYPTO_free (_44, "ml_dsa_vector.h", 46);
+  MEM[(struct VECTOR *)key_16(D) + 192B].poly = 0B;
+  MEM[(struct VECTOR *)key_16(D) + 192B].num_poly = 0;
+  _6 = &key_16(D)->K;
+  OPENSSL_cleanse (_6, 32);
+  _7 = key_16(D)->pub_encoding;
+  CRYPTO_free (_7, "ml_dsa_key.c", 161);
+  key_16(D)->pub_encoding = 0B;
+  _8 = key_16(D)->priv_encoding;
+  if (_8 != 0B)
+    goto <bb 9>; [53.47%]
+  else
+    goto <bb 10>; [46.53%]
+
+  <bb 9> [local count: 574129752]:
+  _9 = key_16(D)->params;
+  _10 = _9->sk_len;
+  CRYPTO_clear_free (_8, _10, "ml_dsa_key.c", 164);
+
+  <bb 10> [local count: 1073741824]:
+  key_16(D)->priv_encoding = 0B;
+  _11 = key_16(D)->seed;
+  if (_11 != 0B)
+    goto <bb 11>; [53.47%]
+  else
+    goto <bb 12>; [46.53%]
+
+  <bb 11> [local count: 574129752]:
+  CRYPTO_clear_free (_11, 32, "ml_dsa_key.c", 167);
+
+  <bb 12> [local count: 1073741824]:
+  key_16(D)->seed = 0B;
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_free (ossl_ml_dsa_key_free, funcdef_no=565, decl_uid=15318, cgraph_uid=566, symbol_order=565)
+
+Removing basic block 5
+void ossl_ml_dsa_key_free (struct ML_DSA_KEY * key)
+{
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_4(D) == 0B)
+    goto <bb 4>; [30.95%]
+  else
+    goto <bb 3>; [69.05%]
+
+  <bb 3> [local count: 741418728]:
+  _1 = key_4(D)->shake128_md;
+  EVP_MD_free (_1);
+  _2 = key_4(D)->shake256_md;
+  EVP_MD_free (_2);
+  ossl_ml_dsa_key_reset (key_4(D));
+  CRYPTO_free (key_4(D), "ml_dsa_key.c", 138);
+
+  <bb 4> [local count: 1073741824]:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_new (ossl_ml_dsa_key_new, funcdef_no=562, decl_uid=15310, cgraph_uid=563, symbol_order=562)
+
+Removing basic block 7
+Removing basic block 8
+Removing basic block 9
+struct ML_DSA_KEY * ossl_ml_dsa_key_new (struct OSSL_LIB_CTX * libctx, const char * propq, int evp_type)
+{
+  const struct ML_DSA_PARAMS * params;
+  struct ML_DSA_KEY * ret;
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+  struct EVP_MD * _3;
+  struct ML_DSA_KEY * _4;
+  _Bool _22;
+  _Bool _23;
+  _Bool _24;
+
+  <bb 2> [local count: 1073741822]:
+  params_9 = ossl_ml_dsa_params_get (evp_type_7(D));
+  if (params_9 == 0B)
+    goto <bb 6>; [15.47%]
+  else
+    goto <bb 3>; [84.53%]
+
+  <bb 3> [local count: 907633958]:
+  ret_11 = CRYPTO_zalloc (256, "ml_dsa_key.c", 87);
+  if (ret_11 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 6>; [46.53%]
+
+  <bb 4> [local count: 485311877]:
+  ret_11->libctx = libctx_12(D);
+  ret_11->params = params_9;
+  ret_11->prov_flags = 3;
+  _1 = EVP_MD_fetch (libctx_12(D), "SHAKE-128", propq_16(D));
+  ret_11->shake128_md = _1;
+  _2 = EVP_MD_fetch (libctx_12(D), "SHAKE-256", propq_16(D));
+  ret_11->shake256_md = _2;
+  _3 = ret_11->shake128_md;
+  _22 = _2 == 0B;
+  _23 = _3 == 0B;
+  _24 = _22 | _23;
+  if (_24 != 0)
+    goto <bb 5>; [12.17%]
+  else
+    goto <bb 6>; [87.83%]
+
+  <bb 5> [local count: 59055295]:
+  ossl_ml_dsa_key_free (ret_11);
+
+  <bb 6> [local count: 1073741824]:
+  # _4 = PHI <params_9(2), ret_11(4), 0B(5), ret_11(3)>
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_dup (ossl_ml_dsa_key_dup, funcdef_no=567, decl_uid=15321, cgraph_uid=568, symbol_order=567)
+
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+Removing basic block 37
+Removing basic block 38
+Removing basic block 39
+Removing basic block 40
+Removing basic block 41
+Removing basic block 42
+Removing basic block 43
+Removing basic block 44
+Removing basic block 45
+Removing basic block 46
+Removing basic block 47
+Removing basic block 48
+Removing basic block 49
+Removing basic block 50
+Removing basic block 51
+Removing basic block 52
+struct ML_DSA_KEY * ossl_ml_dsa_key_dup (const struct ML_DSA_KEY * src, int selection)
+{
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  struct ML_DSA_KEY * ret;
+  uint8_t * _1;
+  uint8_t * _2;
+  uint8_t * _3;
+  struct OSSL_LIB_CTX * _4;
+  const struct ML_DSA_PARAMS * _5;
+  int _6;
+  int _7;
+  uint8_t * _8;
+  uint8_t[32] * _9;
+  const uint8_t[32] * _10;
+  uint8_t[64] * _11;
+  const uint8_t[64] * _12;
+  struct POLY * _13;
+  int _14;
+  uint8_t * _17;
+  const struct ML_DSA_PARAMS * _18;
+  long unsigned int _19;
+  void * _20;
+  int _21;
+  uint8_t * _22;
+  uint8_t[32] * _23;
+  const uint8_t[32] * _24;
+  struct POLY * _25;
+  int _26;
+  uint8_t * _33;
+  const struct ML_DSA_PARAMS * _34;
+  long unsigned int _35;
+  void * _36;
+  uint8_t * _37;
+  void * _38;
+  struct EVP_MD * _39;
+  struct EVP_MD * _40;
+  struct EVP_MD * _41;
+  struct EVP_MD * _42;
+  struct ML_DSA_KEY * _43;
+  long unsigned int _82;
+  long unsigned int _83;
+  struct POLY * _84;
+  struct POLY * _85;
+  long unsigned int _86;
+  long unsigned int _88;
+  long unsigned int _89;
+  struct POLY * _90;
+  struct POLY * _91;
+  long unsigned int _92;
+  long unsigned int _94;
+  long unsigned int _95;
+  struct POLY * _96;
+  struct POLY * _97;
+  long unsigned int _98;
+  long unsigned int _100;
+  long unsigned int _101;
+  struct POLY * _102;
+  struct POLY * _103;
+  long unsigned int _104;
+
+  <bb 2> [local count: 1073741820]:
+  if (src_51(D) == 0B)
+    goto <bb 31>; [8.27%]
+  else
+    goto <bb 3>; [91.73%]
+
+  <bb 3> [local count: 984943372]:
+  _1 = src_51(D)->pub_encoding;
+  if (_1 == 0B)
+    goto <bb 4>; [46.53%]
+  else
+    goto <bb 6>; [53.47%]
+
+  <bb 4> [local count: 458294153]:
+  _2 = src_51(D)->priv_encoding;
+  if (_2 != 0B)
+    goto <bb 31>; [32.93%]
+  else
+    goto <bb 5>; [67.07%]
+
+  <bb 5> [local count: 307377888]:
+  _3 = src_51(D)->seed;
+  if (_3 != 0B)
+    goto <bb 31>; [32.93%]
+  else
+    goto <bb 6>; [67.07%]
+
+  <bb 6> [local count: 732807569]:
+  ret_54 = CRYPTO_zalloc (256, "ml_dsa_key.c", 191);
+  if (ret_54 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 31>; [30.00%]
+
+  <bb 7> [local count: 512965301]:
+  _4 = src_51(D)->libctx;
+  ret_54->libctx = _4;
+  _5 = src_51(D)->params;
+  ret_54->params = _5;
+  _6 = src_51(D)->prov_flags;
+  ret_54->prov_flags = _6;
+  _7 = selection_58(D) & 3;
+  if (_7 != 0)
+    goto <bb 8>; [67.00%]
+  else
+    goto <bb 29>; [33.00%]
+
+  <bb 8> [local count: 343686752]:
+  _8 = src_51(D)->pub_encoding;
+  if (_8 != 0B)
+    goto <bb 9>; [53.47%]
+  else
+    goto <bb 15>; [46.53%]
+
+  <bb 9> [local count: 183769306]:
+  _9 = &ret_54->rho;
+  _10 = &src_51(D)->rho;
+  __builtin_memcpy (_9, _10, 32);
+  _11 = &ret_54->tr;
+  _12 = &src_51(D)->tr;
+  __builtin_memcpy (_11, _12, 64);
+  _13 = src_51(D)->t1.poly;
+  if (_13 != 0B)
+    goto <bb 10>; [70.00%]
+  else
+    goto <bb 14>; [30.00%]
+
+  <bb 10> [local count: 128638515]:
+  _14 = ossl_ml_dsa_key_pub_alloc (ret_54);
+  if (_14 == 0)
+    goto <bb 30>; [29.93%]
+  else
+    goto <bb 11>; [70.07%]
+
+  <bb 11> [local count: 90137007]:
+  _82 = MEM[(struct VECTOR *)ret_54 + 192B].num_poly;
+  _83 = MEM[(const struct VECTOR *)src_51(D) + 192B].num_poly;
+  if (_82 == _83)
+    goto <bb 13>; [99.96%]
+  else
+    goto <bb 12>; [0.04%]
+
+  <bb 12> [local count: 36055]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 13> [local count: 90100952]:
+  _84 = MEM[(struct VECTOR *)ret_54 + 192B].poly;
+  _85 = MEM[(const struct VECTOR *)src_51(D) + 192B].poly;
+  _86 = _83 * 1024;
+  __builtin_memcpy (_84, _85, _86);
+
+  <bb 14> [local count: 145267799]:
+  _17 = src_51(D)->pub_encoding;
+  _18 = src_51(D)->params;
+  _19 = _18->pk_len;
+  _20 = CRYPTO_memdup (_17, _19, "ml_dsa_key.c", 206);
+  ret_54->pub_encoding = _20;
+  if (_20 == 0B)
+    goto <bb 30>; [8.27%]
+  else
+    goto <bb 15>; [91.73%]
+
+  <bb 15> [local count: 293171599]:
+  _21 = selection_58(D) & 1;
+  if (_21 != 0)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 29>; [50.00%]
+
+  <bb 16> [local count: 146585799]:
+  _22 = src_51(D)->priv_encoding;
+  if (_22 != 0B)
+    goto <bb 17>; [53.47%]
+  else
+    goto <bb 27>; [46.53%]
+
+  <bb 17> [local count: 78379427]:
+  _23 = &ret_54->K;
+  _24 = &src_51(D)->K;
+  __builtin_memcpy (_23, _24, 32);
+  _25 = src_51(D)->s1.poly;
+  if (_25 != 0B)
+    goto <bb 18>; [70.00%]
+  else
+    goto <bb 26>; [30.00%]
+
+  <bb 18> [local count: 54865599]:
+  _26 = ossl_ml_dsa_key_priv_alloc (ret_54);
+  if (_26 == 0)
+    goto <bb 30>; [29.93%]
+  else
+    goto <bb 19>; [70.07%]
+
+  <bb 19> [local count: 38444325]:
+  _100 = MEM[(struct VECTOR *)ret_54 + 240B].num_poly;
+  _101 = MEM[(const struct VECTOR *)src_51(D) + 240B].num_poly;
+  if (_100 == _101)
+    goto <bb 21>; [99.96%]
+  else
+    goto <bb 20>; [0.04%]
+
+  <bb 20> [local count: 15378]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 21> [local count: 38444325]:
+  _102 = MEM[(struct VECTOR *)ret_54 + 240B].poly;
+  _103 = MEM[(const struct VECTOR *)src_51(D) + 240B].poly;
+  _104 = _101 * 1024;
+  __builtin_memcpy (_102, _103, _104);
+  _94 = MEM[(struct VECTOR *)ret_54 + 224B].num_poly;
+  _95 = MEM[(const struct VECTOR *)src_51(D) + 224B].num_poly;
+  if (_94 == _95)
+    goto <bb 23>; [99.96%]
+  else
+    goto <bb 22>; [0.04%]
+
+  <bb 22> [local count: 15378]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 23> [local count: 38444325]:
+  _96 = MEM[(struct VECTOR *)ret_54 + 224B].poly;
+  _97 = MEM[(const struct VECTOR *)src_51(D) + 224B].poly;
+  _98 = _95 * 1024;
+  __builtin_memcpy (_96, _97, _98);
+  _88 = MEM[(struct VECTOR *)ret_54 + 208B].num_poly;
+  _89 = MEM[(const struct VECTOR *)src_51(D) + 208B].num_poly;
+  if (_88 == _89)
+    goto <bb 25>; [99.96%]
+  else
+    goto <bb 24>; [0.04%]
+
+  <bb 24> [local count: 15378]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 25> [local count: 38428947]:
+  _90 = MEM[(struct VECTOR *)ret_54 + 208B].poly;
+  _91 = MEM[(const struct VECTOR *)src_51(D) + 208B].poly;
+  _92 = _89 * 1024;
+  __builtin_memcpy (_90, _91, _92);
+
+  <bb 26> [local count: 61958153]:
+  _33 = src_51(D)->priv_encoding;
+  _34 = src_51(D)->params;
+  _35 = _34->sk_len;
+  _36 = CRYPTO_memdup (_33, _35, "ml_dsa_key.c", 221);
+  ret_54->priv_encoding = _36;
+  if (_36 == 0B)
+    goto <bb 30>; [8.27%]
+  else
+    goto <bb 27>; [91.73%]
+
+  <bb 27> [local count: 125040586]:
+  _37 = src_51(D)->seed;
+  if (_37 != 0B)
+    goto <bb 28>; [53.47%]
+  else
+    goto <bb 29>; [46.53%]
+
+  <bb 28> [local count: 66859201]:
+  _38 = CRYPTO_memdup (_37, 32, "ml_dsa_key.c", 226);
+  ret_54->seed = _38;
+  if (_38 == 0B)
+    goto <bb 30>; [8.27%]
+  else
+    goto <bb 29>; [91.73%]
+
+  <bb 29> [local count: 435375678]:
+  _39 = src_51(D)->shake128_md;
+  EVP_MD_up_ref (_39);
+  _40 = src_51(D)->shake256_md;
+  EVP_MD_up_ref (_40);
+  _41 = src_51(D)->shake128_md;
+  ret_54->shake128_md = _41;
+  _42 = src_51(D)->shake256_md;
+  ret_54->shake256_md = _42;
+  goto <bb 31>; [100.00%]
+
+  <bb 30> [local count: 77589623]:
+err:
+  ossl_ml_dsa_key_free (ret_54);
+
+  <bb 31> [local count: 1073741824]:
+  # _43 = PHI <src_51(D)(2), _2(5), ret_54(29), 0B(30), ret_54(6), _1(4)>
+  return _43;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_equal (ossl_ml_dsa_key_equal, funcdef_no=568, decl_uid=15325, cgraph_uid=569, symbol_order=568)
+
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+int ossl_ml_dsa_key_equal (const struct ML_DSA_KEY * key1, const struct ML_DSA_KEY * key2, int selection)
+{
+  const struct ML_DSA_PARAMS * _1;
+  const struct ML_DSA_PARAMS * _2;
+  int _3;
+  int _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  long unsigned int _7;
+  int _8;
+  int _9;
+  uint8_t * _10;
+  uint8_t * _11;
+  long unsigned int _12;
+  int _13;
+  int _15;
+  _Bool _20;
+  int _21;
+  _Bool _23;
+  int _24;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key1_17(D)->params;
+  _2 = key2_18(D)->params;
+  if (_1 != _2)
+    goto <bb 12>; [54.59%]
+  else
+    goto <bb 3>; [45.41%]
+
+  <bb 3> [local count: 487586160]:
+  _3 = selection_19(D) & 3;
+  if (_3 != 0)
+    goto <bb 4>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 4> [local count: 243793080]:
+  _4 = selection_19(D) & 2;
+  if (_4 != 0)
+    goto <bb 5>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 5> [local count: 121896540]:
+  _5 = key1_17(D)->pub_encoding;
+  if (_5 != 0B)
+    goto <bb 6>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 6> [local count: 85327578]:
+  _6 = key2_18(D)->pub_encoding;
+  if (_6 != 0B)
+    goto <bb 7>; [70.00%]
+  else
+    goto <bb 8>; [30.00%]
+
+  <bb 7> [local count: 59729305]:
+  _7 = _1->pk_len;
+  _8 = memcmp (_5, _6, _7);
+  _23 = _8 == 0;
+  _24 = (int) _23;
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 184063775]:
+  _9 = selection_19(D) & 1;
+  if (_9 != 0)
+    goto <bb 9>; [66.00%]
+  else
+    goto <bb 12>; [34.00%]
+
+  <bb 9> [local count: 121482091]:
+  _10 = key1_17(D)->priv_encoding;
+  if (_10 != 0B)
+    goto <bb 10>; [81.91%]
+  else
+    goto <bb 12>; [18.09%]
+
+  <bb 10> [local count: 99505981]:
+  _11 = key2_18(D)->priv_encoding;
+  if (_11 != 0B)
+    goto <bb 11>; [81.91%]
+  else
+    goto <bb 12>; [18.09%]
+
+  <bb 11> [local count: 81505349]:
+  _12 = _1->sk_len;
+  _13 = memcmp (_10, _11, _12);
+  _20 = _13 == 0;
+  _21 = (int) _20;
+
+  <bb 12> [local count: 1073741824]:
+  # _15 = PHI <0(2), _24(7), _21(11), _9(8), 1(3), 0(10), 0(9)>
+  return _15;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_has (ossl_ml_dsa_key_has, funcdef_no=569, decl_uid=15328, cgraph_uid=570, symbol_order=569)
+
+Removing basic block 7
+Removing basic block 8
+Removing basic block 9
+int ossl_ml_dsa_key_has (const struct ML_DSA_KEY * key, int selection)
+{
+  int _1;
+  int _3;
+  int _4;
+  int _5;
+  const uint8_t * _9;
+  const uint8_t * _10;
+  _Bool _11;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = selection_6(D) & 3;
+  if (_1 != 0)
+    goto <bb 3>; [50.00%]
+  else
+    goto <bb 6>; [50.00%]
+
+  <bb 3> [local count: 536870912]:
+  _9 = key_8(D)->pub_encoding;
+  if (_9 == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 4>; [81.91%]
+
+  <bb 4> [local count: 439750964]:
+  _3 = selection_6(D) & 1;
+  if (_3 != 0)
+    goto <bb 5>; [66.00%]
+  else
+    goto <bb 6>; [34.00%]
+
+  <bb 5> [local count: 290235635]:
+  _10 = key_8(D)->priv_encoding;
+  _11 = _10 != 0B;
+  _4 = (int) _11;
+
+  <bb 6> [local count: 1073741824]:
+  # _5 = PHI <0(3), _4(5), 1(4), _1(2)>
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_public_from_private (ossl_ml_dsa_key_public_from_private, funcdef_no=571, decl_uid=15365, cgraph_uid=572, symbol_order=571)
+
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+int ossl_ml_dsa_key_public_from_private (struct ML_DSA_KEY * key)
+{
+  unsigned long ivtmp.120;
+  size_t i;
+  struct EVP_MD_CTX * md_ctx;
+  struct VECTOR t0;
+  const struct ML_DSA_PARAMS * _1;
+  long unsigned int _2;
+  int _4;
+  struct VECTOR * _5;
+  int _6;
+  int _9;
+  struct EVP_MD * _10;
+  uint8_t * _11;
+  const struct ML_DSA_PARAMS * _12;
+  long unsigned int _13;
+  uint8_t[64] * _14;
+  long unsigned int _15;
+  int _16;
+  int iftmp.0_17;
+  long unsigned int _33;
+  void * _34;
+  long unsigned int _37;
+  const struct POLY * _41;
+  struct POLY * _42;
+  const struct POLY * _43;
+  int _44;
+  int _46;
+  int _48;
+  int _49;
+  int _50;
+  int iftmp.2_51;
+  _Bool _69;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = key_21(D)->params;
+  _2 = _1->k;
+  _33 = _2 * 1024;
+  _34 = CRYPTO_malloc (_33, "ml_dsa_vector.h", 36);
+  t0.poly = _34;
+  if (_34 == 0B)
+    goto <bb 17>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501926]:
+  md_ctx_24 = EVP_MD_CTX_new ();
+  if (md_ctx_24 != 0B)
+    goto <bb 4>; [53.47%]
+  else
+    goto <bb 16>; [46.53%]
+
+  <bb 4> [local count: 280634621]:
+  _4 = ossl_ml_dsa_key_pub_alloc (key_21(D));
+  if (_4 != 0)
+    goto <bb 5>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 5> [local count: 92609424]:
+  _5 = &key_21(D)->t1;
+  t0.num_poly = _2;
+  _6 = public_from_private (key_21(D), md_ctx_24, _5, &t0);
+  if (_6 != 0)
+    goto <bb 6>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 6> [local count: 30561110]:
+  _37 = MEM[(const struct VECTOR *)key_21(D) + 208B].num_poly;
+  if (_2 != _37)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 7>; [50.00%]
+
+  <bb 7> [local count: 15280555]:
+  if (_2 != 0)
+    goto <bb 8>; [94.50%]
+  else
+    goto <bb 11>; [5.50%]
+
+  <bb 8> [local count: 14440124]:
+  ivtmp.120_36 = (unsigned long) _34;
+
+  <bb 9> [local count: 134985975]:
+  # i_52 = PHI <i_45(10), 0(8)>
+  # ivtmp.120_68 = PHI <ivtmp.120_59(10), ivtmp.120_36(8)>
+  _15 = i_52 * 1024;
+  _41 = (const struct POLY *) ivtmp.120_68;
+  _42 = MEM[(const struct VECTOR *)key_21(D) + 208B].poly;
+  _43 = _42 + _15;
+  _44 = CRYPTO_memcmp (_41, _43, 1024);
+  if (_44 != 0)
+    goto <bb 16>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 10> [local count: 127561747]:
+  i_45 = i_52 + 1;
+  ivtmp.120_59 = ivtmp.120_68 + 1024;
+  if (_2 != i_45)
+    goto <bb 9>; [94.50%]
+  else
+    goto <bb 11>; [5.50%]
+
+  <bb 11> [local count: 10085166]:
+  _9 = ossl_ml_dsa_pk_encode (key_21(D));
+  if (_9 != 0)
+    goto <bb 12>; [33.00%]
+  else
+    goto <bb 16>; [67.00%]
+
+  <bb 12> [local count: 3328105]:
+  _10 = key_21(D)->shake256_md;
+  _11 = key_21(D)->pub_encoding;
+  _12 = key_21(D)->params;
+  _13 = _12->pk_len;
+  _48 = EVP_DigestInit_ex2 (md_ctx_24, _10, 0B);
+  if (_48 == 1)
+    goto <bb 13>; [20.24%]
+  else
+    goto <bb 15>; [79.76%]
+
+  <bb 13> [local count: 673608]:
+  _49 = EVP_DigestUpdate (md_ctx_24, _11, _13);
+  if (_49 == 1)
+    goto <bb 14>; [20.24%]
+  else
+    goto <bb 15>; [79.76%]
+
+  <bb 14> [local count: 136338]:
+  _14 = &key_21(D)->tr;
+  _50 = EVP_DigestSqueeze (md_ctx_24, _14, 64);
+  _69 = _50 == 1;
+  _46 = (int) _69;
+
+  <bb 15> [local count: 3328105]:
+  # iftmp.2_51 = PHI <0(12), 0(13), _46(14)>
+
+  <bb 16> [local count: 524845000]:
+  # iftmp.0_17 = PHI <iftmp.2_51(15), _4(4), 0(3), _6(5), _9(11), 0(9), 0(6)>
+  CRYPTO_free (_34, "ml_dsa_vector.h", 46);
+  EVP_MD_CTX_free (md_ctx_24);
+
+  <bb 17> [local count: 1073741824]:
+  # _16 = PHI <0(2), iftmp.0_17(16)>
+  t0 ={v} {CLOBBER(eos)};
+  return _16;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_pairwise_check (ossl_ml_dsa_key_pairwise_check, funcdef_no=572, decl_uid=15330, cgraph_uid=573, symbol_order=572)
+
+Removing basic block 20
+Removing basic block 21
+Removing basic block 22
+Removing basic block 23
+Removing basic block 24
+Removing basic block 25
+Removing basic block 26
+Removing basic block 27
+Removing basic block 28
+Removing basic block 29
+Removing basic block 30
+Removing basic block 31
+Removing basic block 32
+Removing basic block 33
+Removing basic block 34
+Removing basic block 35
+Removing basic block 36
+int ossl_ml_dsa_key_pairwise_check (const struct ML_DSA_KEY * key)
+{
+  long unsigned int ivtmp.132;
+  long unsigned int ivtmp.127;
+  struct EVP_MD_CTX * md_ctx;
+  uint32_t k;
+  struct POLY * polys;
+  struct VECTOR t0;
+  struct VECTOR t1;
+  int ret;
+  const struct ML_DSA_PARAMS * _1;
+  long unsigned int _2;
+  uint8_t * _3;
+  uint8_t * _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct POLY * _9;
+  int _10;
+  int _16;
+  unsigned long _27;
+  unsigned long _28;
+  long unsigned int _31;
+  unsigned long _38;
+  long unsigned int _39;
+  long unsigned int _41;
+  const struct POLY * _43;
+  struct POLY * _44;
+  const struct POLY * _45;
+  int _46;
+  long unsigned int _51;
+  const struct POLY * _55;
+  struct POLY * _56;
+  const struct POLY * _57;
+  int _58;
+  int _61;
+  unsigned long _69;
+
+  <bb 2> [local count: 1073741822]:
+  _3 = key_20(D)->pub_encoding;
+  if (_3 == 0B)
+    goto <bb 18>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501926]:
+  _4 = key_20(D)->priv_encoding;
+  if (_4 == 0B)
+    goto <bb 18>; [30.95%]
+  else
+    goto <bb 4>; [69.05%]
+
+  <bb 4> [local count: 607296079]:
+  _1 = key_20(D)->params;
+  _2 = _1->k;
+  k_21 = (uint32_t) _2;
+  _5 = k_21 * 2;
+  _6 = (long unsigned int) _5;
+  _7 = _6 * 1024;
+  polys_23 = CRYPTO_malloc (_7, "ml_dsa_key.c", 383);
+  if (polys_23 == 0B)
+    goto <bb 18>; [30.95%]
+  else
+    goto <bb 5>; [69.05%]
+
+  <bb 5> [local count: 419337942]:
+  md_ctx_25 = EVP_MD_CTX_new ();
+  if (md_ctx_25 == 0B)
+    goto <bb 17>; [30.95%]
+  else
+    goto <bb 6>; [69.05%]
+
+  <bb 6> [local count: 289552848]:
+  _31 = _2 & 4294967295;
+  t1.poly = polys_23;
+  t1.num_poly = _31;
+  _8 = _31 * 1024;
+  _9 = polys_23 + _8;
+  t0.poly = _9;
+  t0.num_poly = _31;
+  _10 = public_from_private (key_20(D), md_ctx_25, &t1, &t0);
+  if (_10 == 0)
+    goto <bb 17>; [51.12%]
+  else
+    goto <bb 7>; [48.88%]
+
+  <bb 7> [local count: 141533431]:
+  _39 = MEM[(const struct VECTOR *)key_20(D) + 192B].num_poly;
+  if (_31 != _39)
+    goto <bb 17>; [50.00%]
+  else
+    goto <bb 8>; [50.00%]
+
+  <bb 8> [local count: 70766716]:
+  if (_31 != 0)
+    goto <bb 9>; [94.50%]
+  else
+    goto <bb 11>; [5.50%]
+
+  <bb 9> [local count: 625141829]:
+  # ivtmp.132_13 = PHI <ivtmp.132_11(10), 0(8)>
+  _28 = (unsigned long) polys_23;
+  _27 = ivtmp.132_13 + _28;
+  _43 = (const struct POLY *) _27;
+  _44 = MEM[(const struct VECTOR *)key_20(D) + 192B].poly;
+  _45 = _44 + ivtmp.132_13;
+  _46 = CRYPTO_memcmp (_43, _45, 1024);
+  if (_46 != 0)
+    goto <bb 17>; [5.50%]
+  else
+    goto <bb 10>; [94.50%]
+
+  <bb 10> [local count: 590759029]:
+  ivtmp.132_11 = ivtmp.132_13 + 1024;
+  if (_8 != ivtmp.132_11)
+    goto <bb 9>; [94.50%]
+  else
+    goto <bb 19>; [5.50%]
+
+  <bb 11> [local count: 3892168]:
+  _51 = MEM[(const struct VECTOR *)key_20(D) + 208B].num_poly;
+  if (_31 != _51)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 12>; [50.00%]
+
+  <bb 12> [local count: 1946084]:
+  if (_31 != 0)
+    goto <bb 13>; [34.00%]
+  else
+    goto <bb 16>; [66.00%]
+
+  <bb 13> [local count: 22068600]:
+
+  <bb 14> [local count: 206296803]:
+  # ivtmp.127_48 = PHI <ivtmp.127_50(15), 0(13)>
+  _38 = (unsigned long) _9;
+  _69 = _38 + ivtmp.127_48;
+  _55 = (const struct POLY *) _69;
+  _56 = MEM[(const struct VECTOR *)key_20(D) + 208B].poly;
+  _57 = _56 + ivtmp.127_48;
+  _58 = CRYPTO_memcmp (_55, _57, 1024);
+  if (_58 != 0)
+    goto <bb 16>; [5.50%]
+  else
+    goto <bb 15>; [94.50%]
+
+  <bb 15> [local count: 194950479]:
+  ivtmp.127_50 = ivtmp.127_48 + 1024;
+  if (_8 != ivtmp.127_50)
+    goto <bb 14>; [94.50%]
+  else
+    goto <bb 16>; [5.50%]
+
+  <bb 16> [local count: 46706032]:
+  # _61 = PHI <0(11), 0(14), 1(15), 1(12), _46(19)>
+
+  <bb 17> [local count: 419337942]:
+  # ret_15 = PHI <0(5), _10(6), 0(9), _61(16), 0(7)>
+err:
+  EVP_MD_CTX_free (md_ctx_25);
+  CRYPTO_free (polys_23, "ml_dsa_key.c", 398);
+
+  <bb 18> [local count: 1073741824]:
+  # _16 = PHI <0(3), 0(4), ret_15(17), 0(2)>
+  t1 ={v} {CLOBBER(eos)};
+  t0 ={v} {CLOBBER(eos)};
+  return _16;
+
+  <bb 19> [local count: 42813864]:
+  _41 = MEM[(const struct VECTOR *)key_20(D) + 208B].num_poly;
+  if (_31 != _41)
+    goto <bb 16>; [50.00%]
+  else
+    goto <bb 13>; [50.00%]
+
+}
+
+
+
+;; Function ossl_ml_dsa_generate_key (ossl_ml_dsa_generate_key, funcdef_no=574, decl_uid=15332, cgraph_uid=575, symbol_order=574)
+
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+int ossl_ml_dsa_generate_key (struct ML_DSA_KEY * out)
+{
+  static const char __func__[25] = "ossl_ml_dsa_generate_key";
+  int ret;
+  uint8_t * sk;
+  uint8_t * _1;
+  void * _2;
+  struct OSSL_LIB_CTX * _3;
+  int _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  const struct ML_DSA_PARAMS * _7;
+  long unsigned int _8;
+  int _9;
+  const struct ML_DSA_PARAMS * _10;
+  const char * _11;
+  int _13;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = out_18(D)->seed;
+  if (_1 == 0B)
+    goto <bb 3>; [17.43%]
+  else
+    goto <bb 6>; [82.57%]
+
+  <bb 3> [local count: 187153200]:
+  _2 = CRYPTO_malloc (32, "ml_dsa_key.c", 464);
+  out_18(D)->seed = _2;
+  if (_2 == 0B)
+    goto <bb 12>; [30.95%]
+  else
+    goto <bb 4>; [69.05%]
+
+  <bb 4> [local count: 129229284]:
+  _3 = out_18(D)->libctx;
+  _4 = RAND_priv_bytes_ex (_3, _2, 32, 0);
+  if (_4 <= 0)
+    goto <bb 5>; [14.99%]
+  else
+    goto <bb 6>; [85.01%]
+
+  <bb 5> [local count: 19371469]:
+  _5 = out_18(D)->seed;
+  CRYPTO_free (_5, "ml_dsa_key.c", 467);
+  out_18(D)->seed = 0B;
+  goto <bb 12>; [100.00%]
+
+  <bb 6> [local count: 996446437]:
+  sk_24 = out_18(D)->priv_encoding;
+  out_18(D)->priv_encoding = 0B;
+  if (sk_24 == 0B)
+    goto <bb 7>; [30.00%]
+  else
+    goto <bb 8>; [70.00%]
+
+  <bb 7> [local count: 298933928]:
+  ret_34 = keygen_internal (out_18(D));
+  goto <bb 12>; [100.00%]
+
+  <bb 8> [local count: 697512509]:
+  ret_27 = keygen_internal (out_18(D));
+  if (ret_27 != 0)
+    goto <bb 9>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 9> [local count: 348756255]:
+  _6 = out_18(D)->priv_encoding;
+  _7 = out_18(D)->params;
+  _8 = _7->sk_len;
+  _9 = memcmp (_6, sk_24, _8);
+  if (_9 != 0)
+    goto <bb 10>; [33.00%]
+  else
+    goto <bb 11>; [67.00%]
+
+  <bb 10> [local count: 115089563]:
+  ossl_ml_dsa_key_reset (out_18(D));
+  ERR_new ();
+  ERR_set_debug ("ml_dsa_key.c", 482, &__func__);
+  _10 = out_18(D)->params;
+  _11 = _10->alg;
+  ERR_set_error (57, 158, "explicit %s private key does not match seed", _11);
+
+  <bb 11> [local count: 697512510]:
+  # ret_12 = PHI <ret_27(8), ret_27(9), 0(10)>
+  CRYPTO_free (sk_24, "ml_dsa_key.c", 486);
+
+  <bb 12> [local count: 1073741824]:
+  # _13 = PHI <0(3), 0(5), ret_12(11), ret_34(7)>
+  return _13;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_matches (ossl_ml_dsa_key_matches, funcdef_no=575, decl_uid=15359, cgraph_uid=576, symbol_order=575)
+
+int ossl_ml_dsa_key_matches (const struct ML_DSA_KEY * key, int evp_type)
+{
+  const struct ML_DSA_PARAMS * _1;
+  int _2;
+  _Bool _3;
+  int _7;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_5(D)->params;
+  _2 = _1->evp_type;
+  _3 = _2 == evp_type_6(D);
+  _7 = (int) _3;
+  return _7;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_pub (ossl_ml_dsa_key_get_pub, funcdef_no=576, decl_uid=15334, cgraph_uid=577, symbol_order=576)
+
+const uint8_t * ossl_ml_dsa_key_get_pub (const struct ML_DSA_KEY * key)
+{
+  const uint8_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  _3 = key_2(D)->pub_encoding;
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_pub_len (ossl_ml_dsa_key_get_pub_len, funcdef_no=577, decl_uid=15336, cgraph_uid=578, symbol_order=577)
+
+size_t ossl_ml_dsa_key_get_pub_len (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * _1;
+  size_t _4;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_3(D)->params;
+  _4 = _1->pk_len;
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_collision_strength_bits (ossl_ml_dsa_key_get_collision_strength_bits, funcdef_no=578, decl_uid=15354, cgraph_uid=579, symbol_order=578)
+
+size_t ossl_ml_dsa_key_get_collision_strength_bits (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * _1;
+  int _2;
+  size_t _5;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_4(D)->params;
+  _2 = _1->bit_strength;
+  _5 = (size_t) _2;
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_priv (ossl_ml_dsa_key_get_priv, funcdef_no=579, decl_uid=15338, cgraph_uid=580, symbol_order=579)
+
+const uint8_t * ossl_ml_dsa_key_get_priv (const struct ML_DSA_KEY * key)
+{
+  const uint8_t * _3;
+
+  <bb 2> [local count: 1073741824]:
+  _3 = key_2(D)->priv_encoding;
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_priv_len (ossl_ml_dsa_key_get_priv_len, funcdef_no=580, decl_uid=15340, cgraph_uid=581, symbol_order=580)
+
+size_t ossl_ml_dsa_key_get_priv_len (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * _1;
+  size_t _4;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_3(D)->params;
+  _4 = _1->sk_len;
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_sig_len (ossl_ml_dsa_key_get_sig_len, funcdef_no=581, decl_uid=15356, cgraph_uid=582, symbol_order=581)
+
+size_t ossl_ml_dsa_key_get_sig_len (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * _1;
+  size_t _4;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_3(D)->params;
+  _4 = _1->sig_len;
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get0_libctx (ossl_ml_dsa_key_get0_libctx, funcdef_no=582, decl_uid=15363, cgraph_uid=583, symbol_order=582)
+
+Removing basic block 5
+struct OSSL_LIB_CTX * ossl_ml_dsa_key_get0_libctx (const struct ML_DSA_KEY * key)
+{
+  struct OSSL_LIB_CTX * iftmp.5_1;
+  struct OSSL_LIB_CTX * iftmp.5_4;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_2(D) != 0B)
+    goto <bb 3>; [85.10%]
+  else
+    goto <bb 4>; [14.90%]
+
+  <bb 3> [local count: 913754296]:
+  iftmp.5_4 = key_2(D)->libctx;
+
+  <bb 4> [local count: 1073741824]:
+  # iftmp.5_1 = PHI <iftmp.5_4(3), key_2(D)(2)>
+  return iftmp.5_1;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_name (ossl_ml_dsa_key_get_name, funcdef_no=583, decl_uid=15361, cgraph_uid=584, symbol_order=583)
+
+const char * ossl_ml_dsa_key_get_name (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * _1;
+  const char * _4;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = key_3(D)->params;
+  _4 = _1->alg;
+  return _4;
+
+}
+
+

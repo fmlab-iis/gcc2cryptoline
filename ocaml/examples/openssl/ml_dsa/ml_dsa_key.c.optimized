@@ -1,0 +1,2698 @@
+
+;; Function constant_time_msb_32 (constant_time_msb_32, funcdef_no=379, decl_uid=15291, cgraph_uid=380, symbol_order=379)
+
+uint32_t constant_time_msb_32 (uint32_t a)
+{
+  uint32_t D.17261;
+  signed int a.0_1;
+  signed int _2;
+  uint32_t _4;
+
+  <bb 2> :
+  a.0_1 = (signed int) a_3(D);
+  _2 = a.0_1 >> 31;
+  _4 = (uint32_t) _2;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function constant_time_lt_32 (constant_time_lt_32, funcdef_no=385, decl_uid=15302, cgraph_uid=386, symbol_order=385)
+
+uint32_t constant_time_lt_32 (uint32_t a, uint32_t b)
+{
+  uint32_t D.17259;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _10;
+
+  <bb 2> :
+  _1 = a_6(D) ^ b_7(D);
+  _2 = a_6(D) - b_7(D);
+  _3 = b_7(D) ^ _2;
+  _4 = _1 | _3;
+  _5 = a_6(D) ^ _4;
+  _10 = constant_time_msb_32 (_5);
+
+  <bb 3> :
+<L0>:
+  return _10;
+
+}
+
+
+
+;; Function value_barrier_32 (value_barrier_32, funcdef_no=409, decl_uid=15465, cgraph_uid=410, symbol_order=409)
+
+uint32_t value_barrier_32 (uint32_t a)
+{
+  uint32_t r;
+  uint32_t D.17265;
+  uint32_t _3;
+
+  <bb 2> :
+  __asm__("" : "=r" r_2 : "0" a_1(D));
+  _3 = r_2;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function constant_time_select_32 (constant_time_select_32, funcdef_no=417, decl_uid=15341, cgraph_uid=418, symbol_order=417)
+
+uint32_t constant_time_select_32 (uint32_t mask, uint32_t a, uint32_t b)
+{
+  uint32_t D.17263;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _12;
+
+  <bb 2> :
+  _1 = value_barrier_32 (mask_7(D));
+  _2 = a_9(D) & _1;
+  _3 = ~mask_7(D);
+  _4 = value_barrier_32 (_3);
+  _5 = b_11(D) & _4;
+  _12 = _2 | _5;
+
+  <bb 3> :
+<L0>:
+  return _12;
+
+}
+
+
+
+;; Function reduce_once (reduce_once, funcdef_no=462, decl_uid=15974, cgraph_uid=463, symbol_order=462)
+
+__attribute__((unused))
+uint32_t reduce_once (uint32_t x)
+{
+  uint32_t D.17257;
+  unsigned int _1;
+  unsigned int _2;
+  uint32_t _7;
+
+  <bb 2> :
+  _1 = constant_time_lt_32 (x_4(D), 8380417);
+  _2 = x_4(D) + 4286586879;
+  _7 = constant_time_select_32 (_1, x_4(D), _2);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function poly_add (poly_add, funcdef_no=468, decl_uid=16011, cgraph_uid=469, symbol_order=468)
+
+__attribute__((unused))
+void poly_add (const struct POLY * lhs, const struct POLY * rhs, struct POLY * out)
+{
+  int i;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+
+  <bb 2> :
+  i_7 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = lhs_9(D)->coeff[i_5];
+  _2 = rhs_10(D)->coeff[i_5];
+  _3 = _1 + _2;
+  _4 = reduce_once (_3);
+  out_12(D)->coeff[i_5] = _4;
+  i_14 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_7(2), i_14(3)>
+  if (i_5 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function poly_equal (poly_equal, funcdef_no=470, decl_uid=16030, cgraph_uid=471, symbol_order=470)
+
+__attribute__((unused))
+int poly_equal (const struct POLY * a, const struct POLY * b)
+{
+  int D.17287;
+  int _1;
+  _Bool _2;
+  int _7;
+
+  <bb 2> :
+  _1 = CRYPTO_memcmp (a_4(D), b_5(D), 1024);
+  _2 = _1 == 0;
+  _7 = (int) _2;
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function poly_power2_round (poly_power2_round, funcdef_no=474, decl_uid=16054, cgraph_uid=475, symbol_order=474)
+
+__attribute__((unused))
+void poly_power2_round (const struct POLY * t, struct POLY * t1, struct POLY * t0)
+{
+  int i;
+  unsigned int _1;
+  uint32_t[256] * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+  uint32_t * _5;
+  uint32_t[256] * _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  uint32_t * _9;
+
+  <bb 2> :
+  i_12 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = t_14(D)->coeff[i_10];
+  _2 = &t1_15(D)->coeff;
+  _3 = (long unsigned int) i_10;
+  _4 = _3 * 4;
+  _5 = _2 + _4;
+  _6 = &t0_16(D)->coeff;
+  _7 = (long unsigned int) i_10;
+  _8 = _7 * 4;
+  _9 = _6 + _8;
+  ossl_ml_dsa_key_compress_power2_round (_1, _5, _9);
+  i_18 = i_10 + 1;
+
+  <bb 4> :
+  # i_10 = PHI <i_12(2), i_18(3)>
+  if (i_10 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_init (vector_init, funcdef_no=482, decl_uid=16140, cgraph_uid=483, symbol_order=482)
+
+__attribute__((unused))
+void vector_init (struct VECTOR * v, struct POLY * polys, size_t num_polys)
+{
+  <bb 2> :
+  v_2(D)->poly = polys_3(D);
+  v_2(D)->num_poly = num_polys_5(D);
+  return;
+
+}
+
+
+
+;; Function vector_alloc (vector_alloc, funcdef_no=483, decl_uid=16144, cgraph_uid=484, symbol_order=483)
+
+__attribute__((unused))
+int vector_alloc (struct VECTOR * v, size_t num_polys)
+{
+  int D.17157;
+  long unsigned int _1;
+  void * _2;
+  struct POLY * _3;
+  int _4;
+  int _12;
+  int _13;
+
+  <bb 2> :
+  _1 = num_polys_6(D) * 1024;
+  _2 = CRYPTO_malloc (_1, "ml_dsa_vector.h", 36);
+  v_9(D)->poly = _2;
+  _3 = v_9(D)->poly;
+  if (_3 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _13 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  v_9(D)->num_poly = num_polys_6(D);
+  _12 = 1;
+
+  <bb 5> :
+  # _4 = PHI <_13(3), _12(4)>
+<L2>:
+  return _4;
+
+}
+
+
+
+;; Function vector_free (vector_free, funcdef_no=484, decl_uid=16147, cgraph_uid=485, symbol_order=484)
+
+__attribute__((unused))
+void vector_free (struct VECTOR * v)
+{
+  struct POLY * _1;
+
+  <bb 2> :
+  _1 = v_3(D)->poly;
+  CRYPTO_free (_1, "ml_dsa_vector.h", 46);
+  v_3(D)->poly = 0B;
+  v_3(D)->num_poly = 0;
+  return;
+
+}
+
+
+
+;; Function vector_zero (vector_zero, funcdef_no=485, decl_uid=16150, cgraph_uid=486, symbol_order=485)
+
+__attribute__((unused))
+void vector_zero (struct VECTOR * va)
+{
+  struct POLY * _1;
+  struct POLY * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  _1 = va_7(D)->poly;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = va_7(D)->poly;
+  _3 = va_7(D)->num_poly;
+  _4 = _3 * 1024;
+  memset (_2, 0, _4);
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function vector_copy (vector_copy, funcdef_no=486, decl_uid=16154, cgraph_uid=487, symbol_order=486)
+
+__attribute__((unused))
+void vector_copy (struct VECTOR * dst, const struct VECTOR * src)
+{
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  long unsigned int _1;
+  long unsigned int _2;
+  struct POLY * _3;
+  struct POLY * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+
+  <bb 2> :
+  _1 = dst_8(D)->num_poly;
+  _2 = src_9(D)->num_poly;
+  if (_1 == _2)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 4> :
+  _3 = dst_8(D)->poly;
+  _4 = src_9(D)->poly;
+  _5 = src_9(D)->num_poly;
+  _6 = _5 * 1024;
+  memcpy (_3, _4, _6);
+  return;
+
+}
+
+
+
+;; Function vector_equal (vector_equal, funcdef_no=487, decl_uid=16159, cgraph_uid=488, symbol_order=487)
+
+__attribute__((unused))
+int vector_equal (const struct VECTOR * a, const struct VECTOR * b)
+{
+  size_t i;
+  int D.17283;
+  long unsigned int _1;
+  long unsigned int _2;
+  struct POLY * _3;
+  long unsigned int _4;
+  const struct POLY * _5;
+  struct POLY * _6;
+  long unsigned int _7;
+  const struct POLY * _8;
+  int _9;
+  long unsigned int _10;
+  int _12;
+  int _19;
+  int _22;
+  int _23;
+
+  <bb 2> :
+  _1 = a_16(D)->num_poly;
+  _2 = b_17(D)->num_poly;
+  if (_1 != _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _23 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  i_18 = 0;
+  goto <bb 8>; [INV]
+
+  <bb 5> :
+  _3 = a_16(D)->poly;
+  _4 = i_11 * 1024;
+  _5 = _3 + _4;
+  _6 = b_17(D)->poly;
+  _7 = i_11 * 1024;
+  _8 = _6 + _7;
+  _9 = poly_equal (_5, _8);
+  if (_9 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _22 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 7> :
+  i_21 = i_11 + 1;
+
+  <bb 8> :
+  # i_11 = PHI <i_18(4), i_21(7)>
+  _10 = a_16(D)->num_poly;
+  if (i_11 < _10)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _19 = 1;
+
+  <bb 10> :
+  # _12 = PHI <_23(3), _22(6), _19(9)>
+<L7>:
+  return _12;
+
+}
+
+
+
+;; Function vector_add (vector_add, funcdef_no=488, decl_uid=16169, cgraph_uid=489, symbol_order=488)
+
+__attribute__((unused))
+void vector_add (const struct VECTOR * lhs, const struct VECTOR * rhs, struct VECTOR * out)
+{
+  size_t i;
+  struct POLY * _1;
+  long unsigned int _2;
+  const struct POLY * _3;
+  struct POLY * _4;
+  long unsigned int _5;
+  const struct POLY * _6;
+  struct POLY * _7;
+  long unsigned int _8;
+  struct POLY * _9;
+  long unsigned int _10;
+
+  <bb 2> :
+  i_13 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = lhs_15(D)->poly;
+  _2 = i_11 * 1024;
+  _3 = _1 + _2;
+  _4 = rhs_16(D)->poly;
+  _5 = i_11 * 1024;
+  _6 = _4 + _5;
+  _7 = out_17(D)->poly;
+  _8 = i_11 * 1024;
+  _9 = _7 + _8;
+  poly_add (_3, _6, _9);
+  i_19 = i_11 + 1;
+
+  <bb 4> :
+  # i_11 = PHI <i_13(2), i_19(3)>
+  _10 = lhs_15(D)->num_poly;
+  if (i_11 < _10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_ntt (vector_ntt, funcdef_no=490, decl_uid=16187, cgraph_uid=491, symbol_order=490)
+
+__attribute__((unused))
+void vector_ntt (struct VECTOR * va)
+{
+  size_t i;
+  struct POLY * _1;
+  long unsigned int _2;
+  struct POLY * _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  i_7 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = va_9(D)->poly;
+  _2 = i_5 * 1024;
+  _3 = _1 + _2;
+  ossl_ml_dsa_poly_ntt (_3);
+  i_11 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_7(2), i_11(3)>
+  _4 = va_9(D)->num_poly;
+  if (i_5 < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_ntt_inverse (vector_ntt_inverse, funcdef_no=491, decl_uid=16195, cgraph_uid=492, symbol_order=491)
+
+__attribute__((unused))
+void vector_ntt_inverse (struct VECTOR * va)
+{
+  size_t i;
+  struct POLY * _1;
+  long unsigned int _2;
+  struct POLY * _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  i_7 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = va_9(D)->poly;
+  _2 = i_5 * 1024;
+  _3 = _1 + _2;
+  ossl_ml_dsa_poly_ntt_inverse (_3);
+  i_11 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_7(2), i_11(3)>
+  _4 = va_9(D)->num_poly;
+  if (i_5 < _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_expand_S (vector_expand_S, funcdef_no=493, decl_uid=16218, cgraph_uid=494, symbol_order=493)
+
+__attribute__((unused))
+int vector_expand_S (struct EVP_MD_CTX * h_ctx, const struct EVP_MD * md, int eta, const uint8_t * seed, struct VECTOR * s1, struct VECTOR * s2)
+{
+  int D.17336;
+  int _9;
+
+  <bb 2> :
+  _9 = ossl_ml_dsa_vector_expand_S (h_ctx_2(D), md_3(D), eta_4(D), seed_5(D), s1_6(D), s2_7(D));
+
+  <bb 3> :
+<L0>:
+  return _9;
+
+}
+
+
+
+;; Function vector_power2_round (vector_power2_round, funcdef_no=496, decl_uid=16248, cgraph_uid=497, symbol_order=496)
+
+__attribute__((unused))
+void vector_power2_round (const struct VECTOR * t, struct VECTOR * t1, struct VECTOR * t0)
+{
+  size_t i;
+  struct POLY * _1;
+  long unsigned int _2;
+  const struct POLY * _3;
+  struct POLY * _4;
+  long unsigned int _5;
+  struct POLY * _6;
+  struct POLY * _7;
+  long unsigned int _8;
+  struct POLY * _9;
+  long unsigned int _10;
+
+  <bb 2> :
+  i_13 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = t_15(D)->poly;
+  _2 = i_11 * 1024;
+  _3 = _1 + _2;
+  _4 = t1_16(D)->poly;
+  _5 = i_11 * 1024;
+  _6 = _4 + _5;
+  _7 = t0_17(D)->poly;
+  _8 = i_11 * 1024;
+  _9 = _7 + _8;
+  poly_power2_round (_3, _6, _9);
+  i_19 = i_11 + 1;
+
+  <bb 4> :
+  # i_11 = PHI <i_13(2), i_19(3)>
+  _10 = t_15(D)->num_poly;
+  if (i_11 < _10)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function matrix_init (matrix_init, funcdef_no=504, decl_uid=16352, cgraph_uid=505, symbol_order=504)
+
+__attribute__((unused))
+void matrix_init (struct MATRIX * m, struct POLY * polys, size_t k, size_t l)
+{
+  <bb 2> :
+  m_2(D)->k = k_3(D);
+  m_2(D)->l = l_5(D);
+  m_2(D)->m_poly = polys_7(D);
+  return;
+
+}
+
+
+
+;; Function matrix_mult_vector (matrix_mult_vector, funcdef_no=505, decl_uid=16357, cgraph_uid=506, symbol_order=505)
+
+__attribute__((unused))
+void matrix_mult_vector (const struct MATRIX * a, const struct VECTOR * s, struct VECTOR * t)
+{
+  <bb 2> :
+  ossl_ml_dsa_matrix_mult_vector (a_2(D), s_3(D), t_4(D));
+  return;
+
+}
+
+
+
+;; Function matrix_expand_A (matrix_expand_A, funcdef_no=506, decl_uid=16363, cgraph_uid=507, symbol_order=506)
+
+__attribute__((unused))
+int matrix_expand_A (struct EVP_MD_CTX * g_ctx, const struct EVP_MD * md, const uint8_t * rho, struct MATRIX * out)
+{
+  int D.17255;
+  int _7;
+
+  <bb 2> :
+  _7 = ossl_ml_dsa_matrix_expand_A (g_ctx_2(D), md_3(D), rho_4(D), out_5(D));
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function shake_xof (shake_xof, funcdef_no=507, decl_uid=16371, cgraph_uid=508, symbol_order=507)
+
+__attribute__((unused))
+int shake_xof (struct EVP_MD_CTX * ctx, const struct EVP_MD * md, const uint8_t * in, size_t in_len, uint8_t * out, size_t out_len)
+{
+  int iftmp.2;
+  int D.17289;
+  int _1;
+  int _2;
+  int _3;
+  int iftmp.2_4;
+  int iftmp.2_17;
+  int iftmp.2_18;
+  int _19;
+
+  <bb 2> :
+  _1 = EVP_DigestInit_ex2 (ctx_8(D), md_9(D), 0B);
+  if (_1 == 1)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 3> :
+  _2 = EVP_DigestUpdate (ctx_8(D), in_11(D), in_len_12(D));
+  if (_2 == 1)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 4> :
+  _3 = EVP_DigestSqueeze (ctx_8(D), out_14(D), out_len_15(D));
+  if (_3 == 1)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  iftmp.2_17 = 1;
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  iftmp.2_18 = 0;
+
+  <bb 7> :
+  # iftmp.2_4 = PHI <iftmp.2_17(5), iftmp.2_18(6)>
+  _19 = iftmp.2_4;
+
+  <bb 8> :
+<L5>:
+  return _19;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_params (ossl_ml_dsa_key_params, funcdef_no=510, decl_uid=14982, cgraph_uid=511, symbol_order=510)
+
+const struct ML_DSA_PARAMS * ossl_ml_dsa_key_params (const struct ML_DSA_KEY * key)
+{
+  const struct ML_DSA_PARAMS * D.17115;
+  const struct ML_DSA_PARAMS * _3;
+
+  <bb 2> :
+  _3 = key_2(D)->params;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_seed (ossl_ml_dsa_key_get_seed, funcdef_no=511, decl_uid=15018, cgraph_uid=512, symbol_order=511)
+
+const uint8_t * ossl_ml_dsa_key_get_seed (const struct ML_DSA_KEY * key)
+{
+  const uint8_t * D.17117;
+  const uint8_t * _3;
+
+  <bb 2> :
+  _3 = key_2(D)->seed;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_prov_flags (ossl_ml_dsa_key_get_prov_flags, funcdef_no=512, decl_uid=15020, cgraph_uid=513, symbol_order=512)
+
+int ossl_ml_dsa_key_get_prov_flags (const struct ML_DSA_KEY * key)
+{
+  int D.17119;
+  int _3;
+
+  <bb 2> :
+  _3 = key_2(D)->prov_flags;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_set_prekey (ossl_ml_dsa_set_prekey, funcdef_no=513, decl_uid=15028, cgraph_uid=514, symbol_order=513)
+
+int ossl_ml_dsa_set_prekey (struct ML_DSA_KEY * key, int flags_set, int flags_clr, const uint8_t * seed, size_t seed_len, const uint8_t * sk, size_t sk_len)
+{
+  int ret;
+  int D.17130;
+  uint8_t * _1;
+  uint8_t * _2;
+  const struct ML_DSA_PARAMS * _3;
+  long unsigned int _4;
+  uint8_t * _5;
+  void * _6;
+  uint8_t * _7;
+  void * _8;
+  uint8_t * _9;
+  int _10;
+  int _11;
+  int _12;
+  int _13;
+  int _14;
+  uint8_t * _15;
+  uint8_t * _16;
+  uint8_t * _17;
+  int _19;
+  int _45;
+  int _46;
+
+  <bb 2> :
+  ret_25 = 0;
+  if (key_26(D) == 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _1 = key_26(D)->pub_encoding;
+  if (_1 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = key_26(D)->priv_encoding;
+  if (_2 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  if (sk_28(D) != 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _3 = key_26(D)->params;
+  _4 = _3->sk_len;
+  if (sk_len_29(D) != _4)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  if (seed_30(D) != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  if (seed_len_31(D) != 32)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 9> :
+  _5 = key_26(D)->seed;
+  if (_5 != 0B)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  _46 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 21>; [INV]
+
+  <bb 11> :
+  if (sk_28(D) != 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  _6 = CRYPTO_memdup (sk_28(D), sk_len_29(D), "ml_dsa_key.c", 52);
+  key_26(D)->priv_encoding = _6;
+  _7 = key_26(D)->priv_encoding;
+  if (_7 == 0B)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  // predicted unlikely by goto predictor.
+  goto <bb 18>; [INV]
+
+  <bb 14> :
+  if (seed_30(D) != 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 15> :
+  _8 = CRYPTO_memdup (seed_30(D), seed_len_31(D), "ml_dsa_key.c", 55);
+  key_26(D)->seed = _8;
+  _9 = key_26(D)->seed;
+  if (_9 == 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  // predicted unlikely by goto predictor.
+  goto <bb 18>; [INV]
+
+  <bb 17> :
+  _10 = key_26(D)->prov_flags;
+  _11 = flags_set_36(D) | _10;
+  key_26(D)->prov_flags = _11;
+  _12 = key_26(D)->prov_flags;
+  _13 = ~flags_clr_38(D);
+  _14 = _12 & _13;
+  key_26(D)->prov_flags = _14;
+  ret_40 = 1;
+
+  <bb 18> :
+  # ret_18 = PHI <ret_25(13), ret_25(16), ret_40(17)>
+end:
+  if (ret_18 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _15 = key_26(D)->priv_encoding;
+  CRYPTO_free (_15, "ml_dsa_key.c", 63);
+  _16 = key_26(D)->seed;
+  CRYPTO_free (_16, "ml_dsa_key.c", 64);
+  key_26(D)->seed = 0B;
+  _17 = key_26(D)->seed;
+  key_26(D)->priv_encoding = _17;
+
+  <bb 20> :
+  _45 = ret_18;
+
+  <bb 21> :
+  # _19 = PHI <_46(10), _45(20)>
+<L20>:
+  return _19;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_new (ossl_ml_dsa_key_new, funcdef_no=514, decl_uid=14986, cgraph_uid=515, symbol_order=514)
+
+struct ML_DSA_KEY * ossl_ml_dsa_key_new (struct OSSL_LIB_CTX * libctx, const char * propq, int evp_type)
+{
+  const struct ML_DSA_PARAMS * params;
+  struct ML_DSA_KEY * ret;
+  struct ML_DSA_KEY * D.17144;
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+  struct EVP_MD * _3;
+  struct EVP_MD * _4;
+  struct ML_DSA_KEY * _5;
+  struct ML_DSA_KEY * _24;
+  struct ML_DSA_KEY * _25;
+  struct ML_DSA_KEY * _26;
+
+  <bb 2> :
+  params_11 = ossl_ml_dsa_params_get (evp_type_9(D));
+  if (params_11 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _26 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 4> :
+  ret_13 = CRYPTO_zalloc (256, "ml_dsa_key.c", 87);
+  if (ret_13 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  ret_13->libctx = libctx_14(D);
+  ret_13->params = params_11;
+  ret_13->prov_flags = 3;
+  _1 = EVP_MD_fetch (libctx_14(D), "SHAKE-128", propq_18(D));
+  ret_13->shake128_md = _1;
+  _2 = EVP_MD_fetch (libctx_14(D), "SHAKE-256", propq_18(D));
+  ret_13->shake256_md = _2;
+  _3 = ret_13->shake128_md;
+  if (_3 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _4 = ret_13->shake256_md;
+  if (_4 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  // predicted unlikely by goto predictor.
+  goto <bb 9>; [INV]
+
+  <bb 8> :
+  _25 = ret_13;
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+err:
+  ossl_ml_dsa_key_free (ret_13);
+  _24 = 0B;
+
+  <bb 10> :
+  # _5 = PHI <_26(3), _25(8), _24(9)>
+<L8>:
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_pub_alloc (ossl_ml_dsa_key_pub_alloc, funcdef_no=515, decl_uid=14990, cgraph_uid=516, symbol_order=515)
+
+int ossl_ml_dsa_key_pub_alloc (struct ML_DSA_KEY * key)
+{
+  int D.17153;
+  struct POLY * _1;
+  struct VECTOR * _2;
+  const struct ML_DSA_PARAMS * _3;
+  long unsigned int _4;
+  int _5;
+  int _10;
+  int _11;
+
+  <bb 2> :
+  _1 = key_8(D)->t1.poly;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _11 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _2 = &key_8(D)->t1;
+  _3 = key_8(D)->params;
+  _4 = _3->k;
+  _10 = vector_alloc (_2, _4);
+
+  <bb 5> :
+  # _5 = PHI <_11(3), _10(4)>
+<L2>:
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_priv_alloc (ossl_ml_dsa_key_priv_alloc, funcdef_no=516, decl_uid=14992, cgraph_uid=517, symbol_order=516)
+
+int ossl_ml_dsa_key_priv_alloc (struct ML_DSA_KEY * key)
+{
+  struct POLY * poly;
+  size_t l;
+  size_t k;
+  int D.17161;
+  const struct ML_DSA_PARAMS * _1;
+  const struct ML_DSA_PARAMS * _2;
+  struct POLY * _3;
+  struct VECTOR * _4;
+  long unsigned int _5;
+  long unsigned int _6;
+  int _7;
+  struct VECTOR * _8;
+  long unsigned int _9;
+  struct POLY * _10;
+  struct VECTOR * _11;
+  sizetype _12;
+  sizetype _13;
+  struct POLY * _14;
+  int _15;
+  int _26;
+  int _27;
+  int _28;
+
+  <bb 2> :
+  _1 = key_18(D)->params;
+  k_19 = _1->k;
+  _2 = key_18(D)->params;
+  l_20 = _2->l;
+  _3 = key_18(D)->s1.poly;
+  if (_3 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _28 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 4> :
+  _4 = &key_18(D)->s1;
+  _5 = k_19 * 2;
+  _6 = l_20 + _5;
+  _7 = vector_alloc (_4, _6);
+  if (_7 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _27 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  poly_22 = key_18(D)->s1.poly;
+  key_18(D)->s1.num_poly = l_20;
+  _8 = &key_18(D)->s2;
+  _9 = l_20 * 1024;
+  _10 = poly_22 + _9;
+  vector_init (_8, _10, k_19);
+  _11 = &key_18(D)->t0;
+  _12 = l_20 + k_19;
+  _13 = _12 * 1024;
+  _14 = poly_22 + _13;
+  vector_init (_11, _14, k_19);
+  _26 = 1;
+
+  <bb 7> :
+  # _15 = PHI <_28(3), _27(5), _26(6)>
+<L4>:
+  return _15;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_free (ossl_ml_dsa_key_free, funcdef_no=517, decl_uid=14994, cgraph_uid=518, symbol_order=517)
+
+void ossl_ml_dsa_key_free (struct ML_DSA_KEY * key)
+{
+  struct EVP_MD * _1;
+  struct EVP_MD * _2;
+
+  <bb 2> :
+  if (key_4(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  _1 = key_4(D)->shake128_md;
+  EVP_MD_free (_1);
+  _2 = key_4(D)->shake256_md;
+  EVP_MD_free (_2);
+  ossl_ml_dsa_key_reset (key_4(D));
+  CRYPTO_free (key_4(D), "ml_dsa_key.c", 138);
+
+  <bb 5> :
+<L2>:
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_reset (ossl_ml_dsa_key_reset, funcdef_no=518, decl_uid=14988, cgraph_uid=519, symbol_order=518)
+
+void ossl_ml_dsa_key_reset (struct ML_DSA_KEY * key)
+{
+  struct POLY * _1;
+  struct VECTOR * _2;
+  struct VECTOR * _3;
+  struct VECTOR * _4;
+  struct VECTOR * _5;
+  struct VECTOR * _6;
+  uint8_t[32] * _7;
+  uint8_t * _8;
+  uint8_t * _9;
+  uint8_t * _10;
+  const struct ML_DSA_PARAMS * _11;
+  long unsigned int _12;
+  uint8_t * _13;
+  uint8_t * _14;
+
+  <bb 2> :
+  _1 = key_19(D)->s1.poly;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = &key_19(D)->s1;
+  vector_zero (_2);
+  _3 = &key_19(D)->s2;
+  vector_zero (_3);
+  _4 = &key_19(D)->t0;
+  vector_zero (_4);
+  _5 = &key_19(D)->s1;
+  vector_free (_5);
+  key_19(D)->s2.poly = 0B;
+  key_19(D)->t0.poly = 0B;
+
+  <bb 4> :
+  _6 = &key_19(D)->t1;
+  vector_free (_6);
+  _7 = &key_19(D)->K;
+  OPENSSL_cleanse (_7, 32);
+  _8 = key_19(D)->pub_encoding;
+  CRYPTO_free (_8, "ml_dsa_key.c", 161);
+  key_19(D)->pub_encoding = 0B;
+  _9 = key_19(D)->priv_encoding;
+  if (_9 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  _10 = key_19(D)->priv_encoding;
+  _11 = key_19(D)->params;
+  _12 = _11->sk_len;
+  CRYPTO_clear_free (_10, _12, "ml_dsa_key.c", 164);
+
+  <bb 6> :
+  key_19(D)->priv_encoding = 0B;
+  _13 = key_19(D)->seed;
+  if (_13 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _14 = key_19(D)->seed;
+  CRYPTO_clear_free (_14, 32, "ml_dsa_key.c", 167);
+
+  <bb 8> :
+  key_19(D)->seed = 0B;
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_dup (ossl_ml_dsa_key_dup, funcdef_no=519, decl_uid=14997, cgraph_uid=520, symbol_order=519)
+
+struct ML_DSA_KEY * ossl_ml_dsa_key_dup (const struct ML_DSA_KEY * src, int selection)
+{
+  struct ML_DSA_KEY * ret;
+  struct ML_DSA_KEY * D.17178;
+  uint8_t * _1;
+  uint8_t * _2;
+  uint8_t * _3;
+  struct OSSL_LIB_CTX * _4;
+  const struct ML_DSA_PARAMS * _5;
+  int _6;
+  int _7;
+  uint8_t * _8;
+  uint8_t[32] * _9;
+  const uint8_t[32] * _10;
+  uint8_t[64] * _11;
+  const uint8_t[64] * _12;
+  struct POLY * _13;
+  int _14;
+  struct VECTOR * _15;
+  const struct VECTOR * _16;
+  uint8_t * _17;
+  const struct ML_DSA_PARAMS * _18;
+  long unsigned int _19;
+  void * _20;
+  uint8_t * _21;
+  int _22;
+  uint8_t * _23;
+  uint8_t[32] * _24;
+  const uint8_t[32] * _25;
+  struct POLY * _26;
+  int _27;
+  struct VECTOR * _28;
+  const struct VECTOR * _29;
+  struct VECTOR * _30;
+  const struct VECTOR * _31;
+  struct VECTOR * _32;
+  const struct VECTOR * _33;
+  uint8_t * _34;
+  const struct ML_DSA_PARAMS * _35;
+  long unsigned int _36;
+  void * _37;
+  uint8_t * _38;
+  uint8_t * _39;
+  uint8_t * _40;
+  void * _41;
+  uint8_t * _42;
+  struct EVP_MD * _43;
+  struct EVP_MD * _44;
+  struct EVP_MD * _45;
+  struct EVP_MD * _46;
+  struct ML_DSA_KEY * _47;
+  struct ML_DSA_KEY * _59;
+  struct ML_DSA_KEY * _82;
+  struct ML_DSA_KEY * _87;
+  struct ML_DSA_KEY * _88;
+
+  <bb 2> :
+  ret_56 = 0B;
+  if (src_57(D) == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _88 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 31>; [INV]
+
+  <bb 4> :
+  _1 = src_57(D)->pub_encoding;
+  if (_1 == 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 5> :
+  _2 = src_57(D)->priv_encoding;
+  if (_2 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  _3 = src_57(D)->seed;
+  if (_3 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _59 = 0B;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 31>; [INV]
+
+  <bb 8> :
+  ret_61 = CRYPTO_zalloc (256, "ml_dsa_key.c", 191);
+  if (ret_61 != 0B)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 29>; [INV]
+
+  <bb 9> :
+  _4 = src_57(D)->libctx;
+  ret_61->libctx = _4;
+  _5 = src_57(D)->params;
+  ret_61->params = _5;
+  _6 = src_57(D)->prov_flags;
+  ret_61->prov_flags = _6;
+  _7 = selection_65(D) & 3;
+  if (_7 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 10> :
+  _8 = src_57(D)->pub_encoding;
+  if (_8 != 0B)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 11> :
+  _9 = &ret_61->rho;
+  _10 = &src_57(D)->rho;
+  memcpy (_9, _10, 32);
+  _11 = &ret_61->tr;
+  _12 = &src_57(D)->tr;
+  memcpy (_11, _12, 64);
+  _13 = src_57(D)->t1.poly;
+  if (_13 != 0B)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  _14 = ossl_ml_dsa_key_pub_alloc (ret_61);
+  if (_14 == 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  // predicted unlikely by goto predictor.
+  goto <bb 30>; [INV]
+
+  <bb 14> :
+  _15 = &ret_61->t1;
+  _16 = &src_57(D)->t1;
+  vector_copy (_15, _16);
+
+  <bb 15> :
+  _17 = src_57(D)->pub_encoding;
+  _18 = src_57(D)->params;
+  _19 = _18->pk_len;
+  _20 = CRYPTO_memdup (_17, _19, "ml_dsa_key.c", 206);
+  ret_61->pub_encoding = _20;
+  _21 = ret_61->pub_encoding;
+  if (_21 == 0B)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  // predicted unlikely by goto predictor.
+  goto <bb 30>; [INV]
+
+  <bb 17> :
+  _22 = selection_65(D) & 1;
+  if (_22 != 0)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 18> :
+  _23 = src_57(D)->priv_encoding;
+  if (_23 != 0B)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 19> :
+  _24 = &ret_61->K;
+  _25 = &src_57(D)->K;
+  memcpy (_24, _25, 32);
+  _26 = src_57(D)->s1.poly;
+  if (_26 != 0B)
+    goto <bb 20>; [INV]
+  else
+    goto <bb 23>; [INV]
+
+  <bb 20> :
+  _27 = ossl_ml_dsa_key_priv_alloc (ret_61);
+  if (_27 == 0)
+    goto <bb 21>; [INV]
+  else
+    goto <bb 22>; [INV]
+
+  <bb 21> :
+  // predicted unlikely by goto predictor.
+  goto <bb 30>; [INV]
+
+  <bb 22> :
+  _28 = &ret_61->s1;
+  _29 = &src_57(D)->s1;
+  vector_copy (_28, _29);
+  _30 = &ret_61->s2;
+  _31 = &src_57(D)->s2;
+  vector_copy (_30, _31);
+  _32 = &ret_61->t0;
+  _33 = &src_57(D)->t0;
+  vector_copy (_32, _33);
+
+  <bb 23> :
+  _34 = src_57(D)->priv_encoding;
+  _35 = src_57(D)->params;
+  _36 = _35->sk_len;
+  _37 = CRYPTO_memdup (_34, _36, "ml_dsa_key.c", 221);
+  ret_61->priv_encoding = _37;
+  _38 = ret_61->priv_encoding;
+  if (_38 == 0B)
+    goto <bb 24>; [INV]
+  else
+    goto <bb 25>; [INV]
+
+  <bb 24> :
+  // predicted unlikely by goto predictor.
+  goto <bb 30>; [INV]
+
+  <bb 25> :
+  _39 = src_57(D)->seed;
+  if (_39 != 0B)
+    goto <bb 26>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 26> :
+  _40 = src_57(D)->seed;
+  _41 = CRYPTO_memdup (_40, 32, "ml_dsa_key.c", 226);
+  ret_61->seed = _41;
+  _42 = ret_61->seed;
+  if (_42 == 0B)
+    goto <bb 27>; [INV]
+  else
+    goto <bb 28>; [INV]
+
+  <bb 27> :
+  // predicted unlikely by goto predictor.
+  goto <bb 30>; [INV]
+
+  <bb 28> :
+  _43 = src_57(D)->shake128_md;
+  EVP_MD_up_ref (_43);
+  _44 = src_57(D)->shake256_md;
+  EVP_MD_up_ref (_44);
+  _45 = src_57(D)->shake128_md;
+  ret_61->shake128_md = _45;
+  _46 = src_57(D)->shake256_md;
+  ret_61->shake256_md = _46;
+
+  <bb 29> :
+  _87 = ret_61;
+  goto <bb 31>; [INV]
+
+  <bb 30> :
+err:
+  ossl_ml_dsa_key_free (ret_61);
+  _82 = 0B;
+
+  <bb 31> :
+  # _47 = PHI <_88(3), _59(7), _87(29), _82(30)>
+<L34>:
+  return _47;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_equal (ossl_ml_dsa_key_equal, funcdef_no=520, decl_uid=15001, cgraph_uid=521, symbol_order=520)
+
+int ossl_ml_dsa_key_equal (const struct ML_DSA_KEY * key1, const struct ML_DSA_KEY * key2, int selection)
+{
+  int key_checked;
+  int D.17216;
+  const struct ML_DSA_PARAMS * _1;
+  const struct ML_DSA_PARAMS * _2;
+  int _3;
+  int _4;
+  uint8_t * _5;
+  uint8_t * _6;
+  uint8_t * _7;
+  uint8_t * _8;
+  const struct ML_DSA_PARAMS * _9;
+  long unsigned int _10;
+  int _11;
+  int _12;
+  uint8_t * _13;
+  uint8_t * _14;
+  uint8_t * _15;
+  uint8_t * _16;
+  const struct ML_DSA_PARAMS * _17;
+  long unsigned int _18;
+  int _19;
+  int _22;
+  int _28;
+  int _30;
+  int _32;
+  int _33;
+  int _34;
+
+  <bb 2> :
+  key_checked_23 = 0;
+  _1 = key1_25(D)->params;
+  _2 = key2_26(D)->params;
+  if (_1 != _2)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _34 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 20>; [INV]
+
+  <bb 4> :
+  _3 = selection_27(D) & 3;
+  if (_3 != 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 19>; [INV]
+
+  <bb 5> :
+  _4 = selection_27(D) & 2;
+  if (_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  _5 = key1_25(D)->pub_encoding;
+  if (_5 != 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  _6 = key2_26(D)->pub_encoding;
+  if (_6 != 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  _7 = key1_25(D)->pub_encoding;
+  _8 = key2_26(D)->pub_encoding;
+  _9 = key1_25(D)->params;
+  _10 = _9->pk_len;
+  _11 = memcmp (_7, _8, _10);
+  if (_11 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 10>; [INV]
+
+  <bb 9> :
+  _30 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 20>; [INV]
+
+  <bb 10> :
+  key_checked_29 = 1;
+
+  <bb 11> :
+  # key_checked_20 = PHI <key_checked_23(5), key_checked_23(6), key_checked_23(7), key_checked_29(10)>
+  if (key_checked_20 == 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 12> :
+  _12 = selection_27(D) & 1;
+  if (_12 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 13> :
+  _13 = key1_25(D)->priv_encoding;
+  if (_13 != 0B)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 14> :
+  _14 = key2_26(D)->priv_encoding;
+  if (_14 != 0B)
+    goto <bb 15>; [INV]
+  else
+    goto <bb 18>; [INV]
+
+  <bb 15> :
+  _15 = key1_25(D)->priv_encoding;
+  _16 = key2_26(D)->priv_encoding;
+  _17 = key1_25(D)->params;
+  _18 = _17->sk_len;
+  _19 = memcmp (_15, _16, _18);
+  if (_19 != 0)
+    goto <bb 16>; [INV]
+  else
+    goto <bb 17>; [INV]
+
+  <bb 16> :
+  _32 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 20>; [INV]
+
+  <bb 17> :
+  key_checked_31 = 1;
+
+  <bb 18> :
+  # key_checked_21 = PHI <key_checked_20(11), key_checked_20(12), key_checked_20(13), key_checked_20(14), key_checked_31(17)>
+  _33 = key_checked_21;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 20>; [INV]
+
+  <bb 19> :
+  _28 = 1;
+
+  <bb 20> :
+  # _22 = PHI <_34(3), _30(9), _32(16), _33(18), _28(19)>
+<L22>:
+  return _22;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_has (ossl_ml_dsa_key_has, funcdef_no=521, decl_uid=15004, cgraph_uid=522, symbol_order=521)
+
+int ossl_ml_dsa_key_has (const struct ML_DSA_KEY * key, int selection)
+{
+  int D.17242;
+  int _1;
+  const uint8_t * _2;
+  int _3;
+  const uint8_t * _4;
+  int _5;
+  int _9;
+  int _14;
+  int _15;
+  int _16;
+
+  <bb 2> :
+  _1 = selection_8(D) & 3;
+  if (_1 != 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 3> :
+  _2 = ossl_ml_dsa_key_get_pub (key_11(D));
+  if (_2 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _16 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 5> :
+  _3 = selection_8(D) & 1;
+  if (_3 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 6> :
+  _4 = ossl_ml_dsa_key_get_priv (key_11(D));
+  if (_4 == 0B)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 7> :
+  _14 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 8> :
+  _15 = 1;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 10>; [INV]
+
+  <bb 9> :
+  _9 = 0;
+
+  <bb 10> :
+  # _5 = PHI <_16(4), _14(7), _15(8), _9(9)>
+<L8>:
+  return _5;
+
+}
+
+
+
+;; Function public_from_private (public_from_private, funcdef_no=522, decl_uid=17041, cgraph_uid=523, symbol_order=522)
+
+int public_from_private (const struct ML_DSA_KEY * key, struct EVP_MD_CTX * md_ctx, struct VECTOR * t1, struct VECTOR * t0)
+{
+  struct VECTOR t;
+  struct VECTOR s1_ntt;
+  struct MATRIX a_ntt;
+  struct POLY * polys;
+  uint32_t l;
+  uint32_t k;
+  const struct ML_DSA_PARAMS * params;
+  int D.17250;
+  long unsigned int _1;
+  long unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct POLY * _9;
+  long unsigned int _10;
+  long unsigned int _11;
+  struct POLY * _12;
+  long unsigned int _13;
+  struct POLY * _14;
+  long unsigned int _15;
+  long unsigned int _16;
+  struct POLY * _17;
+  long unsigned int _18;
+  long unsigned int _19;
+  struct EVP_MD * _20;
+  const uint8_t[32] * _21;
+  int _22;
+  const struct VECTOR * _23;
+  const struct VECTOR * _24;
+  int _25;
+  int _50;
+  int _51;
+
+  <bb 2> :
+  params_30 = key_29(D)->params;
+  _1 = params_30->k;
+  k_31 = (uint32_t) _1;
+  _2 = params_30->l;
+  l_32 = (uint32_t) _2;
+  _3 = k_31 + l_32;
+  _4 = k_31 * l_32;
+  _5 = _3 + _4;
+  _6 = (long unsigned int) _5;
+  _7 = _6 * 1024;
+  polys_34 = CRYPTO_malloc (_7, "ml_dsa_key.c", 321);
+  if (polys_34 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _51 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 8>; [INV]
+
+  <bb 4> :
+  _8 = (long unsigned int) k_31;
+  vector_init (&t, polys_34, _8);
+  _9 = t.poly;
+  _10 = (long unsigned int) k_31;
+  _11 = _10 * 1024;
+  _12 = _9 + _11;
+  _13 = (long unsigned int) l_32;
+  vector_init (&s1_ntt, _12, _13);
+  _14 = s1_ntt.poly;
+  _15 = (long unsigned int) l_32;
+  _16 = _15 * 1024;
+  _17 = _14 + _16;
+  _18 = (long unsigned int) k_31;
+  _19 = (long unsigned int) l_32;
+  matrix_init (&a_ntt, _17, _18, _19);
+  _20 = key_29(D)->shake128_md;
+  _21 = &key_29(D)->rho;
+  _22 = matrix_expand_A (md_ctx_38(D), _20, _21, &a_ntt);
+  if (_22 == 0)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 5> :
+  // predicted unlikely by goto predictor.
+  goto <bb 7>; [INV]
+
+  <bb 6> :
+  _23 = &key_29(D)->s1;
+  vector_copy (&s1_ntt, _23);
+  vector_ntt (&s1_ntt);
+  matrix_mult_vector (&a_ntt, &s1_ntt, &t);
+  vector_ntt_inverse (&t);
+  _24 = &key_29(D)->s2;
+  vector_add (&t, _24, &t);
+  vector_power2_round (&t, t1_45(D), t0_46(D));
+  vector_zero (&s1_ntt);
+
+  <bb 7> :
+err:
+  CRYPTO_free (polys_34, "ml_dsa_key.c", 347);
+  _50 = 1;
+
+  <bb 8> :
+  # _25 = PHI <_51(3), _50(7)>
+  a_ntt ={v} {CLOBBER(eos)};
+  s1_ntt ={v} {CLOBBER(eos)};
+  t ={v} {CLOBBER(eos)};
+
+  <bb 9> :
+<L6>:
+  return _25;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_public_from_private (ossl_ml_dsa_key_public_from_private, funcdef_no=523, decl_uid=15041, cgraph_uid=524, symbol_order=523)
+
+int ossl_ml_dsa_key_public_from_private (struct ML_DSA_KEY * key)
+{
+  struct EVP_MD_CTX * md_ctx;
+  struct VECTOR t0;
+  int ret;
+  int iftmp.1;
+  int D.17269;
+  const struct ML_DSA_PARAMS * _1;
+  long unsigned int _2;
+  int _3;
+  int _4;
+  struct VECTOR * _5;
+  int _6;
+  struct VECTOR * _7;
+  int _8;
+  int _9;
+  struct EVP_MD * _10;
+  uint8_t * _11;
+  const struct ML_DSA_PARAMS * _12;
+  long unsigned int _13;
+  uint8_t[64] * _14;
+  int _15;
+  int _16;
+  int iftmp.1_17;
+  int iftmp.1_33;
+  int iftmp.1_34;
+  int _38;
+  int _39;
+
+  <bb 2> :
+  ret_21 = 0;
+  md_ctx_22 = 0B;
+  _1 = key_24(D)->params;
+  _2 = _1->k;
+  _3 = vector_alloc (&t0, _2);
+  if (_3 == 0)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _39 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 13>; [INV]
+
+  <bb 4> :
+  md_ctx_27 = EVP_MD_CTX_new ();
+  if (md_ctx_27 != 0B)
+    goto <bb 5>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 5> :
+  _4 = ossl_ml_dsa_key_pub_alloc (key_24(D));
+  if (_4 != 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 6> :
+  _5 = &key_24(D)->t1;
+  _6 = public_from_private (key_24(D), md_ctx_27, _5, &t0);
+  if (_6 != 0)
+    goto <bb 7>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 7> :
+  _7 = &key_24(D)->t0;
+  _8 = vector_equal (&t0, _7);
+  if (_8 != 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 8> :
+  _9 = ossl_ml_dsa_pk_encode (key_24(D));
+  if (_9 != 0)
+    goto <bb 9>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 9> :
+  _10 = key_24(D)->shake256_md;
+  _11 = key_24(D)->pub_encoding;
+  _12 = key_24(D)->params;
+  _13 = _12->pk_len;
+  _14 = &key_24(D)->tr;
+  _15 = shake_xof (md_ctx_27, _10, _11, _13, _14, 64);
+  if (_15 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  iftmp.1_33 = 1;
+  goto <bb 12>; [INV]
+
+  <bb 11> :
+  iftmp.1_34 = 0;
+
+  <bb 12> :
+  # iftmp.1_17 = PHI <iftmp.1_33(10), iftmp.1_34(11)>
+  ret_35 = iftmp.1_17;
+  vector_free (&t0);
+  EVP_MD_CTX_free (md_ctx_27);
+  _38 = ret_35;
+
+  <bb 13> :
+  # _16 = PHI <_39(3), _38(12)>
+  t0 ={v} {CLOBBER(eos)};
+
+  <bb 14> :
+<L11>:
+  return _16;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_pairwise_check (ossl_ml_dsa_key_pairwise_check, funcdef_no=524, decl_uid=15006, cgraph_uid=525, symbol_order=524)
+
+int ossl_ml_dsa_key_pairwise_check (const struct ML_DSA_KEY * key)
+{
+  struct EVP_MD_CTX * md_ctx;
+  uint32_t k;
+  struct POLY * polys;
+  struct VECTOR t0;
+  struct VECTOR t1;
+  int ret;
+  int iftmp.3;
+  int D.17300;
+  const struct ML_DSA_PARAMS * _1;
+  long unsigned int _2;
+  uint8_t * _3;
+  uint8_t * _4;
+  unsigned int _5;
+  long unsigned int _6;
+  long unsigned int _7;
+  long unsigned int _8;
+  long unsigned int _9;
+  long unsigned int _10;
+  struct POLY * _11;
+  long unsigned int _12;
+  int _13;
+  const struct VECTOR * _14;
+  int _15;
+  const struct VECTOR * _16;
+  int _17;
+  int _19;
+  int iftmp.3_20;
+  int iftmp.3_40;
+  int iftmp.3_41;
+  int _45;
+  int _46;
+  int _47;
+
+  <bb 2> :
+  ret_25 = 0;
+  polys_26 = 0B;
+  _1 = key_28(D)->params;
+  _2 = _1->k;
+  k_29 = (uint32_t) _2;
+  md_ctx_30 = 0B;
+  _3 = key_28(D)->pub_encoding;
+  if (_3 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  _4 = key_28(D)->priv_encoding;
+  if (_4 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _47 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 17>; [INV]
+
+  <bb 5> :
+  _5 = k_29 * 2;
+  _6 = (long unsigned int) _5;
+  _7 = _6 * 1024;
+  polys_32 = CRYPTO_malloc (_7, "ml_dsa_key.c", 383);
+  if (polys_32 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _46 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 17>; [INV]
+
+  <bb 7> :
+  md_ctx_34 = EVP_MD_CTX_new ();
+  if (md_ctx_34 == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 9> :
+  _8 = (long unsigned int) k_29;
+  vector_init (&t1, polys_32, _8);
+  _9 = (long unsigned int) k_29;
+  _10 = _9 * 1024;
+  _11 = polys_32 + _10;
+  _12 = (long unsigned int) k_29;
+  vector_init (&t0, _11, _12);
+  _13 = public_from_private (key_28(D), md_ctx_34, &t1, &t0);
+  if (_13 == 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 11>; [INV]
+
+  <bb 10> :
+  // predicted unlikely by goto predictor.
+  goto <bb 16>; [INV]
+
+  <bb 11> :
+  _14 = &key_28(D)->t1;
+  _15 = vector_equal (&t1, _14);
+  if (_15 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 12> :
+  _16 = &key_28(D)->t0;
+  _17 = vector_equal (&t0, _16);
+  if (_17 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 14>; [INV]
+
+  <bb 13> :
+  iftmp.3_40 = 1;
+  goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.3_41 = 0;
+
+  <bb 15> :
+  # iftmp.3_20 = PHI <iftmp.3_40(13), iftmp.3_41(14)>
+  ret_42 = iftmp.3_20;
+
+  <bb 16> :
+  # ret_18 = PHI <ret_25(8), ret_25(10), ret_42(15)>
+err:
+  EVP_MD_CTX_free (md_ctx_34);
+  CRYPTO_free (polys_32, "ml_dsa_key.c", 398);
+  _45 = ret_18;
+
+  <bb 17> :
+  # _19 = PHI <_47(4), _46(6), _45(16)>
+  t1 ={v} {CLOBBER(eos)};
+  t0 ={v} {CLOBBER(eos)};
+
+  <bb 18> :
+<L15>:
+  return _19;
+
+}
+
+
+
+;; Function keygen_internal (keygen_internal, funcdef_no=525, decl_uid=17068, cgraph_uid=526, symbol_order=525)
+
+int keygen_internal (struct ML_DSA_KEY * out)
+{
+  struct EVP_MD_CTX * md_ctx;
+  const struct ML_DSA_PARAMS * params;
+  const uint8_t * const K;
+  const uint8_t * const priv_seed;
+  const uint8_t * const rho;
+  uint8_t expanded_seed[128];
+  uint8_t augmented_seed[34];
+  int ret;
+  int D.17333;
+  int iftmp.4;
+  uint8_t * _1;
+  int _2;
+  int _3;
+  uint8_t * _4;
+  long unsigned int _5;
+  unsigned char _6;
+  long unsigned int _7;
+  unsigned char _8;
+  struct EVP_MD * _9;
+  int _10;
+  uint8_t[32] * _11;
+  uint8_t[32] * _12;
+  struct EVP_MD * _13;
+  int _14;
+  struct VECTOR * _15;
+  struct VECTOR * _16;
+  int _17;
+  struct VECTOR * _18;
+  struct VECTOR * _19;
+  int _20;
+  int _21;
+  struct EVP_MD * _22;
+  uint8_t * _23;
+  const struct ML_DSA_PARAMS * _24;
+  long unsigned int _25;
+  uint8_t[64] * _26;
+  int _27;
+  int _28;
+  uint8_t * _29;
+  int _30;
+  int _31;
+  uint8_t * _32;
+  int iftmp.4_36;
+  int iftmp.4_65;
+  int iftmp.4_66;
+  int _73;
+
+  <bb 2> :
+  ret_42 = 0;
+  rho_43 = &expanded_seed;
+  priv_seed_44 = &expanded_seed + 32;
+  K_45 = priv_seed_44 + 64;
+  params_48 = out_47(D)->params;
+  md_ctx_49 = 0B;
+  _1 = out_47(D)->seed;
+  if (_1 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 3>; [INV]
+
+  <bb 3> :
+  md_ctx_51 = EVP_MD_CTX_new ();
+  if (md_ctx_51 == 0B)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 4> :
+  _2 = ossl_ml_dsa_key_pub_alloc (out_47(D));
+  if (_2 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _3 = ossl_ml_dsa_key_priv_alloc (out_47(D));
+  if (_3 == 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  # md_ctx_34 = PHI <md_ctx_49(2), md_ctx_51(3), md_ctx_51(4), md_ctx_51(5)>
+  // predicted unlikely by goto predictor.
+  goto <bb 17>; [INV]
+
+  <bb 7> :
+  _4 = out_47(D)->seed;
+  memcpy (&augmented_seed, _4, 32);
+  _5 = params_48->k;
+  _6 = (unsigned char) _5;
+  augmented_seed[32] = _6;
+  _7 = params_48->l;
+  _8 = (unsigned char) _7;
+  augmented_seed[33] = _8;
+  _9 = out_47(D)->shake256_md;
+  _10 = shake_xof (md_ctx_51, _9, &augmented_seed, 34, &expanded_seed, 128);
+  if (_10 == 0)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  // predicted unlikely by goto predictor.
+  goto <bb 17>; [INV]
+
+  <bb 9> :
+  _11 = &out_47(D)->rho;
+  memcpy (_11, rho_43, 32);
+  _12 = &out_47(D)->K;
+  memcpy (_12, K_45, 32);
+  _13 = out_47(D)->shake256_md;
+  _14 = params_48->eta;
+  _15 = &out_47(D)->s1;
+  _16 = &out_47(D)->s2;
+  _17 = vector_expand_S (md_ctx_51, _13, _14, priv_seed_44, _15, _16);
+  if (_17 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 10> :
+  _18 = &out_47(D)->t1;
+  _19 = &out_47(D)->t0;
+  _20 = public_from_private (out_47(D), md_ctx_51, _18, _19);
+  if (_20 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 11> :
+  _21 = ossl_ml_dsa_pk_encode (out_47(D));
+  if (_21 != 0)
+    goto <bb 12>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 12> :
+  _22 = out_47(D)->shake256_md;
+  _23 = out_47(D)->pub_encoding;
+  _24 = out_47(D)->params;
+  _25 = _24->pk_len;
+  _26 = &out_47(D)->tr;
+  _27 = shake_xof (md_ctx_51, _22, _23, _25, _26, 64);
+  if (_27 != 0)
+    goto <bb 13>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 13> :
+  _28 = ossl_ml_dsa_sk_encode (out_47(D));
+  if (_28 != 0)
+    goto <bb 14>; [INV]
+  else
+    goto <bb 15>; [INV]
+
+  <bb 14> :
+  iftmp.4_65 = 1;
+  goto <bb 16>; [INV]
+
+  <bb 15> :
+  iftmp.4_66 = 0;
+
+  <bb 16> :
+  # iftmp.4_36 = PHI <iftmp.4_65(14), iftmp.4_66(15)>
+  ret_67 = iftmp.4_36;
+
+  <bb 17> :
+  # ret_33 = PHI <ret_42(6), ret_42(8), ret_67(16)>
+  # md_ctx_35 = PHI <md_ctx_34(6), md_ctx_51(8), md_ctx_51(16)>
+err:
+  _29 = out_47(D)->seed;
+  if (_29 != 0B)
+    goto <bb 18>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 18> :
+  _30 = out_47(D)->prov_flags;
+  _31 = _30 & 2;
+  if (_31 == 0)
+    goto <bb 19>; [INV]
+  else
+    goto <bb 20>; [INV]
+
+  <bb 19> :
+  _32 = out_47(D)->seed;
+  CRYPTO_clear_free (_32, 32, "ml_dsa_key.c", 448);
+  out_47(D)->seed = 0B;
+
+  <bb 20> :
+  EVP_MD_CTX_free (md_ctx_35);
+  OPENSSL_cleanse (&augmented_seed, 34);
+  OPENSSL_cleanse (&expanded_seed, 128);
+  _73 = ret_33;
+  augmented_seed ={v} {CLOBBER(eos)};
+  expanded_seed ={v} {CLOBBER(eos)};
+
+  <bb 21> :
+<L20>:
+  return _73;
+
+}
+
+
+
+;; Function ossl_ml_dsa_generate_key (ossl_ml_dsa_generate_key, funcdef_no=526, decl_uid=15008, cgraph_uid=527, symbol_order=526)
+
+int ossl_ml_dsa_generate_key (struct ML_DSA_KEY * out)
+{
+  static const char __func__[25] = "ossl_ml_dsa_generate_key";
+  int ret;
+  uint8_t * sk;
+  size_t seed_len;
+  int D.17342;
+  uint8_t * _1;
+  void * _2;
+  uint8_t * _3;
+  struct OSSL_LIB_CTX * _4;
+  uint8_t * _5;
+  int _6;
+  uint8_t * _7;
+  uint8_t * _8;
+  const struct ML_DSA_PARAMS * _9;
+  long unsigned int _10;
+  int _11;
+  const struct ML_DSA_PARAMS * _12;
+  const char * _13;
+  int _16;
+  int _29;
+  int _30;
+  int _43;
+
+  <bb 2> :
+  seed_len_21 = 32;
+  _1 = out_23(D)->seed;
+  if (_1 == 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 3> :
+  _2 = CRYPTO_malloc (seed_len_21, "ml_dsa_key.c", 464);
+  out_23(D)->seed = _2;
+  _3 = out_23(D)->seed;
+  if (_3 == 0B)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  _30 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 5> :
+  _4 = out_23(D)->libctx;
+  _5 = out_23(D)->seed;
+  _6 = RAND_priv_bytes_ex (_4, _5, seed_len_21, 0);
+  if (_6 <= 0)
+    goto <bb 6>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 6> :
+  _7 = out_23(D)->seed;
+  CRYPTO_free (_7, "ml_dsa_key.c", 467);
+  out_23(D)->seed = 0B;
+  _29 = 0;
+  // predicted unlikely by early return (on trees) predictor.
+  goto <bb 14>; [INV]
+
+  <bb 7> :
+  sk_31 = out_23(D)->priv_encoding;
+  out_23(D)->priv_encoding = 0B;
+  if (sk_31 == 0B)
+    goto <bb 8>; [INV]
+  else
+    goto <bb 9>; [INV]
+
+  <bb 8> :
+  ret_42 = keygen_internal (out_23(D));
+  goto <bb 13>; [INV]
+
+  <bb 9> :
+  ret_34 = keygen_internal (out_23(D));
+  if (ret_34 != 0)
+    goto <bb 10>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 10> :
+  _8 = out_23(D)->priv_encoding;
+  _9 = out_23(D)->params;
+  _10 = _9->sk_len;
+  _11 = memcmp (_8, sk_31, _10);
+  if (_11 != 0)
+    goto <bb 11>; [INV]
+  else
+    goto <bb 12>; [INV]
+
+  <bb 11> :
+  ret_35 = 0;
+  ossl_ml_dsa_key_reset (out_23(D));
+  ERR_new ();
+  ERR_set_debug ("ml_dsa_key.c", 482, &__func__);
+  _12 = out_23(D)->params;
+  _13 = _12->alg;
+  ERR_set_error (57, 158, "explicit %s private key does not match seed", _13);
+
+  <bb 12> :
+  # ret_14 = PHI <ret_34(9), ret_34(10), ret_35(11)>
+  CRYPTO_free (sk_31, "ml_dsa_key.c", 486);
+
+  <bb 13> :
+  # ret_15 = PHI <ret_42(8), ret_14(12)>
+  _43 = ret_15;
+
+  <bb 14> :
+  # _16 = PHI <_30(4), _29(6), _43(13)>
+<L13>:
+  return _16;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_matches (ossl_ml_dsa_key_matches, funcdef_no=527, decl_uid=15035, cgraph_uid=528, symbol_order=527)
+
+int ossl_ml_dsa_key_matches (const struct ML_DSA_KEY * key, int evp_type)
+{
+  int D.17353;
+  const struct ML_DSA_PARAMS * _1;
+  int _2;
+  _Bool _3;
+  int _7;
+
+  <bb 2> :
+  _1 = key_5(D)->params;
+  _2 = _1->evp_type;
+  _3 = evp_type_6(D) == _2;
+  _7 = (int) _3;
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_pub (ossl_ml_dsa_key_get_pub, funcdef_no=528, decl_uid=15010, cgraph_uid=529, symbol_order=528)
+
+const uint8_t * ossl_ml_dsa_key_get_pub (const struct ML_DSA_KEY * key)
+{
+  const uint8_t * D.17355;
+  const uint8_t * _3;
+
+  <bb 2> :
+  _3 = key_2(D)->pub_encoding;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_pub_len (ossl_ml_dsa_key_get_pub_len, funcdef_no=529, decl_uid=15012, cgraph_uid=530, symbol_order=529)
+
+size_t ossl_ml_dsa_key_get_pub_len (const struct ML_DSA_KEY * key)
+{
+  size_t D.17357;
+  const struct ML_DSA_PARAMS * _1;
+  size_t _4;
+
+  <bb 2> :
+  _1 = key_3(D)->params;
+  _4 = _1->pk_len;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_collision_strength_bits (ossl_ml_dsa_key_get_collision_strength_bits, funcdef_no=530, decl_uid=15030, cgraph_uid=531, symbol_order=530)
+
+size_t ossl_ml_dsa_key_get_collision_strength_bits (const struct ML_DSA_KEY * key)
+{
+  size_t D.17359;
+  const struct ML_DSA_PARAMS * _1;
+  int _2;
+  size_t _5;
+
+  <bb 2> :
+  _1 = key_4(D)->params;
+  _2 = _1->bit_strength;
+  _5 = (size_t) _2;
+
+  <bb 3> :
+<L0>:
+  return _5;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_priv (ossl_ml_dsa_key_get_priv, funcdef_no=531, decl_uid=15014, cgraph_uid=532, symbol_order=531)
+
+const uint8_t * ossl_ml_dsa_key_get_priv (const struct ML_DSA_KEY * key)
+{
+  const uint8_t * D.17361;
+  const uint8_t * _3;
+
+  <bb 2> :
+  _3 = key_2(D)->priv_encoding;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_priv_len (ossl_ml_dsa_key_get_priv_len, funcdef_no=532, decl_uid=15016, cgraph_uid=533, symbol_order=532)
+
+size_t ossl_ml_dsa_key_get_priv_len (const struct ML_DSA_KEY * key)
+{
+  size_t D.17363;
+  const struct ML_DSA_PARAMS * _1;
+  size_t _4;
+
+  <bb 2> :
+  _1 = key_3(D)->params;
+  _4 = _1->sk_len;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_sig_len (ossl_ml_dsa_key_get_sig_len, funcdef_no=533, decl_uid=15032, cgraph_uid=534, symbol_order=533)
+
+size_t ossl_ml_dsa_key_get_sig_len (const struct ML_DSA_KEY * key)
+{
+  size_t D.17365;
+  const struct ML_DSA_PARAMS * _1;
+  size_t _4;
+
+  <bb 2> :
+  _1 = key_3(D)->params;
+  _4 = _1->sig_len;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get0_libctx (ossl_ml_dsa_key_get0_libctx, funcdef_no=534, decl_uid=15039, cgraph_uid=535, symbol_order=534)
+
+struct OSSL_LIB_CTX * ossl_ml_dsa_key_get0_libctx (const struct ML_DSA_KEY * key)
+{
+  struct OSSL_LIB_CTX * iftmp.5;
+  struct OSSL_LIB_CTX * D.17367;
+  struct OSSL_LIB_CTX * iftmp.5_1;
+  struct OSSL_LIB_CTX * iftmp.5_3;
+  struct OSSL_LIB_CTX * iftmp.5_5;
+  struct OSSL_LIB_CTX * _6;
+
+  <bb 2> :
+  if (key_2(D) != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  iftmp.5_5 = key_2(D)->libctx;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  iftmp.5_3 = 0B;
+
+  <bb 5> :
+  # iftmp.5_1 = PHI <iftmp.5_5(3), iftmp.5_3(4)>
+  _6 = iftmp.5_1;
+
+  <bb 6> :
+<L3>:
+  return _6;
+
+}
+
+
+
+;; Function ossl_ml_dsa_key_get_name (ossl_ml_dsa_key_get_name, funcdef_no=535, decl_uid=15037, cgraph_uid=536, symbol_order=535)
+
+const char * ossl_ml_dsa_key_get_name (const struct ML_DSA_KEY * key)
+{
+  const char * D.17373;
+  const struct ML_DSA_PARAMS * _1;
+  const char * _4;
+
+  <bb 2> :
+  _1 = key_3(D)->params;
+  _4 = _1->alg;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+

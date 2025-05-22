@@ -1,0 +1,2548 @@
+
+;; Function ossl_ml_dsa_mu_init (ossl_ml_dsa_mu_init, funcdef_no=575, decl_uid=16559, cgraph_uid=576, symbol_order=575)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+struct EVP_MD_CTX * ossl_ml_dsa_mu_init (const struct ML_DSA_KEY * key, int encode, const uint8_t * ctx, size_t ctx_len)
+{
+  uint8_t itb[2];
+  struct EVP_MD_CTX * md_ctx;
+  struct EVP_MD * _1;
+  int _2;
+  const uint8_t[64] * _3;
+  int _4;
+  unsigned char _5;
+  int _6;
+  int _7;
+  struct EVP_MD_CTX * _8;
+
+  <bb 2> [local count: 1073741824]:
+  if (key_11(D) == 0B)
+    goto <bb 11>; [15.47%]
+  else
+    goto <bb 3>; [84.53%]
+
+  <bb 3> [local count: 907633960]:
+  md_ctx_14 = EVP_MD_CTX_new ();
+  if (md_ctx_14 == 0B)
+    goto <bb 11>; [15.47%]
+  else
+    goto <bb 4>; [84.53%]
+
+  <bb 4> [local count: 767222983]:
+  _1 = key_11(D)->shake256_md;
+  _2 = EVP_DigestInit_ex2 (md_ctx_14, _1, 0B);
+  if (_2 == 0)
+    goto <bb 10>; [29.93%]
+  else
+    goto <bb 5>; [70.07%]
+
+  <bb 5> [local count: 537593144]:
+  _3 = &key_11(D)->tr;
+  _4 = EVP_DigestUpdate (md_ctx_14, _3, 64);
+  if (_4 == 0)
+    goto <bb 10>; [17.38%]
+  else
+    goto <bb 6>; [82.62%]
+
+  <bb 6> [local count: 444159456]:
+  if (encode_17(D) != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 11>; [50.00%]
+
+  <bb 7> [local count: 222079728]:
+  if (ctx_len_18(D) > 255)
+    goto <bb 10>; [29.93%]
+  else
+    goto <bb 8>; [70.07%]
+
+  <bb 8> [local count: 155611266]:
+  itb[0] = 0;
+  _5 = (unsigned char) ctx_len_18(D);
+  itb[1] = _5;
+  _6 = EVP_DigestUpdate (md_ctx_14, &itb, 2);
+  if (_6 == 0)
+    goto <bb 10>; [29.93%]
+  else
+    goto <bb 9>; [70.07%]
+
+  <bb 9> [local count: 109036814]:
+  _7 = EVP_DigestUpdate (md_ctx_14, ctx_22(D), ctx_len_18(D));
+  if (_7 == 0)
+    goto <bb 10>; [17.38%]
+  else
+    goto <bb 11>; [82.62%]
+
+  <bb 10> [local count: 455057040]:
+err:
+  EVP_MD_CTX_free (md_ctx_14);
+
+  <bb 11> [local count: 1073741824]:
+  # _8 = PHI <key_11(D)(2), md_ctx_14(3), md_ctx_14(9), 0B(10), md_ctx_14(6)>
+  itb ={v} {CLOBBER(eos)};
+  return _8;
+
+}
+
+
+
+;; Function ossl_ml_dsa_mu_update (ossl_ml_dsa_mu_update, funcdef_no=576, decl_uid=16563, cgraph_uid=577, symbol_order=576)
+
+int ossl_ml_dsa_mu_update (struct EVP_MD_CTX * md_ctx, const uint8_t * msg, size_t msg_len)
+{
+  int _6;
+
+  <bb 2> [local count: 1073741824]:
+  _6 = EVP_DigestUpdate (md_ctx_2(D), msg_3(D), msg_len_4(D));
+  return _6;
+
+}
+
+
+
+;; Function ossl_ml_dsa_mu_finalize (ossl_ml_dsa_mu_finalize, funcdef_no=577, decl_uid=16567, cgraph_uid=578, symbol_order=577)
+
+int ossl_ml_dsa_mu_finalize (struct EVP_MD_CTX * md_ctx, uint8_t * mu, size_t mu_len)
+{
+  int _7;
+
+  <bb 2> [local count: 1073741824]:
+  if (mu_len_1(D) != 64)
+    goto <bb 3>; [0.04%]
+  else
+    goto <bb 4>; [99.96%]
+
+  <bb 3> [local count: 429496]:
+  OPENSSL_die ("Assertion failed: mu_len == ML_DSA_MU_BYTES", "ml_dsa_sign.c", 134);
+
+  <bb 4> [local count: 1073312328]:
+  _7 = EVP_DigestSqueeze (md_ctx_4(D), mu_5(D), 64);
+  return _7;
+
+}
+
+
+
+;; Function ossl_ml_dsa_sign (ossl_ml_dsa_sign, funcdef_no=580, decl_uid=16580, cgraph_uid=581, symbol_order=580)
+
+Removing basic block 15
+Removing basic block 119
+Removing basic block 120
+Removing basic block 121
+Removing basic block 122
+Removing basic block 123
+Removing basic block 124
+Removing basic block 125
+Removing basic block 126
+Removing basic block 128
+Removing basic block 129
+Removing basic block 130
+Removing basic block 131
+Removing basic block 132
+Removing basic block 133
+Removing basic block 134
+Removing basic block 135
+Removing basic block 136
+Removing basic block 137
+Removing basic block 138
+Removing basic block 139
+Removing basic block 140
+Removing basic block 141
+Removing basic block 142
+Removing basic block 143
+Removing basic block 144
+Removing basic block 145
+Removing basic block 146
+Removing basic block 147
+Removing basic block 148
+Removing basic block 149
+Removing basic block 150
+Removing basic block 151
+Removing basic block 152
+Removing basic block 153
+Removing basic block 154
+Removing basic block 155
+Removing basic block 156
+Removing basic block 157
+Removing basic block 158
+Removing basic block 159
+Removing basic block 160
+Removing basic block 161
+Removing basic block 162
+Removing basic block 163
+Removing basic block 164
+Removing basic block 165
+Removing basic block 166
+Removing basic block 167
+Removing basic block 168
+Removing basic block 169
+Removing basic block 170
+Removing basic block 171
+Removing basic block 172
+Removing basic block 173
+Removing basic block 174
+Removing basic block 175
+Removing basic block 176
+Removing basic block 177
+Removing basic block 178
+Removing basic block 179
+Removing basic block 180
+Removing basic block 181
+Removing basic block 182
+Removing basic block 183
+Removing basic block 184
+Removing basic block 185
+Removing basic block 186
+Removing basic block 187
+Removing basic block 188
+Removing basic block 189
+Removing basic block 190
+Removing basic block 191
+Removing basic block 192
+Removing basic block 193
+Removing basic block 194
+Removing basic block 195
+Removing basic block 196
+Removing basic block 197
+Removing basic block 198
+Removing basic block 199
+Removing basic block 200
+Removing basic block 201
+Removing basic block 202
+Removing basic block 203
+Removing basic block 204
+Removing basic block 205
+Removing basic block 206
+Removing basic block 207
+Removing basic block 208
+Removing basic block 209
+Removing basic block 210
+Removing basic block 211
+Removing basic block 212
+Removing basic block 213
+Removing basic block 214
+Removing basic block 215
+Removing basic block 216
+Removing basic block 217
+Removing basic block 218
+Removing basic block 219
+Removing basic block 220
+Removing basic block 221
+Removing basic block 222
+Removing basic block 223
+Removing basic block 224
+Removing basic block 225
+Removing basic block 226
+Removing basic block 227
+int ossl_ml_dsa_sign (const struct ML_DSA_KEY * priv, int msg_is_mu, const uint8_t * msg, size_t msg_len, const uint8_t * context, size_t context_len, const uint8_t * rand, size_t rand_len, int encode, unsigned char * sig, size_t * sig_len, size_t sig_size)
+{
+  unsigned long ivtmp.286;
+  unsigned long ivtmp.282;
+  unsigned long ivtmp.278;
+  unsigned long ivtmp.269;
+  size_t ivtmp.268;
+  sizetype ivtmp.251;
+  long unsigned int ivtmp.241;
+  unsigned long ivtmp.232;
+  unsigned long ivtmp.231;
+  unsigned long ivtmp.227;
+  long unsigned int ivtmp.222;
+  sizetype ivtmp.218;
+  unsigned long ivtmp.208;
+  sizetype ivtmp.203;
+  unsigned long ivtmp.189;
+  unsigned long ivtmp.181;
+  unsigned long ivtmp.176;
+  unsigned long ivtmp.168;
+  unsigned long ivtmp.163;
+  long unsigned int ivtmp.155;
+  unsigned long ivtmp.147;
+  sizetype ivtmp.142;
+  unsigned long ivtmp.130;
+  unsigned long ivtmp.125;
+  unsigned long ivtmp.117;
+  unsigned long ivtmp.111;
+  uint32_t r;
+  uint32_t r;
+  unsigned int r;
+  unsigned int r;
+  uint32_t c;
+  size_t i;
+  size_t i;
+  size_t i;
+  uint32_t mx;
+  size_t count;
+  uint32_t r;
+  uint32_t r;
+  unsigned int r;
+  unsigned int r;
+  uint32_t c;
+  uint32_t r;
+  uint32_t r;
+  unsigned int r;
+  unsigned int r;
+  uint32_t c;
+  uint32_t r;
+  uint32_t r;
+  uint32_t r;
+  uint32_t r;
+  size_t i;
+  size_t i;
+  size_t i;
+  size_t i;
+  uint32_t mx;
+  uint32_t mx;
+  uint8_t derived_seed[66];
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  size_t i;
+  size_t i;
+  size_t i;
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  static const char __PRETTY_FUNCTION__[12] = "vector_copy";
+  int ret;
+  const struct ML_DSA_PARAMS * params;
+  struct EVP_MD_CTX * md_ctx;
+  uint32_t k;
+  uint32_t l;
+  uint32_t gamma1;
+  uint32_t gamma2;
+  uint8_t * alloc;
+  size_t alloc_len;
+  size_t w1_encoded_len;
+  size_t num_polys_sig_k;
+  size_t num_polys_k;
+  size_t num_polys_l;
+  size_t num_polys_k_by_l;
+  struct POLY * p;
+  struct VECTOR w;
+  struct VECTOR w1;
+  struct VECTOR cs1;
+  struct MATRIX a_ntt;
+  struct ML_DSA_SIG sig;
+  uint8_t rho_prime[64];
+  uint8_t c_tilde[64];
+  size_t c_tilde_len;
+  size_t kappa;
+  uint32_t h_ones;
+  uint32_t r;
+  uint32_t r;
+  static const char __func__[21] = "ml_dsa_sign_internal";
+  int ret;
+  const uint8_t * mu_ptr;
+  uint8_t mu[64];
+  struct EVP_MD_CTX * md_ctx;
+  const uint8_t * _1;
+  const struct ML_DSA_PARAMS * _2;
+  long unsigned int _3;
+  _Bool _4;
+  const struct ML_DSA_PARAMS * _5;
+  long unsigned int _6;
+  int _14;
+  long unsigned int _16;
+  int _41;
+  int _43;
+  int _44;
+  long unsigned int _46;
+  long unsigned int _48;
+  int _50;
+  int _52;
+  unsigned int _54;
+  unsigned int _56;
+  unsigned int _58;
+  unsigned int _60;
+  int _62;
+  int _63;
+  unsigned int iftmp.0_65;
+  unsigned int _66;
+  long unsigned int _71;
+  long unsigned int _72;
+  long unsigned int _78;
+  long unsigned int _79;
+  long unsigned int _80;
+  long unsigned int _82;
+  struct POLY * _83;
+  struct POLY * _84;
+  struct POLY * _85;
+  struct POLY * _86;
+  long unsigned int _87;
+  long unsigned int _89;
+  struct POLY * _90;
+  unsigned int _91;
+  long unsigned int _92;
+  long unsigned int _93;
+  struct POLY * _94;
+  long unsigned int _95;
+  struct POLY * _97;
+  struct EVP_MD * _98;
+  const uint8_t[32] * _99;
+  int _100;
+  struct EVP_MD * _101;
+  const uint8_t[32] * _102;
+  unsigned long _104;
+  struct EVP_MD * _109;
+  struct EVP_MD * _110;
+  struct EVP_MD * _112;
+  int _113;
+  unsigned int _114;
+  long unsigned int _115;
+  int _118;
+  unsigned int _119;
+  unsigned int _120;
+  unsigned int _121;
+  unsigned int _122;
+  unsigned int _123;
+  unsigned int _124;
+  unsigned int _125;
+  unsigned int _126;
+  unsigned int _127;
+  unsigned int _128;
+  unsigned int _129;
+  unsigned int _130;
+  unsigned int _131;
+  unsigned int _132;
+  unsigned int _133;
+  unsigned int _134;
+  signed int _135;
+  signed int _136;
+  unsigned int _137;
+  unsigned int _138;
+  unsigned int _143;
+  unsigned int _144;
+  unsigned int _145;
+  unsigned int _146;
+  unsigned int _147;
+  signed int a.9_148;
+  signed int _149;
+  unsigned int _150;
+  unsigned int _151;
+  int _152;
+  unsigned int _153;
+  unsigned int _154;
+  unsigned int _155;
+  unsigned int _156;
+  unsigned int _157;
+  unsigned int _158;
+  signed int a.9_159;
+  signed int _160;
+  unsigned int _161;
+  unsigned int _162;
+  int _166;
+  void * _168;
+  int _170;
+  int _171;
+  int _172;
+  int _173;
+  int _174;
+  struct POLY * _179;
+  void * _181;
+  long unsigned int _183;
+  unsigned long _184;
+  struct POLY * _185;
+  long unsigned int _186;
+  long unsigned int _187;
+  struct POLY * _191;
+  long unsigned int _194;
+  long unsigned int _195;
+  struct POLY * _197;
+  long unsigned int _198;
+  struct POLY * _203;
+  long unsigned int _206;
+  long unsigned int _207;
+  long unsigned int _208;
+  struct POLY * _209;
+  long unsigned int _210;
+  int _212;
+  int _213;
+  int _214;
+  int _215;
+  struct POLY * _217;
+  unsigned long _218;
+  const struct POLY * _220;
+  struct POLY * _221;
+  struct POLY * _222;
+  long unsigned int _224;
+  struct POLY * _225;
+  struct POLY * _228;
+  long unsigned int _230;
+  struct POLY * _231;
+  struct POLY * _234;
+  long unsigned int _236;
+  long unsigned int _237;
+  struct POLY * _239;
+  unsigned long _244;
+  long unsigned int _247;
+  unsigned char _248;
+  long unsigned int _249;
+  struct POLY * _251;
+  unsigned int _255;
+  unsigned int _256;
+  int _258;
+  struct POLY * _260;
+  long unsigned int _261;
+  struct POLY * _267;
+  struct POLY * _274;
+  const struct POLY * _277;
+  long unsigned int _279;
+  long unsigned int _281;
+  struct POLY * _282;
+  const struct POLY * _285;
+  unsigned long _286;
+  const struct POLY * _287;
+  struct POLY * _288;
+  struct POLY * _289;
+  long unsigned int _291;
+  const struct POLY * _295;
+  struct POLY * _296;
+  const struct POLY * _297;
+  struct POLY * _298;
+  struct POLY * _299;
+  long unsigned int _301;
+  struct POLY * _305;
+  unsigned long _307;
+  unsigned long _308;
+  const struct POLY * _311;
+  struct POLY * _313;
+  long unsigned int _315;
+  struct POLY * _316;
+  struct POLY * _319;
+  long unsigned int _321;
+  const struct POLY * _325;
+  struct POLY * _326;
+  struct POLY * _327;
+  unsigned long _330;
+  unsigned int _331;
+  unsigned int _332;
+  unsigned int _333;
+  unsigned int _336;
+  unsigned int _337;
+  unsigned int _338;
+  unsigned int _339;
+  unsigned int _340;
+  signed int a.4_341;
+  signed int _342;
+  unsigned int _343;
+  unsigned int _345;
+  unsigned int _346;
+  unsigned int _348;
+  unsigned int _349;
+  unsigned long _350;
+  unsigned int _351;
+  unsigned int _352;
+  unsigned int _353;
+  unsigned int _354;
+  unsigned int _357;
+  unsigned int _359;
+  unsigned int _360;
+  unsigned int _361;
+  signed int a.4_362;
+  signed int _363;
+  unsigned int _364;
+  unsigned int _366;
+  unsigned int _367;
+  unsigned int _369;
+  unsigned int _370;
+  unsigned int _372;
+  int _373;
+  unsigned int _374;
+  long unsigned int _380;
+  unsigned int _382;
+  unsigned int _383;
+  unsigned int _384;
+  unsigned int _385;
+  unsigned int _386;
+  signed int a.9_387;
+  signed int _388;
+  unsigned int _389;
+  unsigned int _391;
+  unsigned int _392;
+  unsigned int _394;
+  unsigned int _395;
+  unsigned int _396;
+  unsigned int _397;
+  unsigned int _398;
+  unsigned int _399;
+  signed int _400;
+  signed int _401;
+  unsigned int _402;
+  unsigned int _403;
+  unsigned int _405;
+  unsigned int _406;
+  unsigned int _408;
+  unsigned int _409;
+  long unsigned int _414;
+  unsigned int _416;
+  unsigned int _417;
+  unsigned int _418;
+  unsigned int _419;
+  unsigned int _420;
+  signed int a.9_421;
+  signed int _422;
+  unsigned int _423;
+  unsigned int _425;
+  unsigned int _426;
+  unsigned int _428;
+  unsigned int _429;
+  unsigned int _430;
+  unsigned int _431;
+  unsigned int _432;
+  unsigned int _433;
+  unsigned int _434;
+  signed int a.4_435;
+  signed int _436;
+  unsigned int _437;
+  unsigned int _438;
+  unsigned int _440;
+  unsigned int _441;
+  unsigned int _443;
+  unsigned int _444;
+  struct POLY * _445;
+  unsigned int _450;
+  long unsigned int _451;
+  struct POLY * _458;
+  struct POLY * _465;
+  const struct POLY * _468;
+  const struct POLY * _470;
+  struct POLY * _471;
+  const struct POLY * _472;
+  struct POLY * _473;
+  struct POLY * _474;
+  long unsigned int _476;
+  struct POLY * _477;
+  long unsigned int _478;
+  struct POLY * _480;
+  long unsigned int _482;
+  long unsigned int _484;
+  const struct POLY * _486;
+  struct POLY * _487;
+  struct POLY * _488;
+  unsigned int _492;
+  unsigned int _493;
+  unsigned int _494;
+  int _495;
+  unsigned int _496;
+  unsigned int _504;
+  unsigned int _505;
+  unsigned int _506;
+  unsigned int _507;
+  unsigned int _508;
+  signed int a.9_509;
+  signed int _510;
+  unsigned int _511;
+  unsigned int _513;
+  unsigned int _514;
+  unsigned int _516;
+  unsigned int _517;
+  unsigned int _518;
+  unsigned int _519;
+  unsigned int _520;
+  unsigned int _521;
+  signed int _522;
+  signed int _523;
+  unsigned int _524;
+  unsigned int _525;
+  unsigned int _527;
+  unsigned int _528;
+  unsigned int _530;
+  unsigned int _531;
+  void * _538;
+  unsigned long _541;
+  long unsigned int _543;
+  unsigned long _544;
+  long unsigned int _547;
+  void * _553;
+  unsigned long _556;
+  void * _558;
+  long unsigned int _562;
+  long unsigned int _564;
+  unsigned long _579;
+  long unsigned int _587;
+  long unsigned int _589;
+  long unsigned int _590;
+  long unsigned int _607;
+  long unsigned int _656;
+  unsigned long _670;
+  unsigned long _675;
+  long unsigned int _689;
+  unsigned long _698;
+  unsigned long _701;
+  long unsigned int _720;
+  long unsigned int _760;
+  long unsigned int _764;
+  unsigned long _771;
+  unsigned long _772;
+  unsigned long _780;
+  unsigned long _781;
+  long unsigned int _782;
+  unsigned long _785;
+  unsigned long _786;
+  long unsigned int _790;
+  long unsigned int _791;
+  long unsigned int _792;
+  unsigned char _800;
+  long unsigned int _803;
+  unsigned long _811;
+  unsigned long _817;
+  unsigned long _821;
+  unsigned long _823;
+
+  <bb 2> [local count: 1073741822]:
+  _1 = ossl_ml_dsa_key_get_priv (priv_20(D));
+  if (_1 == 0B)
+    goto <bb 112>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501926]:
+  if (sig_len_22(D) != 0B)
+    goto <bb 4>; [70.00%]
+  else
+    goto <bb 5>; [30.00%]
+
+  <bb 4> [local count: 615651351]:
+  _2 = priv_20(D)->params;
+  _3 = _2->sig_len;
+  *sig_len_22(D) = _3;
+
+  <bb 5> [local count: 879501926]:
+  if (sig_24(D) == 0B)
+    goto <bb 6>; [18.09%]
+  else
+    goto <bb 7>; [81.91%]
+
+  <bb 6> [local count: 159101899]:
+  _4 = sig_len_22(D) != 0B;
+  _41 = (int) _4;
+  goto <bb 112>; [100.00%]
+
+  <bb 7> [local count: 720400028]:
+  _5 = priv_20(D)->params;
+  _6 = _5->sig_len;
+  if (_6 > sig_size_25(D))
+    goto <bb 112>; [34.00%]
+  else
+    goto <bb 8>; [66.00%]
+
+  <bb 8> [local count: 475464016]:
+  if (msg_is_mu_26(D) != 0)
+    goto <bb 12>; [50.00%]
+  else
+    goto <bb 9>; [50.00%]
+
+  <bb 9> [local count: 237732008]:
+  md_ctx_31 = ossl_ml_dsa_mu_init (priv_20(D), encode_27(D), context_28(D), context_len_29(D));
+  if (md_ctx_31 == 0B)
+    goto <bb 112>; [30.95%]
+  else
+    goto <bb 10>; [69.05%]
+
+  <bb 10> [local count: 164153951]:
+  _43 = EVP_DigestUpdate (md_ctx_31, msg_32(D), msg_len_33(D));
+  if (_43 == 0)
+    goto <bb 111>; [51.12%]
+  else
+    goto <bb 11>; [48.88%]
+
+  <bb 11> [local count: 80238451]:
+  _44 = EVP_DigestSqueeze (md_ctx_31, &mu, 64);
+  if (_44 == 0)
+    goto <bb 111>; [34.00%]
+  else
+    goto <bb 14>; [66.00%]
+
+  <bb 12> [local count: 237732008]:
+  if (msg_len_33(D) != 64)
+    goto <bb 13>; [40.35%]
+  else
+    goto <bb 14>; [59.65%]
+
+  <bb 13> [local count: 95927497]:
+  ERR_new ();
+  ERR_set_debug ("ml_dsa_sign.c", 181, &__func__);
+  ERR_set_error (57, 142, 0B);
+  goto <bb 110>; [100.00%]
+
+  <bb 14> [local count: 194761888]:
+  # md_ctx_568 = PHI <0B(12), md_ctx_31(11)>
+  # mu_ptr_69 = PHI <msg_32(D)(12), &mu(11)>
+  params_45 = priv_20(D)->params;
+  _52 = params_45->gamma2;
+  gamma2_53 = (uint32_t) _52;
+  if (gamma2_53 == 95232)
+    goto <bb 15>; [34.00%]
+  else
+    goto <bb 16>; [66.00%]
+
+  <bb 15> [local count: 66219043]:
+
+  <bb 16> [local count: 194761889]:
+  # iftmp.0_65 = PHI <192(15), 128(14)>
+  _46 = params_45->k;
+  k_47 = (uint32_t) _46;
+  _48 = params_45->l;
+  l_49 = (uint32_t) _48;
+  _50 = params_45->gamma1;
+  _56 = k_47 * 5;
+  num_polys_k_57 = (size_t) _56;
+  _58 = l_49 * 3;
+  num_polys_l_59 = (size_t) _58;
+  _760 = num_polys_k_57 + num_polys_l_59;
+  _720 = _760 + 1;
+  _60 = k_47 * l_49;
+  num_polys_k_by_l_61 = (size_t) _60;
+  _62 = params_45->bit_strength;
+  _66 = k_47 * iftmp.0_65;
+  w1_encoded_len_67 = (size_t) _66;
+  _54 = k_47 * 2;
+  num_polys_sig_k_55 = (size_t) _54;
+  _764 = num_polys_sig_k_55 + num_polys_k_by_l_61;
+  _71 = _720 + _764;
+  _72 = _71 * 1024;
+  alloc_len_73 = w1_encoded_len_67 + _72;
+  alloc_74 = CRYPTO_malloc (alloc_len_73, "ml_dsa_sign.c", 193);
+  if (alloc_74 == 0B)
+    goto <bb 110>; [30.95%]
+  else
+    goto <bb 17>; [69.05%]
+
+  <bb 17> [local count: 134483084]:
+  md_ctx_75 = EVP_MD_CTX_new ();
+  if (md_ctx_75 == 0B)
+    goto <bb 109>; [30.95%]
+  else
+    goto <bb 18>; [69.05%]
+
+  <bb 18> [local count: 92860569]:
+  _63 = _62 >> 2;
+  c_tilde_len_64 = (size_t) _63;
+  p_76 = alloc_74 + w1_encoded_len_67;
+  p_77 = p_76 + 1024;
+  _78 = _46 & 4294967295;
+  _79 = _48 & 4294967295;
+  a_ntt.k = _78;
+  a_ntt.l = _79;
+  a_ntt.m_poly = p_77;
+  _80 = num_polys_k_by_l_61 * 1024;
+  p_81 = p_77 + _80;
+  _82 = _78 * 1024;
+  _83 = p_81 + _82;
+  _84 = _83 + _82;
+  w.poly = _84;
+  w.num_poly = _78;
+  _85 = _84 + _82;
+  w1.poly = _85;
+  w1.num_poly = _78;
+  _87 = num_polys_k_57 * 1024;
+  p_88 = p_81 + _87;
+  _91 = l_49 * 2;
+  _92 = (long unsigned int) _91;
+  _93 = _92 * 1024;
+  _94 = p_88 + _93;
+  cs1.poly = _94;
+  cs1.num_poly = _79;
+  _95 = num_polys_l_59 * 1024;
+  p_96 = p_88 + _95;
+  _97 = p_96 + _82;
+  MEM[(struct VECTOR *)&sig].poly = _97;
+  MEM[(struct VECTOR *)&sig].num_poly = _79;
+  MEM[(struct VECTOR *)&sig + 16B].poly = p_96;
+  MEM[(struct VECTOR *)&sig + 16B].num_poly = _78;
+  sig.c_tilde = &c_tilde;
+  sig.c_tilde_len = c_tilde_len_64;
+  _98 = priv_20(D)->shake128_md;
+  _99 = &priv_20(D)->rho;
+  _100 = ossl_ml_dsa_matrix_expand_A (md_ctx_75, _98, _99, &a_ntt);
+  if (_100 == 0)
+    goto <bb 109>; [51.12%]
+  else
+    goto <bb 19>; [48.88%]
+
+  <bb 19> [local count: 45390246]:
+  _101 = priv_20(D)->shake256_md;
+  _170 = EVP_DigestInit_ex2 (md_ctx_75, _101, 0B);
+  if (_170 != 0)
+    goto <bb 20>; [33.00%]
+  else
+    goto <bb 117>; [67.00%]
+
+  <bb 20> [local count: 14978781]:
+  _102 = &priv_20(D)->K;
+  _171 = EVP_DigestUpdate (md_ctx_75, _102, 32);
+  if (_171 != 0)
+    goto <bb 21>; [33.00%]
+  else
+    goto <bb 117>; [67.00%]
+
+  <bb 21> [local count: 4942998]:
+  _172 = EVP_DigestUpdate (md_ctx_75, rand_36(D), rand_len_37(D));
+  if (_172 != 0)
+    goto <bb 22>; [33.00%]
+  else
+    goto <bb 117>; [67.00%]
+
+  <bb 22> [local count: 1631189]:
+  _173 = EVP_DigestUpdate (md_ctx_75, mu_ptr_69, 64);
+  if (_173 != 0)
+    goto <bb 23>; [33.00%]
+  else
+    goto <bb 117>; [67.00%]
+
+  <bb 23> [local count: 538292]:
+  _174 = EVP_DigestSqueeze (md_ctx_75, &rho_prime, 64);
+  if (_174 == 0)
+    goto <bb 109>; [0.00%]
+  else
+    goto <bb 24>; [100.00%]
+
+  <bb 24> [local count: 22186752]:
+  _207 = MEM[(const struct VECTOR *)priv_20(D) + 240B].num_poly;
+  if (_79 == _207)
+    goto <bb 26>; [99.96%]
+  else
+    goto <bb 25>; [0.04%]
+
+  <bb 25> [local count: 8875]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 26> [local count: 22177877]:
+  _209 = MEM[(const struct VECTOR *)priv_20(D) + 240B].poly;
+  _210 = _207 * 1024;
+  __builtin_memcpy (p_88, _209, _210);
+  if (_79 != 0)
+    goto <bb 27>; [89.00%]
+  else
+    goto <bb 29>; [11.00%]
+
+  <bb 27> [local count: 19738311]:
+  ivtmp.286_820 = (unsigned long) p_88;
+  _821 = _79 * 1024;
+  _823 = ivtmp.286_820 + _821;
+
+  <bb 28> [local count: 179519870]:
+  # ivtmp.286_818 = PHI <ivtmp.286_819(28), ivtmp.286_820(27)>
+  _203 = (struct POLY *) ivtmp.286_818;
+  ossl_ml_dsa_poly_ntt (_203);
+  ivtmp.286_819 = ivtmp.286_818 + 1024;
+  if (ivtmp.286_819 != _823)
+    goto <bb 28>; [89.00%]
+  else
+    goto <bb 29>; [11.00%]
+
+  <bb 29> [local count: 22186752]:
+  _195 = MEM[(const struct VECTOR *)priv_20(D) + 224B].num_poly;
+  if (_78 == _195)
+    goto <bb 31>; [99.96%]
+  else
+    goto <bb 30>; [0.04%]
+
+  <bb 30> [local count: 8875]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 31> [local count: 22177877]:
+  _197 = MEM[(const struct VECTOR *)priv_20(D) + 224B].poly;
+  _198 = _195 * 1024;
+  __builtin_memcpy (p_81, _197, _198);
+  if (_78 != 0)
+    goto <bb 32>; [89.00%]
+  else
+    goto <bb 116>; [11.00%]
+
+  <bb 32> [local count: 19738311]:
+  ivtmp.282_814 = (unsigned long) p_81;
+  _817 = _82 + ivtmp.282_814;
+
+  <bb 33> [local count: 179519870]:
+  # ivtmp.282_812 = PHI <ivtmp.282_813(33), ivtmp.282_814(32)>
+  _191 = (struct POLY *) ivtmp.282_812;
+  ossl_ml_dsa_poly_ntt (_191);
+  ivtmp.282_813 = ivtmp.282_812 + 1024;
+  if (ivtmp.282_813 != _817)
+    goto <bb 33>; [89.00%]
+  else
+    goto <bb 34>; [11.00%]
+
+  <bb 34> [local count: 19747186]:
+  _183 = MEM[(const struct VECTOR *)priv_20(D) + 208B].num_poly;
+  if (_78 == _183)
+    goto <bb 36>; [99.96%]
+  else
+    goto <bb 35>; [0.04%]
+
+  <bb 35> [local count: 8875]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 36> [local count: 19739287]:
+  _185 = MEM[(const struct VECTOR *)priv_20(D) + 208B].poly;
+  _186 = _183 * 1024;
+  __builtin_memcpy (_83, _185, _186);
+  ivtmp.278_808 = (unsigned long) _83;
+  _811 = _82 + ivtmp.278_808;
+
+  <bb 37> [local count: 179519870]:
+  # ivtmp.278_806 = PHI <ivtmp.278_807(37), ivtmp.278_808(36)>
+  _179 = (struct POLY *) ivtmp.278_806;
+  ossl_ml_dsa_poly_ntt (_179);
+  ivtmp.278_807 = ivtmp.278_806 + 1024;
+  if (ivtmp.278_807 != _811)
+    goto <bb 37>; [89.00%]
+  else
+    goto <bb 38>; [11.00%]
+
+  <bb 38> [local count: 22186752]:
+  gamma1_51 = (uint32_t) _50;
+  _86 = _85 + _82;
+  _89 = _79 * 1024;
+  _90 = p_88 + _89;
+  _780 = (unsigned long) p_81;
+  _781 = _82 + _780;
+  _771 = (unsigned long) _86;
+  _772 = _82 + _771;
+
+  <bb 39> [local count: 73007874]:
+  # kappa_107 = PHI <0(38), kappa_165(108)>
+  _109 = priv_20(D)->shake256_md;
+  MEM <unsigned char[64]> [(char * {ref-all})&derived_seed] = MEM <unsigned char[64]> [(char * {ref-all})&rho_prime];
+  if (_79 != 0)
+    goto <bb 40>; [89.00%]
+  else
+    goto <bb 42>; [11.00%]
+
+  <bb 40> [local count: 64977008]:
+  _16 = kappa_107 & 4294967295;
+  ivtmp.269_799 = (unsigned long) _90;
+  _803 = _16 + _79;
+
+  <bb 41> [local count: 590700075]:
+  # ivtmp.268_793 = PHI <ivtmp.268_794(41), _16(40)>
+  # ivtmp.269_797 = PHI <ivtmp.269_798(41), ivtmp.269_799(40)>
+  _800 = (unsigned char) ivtmp.268_793;
+  derived_seed[64] = _800;
+  _247 = ivtmp.268_793 >> 8;
+  _248 = (unsigned char) _247;
+  derived_seed[65] = _248;
+  _251 = (struct POLY *) ivtmp.269_797;
+  ossl_ml_dsa_poly_expand_mask (_251, &derived_seed, 66, gamma1_51, md_ctx_75, _109);
+  ivtmp.268_794 = ivtmp.268_793 + 1;
+  ivtmp.269_798 = ivtmp.269_797 + 1024;
+  if (ivtmp.268_794 != _803)
+    goto <bb 41>; [89.00%]
+  else
+    goto <bb 42>; [11.00%]
+
+  <bb 42> [local count: 73007874]:
+  derived_seed ={v} {CLOBBER(eos)};
+  _237 = cs1.num_poly;
+  if (_79 == _237)
+    goto <bb 44>; [99.96%]
+  else
+    goto <bb 43>; [0.04%]
+
+  <bb 43> [local count: 29203]:
+  __assert_fail ("dst->num_poly == src->num_poly", "ml_dsa_vector.h", 66, &__PRETTY_FUNCTION__);
+
+  <bb 44> [local count: 72978671]:
+  _239 = cs1.poly;
+  __builtin_memcpy (_239, _90, _89);
+  _380 = cs1.num_poly;
+  if (_380 != 0)
+    goto <bb 45>; [89.00%]
+  else
+    goto <bb 46>; [11.00%]
+
+  <bb 45> [local count: 590729278]:
+  # i_273 = PHI <i_235(45), 0(44)>
+  _231 = cs1.poly;
+  _792 = i_273 * 1024;
+  _234 = _231 + _792;
+  ossl_ml_dsa_poly_ntt (_234);
+  i_235 = i_273 + 1;
+  _236 = cs1.num_poly;
+  if (i_235 < _236)
+    goto <bb 45>; [89.00%]
+  else
+    goto <bb 46>; [11.00%]
+
+  <bb 46> [local count: 73007874]:
+  ossl_ml_dsa_matrix_mult_vector (&a_ntt, &cs1, &w);
+  _414 = w.num_poly;
+  if (_414 != 0)
+    goto <bb 47>; [89.00%]
+  else
+    goto <bb 48>; [11.00%]
+
+  <bb 47> [local count: 590700075]:
+  # i_655 = PHI <i_229(47), 0(46)>
+  _225 = w.poly;
+  _791 = i_655 * 1024;
+  _228 = _225 + _791;
+  ossl_ml_dsa_poly_ntt_inverse (_228);
+  i_229 = i_655 + 1;
+  _230 = w.num_poly;
+  if (i_229 < _230)
+    goto <bb 47>; [89.00%]
+  else
+    goto <bb 48>; [11.00%]
+
+  <bb 48> [local count: 73007874]:
+  _115 = w1.num_poly;
+  if (_115 != 0)
+    goto <bb 49>; [89.00%]
+  else
+    goto <bb 52>; [11.00%]
+
+  <bb 49> [local count: 590700075]:
+  # i_659 = PHI <i_223(51), 0(48)>
+  _217 = w.poly;
+  _790 = i_659 * 1024;
+  _220 = _217 + _790;
+  _221 = w1.poly;
+  _222 = _221 + _790;
+
+  <bb 50> [local count: 58479319748]:
+  # ivtmp.251_788 = PHI <ivtmp.251_789(50), 0(49)>
+  _255 = MEM[(unsigned int *)_220 + ivtmp.251_788 * 1];
+  _256 = ossl_ml_dsa_key_compress_high_bits (_255, gamma2_53);
+  MEM[(unsigned int *)_222 + ivtmp.251_788 * 1] = _256;
+  ivtmp.251_789 = ivtmp.251_788 + 4;
+  if (ivtmp.251_789 != 1024)
+    goto <bb 50>; [98.99%]
+  else
+    goto <bb 51>; [1.01%]
+
+  <bb 51> [local count: 590700075]:
+  i_223 = i_659 + 1;
+  _224 = w1.num_poly;
+  if (i_223 < _224)
+    goto <bb 49>; [89.00%]
+  else
+    goto <bb 52>; [11.00%]
+
+  <bb 52> [local count: 73007874]:
+  ossl_ml_dsa_w1_encode (&w1, gamma2_53, alloc_74, w1_encoded_len_67);
+  _110 = priv_20(D)->shake256_md;
+  _212 = EVP_DigestInit_ex2 (md_ctx_75, _110, 0B);
+  if (_212 != 0)
+    goto <bb 53>; [33.00%]
+  else
+    goto <bb 115>; [67.00%]
+
+  <bb 53> [local count: 24092598]:
+  _213 = EVP_DigestUpdate (md_ctx_75, mu_ptr_69, 64);
+  if (_213 != 0)
+    goto <bb 54>; [33.00%]
+  else
+    goto <bb 115>; [67.00%]
+
+  <bb 54> [local count: 7950557]:
+  _214 = EVP_DigestUpdate (md_ctx_75, alloc_74, w1_encoded_len_67);
+  if (_214 != 0)
+    goto <bb 55>; [33.00%]
+  else
+    goto <bb 115>; [67.00%]
+
+  <bb 55> [local count: 2623684]:
+  _215 = EVP_DigestSqueeze (md_ctx_75, &c_tilde, c_tilde_len_64);
+  if (_215 == 0)
+    goto <bb 109>; [0.00%]
+  else
+    goto <bb 56>; [100.00%]
+
+  <bb 56> [local count: 70335786]:
+  _112 = priv_20(D)->shake256_md;
+  _113 = params_45->tau;
+  _114 = (unsigned int) _113;
+  _258 = ossl_ml_dsa_poly_sample_in_ball (p_76, &c_tilde, _63, md_ctx_75, _112, _114);
+  if (_258 == 0)
+    goto <bb 109>; [51.12%]
+  else
+    goto <bb 57>; [48.88%]
+
+  <bb 57> [local count: 67761496]:
+  ossl_ml_dsa_poly_ntt (p_76);
+  if (_79 != 0)
+    goto <bb 58>; [89.00%]
+  else
+    goto <bb 59>; [11.00%]
+
+  <bb 58> [local count: 548252107]:
+  # ivtmp.241_783 = PHI <ivtmp.241_784(58), 0(57)>
+  _785 = (unsigned long) p_88;
+  _786 = ivtmp.241_783 + _785;
+  _325 = (const struct POLY *) _786;
+  _326 = cs1.poly;
+  _327 = _326 + ivtmp.241_783;
+  ossl_ml_dsa_poly_ntt_mult (_325, p_76, _327);
+  ivtmp.241_784 = ivtmp.241_783 + 1024;
+  if (_89 != ivtmp.241_784)
+    goto <bb 58>; [89.00%]
+  else
+    goto <bb 59>; [11.00%]
+
+  <bb 59> [local count: 67761496]:
+  _607 = cs1.num_poly;
+  if (_607 != 0)
+    goto <bb 60>; [89.00%]
+  else
+    goto <bb 61>; [11.00%]
+
+  <bb 60> [local count: 548252107]:
+  # i_379 = PHI <i_320(60), 0(59)>
+  _316 = cs1.poly;
+  _782 = i_379 * 1024;
+  _319 = _316 + _782;
+  ossl_ml_dsa_poly_ntt_inverse (_319);
+  i_320 = i_379 + 1;
+  _321 = cs1.num_poly;
+  if (i_320 < _321)
+    goto <bb 60>; [89.00%]
+  else
+    goto <bb 61>; [11.00%]
+
+  <bb 61> [local count: 67761496]:
+  if (_78 != 0)
+    goto <bb 62>; [89.00%]
+  else
+    goto <bb 64>; [11.00%]
+
+  <bb 62> [local count: 548252107]:
+  # ivtmp.231_773 = PHI <ivtmp.231_774(62), _780(61)>
+  # ivtmp.232_776 = PHI <ivtmp.232_777(62), _771(61)>
+  _311 = (const struct POLY *) ivtmp.231_773;
+  _313 = (struct POLY *) ivtmp.232_776;
+  ossl_ml_dsa_poly_ntt_mult (_311, p_76, _313);
+  ivtmp.231_774 = ivtmp.231_773 + 1024;
+  ivtmp.232_777 = ivtmp.232_776 + 1024;
+  if (ivtmp.231_774 != _781)
+    goto <bb 62>; [89.00%]
+  else
+    goto <bb 63>; [11.00%]
+
+  <bb 63> [local count: 548252107]:
+  # ivtmp.227_767 = PHI <ivtmp.227_768(63), _771(62)>
+  _305 = (struct POLY *) ivtmp.227_767;
+  ossl_ml_dsa_poly_ntt_inverse (_305);
+  ivtmp.227_768 = ivtmp.227_767 + 1024;
+  if (ivtmp.227_768 != _772)
+    goto <bb 63>; [89.00%]
+  else
+    goto <bb 64>; [11.00%]
+
+  <bb 64> [local count: 67761496]:
+  if (_79 != 0)
+    goto <bb 65>; [89.00%]
+  else
+    goto <bb 68>; [11.00%]
+
+  <bb 65> [local count: 548252107]:
+  # ivtmp.222_588 = PHI <ivtmp.222_580(67), 0(64)>
+  _675 = (unsigned long) _90;
+  _579 = ivtmp.222_588 + _675;
+  _295 = (const struct POLY *) _579;
+  _296 = cs1.poly;
+  _297 = _296 + ivtmp.222_588;
+  _298 = sig.poly;
+  _299 = _298 + ivtmp.222_588;
+
+  <bb 66> [local count: 54276970030]:
+  # ivtmp.218_592 = PHI <ivtmp.218_582(66), 0(65)>
+  _331 = MEM[(unsigned int *)_295 + ivtmp.218_592 * 1];
+  _332 = MEM[(unsigned int *)_297 + ivtmp.218_592 * 1];
+  _333 = _331 + _332;
+  _336 = _333 ^ 8380417;
+  _337 = _333 + 4286586879;
+  _338 = _337 ^ 8380417;
+  _339 = _336 | _338;
+  _340 = _333 ^ _339;
+  a.4_341 = (signed int) _340;
+  _342 = a.4_341 >> 31;
+  _343 = (unsigned int) _342;
+  __asm__("" : "=r" r_344 : "0" _343);
+  _345 = _333 & r_344;
+  _346 = ~_343;
+  __asm__("" : "=r" r_347 : "0" _346);
+  _348 = _337 & r_347;
+  _349 = _345 | _348;
+  MEM[(unsigned int *)_299 + ivtmp.218_592 * 1] = _349;
+  ivtmp.218_582 = ivtmp.218_592 + 4;
+  if (ivtmp.218_582 != 1024)
+    goto <bb 66>; [98.99%]
+  else
+    goto <bb 67>; [1.01%]
+
+  <bb 67> [local count: 548252107]:
+  ivtmp.222_580 = ivtmp.222_588 + 1024;
+  if (_89 != ivtmp.222_580)
+    goto <bb 65>; [89.00%]
+  else
+    goto <bb 68>; [11.00%]
+
+  <bb 68> [local count: 67761496]:
+  _301 = w.num_poly;
+  if (_301 != 0)
+    goto <bb 69>; [89.00%]
+  else
+    goto <bb 72>; [11.00%]
+
+  <bb 69> [local count: 548252107]:
+  # i_501 = PHI <i_290(71), 0(68)>
+  # ivtmp.208_697 = PHI <ivtmp.208_242(71), _771(68)>
+  _282 = w.poly;
+  _590 = i_501 * 1024;
+  _285 = _282 + _590;
+  _287 = (const struct POLY *) ivtmp.208_697;
+  _288 = w1.poly;
+  _289 = _288 + _590;
+
+  <bb 70> [local count: 54276970030]:
+  # ivtmp.203_193 = PHI <ivtmp.203_205(70), 0(69)>
+  _351 = MEM[(unsigned int *)_285 + ivtmp.203_193 * 1];
+  _352 = MEM[(unsigned int *)_287 + ivtmp.203_193 * 1];
+  _353 = _351 - _352;
+  _354 = _353 + 8380417;
+  _357 = _354 ^ 8380417;
+  _359 = _353 ^ 8380417;
+  _360 = _357 | _359;
+  _361 = _354 ^ _360;
+  a.4_362 = (signed int) _361;
+  _363 = a.4_362 >> 31;
+  _364 = (unsigned int) _363;
+  __asm__("" : "=r" r_365 : "0" _364);
+  _366 = _354 & r_365;
+  _367 = ~_364;
+  __asm__("" : "=r" r_368 : "0" _367);
+  _369 = _353 & r_368;
+  _370 = _366 | _369;
+  MEM[(unsigned int *)_289 + ivtmp.203_193 * 1] = _370;
+  ivtmp.203_205 = ivtmp.203_193 + 4;
+  if (ivtmp.203_205 != 1024)
+    goto <bb 70>; [98.99%]
+  else
+    goto <bb 71>; [1.01%]
+
+  <bb 71> [local count: 548252107]:
+  i_290 = i_501 + 1;
+  _291 = w.num_poly;
+  ivtmp.208_242 = ivtmp.208_697 + 1024;
+  if (i_290 < _291)
+    goto <bb 69>; [89.00%]
+  else
+    goto <bb 72>; [11.00%]
+
+  <bb 72> [local count: 67761496]:
+  _315 = w1.num_poly;
+  if (_315 != 0)
+    goto <bb 73>; [89.00%]
+  else
+    goto <bb 114>; [11.00%]
+
+  <bb 73> [local count: 548252107]:
+  # i_570 = PHI <i_280(75), 0(72)>
+  _274 = w1.poly;
+  _194 = i_570 * 1024;
+  _277 = _274 + _194;
+  ivtmp.189_241 = (unsigned long) _277;
+  _184 = ivtmp.189_241 + 1024;
+
+  <bb 74> [local count: 54276970030]:
+  # ivtmp.189_329 = PHI <ivtmp.189_238(74), ivtmp.189_241(73)>
+  _181 = (void *) ivtmp.189_329;
+  _372 = MEM[(unsigned int *)_181];
+  _373 = ossl_ml_dsa_key_compress_low_bits (_372, gamma2_53);
+  _374 = (unsigned int) _373;
+  MEM[(unsigned int *)_181] = _374;
+  ivtmp.189_238 = ivtmp.189_329 + 4;
+  if (_184 != ivtmp.189_238)
+    goto <bb 74>; [98.99%]
+  else
+    goto <bb 75>; [1.01%]
+
+  <bb 75> [local count: 548252107]:
+  i_280 = i_570 + 1;
+  _281 = w1.num_poly;
+  if (i_280 < _281)
+    goto <bb 73>; [89.00%]
+  else
+    goto <bb 76>; [11.00%]
+
+  <bb 76> [local count: 60307731]:
+  _249 = MEM[(const struct VECTOR *)&sig].num_poly;
+  if (_249 != 0)
+    goto <bb 77>; [89.00%]
+  else
+    goto <bb 81>; [11.00%]
+
+  <bb 77> [local count: 60307731]:
+  # _478 = PHI <_249(76), _206(114)>
+  # _484 = PHI <_281(76), _315(114)>
+  _267 = MEM[(const struct VECTOR *)&sig].poly;
+  _307 = (unsigned long) _267;
+  ivtmp.181_292 = _307 + 1024;
+
+  <bb 78> [local count: 548252107]:
+  # i_642 = PHI <i_271(80), 0(77)>
+  # mx_761 = PHI <_395(80), 0(77)>
+  # ivtmp.181_265 = PHI <ivtmp.181_278(80), ivtmp.181_292(77)>
+  _308 = ivtmp.181_265 + 18446744073709550592;
+
+  <bb 79> [local count: 54276970030]:
+  # mx_759 = PHI <_395(79), mx_761(78)>
+  # ivtmp.176_666 = PHI <ivtmp.176_111(79), _308(78)>
+  _168 = (void *) ivtmp.176_666;
+  c_377 = MEM[(unsigned int *)_168];
+  _396 = c_377 ^ 4190208;
+  _397 = 4190208 - c_377;
+  _398 = c_377 ^ _397;
+  _399 = _396 | _398;
+  _400 = (signed int) _399;
+  _401 = _400 >> 31;
+  _402 = (unsigned int) _401;
+  _403 = 8380417 - c_377;
+  __asm__("" : "=r" r_404 : "0" _402);
+  _405 = _403 & r_404;
+  _406 = ~_402;
+  __asm__("" : "=r" r_407 : "0" _406);
+  _408 = c_377 & r_407;
+  _409 = _405 | _408;
+  _382 = _409 ^ mx_759;
+  _383 = mx_759 - _409;
+  _384 = _383 ^ _409;
+  _385 = _382 | _384;
+  _386 = _385 ^ mx_759;
+  a.9_387 = (signed int) _386;
+  _388 = a.9_387 >> 31;
+  _389 = (unsigned int) _388;
+  __asm__("" : "=r" r_390 : "0" _389);
+  _391 = r_390 & _409;
+  _392 = ~_389;
+  __asm__("" : "=r" r_393 : "0" _392);
+  _394 = r_393 & mx_759;
+  _395 = _391 | _394;
+  ivtmp.176_111 = ivtmp.176_666 + 4;
+  if (ivtmp.176_111 != ivtmp.181_265)
+    goto <bb 79>; [98.99%]
+  else
+    goto <bb 80>; [1.01%]
+
+  <bb 80> [local count: 548252107]:
+  i_271 = i_642 + 1;
+  ivtmp.181_278 = ivtmp.181_265 + 1024;
+  if (i_271 < _478)
+    goto <bb 78>; [89.00%]
+  else
+    goto <bb 81>; [11.00%]
+
+  <bb 81> [local count: 66941582]:
+  # mx_762 = PHI <_395(80), 0(76)>
+  # _564 = PHI <_484(80), _281(76)>
+  if (_564 != 0)
+    goto <bb 82>; [90.09%]
+  else
+    goto <bb 86>; [9.91%]
+
+  <bb 82> [local count: 60307731]:
+  _260 = w1.poly;
+  _670 = (unsigned long) _260;
+  ivtmp.168_464 = _670 + 1024;
+  _104 = _564 * 1024;
+  _698 = _104 + ivtmp.168_464;
+
+  <bb 83> [local count: 548252107]:
+  # mx_757 = PHI <_429(85), 0(82)>
+  # ivtmp.168_539 = PHI <ivtmp.168_201(85), ivtmp.168_464(82)>
+  _701 = ivtmp.168_539 + 18446744073709550592;
+
+  <bb 84> [local count: 54276970030]:
+  # mx_755 = PHI <_429(84), mx_757(83)>
+  # ivtmp.163_537 = PHI <ivtmp.163_177(84), _701(83)>
+  _538 = (void *) ivtmp.163_537;
+  c_411 = MEM[(unsigned int *)_538];
+  _430 = c_411 ^ 2147483648;
+  _431 = c_411 + 2147483648;
+  _432 = _431 ^ 2147483648;
+  _433 = _430 | _432;
+  _434 = c_411 ^ _433;
+  a.4_435 = (signed int) _434;
+  _436 = a.4_435 >> 31;
+  _437 = (unsigned int) _436;
+  _438 = -c_411;
+  __asm__("" : "=r" r_439 : "0" _437);
+  _440 = c_411 & r_439;
+  _441 = ~_437;
+  __asm__("" : "=r" r_442 : "0" _441);
+  _443 = _438 & r_442;
+  _444 = _440 | _443;
+  _416 = _444 ^ mx_755;
+  _417 = mx_755 - _444;
+  _418 = _417 ^ _444;
+  _419 = _416 | _418;
+  _420 = _419 ^ mx_755;
+  a.9_421 = (signed int) _420;
+  _422 = a.9_421 >> 31;
+  _423 = (unsigned int) _422;
+  __asm__("" : "=r" r_424 : "0" _423);
+  _425 = r_424 & _444;
+  _426 = ~_423;
+  __asm__("" : "=r" r_427 : "0" _426);
+  _428 = r_427 & mx_755;
+  _429 = _425 | _428;
+  ivtmp.163_177 = ivtmp.163_537 + 4;
+  if (ivtmp.163_177 != ivtmp.168_539)
+    goto <bb 84>; [98.99%]
+  else
+    goto <bb 85>; [1.01%]
+
+  <bb 85> [local count: 548252107]:
+  ivtmp.168_201 = ivtmp.168_539 + 1024;
+  if (ivtmp.168_201 != _698)
+    goto <bb 83>; [89.00%]
+  else
+    goto <bb 86>; [11.00%]
+
+  <bb 86> [local count: 67761496]:
+  # mx_758 = PHI <_429(85), 0(81), 0(114)>
+  # mx_182 = PHI <mx_762(85), mx_762(81), 0(114)>
+  _118 = params_45->beta;
+  _119 = (unsigned int) _118;
+  _120 = gamma1_51 - _119;
+  _121 = _120 ^ mx_182;
+  _122 = _119 - gamma1_51;
+  _123 = _122 + mx_182;
+  _124 = _120 ^ _123;
+  _125 = _121 | _124;
+  _126 = _125 ^ mx_182;
+  _127 = gamma2_53 - _119;
+  _128 = _127 ^ mx_758;
+  _129 = _119 - gamma2_53;
+  _130 = _129 + mx_758;
+  _131 = _127 ^ _130;
+  _132 = _128 | _131;
+  _133 = _132 ^ mx_758;
+  _134 = _126 & _133;
+  _135 = (signed int) _134;
+  _136 = _135 >> 31;
+  _137 = (unsigned int) _136;
+  _138 = ~_137;
+  __asm__("" : "=r" r_139 : "0" _138);
+  if (r_139 != 0)
+    goto <bb 108>; [50.00%]
+  else
+    goto <bb 87>; [50.00%]
+
+  <bb 87> [local count: 33880748]:
+  if (_78 != 0)
+    goto <bb 88>; [89.00%]
+  else
+    goto <bb 89>; [11.00%]
+
+  <bb 88> [local count: 274126054]:
+  # ivtmp.155_232 = PHI <ivtmp.155_650(88), 0(87)>
+  _544 = (unsigned long) _83;
+  _244 = ivtmp.155_232 + _544;
+  _486 = (const struct POLY *) _244;
+  _487 = w1.poly;
+  _488 = _487 + ivtmp.155_232;
+  ossl_ml_dsa_poly_ntt_mult (_486, p_76, _488);
+  ivtmp.155_650 = ivtmp.155_232 + 1024;
+  if (_82 != ivtmp.155_650)
+    goto <bb 88>; [89.00%]
+  else
+    goto <bb 89>; [11.00%]
+
+  <bb 89> [local count: 33880748]:
+  _208 = w1.num_poly;
+  if (_208 != 0)
+    goto <bb 90>; [89.00%]
+  else
+    goto <bb 118>; [11.00%]
+
+  <bb 90> [local count: 274126054]:
+  # i_657 = PHI <i_481(90), 0(89)>
+  _477 = w1.poly;
+  _543 = i_657 * 1024;
+  _480 = _477 + _543;
+  ossl_ml_dsa_poly_ntt_inverse (_480);
+  i_481 = i_657 + 1;
+  _482 = w1.num_poly;
+  if (i_481 < _482)
+    goto <bb 90>; [89.00%]
+  else
+    goto <bb 91>; [11.00%]
+
+  <bb 91> [local count: 30153866]:
+  _187 = MEM[(struct VECTOR *)&sig + 16B].num_poly;
+  if (_187 != 0)
+    goto <bb 92>; [89.00%]
+  else
+    goto <bb 113>; [11.00%]
+
+  <bb 92> [local count: 30153866]:
+
+  <bb 93> [local count: 274126054]:
+  # i_664 = PHI <i_475(95), 0(92)>
+  # ivtmp.147_502 = PHI <ivtmp.147_542(95), _771(92)>
+  _465 = w1.poly;
+  _656 = i_664 * 1024;
+  _468 = _465 + _656;
+  _470 = (const struct POLY *) ivtmp.147_502;
+  _471 = w.poly;
+  _472 = _471 + _656;
+  _473 = MEM[(struct VECTOR *)&sig + 16B].poly;
+  _474 = _473 + _656;
+
+  <bb 94> [local count: 27138485065]:
+  # ivtmp.142_545 = PHI <ivtmp.142_254(94), 0(93)>
+  _492 = MEM[(unsigned int *)_468 + ivtmp.142_545 * 1];
+  _493 = MEM[(unsigned int *)_470 + ivtmp.142_545 * 1];
+  _494 = MEM[(unsigned int *)_472 + ivtmp.142_545 * 1];
+  _495 = ossl_ml_dsa_key_compress_make_hint (_492, _493, gamma2_53, _494);
+  _496 = (unsigned int) _495;
+  MEM[(unsigned int *)_474 + ivtmp.142_545 * 1] = _496;
+  ivtmp.142_254 = ivtmp.142_545 + 4;
+  if (ivtmp.142_254 != 1024)
+    goto <bb 94>; [98.99%]
+  else
+    goto <bb 95>; [1.01%]
+
+  <bb 95> [local count: 274126054]:
+  i_475 = i_664 + 1;
+  _476 = MEM[(struct VECTOR *)&sig + 16B].num_poly;
+  ivtmp.147_542 = ivtmp.147_502 + 1024;
+  if (i_475 < _476)
+    goto <bb 93>; [89.00%]
+  else
+    goto <bb 96>; [11.00%]
+
+  <bb 96> [local count: 30153866]:
+  _589 = w1.num_poly;
+  if (_589 != 0)
+    goto <bb 97>; [89.00%]
+  else
+    goto <bb 101>; [11.00%]
+
+  <bb 97> [local count: 30153866]:
+  # _689 = PHI <_589(96), _279(113)>
+  # _261 = PHI <_476(96), _187(113)>
+  _458 = w1.poly;
+  _541 = (unsigned long) _458;
+  ivtmp.130_323 = _541 + 1024;
+
+  <bb 98> [local count: 274126054]:
+  # i_667 = PHI <i_462(100), 0(97)>
+  # mx_765 = PHI <_517(100), r_139(97)>
+  # ivtmp.130_317 = PHI <ivtmp.130_555(100), ivtmp.130_323(97)>
+  _218 = ivtmp.130_317 + 18446744073709550592;
+
+  <bb 99> [local count: 27138485065]:
+  # mx_763 = PHI <_517(99), mx_765(98)>
+  # ivtmp.125_490 = PHI <ivtmp.125_552(99), _218(98)>
+  _553 = (void *) ivtmp.125_490;
+  c_499 = MEM[(unsigned int *)_553];
+  _518 = c_499 ^ 4190208;
+  _519 = 4190208 - c_499;
+  _520 = c_499 ^ _519;
+  _521 = _518 | _520;
+  _522 = (signed int) _521;
+  _523 = _522 >> 31;
+  _524 = (unsigned int) _523;
+  _525 = 8380417 - c_499;
+  __asm__("" : "=r" r_526 : "0" _524);
+  _527 = _525 & r_526;
+  _528 = ~_524;
+  __asm__("" : "=r" r_529 : "0" _528);
+  _530 = c_499 & r_529;
+  _531 = _527 | _530;
+  _504 = _531 ^ mx_763;
+  _505 = mx_763 - _531;
+  _506 = _505 ^ _531;
+  _507 = _504 | _506;
+  _508 = _507 ^ mx_763;
+  a.9_509 = (signed int) _508;
+  _510 = a.9_509 >> 31;
+  _511 = (unsigned int) _510;
+  __asm__("" : "=r" r_512 : "0" _511);
+  _513 = r_512 & _531;
+  _514 = ~_511;
+  __asm__("" : "=r" r_515 : "0" _514);
+  _516 = r_515 & mx_763;
+  _517 = _513 | _516;
+  ivtmp.125_552 = ivtmp.125_490 + 4;
+  if (ivtmp.130_317 != ivtmp.125_552)
+    goto <bb 99>; [98.99%]
+  else
+    goto <bb 100>; [1.01%]
+
+  <bb 100> [local count: 274126054]:
+  i_462 = i_667 + 1;
+  ivtmp.130_555 = ivtmp.130_317 + 1024;
+  if (i_462 < _689)
+    goto <bb 98>; [89.00%]
+  else
+    goto <bb 101>; [11.00%]
+
+  <bb 101> [local count: 33470791]:
+  # mx_766 = PHI <_517(100), r_139(96)>
+  # _547 = PHI <_261(100), _476(96)>
+  if (_547 != 0)
+    goto <bb 102>; [90.09%]
+  else
+    goto <bb 106>; [9.91%]
+
+  <bb 102> [local count: 30153866]:
+  _445 = MEM[(const struct VECTOR *)&sig + 16B].poly;
+  _350 = (unsigned long) _445;
+  ivtmp.117_557 = _350 + 1024;
+  _286 = _547 * 1024;
+  _556 = _286 + ivtmp.117_557;
+  goto <bb 105>; [100.00%]
+
+  <bb 103> [local count: 27138492228]:
+  # count_39 = PHI <count_453(103), count_668(105)>
+  # ivtmp.111_240 = PHI <ivtmp.111_549(103), _330(105)>
+  _558 = (void *) ivtmp.111_240;
+  _450 = MEM[(unsigned int *)_558];
+  _451 = (long unsigned int) _450;
+  count_453 = count_39 + _451;
+  ivtmp.111_549 = ivtmp.111_240 + 4;
+  if (ivtmp.111_549 != ivtmp.117_550)
+    goto <bb 103>; [98.99%]
+  else
+    goto <bb 104>; [1.01%]
+
+  <bb 104> [local count: 274126126]:
+  ivtmp.117_283 = ivtmp.117_550 + 1024;
+  if (ivtmp.117_283 != _556)
+    goto <bb 105>; [89.00%]
+  else
+    goto <bb 106>; [11.00%]
+
+  <bb 105> [local count: 274126118]:
+  # count_668 = PHI <count_453(104), 0(102)>
+  # ivtmp.117_550 = PHI <ivtmp.117_283(104), ivtmp.117_557(102)>
+  _330 = ivtmp.117_550 + 18446744073709550592;
+  goto <bb 103>; [100.00%]
+
+  <bb 106> [local count: 33880748]:
+  # count_7 = PHI <count_453(104), _547(101), _279(113), _587(118)>
+  # mx_691 = PHI <mx_766(104), mx_766(101), r_139(113), r_139(118)>
+  h_ones_142 = (uint32_t) count_7;
+  _143 = gamma2_53 ^ mx_691;
+  _144 = mx_691 - gamma2_53;
+  _145 = gamma2_53 ^ _144;
+  _146 = _143 | _145;
+  _147 = _146 ^ mx_691;
+  a.9_148 = (signed int) _147;
+  _149 = a.9_148 >> 31;
+  _150 = (unsigned int) _149;
+  _151 = ~_150;
+  _152 = params_45->omega;
+  _153 = (unsigned int) _152;
+  _154 = h_ones_142 ^ _153;
+  _155 = _153 - h_ones_142;
+  _156 = h_ones_142 ^ _155;
+  _157 = _154 | _156;
+  _158 = _153 ^ _157;
+  a.9_159 = (signed int) _158;
+  _160 = a.9_159 >> 31;
+  _161 = (unsigned int) _160;
+  _162 = _151 | _161;
+  __asm__("" : "=r" r_163 : "0" _162);
+  if (r_163 != 0)
+    goto <bb 108>; [50.00%]
+  else
+    goto <bb 107>; [50.00%]
+
+  <bb 107> [local count: 16940374]:
+  ret_164 = ossl_ml_dsa_sig_encode (&sig, params_45, sig_24(D));
+  goto <bb 109>; [100.00%]
+
+  <bb 108> [local count: 50821122]:
+  kappa_165 = _79 + kappa_107;
+  goto <bb 39>; [100.00%]
+
+  <bb 109> [local count: 134483084]:
+  # ret_167 = PHI <0(17), _100(18), _174(23), 0(117), _215(55), ret_164(107), _258(56), 0(115)>
+err:
+  EVP_MD_CTX_free (md_ctx_75);
+  CRYPTO_clear_free (alloc_74, alloc_len_73, "ml_dsa_sign.c", 299);
+  OPENSSL_cleanse (&rho_prime, 64);
+
+  <bb 110> [local count: 290689386]:
+  # _166 = PHI <0(13), 0(16), ret_167(109)>
+  # md_ctx_70 = PHI <0B(13), md_ctx_568(16), md_ctx_568(109)>
+  w ={v} {CLOBBER(eos)};
+  w1 ={v} {CLOBBER(eos)};
+  cs1 ={v} {CLOBBER(eos)};
+  a_ntt ={v} {CLOBBER(eos)};
+  sig ={v} {CLOBBER(eos)};
+  rho_prime ={v} {CLOBBER(eos)};
+  c_tilde ={v} {CLOBBER(eos)};
+
+  <bb 111> [local count: 401885959]:
+  # md_ctx_10 = PHI <md_ctx_31(10), md_ctx_31(11), md_ctx_70(110)>
+  # ret_13 = PHI <_43(10), _44(11), _166(110)>
+err:
+  EVP_MD_CTX_free (md_ctx_10);
+
+  <bb 112> [local count: 1073741824]:
+  # _14 = PHI <0(2), _41(6), 0(7), msg_is_mu_26(D)(9), ret_13(111)>
+  mu ={v} {CLOBBER(eos)};
+  return _14;
+
+  <bb 113> [local count: 3316925]:
+  _279 = w1.num_poly;
+  if (_279 != 0)
+    goto <bb 97>; [100.00%]
+  else
+    goto <bb 106>; [0.00%]
+
+  <bb 114> [local count: 7453765]:
+  _206 = MEM[(const struct VECTOR *)&sig].num_poly;
+  if (_206 != 0)
+    goto <bb 77>; [89.00%]
+  else
+    goto <bb 86>; [11.00%]
+
+  <bb 115> [local count: 2672088]:
+  goto <bb 109>; [100.00%]
+
+  <bb 116> [local count: 2439566]:
+  _562 = MEM[(const struct VECTOR *)priv_20(D) + 208B].num_poly;
+  if (_562 == 0)
+    goto <bb 38>; [99.96%]
+  else
+    goto <bb 35>; [0.04%]
+
+  <bb 117> [local count: 23203494]:
+  goto <bb 109>; [100.00%]
+
+  <bb 118> [local count: 3726882]:
+  _587 = MEM[(struct VECTOR *)&sig + 16B].num_poly;
+  if (_587 != 0)
+    goto <bb 92>; [89.00%]
+  else
+    goto <bb 106>; [11.00%]
+
+}
+
+
+
+;; Function ossl_ml_dsa_verify (ossl_ml_dsa_verify, funcdef_no=581, decl_uid=16590, cgraph_uid=582, symbol_order=581)
+
+Removing basic block 10
+Removing basic block 55
+Removing basic block 56
+Removing basic block 57
+Removing basic block 58
+Removing basic block 59
+Removing basic block 60
+Removing basic block 62
+Removing basic block 63
+Removing basic block 64
+Removing basic block 65
+Removing basic block 66
+Removing basic block 67
+Removing basic block 68
+Removing basic block 69
+Removing basic block 70
+Removing basic block 71
+Removing basic block 72
+Removing basic block 73
+Removing basic block 74
+Removing basic block 75
+Removing basic block 76
+Removing basic block 77
+Removing basic block 78
+Removing basic block 79
+Removing basic block 80
+Removing basic block 81
+Removing basic block 82
+Removing basic block 83
+Removing basic block 84
+Removing basic block 85
+Removing basic block 86
+Removing basic block 87
+Removing basic block 88
+Removing basic block 89
+Removing basic block 90
+Removing basic block 91
+Removing basic block 92
+Removing basic block 93
+Removing basic block 94
+Removing basic block 95
+Removing basic block 96
+Removing basic block 97
+Removing basic block 98
+int ossl_ml_dsa_verify (const struct ML_DSA_KEY * pub, int msg_is_mu, const uint8_t * msg, size_t msg_len, const uint8_t * context, size_t context_len, int encode, const uint8_t * sig, size_t sig_len)
+{
+  unsigned long ivtmp.369;
+  sizetype ivtmp.364;
+  unsigned long ivtmp.355;
+  unsigned long ivtmp.351;
+  unsigned long ivtmp.346;
+  unsigned long ivtmp.341;
+  unsigned long ivtmp.330;
+  sizetype ivtmp.325;
+  sizetype ivtmp.308;
+  uint32_t r;
+  uint32_t r;
+  uint32_t r;
+  uint32_t r;
+  unsigned int r;
+  unsigned int r;
+  uint32_t c;
+  size_t i;
+  uint32_t mx;
+  size_t i;
+  size_t i;
+  size_t i;
+  size_t i;
+  int ret;
+  uint8_t * alloc;
+  struct POLY * p;
+  struct MATRIX a_ntt;
+  struct VECTOR az_ntt;
+  struct ML_DSA_SIG sig;
+  const struct ML_DSA_PARAMS * params;
+  uint32_t k;
+  uint32_t l;
+  uint32_t gamma2;
+  size_t w1_encoded_len;
+  size_t num_polys_sig;
+  size_t num_polys_k;
+  size_t num_polys_k_by_l;
+  uint8_t c_tilde[64];
+  uint8_t c_tilde_sig[64];
+  struct EVP_MD_CTX * md_ctx;
+  size_t c_tilde_len;
+  static const char __func__[23] = "ml_dsa_verify_internal";
+  int ret;
+  const uint8_t * mu_ptr;
+  uint8_t mu[64];
+  struct EVP_MD_CTX * md_ctx;
+  const uint8_t * _1;
+  int _9;
+  int _32;
+  int _33;
+  long unsigned int _35;
+  long unsigned int _37;
+  int _39;
+  unsigned int _41;
+  unsigned int _43;
+  long unsigned int _45;
+  unsigned int _46;
+  int _48;
+  int _49;
+  unsigned int iftmp.10_51;
+  unsigned int _52;
+  long unsigned int _57;
+  long unsigned int _58;
+  long unsigned int _59;
+  long unsigned int _64;
+  long unsigned int _65;
+  long unsigned int _67;
+  struct POLY * _68;
+  long unsigned int _69;
+  struct POLY * _71;
+  const struct ML_DSA_PARAMS * _72;
+  int _73;
+  struct EVP_MD * _74;
+  const uint8_t[32] * _75;
+  int _76;
+  struct EVP_MD * _77;
+  int _78;
+  unsigned int _79;
+  struct EVP_MD * _83;
+  long unsigned int _84;
+  int _85;
+  int _86;
+  int _87;
+  unsigned int _88;
+  uint8_t * _89;
+  int _90;
+  int _91;
+  int _95;
+  int _97;
+  int _98;
+  int _99;
+  int _100;
+  int _101;
+  struct POLY * _103;
+  const struct POLY * _106;
+  struct POLY * _107;
+  const struct POLY * _108;
+  long unsigned int _112;
+  struct POLY * _113;
+  struct POLY * _116;
+  long unsigned int _118;
+  struct POLY * _119;
+  long unsigned int _120;
+  const struct POLY * _122;
+  long unsigned int _123;
+  const struct POLY * _124;
+  long unsigned int _128;
+  struct POLY * _129;
+  struct POLY * _132;
+  long unsigned int _134;
+  struct POLY * _135;
+  unsigned long _143;
+  const struct POLY * _145;
+  long unsigned int _146;
+  void * _147;
+  struct POLY * _150;
+  struct POLY * _153;
+  struct POLY * _155;
+  unsigned int _157;
+  unsigned int _158;
+  long unsigned int _161;
+  struct POLY * _165;
+  unsigned long _172;
+  unsigned int _174;
+  unsigned int _175;
+  unsigned int _176;
+  unsigned int _177;
+  unsigned int _178;
+  signed int a.9_179;
+  signed int _180;
+  unsigned int _181;
+  unsigned int _183;
+  unsigned int _184;
+  unsigned int _186;
+  unsigned int _187;
+  unsigned int _188;
+  unsigned int _189;
+  unsigned int _190;
+  unsigned int _191;
+  signed int _192;
+  signed int _193;
+  unsigned int _194;
+  unsigned int _195;
+  unsigned int _197;
+  unsigned int _198;
+  unsigned int _200;
+  unsigned int _201;
+  unsigned int _203;
+  unsigned int _204;
+  unsigned int _205;
+  unsigned int _206;
+  unsigned int _209;
+  unsigned int _211;
+  unsigned int _212;
+  unsigned int _213;
+  signed int a.4_214;
+  signed int _215;
+  unsigned int _216;
+  unsigned int _218;
+  unsigned int _219;
+  unsigned int _221;
+  unsigned int _222;
+  unsigned int _224;
+  unsigned int _225;
+  unsigned int _226;
+  long unsigned int _232;
+  long unsigned int _233;
+  unsigned long _242;
+  long unsigned int _244;
+  long unsigned int _248;
+  int _265;
+  unsigned long _277;
+  _Bool _299;
+  unsigned long _304;
+  long unsigned int _326;
+  long unsigned int _327;
+  long unsigned int _328;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = ossl_ml_dsa_key_get_pub (pub_14(D));
+  if (_1 == 0B)
+    goto <bb 52>; [18.09%]
+  else
+    goto <bb 3>; [81.91%]
+
+  <bb 3> [local count: 879501928]:
+  if (msg_is_mu_16(D) != 0)
+    goto <bb 7>; [50.00%]
+  else
+    goto <bb 4>; [50.00%]
+
+  <bb 4> [local count: 439750964]:
+  md_ctx_21 = ossl_ml_dsa_mu_init (pub_14(D), encode_17(D), context_18(D), context_len_19(D));
+  if (md_ctx_21 == 0B)
+    goto <bb 52>; [30.95%]
+  else
+    goto <bb 5>; [69.05%]
+
+  <bb 5> [local count: 303648040]:
+  _32 = EVP_DigestUpdate (md_ctx_21, msg_22(D), msg_len_23(D));
+  if (_32 == 0)
+    goto <bb 51>; [51.12%]
+  else
+    goto <bb 6>; [48.88%]
+
+  <bb 6> [local count: 148423161]:
+  _33 = EVP_DigestSqueeze (md_ctx_21, &mu, 64);
+  if (_33 == 0)
+    goto <bb 51>; [34.00%]
+  else
+    goto <bb 9>; [66.00%]
+
+  <bb 7> [local count: 439750964]:
+  if (msg_len_23(D) != 64)
+    goto <bb 8>; [40.35%]
+  else
+    goto <bb 9>; [59.65%]
+
+  <bb 8> [local count: 177444382]:
+  ERR_new ();
+  ERR_set_debug ("ml_dsa_sign.c", 344, &__func__);
+  ERR_set_error (57, 142, 0B);
+  goto <bb 50>; [100.00%]
+
+  <bb 9> [local count: 360265868]:
+  # md_ctx_104 = PHI <0B(7), md_ctx_21(6)>
+  # mu_ptr_235 = PHI <msg_22(D)(7), &mu(6)>
+  params_34 = pub_14(D)->params;
+  _39 = params_34->gamma2;
+  gamma2_40 = (uint32_t) _39;
+  if (gamma2_40 == 95232)
+    goto <bb 10>; [34.00%]
+  else
+    goto <bb 11>; [66.00%]
+
+  <bb 10> [local count: 122490396]:
+
+  <bb 11> [local count: 360265869]:
+  # iftmp.10_51 = PHI <192(10), 128(9)>
+  _35 = params_34->k;
+  k_36 = (uint32_t) _35;
+  _37 = params_34->l;
+  l_38 = (uint32_t) _37;
+  _41 = k_36 + l_38;
+  num_polys_sig_42 = (size_t) _41;
+  _45 = _37 & 4294967295;
+  _326 = _45 + 1;
+  _46 = k_36 * l_38;
+  num_polys_k_by_l_47 = (size_t) _46;
+  _244 = num_polys_sig_42 + num_polys_k_by_l_47;
+  _48 = params_34->bit_strength;
+  _52 = k_36 * iftmp.10_51;
+  w1_encoded_len_53 = (size_t) _52;
+  _43 = k_36 * 2;
+  num_polys_k_44 = (size_t) _43;
+  _233 = num_polys_k_44 + _326;
+  _57 = _233 + _244;
+  _58 = _57 * 1024;
+  _59 = w1_encoded_len_53 + _58;
+  alloc_60 = CRYPTO_malloc (_59, "ml_dsa_sign.c", 351);
+  if (alloc_60 == 0B)
+    goto <bb 50>; [30.95%]
+  else
+    goto <bb 12>; [69.05%]
+
+  <bb 12> [local count: 248763582]:
+  md_ctx_61 = EVP_MD_CTX_new ();
+  if (md_ctx_61 == 0B)
+    goto <bb 49>; [30.95%]
+  else
+    goto <bb 13>; [69.05%]
+
+  <bb 13> [local count: 171771253]:
+  _49 = _48 >> 2;
+  c_tilde_len_50 = (size_t) _49;
+  p_62 = alloc_60 + w1_encoded_len_53;
+  p_63 = p_62 + 1024;
+  _64 = _35 & 4294967295;
+  a_ntt.k = _64;
+  a_ntt.l = _45;
+  a_ntt.m_poly = p_63;
+  _65 = num_polys_k_by_l_47 * 1024;
+  p_66 = p_63 + _65;
+  _67 = _64 * 1024;
+  _68 = p_66 + _67;
+  MEM[(struct VECTOR *)&sig].poly = _68;
+  MEM[(struct VECTOR *)&sig].num_poly = _45;
+  MEM[(struct VECTOR *)&sig + 16B].poly = p_66;
+  MEM[(struct VECTOR *)&sig + 16B].num_poly = _64;
+  sig.c_tilde = &c_tilde_sig;
+  sig.c_tilde_len = c_tilde_len_50;
+  _69 = num_polys_sig_42 * 1024;
+  p_70 = p_66 + _69;
+  az_ntt.poly = p_70;
+  az_ntt.num_poly = _64;
+  _72 = pub_14(D)->params;
+  _73 = ossl_ml_dsa_sig_decode (&sig, sig_26(D), sig_len_27(D), _72);
+  if (_73 == 0)
+    goto <bb 49>; [51.12%]
+  else
+    goto <bb 14>; [48.88%]
+
+  <bb 14> [local count: 83961788]:
+  _74 = pub_14(D)->shake128_md;
+  _75 = &pub_14(D)->rho;
+  _76 = ossl_ml_dsa_matrix_expand_A (md_ctx_61, _74, _75, &a_ntt);
+  if (_76 == 0)
+    goto <bb 49>; [51.12%]
+  else
+    goto <bb 15>; [48.88%]
+
+  <bb 15> [local count: 41040522]:
+  _77 = pub_14(D)->shake256_md;
+  _78 = params_34->tau;
+  _79 = (unsigned int) _78;
+  _95 = ossl_ml_dsa_poly_sample_in_ball (p_62, &c_tilde_sig, _49, md_ctx_61, _77, _79);
+  if (_95 == 0)
+    goto <bb 49>; [51.12%]
+  else
+    goto <bb 16>; [48.88%]
+
+  <bb 16> [local count: 20060607]:
+  _71 = p_70 + _67;
+  ossl_ml_dsa_poly_ntt (p_62);
+  _248 = MEM[(const struct VECTOR *)pub_14(D) + 192B].num_poly;
+  if (_248 != 0)
+    goto <bb 17>; [89.00%]
+  else
+    goto <bb 21>; [11.00%]
+
+  <bb 17> [local count: 17853940]:
+  ivtmp.369_125 = (unsigned long) _71;
+
+  <bb 18> [local count: 162308592]:
+  # i_279 = PHI <i_160(20), 0(17)>
+  # ivtmp.369_294 = PHI <ivtmp.369_109(20), ivtmp.369_125(17)>
+  _150 = MEM[(const struct VECTOR *)pub_14(D) + 192B].poly;
+  _146 = i_279 * 1024;
+  _153 = _150 + _146;
+  _155 = (struct POLY *) ivtmp.369_294;
+
+  <bb 19> [local count: 16068553946]:
+  # ivtmp.364_307 = PHI <ivtmp.364_271(19), 0(18)>
+  _157 = MEM[(unsigned int *)_153 + ivtmp.364_307 * 1];
+  _158 = _157 << 13;
+  MEM[(unsigned int *)_155 + ivtmp.364_307 * 1] = _158;
+  ivtmp.364_271 = ivtmp.364_307 + 4;
+  if (ivtmp.364_271 != 1024)
+    goto <bb 19>; [98.99%]
+  else
+    goto <bb 20>; [1.01%]
+
+  <bb 20> [local count: 162308592]:
+  i_160 = i_279 + 1;
+  _161 = MEM[(const struct VECTOR *)pub_14(D) + 192B].num_poly;
+  ivtmp.369_109 = ivtmp.369_294 + 1024;
+  if (i_160 < _161)
+    goto <bb 18>; [89.00%]
+  else
+    goto <bb 21>; [11.00%]
+
+  <bb 21> [local count: 20060612]:
+  if (_64 != 0)
+    goto <bb 22>; [89.00%]
+  else
+    goto <bb 25>; [11.00%]
+
+  <bb 22> [local count: 17853945]:
+  ivtmp.355_280 = (unsigned long) _71;
+  _277 = _67 + ivtmp.355_280;
+
+  <bb 23> [local count: 162308549]:
+  # ivtmp.355_210 = PHI <ivtmp.355_246(23), ivtmp.355_280(22)>
+  _165 = (struct POLY *) ivtmp.355_210;
+  ossl_ml_dsa_poly_ntt (_165);
+  ivtmp.355_246 = ivtmp.355_210 + 1024;
+  if (ivtmp.355_246 != _277)
+    goto <bb 23>; [89.00%]
+  else
+    goto <bb 24>; [11.00%]
+
+  <bb 24> [local count: 162308549]:
+  # ivtmp.351_241 = PHI <ivtmp.351_163(24), ivtmp.355_280(23)>
+  _145 = (const struct POLY *) ivtmp.351_241;
+  ossl_ml_dsa_poly_ntt_mult (_145, p_62, _145);
+  ivtmp.351_163 = ivtmp.351_241 + 1024;
+  if (ivtmp.351_163 != _277)
+    goto <bb 24>; [89.00%]
+  else
+    goto <bb 25>; [11.00%]
+
+  <bb 25> [local count: 20060607]:
+  _84 = MEM[(const struct VECTOR *)&sig].num_poly;
+  if (_84 != 0)
+    goto <bb 26>; [89.00%]
+  else
+    goto <bb 31>; [11.00%]
+
+  <bb 26> [local count: 17853940]:
+  _135 = MEM[(const struct VECTOR *)&sig].poly;
+  _304 = (unsigned long) _135;
+  ivtmp.346_136 = _304 + 1024;
+  _242 = _84 * 1024;
+  _172 = _242 + _304;
+
+  <bb 27> [local count: 162308549]:
+  # mx_335 = PHI <_187(29), 0(26)>
+  # ivtmp.346_305 = PHI <ivtmp.346_237(29), ivtmp.346_136(26)>
+  _143 = ivtmp.346_305 + 18446744073709550592;
+
+  <bb 28> [local count: 16068549737]:
+  # mx_333 = PHI <_187(28), mx_335(27)>
+  # ivtmp.341_322 = PHI <ivtmp.341_276(28), _143(27)>
+  _147 = (void *) ivtmp.341_322;
+  c_169 = MEM[(unsigned int *)_147];
+  _188 = c_169 ^ 4190208;
+  _189 = 4190208 - c_169;
+  _190 = c_169 ^ _189;
+  _191 = _188 | _190;
+  _192 = (signed int) _191;
+  _193 = _192 >> 31;
+  _194 = (unsigned int) _193;
+  _195 = 8380417 - c_169;
+  __asm__("" : "=r" r_196 : "0" _194);
+  _197 = _195 & r_196;
+  _198 = ~_194;
+  __asm__("" : "=r" r_199 : "0" _198);
+  _200 = c_169 & r_199;
+  _201 = _197 | _200;
+  _174 = _201 ^ mx_333;
+  _175 = mx_333 - _201;
+  _176 = _175 ^ _201;
+  _177 = _174 | _176;
+  _178 = _177 ^ mx_333;
+  a.9_179 = (signed int) _178;
+  _180 = a.9_179 >> 31;
+  _181 = (unsigned int) _180;
+  __asm__("" : "=r" r_182 : "0" _181);
+  _183 = r_182 & _201;
+  _184 = ~_181;
+  __asm__("" : "=r" r_185 : "0" _184);
+  _186 = r_185 & mx_333;
+  _187 = _183 | _186;
+  ivtmp.341_276 = ivtmp.341_322 + 4;
+  if (ivtmp.341_276 != ivtmp.346_305)
+    goto <bb 28>; [98.99%]
+  else
+    goto <bb 29>; [1.01%]
+
+  <bb 29> [local count: 162308549]:
+  ivtmp.346_237 = ivtmp.346_305 + 1024;
+  if (_172 != ivtmp.346_305)
+    goto <bb 27>; [89.00%]
+  else
+    goto <bb 30>; [11.00%]
+
+  <bb 30> [local count: 162308549]:
+  # i_82 = PHI <i_133(30), 0(29)>
+  _129 = sig.poly;
+  _327 = i_82 * 1024;
+  _132 = _129 + _327;
+  ossl_ml_dsa_poly_ntt (_132);
+  i_133 = i_82 + 1;
+  _134 = sig.num_poly;
+  if (i_133 < _134)
+    goto <bb 30>; [89.00%]
+  else
+    goto <bb 31>; [11.00%]
+
+  <bb 31> [local count: 20060607]:
+  # mx_202 = PHI <_187(30), 0(25)>
+  ossl_ml_dsa_matrix_mult_vector (&a_ntt, &sig.z, &az_ntt);
+  _123 = az_ntt.num_poly;
+  if (_123 != 0)
+    goto <bb 32>; [89.00%]
+  else
+    goto <bb 54>; [11.00%]
+
+  <bb 32> [local count: 17853940]:
+  ivtmp.330_330 = (unsigned long) _71;
+
+  <bb 33> [local count: 162308549]:
+  # i_170 = PHI <i_127(35), 0(32)>
+  # ivtmp.330_96 = PHI <ivtmp.330_332(35), ivtmp.330_330(32)>
+  _119 = az_ntt.poly;
+  _328 = i_170 * 1024;
+  _122 = _119 + _328;
+  _124 = (const struct POLY *) ivtmp.330_96;
+
+  <bb 34> [local count: 16068549737]:
+  # ivtmp.325_231 = PHI <ivtmp.325_102(34), 0(33)>
+  _203 = MEM[(unsigned int *)_122 + ivtmp.325_231 * 1];
+  _204 = MEM[(unsigned int *)_124 + ivtmp.325_231 * 1];
+  _205 = _203 - _204;
+  _206 = _205 + 8380417;
+  _209 = _206 ^ 8380417;
+  _211 = _205 ^ 8380417;
+  _212 = _209 | _211;
+  _213 = _206 ^ _212;
+  a.4_214 = (signed int) _213;
+  _215 = a.4_214 >> 31;
+  _216 = (unsigned int) _215;
+  __asm__("" : "=r" r_217 : "0" _216);
+  _218 = _206 & r_217;
+  _219 = ~_216;
+  __asm__("" : "=r" r_220 : "0" _219);
+  _221 = _205 & r_220;
+  _222 = _218 | _221;
+  MEM[(unsigned int *)_122 + ivtmp.325_231 * 1] = _222;
+  ivtmp.325_102 = ivtmp.325_231 + 4;
+  if (ivtmp.325_102 != 1024)
+    goto <bb 34>; [98.99%]
+  else
+    goto <bb 35>; [1.01%]
+
+  <bb 35> [local count: 162308549]:
+  i_127 = i_170 + 1;
+  _128 = az_ntt.num_poly;
+  ivtmp.330_332 = ivtmp.330_96 + 1024;
+  if (i_127 < _128)
+    goto <bb 33>; [89.00%]
+  else
+    goto <bb 36>; [11.00%]
+
+  <bb 36> [local count: 17853940]:
+  if (_128 != 0)
+    goto <bb 37>; [100.00%]
+  else
+    goto <bb 54>; [0.00%]
+
+  <bb 37> [local count: 162308549]:
+  # i_171 = PHI <i_117(37), 0(36)>
+  _113 = az_ntt.poly;
+  _232 = i_171 * 1024;
+  _116 = _113 + _232;
+  ossl_ml_dsa_poly_ntt_inverse (_116);
+  i_117 = i_171 + 1;
+  _118 = az_ntt.num_poly;
+  if (i_117 < _118)
+    goto <bb 37>; [89.00%]
+  else
+    goto <bb 38>; [11.00%]
+
+  <bb 38> [local count: 17853940]:
+  if (_118 != 0)
+    goto <bb 39>; [100.00%]
+  else
+    goto <bb 42>; [0.00%]
+
+  <bb 39> [local count: 162308549]:
+  # i_207 = PHI <i_111(41), 0(38)>
+  _103 = MEM[(const struct VECTOR *)&sig + 16B].poly;
+  _120 = i_207 * 1024;
+  _106 = _103 + _120;
+  _107 = az_ntt.poly;
+  _108 = _107 + _120;
+
+  <bb 40> [local count: 16068549737]:
+  # ivtmp.308_80 = PHI <ivtmp.308_243(40), 0(39)>
+  _224 = MEM[(unsigned int *)_106 + ivtmp.308_80 * 1];
+  _225 = MEM[(unsigned int *)_108 + ivtmp.308_80 * 1];
+  _226 = ossl_ml_dsa_key_compress_use_hint (_224, _225, gamma2_40);
+  MEM[(unsigned int *)_108 + ivtmp.308_80 * 1] = _226;
+  ivtmp.308_243 = ivtmp.308_80 + 4;
+  if (ivtmp.308_243 != 1024)
+    goto <bb 40>; [98.99%]
+  else
+    goto <bb 41>; [1.01%]
+
+  <bb 41> [local count: 162308549]:
+  i_111 = i_207 + 1;
+  _112 = az_ntt.num_poly;
+  if (i_111 < _112)
+    goto <bb 39>; [89.00%]
+  else
+    goto <bb 42>; [11.00%]
+
+  <bb 42> [local count: 20060607]:
+  ossl_ml_dsa_w1_encode (&az_ntt, gamma2_40, alloc_60, w1_encoded_len_53);
+  _83 = pub_14(D)->shake256_md;
+  _97 = EVP_DigestInit_ex2 (md_ctx_61, _83, 0B);
+  if (_97 != 0)
+    goto <bb 43>; [33.00%]
+  else
+    goto <bb 53>; [67.00%]
+
+  <bb 43> [local count: 6620000]:
+  _98 = EVP_DigestUpdate (md_ctx_61, mu_ptr_235, 64);
+  if (_98 != 0)
+    goto <bb 44>; [33.00%]
+  else
+    goto <bb 53>; [67.00%]
+
+  <bb 44> [local count: 2184600]:
+  _99 = EVP_DigestUpdate (md_ctx_61, alloc_60, w1_encoded_len_53);
+  if (_99 != 0)
+    goto <bb 45>; [33.00%]
+  else
+    goto <bb 53>; [67.00%]
+
+  <bb 45> [local count: 720918]:
+  _100 = EVP_DigestUpdate (md_ctx_61, 0B, 0);
+  if (_100 != 0)
+    goto <bb 46>; [33.00%]
+  else
+    goto <bb 53>; [67.00%]
+
+  <bb 46> [local count: 237903]:
+  _101 = EVP_DigestSqueeze (md_ctx_61, &c_tilde, c_tilde_len_50);
+  if (_101 == 0)
+    goto <bb 49>; [0.00%]
+  else
+    goto <bb 47>; [100.00%]
+
+  <bb 47> [local count: 13240001]:
+  _85 = params_34->gamma1;
+  _86 = params_34->beta;
+  _87 = _85 - _86;
+  _88 = (unsigned int) _87;
+  if (_88 > mx_202)
+    goto <bb 48>; [50.00%]
+  else
+    goto <bb 49>; [50.00%]
+
+  <bb 48> [local count: 6620000]:
+  _89 = sig.c_tilde;
+  _90 = memcmp (&c_tilde, _89, c_tilde_len_50);
+  _299 = _90 == 0;
+  _265 = (int) _299;
+
+  <bb 49> [local count: 248763583]:
+  # ret_92 = PHI <0(12), _76(14), _95(15), _101(46), _265(48), 0(47), _73(13), 0(53)>
+err:
+  CRYPTO_free (alloc_60, "ml_dsa_sign.c", 409);
+  EVP_MD_CTX_free (md_ctx_61);
+
+  <bb 50> [local count: 537710252]:
+  # _91 = PHI <0(8), 0(11), ret_92(49)>
+  # md_ctx_306 = PHI <0B(8), md_ctx_104(11), md_ctx_104(49)>
+  a_ntt ={v} {CLOBBER(eos)};
+  az_ntt ={v} {CLOBBER(eos)};
+  sig ={v} {CLOBBER(eos)};
+  c_tilde ={v} {CLOBBER(eos)};
+  c_tilde_sig ={v} {CLOBBER(eos)};
+
+  <bb 51> [local count: 743399004]:
+  # md_ctx_5 = PHI <md_ctx_21(5), md_ctx_21(6), md_ctx_306(50)>
+  # ret_8 = PHI <_32(5), _33(6), _91(50)>
+err:
+  EVP_MD_CTX_free (md_ctx_5);
+
+  <bb 52> [local count: 1073741824]:
+  # _9 = PHI <0(2), msg_is_mu_16(D)(4), ret_8(51)>
+  mu ={v} {CLOBBER(eos)};
+  return _9;
+
+  <bb 53> [local count: 6820606]:
+  goto <bb 49>; [100.00%]
+
+  <bb 54> [local count: 2206667]:
+  goto <bb 42>; [100.00%]
+
+}
+
+

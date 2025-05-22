@@ -1,0 +1,145 @@
+
+;; Function ossl_ml_dsa_matrix_mult_vector (ossl_ml_dsa_matrix_mult_vector, funcdef_no=201, decl_uid=8967, cgraph_uid=202, symbol_order=201)
+
+Removing basic block 12
+Removing basic block 13
+Removing basic block 14
+Removing basic block 15
+Removing basic block 16
+Removing basic block 17
+Removing basic block 18
+Removing basic block 19
+Removing basic block 20
+void ossl_ml_dsa_matrix_mult_vector (const struct MATRIX * a, const struct VECTOR * s, struct VECTOR * t)
+{
+  sizetype ivtmp.20;
+  uint32_t r;
+  uint32_t r;
+  struct POLY product;
+  struct POLY * poly;
+  size_t j;
+  size_t i;
+  struct POLY * _1;
+  struct POLY * _3;
+  struct POLY * _4;
+  long unsigned int _5;
+  long unsigned int _7;
+  long unsigned int _8;
+  struct POLY * _11;
+  struct POLY * _27;
+  long unsigned int _28;
+  long unsigned int _29;
+  long unsigned int _31;
+  unsigned int _32;
+  unsigned int _33;
+  unsigned int _34;
+  unsigned int _37;
+  unsigned int _38;
+  unsigned int _39;
+  unsigned int _40;
+  unsigned int _41;
+  signed int a.1_42;
+  signed int _43;
+  unsigned int _44;
+  unsigned int _46;
+  unsigned int _47;
+  unsigned int _49;
+  unsigned int _50;
+  long unsigned int _52;
+  long unsigned int _56;
+  long unsigned int _60;
+
+  <bb 2> [local count: 14598063]:
+  poly_17 = a_16(D)->m_poly;
+  _27 = t_18(D)->poly;
+  if (_27 != 0B)
+    goto <bb 3>; [53.47%]
+  else
+    goto <bb 4>; [46.53%]
+
+  <bb 3> [local count: 7805584]:
+  _28 = t_18(D)->num_poly;
+  _29 = _28 * 1024;
+  __builtin_memset (_27, 0, _29);
+
+  <bb 4> [local count: 14598063]:
+  _56 = a_16(D)->k;
+  if (_56 != 0)
+    goto <bb 10>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 5> [local count: 105119324]:
+  _31 = i_63 * 1024;
+
+  <bb 6> [local count: 955630224]:
+  # j_64 = PHI <j_26(8), 0(5)>
+  # poly_65 = PHI <poly_21(8), poly_67(5)>
+  poly_21 = poly_65 + 1024;
+  _1 = s_22(D)->poly;
+  _52 = j_64 * 1024;
+  _3 = _1 + _52;
+  ossl_ml_dsa_poly_ntt_mult (poly_65, _3, &product);
+  _4 = t_18(D)->poly;
+
+  <bb 7> [local count: 94607412112]:
+  # ivtmp.20_12 = PHI <ivtmp.20_9(7), 1(6)>
+  _32 = MEM[(unsigned int *)&product + -4B + ivtmp.20_12 * 4];
+  _5 = _31 + 18446744073709551612;
+  _11 = _4 + _5;
+  _33 = MEM[(unsigned int *)_11 + ivtmp.20_12 * 4];
+  _34 = _32 + _33;
+  _37 = _34 ^ 8380417;
+  _38 = _34 + 4286586879;
+  _39 = _38 ^ 8380417;
+  _40 = _37 | _39;
+  _41 = _34 ^ _40;
+  a.1_42 = (signed int) _41;
+  _43 = a.1_42 >> 31;
+  _44 = (unsigned int) _43;
+  __asm__("" : "=r" r_45 : "0" _44);
+  _46 = _34 & r_45;
+  _47 = ~_44;
+  __asm__("" : "=r" r_48 : "0" _47);
+  _49 = _38 & r_48;
+  _50 = _46 | _49;
+  MEM[(unsigned int *)_11 + ivtmp.20_12 * 4] = _50;
+  ivtmp.20_9 = ivtmp.20_12 + 1;
+  if (ivtmp.20_9 != 257)
+    goto <bb 7>; [98.99%]
+  else
+    goto <bb 8>; [1.01%]
+
+  <bb 8> [local count: 955630224]:
+  product ={v} {CLOBBER(eos)};
+  j_26 = j_64 + 1;
+  _7 = a_16(D)->l;
+  if (_7 > j_26)
+    goto <bb 6>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 9> [local count: 118111600]:
+  # poly_66 = PHI <poly_21(8), poly_67(10)>
+  i_20 = i_63 + 1;
+  _8 = a_16(D)->k;
+  if (_8 > i_20)
+    goto <bb 10>; [89.00%]
+  else
+    goto <bb 11>; [11.00%]
+
+  <bb 10> [local count: 118111600]:
+  # i_63 = PHI <i_20(9), 0(4)>
+  # poly_67 = PHI <poly_66(9), poly_17(4)>
+  _60 = a_16(D)->l;
+  if (_60 != 0)
+    goto <bb 5>; [89.00%]
+  else
+    goto <bb 9>; [11.00%]
+
+  <bb 11> [local count: 14598063]:
+  return;
+
+}
+
+

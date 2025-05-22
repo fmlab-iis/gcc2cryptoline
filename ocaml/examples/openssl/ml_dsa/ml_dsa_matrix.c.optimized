@@ -1,0 +1,264 @@
+
+;; Function constant_time_msb_32 (constant_time_msb_32, funcdef_no=25, decl_uid=5823, cgraph_uid=26, symbol_order=25)
+
+uint32_t constant_time_msb_32 (uint32_t a)
+{
+  uint32_t D.9036;
+  signed int a.1_1;
+  signed int _2;
+  uint32_t _4;
+
+  <bb 2> :
+  a.1_1 = (signed int) a_3(D);
+  _2 = a.1_1 >> 31;
+  _4 = (uint32_t) _2;
+
+  <bb 3> :
+<L0>:
+  return _4;
+
+}
+
+
+
+;; Function constant_time_lt_32 (constant_time_lt_32, funcdef_no=31, decl_uid=5834, cgraph_uid=32, symbol_order=31)
+
+uint32_t constant_time_lt_32 (uint32_t a, uint32_t b)
+{
+  uint32_t D.9034;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _10;
+
+  <bb 2> :
+  _1 = a_6(D) ^ b_7(D);
+  _2 = a_6(D) - b_7(D);
+  _3 = b_7(D) ^ _2;
+  _4 = _1 | _3;
+  _5 = a_6(D) ^ _4;
+  _10 = constant_time_msb_32 (_5);
+
+  <bb 3> :
+<L0>:
+  return _10;
+
+}
+
+
+
+;; Function value_barrier_32 (value_barrier_32, funcdef_no=49, decl_uid=5974, cgraph_uid=50, symbol_order=49)
+
+uint32_t value_barrier_32 (uint32_t a)
+{
+  uint32_t r;
+  uint32_t D.9040;
+  uint32_t _3;
+
+  <bb 2> :
+  __asm__("" : "=r" r_2 : "0" a_1(D));
+  _3 = r_2;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
+
+;; Function constant_time_select_32 (constant_time_select_32, funcdef_no=57, decl_uid=5873, cgraph_uid=58, symbol_order=57)
+
+uint32_t constant_time_select_32 (uint32_t mask, uint32_t a, uint32_t b)
+{
+  uint32_t D.9038;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+  unsigned int _5;
+  uint32_t _12;
+
+  <bb 2> :
+  _1 = value_barrier_32 (mask_7(D));
+  _2 = a_9(D) & _1;
+  _3 = ~mask_7(D);
+  _4 = value_barrier_32 (_3);
+  _5 = b_11(D) & _4;
+  _12 = _2 | _5;
+
+  <bb 3> :
+<L0>:
+  return _12;
+
+}
+
+
+
+;; Function reduce_once (reduce_once, funcdef_no=108, decl_uid=8636, cgraph_uid=109, symbol_order=108)
+
+__attribute__((unused))
+uint32_t reduce_once (uint32_t x)
+{
+  uint32_t D.9032;
+  unsigned int _1;
+  unsigned int _2;
+  uint32_t _7;
+
+  <bb 2> :
+  _1 = constant_time_lt_32 (x_4(D), 8380417);
+  _2 = x_4(D) + 4286586879;
+  _7 = constant_time_select_32 (_1, x_4(D), _2);
+
+  <bb 3> :
+<L0>:
+  return _7;
+
+}
+
+
+
+;; Function poly_add (poly_add, funcdef_no=114, decl_uid=8673, cgraph_uid=115, symbol_order=114)
+
+__attribute__((unused))
+void poly_add (const struct POLY * lhs, const struct POLY * rhs, struct POLY * out)
+{
+  int i;
+  unsigned int _1;
+  unsigned int _2;
+  unsigned int _3;
+  unsigned int _4;
+
+  <bb 2> :
+  i_7 = 0;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  _1 = lhs_9(D)->coeff[i_5];
+  _2 = rhs_10(D)->coeff[i_5];
+  _3 = _1 + _2;
+  _4 = reduce_once (_3);
+  out_12(D)->coeff[i_5] = _4;
+  i_14 = i_5 + 1;
+
+  <bb 4> :
+  # i_5 = PHI <i_7(2), i_14(3)>
+  if (i_5 <= 255)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  return;
+
+}
+
+
+
+;; Function vector_zero (vector_zero, funcdef_no=131, decl_uid=8812, cgraph_uid=132, symbol_order=131)
+
+__attribute__((unused))
+void vector_zero (struct VECTOR * va)
+{
+  struct POLY * _1;
+  struct POLY * _2;
+  long unsigned int _3;
+  long unsigned int _4;
+
+  <bb 2> :
+  _1 = va_7(D)->poly;
+  if (_1 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 4>; [INV]
+
+  <bb 3> :
+  _2 = va_7(D)->poly;
+  _3 = va_7(D)->num_poly;
+  _4 = _3 * 1024;
+  memset (_2, 0, _4);
+
+  <bb 4> :
+  return;
+
+}
+
+
+
+;; Function ossl_ml_dsa_matrix_mult_vector (ossl_ml_dsa_matrix_mult_vector, funcdef_no=153, decl_uid=8556, cgraph_uid=154, symbol_order=153)
+
+void ossl_ml_dsa_matrix_mult_vector (const struct MATRIX * a, const struct VECTOR * s, struct VECTOR * t)
+{
+  struct POLY product;
+  struct POLY * poly;
+  size_t j;
+  size_t i;
+  struct POLY * poly.0_1;
+  struct POLY * _2;
+  long unsigned int _3;
+  struct POLY * _4;
+  struct POLY * _5;
+  long unsigned int _6;
+  struct POLY * _7;
+  struct POLY * _8;
+  long unsigned int _9;
+  struct POLY * _10;
+  long unsigned int _11;
+  long unsigned int _12;
+
+  <bb 2> :
+  poly_21 = a_20(D)->m_poly;
+  vector_zero (t_22(D));
+  i_24 = 0;
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  j_25 = 0;
+  goto <bb 5>; [INV]
+
+  <bb 4> :
+  poly.0_1 = poly_15;
+  poly_27 = poly.0_1 + 1024;
+  _2 = s_28(D)->poly;
+  _3 = j_14 * 1024;
+  _4 = _2 + _3;
+  ossl_ml_dsa_poly_ntt_mult (poly.0_1, _4, &product);
+  _5 = t_22(D)->poly;
+  _6 = i_13 * 1024;
+  _7 = _5 + _6;
+  _8 = t_22(D)->poly;
+  _9 = i_13 * 1024;
+  _10 = _8 + _9;
+  poly_add (&product, _7, _10);
+  product ={v} {CLOBBER(eos)};
+  j_32 = j_14 + 1;
+
+  <bb 5> :
+  # j_14 = PHI <j_25(3), j_32(4)>
+  # poly_15 = PHI <poly_16(3), poly_27(4)>
+  _11 = a_20(D)->l;
+  if (j_14 < _11)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 6>; [INV]
+
+  <bb 6> :
+  i_26 = i_13 + 1;
+
+  <bb 7> :
+  # i_13 = PHI <i_24(2), i_26(6)>
+  # poly_16 = PHI <poly_21(2), poly_15(6)>
+  _12 = a_20(D)->k;
+  if (i_13 < _12)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  return;
+
+}
+
+
