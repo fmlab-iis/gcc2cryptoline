@@ -20,6 +20,7 @@ type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
               | Vector of Z.t * type_t | Array of Z.t * type_t
               | Complex of type_t
               | Typedef of string
+              | FuncPointer of string * type_t * type_t list
 
 (* function call parameters *)
 type param_t = { pty : type_t; pname : string }

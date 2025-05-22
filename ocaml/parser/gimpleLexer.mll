@@ -10,6 +10,7 @@
               "__asm__"                    , ASM;
               "__complex__"                , COMPLEX;
 	      "access"                     , ACCESS;
+	      "unused"                     , UNUSED;
               "void"                       , VOID;
               "_Bool"                      , BOOL;
               "char"                       , CHAR;

@@ -25,6 +25,9 @@ let rec from_type (ty : Syntax.type_t) =
   | Array (z, ty') -> Array (z, from_type ty')
   | Complex ty' -> Complex (from_type ty')
   | Typedef str -> Typedef str
+  | FuncPointer (name, ty', tys') ->
+     FuncPointer (name, from_type ty',
+                  List.rev (List.rev_map from_type tys'))
 
 let from_param (p : Syntax.param_t) =
   { pty = from_type p.pty; pname = p.pname }

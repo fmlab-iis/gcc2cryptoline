@@ -45,6 +45,10 @@ let rec string_of_type typ =
   | Array (d, t) -> string_of_type t ^ "[" ^ Z.to_string d ^ "]"
   | Complex t -> "__complex__ " ^ string_of_type t
   | Typedef s -> s
+  | FuncPointer (n, t, argts) ->
+     (string_of_type t) ^ " (*" ^ n ^ ") (" ^
+       (String.concat ", "
+          (List.rev (List.rev_map string_of_type argts))) ^ ")"
 
 let string_of_var v =
   "(" ^ string_of_type v.vty ^ ") " ^ v.vname

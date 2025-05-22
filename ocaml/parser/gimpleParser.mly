@@ -37,7 +37,7 @@
 %token CONST VOID BOOL CHAR INT SHORT LONG SIGNED UNSIGNED VECTOR STRUCT
 %token BOOLS UBOOLS STATIC VOLATILE REGISTER COMPLEX SIZETYPE
 /* Others */
-%token ATTRIBUTE ACCESS MEM INV EOF RETURN BB IF ELSE GOTO ASM
+%token ATTRIBUTE ACCESS UNUSED MEM INV EOF RETURN BB IF ELSE GOTO ASM
 %token REMOVING_BASIC_BLOCK CHAR_REF_ALL PERCENT
 %token CLOBBER_EOS CLOBBER_EOL CLOBBER TAIL_CALL
 
@@ -81,6 +81,9 @@ func:
 attribute:
   ATTRIBUTE LPAREN LPAREN ACCESS LPAREN access_pat RPAREN RPAREN RPAREN
                                           { $6 }
+|
+  ATTRIBUTE LPAREN LPAREN UNUSED RPAREN RPAREN
+                                          { [] }
 ;
 
 access_pat:
@@ -150,6 +153,7 @@ ground_typ:
 
 typ:
   ground_typ                              { $1 }
+| typ CONST                               { Const $1 }
 | REGISTER ground_typ                     { $2 }
 | VOLATILE ground_typ                     { $2 }
 | COMPLEX ground_typ                      { Complex $2 }
@@ -157,6 +161,16 @@ typ:
 | typ MULOP                               { Pointer $1 }
 | typ LSQUARE NUM RSQUARE                 { Array ($3, $1) }
 | typ LSQUARE NUM COLON ID RSQUARE        { Array (Z.zero, $1) }
+| typ LPAREN MULOP ID RPAREN LPAREN typs RPAREN
+                                          { FuncPointer ($4, $1, $7) }
+| typ LPAREN MULOP LANGLE ID RANGLE RPAREN LPAREN typs RPAREN
+                                          { FuncPointer ("<" ^ $5 ^ ">", $1, $9) }
+;
+
+typs:
+                                          { [] }
+| typ                                     { [$1] }
+| typ COMMA typs                          { $1::$3 }
 ;
 
 instrs:

@@ -13,6 +13,9 @@ type label_t = BB of Z.t | Name of string
 (* word specifies bit width *)
 (* Vector (n, t) denotes the vector type t of size n *)
 (* Array (n, t) denotes the array type t of size n *)
+(* FuncPointer (n, t, ts) denotes a function type with argument types ts
+   and return type t *)
+
 type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
               | Long | Ulong | Llong | Ullong | Sizetype | CharRefAll
               | Sword of int | Uword of int | Bools of int | Ubools of int
@@ -20,6 +23,7 @@ type type_t = Void | Bool | Char | Uchar | Short | Ushort | Int | Uint
               | Vector of Z.t * type_t | Array of Z.t * type_t
               | Complex of type_t
               | Typedef of string
+              | FuncPointer of string * type_t * type_t list
 
 (* function call parameters *)
 type param_t = { pty : type_t; pname : string }

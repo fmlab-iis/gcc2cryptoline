@@ -358,11 +358,9 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
                let op0 = List.assoc last_bb p.choice in
                let phi_instr = Assign (p.op, Void, op0) in
                let instr', s' = eval_instr vtypes phi_instr s in
-
                (*
                let _ = print_endline (Utils.string_of_instr instr') in
                 *)
-          
                (instr'::r, s')) (rev_ret, current_st) current.phi in
        (* evaluate instructions in current basic block *)
        let rev_phi_ret', st' = 
