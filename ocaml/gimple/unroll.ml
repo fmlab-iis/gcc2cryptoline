@@ -4,6 +4,8 @@ type cond_result_t = Decided of bool | Undecided of cond_t
 
 let no_label = BB (Z.neg Z.one)
 
+let mk_loc_var z = Var ("L0x" ^ Z.format "%08x" z)
+
 let rec eval_offset (off : offset_t) st : offset_t =
   match off with
   | Const _ -> off
@@ -35,7 +37,11 @@ and eval_operand ?(evalvar=true) (op : operand_t) st : operand_t =
      | Const z -> Const (Z.neg z)
      | _ -> Neg op')
   | Ref op -> Ref (eval_operand ~evalvar:evalvar op st)
-  | Deref op -> Deref (eval_operand ~evalvar:false op st)
+  | Deref op ->
+     let op' = eval_operand op st in
+     (match op' with
+     | Const z -> mk_loc_var z
+     | _ -> Deref (eval_operand ~evalvar:false op st))
   | Element (op0, op1) ->
      Element (eval_operand ~evalvar:evalvar op0 st,
               eval_operand ~evalvar:evalvar op1 st)
@@ -43,7 +49,10 @@ and eval_operand ?(evalvar=true) (op : operand_t) st : operand_t =
      Member (eval_operand ~evalvar:evalvar op0 st,
              eval_operand ~evalvar:evalvar op1 st)
   | Mem (ty, loc) ->
-     Mem (ty, eval_loc ~evalvar:false loc st)
+     let loc' = eval_loc ~evalvar:true loc st in
+     (match loc'.lop, loc'.loffset with
+     | Const z0, Const z1 -> mk_loc_var (Z.add z0 z1)
+     | _ -> Mem (ty, eval_loc ~evalvar:false loc st))
   | Ops ops ->
      Ops (List.rev
             (List.rev_map
