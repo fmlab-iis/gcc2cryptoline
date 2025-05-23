@@ -286,9 +286,12 @@ let eval_instr vtypes instr st =
      let ops' = List.rev (List.rev_map (fun op -> eval_operand op st) ops) in
      let _ = match oop', name with
        | Some (Var v), "__builtin_alloca" ->
-          let _ = if Hashtbl.mem vtypes v then ()
-                  else Hashtbl.add vtypes v (Pointer Void) in
-          update_store (Hashtbl.find vtypes v) v (Z.random_bits 64) st
+          if not (Hashtbl.mem st v) then
+            let _ = if Hashtbl.mem vtypes v then ()
+                    else Hashtbl.add vtypes v (Pointer Void) in
+            update_store (Hashtbl.find vtypes v) v (Z.random_bits 64) st
+          else
+            ()
        | Some (Var v), _ -> Hashtbl.remove st v
        | _ -> () in
      (Call (oop', name, ops'), st)
