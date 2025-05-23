@@ -19,39 +19,35 @@ let rec eval_offset (off : offset_t) st : offset_t =
       | Const i0, Const i1 -> Const (Z.mul i0 i1)
       | _ -> Mul (o0', o1'))
 
-let rec eval_loc loc st =
-  { lty = loc.lty; lop = eval_left_operand loc.lop st;
+let rec eval_loc ?(evalvar=false) loc st =
+  { lty = loc.lty; lop = eval_operand ~evalvar:evalvar loc.lop st;
     loffset = eval_offset loc.loffset st }
-and eval_operand (op : operand_t) st : operand_t =
+and eval_operand ?(evalvar=true) (op : operand_t) st : operand_t =
   match op with
-  | Var v -> if Hashtbl.mem st v then Const (Hashtbl.find st v)
-             else op
+  | Var v ->
+     if evalvar then
+       if Hashtbl.mem st v then Const (Hashtbl.find st v) else op
+     else op
   | Const _ | String _ -> op
-  | Neg (Const z) -> Const (Z.neg z)
-  | Neg op -> Neg (eval_operand op st)
-  | Ref op -> Ref (eval_operand op st)
-  | Deref op ->  Deref (eval_left_operand op st)
-  | Element (op0, op1) -> Element (eval_operand op0 st, eval_operand op1 st)
-  | Member (op0, op1) -> Member (eval_operand op0 st, eval_operand op1 st)
-  | Mem (ty, loc) -> Mem (ty, eval_loc loc st)
-  | Ops ops -> Ops (List.rev (List.rev_map (fun op -> eval_operand op st) ops))
-and eval_left_loc loc st =
-  { lty = loc.lty; lop = eval_left_operand loc.lop st;
-    loffset = eval_offset loc.loffset st }
-and eval_left_operand (op : operand_t) st : operand_t =
-  match op with
-  | Var _ | Const _ | String _ -> op
-  | Neg (Const z) -> Const (Z.neg z)
-  | Neg op -> Neg (eval_left_operand op st)
-  | Ref op -> Ref (eval_left_operand op st)
-  | Deref op ->  Deref (eval_left_operand op st)
+  | Neg op ->
+     let op' = eval_operand ~evalvar:evalvar op st in
+     (match op' with
+     | Const z -> Const (Z.neg z)
+     | _ -> Neg op')
+  | Ref op -> Ref (eval_operand ~evalvar:evalvar op st)
+  | Deref op -> Deref (eval_operand ~evalvar:false op st)
   | Element (op0, op1) ->
-     Element (eval_left_operand op0 st, eval_operand op1 st)
+     Element (eval_operand ~evalvar:evalvar op0 st,
+              eval_operand ~evalvar:evalvar op1 st)
   | Member (op0, op1) ->
-     Member (eval_left_operand op0 st, eval_operand op1 st)
-  | Mem (ty, loc) -> Mem (ty, eval_left_loc loc st)
-  | Ops ops -> Ops (List.rev (List.rev_map
-                                (fun op -> eval_left_operand op st) ops))
+     Member (eval_operand ~evalvar:evalvar op0 st,
+             eval_operand ~evalvar:evalvar op1 st)
+  | Mem (ty, loc) ->
+     Mem (ty, eval_loc ~evalvar:false loc st)
+  | Ops ops ->
+     Ops (List.rev
+            (List.rev_map
+               (fun op -> eval_operand ~evalvar:evalvar op st) ops))
 
 let eval_cond (c : cond_t) st =
   let op0, op1 =
@@ -117,7 +113,7 @@ let eval_instr vtypes instr st =
                | Pointer _ -> op | _ -> value)
     | _ -> value in
   let eval_operand1 op op0 st =
-    let op' = eval_left_operand op st in
+    let op' = eval_operand ~evalvar:false op st in
     let op0' = eval_operand op0 st in
     (op', op0') in
   let eval_operand1_and_update vtypes op f op0 st =
@@ -132,7 +128,7 @@ let eval_instr vtypes instr st =
     let pop0' = print_op vtypes op0 op0' in
     (op', pop0') in
   let eval_operand2 op op0 op1 st =
-    let op' = eval_left_operand op st in
+    let op' = eval_operand ~evalvar:false op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     (op', op0', op1') in
@@ -149,7 +145,7 @@ let eval_instr vtypes instr st =
     let pop1' = print_op vtypes op1 op1' in
     (op', pop0', pop1') in
   let eval_operand3 op op0 op1 op2 st =
-    let op' = eval_left_operand op st in
+    let op' = eval_operand ~evalvar:false op st in
     let op0' = eval_operand op0 st in
     let op1' = eval_operand op1 st in
     let op2' = eval_operand op2 st in
@@ -275,8 +271,9 @@ let eval_instr vtypes instr st =
      let op', op0' = eval_operand1 op op0 st in
      (ImagPart (op', op0'), st)
   | Call (oop, name, ops) ->
-     let oop' = match oop with None -> None
-                             | Some op -> Some (eval_left_operand op st) in
+     let oop' =
+       match oop with None -> None
+                    | Some op -> Some (eval_operand ~evalvar:false op st) in
      let ops' = List.rev (List.rev_map (fun op -> eval_operand op st) ops) in
      let _ = match oop', name with
        | Some (Var v), "__builtin_alloca" ->
