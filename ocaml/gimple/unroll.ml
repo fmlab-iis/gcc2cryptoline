@@ -409,7 +409,7 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
                                   (Utils.string_of_cond cond) in
                  Comment comment0::comment::instrs in
                let rev_ret1' =
-                 let comment1 = Format.sprintf "@[ not %s @]"
+                 let comment1 = Format.sprintf "@[ assume not %s @]"
                                   (Utils.string_of_cond cond) in
                  Comment comment1::comment::instrs in
                let cont0 = (next0, current.id, st', rev_ret0', first) in
@@ -440,6 +440,9 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
              let rev_ret' = Comment comment1::Comment comment0::instrs in
              let cont = (next, current.id, st', rev_ret', first) in
              expand_block no_branch vtypes hash_bb (cont::todos') rets)
+       | Call (_, name, _)::_ when String.equal name "__assert_rtn" ->
+          expand_block no_branch vtypes hash_bb todos'
+            ((first, rev_phi_ret')::rets)
        | Return _::_ ->
           expand_block no_branch vtypes hash_bb todos'
             ((first, rev_phi_ret')::rets)
