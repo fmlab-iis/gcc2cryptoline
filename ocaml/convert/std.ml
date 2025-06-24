@@ -327,6 +327,13 @@ let rec first_type (tos : Cryptoline.typ option list) : Cryptoline.typ option =
 let first_operand_type (ctx : context_t) (os : GimpleAst.operand_t list) : Cryptoline.typ option =
   first_type (List.rev_map (detect_operand_type ctx) os |> List.rev)
 
+let create_memory_variable t base off =
+  let addr = Z.to_int (Z.add base off) in
+  let addr_str = Printf.sprintf "L0x%x" addr in
+  let _ = debug (Printf.sprintf "- create variable %s" addr_str) in
+  { gbase = { vty = t; vname = addr_str }; goffset = 0;
+    gsize = 0; is_pointer = false }
+
 let ctx_deref_operand (conv_op : context_t -> operand_t -> op_kind) (o : operand_t) (ctx : context_t) : var_kind =
   let vk =
     match conv_op ctx o with
@@ -339,11 +346,9 @@ let ctx_deref_operand (conv_op : context_t -> operand_t -> op_kind) (o : operand
 let ctx_memory_operand (_ctx : context_t) (o : op_kind) (off : Z.t) : var_kind =
   match o with
   | OPConst (_t, z) ->
-     let addr = Z.to_int (Z.add z off) in
-     let addr_str = Printf.sprintf "L0x%x" addr in
-     let _ = debug (Printf.sprintf "- create variable %s" addr_str) in
-     { gbase = { vty = Void; vname = addr_str }; goffset = 0;
-       gsize = 0; is_pointer = false }
+     (* if base address is a constant <addr>, create a variable L0x<addr> *)
+     (* this happens when pointer parameters are assigned to values by users *)
+     create_memory_variable Void z off
   | OPVarKind vk -> { vk with goffset = vk.goffset + (Z.to_int off) }
 
 (** Traces *)
