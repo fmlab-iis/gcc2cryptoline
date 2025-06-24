@@ -336,6 +336,15 @@ let ctx_deref_operand (conv_op : context_t -> operand_t -> op_kind) (o : operand
   | MemVal vk' -> vk'
   | MemAddr _ -> failwith (Printf.sprintf "Failed to dereference %s" (GimpleUtils.string_of_operand o))
 
+let ctx_memory_operand (_ctx : context_t) (o : op_kind) (off : Z.t) : var_kind =
+  match o with
+  | OPConst (_t, z) ->
+     let addr = Z.to_int (Z.add z off) in
+     let addr_str = Printf.sprintf "L0x%x" addr in
+     let _ = debug (Printf.sprintf "- create variable %s" addr_str) in
+     { gbase = { vty = Void; vname = addr_str }; goffset = 0;
+       gsize = 0; is_pointer = false }
+  | OPVarKind vk -> { vk with goffset = vk.goffset + (Z.to_int off) }
 
 (** Traces *)
 
@@ -375,6 +384,11 @@ let string_of_trace (p, next_lbl_opt) =
 
 (** Conversions *)
 
+let convert_offset (_ctx : context_t) (off : GimpleAst.offset_t) =
+  match off with
+  | Const z -> z
+  | _ -> failwith (Printf.sprintf "Failed to convert the offset %s" (GimpleUtils.string_of_offset off))
+
 let rec convert_operand (ctx : context_t) (o : GimpleAst.operand_t) (cl_t_opt : Cryptoline.typ option) : op_kind =
   match o with
   | Var vname -> OPVarKind (ctx_find_gvar_or_fail vname ctx)
@@ -384,6 +398,10 @@ let rec convert_operand (ctx : context_t) (o : GimpleAst.operand_t) (cl_t_opt : 
                   | Some cl_t -> OPConst (cl_t, zn) in
                 opk
   | Deref o' -> OPVarKind (ctx_deref_operand (fun ctx o -> convert_operand ctx o cl_t_opt) o' ctx)
+  | Mem (_, loc) -> OPVarKind (ctx_memory_operand ctx
+                                 (convert_operand ctx loc.lop
+                                    (Some (convert_gtype loc.lty)))
+                                 (convert_offset ctx loc.loffset))
   | _ -> failwith(Printf.sprintf "Failed to convert the operand %s" (GimpleUtils.string_of_operand o))
 
 let convert_operand_lv (ctx : context_t) (o : GimpleAst.operand_t) : op_kind =
@@ -478,6 +496,28 @@ let convert_instr_mul (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAs
   let cl_a2 = clatom_of_op_kind a2opk in
   let cl_r = clvar_of_op_kind ropk in
   [ Imul (cl_r, cl_a1, cl_a2) ]
+
+let convert_instr_wmul (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
+  let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
+  let ropk = convert_operand_lv ctx r in
+  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
+  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
+  let cl_a1 = clatom_of_op_kind a1opk in
+  let cl_a2 = clatom_of_op_kind a2opk in
+  let cl_r = clvar_of_op_kind ropk in
+  [ Imulj (cl_r, cl_a1, cl_a2) ]
+
+let convert_instr_wmadd (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) (a3 : GimpleAst.operand_t) : Cryptoline.instr list =
+  let cl_t_opt = first_operand_type ctx [ a1; a2; a3; r ] in
+  let ropk = convert_operand_lv ctx r in
+  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
+  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
+  let a3opk = convert_operand_rv ctx a3 cl_t_opt in
+  let cl_a1 = clatom_of_op_kind a1opk in
+  let cl_a2 = clatom_of_op_kind a2opk in
+  let cl_a3 = clatom_of_op_kind a3opk in
+  let cl_r = clvar_of_op_kind ropk in
+  [ Imulj (cl_r, cl_a1, cl_a2); Iadd (cl_r, mkatom_var cl_r, cl_a3) ]
 
 let convert_instr_lt (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
   let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
@@ -633,7 +673,7 @@ let convert_instr (ctx : context_t) (ginstr : GimpleAst.instr_t) : trace list =
   | Mul (r, a1, a2) -> [ (convert_instr_mul ctx r a1 a2, None) ]
   | Div _  -> unsupport "Div"
   | Mod _  -> unsupport "Mod"
-  | Wmul _  -> unsupport "Wmul"
+  | Wmul (r, a1, a2)  -> [ (convert_instr_wmul ctx r a1 a2, None) ]
   | Gt _  -> unsupport "Gt"
   | Ge _  -> unsupport "Ge"
   | Lt (r, a1, a2) -> [ (convert_instr_lt ctx r a1 a2, None) ]
@@ -668,7 +708,7 @@ let convert_instr (ctx : context_t) (ginstr : GimpleAst.instr_t) : trace list =
   (* instrinsics *)
   | Wmullo _  -> unsupport "Wmullo"
   | Wmulhi _  -> unsupport "Wmulhi"
-  | Wmadd _  -> unsupport "Wmadd"
+  | Wmadd (r, a1, a2, a3)  -> [ (convert_instr_wmadd ctx r a1 a2 a3, None) ]
   | Wmsub _  -> unsupport "Wmsub"
   | VecUnpackLo _  -> unsupport "VecUnpackLo"
   | VecUnpackHi _  -> unsupport "VecUnpackHi"
