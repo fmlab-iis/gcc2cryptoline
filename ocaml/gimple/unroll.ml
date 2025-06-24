@@ -4,19 +4,28 @@ type cond_result_t = Decided of bool | Undecided of cond_t
 
 let no_label = BB (Z.neg Z.one)
 
-(* return the type of variable v in derived form v_<num>[(D)]? *)
+(* return basename in derived form basename_<num>[(D)]? *)
+let var_basename v = String.sub v 0 (String.rindex v '_')
+
 let get_var_type vtypes v =
   if Hashtbl.mem vtypes v then
     Hashtbl.find vtypes v
   else
-    let origin_v = String.sub v 0 (String.rindex v '_') in
+    let origin_v = var_basename v in
     let _ = assert (Hashtbl.mem vtypes origin_v) in
     Hashtbl.find vtypes origin_v
+
+let get_var_value st v f =
+  if Hashtbl.mem st v then Some (f (Hashtbl.find st v))
+  else let basename = var_basename v in
+       if Hashtbl.mem st basename then Some (f (Hashtbl.find st basename))
+       else None
 
 let rec eval_offset (off : offset_t) st : offset_t =
   match off with
   | Const _ -> off
-  | Var v -> if Hashtbl.mem st v then Const (Hashtbl.find st v) else off
+  | Var v -> (match get_var_value st v (fun v -> (Const v : offset_t)) with
+             | Some vv -> vv | None -> off)
   | Add (o0, o1) ->
      let o0', o1' = eval_offset o0 st, eval_offset o1 st in
      (match o0', o1' with
@@ -35,7 +44,8 @@ and eval_operand ?(evaltop=false) vtypes (op : operand_t) st : operand_t =
   match op with
   | Var v ->
      if evaltop then
-       if Hashtbl.mem st v then Const (Hashtbl.find st v) else op
+       match get_var_value st v (fun v -> Const v) with
+       | Some vv -> vv | None -> op
      else op
   | Const _ | String _ -> op
   | Neg op ->
