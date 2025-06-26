@@ -335,13 +335,14 @@ let create_memory_variable t base off =
     gsize = 0; is_pointer = false }
 
 let ctx_deref_operand (conv_op : context_t -> operand_t -> op_kind) (o : operand_t) (ctx : context_t) : var_kind =
-  let vk =
-    match conv_op ctx o with
-    | OPVarKind vk -> vk
-    | _ -> failwith (Printf.sprintf "Failed to dereference %s" (GimpleUtils.string_of_operand o)) in
-  match ctx_deref_var_kind vk ctx with
-  | MemVal vk' -> vk'
-  | MemAddr _ -> failwith (Printf.sprintf "Failed to dereference %s" (GimpleUtils.string_of_operand o))
+  match conv_op ctx o with
+  | OPVarKind vk ->
+     (match ctx_deref_var_kind vk ctx with
+     | MemVal vk' -> vk'
+     | MemAddr _ -> failwith (Printf.sprintf "Failed to dereference %s" (GimpleUtils.string_of_operand o)))
+  (* if deref a constant <addr>, create a variable L0x<addr> *)
+  (* this happens when pointer parameters are assigned to values by users *)
+  | OPConst (_t, z) -> create_memory_variable Void z Z.zero
 
 let ctx_memory_operand (_ctx : context_t) (o : op_kind) (off : Z.t) : var_kind =
   match o with
