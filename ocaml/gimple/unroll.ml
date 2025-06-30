@@ -475,6 +475,17 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
              expand_block no_branch vtypes hash_bb (cont::todos') rets
 
 let unroll_first_block no_branch fnameopt init_st f =
+  let create_initial_store st =
+    let myst = Hashtbl.copy st in
+    let helper addr p =
+      match p.pty with
+      | Pointer _ ->
+         let _ = (if Hashtbl.mem myst p.pname
+                 then Hashtbl.replace else Hashtbl.add) myst p.pname addr in
+         Z.add addr (Z.of_int 1000000)
+      | _ -> addr in
+    let _ = List.fold_left helper Z.zero f.params in
+    myst in
   let hash_bb =
     let ret = Hashtbl.create 7 in
     let _ =
@@ -513,10 +524,11 @@ let unroll_first_block no_branch fnameopt init_st f =
     ret in
   let start = List.nth f.basic_blocks 0 in
   let _ = assert (start.phi = []) in
+  let init_store = create_initial_store init_st in
   match fnameopt with
   | None ->
      let top_blocks =
-       expand_top_block vtypes start.id (Hashtbl.copy init_st) in
+       expand_top_block vtypes start.id init_store in
      let _ = assert (not no_branch ||
                        List.for_all (fun b -> b.id = start.id) top_blocks) in
      Some { attr = f.attr; fty = f.fty; fname = f.fname;
@@ -525,7 +537,7 @@ let unroll_first_block no_branch fnameopt init_st f =
   | Some name ->
      if name = f.fname then
        let top_blocks =
-         expand_top_block vtypes start.id (Hashtbl.copy init_st) in
+         expand_top_block vtypes start.id init_store in
        let _ = assert (not no_branch ||
                          List.for_all (fun b -> b.id = start.id) top_blocks) in
        Some { attr = f.attr; fty = f.fty; fname = f.fname;
