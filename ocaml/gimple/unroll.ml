@@ -18,8 +18,8 @@ let get_var_type vtypes v =
 let get_var_value st v f =
   if Hashtbl.mem st v then Some (f (Hashtbl.find st v))
   else let basename = var_basename v in
-       if Hashtbl.mem st basename then Some (f (Hashtbl.find st basename))
-       else None
+       if Hashtbl.mem st basename
+       then Some (f (Hashtbl.find st basename)) else None
 
 let rec eval_offset (off : offset_t) st : offset_t =
   match off with
@@ -37,47 +37,64 @@ let rec eval_offset (off : offset_t) st : offset_t =
       | Const i0, Const i1 -> Const (Z.mul i0 i1)
       | _ -> Mul (o0', o1'))
 
-let rec eval_loc ?(evaltop=false) vtypes loc st =
-  { lty = loc.lty; lop = eval_operand ~evaltop:evaltop vtypes loc.lop st;
-    loffset = eval_offset loc.loffset st }
-and eval_operand ?(evaltop=false) vtypes (op : operand_t) st : operand_t =
+let rec eval_operand vtypes ?(istop=false) (op : operand_t) st : operand_t * operand_t option =
   match op with
   | Var v ->
-     if evaltop then
-       match get_var_value st v (fun v -> Const v) with
-       | Some vv -> vv | None -> op
-     else op
-  | Const _ | String _ -> op
+     let ov = get_var_value st v (fun v -> Const v) in
+     if istop || Option.is_none ov then (op, ov) else (Option.get ov, ov)
+  | Const _ | String _ -> (op, None)
   | Neg op ->
-     let op' = eval_operand ~evaltop:evaltop vtypes op st in
-     (match op' with
-     | Const z -> Const (Z.neg z)
-     | _ -> Neg op')
-  | Ref op -> Ref (eval_operand ~evaltop:evaltop vtypes op st)
+     let (op', ov') = eval_operand ~istop:istop vtypes op st in
+     (Neg op', match ov' with
+               | Some (Const z) -> Some (Const (Z.neg z))
+               | _ -> None)
+  | Ref op ->
+     let (op', ov') = eval_operand ~istop:istop vtypes op st in
+     (Ref op', match ov' with
+               | Some vv -> Some (Ref vv) | _ -> None)
   | Deref op ->
-     Deref (eval_operand ~evaltop:evaltop vtypes op st)
+     let (op', ov') = eval_operand ~istop:istop vtypes op st in
+     (Deref op', match ov' with
+                 | Some vv -> Some (Deref vv) | _ -> None)
   | Element (op0, op1) ->
-     Element (eval_operand ~evaltop:evaltop vtypes op0 st,
-              eval_operand ~evaltop:true vtypes op1 st)
+     let (op0', ov0') = eval_operand ~istop:istop vtypes op0 st in
+     let (op1', ov1') = eval_operand vtypes op1 st in
+     (Element (op0', op1'),
+      match ov0', ov1' with
+      | Some vv0, Some vv1 -> Some (Element (vv0, vv1))
+      | _ -> None)
   | Member (op0, op1) ->
-     Member (eval_operand ~evaltop:evaltop vtypes op0 st,
-             eval_operand ~evaltop:true vtypes op1 st)
+     let (op0', ov0') = eval_operand ~istop:istop vtypes op0 st in
+     let (op1', ov1') = eval_operand vtypes op1 st in
+     (Member (op0', op1'),
+      match ov0', ov1' with
+      | Some vv0, Some vv1 -> Some (Member (vv0, vv1))
+      | _ -> None)
   | Mem (ty, loc) ->
-     Mem (ty, eval_loc ~evaltop:evaltop vtypes loc st)
+     let (op', ov') = eval_operand ~istop:istop vtypes loc.lop st in
+     let lv' = eval_offset loc.loffset st in
+     (Mem (ty, { lty = loc.lty; lop = op'; loffset = lv' }),
+      match ov' with
+      | Some vv -> Some (Mem (ty, { lty = loc.lty; lop = vv; loffset = lv' }))
+      | _ -> None)
   | Ops ops ->
-     Ops (List.rev
-            (List.rev_map
-               (fun op -> eval_operand ~evaltop:evaltop vtypes op st) ops))
+     let (ops', ovs') =
+       List.rev_map (fun op -> eval_operand ~istop:istop vtypes op st) ops
+     |> List.rev |> List.split in
+     let ovs'opt =
+       if List.for_all (fun ov -> Option.is_some ov) ovs'
+       then Some (Ops (List.rev_map Option.get ovs' |> List.rev))
+       else None in
+     (Ops ops', ovs'opt)
 
 let eval_cond vtypes (c : cond_t) st =
-  let op0, op1 =
+  let (op0, ov0), (op1, ov1) =
     match c with
     | Eq (op0, op1) | Neq (op0, op1) | Gt (op0, op1) | Ge (op0, op1) 
     | Lt (op0, op1) | Le (op0, op1) ->
-       eval_operand ~evaltop:true vtypes op0 st,
-       eval_operand ~evaltop:true vtypes op1 st in
-  match op0, op1 with
-  | Const z0, Const z1 ->
+       eval_operand vtypes op0 st, eval_operand vtypes op1 st in
+  match ov0, ov1 with
+  | Some (Const z0), Some (Const z1) ->
      (match c with
       | Eq _ -> Decided (Z.equal z0 z1)
       | Neq _ -> Decided (not (Z.equal z0 z1))
@@ -127,62 +144,52 @@ let eval_instr vtypes instr st =
      *)
     if Hashtbl.mem st v then
       Hashtbl.replace st v zz else Hashtbl.add st v zz in
-  let print_op vtypes op value =
-    match op with
-    | Var v -> let vty = try Hashtbl.find vtypes v with Not_found -> Void in
-               (match vty with
-               | Pointer _ -> op | _ -> value)
-    | _ -> value in
   let eval_operand1 vtypes op op0 st =
-    let op' = eval_operand ~evaltop:false vtypes op st in
-    let op0' = eval_operand ~evaltop:true vtypes op0 st in
-    (op', op0') in
+    let (op', ov') = eval_operand ~istop:true vtypes op st in
+    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st in
+    ((op', op0'), (ov', ov0')) in
   let eval_operand1_and_update vtypes op f op0 st =
-    let op', op0' = eval_operand1 vtypes op op0 st in
-    let _ = match op', op0' with
-      | Var v, Const z ->
+    let (op', op0'), (_, ov0') = eval_operand1 vtypes op op0 st in
+    let _ = match op', ov0' with
+      | Var v, Some (Const z) ->
          let vty = try Hashtbl.find vtypes v
                    with Not_found -> Void in
          update_store vty v (f z) st
       | Var v, _ -> Hashtbl.remove st v
       | _ -> () in
-    let pop0' = print_op vtypes op0 op0' in
-    (op', pop0') in
+    (op', op0') in
   let eval_operand2 vtypes op op0 op1 st =
-    let op' = eval_operand ~evaltop:false vtypes op st in
-    let op0' = eval_operand ~evaltop:true vtypes op0 st in
-    let op1' = eval_operand ~evaltop:true vtypes op1 st in
-    (op', op0', op1') in
+    let (op', ov') = eval_operand ~istop:true vtypes op st in
+    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st in
+    let (op1', ov1') = eval_operand ~istop:true vtypes op1 st in
+    ((op', op0', op1'), (ov', ov0', ov1')) in
   let eval_operand2_and_update vtypes op f op0 op1 st =
-    let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
-    let _ = match op', op0', op1' with
-      | Var v, Const z0, Const z1 ->
+    let (op', op0', op1'), (_, ov0', ov1') =
+      eval_operand2 vtypes op op0 op1 st in
+    let _ = match op', ov0', ov1' with
+      | Var v, Some (Const z0), Some (Const z1) ->
          let vty = try Hashtbl.find vtypes v
                    with Not_found -> Void in
          update_store vty v (f z0 z1) st
       | Var v, _, _ -> Hashtbl.remove st v
       | _ -> () in
-    let pop0' = print_op vtypes op0 op0' in
-    let pop1' = print_op vtypes op1 op1' in
-    (op', pop0', pop1') in
+    (op', op0', op1') in
   let eval_operand3 vtypes op op0 op1 op2 st =
-    let op' = eval_operand ~evaltop:false vtypes op st in
-    let op0' = eval_operand ~evaltop:true vtypes op0 st in
-    let op1' = eval_operand ~evaltop:true vtypes op1 st in
-    let op2' = eval_operand ~evaltop:true vtypes op2 st in
-    (op', op0', op1', op2') in
+    let (op', ov') = eval_operand ~istop:true vtypes op st in
+    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st in
+    let (op1', ov1') = eval_operand ~istop:true vtypes op1 st in
+    let (op2', ov2') = eval_operand ~istop:true vtypes op2 st in
+    (op', op0', op1', op2'), (ov', ov0', ov1', ov2') in
   let eval_operand3_and_update vtypes op f op0 op1 op2 st =
-    let op', op0', op1', op2' = eval_operand3 vtypes op op0 op1 op2 st in
-    let _ = match op', op0', op1', op2' with
-      | Var v, Const z0, Const z1, Const z2 ->
+    let (op', op0', op1', op2'), (_, ov0', ov1', ov2') =
+      eval_operand3 vtypes op op0 op1 op2 st in
+    let _ = match op', ov0', ov1', ov2' with
+      | Var v, Some (Const z0), Some (Const z1), Some (Const z2) ->
          let vty = try Hashtbl.find vtypes v with Not_found -> Void in
          update_store vty v (f z0 z1 z2) st
       | Var v, _, _, _ -> Hashtbl.remove st v
       | _ -> () in
-    let pop0' = print_op vtypes op0 op0' in
-    let pop1' = print_op vtypes op1 op1' in
-    let pop2' = print_op vtypes op2 op2' in
-    (op', pop0', pop1', pop2') in
+    (op', op0', op1', op2') in
   match instr with
   | Comment _  | Nop | Asm _ -> (instr, st)
   | Assign (op, ty, op0) ->
@@ -220,16 +227,16 @@ let eval_instr vtypes instr st =
        eval_operand2_and_update vtypes op Z.mul op0 op1 st in
      (Wmul (op', op0', op1'), st)
   | Gt (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Gt (op', op0', op1'), st)
   | Ge (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Ge (op', op0', op1'), st)
   | Lt (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Lt (op', op0', op1'), st)
   | Le (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Le (op', op0', op1'), st)
   | And (op, op0, op1) ->
      let op', op0', op1' =
@@ -268,14 +275,14 @@ let eval_instr vtypes instr st =
        eval_operand2_and_update vtypes op f op0 op1 st in
      (Rshift (op', op0', op1'), st)
   | Lrotate (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Lrotate (op', op0', op1'), st)
   | Rrotate (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Rrotate (op', op0', op1'), st)
   | Ite (op, opc, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
-     let opc' = eval_operand vtypes opc st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
+     let opc', _ = eval_operand vtypes opc st in
      (Ite (op', opc', op0', op1'), st)
   | Min (op, op0, op1) ->
      let op', op0', op1' =
@@ -286,16 +293,17 @@ let eval_instr vtypes instr st =
        eval_operand2_and_update vtypes op Z.max op0 op1 st in
      (Max (op', op0', op1'), st)
   | RealPart (op, op0) ->
-     let op', op0' = eval_operand1 vtypes op op0 st in
+     let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (RealPart (op', op0'), st)
   | ImagPart (op, op0) ->
-     let op', op0' = eval_operand1 vtypes op op0 st in
+     let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (ImagPart (op', op0'), st)
   | Call (oop, name, ops) ->
      let oop' =
        match oop with None -> None
-                    | Some op -> Some (eval_operand vtypes op st) in
-     let ops' = List.rev (List.rev_map (fun op -> eval_operand vtypes op st) ops) in
+                    | Some op -> Some (fst (eval_operand vtypes op st)) in
+     let ops', _ = List.rev_map (fun op -> eval_operand vtypes op st) ops
+                   |> List.rev |> List.split in
      let _ = match oop', name with
        | Some (Var v), "__builtin_alloca" ->
           if not (Hashtbl.mem st v) then
@@ -309,15 +317,16 @@ let eval_instr vtypes instr st =
      (Call (oop', name, ops'), st)
   | CondBranch _ | Goto _ -> (instr, st)
   | Return oop ->
-     let oop' = match oop with None -> None
-                             | Some op -> Some (eval_operand vtypes op st) in
+     let oop' = match oop with
+       | None -> None
+       | Some op -> Some (fst (eval_operand vtypes op st)) in
      (Return oop', st)
   (* intrinsics *)
   | Wmullo (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Wmullo (op', op0', op1'), st)
   | Wmulhi  (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (Wmulhi (op', op0', op1'), st)
   | Wmadd (op, op0, op1, op2) ->
      let op', op0', op1', op2' =
@@ -330,31 +339,31 @@ let eval_instr vtypes instr st =
          (fun z0 z1 z2 -> Z.sub (Z.mul z0 z1) z2) op0 op1 op2 st in
      (Wmsub (op', op0', op1', op2'), st)
   | VecUnpackLo (op, op0) ->
-     let op', op0' = eval_operand1 vtypes op op0 st in
+     let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (VecUnpackLo (op', op0'), st)
   | VecUnpackHi  (op, op0) ->
-     let op', op0' = eval_operand1 vtypes op op0 st in
+     let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (VecUnpackHi (op', op0'), st)
   | DeferredInit op ->
-     let op' = eval_operand vtypes op st in
+     let op', _ = eval_operand vtypes op st in
      (DeferredInit op', st)
   | BitFieldRef (op, op0, op1, op2) ->
-     let op', op0', op1', op2' = eval_operand3 vtypes op op0 op1 op2 st in
+     let (op', op0', op1', op2'), _ = eval_operand3 vtypes op op0 op1 op2 st in
      (BitFieldRef (op', op0', op1', op2'), st)
   | VCondMask (op, op0, op1, op2) ->
-     let op', op0', op1', op2' = eval_operand3 vtypes op op0 op1 op2 st in
+     let (op', op0', op1', op2'), _ = eval_operand3 vtypes op op0 op1 op2 st in
      (VCondMask (op', op0', op1', op2'), st)
   | ViewConvertExpr (op, ty, op0) ->
-     let op', op0' = eval_operand1 vtypes op op0 st in
+     let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (ViewConvertExpr (op', ty, op0'), st)
   | VecPermExpr (op, op0, op1, op2) ->
-     let op', op0', op1', op2' = eval_operand3 vtypes op op0 op1 op2 st in
+     let (op', op0', op1', op2'), _ = eval_operand3 vtypes op op0 op1 op2 st in
      (VecPermExpr (op', op0', op1', op2'), st)
   | VecPackTruncExpr (op, op0, op1) ->
-     let op', op0', op1' = eval_operand2 vtypes op op0 op1 st in
+     let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
      (VecPackTruncExpr (op', op0', op1'), st)
   | StoreLanes (op, op0) ->
-     let op', op0' = eval_operand1 vtypes op op0 st in
+     let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (StoreLanes (op', op0'), st)
 
 let rec expand_block no_branch vtypes hash_bb todos rets =
