@@ -41,8 +41,14 @@ let rec eval_operand vtypes ?(istop=false) (op : operand_t) st : operand_t * ope
   match op with
   | Var v ->
      let ov = get_var_value st v (fun v -> Const v) in
+     (*
+     let _ = match ov with
+       | Some vv -> print_endline (v ^ " --> " ^ Utils.string_of_operand vv)
+       | None -> print_endline (v ^ " --> None") in
+      *)
      if istop || Option.is_none ov then (op, ov) else (Option.get ov, ov)
-  | Const _ | String _ -> (op, None)
+  | Const _ -> (op, Some op)
+  | String _ -> (op, None)
   | Neg op ->
      let (op', ov') = eval_operand ~istop:istop vtypes op st in
      (Neg op', match ov' with
@@ -396,9 +402,9 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
        let rev_phi_ret', st' = 
          List.fold_left (fun (r, s) instr ->
              let instr', s' = eval_instr vtypes instr s in
-
+             (*
              let _ = print_endline (Utils.string_of_instr instr') in
-
+              *)
              (instr'::r, s'))
            (rev_phi_ret, st) current.instrs in
        (* evaluate the last instruction in the current basic block *)
