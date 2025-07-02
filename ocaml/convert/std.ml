@@ -274,8 +274,11 @@ let ctx_deref_var_kind vk ctx =
   if not vk.is_pointer
   then failwith (Printf.sprintf "Failed to dereference the variable %s" vk.gbase.vname)
   else let _ = debug (Printf.sprintf "- Deref %s with offset %d" vk.gbase.vname vk.goffset) in
-       ctx_find_addr_or_fail (addr_of_var_kind vk) ctx
-
+       try
+         ctx_find_addr_or_fail (addr_of_var_kind vk) ctx
+       with Failure _ ->
+         (* vk is an input pointer parameter when it is not found in ctx *)
+         MemVal { vk with goffset = 0 }
 
 (** Operands *)
 
@@ -327,30 +330,18 @@ let rec first_type (tos : Cryptoline.typ option list) : Cryptoline.typ option =
 let first_operand_type (ctx : context_t) (os : GimpleAst.operand_t list) : Cryptoline.typ option =
   first_type (List.rev_map (detect_operand_type ctx) os |> List.rev)
 
-let create_memory_variable t base off =
-  let addr = Z.to_int (Z.add base off) in
-  let addr_str = Printf.sprintf "L0x%x" addr in
-  let _ = debug (Printf.sprintf "- create variable %s" addr_str) in
-  { gbase = { vty = t; vname = addr_str }; goffset = 0;
-    gsize = 0; is_pointer = false }
-
 let ctx_deref_operand (conv_op : context_t -> operand_t -> op_kind) (o : operand_t) (ctx : context_t) : var_kind =
   match conv_op ctx o with
   | OPVarKind vk ->
      (match ctx_deref_var_kind vk ctx with
      | MemVal vk' -> vk'
      | MemAddr _ -> failwith (Printf.sprintf "Failed to dereference %s" (GimpleUtils.string_of_operand o)))
-  (* if deref a constant <addr>, create a variable L0x<addr> *)
-  (* this happens when pointer parameters are assigned to values by users *)
-  | OPConst (_t, z) -> create_memory_variable Void z Z.zero
+  | _ -> failwith (Printf.sprintf "Failed to dereference %s" (GimpleUtils.string_of_operand o))
 
 let ctx_memory_operand (_ctx : context_t) (o : op_kind) (off : Z.t) : var_kind =
   match o with
-  | OPConst (_t, z) ->
-     (* if base address is a constant <addr>, create a variable L0x<addr> *)
-     (* this happens when pointer parameters are assigned to values by users *)
-     create_memory_variable Void z off
   | OPVarKind vk -> { vk with goffset = vk.goffset + (Z.to_int off) }
+  | OPConst (_, z) -> failwith (Printf.sprintf "Failed to dereference %s" (Z.to_string z))
 
 (** Traces *)
 
@@ -493,27 +484,7 @@ let convert_instr_sub (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAs
      let cl_r = clvar_of_op_kind ropk in
      [ Isub (cl_r, cl_a1, cl_a2) ]
 
-let convert_instr_mul (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
-  let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
-  let ropk = convert_operand_lv ctx r in
-  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
-  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
-  let cl_a1 = clatom_of_op_kind a1opk in
-  let cl_a2 = clatom_of_op_kind a2opk in
-  let cl_r = clvar_of_op_kind ropk in
-  [ Imul (cl_r, cl_a1, cl_a2) ]
-
-let convert_instr_wmul (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
-  let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
-  let ropk = convert_operand_lv ctx r in
-  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
-  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
-  let cl_a1 = clatom_of_op_kind a1opk in
-  let cl_a2 = clatom_of_op_kind a2opk in
-  let cl_r = clvar_of_op_kind ropk in
-  [ Imulj (cl_r, cl_a1, cl_a2) ]
-
-let convert_instr_wmadd (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) (a3 : GimpleAst.operand_t) : Cryptoline.instr list =
+let convert_instr_ternary f ctx r a1 a2 a3 =
   let cl_t_opt = first_operand_type ctx [ a1; a2; a3; r ] in
   let ropk = convert_operand_lv ctx r in
   let a1opk = convert_operand_rv ctx a1 cl_t_opt in
@@ -523,7 +494,36 @@ let convert_instr_wmadd (ctx : context_t) (r : GimpleAst.operand_t) (a1 : Gimple
   let cl_a2 = clatom_of_op_kind a2opk in
   let cl_a3 = clatom_of_op_kind a3opk in
   let cl_r = clvar_of_op_kind ropk in
-  [ Imulj (cl_r, cl_a1, cl_a2); Iadd (cl_r, mkatom_var cl_r, cl_a3) ]
+  f cl_r cl_a1 cl_a2 cl_a3
+
+let convert_instr_binary f ctx r a1 a2 =
+  let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
+  let ropk = convert_operand_lv ctx r in
+  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
+  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
+  let cl_a1 = clatom_of_op_kind a1opk in
+  let cl_a2 = clatom_of_op_kind a2opk in
+  let cl_r = clvar_of_op_kind ropk in
+  f cl_r cl_a1 cl_a2
+
+let convert_instr_unary f ctx r a =
+  let cl_t_opt = first_operand_type ctx [ a; r ] in
+  let ropk = convert_operand_lv ctx r in
+  let aopk = convert_operand_rv ctx a cl_t_opt in
+  let cl_a = clatom_of_op_kind aopk in
+  let cl_r = clvar_of_op_kind ropk in
+  f cl_r cl_a
+
+let convert_instr_mul (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_binary (fun r a1 a2 -> [ Imul (r, a1, a2) ]) ctx r a1 a2 
+
+let convert_instr_wmul (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_binary (fun r a1 a2 -> [ Imulj (r, a1, a2) ]) ctx r a1 a2
+
+let convert_instr_wmadd (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) (a3 : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_ternary
+    (fun r a1 a2 a3 -> [ Imulj (r, a1, a2); Iadd (r, mkatom_var r, a3)])
+     ctx r a1 a2 a3
 
 let convert_instr_lt (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
   let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
@@ -553,24 +553,10 @@ let convert_instr_lt (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst
   | _ -> raise (Unsupported (Printf.sprintf "Comparison of incompatible types is not supported: %s" (GimpleUtils.string_of_instr (Lt (r, a1, a2)))))
 
 let convert_instr_lshift (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
-  let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
-  let ropk = convert_operand_lv ctx r in
-  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
-  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
-  let cl_a1 = clatom_of_op_kind a1opk in
-  let cl_a2 = clatom_of_op_kind a2opk in
-  let cl_r = clvar_of_op_kind ropk in
-  [ Ishl (cl_r, cl_a1, cl_a2) ]
+  convert_instr_binary (fun r a1 a2 -> [ Ishl (r, a1, a2) ]) ctx r a1 a2
 
 let convert_instr_rshift (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
-  let cl_t_opt = first_operand_type ctx [ a1; a2; r ] in
-  let ropk = convert_operand_lv ctx r in
-  let a1opk = convert_operand_rv ctx a1 cl_t_opt in
-  let a2opk = convert_operand_rv ctx a2 cl_t_opt in
-  let cl_a1 = clatom_of_op_kind a1opk in
-  let cl_a2 = clatom_of_op_kind a2opk in
-  let cl_r = clvar_of_op_kind ropk in
-  [ Ishr (cl_r, cl_a1, cl_a2) ]
+  convert_instr_binary (fun r a1 a2 -> [ Ishr (r, a1, a2) ]) ctx r a1 a2
 
 let convert_instr_call (ctx : context_t) (r_opt : operand_t option) (fn : string) (actuals : operand_t list) : Cryptoline.instr list =
   let _ = print_endline (Printf.sprintf "Has function %s: %b" fn (ctx_has_gfun fn ctx)) in
@@ -607,6 +593,18 @@ let convert_instr_return (ctx : context_t) (a_opt : operand_t option) : Cryptoli
      let opk = convert_operand_rv ctx aop (Some cl_retty) in
      let cl_a = clatom_of_op_kind opk in
      [ Imov (Ast.Cryptoline.mkvar result_variable_name cl_retty, cl_a) ]
+
+let convert_instr_and (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_binary (fun r a1 a2 -> [ Iand (r, a1, a2) ]) ctx r a1 a2
+
+let convert_instr_or (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_binary (fun r a1 a2 -> [ Ior (r, a1, a2) ]) ctx r a1 a2
+
+let convert_instr_xor (ctx : context_t) (r : GimpleAst.operand_t) (a1 : GimpleAst.operand_t) (a2 : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_binary (fun r a1 a2 -> [ Ixor (r, a1, a2) ]) ctx r a1 a2
+
+let convert_instr_not (ctx : context_t) (r : GimpleAst.operand_t) (a : GimpleAst.operand_t) : Cryptoline.instr list =
+  convert_instr_unary (fun r a -> [ Inot (r, a) ]) ctx r a
 
 let detect_cond_type (ctx : context_t) (c : cond_t) : Cryptoline.typ option =
   let ops =
@@ -684,10 +682,10 @@ let convert_instr (ctx : context_t) (ginstr : GimpleAst.instr_t) : trace list =
   | Ge _  -> unsupport "Ge"
   | Lt (r, a1, a2) -> [ (convert_instr_lt ctx r a1 a2, None) ]
   | Le _ -> unsupport "Le"
-  | And _  -> unsupport "And"
-  | Or _  -> unsupport "Or"
-  | Xor _  -> unsupport "Xor"
-  | Not _  -> unsupport "Not"
+  | And (r, a1, a2) -> [ (convert_instr_and ctx r a1 a2, None) ]
+  | Or (r, a1, a2)  -> [ (convert_instr_or ctx r a1 a2, None) ]
+  | Xor (r, a1, a2)  -> [ (convert_instr_xor ctx r a1 a2, None) ]
+  | Not (r, a)  -> [ (convert_instr_not ctx r a, None) ]
   | Eq _  -> unsupport "Eq"
   | Neq _  -> unsupport "Neq"
   | Lshift (r, a1, a2) -> [ (convert_instr_lshift ctx r a1 a2, None) ]
