@@ -21,6 +21,17 @@ let get_var_value st v f =
        if Hashtbl.mem st basename
        then Some (f (Hashtbl.find st basename)) else None
 
+let get_cells ref_cells v =
+  if Hashtbl.mem ref_cells v then Hashtbl.find ref_cells v
+  else let basename = var_basename v in
+       if Hashtbl.mem ref_cells basename then Hashtbl.find ref_cells basename
+       else let _ = Hashtbl.add ref_cells basename [] in []
+
+let add_cell ref_cells v off =
+  let cells = get_cells ref_cells v in
+  if List.mem off cells then ()
+  else Hashtbl.replace ref_cells (var_basename v) (off::cells)
+
 let rec eval_offset (off : offset_t) st : offset_t =
   match off with
   | Const _ -> off
@@ -37,7 +48,7 @@ let rec eval_offset (off : offset_t) st : offset_t =
       | Const i0, Const i1 -> Const (Z.mul i0 i1)
       | _ -> Mul (o0', o1'))
 
-let rec eval_operand vtypes ?(istop=false) (op : operand_t) st : operand_t * operand_t option =
+let rec eval_operand vtypes ?(istop=false) (op : operand_t) st ref_cells : operand_t * operand_t option =
   match op with
   | Var v ->
      let ov = get_var_value st v (fun v -> Const v) in
@@ -50,42 +61,50 @@ let rec eval_operand vtypes ?(istop=false) (op : operand_t) st : operand_t * ope
   | Const _ -> (op, Some op)
   | String _ -> (op, None)
   | Neg op ->
-     let (op', ov') = eval_operand ~istop:istop vtypes op st in
+     let (op', ov') = eval_operand ~istop:istop vtypes op st ref_cells in
      (Neg op', match ov' with
                | Some (Const z) -> Some (Const (Z.neg z))
                | _ -> None)
   | Ref op ->
-     let (op', ov') = eval_operand ~istop:istop vtypes op st in
+     let (op', ov') = eval_operand ~istop:istop vtypes op st ref_cells in
      (Ref op', match ov' with
                | Some vv -> Some (Ref vv) | _ -> None)
   | Deref op ->
-     let (op', ov') = eval_operand ~istop:istop vtypes op st in
+     let (op', ov') = eval_operand ~istop:istop vtypes op st ref_cells in
+     (* add cells for input pointer parameters *)
+     let _ = match op', ov' with
+       | Var v, Some _ -> add_cell ref_cells v (Const Z.zero : offset_t)
+       | _ -> () in
      (Deref op', match ov' with
                  | Some vv -> Some (Deref vv) | _ -> None)
   | Element (op0, op1) ->
-     let (op0', ov0') = eval_operand ~istop:istop vtypes op0 st in
-     let (op1', ov1') = eval_operand vtypes op1 st in
+     let (op0', ov0') = eval_operand ~istop:istop vtypes op0 st ref_cells in
+     let (op1', ov1') = eval_operand vtypes op1 st ref_cells in
      (Element (op0', op1'),
       match ov0', ov1' with
       | Some vv0, Some vv1 -> Some (Element (vv0, vv1))
       | _ -> None)
   | Member (op0, op1) ->
-     let (op0', ov0') = eval_operand ~istop:istop vtypes op0 st in
-     let (op1', ov1') = eval_operand vtypes op1 st in
+     let (op0', ov0') = eval_operand ~istop:istop vtypes op0 st ref_cells in
+     let (op1', ov1') = eval_operand vtypes op1 st ref_cells in
      (Member (op0', op1'),
       match ov0', ov1' with
       | Some vv0, Some vv1 -> Some (Member (vv0, vv1))
       | _ -> None)
   | Mem (ty, loc) ->
-     let (op', ov') = eval_operand ~istop:istop vtypes loc.lop st in
+     let (op', ov') = eval_operand ~istop:istop vtypes loc.lop st ref_cells in
      let lv' = eval_offset loc.loffset st in
      (Mem (ty, { lty = loc.lty; lop = op'; loffset = lv' }),
-      match ov' with
-      | Some vv -> Some (Mem (ty, { lty = loc.lty; lop = vv; loffset = lv' }))
+      match op', ov' with
+      | Var v, Some vv ->
+         (* add cells for input pointer parameters *)
+         let _ = add_cell ref_cells v lv' in
+         Some (Mem (ty, { lty = loc.lty; lop = vv; loffset = lv' }))
       | _ -> None)
   | Ops ops ->
      let (ops', ovs') =
-       List.rev_map (fun op -> eval_operand ~istop:istop vtypes op st) ops
+       List.rev_map (fun op ->
+           eval_operand ~istop:istop vtypes op st ref_cells) ops
      |> List.rev |> List.split in
      let ovs'opt =
        if List.for_all (fun ov -> Option.is_some ov) ovs'
@@ -93,12 +112,13 @@ let rec eval_operand vtypes ?(istop=false) (op : operand_t) st : operand_t * ope
        else None in
      (Ops ops', ovs'opt)
 
-let eval_cond vtypes (c : cond_t) st =
+let eval_cond vtypes (c : cond_t) st ref_cells =
   let (op0, ov0), (op1, ov1) =
     match c with
     | Eq (op0, op1) | Neq (op0, op1) | Gt (op0, op1) | Ge (op0, op1) 
     | Lt (op0, op1) | Le (op0, op1) ->
-       eval_operand vtypes op0 st, eval_operand vtypes op1 st in
+       eval_operand vtypes op0 st ref_cells,
+       eval_operand vtypes op1 st ref_cells in
   match ov0, ov1 with
   | Some (Const z0), Some (Const z1) ->
      (match c with
@@ -142,7 +162,7 @@ let cast_type ty z =
      else
        truncated_z
 
-let eval_instr vtypes instr st =
+let eval_instr vtypes instr st ref_cells =
   let update_store ty v z st =
     let zz = cast_type ty z in
     (*
@@ -151,8 +171,8 @@ let eval_instr vtypes instr st =
     if Hashtbl.mem st v then
       Hashtbl.replace st v zz else Hashtbl.add st v zz in
   let eval_operand1 vtypes op op0 st =
-    let (op', ov') = eval_operand ~istop:true vtypes op st in
-    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st in
+    let (op', ov') = eval_operand ~istop:true vtypes op st ref_cells in
+    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st ref_cells in
     ((op', op0'), (ov', ov0')) in
   let eval_operand1_and_update vtypes op f op0 st =
     let (op', op0'), (_, ov0') = eval_operand1 vtypes op op0 st in
@@ -165,9 +185,9 @@ let eval_instr vtypes instr st =
       | _ -> () in
     (op', op0') in
   let eval_operand2 vtypes op op0 op1 st =
-    let (op', ov') = eval_operand ~istop:true vtypes op st in
-    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st in
-    let (op1', ov1') = eval_operand ~istop:true vtypes op1 st in
+    let (op', ov') = eval_operand ~istop:true vtypes op st ref_cells in
+    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st ref_cells in
+    let (op1', ov1') = eval_operand ~istop:true vtypes op1 st ref_cells in
     ((op', op0', op1'), (ov', ov0', ov1')) in
   let eval_operand2_and_update vtypes op f op0 op1 st =
     let (op', op0', op1'), (_, ov0', ov1') =
@@ -181,10 +201,10 @@ let eval_instr vtypes instr st =
       | _ -> () in
     (op', op0', op1') in
   let eval_operand3 vtypes op op0 op1 op2 st =
-    let (op', ov') = eval_operand ~istop:true vtypes op st in
-    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st in
-    let (op1', ov1') = eval_operand ~istop:true vtypes op1 st in
-    let (op2', ov2') = eval_operand ~istop:true vtypes op2 st in
+    let (op', ov') = eval_operand ~istop:true vtypes op st ref_cells in
+    let (op0', ov0') = eval_operand ~istop:true vtypes op0 st ref_cells in
+    let (op1', ov1') = eval_operand ~istop:true vtypes op1 st ref_cells in
+    let (op2', ov2') = eval_operand ~istop:true vtypes op2 st ref_cells in
     (op', op0', op1', op2'), (ov', ov0', ov1', ov2') in
   let eval_operand3_and_update vtypes op f op0 op1 op2 st =
     let (op', op0', op1', op2'), (_, ov0', ov1', ov2') =
@@ -288,7 +308,7 @@ let eval_instr vtypes instr st =
      (Rrotate (op', op0', op1'), st)
   | Ite (op, opc, op0, op1) ->
      let (op', op0', op1'), _ = eval_operand2 vtypes op op0 op1 st in
-     let opc', _ = eval_operand vtypes opc st in
+     let opc', _ = eval_operand vtypes opc st ref_cells in
      (Ite (op', opc', op0', op1'), st)
   | Min (op, op0, op1) ->
      let op', op0', op1' =
@@ -307,8 +327,9 @@ let eval_instr vtypes instr st =
   | Call (oop, name, ops) ->
      let oop' =
        match oop with None -> None
-                    | Some op -> Some (fst (eval_operand vtypes op st)) in
-     let ops', _ = List.rev_map (fun op -> eval_operand vtypes op st) ops
+                    | Some op -> Some (fst (eval_operand vtypes op st ref_cells)) in
+     let ops', _ = List.rev_map (fun op ->
+                       eval_operand vtypes op st ref_cells ) ops
                    |> List.rev |> List.split in
      let _ = match oop', name with
        | Some (Var v), "__builtin_alloca" ->
@@ -325,7 +346,7 @@ let eval_instr vtypes instr st =
   | Return oop ->
      let oop' = match oop with
        | None -> None
-       | Some op -> Some (fst (eval_operand vtypes op st)) in
+       | Some op -> Some (fst (eval_operand vtypes op st ref_cells)) in
      (Return oop', st)
   (* intrinsics *)
   | Wmullo (op, op0, op1) ->
@@ -351,7 +372,7 @@ let eval_instr vtypes instr st =
      let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (VecUnpackHi (op', op0'), st)
   | DeferredInit op ->
-     let op', _ = eval_operand vtypes op st in
+     let op', _ = eval_operand vtypes op st ref_cells in
      (DeferredInit op', st)
   | BitFieldRef (op, op0, op1, op2) ->
      let (op', op0', op1', op2'), _ = eval_operand3 vtypes op op0 op1 op2 st in
@@ -372,12 +393,12 @@ let eval_instr vtypes instr st =
      let (op', op0'), _ = eval_operand1 vtypes op op0 st in
      (StoreLanes (op', op0'), st)
 
-let rec expand_block no_branch vtypes hash_bb todos rets =
+let rec expand_block no_branch vtypes ref_cells hash_bb todos rets =
   match todos with
   | [] -> rets
   | (current, last_bb, current_st, rev_ret, first)::todos' ->
      if not no_branch && List.exists (fun (f, _) -> f.id = first.id) rets then
-       expand_block no_branch vtypes hash_bb todos' rets
+       expand_block no_branch vtypes ref_cells hash_bb todos' rets
      else
        (* add and evaluate PHI assignment by last basic block *)
        let rev_phi_ret, st =
@@ -393,7 +414,7 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
                let _ = assert (List.mem_assoc last_bb p.choice) in
                let op0 = List.assoc last_bb p.choice in
                let phi_instr = Assign (p.op, Void, op0) in
-               let instr', s' = eval_instr vtypes phi_instr s in
+               let instr', s' = eval_instr vtypes phi_instr s ref_cells in
                (*
                let _ = print_endline (Utils.string_of_instr instr') in
                 *)
@@ -401,7 +422,7 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
        (* evaluate instructions in current basic block *)
        let rev_phi_ret', st' = 
          List.fold_left (fun (r, s) instr ->
-             let instr', s' = eval_instr vtypes instr s in
+             let instr', s' = eval_instr vtypes instr s ref_cells in
              (*
              let _ = print_endline (Utils.string_of_instr instr') in
               *)
@@ -421,9 +442,9 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
           let next, _ = Hashtbl.find hash_bb labl in
           let rev_ret' = Comment comment1::Comment comment0::instrs in
           let cont = (next, current.id, st', rev_ret', first) in
-          expand_block no_branch vtypes hash_bb (cont::todos') rets
+          expand_block no_branch vtypes ref_cells hash_bb (cont::todos') rets
        | CondBranch (c, labl0, labl1) as instr::instrs ->
-          (match eval_cond vtypes c st' with
+          (match eval_cond vtypes c st' ref_cells with
           | Undecided cond ->
              let next0, _ = Hashtbl.find hash_bb labl0 in
              let next1, _ = Hashtbl.find hash_bb labl1 in
@@ -443,7 +464,7 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
                let cont1 =
                  let st'' = Hashtbl.copy st' in
                  (next1, current.id, st'', rev_ret1', first) in
-               expand_block no_branch vtypes hash_bb
+               expand_block no_branch vtypes ref_cells hash_bb
                  (cont0::cont1::todos') rets
              else
                (* initiate indeterminate conditional branches *)
@@ -451,8 +472,8 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
                let cont1 =
                  let st'' = Hashtbl.copy st' in
                  (next1, current.id, st'', [], next1) in
-               expand_block no_branch vtypes hash_bb (cont0::cont1::todos')
-                 ((first, rev_phi_ret')::rets)
+               expand_block no_branch vtypes ref_cells hash_bb
+                 (cont0::cont1::todos') ((first, rev_phi_ret')::rets)
           | Decided b ->
              let labl = if b then labl0 else labl1 in
              let comment0 = Format.sprintf "@[ %s @]"
@@ -466,18 +487,19 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
              let next, _ = Hashtbl.find hash_bb labl in
              let rev_ret' = Comment comment1::Comment comment0::instrs in
              let cont = (next, current.id, st', rev_ret', first) in
-             expand_block no_branch vtypes hash_bb (cont::todos') rets)
+             expand_block no_branch vtypes ref_cells hash_bb
+               (cont::todos') rets)
        | Call (_, name, _)::_ when String.equal name "__assert_rtn" ->
-          expand_block no_branch vtypes hash_bb todos'
+          expand_block no_branch vtypes ref_cells hash_bb todos'
             ((first, rev_phi_ret')::rets)
        | Return _::_ ->
-          expand_block no_branch vtypes hash_bb todos'
+          expand_block no_branch vtypes ref_cells hash_bb todos'
             ((first, rev_phi_ret')::rets)
        | _ ->
           (* continue to next block *)
           match snd (Hashtbl.find hash_bb current.id) with
           | None ->
-             expand_block no_branch vtypes hash_bb todos'
+             expand_block no_branch vtypes ref_cells hash_bb todos'
                ((first, rev_phi_ret')::rets)
           | Some next ->
              let comment = Format.sprintf "@[ Basic Block: %s@]"
@@ -487,7 +509,7 @@ let rec expand_block no_branch vtypes hash_bb todos rets =
              (*
              let _ = print_endline comment in
               *)
-             expand_block no_branch vtypes hash_bb (cont::todos') rets
+             expand_block no_branch vtypes ref_cells hash_bb (cont::todos') rets
 
 let unroll_first_block no_branch fnameopt init_st f =
   let create_initial_store st =
@@ -512,10 +534,12 @@ let unroll_first_block no_branch fnameopt init_st f =
     ret in
   (* expand the basic block with labl *)
   let expand_top_block vtypes labl st =
+    let ref_cells = Hashtbl.create 17 in
     let fake_last = no_label in
     let first, _ = Hashtbl.find hash_bb labl in
     let start = (first, fake_last, st, [], first) in
-    let block_rev_instss = expand_block no_branch vtypes hash_bb [start] [] in
+    let block_rev_instss = expand_block no_branch vtypes ref_cells hash_bb
+                             [start] [] in
     List.fold_left (fun ret (first, rev_insts) ->
         let block = { id = first.id; instrs = List.rev rev_insts;
                       phi = first.phi } in
