@@ -517,8 +517,7 @@ let unroll_first_block no_branch fnameopt init_st f =
     let helper addr p =
       match p.pty with
       | Pointer _ ->
-         let _ = (if Hashtbl.mem myst p.pname
-                 then Hashtbl.replace else Hashtbl.add) myst p.pname addr in
+         let _ = Hashtbl.replace myst p.pname addr in
          Z.add addr (Z.of_int 1000000)
       | _ -> addr in
     let _ = List.fold_left helper Z.zero f.params in
